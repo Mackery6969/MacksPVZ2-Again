@@ -1,0 +1,118 @@
+{
+ "plants/PeashooterPLANT": {
+  "sound_fields": [
+   "foodSound",
+   "foodEndSound"
+  ],
+  "clips": [
+   {
+    "file": "PeashooterPLANT_0.mp3",
+    "uuid": "415921a8-17ff-457d-ac54-6d49a5a81403",
+    "seconds": 2.447,
+    "bytes": 100972
+   },
+   {
+    "file": "PeashooterPLANT_1.mp3",
+    "uuid": "08ffc70c-96ca-4c7b-903a-1dd59181cbbc",
+    "seconds": 2.36,
+    "bytes": 98092
+   },
+   {
+    "file": "PeashooterPLANT_2.mp3",
+    "uuid": "d552833f-d03f-4f93-8377-c7ff7fbfcba4",
+    "seconds": 0.306,
+    "bytes": 4796
+   }
+  ]
+ },
+ "plants/SunflowerPLANT": {
+  "sound_fields": [
+   "foodSound",
+   "produceSound"
+  ],
+  "clips": [
+   {
+    "file": "SunflowerPLANT_0.mp3",
+    "uuid": "a10ba5ba-a73c-4828-9d22-bf2005f3e059",
+    "seconds": 2.206,
+    "bytes": 27712
+   },
+   {
+    "file": "SunflowerPLANT_1.mp3",
+    "uuid": "6fc83012-f667-4858-be61-2b4297a0de50",
+    "seconds": 0.623,
+    "bytes": 4530
+   }
+  ]
+ },
+ "plants/WallnutPLANT": {
+  "sound_fields": [
+   "foodSound"
+  ],
+  "clips": [
+   {
+    "file": "WallnutPLANT_0.mp3",
+    "uuid": "449f6d79-7975-4a2e-8d0a-b0c203f513aa",
+    "seconds": 1.68,
+    "bytes": 70604
+   }
+  ]
+ },
+ "plants/PotatoMinePLANT": {
+  "sound_fields": [
+   "foodSound",
+   "landSound"
+  ],
+  "clips": [
+   {
+    "file": "PotatoMinePLANT_0.mp3",
+    "uuid": "c6b4752b-7a8c-4fd8-a6d4-07c448b69b13",
+    "seconds": 1.405,
+    "bytes": 60651
+   },
+   {
+    "file": "PotatoMinePLANT_1.mp3",
+    "uuid": "f8229eac-c0e7-410d-ba49-e4bd6201c317",
+    "seconds": 0.781,
+    "bytes": 34731
+   }
+  ]
+ },
+ "plants/CabbagePultPLANT": {
+  "sound_fields": [],
+  "clips": [
+   {
+    "file": "CabbagePultPLANT_0.mp3",
+    "uuid": "dbafd80d-b98d-482b-8b1b-f16ab9f50f26",
+    "seconds": 0.73,
+    "bytes": 33293
+   },
+   {
+    "file": "CabbagePultPLANT_1.mp3",
+    "uuid": "98c00d6e-bde2-4167-ab94-a34d5b7bd3ab",
+    "seconds": 0.831,
+    "bytes": 37613
+   },
+   {
+    "file": "CabbagePultPLANT_2.mp3",
+    "uuid": "c1a387c9-c7ed-48ae-910f-77a8019d91af",
+    "seconds": 0.628,
+    "bytes": 28973
+   },
+   {
+    "file": "CabbagePultPLANT_3.mp3",
+    "uuid": "e26aee07-2315-40c7-9ca5-b0d7e0e56de2",
+    "seconds": 1.5,
+    "bytes": 63533
+   }
+  ]
+ },
+ "zombies/BasicZOMBIE": {
+  "sound_fields": [],
+  "clips": []
+ },
+ "zombies/BasicFlagZOMBIE": {
+  "sound_fields": [],
+  "clips": []
+ }
+}

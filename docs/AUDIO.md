@@ -208,8 +208,35 @@ SFX live under `event:/SFX/`, music under `event:/Music/`.
 
 ## Source material
 
-The PVZGE build carries 4185 mp3 files, but they are referenced by prefab UUID
-rather than by name, so there is no event catalog to recover from it - only the
-music track names (`Tutorial`, `CYS_LP_<world>`, and so on) are readable, and
-`LawnProps` names each lawn's track. Treat the mp3s as raw material to import
-into FMOD Studio, and author event names to match this catalog.
+PVZGE has no `sound/` asset namespace, so its clips look anonymous - addressed
+only by UUID. They are not. Cocos packs store, alongside the member UUID list,
+an instance array carrying each asset's original file name and duration,
+aligned by position. Reading the two together recovers all of them:
+
+```sh
+python3 tools/build_audio_index.py <import dir> <config.json> audio_index.json
+# named audio assets: 4187  (2857 distinct names)
+```
+
+That is where `plant1`, `shovel0`, `plantFoodCollect`, `hugewave`, `groan0`
+and the rest come from - the game's own sounds under their own names, not
+lookalikes.
+
+`data/native/audio/pvzge_sources.json` maps each event to its clip, and
+`tools/fmod_populate.py` ties catalog, source map and index together to pull
+the clips out of the build and attach them:
+
+```sh
+python3 tools/fmod_populate.py "<project dir>" audio_index.json --dry-run
+python3 tools/fmod_populate.py "<project dir>" audio_index.json
+```
+
+It skips events that already have audio, so it is safe to re-run.
+
+### Variants
+
+PVZGE ships numbered variants for most effects - `death0..3`, `groan0..n`,
+`chew0..3`, `shovel0..3`. The source map takes the first of each; the rest are
+staged under `Assets/SFX/_library/` (625 clips) for building multi-sounds in
+Studio, which is what the variants are for. Nothing references that folder, so
+it costs nothing in a build.

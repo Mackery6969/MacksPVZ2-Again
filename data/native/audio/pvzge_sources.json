@@ -1,0 +1,38 @@
+{
+ "//": "Which PVZGE clip backs each event. Names are the originals recovered from the build's asset packs, so these are the game's own sounds rather than lookalikes. Where PVZGE offers numbered variants (death0..3, groan0..n) the first is used; FMOD multi-sound can take the rest.",
+ "sources": {
+  "plant.place":        "plant1",
+  "plant.dig":          "shovel0",
+  "plant.eaten":        "chew0",
+  "plant.shoot":        "Shoot1",
+  "plant.lob":          "foodLob",
+  "plant.explode":      "explode0",
+  "plant.food":         "plantFoodActivate",
+
+  "sun.drop":           "drop",
+  "sun.collect":        "collect",
+  "plantfood.drop":     "plantFoodDrop",
+  "plantfood.collect":  "plantFoodCollect",
+
+  "zombie.spawn":       "groan0",
+  "zombie.eat":         "chew",
+  "zombie.hit":         "hit0",
+  "zombie.die":         "death0",
+  "zombie.armor.break": "bd_break0",
+
+  "mower.trigger":      "engine",
+  "wave.start":         "wave",
+  "wave.huge":          "hugewave",
+
+  "ui.seed.select":     "seedPacketChosen",
+  "ui.seed.refuse":     "seedPacketCancel",
+  "level.win":          "VIC_Modern",
+  "level.lose":         "LOSE_Tutorial",
+
+  "music.lawn.tutorial":       "LP_Tutorial",
+  "music.chooseseeds.tutorial": "CYS_LP_Modern",
+  "music.victory.tutorial":    "VIC_Modern",
+  "music.lose.tutorial":       "LOSE_Tutorial"
+ },
+ "loop": ["music.lawn.tutorial", "music.chooseseeds.tutorial"]
+}
