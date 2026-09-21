@@ -1,0 +1,143 @@
+{
+ "id": "tutorial_4",
+ "comment": "Tutorial 1",
+ "name": "[TUTORIAL_LEVEL_NAME]",
+ "description": "[PLAYERS_HOUSE]",
+ "number": 4,
+ "stage": "TutorialStage",
+ "tutorial_script": "tutorial_4",
+ "seedbank": {
+  "mode": "chooser",
+  "selection": "preset",
+  "preset": [
+   "peashooter",
+   "sunflower",
+   "wallnut",
+   "potatomine"
+  ]
+ },
+ "waves": [
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial",
+     "row": 3
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial",
+     "row": 4
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial",
+     "row": 2
+    },
+    {
+     "type": "tutorial"
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial_armor1"
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial_armor2",
+     "row": 3
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial_armor1"
+    },
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial_armor1"
+    }
+   ]
+  }
+ ],
+ "wave_settings": {
+  "count": 8,
+  "flag_interval": 8,
+  "points": 100,
+  "point_increment": 10,
+  "next_wave_health_min": 0.5,
+  "next_wave_health_max": 0.65
+ },
+ "features": [
+  "DefaultSunDropper",
+  "DefaultZombieWinCondition",
+  "FrontLawnMowers",
+  "StandardIntro",
+  "TutorialPeashooterDeath",
+  "ZombiesDeadWinCon"
+ ],
+ "extra": [
+  {
+   "objclass": "PickupCollectableTutorialProperties",
+   "aliases": [
+    "FirstCoinTutorial"
+   ],
+   "objdata": {
+    "DropperZombieType": "tutorial_armor2",
+    "LootType": "GoldCoin",
+    "PickupAdvice": "[ADVICE_CLICK_COIN]",
+    "PostPickupAdvice": "[ADVICE_COLLECT_COINS]"
+   }
+  }
+ ]
+}

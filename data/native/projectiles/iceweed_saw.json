@@ -1,0 +1,16 @@
+{
+ "id": "iceweed_saw",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "ChillDuration": 5,
+  "DPS": 200,
+  "FreezeDuration": 10,
+  "IceBlockLevel": 1,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 65,
+   "w": 65
+  },
+  "Props": "RTID(iceweed_saw@ProjectileProps)"
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "id": "halloween_flag",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.24,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 100
+ },
+ "sort": "Normal",
+ "tags": {
+  "remove": [
+   "plantfood_carrier"
+  ]
+ },
+ "components": [
+  {
+   "type": "armor",
+   "armor": "halloween_armor3"
+  },
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ]
+}

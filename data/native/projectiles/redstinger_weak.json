@@ -1,0 +1,14 @@
+{
+ "id": "redstinger_weak",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "redstinger1",
+  "Props": "RTID(redstinger_weak@ProjectileProps)"
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "id": "railcart_dark",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "RailType": "rail_dark",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Dark"
+ }
+}

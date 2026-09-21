@@ -1,0 +1,457 @@
+{
+ "beach_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "beach_armor1",
+   "Properties": "RTID(beach_armor1@ArmorProps)"
+  }
+ },
+ "beach_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "beach_armor2",
+   "Properties": "RTID(beach_armor2@ArmorProps)"
+  }
+ },
+ "beach_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "beach_armor4",
+   "Properties": "RTID(beach_armor4@ArmorProps)"
+  }
+ },
+ "cowboy_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "cowboy_armor1",
+   "Properties": "RTID(cowboy_armor1@ArmorProps)"
+  }
+ },
+ "cowboy_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "cowboy_armor2",
+   "Properties": "RTID(cowboy_armor2@ArmorProps)"
+  }
+ },
+ "cowboy_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "cowboy_armor4",
+   "Properties": "RTID(cowboy_armor4@ArmorProps)"
+  }
+ },
+ "dark_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "dark_armor1",
+   "Properties": "RTID(dark_armor1@ArmorProps)"
+  }
+ },
+ "dark_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "dark_armor2",
+   "Properties": "RTID(dark_armor2@ArmorProps)"
+  }
+ },
+ "dark_armor3": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "dark_armor3",
+   "Properties": "RTID(dark_armor3@ArmorProps)"
+  }
+ },
+ "dark_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "dark_armor4",
+   "Properties": "RTID(dark_armor4@ArmorProps)"
+  }
+ },
+ "dino_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "dino_armor1",
+   "Properties": "RTID(dino_armor1@ArmorProps)"
+  }
+ },
+ "dino_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "dino_armor2",
+   "Properties": "RTID(dino_armor2@ArmorProps)"
+  }
+ },
+ "dino_armor3": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "dino_armor3",
+   "Properties": "RTID(dino_armor3@ArmorProps)"
+  }
+ },
+ "dino_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "dino_armor4",
+   "Properties": "RTID(dino_armor4@ArmorProps)"
+  }
+ },
+ "easter_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "easter_armor1",
+   "Properties": "RTID(modern_armor1@ArmorProps)"
+  }
+ },
+ "easter_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "easter_armor2",
+   "Properties": "RTID(modern_armor2@ArmorProps)"
+  }
+ },
+ "easter_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "easter_armor4",
+   "Properties": "RTID(modern_armor4@ArmorProps)"
+  }
+ },
+ "egypt_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "egypt_armor1",
+   "Properties": "RTID(egypt_armor1@ArmorProps)"
+  }
+ },
+ "egypt_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "egypt_armor2",
+   "Properties": "RTID(egypt_armor2@ArmorProps)"
+  }
+ },
+ "egypt_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "egypt_armor4",
+   "Properties": "RTID(egypt_armor4@ArmorProps)"
+  }
+ },
+ "eighties_8bit_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "eighties_8bit_armor1",
+   "Properties": "RTID(eighties_8bit_armor1@ArmorProps)"
+  }
+ },
+ "eighties_8bit_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "eighties_8bit_armor2",
+   "Properties": "RTID(eighties_8bit_armor2@ArmorProps)"
+  }
+ },
+ "eighties_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "eighties_armor1",
+   "Properties": "RTID(eighties_armor1@ArmorProps)"
+  }
+ },
+ "eighties_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "eighties_armor2",
+   "Properties": "RTID(eighties_armor2@ArmorProps)"
+  }
+ },
+ "eighties_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "eighties_armor4",
+   "Properties": "RTID(eighties_armor4@ArmorProps)"
+  }
+ },
+ "feastivus_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "feastivus_armor1",
+   "Properties": "RTID(modern_armor1@ArmorProps)"
+  }
+ },
+ "feastivus_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "feastivus_armor2",
+   "Properties": "RTID(modern_armor2@ArmorProps)"
+  }
+ },
+ "foodfight_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "foodfight_armor1",
+   "Properties": "RTID(modern_armor1@ArmorProps)"
+  }
+ },
+ "foodfight_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "foodfight_armor2",
+   "Properties": "RTID(modern_armor2@ArmorProps)"
+  }
+ },
+ "future_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "future_armor1",
+   "Properties": "RTID(future_armor1@ArmorProps)"
+  }
+ },
+ "future_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "future_armor2",
+   "Properties": "RTID(future_armor2@ArmorProps)"
+  }
+ },
+ "future_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "future_armor4",
+   "Properties": "RTID(future_armor4@ArmorProps)"
+  }
+ },
+ "halloween_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "halloween_armor1",
+   "Properties": "RTID(halloween_armor1@ArmorProps)"
+  }
+ },
+ "halloween_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "halloween_armor2",
+   "Properties": "RTID(halloween_armor2@ArmorProps)"
+  }
+ },
+ "halloween_armor3": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "halloween_armor3",
+   "Properties": "RTID(halloween_armor3@ArmorProps)"
+  }
+ },
+ "iceage_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "iceage_armor1",
+   "Properties": "RTID(iceage_armor1@ArmorProps)"
+  }
+ },
+ "iceage_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "iceage_armor2",
+   "Properties": "RTID(iceage_armor2@ArmorProps)"
+  }
+ },
+ "iceage_armor3": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "iceage_armor3",
+   "Properties": "RTID(iceage_armor3@ArmorProps)"
+  }
+ },
+ "iceage_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "iceage_armor4",
+   "Properties": "RTID(iceage_armor4@ArmorProps)"
+  }
+ },
+ "kongfu_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "kongfu_armor1",
+   "Properties": "RTID(kongfu_armor1@ArmorProps)"
+  }
+ },
+ "kongfu_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "kongfu_armor2",
+   "Properties": "RTID(kongfu_armor2@ArmorProps)"
+  }
+ },
+ "kongfu_armor3": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "kongfu_armor3",
+   "Properties": "RTID(kongfu_armor3@ArmorProps)"
+  }
+ },
+ "kongfu_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "kongfu_armor4",
+   "Properties": "RTID(kongfu_armor4@ArmorProps)"
+  }
+ },
+ "lostcity_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "lostcity_armor1",
+   "Properties": "RTID(lostcity_armor1@ArmorProps)"
+  }
+ },
+ "lostcity_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "lostcity_armor2",
+   "Properties": "RTID(lostcity_armor2@ArmorProps)"
+  }
+ },
+ "lostcity_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "lostcity_armor4",
+   "Properties": "RTID(lostcity_armor4@ArmorProps)"
+  }
+ },
+ "lunar_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "lunar_armor1",
+   "Properties": "RTID(modern_armor1@ArmorProps)"
+  }
+ },
+ "lunar_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "lunar_armor2",
+   "Properties": "RTID(modern_armor2@ArmorProps)"
+  }
+ },
+ "modern_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "modern_armor1",
+   "Properties": "RTID(modern_armor1@ArmorProps)"
+  }
+ },
+ "modern_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "modern_armor2",
+   "Properties": "RTID(modern_armor2@ArmorProps)"
+  }
+ },
+ "modern_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "modern_armor4",
+   "Properties": "RTID(modern_armor4@ArmorProps)"
+  }
+ },
+ "pirate_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "pirate_armor1",
+   "Properties": "RTID(pirate_armor1@ArmorProps)"
+  }
+ },
+ "pirate_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "pirate_armor2",
+   "Properties": "RTID(pirate_armor2@ArmorProps)"
+  }
+ },
+ "pirate_armor4": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "pirate_armor4",
+   "Properties": "RTID(pirate_armor4@ArmorProps)"
+  }
+ },
+ "sky_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "sky_armor1",
+   "Properties": "RTID(sky_armor1@ArmorProps)"
+  }
+ },
+ "sky_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "sky_armor2",
+   "Properties": "RTID(sky_armor2@ArmorProps)"
+  }
+ },
+ "sky_armor3": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "sky_armor3",
+   "Properties": "RTID(sky_armor3@ArmorProps)"
+  }
+ },
+ "sportzball_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "sportzball_armor1",
+   "Properties": "RTID(modern_armor1@ArmorProps)"
+  }
+ },
+ "sportzball_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "sportzball_armor2",
+   "Properties": "RTID(modern_armor2@ArmorProps)"
+  }
+ },
+ "stpatrick_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "stpatrick_armor1",
+   "Properties": "RTID(modern_armor1@ArmorProps)"
+  }
+ },
+ "stpatrick_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "stpatrick_armor2",
+   "Properties": "RTID(modern_armor2@ArmorProps)"
+  }
+ },
+ "summer_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "summer_armor1",
+   "Properties": "RTID(summer_armor1@ArmorProps)"
+  }
+ },
+ "summer_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "summer_armor2",
+   "Properties": "RTID(summer_armor2@ArmorProps)"
+  }
+ },
+ "zoybean_armor1": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "zoybean_armor1",
+   "Properties": "RTID(zoybean_armor1@ArmorProps)"
+  }
+ },
+ "zoybean_armor2": {
+  "objclass": "ArmorType",
+  "objdata": {
+   "ArmorBasedOn": "zoybean_armor2",
+   "Properties": "RTID(zoybean_armor2@ArmorProps)"
+  }
+ }
+}

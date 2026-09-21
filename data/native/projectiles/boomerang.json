@@ -1,0 +1,14 @@
+{
+ "id": "boomerang",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "boomerang2",
+  "Props": "RTID(boomerang@ProjectileProps)"
+ }
+}

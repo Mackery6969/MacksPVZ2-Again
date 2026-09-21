@@ -1,0 +1,9 @@
+{
+ "id": "dino_armor3",
+ "stats": {
+  "toughness": 1800,
+  "bowling_level": 3,
+  "is_metal": false,
+  "is_ice": false
+ }
+}

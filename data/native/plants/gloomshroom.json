@@ -1,0 +1,24 @@
+{
+ "id": "gloomshroom",
+ "family": "Shadow",
+ "stats": {
+  "sun_cost": 250,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 3000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "DPS": 100,
+  "DPSPlantfood": 1543,
+  "DamageDuration": 0.5,
+  "MintDamageFactor": 3,
+  "PoisonDPS": 60,
+  "ShootInterval": 1.5
+ }
+}

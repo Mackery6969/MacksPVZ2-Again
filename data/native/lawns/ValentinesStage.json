@@ -1,0 +1,39 @@
+{
+ "id": "ValentinesStage",
+ "music": "Modern",
+ "mower": "mower_modern",
+ "railcart": "railcart_tutorial",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "valentines_armor1"
+  ],
+  "armor2": [
+   "valentines_armor2"
+  ],
+  "armor3": [
+   "valentines_armor2"
+  ],
+  "armor4": [
+   "valentines_armor4"
+  ],
+  "basic": [
+   "valentines"
+  ],
+  "flag": [
+   "valentines_flag"
+  ],
+  "gargantuar": [
+   "valentines_gargantuar"
+  ],
+  "imp": [
+   "valentines_imp"
+  ],
+  "rally": [
+   "valentines_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

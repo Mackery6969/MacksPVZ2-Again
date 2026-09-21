@@ -1,0 +1,39 @@
+{
+ "id": "EgyptNightStage",
+ "music": "Egypt",
+ "mower": "mower_egypt",
+ "railcart": "railcart_egypt",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "mummy_armor1"
+  ],
+  "armor2": [
+   "mummy_armor2"
+  ],
+  "armor3": [
+   "mummy_armor2"
+  ],
+  "armor4": [
+   "mummy_armor4"
+  ],
+  "basic": [
+   "mummy"
+  ],
+  "flag": [
+   "mummy_flag"
+  ],
+  "gargantuar": [
+   "egypt_gargantuar"
+  ],
+  "imp": [
+   "egypt_imp"
+  ],
+  "rally": [
+   "mummy_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_egypt"
+ ]
+}

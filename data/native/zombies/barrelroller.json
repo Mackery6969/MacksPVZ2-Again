@@ -1,0 +1,32 @@
+{
+ "id": "barrelroller",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.2,
+  "eat_dps": 100,
+  "wave_cost": 500,
+  "weight": 2000
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "BarrelType": "pirate_barrel"
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "id": "strawburst1",
+ "stats": {
+  "damage": 400
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SplashDamage": [
+   {
+    "Damage": 400,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "strawburst1_mint",
+  "Props": "RTID(strawburst1@ProjectileProps)"
+ }
+}

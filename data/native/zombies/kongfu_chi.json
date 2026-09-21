@@ -1,0 +1,25 @@
+{
+ "id": "kongfu_chi",
+ "extends": "normal",
+ "stats": {
+  "toughness": 300,
+  "speed": 0.15,
+  "eat_dps": 100,
+  "wave_cost": 250,
+  "weight": 1000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChiInterval": 7,
+  "ChiIntervalStart": 4
+ }
+}

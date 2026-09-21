@@ -1,0 +1,98 @@
+{
+ "backpack": {
+  "file": "graves/backpack.json"
+ },
+ "eightiesarcadecabinet": {
+  "file": "graves/eightiesarcadecabinet.json"
+ },
+ "gravestone": {
+  "file": "graves/gravestone.json"
+ },
+ "gravestonePlantfoodOnDestruction": {
+  "file": "graves/gravestonePlantfoodOnDestruction.json"
+ },
+ "gravestoneSunOnDestruction": {
+  "file": "graves/gravestoneSunOnDestruction.json"
+ },
+ "gravestone_cowboy": {
+  "file": "graves/gravestone_cowboy.json"
+ },
+ "gravestone_dark": {
+  "file": "graves/gravestone_dark.json"
+ },
+ "gravestone_egypt": {
+  "file": "graves/gravestone_egypt.json"
+ },
+ "gravestone_future": {
+  "file": "graves/gravestone_future.json"
+ },
+ "gravestone_iceage": {
+  "file": "graves/gravestone_iceage.json"
+ },
+ "gravestone_lostcity": {
+  "file": "graves/gravestone_lostcity.json"
+ },
+ "gravestone_pirate": {
+  "file": "graves/gravestone_pirate.json"
+ },
+ "gravestone_tutorial": {
+  "file": "graves/gravestone_tutorial.json"
+ },
+ "kongfu_TNT": {
+  "file": "graves/kongfu_TNT.json"
+ },
+ "kongfu_rack_3section_staff": {
+  "file": "graves/kongfu_rack_3section_staff.json"
+ },
+ "kongfu_rack_blade": {
+  "file": "graves/kongfu_rack_blade.json"
+ },
+ "kongfu_rack_bomb": {
+  "file": "graves/kongfu_rack_bomb.json"
+ },
+ "kongfu_rack_fan": {
+  "file": "graves/kongfu_rack_fan.json"
+ },
+ "kongfu_rack_flag": {
+  "file": "graves/kongfu_rack_flag.json"
+ },
+ "kongfu_rack_hammer": {
+  "file": "graves/kongfu_rack_hammer.json"
+ },
+ "kongfu_rack_helmet": {
+  "file": "graves/kongfu_rack_helmet.json"
+ },
+ "kongfu_rack_nunchaku": {
+  "file": "graves/kongfu_rack_nunchaku.json"
+ },
+ "kongfu_rack_torch": {
+  "file": "graves/kongfu_rack_torch.json"
+ },
+ "planttarget_iceblock": {
+  "file": "graves/planttarget_iceblock.json"
+ },
+ "planttarget_squid": {
+  "file": "graves/planttarget_squid.json"
+ },
+ "speaker": {
+  "file": "graves/speaker.json"
+ },
+ "surfboard": {
+  "file": "graves/surfboard.json"
+ },
+ "surfboard_veteran": {
+  "file": "graves/surfboard_veteran.json"
+ },
+ "tent": {
+  "file": "graves/tent.json"
+ },
+ "zombietarget_birthday_present": {
+  "file": "graves/zombietarget_birthday_present.json"
+ },
+ "zombietarget_iceblock": {
+  "file": "graves/zombietarget_iceblock.json"
+ },
+ "zomboss_iceage_glacier_block": {
+  "file": "graves/zomboss_iceage_glacier_block.json"
+ }
+}

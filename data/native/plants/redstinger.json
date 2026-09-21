@@ -1,0 +1,31 @@
+{
+ "id": "redstinger",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "shooter",
+   "interval": 1.75,
+   "interval_jitter": 0.25
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "DamageScale0": 1,
+  "DamageScale1": 0.3333333,
+  "DamageScale2": 0.2,
+  "MintPlantfoodDPSMult": 5,
+  "PFDPS": 200,
+  "PFDuration": 5
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "id": "eighties_arcade",
+ "extends": "normal",
+ "stats": {
+  "toughness": 490,
+  "speed": 0.19,
+  "eat_dps": 100,
+  "wave_cost": 600,
+  "weight": 1000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "BullyAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "BullyHitRect"
+  }
+ ],
+ "extra": {
+  "JamStyle": "jam_8bit",
+  "NumberOfArcadeCabinetsToSpawnWith": 1
+ }
+}

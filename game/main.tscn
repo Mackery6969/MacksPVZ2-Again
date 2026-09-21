@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ctcnco0h0ro18"]
+
+[ext_resource type="Script" uid="uid://l8xqjqlpsdks" path="res://game/main.gd" id="1"]
+[ext_resource type="Script" uid="uid://bau48ljtjqh63" path="res://game/board/board.gd" id="2"]
+[ext_resource type="Script" uid="uid://danikhq72p5sb" path="res://game/level/level_runner.gd" id="3"]
+
+[node name="Main" type="Node2D" unique_id=974811784]
+script = ExtResource("1")
+seed_hotkey_count = null
+
+[node name="Board" type="Node2D" parent="." unique_id=1070165518]
+script = ExtResource("2")
+
+[node name="LevelRunner" type="Node" parent="." unique_id=1770916864]
+script = ExtResource("3")

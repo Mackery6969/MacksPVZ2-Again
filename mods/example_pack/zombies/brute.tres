@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ZombieDef" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://core/data/zombie_def.gd" id="1_zdef"]
+[ext_resource type="Script" path="res://core/data/component_spec.gd" id="2_spec"]
+
+[sub_resource type="Resource" id="Resource_armor"]
+script = ExtResource("2_spec")
+type = &"armor"
+config = {
+"armor": "modern_armor2"
+}
+
+[resource]
+script = ExtResource("1_zdef")
+id = &"brute"
+kind = &"zombie"
+extends_id = &"normal"
+tags = Array[StringName]([&"heavy"])
+components = Array[Resource]([SubResource("Resource_armor")])
+custom_stats = {}
+extra = {}
+toughness = 900.0
+speed = 0.22
+eat_dps = 120.0
+wave_cost = 800
+weight = 5000
+sort = &"Normal"

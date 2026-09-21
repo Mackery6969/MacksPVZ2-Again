@@ -1,0 +1,26 @@
+{
+ "id": "nightshade",
+ "family": "Shadow",
+ "stats": {
+  "sun_cost": 75,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "DetectDistanceNormal": 1.5,
+  "DetectDistanceShadow": 9,
+  "LeafRespawnCooldown": 5,
+  "MaxProjectiles": 3,
+  "PlantfoodTime": 3,
+  "ShadowPoweredDamageScale": 0.5,
+  "ShootInterval": 2.7,
+  "ShootIntervalAdditional": 0
+ }
+}

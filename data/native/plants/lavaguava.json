@@ -1,0 +1,35 @@
+{
+ "id": "lavaguava",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 75,
+  "toughness": 300,
+  "cooldown": 15,
+  "cooldown_from": 0.667,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "ExplosionDamage": 200,
+  "ImmuneToIceblock": true,
+  "LiquidType": "lava",
+  "MintDamageFactor": 5,
+  "MintLiquidType": "lava_mint",
+  "PlantFoodDPS": 100,
+  "PlantFoodDurationSeconds": 10,
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 6,
+   "PulseInitialDelay": 0.5
+  },
+  "WarmingRadiusPlantfood": {
+   "GridItemDamage": 100,
+   "PulseCooldown": 1.5,
+   "PulseInitialDelay": 0.5
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "PaddysStage",
+ "music": "Lostcity",
+ "mower": "mower_lostcity",
+ "railcart": "railcart_tutorial",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "stpatrick_armor1"
+  ],
+  "armor2": [
+   "stpatrick_armor2"
+  ],
+  "armor3": [
+   "stpatrick_armor2"
+  ],
+  "armor4": [
+   "stpatrick_armor2"
+  ],
+  "basic": [
+   "stpatrick"
+  ],
+  "flag": [
+   "stpatrick_flag"
+  ],
+  "gargantuar": [
+   "tutorial_gargantuar"
+  ],
+  "imp": [
+   "stpatrick_imp"
+  ],
+  "rally": [
+   "stpatrick_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

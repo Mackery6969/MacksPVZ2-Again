@@ -1,0 +1,24 @@
+{
+ "id": "blastberry2",
+ "stats": {
+  "damage": 500
+ },
+ "extra": {
+  "ShotCount": 5,
+  "ShotDistanceBetween": {
+   "Max": 1,
+   "Min": 0.8
+  },
+  "ShotFlyTime": {
+   "Max": 0.25,
+   "Min": 0.18
+  },
+  "ShotType": "blastberry_small2",
+  "Size": {
+   "h": 30,
+   "w": 30
+  },
+  "SpeedYScale": 2,
+  "Props": "RTID(blastberry2@ProjectileProps)"
+ }
+}

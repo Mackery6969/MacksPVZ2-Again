@@ -1,0 +1,15 @@
+{
+ "id": "grapeshot_mint",
+ "extends": "grapeshot",
+ "stats": {
+  "damage": 600
+ },
+ "extra": {
+  "MaxHitCount": 15,
+  "Size": {
+   "h": 30,
+   "w": 30
+  },
+  "Props": "RTID(grapeshot_mint@ProjectileProps)"
+ }
+}

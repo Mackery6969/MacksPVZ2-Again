@@ -1,0 +1,28 @@
+{
+ "id": "escaperoot",
+ "family": "Explosive",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "explosive",
+   "damage": 1800,
+   "charge_time": 10
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "DamagePrimal": 2700,
+  "GrapeType": "grapeshot",
+  "MintDamageFactor": 3
+ }
+}

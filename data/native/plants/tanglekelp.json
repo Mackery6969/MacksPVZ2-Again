@@ -1,0 +1,30 @@
+{
+ "id": "tanglekelp",
+ "family": "Melee",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "melee"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeDetectedByCatapult": true,
+  "DamageWhenDragFailed": 400,
+  "ImmuneToIceblock": true,
+  "MaxDraggedZombieCount": 1,
+  "MaxDraggedZombieCountPlantfood": 5,
+  "MintDamageFactor": 3,
+  "MintIgnoringDragCount": true
+ }
+}

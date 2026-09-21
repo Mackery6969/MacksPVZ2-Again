@@ -1,0 +1,194 @@
+{
+ "AbbotStage": {
+  "file": "lawns/AbbotStage.json",
+  "music": "Kongfu"
+ },
+ "ArenaStage": {
+  "file": "lawns/ArenaStage.json",
+  "music": "Dark"
+ },
+ "BeachStage": {
+  "file": "lawns/BeachStage.json",
+  "music": "Beach"
+ },
+ "BeachTutorialStage": {
+  "file": "lawns/BeachTutorialStage.json",
+  "music": "Beach"
+ },
+ "BirthdayStage": {
+  "file": "lawns/BirthdayStage.json",
+  "music": "Modern"
+ },
+ "CircusStage": {
+  "file": "lawns/CircusStage.json",
+  "music": "Modern"
+ },
+ "DarkStage": {
+  "file": "lawns/DarkStage.json",
+  "music": "Dark"
+ },
+ "DarkTutorialStage": {
+  "file": "lawns/DarkTutorialStage.json",
+  "music": "Dark"
+ },
+ "DinoStage": {
+  "file": "lawns/DinoStage.json",
+  "music": "Dino"
+ },
+ "DinoTutorialStage": {
+  "file": "lawns/DinoTutorialStage.json",
+  "music": "Dino"
+ },
+ "EgyptNightStage": {
+  "file": "lawns/EgyptNightStage.json",
+  "music": "Egypt"
+ },
+ "EgyptStage": {
+  "file": "lawns/EgyptStage.json",
+  "music": "Egypt"
+ },
+ "EightiesStage": {
+  "file": "lawns/EightiesStage.json",
+  "music": "Eighties"
+ },
+ "EightiesTutorialStage": {
+  "file": "lawns/EightiesTutorialStage.json",
+  "music": "Eighties"
+ },
+ "FallsStage": {
+  "file": "lawns/FallsStage.json",
+  "music": "Lostcity"
+ },
+ "FarmStage": {
+  "file": "lawns/FarmStage.json",
+  "music": "Cowboy"
+ },
+ "FeastivusNightStage": {
+  "file": "lawns/FeastivusNightStage.json",
+  "music": "Iceage"
+ },
+ "FeastivusStage": {
+  "file": "lawns/FeastivusStage.json",
+  "music": "Iceage"
+ },
+ "FrontLawnStage": {
+  "file": "lawns/FrontLawnStage.json",
+  "music": "Tutorial"
+ },
+ "FutureNightStage": {
+  "file": "lawns/FutureNightStage.json",
+  "music": "Future"
+ },
+ "FutureStage": {
+  "file": "lawns/FutureStage.json",
+  "music": "Future"
+ },
+ "FutureTutorialStage": {
+  "file": "lawns/FutureTutorialStage.json",
+  "music": "Future"
+ },
+ "GreenStage": {
+  "file": "lawns/GreenStage.json",
+  "music": "Modern"
+ },
+ "HalloweenStage": {
+  "file": "lawns/HalloweenStage.json",
+  "music": "Dark"
+ },
+ "HeroesStage": {
+  "file": "lawns/HeroesStage.json",
+  "music": "Lostcity"
+ },
+ "IceageStage": {
+  "file": "lawns/IceageStage.json",
+  "music": "Iceage"
+ },
+ "IceageTutorialStage": {
+  "file": "lawns/IceageTutorialStage.json",
+  "music": "Iceage"
+ },
+ "IceageVeteranStage": {
+  "file": "lawns/IceageVeteranStage.json",
+  "music": "Iceage"
+ },
+ "KongfuBossStage": {
+  "file": "lawns/KongfuBossStage.json",
+  "music": "Kongfu"
+ },
+ "KongfuStage": {
+  "file": "lawns/KongfuStage.json",
+  "music": "Kongfu"
+ },
+ "KongfuVeteranStage": {
+  "file": "lawns/KongfuVeteranStage.json",
+  "music": "Kongfu"
+ },
+ "LostCityNightStage": {
+  "file": "lawns/LostCityNightStage.json",
+  "music": "Lostcity"
+ },
+ "LostCityStage": {
+  "file": "lawns/LostCityStage.json",
+  "music": "Lostcity"
+ },
+ "LostCityTutorialStage": {
+  "file": "lawns/LostCityTutorialStage.json",
+  "music": "Lostcity"
+ },
+ "LunarStage": {
+  "file": "lawns/LunarStage.json",
+  "music": "Kongfu"
+ },
+ "ModernNightStage": {
+  "file": "lawns/ModernNightStage.json",
+  "music": "Modern"
+ },
+ "ModernStage": {
+  "file": "lawns/ModernStage.json",
+  "music": "Modern"
+ },
+ "MonkStage": {
+  "file": "lawns/MonkStage.json",
+  "music": "Kongfu"
+ },
+ "PaddysStage": {
+  "file": "lawns/PaddysStage.json",
+  "music": "Lostcity"
+ },
+ "PersuitStage": {
+  "file": "lawns/PersuitStage.json",
+  "music": "Modern"
+ },
+ "PirateStage": {
+  "file": "lawns/PirateStage.json",
+  "music": "Pirate"
+ },
+ "SkyStage": {
+  "file": "lawns/SkyStage.json",
+  "music": "Sky"
+ },
+ "SkyUnarmedStage": {
+  "file": "lawns/SkyUnarmedStage.json",
+  "music": "Sky"
+ },
+ "SportzballStage": {
+  "file": "lawns/SportzballStage.json",
+  "music": "Modern"
+ },
+ "SpringStage": {
+  "file": "lawns/SpringStage.json",
+  "music": "Modern"
+ },
+ "SummerNightsStage": {
+  "file": "lawns/SummerNightsStage.json",
+  "music": "Modern"
+ },
+ "ValentinesStage": {
+  "file": "lawns/ValentinesStage.json",
+  "music": "Modern"
+ },
+ "WestStage": {
+  "file": "lawns/WestStage.json",
+  "music": "Cowboy"
+ }
+}

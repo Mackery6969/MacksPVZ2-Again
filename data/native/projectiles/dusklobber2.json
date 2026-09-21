@@ -1,0 +1,22 @@
+{
+ "id": "dusklobber2",
+ "stats": {
+  "damage": 25
+ },
+ "extra": {
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "SplashDamage": [
+   {
+    "Damage": 125,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(dusklobber2@ProjectileProps)"
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "id": "busketball",
+ "stats": {
+  "damage": 75
+ },
+ "extra": {
+  "Size": {
+   "h": 16.2,
+   "w": 16.2
+  },
+  "Props": "RTID(busketball@ProjectileProps)"
+ }
+}

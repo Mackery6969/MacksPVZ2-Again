@@ -1,0 +1,43 @@
+{
+ "id": "sky_battery",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1200,
+  "speed": 0.4,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "divertable",
+   "draggable",
+   "enlightenable",
+   "grabbable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "snap_targetable",
+   "swallowable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "FutureProtectorShieldAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "FutureProtectorShieldHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "DamageInterval": 0.25,
+  "DamagePerHit": 50,
+  "WalkSPSVarience": 0
+ }
+}

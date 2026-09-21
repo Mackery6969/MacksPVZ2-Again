@@ -1,0 +1,7 @@
+{
+  "id": "example_override",
+  "name": "Example Override",
+  "version": "1.0.0",
+  "enabled": false,
+  "description": "Demonstrates replacing a BUILT-IN behaviour. Disabled by default because it changes how every sun-producing plant works, which would otherwise alter base game balance. Enable it to see the override take effect."
+}

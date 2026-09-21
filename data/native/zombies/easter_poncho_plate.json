@@ -1,0 +1,26 @@
+{
+ "id": "easter_poncho_plate",
+ "extends": "easter_poncho",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 400,
+  "weight": 4000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChanceToPlate": 1,
+  "PonchoToughness": 60,
+  "ShieldToughness": 1100
+ }
+}

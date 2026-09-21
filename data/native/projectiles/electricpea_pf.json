@@ -1,0 +1,17 @@
+{
+ "id": "electricpea_pf",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "ChildCount": 6,
+  "ChildPeaType": "electricpea_small",
+  "DamageType": "electricity",
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "Props": "RTID(electricpea_pf@ProjectileProps)"
+ }
+}

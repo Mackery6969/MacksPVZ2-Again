@@ -1,0 +1,197 @@
+{
+ "beach_armor1": {
+  "file": "armors/beach_armor1.json"
+ },
+ "beach_armor2": {
+  "file": "armors/beach_armor2.json"
+ },
+ "beach_armor4": {
+  "file": "armors/beach_armor4.json"
+ },
+ "cowboy_armor1": {
+  "file": "armors/cowboy_armor1.json"
+ },
+ "cowboy_armor2": {
+  "file": "armors/cowboy_armor2.json"
+ },
+ "cowboy_armor4": {
+  "file": "armors/cowboy_armor4.json"
+ },
+ "dark_armor1": {
+  "file": "armors/dark_armor1.json"
+ },
+ "dark_armor2": {
+  "file": "armors/dark_armor2.json"
+ },
+ "dark_armor3": {
+  "file": "armors/dark_armor3.json"
+ },
+ "dark_armor4": {
+  "file": "armors/dark_armor4.json"
+ },
+ "dino_armor1": {
+  "file": "armors/dino_armor1.json"
+ },
+ "dino_armor2": {
+  "file": "armors/dino_armor2.json"
+ },
+ "dino_armor3": {
+  "file": "armors/dino_armor3.json"
+ },
+ "dino_armor4": {
+  "file": "armors/dino_armor4.json"
+ },
+ "easter_armor1": {
+  "file": "armors/easter_armor1.json"
+ },
+ "easter_armor2": {
+  "file": "armors/easter_armor2.json"
+ },
+ "easter_armor4": {
+  "file": "armors/easter_armor4.json"
+ },
+ "egypt_armor1": {
+  "file": "armors/egypt_armor1.json"
+ },
+ "egypt_armor2": {
+  "file": "armors/egypt_armor2.json"
+ },
+ "egypt_armor4": {
+  "file": "armors/egypt_armor4.json"
+ },
+ "eighties_8bit_armor1": {
+  "file": "armors/eighties_8bit_armor1.json"
+ },
+ "eighties_8bit_armor2": {
+  "file": "armors/eighties_8bit_armor2.json"
+ },
+ "eighties_armor1": {
+  "file": "armors/eighties_armor1.json"
+ },
+ "eighties_armor2": {
+  "file": "armors/eighties_armor2.json"
+ },
+ "eighties_armor4": {
+  "file": "armors/eighties_armor4.json"
+ },
+ "feastivus_armor1": {
+  "file": "armors/feastivus_armor1.json"
+ },
+ "feastivus_armor2": {
+  "file": "armors/feastivus_armor2.json"
+ },
+ "foodfight_armor1": {
+  "file": "armors/foodfight_armor1.json"
+ },
+ "foodfight_armor2": {
+  "file": "armors/foodfight_armor2.json"
+ },
+ "future_armor1": {
+  "file": "armors/future_armor1.json"
+ },
+ "future_armor2": {
+  "file": "armors/future_armor2.json"
+ },
+ "future_armor4": {
+  "file": "armors/future_armor4.json"
+ },
+ "halloween_armor1": {
+  "file": "armors/halloween_armor1.json"
+ },
+ "halloween_armor2": {
+  "file": "armors/halloween_armor2.json"
+ },
+ "halloween_armor3": {
+  "file": "armors/halloween_armor3.json"
+ },
+ "iceage_armor1": {
+  "file": "armors/iceage_armor1.json"
+ },
+ "iceage_armor2": {
+  "file": "armors/iceage_armor2.json"
+ },
+ "iceage_armor3": {
+  "file": "armors/iceage_armor3.json"
+ },
+ "iceage_armor4": {
+  "file": "armors/iceage_armor4.json"
+ },
+ "kongfu_armor1": {
+  "file": "armors/kongfu_armor1.json"
+ },
+ "kongfu_armor2": {
+  "file": "armors/kongfu_armor2.json"
+ },
+ "kongfu_armor3": {
+  "file": "armors/kongfu_armor3.json"
+ },
+ "kongfu_armor4": {
+  "file": "armors/kongfu_armor4.json"
+ },
+ "lostcity_armor1": {
+  "file": "armors/lostcity_armor1.json"
+ },
+ "lostcity_armor2": {
+  "file": "armors/lostcity_armor2.json"
+ },
+ "lostcity_armor4": {
+  "file": "armors/lostcity_armor4.json"
+ },
+ "lunar_armor1": {
+  "file": "armors/lunar_armor1.json"
+ },
+ "lunar_armor2": {
+  "file": "armors/lunar_armor2.json"
+ },
+ "modern_armor1": {
+  "file": "armors/modern_armor1.json"
+ },
+ "modern_armor2": {
+  "file": "armors/modern_armor2.json"
+ },
+ "modern_armor4": {
+  "file": "armors/modern_armor4.json"
+ },
+ "pirate_armor1": {
+  "file": "armors/pirate_armor1.json"
+ },
+ "pirate_armor2": {
+  "file": "armors/pirate_armor2.json"
+ },
+ "pirate_armor4": {
+  "file": "armors/pirate_armor4.json"
+ },
+ "sky_armor1": {
+  "file": "armors/sky_armor1.json"
+ },
+ "sky_armor2": {
+  "file": "armors/sky_armor2.json"
+ },
+ "sky_armor3": {
+  "file": "armors/sky_armor3.json"
+ },
+ "sportzball_armor1": {
+  "file": "armors/sportzball_armor1.json"
+ },
+ "sportzball_armor2": {
+  "file": "armors/sportzball_armor2.json"
+ },
+ "stpatrick_armor1": {
+  "file": "armors/stpatrick_armor1.json"
+ },
+ "stpatrick_armor2": {
+  "file": "armors/stpatrick_armor2.json"
+ },
+ "summer_armor1": {
+  "file": "armors/summer_armor1.json"
+ },
+ "summer_armor2": {
+  "file": "armors/summer_armor2.json"
+ },
+ "zoybean_armor1": {
+  "file": "armors/zoybean_armor1.json"
+ },
+ "zoybean_armor2": {
+  "file": "armors/zoybean_armor2.json"
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "id": "bowlingbulb",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "shooter"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 6,
+  "plantfood": false
+ },
+ "extra": {
+  "AmmoRefreshTime": 4,
+  "Bowling0": "bowling0",
+  "Bowling1": "bowling1",
+  "Bowling2": "bowling2",
+  "BowlingPlantfood": "bowling_pf",
+  "LoadOrder": "012",
+  "RollOrder": "012",
+  "StartingHeight": 0
+ }
+}

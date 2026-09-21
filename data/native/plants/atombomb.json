@@ -1,0 +1,44 @@
+{
+ "id": "atombomb",
+ "family": "Explosive",
+ "stats": {
+  "sun_cost": 275,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "explosive"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "ExplodeDamage": 1800,
+  "ExplodeProjectileType": "atombomb",
+  "ExplodeSeedlingCount": 2,
+  "ImmuneToIceblock": true,
+  "MintDamageFactor": 3,
+  "PlantfoodCallingType": [
+   "atombomb",
+   "atombomb_seedling",
+   "seedling"
+  ],
+  "SeedlingType": "atombomb_seedling",
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 6,
+   "PulseInitialDelay": 0.5
+  },
+  "WarmingRadiusPlantfood": {
+   "GridItemDamage": 100,
+   "PulseCooldown": 1.5,
+   "PulseInitialDelay": 0.25
+  }
+ }
+}

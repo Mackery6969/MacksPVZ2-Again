@@ -1,0 +1,27 @@
+{
+ "id": "pirate_flag_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 350,
+  "speed": 0.4,
+  "eat_dps": 300,
+  "wave_cost": 100,
+  "weight": 100
+ },
+ "sort": "Normal",
+ "tags": {
+  "remove": [
+   "plantfood_carrier"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ]
+}

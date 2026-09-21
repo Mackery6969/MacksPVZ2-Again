@@ -1,0 +1,19 @@
+{
+ "id": "speaker",
+ "stats": {
+  "toughness": 500,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": false
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "TombstoneRect"
+  }
+ ],
+ "extra": {
+  "HitDamage": 10,
+  "WaveProjectile": "eighties_speaker_wave"
+ }
+}

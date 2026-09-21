@@ -1,0 +1,36 @@
+{
+ "id": "caulipower",
+ "family": "Magic",
+ "stats": {
+  "sun_cost": 250,
+  "toughness": 300,
+  "cooldown": 45,
+  "cooldown_from": 0.3333,
+  "beghouled_cost": 3500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 5,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackCooldownBetween": {
+   "Max": 12,
+   "Min": 12
+  },
+  "AttackCooldownStart": {
+   "Max": 10,
+   "Min": 10
+  },
+  "AttackProjectileType": "caulipower",
+  "DetectInterval": {
+   "Max": 2,
+   "Min": 1
+  },
+  "PlantfoodFlickCount": 5,
+  "PlantfoodFlickDistance": 3,
+  "WeightTargetGargantuarZombie": 5,
+  "WeightTargetNormalZombie": 55,
+  "WeightTargetOtherZombie": 40
+ }
+}

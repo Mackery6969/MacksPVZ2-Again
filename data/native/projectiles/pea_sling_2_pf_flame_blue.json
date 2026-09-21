@@ -1,0 +1,31 @@
+{
+ "id": "pea_sling_2_pf_flame_blue",
+ "extends": "pea_sling_2_flame_blue",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "DamageScale": 3,
+  "DamageType": "fire",
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 2,
+  "SplashDamage": [
+   {
+    "Damage": 100,
+    "Range": {
+     "h": 1,
+     "w": 1
+    },
+    "StunDuration": 10
+   }
+  ],
+  "StunDuration": 10,
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "Props": "RTID(pea_sling_2_pf_flame_blue@ProjectileProps)"
+ }
+}

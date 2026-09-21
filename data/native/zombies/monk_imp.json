@@ -1,0 +1,51 @@
+{
+ "id": "monk_imp",
+ "extends": "normal",
+ "stats": {
+  "toughness": 300,
+  "speed": 0.22,
+  "eat_dps": 100,
+  "wave_cost": 300,
+  "weight": 500
+ },
+ "tags": {
+  "remove": [
+   "grabbable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ImpAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ImpHitRect"
+  }
+ ],
+ "extra": {
+  "FlyDuration": {
+   "Max": 4,
+   "Min": 3
+  },
+  "FlyingSpeedScale": 4.5,
+  "KilledByShrinkingViolet": true,
+  "LeapBackDistance": 0.5,
+  "PlantsThatBlock": [
+   "tallnut"
+  ],
+  "TimeBeforeFirst": {
+   "Max": 6,
+   "Min": 3
+  },
+  "TimeBetween": {
+   "Max": 7,
+   "Min": 5
+  },
+  "ZombiesThatBlock": [
+   "future_protector_shield",
+   "modern_moonflower_shield",
+   "future_infinut_shield"
+  ]
+ }
+}

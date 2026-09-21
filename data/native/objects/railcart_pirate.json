@@ -1,0 +1,10 @@
+{
+ "id": "railcart_pirate",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "RailType": "rail_pirate",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Pirate"
+ }
+}

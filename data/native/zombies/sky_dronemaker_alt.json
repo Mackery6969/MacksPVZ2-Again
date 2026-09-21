@@ -1,0 +1,16 @@
+{
+ "id": "sky_dronemaker_alt",
+ "extends": "sky_dronemaker",
+ "extra": {
+  "TargetListBecomesBlackList": true,
+  "ValidDroneTargets": [
+   "sky_twin_upper",
+   "sky_twin_lower",
+   "sky_twin",
+   "sky_drone",
+   "sky_arbiterx",
+   "sky_gargantuar",
+   "sky_imp"
+  ]
+ }
+}

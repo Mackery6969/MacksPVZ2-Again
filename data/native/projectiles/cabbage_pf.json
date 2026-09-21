@@ -1,0 +1,13 @@
+{
+ "id": "cabbage_pf",
+ "stats": {
+  "damage": 300
+ },
+ "extra": {
+  "Size": {
+   "h": 28,
+   "w": 28
+  },
+  "Props": "RTID(cabbage_pf@ProjectileProps)"
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "id": "BeachStage",
+ "music": "Beach",
+ "mower": "mower_beach",
+ "railcart": "railcart_beach",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "beach_armor1",
+   "beach_fem_armor1"
+  ],
+  "armor2": [
+   "beach_armor2",
+   "beach_fem_armor2"
+  ],
+  "armor3": [
+   "beach_armor2",
+   "beach_fem_armor2"
+  ],
+  "armor4": [
+   "beach_armor4",
+   "beach_fem_armor4"
+  ],
+  "basic": [
+   "beach",
+   "beach_fem"
+  ],
+  "flag": [
+   "beach_flag"
+  ],
+  "gargantuar": [
+   "beach_gargantuar"
+  ],
+  "imp": [
+   "beach_imp"
+  ],
+  "rally": [
+   "beach_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

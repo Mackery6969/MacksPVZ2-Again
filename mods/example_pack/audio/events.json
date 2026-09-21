@@ -1,0 +1,7 @@
+{
+ "//": "A pack adds or replaces sounds exactly like it adds a zombie. Reusing an existing id replaces that sound everywhere it is used.",
+ "events": [
+  {"id": "example.burst", "fmod": "event:/ExamplePack/BurstShot"},
+  {"id": "plant.shoot",   "fmod": "event:/ExamplePack/ReplacedShoot"}
+ ]
+}

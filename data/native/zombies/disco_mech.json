@@ -1,0 +1,44 @@
+{
+ "id": "disco_mech",
+ "extends": "normal",
+ "stats": {
+  "toughness": 2000,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 800,
+  "weight": 3000
+ },
+ "tags": {
+  "add": [
+   "deep_water",
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "divertable",
+   "draggable",
+   "enlightenable",
+   "grabbable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "FutureDiscoMechAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "FutureDiscoMechHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "DanceCountdown": 6,
+  "DanceDuration": 5,
+  "EMPStunTimeScale": 1,
+  "JetpackType": "future_jetpack_disco",
+  "SummonDuration": 3
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "id": "normal",
+ "kind": "zombie_archetype",
+ "tags": [
+  "attractable",
+  "carriable",
+  "chompable",
+  "divertable",
+  "draggable",
+  "enlightenable",
+  "flickable",
+  "grabbable",
+  "gummable",
+  "homing_targetable",
+  "hypnotizable",
+  "knockbackable",
+  "lane_movable",
+  "plantfood_carrier",
+  "pushable",
+  "sap_detectable",
+  "shrinkable",
+  "snap_targetable",
+  "sporeable",
+  "swallowable",
+  "toss_detectable",
+  "tossable",
+  "transformable",
+  "warpable",
+  "zomboss_damageable"
+ ]
+}

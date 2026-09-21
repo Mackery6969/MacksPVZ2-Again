@@ -1,0 +1,27 @@
+{
+ "id": "gumnut",
+ "family": "Defence",
+ "stats": {
+  "sun_cost": 125,
+  "toughness": 450,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "blocker"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 1,
+  "plantfood": true
+ },
+ "extra": {
+  "BaseGumHealth": 4000,
+  "PlantfoodGumProjectileCount": 5,
+  "PlantfoodGumProjectileType": "gumnut",
+  "ZombieGumHealthMult": 3
+ }
+}

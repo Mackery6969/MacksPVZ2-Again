@@ -1,0 +1,35 @@
+{
+ "id": "missiletoe",
+ "stats": {
+  "damage": 1200
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "ChillDuration": 5,
+  "FreezeDuration": 5,
+  "IceBlockLevel": 1,
+  "Size": {
+   "h": 50,
+   "w": 50
+  },
+  "SplashDamage": [
+   {
+    "Damage": 1200,
+    "Range": {
+     "h": 1,
+     "w": 3
+    }
+   },
+   {
+    "ChillDuration": 5,
+    "FreezeDuration": 5,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "missiletoe2",
+  "Props": "RTID(missiletoe@ProjectileProps)"
+ }
+}

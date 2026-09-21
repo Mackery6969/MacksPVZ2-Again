@@ -1,0 +1,118 @@
+{
+ "//": "Audio events. The game refers to these ids and never to a bank path or a file. 'fmod' is the FMOD Studio event path; 'stream' is the Godot fallback used until FMOD is installed. Music is dynamic: one event per world, escalating through the 'stage' parameter (1-4) as waves progress, so a world is one event rather than four. Add a world by adding 'music.lawn.<track>' pointing at its event.",
+ "events": [
+  {
+   "id": "plant.place",
+   "fmod": "event:/SFX/Plants/Place"
+  },
+  {
+   "id": "plant.dig",
+   "fmod": "event:/SFX/Plants/Dig"
+  },
+  {
+   "id": "plant.eaten",
+   "fmod": "event:/SFX/Plants/Eaten"
+  },
+  {
+   "id": "plant.shoot",
+   "fmod": "event:/SFX/Plants/Shoot"
+  },
+  {
+   "id": "plant.lob",
+   "fmod": "event:/SFX/Plants/Lob"
+  },
+  {
+   "id": "plant.explode",
+   "fmod": "event:/SFX/Plants/Explode"
+  },
+  {
+   "id": "plant.food",
+   "fmod": "event:/SFX/Plants/PlantFood"
+  },
+  {
+   "id": "sun.drop",
+   "fmod": "event:/SFX/Collect/SunDrop"
+  },
+  {
+   "id": "sun.collect",
+   "fmod": "event:/SFX/Collect/Sun"
+  },
+  {
+   "id": "plantfood.drop",
+   "fmod": "event:/SFX/Collect/PlantFoodDrop"
+  },
+  {
+   "id": "plantfood.collect",
+   "fmod": "event:/SFX/Collect/PlantFood"
+  },
+  {
+   "id": "zombie.spawn",
+   "fmod": "event:/SFX/Zombies/Spawn"
+  },
+  {
+   "id": "zombie.eat",
+   "fmod": "event:/SFX/Zombies/Eat"
+  },
+  {
+   "id": "zombie.hit",
+   "fmod": "event:/SFX/Zombies/Hit"
+  },
+  {
+   "id": "zombie.die",
+   "fmod": "event:/SFX/Zombies/Die"
+  },
+  {
+   "id": "zombie.armor.break",
+   "fmod": "event:/SFX/Zombies/ArmorBreak"
+  },
+  {
+   "id": "mower.trigger",
+   "fmod": "event:/SFX/Board/Mower"
+  },
+  {
+   "id": "wave.start",
+   "fmod": "event:/SFX/Board/Wave"
+  },
+  {
+   "id": "wave.huge",
+   "fmod": "event:/SFX/Board/HugeWave"
+  },
+  {
+   "id": "ui.seed.select",
+   "fmod": "event:/SFX/UI/SeedSelect"
+  },
+  {
+   "id": "ui.seed.refuse",
+   "fmod": "event:/SFX/UI/Refuse"
+  },
+  {
+   "id": "level.win",
+   "fmod": "event:/SFX/Level/Win"
+  },
+  {
+   "id": "level.lose",
+   "fmod": "event:/SFX/Level/Lose"
+  },
+  {
+   "id": "music.lawn.tutorial",
+   "fmod": "event:/Music/Playerhouse",
+   "music": true,
+   "//": "Front Lawn. PVZGE calls the track 'Tutorial'; the event is Playerhouse."
+  },
+  {
+   "id": "music.chooseseeds.tutorial",
+   "fmod": "event:/Music/ChooseSeeds/Playerhouse",
+   "music": true
+  },
+  {
+   "id": "music.victory.tutorial",
+   "fmod": "event:/Music/Victory/Playerhouse",
+   "music": true
+  },
+  {
+   "id": "music.lose.tutorial",
+   "fmod": "event:/Music/Lose/Playerhouse",
+   "music": true
+  }
+ ]
+}

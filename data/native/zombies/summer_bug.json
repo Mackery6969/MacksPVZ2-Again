@@ -1,0 +1,26 @@
+{
+ "id": "summer_bug",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 350,
+  "weight": 2000
+ },
+ "sort": "Normal",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "BugToughness": 350,
+  "BuggedSPS": 0.4
+ }
+}

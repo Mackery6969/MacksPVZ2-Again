@@ -1,0 +1,1052 @@
+{
+ "abbot_chi": {
+  "file": "projectiles/abbot_chi.json"
+ },
+ "abbot_fan_storm": {
+  "file": "projectiles/abbot_fan_storm.json"
+ },
+ "airraid_0": {
+  "file": "projectiles/airraid_0.json"
+ },
+ "airraid_1": {
+  "file": "projectiles/airraid_1.json"
+ },
+ "airraid_2": {
+  "file": "projectiles/airraid_2.json"
+ },
+ "airraid_bolt_negative": {
+  "file": "projectiles/airraid_bolt_negative.json"
+ },
+ "airraid_bolt_positive": {
+  "file": "projectiles/airraid_bolt_positive.json"
+ },
+ "akee": {
+  "file": "projectiles/akee.json"
+ },
+ "akee_mint": {
+  "file": "projectiles/akee_mint.json"
+ },
+ "akee_pf": {
+  "file": "projectiles/akee_pf.json"
+ },
+ "akee_pf_mint": {
+  "file": "projectiles/akee_pf_mint.json"
+ },
+ "anthurium_bolt": {
+  "file": "projectiles/anthurium_bolt.json"
+ },
+ "anthurium_bolt1": {
+  "file": "projectiles/anthurium_bolt1.json"
+ },
+ "anthurium_bolt2": {
+  "file": "projectiles/anthurium_bolt2.json"
+ },
+ "anthurium_bolt_big": {
+  "file": "projectiles/anthurium_bolt_big.json"
+ },
+ "anthurium_bolt_big1": {
+  "file": "projectiles/anthurium_bolt_big1.json"
+ },
+ "anthurium_bolt_big2": {
+  "file": "projectiles/anthurium_bolt_big2.json"
+ },
+ "apple": {
+  "file": "projectiles/apple.json"
+ },
+ "apple1": {
+  "file": "projectiles/apple1.json"
+ },
+ "apple2": {
+  "file": "projectiles/apple2.json"
+ },
+ "apple_pf": {
+  "file": "projectiles/apple_pf.json"
+ },
+ "armamint": {
+  "file": "projectiles/armamint.json"
+ },
+ "atombomb": {
+  "file": "projectiles/atombomb.json"
+ },
+ "bamboozle": {
+  "file": "projectiles/bamboozle.json"
+ },
+ "banana": {
+  "file": "projectiles/banana.json"
+ },
+ "banana1": {
+  "file": "projectiles/banana1.json"
+ },
+ "banana2": {
+  "file": "projectiles/banana2.json"
+ },
+ "blastberry": {
+  "file": "projectiles/blastberry.json"
+ },
+ "blastberry1": {
+  "file": "projectiles/blastberry1.json"
+ },
+ "blastberry2": {
+  "file": "projectiles/blastberry2.json"
+ },
+ "blastberry_pf": {
+  "file": "projectiles/blastberry_pf.json"
+ },
+ "blastberry_pf_mint": {
+  "file": "projectiles/blastberry_pf_mint.json"
+ },
+ "blastberry_small": {
+  "file": "projectiles/blastberry_small.json"
+ },
+ "blastberry_small1": {
+  "file": "projectiles/blastberry_small1.json"
+ },
+ "blastberry_small2": {
+  "file": "projectiles/blastberry_small2.json"
+ },
+ "blastberry_small_pf": {
+  "file": "projectiles/blastberry_small_pf.json"
+ },
+ "blastberry_small_pf_mint": {
+  "file": "projectiles/blastberry_small_pf_mint.json"
+ },
+ "blooming_heart": {
+  "file": "projectiles/blooming_heart.json"
+ },
+ "blooming_heart1": {
+  "file": "projectiles/blooming_heart1.json"
+ },
+ "blooming_heart2": {
+  "file": "projectiles/blooming_heart2.json"
+ },
+ "blooming_heart_pf": {
+  "file": "projectiles/blooming_heart_pf.json"
+ },
+ "boomerang": {
+  "file": "projectiles/boomerang.json"
+ },
+ "boomerang1": {
+  "file": "projectiles/boomerang1.json"
+ },
+ "boomerang2": {
+  "file": "projectiles/boomerang2.json"
+ },
+ "bowling0": {
+  "file": "projectiles/bowling0.json"
+ },
+ "bowling0_mint": {
+  "file": "projectiles/bowling0_mint.json"
+ },
+ "bowling1": {
+  "file": "projectiles/bowling1.json"
+ },
+ "bowling1_mint": {
+  "file": "projectiles/bowling1_mint.json"
+ },
+ "bowling2": {
+  "file": "projectiles/bowling2.json"
+ },
+ "bowling2_mint": {
+  "file": "projectiles/bowling2_mint.json"
+ },
+ "bowling_explode_o_nut": {
+  "file": "projectiles/bowling_explode_o_nut.json"
+ },
+ "bowling_iceberg": {
+  "file": "projectiles/bowling_iceberg.json"
+ },
+ "bowling_infinut": {
+  "file": "projectiles/bowling_infinut.json"
+ },
+ "bowling_pf": {
+  "file": "projectiles/bowling_pf.json"
+ },
+ "bowling_pf_mint": {
+  "file": "projectiles/bowling_pf_mint.json"
+ },
+ "bowling_primal_wallnut": {
+  "file": "projectiles/bowling_primal_wallnut.json"
+ },
+ "bowling_tallnut": {
+  "file": "projectiles/bowling_tallnut.json"
+ },
+ "bowling_wallnut": {
+  "file": "projectiles/bowling_wallnut.json"
+ },
+ "busketball": {
+  "file": "projectiles/busketball.json"
+ },
+ "butter": {
+  "file": "projectiles/butter.json"
+ },
+ "butter1": {
+  "file": "projectiles/butter1.json"
+ },
+ "butter2": {
+  "file": "projectiles/butter2.json"
+ },
+ "buttercup_butter": {
+  "file": "projectiles/buttercup_butter.json"
+ },
+ "cabbage": {
+  "file": "projectiles/cabbage.json"
+ },
+ "cabbage1": {
+  "file": "projectiles/cabbage1.json"
+ },
+ "cabbage2": {
+  "file": "projectiles/cabbage2.json"
+ },
+ "cabbage_pf": {
+  "file": "projectiles/cabbage_pf.json"
+ },
+ "cactus": {
+  "file": "projectiles/cactus.json"
+ },
+ "cactus1": {
+  "file": "projectiles/cactus1.json"
+ },
+ "cactus2": {
+  "file": "projectiles/cactus2.json"
+ },
+ "cactus_pf": {
+  "file": "projectiles/cactus_pf.json"
+ },
+ "cactus_pf1": {
+  "file": "projectiles/cactus_pf1.json"
+ },
+ "cactus_pf2": {
+  "file": "projectiles/cactus_pf2.json"
+ },
+ "cantaloupe": {
+  "file": "projectiles/cantaloupe.json"
+ },
+ "cantaloupe1": {
+  "file": "projectiles/cantaloupe1.json"
+ },
+ "cantaloupe2": {
+  "file": "projectiles/cantaloupe2.json"
+ },
+ "cantaloupe_pf": {
+  "file": "projectiles/cantaloupe_pf.json"
+ },
+ "caulipower": {
+  "file": "projectiles/caulipower.json"
+ },
+ "citron": {
+  "file": "projectiles/citron.json"
+ },
+ "citron1": {
+  "file": "projectiles/citron1.json"
+ },
+ "citron2": {
+  "file": "projectiles/citron2.json"
+ },
+ "citron_pf": {
+  "file": "projectiles/citron_pf.json"
+ },
+ "citron_pf_mint": {
+  "file": "projectiles/citron_pf_mint.json"
+ },
+ "coconut": {
+  "file": "projectiles/coconut.json"
+ },
+ "coconut_mint": {
+  "file": "projectiles/coconut_mint.json"
+ },
+ "coconut_pf": {
+  "file": "projectiles/coconut_pf.json"
+ },
+ "corn": {
+  "file": "projectiles/corn.json"
+ },
+ "corn1": {
+  "file": "projectiles/corn1.json"
+ },
+ "corn2": {
+  "file": "projectiles/corn2.json"
+ },
+ "cranjelly": {
+  "file": "projectiles/cranjelly.json"
+ },
+ "dandelion": {
+  "file": "projectiles/dandelion.json"
+ },
+ "dandelion1": {
+  "file": "projectiles/dandelion1.json"
+ },
+ "dandelion2": {
+  "file": "projectiles/dandelion2.json"
+ },
+ "dandelion_blew": {
+  "file": "projectiles/dandelion_blew.json"
+ },
+ "dandelion_pf": {
+  "file": "projectiles/dandelion_pf.json"
+ },
+ "darkmatter": {
+  "file": "projectiles/darkmatter.json"
+ },
+ "darkmatter_shadow": {
+  "file": "projectiles/darkmatter_shadow.json"
+ },
+ "dragonfruit": {
+  "file": "projectiles/dragonfruit.json"
+ },
+ "dragonfruit1": {
+  "file": "projectiles/dragonfruit1.json"
+ },
+ "dragonfruit2": {
+  "file": "projectiles/dragonfruit2.json"
+ },
+ "dragonfruit_pf": {
+  "file": "projectiles/dragonfruit_pf.json"
+ },
+ "dusklobber": {
+  "file": "projectiles/dusklobber.json"
+ },
+ "dusklobber1": {
+  "file": "projectiles/dusklobber1.json"
+ },
+ "dusklobber2": {
+  "file": "projectiles/dusklobber2.json"
+ },
+ "dusklobber_pf": {
+  "file": "projectiles/dusklobber_pf.json"
+ },
+ "eighties_gargantuar_wave": {
+  "file": "projectiles/eighties_gargantuar_wave.json"
+ },
+ "eighties_speaker_wave": {
+  "file": "projectiles/eighties_speaker_wave.json"
+ },
+ "electricpea": {
+  "file": "projectiles/electricpea.json"
+ },
+ "electricpea_mint": {
+  "file": "projectiles/electricpea_mint.json"
+ },
+ "electricpea_pf": {
+  "file": "projectiles/electricpea_pf.json"
+ },
+ "electricpea_small": {
+  "file": "projectiles/electricpea_small.json"
+ },
+ "grapeshot": {
+  "file": "projectiles/grapeshot.json"
+ },
+ "grapeshot_mint": {
+  "file": "projectiles/grapeshot_mint.json"
+ },
+ "guacodile": {
+  "file": "projectiles/guacodile.json"
+ },
+ "guacodile1": {
+  "file": "projectiles/guacodile1.json"
+ },
+ "guacodile2": {
+  "file": "projectiles/guacodile2.json"
+ },
+ "guacodile_child": {
+  "file": "projectiles/guacodile_child.json"
+ },
+ "guacodile_child_mint": {
+  "file": "projectiles/guacodile_child_mint.json"
+ },
+ "gumnut": {
+  "file": "projectiles/gumnut.json"
+ },
+ "hollyleaf": {
+  "file": "projectiles/hollyleaf.json"
+ },
+ "hollyleaf_pf": {
+  "file": "projectiles/hollyleaf_pf.json"
+ },
+ "homing_thistle": {
+  "file": "projectiles/homing_thistle.json"
+ },
+ "homing_thistle1": {
+  "file": "projectiles/homing_thistle1.json"
+ },
+ "homing_thistle2": {
+  "file": "projectiles/homing_thistle2.json"
+ },
+ "homing_thistle_pf": {
+  "file": "projectiles/homing_thistle_pf.json"
+ },
+ "hunter_snowball": {
+  "file": "projectiles/hunter_snowball.json"
+ },
+ "icebloom": {
+  "file": "projectiles/icebloom.json"
+ },
+ "iceweed_saw": {
+  "file": "projectiles/iceweed_saw.json"
+ },
+ "inferno_tornado": {
+  "file": "projectiles/inferno_tornado.json"
+ },
+ "inferno_tornado_pf": {
+  "file": "projectiles/inferno_tornado_pf.json"
+ },
+ "kongfu_boss_blade_chi": {
+  "file": "projectiles/kongfu_boss_blade_chi.json"
+ },
+ "kongfu_boss_chi_chi": {
+  "file": "projectiles/kongfu_boss_chi_chi.json"
+ },
+ "kongfu_boss_chi_rack": {
+  "file": "projectiles/kongfu_boss_chi_rack.json"
+ },
+ "kongfu_boss_explode_bomb": {
+  "file": "projectiles/kongfu_boss_explode_bomb.json"
+ },
+ "lotus": {
+  "file": "projectiles/lotus.json"
+ },
+ "lotus1": {
+  "file": "projectiles/lotus1.json"
+ },
+ "lotus2": {
+  "file": "projectiles/lotus2.json"
+ },
+ "lotus_torpedo": {
+  "file": "projectiles/lotus_torpedo.json"
+ },
+ "lotus_torpedo_mint": {
+  "file": "projectiles/lotus_torpedo_mint.json"
+ },
+ "lotus_torpedo_pf": {
+  "file": "projectiles/lotus_torpedo_pf.json"
+ },
+ "lotus_torpedo_pf_mint": {
+  "file": "projectiles/lotus_torpedo_pf_mint.json"
+ },
+ "magnifying_grass": {
+  "file": "projectiles/magnifying_grass.json"
+ },
+ "magnifying_grass1": {
+  "file": "projectiles/magnifying_grass1.json"
+ },
+ "magnifying_grass2": {
+  "file": "projectiles/magnifying_grass2.json"
+ },
+ "melon": {
+  "file": "projectiles/melon.json"
+ },
+ "melon1": {
+  "file": "projectiles/melon1.json"
+ },
+ "melon2": {
+  "file": "projectiles/melon2.json"
+ },
+ "melon_pf": {
+  "file": "projectiles/melon_pf.json"
+ },
+ "meteor": {
+  "file": "projectiles/meteor.json"
+ },
+ "meteor_mint": {
+  "file": "projectiles/meteor_mint.json"
+ },
+ "missiletoe": {
+  "file": "projectiles/missiletoe.json"
+ },
+ "missiletoe1": {
+  "file": "projectiles/missiletoe1.json"
+ },
+ "missiletoe2": {
+  "file": "projectiles/missiletoe2.json"
+ },
+ "mower_beach": {
+  "file": "projectiles/mower_beach.json"
+ },
+ "mower_cowboy": {
+  "file": "projectiles/mower_cowboy.json"
+ },
+ "mower_dark": {
+  "file": "projectiles/mower_dark.json"
+ },
+ "mower_dino": {
+  "file": "projectiles/mower_dino.json"
+ },
+ "mower_egypt": {
+  "file": "projectiles/mower_egypt.json"
+ },
+ "mower_eighties": {
+  "file": "projectiles/mower_eighties.json"
+ },
+ "mower_future": {
+  "file": "projectiles/mower_future.json"
+ },
+ "mower_iceage": {
+  "file": "projectiles/mower_iceage.json"
+ },
+ "mower_kongfu": {
+  "file": "projectiles/mower_kongfu.json"
+ },
+ "mower_lostcity": {
+  "file": "projectiles/mower_lostcity.json"
+ },
+ "mower_modern": {
+  "file": "projectiles/mower_modern.json"
+ },
+ "mower_pirate": {
+  "file": "projectiles/mower_pirate.json"
+ },
+ "nightshade": {
+  "file": "projectiles/nightshade.json"
+ },
+ "nightshade_mega": {
+  "file": "projectiles/nightshade_mega.json"
+ },
+ "nightshade_mega_mint": {
+  "file": "projectiles/nightshade_mega_mint.json"
+ },
+ "nightshade_mint": {
+  "file": "projectiles/nightshade_mint.json"
+ },
+ "nightshade_pf": {
+  "file": "projectiles/nightshade_pf.json"
+ },
+ "nightshade_pf_mega": {
+  "file": "projectiles/nightshade_pf_mega.json"
+ },
+ "octopus": {
+  "file": "projectiles/octopus.json"
+ },
+ "parsnip_child": {
+  "file": "projectiles/parsnip_child.json"
+ },
+ "parsnip_child_mint": {
+  "file": "projectiles/parsnip_child_mint.json"
+ },
+ "parsnip_child_small": {
+  "file": "projectiles/parsnip_child_small.json"
+ },
+ "parsnip_child_small_mint": {
+  "file": "projectiles/parsnip_child_small_mint.json"
+ },
+ "pea": {
+  "file": "projectiles/pea.json"
+ },
+ "pea1": {
+  "file": "projectiles/pea1.json"
+ },
+ "pea1_flame_blue": {
+  "file": "projectiles/pea1_flame_blue.json"
+ },
+ "pea1_flame_yellow": {
+  "file": "projectiles/pea1_flame_yellow.json"
+ },
+ "pea1_snap": {
+  "file": "projectiles/pea1_snap.json"
+ },
+ "pea1_snap_flame_blue": {
+  "file": "projectiles/pea1_snap_flame_blue.json"
+ },
+ "pea1_snap_flame_yellow": {
+  "file": "projectiles/pea1_snap_flame_yellow.json"
+ },
+ "pea2": {
+  "file": "projectiles/pea2.json"
+ },
+ "pea2_flame_blue": {
+  "file": "projectiles/pea2_flame_blue.json"
+ },
+ "pea2_flame_yellow": {
+  "file": "projectiles/pea2_flame_yellow.json"
+ },
+ "pea2_snap": {
+  "file": "projectiles/pea2_snap.json"
+ },
+ "pea2_snap_flame_blue": {
+  "file": "projectiles/pea2_snap_flame_blue.json"
+ },
+ "pea2_snap_flame_yellow": {
+  "file": "projectiles/pea2_snap_flame_yellow.json"
+ },
+ "pea_commando": {
+  "file": "projectiles/pea_commando.json"
+ },
+ "pea_commando1": {
+  "file": "projectiles/pea_commando1.json"
+ },
+ "pea_commando1_flame_blue": {
+  "file": "projectiles/pea_commando1_flame_blue.json"
+ },
+ "pea_commando1_flame_yellow": {
+  "file": "projectiles/pea_commando1_flame_yellow.json"
+ },
+ "pea_commando2": {
+  "file": "projectiles/pea_commando2.json"
+ },
+ "pea_commando2_flame_blue": {
+  "file": "projectiles/pea_commando2_flame_blue.json"
+ },
+ "pea_commando2_flame_yellow": {
+  "file": "projectiles/pea_commando2_flame_yellow.json"
+ },
+ "pea_commando_flame_blue": {
+  "file": "projectiles/pea_commando_flame_blue.json"
+ },
+ "pea_commando_flame_yellow": {
+  "file": "projectiles/pea_commando_flame_yellow.json"
+ },
+ "pea_flame_blue": {
+  "file": "projectiles/pea_flame_blue.json"
+ },
+ "pea_flame_yellow": {
+  "file": "projectiles/pea_flame_yellow.json"
+ },
+ "pea_goo": {
+  "file": "projectiles/pea_goo.json"
+ },
+ "pea_goo1": {
+  "file": "projectiles/pea_goo1.json"
+ },
+ "pea_goo2": {
+  "file": "projectiles/pea_goo2.json"
+ },
+ "pea_goo_pf": {
+  "file": "projectiles/pea_goo_pf.json"
+ },
+ "pea_mega": {
+  "file": "projectiles/pea_mega.json"
+ },
+ "pea_mega_flame_blue": {
+  "file": "projectiles/pea_mega_flame_blue.json"
+ },
+ "pea_mega_flame_yellow": {
+  "file": "projectiles/pea_mega_flame_yellow.json"
+ },
+ "pea_mega_mint": {
+  "file": "projectiles/pea_mega_mint.json"
+ },
+ "pea_mega_mint_flame_blue": {
+  "file": "projectiles/pea_mega_mint_flame_blue.json"
+ },
+ "pea_mega_mint_flame_yellow": {
+  "file": "projectiles/pea_mega_mint_flame_yellow.json"
+ },
+ "pea_primal": {
+  "file": "projectiles/pea_primal.json"
+ },
+ "pea_primal1": {
+  "file": "projectiles/pea_primal1.json"
+ },
+ "pea_primal1_flame_blue": {
+  "file": "projectiles/pea_primal1_flame_blue.json"
+ },
+ "pea_primal1_flame_yellow": {
+  "file": "projectiles/pea_primal1_flame_yellow.json"
+ },
+ "pea_primal2": {
+  "file": "projectiles/pea_primal2.json"
+ },
+ "pea_primal2_flame_blue": {
+  "file": "projectiles/pea_primal2_flame_blue.json"
+ },
+ "pea_primal2_flame_yellow": {
+  "file": "projectiles/pea_primal2_flame_yellow.json"
+ },
+ "pea_primal_flame_blue": {
+  "file": "projectiles/pea_primal_flame_blue.json"
+ },
+ "pea_primal_flame_yellow": {
+  "file": "projectiles/pea_primal_flame_yellow.json"
+ },
+ "pea_shadow": {
+  "file": "projectiles/pea_shadow.json"
+ },
+ "pea_shadow1": {
+  "file": "projectiles/pea_shadow1.json"
+ },
+ "pea_shadow2": {
+  "file": "projectiles/pea_shadow2.json"
+ },
+ "pea_shadow_pf_0": {
+  "file": "projectiles/pea_shadow_pf_0.json"
+ },
+ "pea_shadow_pf_1": {
+  "file": "projectiles/pea_shadow_pf_1.json"
+ },
+ "pea_shadow_pf_2": {
+  "file": "projectiles/pea_shadow_pf_2.json"
+ },
+ "pea_sky": {
+  "file": "projectiles/pea_sky.json"
+ },
+ "pea_sky1": {
+  "file": "projectiles/pea_sky1.json"
+ },
+ "pea_sky1_flame_blue": {
+  "file": "projectiles/pea_sky1_flame_blue.json"
+ },
+ "pea_sky1_flame_yellow": {
+  "file": "projectiles/pea_sky1_flame_yellow.json"
+ },
+ "pea_sky2": {
+  "file": "projectiles/pea_sky2.json"
+ },
+ "pea_sky2_flame_blue": {
+  "file": "projectiles/pea_sky2_flame_blue.json"
+ },
+ "pea_sky2_flame_yellow": {
+  "file": "projectiles/pea_sky2_flame_yellow.json"
+ },
+ "pea_sky_flame_blue": {
+  "file": "projectiles/pea_sky_flame_blue.json"
+ },
+ "pea_sky_flame_yellow": {
+  "file": "projectiles/pea_sky_flame_yellow.json"
+ },
+ "pea_sling_0": {
+  "file": "projectiles/pea_sling_0.json"
+ },
+ "pea_sling_0_flame_blue": {
+  "file": "projectiles/pea_sling_0_flame_blue.json"
+ },
+ "pea_sling_0_flame_yellow": {
+  "file": "projectiles/pea_sling_0_flame_yellow.json"
+ },
+ "pea_sling_0_pf": {
+  "file": "projectiles/pea_sling_0_pf.json"
+ },
+ "pea_sling_0_pf_flame_blue": {
+  "file": "projectiles/pea_sling_0_pf_flame_blue.json"
+ },
+ "pea_sling_0_pf_flame_yellow": {
+  "file": "projectiles/pea_sling_0_pf_flame_yellow.json"
+ },
+ "pea_sling_1": {
+  "file": "projectiles/pea_sling_1.json"
+ },
+ "pea_sling_1_flame_blue": {
+  "file": "projectiles/pea_sling_1_flame_blue.json"
+ },
+ "pea_sling_1_flame_yellow": {
+  "file": "projectiles/pea_sling_1_flame_yellow.json"
+ },
+ "pea_sling_1_pf": {
+  "file": "projectiles/pea_sling_1_pf.json"
+ },
+ "pea_sling_1_pf_flame_blue": {
+  "file": "projectiles/pea_sling_1_pf_flame_blue.json"
+ },
+ "pea_sling_1_pf_flame_yellow": {
+  "file": "projectiles/pea_sling_1_pf_flame_yellow.json"
+ },
+ "pea_sling_2": {
+  "file": "projectiles/pea_sling_2.json"
+ },
+ "pea_sling_2_flame_blue": {
+  "file": "projectiles/pea_sling_2_flame_blue.json"
+ },
+ "pea_sling_2_flame_yellow": {
+  "file": "projectiles/pea_sling_2_flame_yellow.json"
+ },
+ "pea_sling_2_pf": {
+  "file": "projectiles/pea_sling_2_pf.json"
+ },
+ "pea_sling_2_pf_flame_blue": {
+  "file": "projectiles/pea_sling_2_pf_flame_blue.json"
+ },
+ "pea_sling_2_pf_flame_yellow": {
+  "file": "projectiles/pea_sling_2_pf_flame_yellow.json"
+ },
+ "pea_snap": {
+  "file": "projectiles/pea_snap.json"
+ },
+ "pea_snap_flame_blue": {
+  "file": "projectiles/pea_snap_flame_blue.json"
+ },
+ "pea_snap_flame_yellow": {
+  "file": "projectiles/pea_snap_flame_yellow.json"
+ },
+ "pea_snow": {
+  "file": "projectiles/pea_snow.json"
+ },
+ "pea_snow1": {
+  "file": "projectiles/pea_snow1.json"
+ },
+ "pea_snow2": {
+  "file": "projectiles/pea_snow2.json"
+ },
+ "peanut": {
+  "file": "projectiles/peanut.json"
+ },
+ "peanut1": {
+  "file": "projectiles/peanut1.json"
+ },
+ "peanut2": {
+  "file": "projectiles/peanut2.json"
+ },
+ "pepper": {
+  "file": "projectiles/pepper.json"
+ },
+ "pepper1": {
+  "file": "projectiles/pepper1.json"
+ },
+ "pepper2": {
+  "file": "projectiles/pepper2.json"
+ },
+ "pepper_pf": {
+  "file": "projectiles/pepper_pf.json"
+ },
+ "pinkstar": {
+  "file": "projectiles/pinkstar.json"
+ },
+ "pinkstar1": {
+  "file": "projectiles/pinkstar1.json"
+ },
+ "pinkstar2": {
+  "file": "projectiles/pinkstar2.json"
+ },
+ "pinkstar_pf": {
+  "file": "projectiles/pinkstar_pf.json"
+ },
+ "powerup_snow": {
+  "file": "projectiles/powerup_snow.json"
+ },
+ "puffshroom_spore": {
+  "file": "projectiles/puffshroom_spore.json"
+ },
+ "puffshroom_spore1": {
+  "file": "projectiles/puffshroom_spore1.json"
+ },
+ "puffshroom_spore2": {
+  "file": "projectiles/puffshroom_spore2.json"
+ },
+ "redstinger": {
+  "file": "projectiles/redstinger.json"
+ },
+ "redstinger1": {
+  "file": "projectiles/redstinger1.json"
+ },
+ "redstinger2": {
+  "file": "projectiles/redstinger2.json"
+ },
+ "redstinger_weak": {
+  "file": "projectiles/redstinger_weak.json"
+ },
+ "rotobaga": {
+  "file": "projectiles/rotobaga.json"
+ },
+ "rotobaga1": {
+  "file": "projectiles/rotobaga1.json"
+ },
+ "rotobaga2": {
+  "file": "projectiles/rotobaga2.json"
+ },
+ "rotobaga_pf": {
+  "file": "projectiles/rotobaga_pf.json"
+ },
+ "sapfling": {
+  "file": "projectiles/sapfling.json"
+ },
+ "sapfling_pf": {
+  "file": "projectiles/sapfling_pf.json"
+ },
+ "scaredyshroom_spore": {
+  "file": "projectiles/scaredyshroom_spore.json"
+ },
+ "scaredyshroom_spore1": {
+  "file": "projectiles/scaredyshroom_spore1.json"
+ },
+ "scaredyshroom_spore2": {
+  "file": "projectiles/scaredyshroom_spore2.json"
+ },
+ "scaredyshroom_spore_mint": {
+  "file": "projectiles/scaredyshroom_spore_mint.json"
+ },
+ "sea_pea": {
+  "file": "projectiles/sea_pea.json"
+ },
+ "sea_pea1": {
+  "file": "projectiles/sea_pea1.json"
+ },
+ "sea_pea1_flame": {
+  "file": "projectiles/sea_pea1_flame.json"
+ },
+ "sea_pea1_flame_blue": {
+  "file": "projectiles/sea_pea1_flame_blue.json"
+ },
+ "sea_pea1_flame_yellow": {
+  "file": "projectiles/sea_pea1_flame_yellow.json"
+ },
+ "sea_pea2": {
+  "file": "projectiles/sea_pea2.json"
+ },
+ "sea_pea2_flame": {
+  "file": "projectiles/sea_pea2_flame.json"
+ },
+ "sea_pea2_flame_blue": {
+  "file": "projectiles/sea_pea2_flame_blue.json"
+ },
+ "sea_pea2_flame_yellow": {
+  "file": "projectiles/sea_pea2_flame_yellow.json"
+ },
+ "sea_pea_flame": {
+  "file": "projectiles/sea_pea_flame.json"
+ },
+ "sea_pea_flame_blue": {
+  "file": "projectiles/sea_pea_flame_blue.json"
+ },
+ "sea_pea_flame_yellow": {
+  "file": "projectiles/sea_pea_flame_yellow.json"
+ },
+ "seashroom_spore": {
+  "file": "projectiles/seashroom_spore.json"
+ },
+ "seashroom_spore1": {
+  "file": "projectiles/seashroom_spore1.json"
+ },
+ "seashroom_spore2": {
+  "file": "projectiles/seashroom_spore2.json"
+ },
+ "shootingstar": {
+  "file": "projectiles/shootingstar.json"
+ },
+ "shootingstar1": {
+  "file": "projectiles/shootingstar1.json"
+ },
+ "shootingstar2": {
+  "file": "projectiles/shootingstar2.json"
+ },
+ "shootingstar_pf": {
+  "file": "projectiles/shootingstar_pf.json"
+ },
+ "sky_battleplane_bullet": {
+  "file": "projectiles/sky_battleplane_bullet.json"
+ },
+ "sky_bolt_negative": {
+  "file": "projectiles/sky_bolt_negative.json"
+ },
+ "sky_bolt_positive": {
+  "file": "projectiles/sky_bolt_positive.json"
+ },
+ "sky_zomboss_storm": {
+  "file": "projectiles/sky_zomboss_storm.json"
+ },
+ "snowdrop": {
+  "file": "projectiles/snowdrop.json"
+ },
+ "snowdrop_freeze": {
+  "file": "projectiles/snowdrop_freeze.json"
+ },
+ "spearmint_saw": {
+  "file": "projectiles/spearmint_saw.json"
+ },
+ "sporeshroom_spore": {
+  "file": "projectiles/sporeshroom_spore.json"
+ },
+ "sporeshroom_spore1": {
+  "file": "projectiles/sporeshroom_spore1.json"
+ },
+ "sporeshroom_spore2": {
+  "file": "projectiles/sporeshroom_spore2.json"
+ },
+ "sporeshroom_spore_pf": {
+  "file": "projectiles/sporeshroom_spore_pf.json"
+ },
+ "star": {
+  "file": "projectiles/star.json"
+ },
+ "star1": {
+  "file": "projectiles/star1.json"
+ },
+ "star2": {
+  "file": "projectiles/star2.json"
+ },
+ "star_pf": {
+  "file": "projectiles/star_pf.json"
+ },
+ "stickybomb": {
+  "file": "projectiles/stickybomb.json"
+ },
+ "stickybomb1": {
+  "file": "projectiles/stickybomb1.json"
+ },
+ "stickybomb2": {
+  "file": "projectiles/stickybomb2.json"
+ },
+ "stickybomb_pf": {
+  "file": "projectiles/stickybomb_pf.json"
+ },
+ "stickybomb_pf_mint": {
+  "file": "projectiles/stickybomb_pf_mint.json"
+ },
+ "strawburst0": {
+  "file": "projectiles/strawburst0.json"
+ },
+ "strawburst0_mint": {
+  "file": "projectiles/strawburst0_mint.json"
+ },
+ "strawburst1": {
+  "file": "projectiles/strawburst1.json"
+ },
+ "strawburst1_mint": {
+  "file": "projectiles/strawburst1_mint.json"
+ },
+ "strawburst2": {
+  "file": "projectiles/strawburst2.json"
+ },
+ "strawburst2_mint": {
+  "file": "projectiles/strawburst2_mint.json"
+ },
+ "tombraiser_bone": {
+  "file": "projectiles/tombraiser_bone.json"
+ },
+ "trap_boulder": {
+  "file": "projectiles/trap_boulder.json"
+ },
+ "turkey": {
+  "file": "projectiles/turkey.json"
+ },
+ "turkey_big": {
+  "file": "projectiles/turkey_big.json"
+ },
+ "turkey_big_mint": {
+  "file": "projectiles/turkey_big_mint.json"
+ },
+ "turkey_mint": {
+  "file": "projectiles/turkey_mint.json"
+ },
+ "winter_melon": {
+  "file": "projectiles/winter_melon.json"
+ },
+ "winter_melon1": {
+  "file": "projectiles/winter_melon1.json"
+ },
+ "winter_melon2": {
+  "file": "projectiles/winter_melon2.json"
+ },
+ "winter_melon_pf": {
+  "file": "projectiles/winter_melon_pf.json"
+ },
+ "zomboss_lostcity_sandbag": {
+  "file": "projectiles/zomboss_lostcity_sandbag.json"
+ },
+ "zomboss_missile_cowboy": {
+  "file": "projectiles/zomboss_missile_cowboy.json"
+ },
+ "zomboss_missile_dark": {
+  "file": "projectiles/zomboss_missile_dark.json"
+ },
+ "zomboss_missile_dino": {
+  "file": "projectiles/zomboss_missile_dino.json"
+ },
+ "zomboss_missile_egypt": {
+  "file": "projectiles/zomboss_missile_egypt.json"
+ },
+ "zomboss_missile_egypt2": {
+  "file": "projectiles/zomboss_missile_egypt2.json"
+ },
+ "zomboss_missile_future": {
+  "file": "projectiles/zomboss_missile_future.json"
+ },
+ "zomboss_missile_iceage": {
+  "file": "projectiles/zomboss_missile_iceage.json"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "id": "blooming_heart",
+ "stats": {
+  "damage": 40
+ },
+ "extra": {
+  "DefenceRateList": [
+   0.9
+  ],
+  "Size": {
+   "h": 15,
+   "w": 15
+  },
+  "MintBoostedType": "blooming_heart2",
+  "Props": "RTID(blooming_heart@ProjectileProps)"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "id": "goopuddle_eternal",
+ "category": "liquid",
+ "extra": {
+  "TileLiquidBasedOn": "cranjelly"
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "id": "spearmint_saw",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DPS": 900,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 65,
+   "w": 65
+  },
+  "Props": "RTID(spearmint_saw@ProjectileProps)"
+ }
+}

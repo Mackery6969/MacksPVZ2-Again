@@ -1,0 +1,19 @@
+{
+ "id": "anthurium_bolt_big1",
+ "extends": "anthurium_bolt_big",
+ "stats": {
+  "damage": 1200
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamageType": "electricity",
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 25,
+   "w": 25
+  },
+  "SpeedMult": 1.5,
+  "MintBoostedType": "anthurium_bolt_big2",
+  "Props": "RTID(anthurium_bolt_big1@ProjectileProps)"
+ }
+}

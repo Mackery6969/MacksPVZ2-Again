@@ -1,0 +1,23 @@
+{
+ "id": "citron",
+ "stats": {
+  "damage": 800
+ },
+ "extra": {
+  "Size": {
+   "h": 40,
+   "w": 40
+  },
+  "SplashDamage": [
+   {
+    "Damage": 20,
+    "Range": {
+     "h": 1,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "citron2",
+  "Props": "RTID(citron@ProjectileProps)"
+ }
+}

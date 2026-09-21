@@ -1,0 +1,36 @@
+{
+ "id": "sky_airraid_twin",
+ "extends": "normal",
+ "stats": {
+  "toughness": 3000,
+  "speed": 0.4,
+  "eat_dps": 300,
+  "wave_cost": 1500,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "attractable",
+   "draggable",
+   "enlightenable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "SkyAirRaidTwinAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "SkyAirRaidTwinHitRect"
+  }
+ ],
+ "extra": {
+  "ChooseToSpawnOnDeepWaterRows": true,
+  "ChooseToSpawnOnNonDeckRows": true,
+  "KnockBackDistanceScale": 0.5
+ }
+}

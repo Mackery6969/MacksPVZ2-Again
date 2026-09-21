@@ -1,0 +1,26 @@
+{
+ "id": "citron_pf_mint",
+ "extends": "citron_pf",
+ "stats": {
+  "damage": 8000
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamageType": "electricity",
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 60,
+   "w": 60
+  },
+  "SplashDamage": [
+   {
+    "Damage": 800,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(citron_pf_mint@ProjectileProps)"
+ }
+}

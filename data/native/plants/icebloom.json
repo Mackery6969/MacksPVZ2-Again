@@ -1,0 +1,29 @@
+{
+ "id": "icebloom",
+ "family": "Cold",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 30,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "ChillDuration": 5,
+  "Damage3x3": 200,
+  "DamageFullBoard": 50,
+  "FreezeDuration": 10,
+  "HypnotizingProjectileCount": 4,
+  "HypnotizingProjectileType": "icebloom",
+  "ImmuneToBoomBox": true,
+  "ImmuneToIceblock": true,
+  "MintChillDurationFactor": 4,
+  "MintDamageFactor": 3
+ }
+}

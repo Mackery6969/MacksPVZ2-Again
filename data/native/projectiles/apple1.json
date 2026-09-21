@@ -1,0 +1,15 @@
+{
+ "id": "apple1",
+ "stats": {
+  "damage": 90
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "StunDuration": 1.5,
+  "MintBoostedType": "apple2",
+  "Props": "RTID(apple1@ProjectileProps)"
+ }
+}

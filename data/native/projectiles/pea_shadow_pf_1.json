@@ -1,0 +1,27 @@
+{
+ "id": "pea_shadow_pf_1",
+ "stats": {
+  "damage": 800
+ },
+ "extra": {
+  "CancelsKnockbackFlying": true,
+  "CannotBeReversedByJester": true,
+  "DamageType": "ray",
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SplashDamage": [
+   {
+    "Damage": 800,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "pea_shadow_pf_2",
+  "Props": "RTID(pea_shadow_pf_1@ProjectileProps)"
+ }
+}

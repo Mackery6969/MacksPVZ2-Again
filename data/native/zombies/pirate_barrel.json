@@ -1,0 +1,42 @@
+{
+ "id": "pirate_barrel",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1100,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable",
+   "divertable",
+   "enlightenable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "sap_detectable",
+   "shrinkable",
+   "snap_targetable",
+   "swallowable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "PirateBarrelAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "PirateBarrelHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "ImpType": "pirate_imp"
+ }
+}

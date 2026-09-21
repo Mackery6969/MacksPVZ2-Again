@@ -1,0 +1,10 @@
+{
+ "id": "taichitile",
+ "category": "tile",
+ "extra": {
+  "//": "spd = ln(sun * 0.04 + 1)",
+  "LifeSpan": 60,
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "SunCostFactor": 0.04
+ }
+}

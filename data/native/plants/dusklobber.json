@@ -1,0 +1,23 @@
+{
+ "id": "dusklobber",
+ "family": "Shadow",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 2500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "CabbageType": "dusklobber",
+  "CabbageTypePlantfood": "dusklobber_pf",
+  "PlantfoodProjectilesToFire": 4,
+  "ThrowInterval": 2.85,
+  "ThrowIntervalAdditional": 0.15
+ }
+}

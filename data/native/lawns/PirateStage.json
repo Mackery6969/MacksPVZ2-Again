@@ -1,0 +1,39 @@
+{
+ "id": "PirateStage",
+ "music": "Pirate",
+ "mower": "mower_pirate",
+ "railcart": "railcart_pirate",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "pirate_armor1"
+  ],
+  "armor2": [
+   "pirate_armor2"
+  ],
+  "armor3": [
+   "pirate_armor2"
+  ],
+  "armor4": [
+   "pirate_armor4"
+  ],
+  "basic": [
+   "pirate"
+  ],
+  "flag": [
+   "pirate_flag"
+  ],
+  "gargantuar": [
+   "pirate_gargantuar"
+  ],
+  "imp": [
+   "pirate_imp"
+  ],
+  "rally": [
+   "pirate_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_pirate"
+ ]
+}

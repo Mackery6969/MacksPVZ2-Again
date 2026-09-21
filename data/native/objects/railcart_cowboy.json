@@ -1,0 +1,10 @@
+{
+ "id": "railcart_cowboy",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "RailType": "rail_cowboy",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Cowboy"
+ }
+}

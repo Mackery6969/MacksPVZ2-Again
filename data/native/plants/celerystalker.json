@@ -1,0 +1,27 @@
+{
+ "id": "celerystalker",
+ "family": "Melee",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 1200,
+  "cooldown": 15,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "melee"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "DamagePerHit": 25,
+  "MintDamageFactor": 2,
+  "PlantfoodChildrenCount": 3,
+  "RetractionDelay": 3
+ }
+}

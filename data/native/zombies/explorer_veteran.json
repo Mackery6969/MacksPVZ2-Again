@@ -1,0 +1,31 @@
+{
+ "id": "explorer_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 650,
+  "speed": 0.5,
+  "eat_dps": 150,
+  "wave_cost": 700,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "carriable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "AttackRectWithFire": "RTID(ExplorerWithFireAttackRect@RectangleProps)",
+  "FireDPS": 1000,
+  "HitRectWithFire": "RTID(ExplorerWithFireHitRect@RectangleProps)"
+ }
+}

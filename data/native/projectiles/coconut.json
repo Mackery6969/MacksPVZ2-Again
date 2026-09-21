@@ -1,0 +1,24 @@
+{
+ "id": "coconut",
+ "stats": {
+  "damage": 900
+ },
+ "extra": {
+  "ShakesScreenOnImpact": true,
+  "Size": {
+   "h": 18,
+   "w": 18
+  },
+  "SplashDamage": [
+   {
+    "Damage": 300,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "coconut_mint",
+  "Props": "RTID(coconut@ProjectileProps)"
+ }
+}

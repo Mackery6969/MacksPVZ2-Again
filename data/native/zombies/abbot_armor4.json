@@ -1,0 +1,26 @@
+{
+ "id": "abbot_armor4",
+ "extends": "normal",
+ "stats": {
+  "toughness": 250,
+  "speed": 0.2,
+  "eat_dps": 100,
+  "wave_cost": 700,
+  "weight": 4000
+ },
+ "sort": "Normal",
+ "components": [
+  {
+   "type": "armor",
+   "armor": "kongfu_armor4"
+  },
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ]
+}

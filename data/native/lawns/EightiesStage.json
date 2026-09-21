@@ -1,0 +1,39 @@
+{
+ "id": "EightiesStage",
+ "music": "Eighties",
+ "mower": "mower_eighties",
+ "railcart": "railcart_tutorial",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "eighties_armor1"
+  ],
+  "armor2": [
+   "eighties_armor2"
+  ],
+  "armor3": [
+   "eighties_armor2"
+  ],
+  "armor4": [
+   "eighties_armor4"
+  ],
+  "basic": [
+   "eighties"
+  ],
+  "flag": [
+   "eighties_flag"
+  ],
+  "gargantuar": [
+   "eighties_gargantuar"
+  ],
+  "imp": [
+   "eighties_imp"
+  ],
+  "rally": [
+   "eighties_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

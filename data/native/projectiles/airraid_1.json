@@ -1,0 +1,14 @@
+{
+ "id": "airraid_1",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "DamageToShip": 20,
+  "Size": {
+   "h": 4,
+   "w": 4
+  },
+  "Props": "RTID(airraid_1@ProjectileProps)"
+ }
+}

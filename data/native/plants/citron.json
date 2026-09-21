@@ -1,0 +1,23 @@
+{
+ "id": "citron",
+ "family": "Electricity",
+ "stats": {
+  "sun_cost": 350,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 3000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "CallsElectricCurrant": true,
+  "ChargeTime": 7,
+  "PeaType": "citron",
+  "PeaTypePlantfood": "citron_pf",
+  "RedStunDuration": 5
+ }
+}

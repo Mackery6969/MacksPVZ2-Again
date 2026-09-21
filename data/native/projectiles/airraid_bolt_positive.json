@@ -1,0 +1,7 @@
+{
+ "id": "airraid_bolt_positive",
+ "extends": "sky_bolt_positive",
+ "extra": {
+  "Props": "RTID(airraid_2@ProjectileProps)"
+ }
+}

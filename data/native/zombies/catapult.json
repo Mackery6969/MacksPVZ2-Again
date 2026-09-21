@@ -1,0 +1,44 @@
+{
+ "id": "catapult",
+ "extends": "normal",
+ "stats": {
+  "toughness": 750,
+  "speed": 0.4,
+  "eat_dps": 1000,
+  "wave_cost": 300,
+  "weight": 4000
+ },
+ "tags": {
+  "add": [
+   "deep_water",
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable",
+   "divertable",
+   "draggable",
+   "enlightenable",
+   "grabbable",
+   "gummable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CatapultAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CatapultHitRect"
+  }
+ ],
+ "extra": {
+  "BallType": "busketball",
+  "LobInterval": 4,
+  "LobIntervalAdditional": 0.5,
+  "MaxBallCount": 20
+ }
+}

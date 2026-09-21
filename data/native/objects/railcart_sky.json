@@ -1,0 +1,10 @@
+{
+ "id": "railcart_sky",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "RailType": "rail_sky",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Sky"
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "id": "pea_commando2_flame_yellow",
+ "extends": "pea2_flame_yellow",
+ "stats": {
+  "damage": 750
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_commando2_flame_blue",
+  "DamageScale": 2,
+  "DamageType": "fire",
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "SpeedMult": 2,
+  "SplashDamage": [
+   {
+    "Damage": 375,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "Props": "RTID(pea_commando2_flame_yellow@ProjectileProps)"
+ }
+}

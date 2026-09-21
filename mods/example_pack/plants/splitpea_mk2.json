@@ -1,0 +1,18 @@
+{
+ "id": "splitpea_mk2",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 175,
+  "toughness": 300,
+  "cooldown": 7
+ },
+ "components": [
+  {
+   "type": "burst_shooter",
+   "projectile": "pea",
+   "interval": 2.0,
+   "burst": 3,
+   "burst_gap": 0.12
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "id": "beach_surfer_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 350,
+  "speed": 0.15,
+  "eat_dps": 100,
+  "wave_cost": 1400,
+  "weight": 4000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "BoardToughness": 1100,
+  "DamageOnStabbing": 1500,
+  "PlantBlockers": [
+   "tallnut"
+  ],
+  "StopsByEMPea": true,
+  "SwimSpeedMultiplier": 7,
+  "ZombieBlockers": [
+   "future_protector_shield",
+   "future_infinut_shield",
+   "modern_moonflower_shield"
+  ],
+  "ZombossLaneSummon": true,
+  "isVeteran": true
+ }
+}

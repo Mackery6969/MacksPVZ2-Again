@@ -1,0 +1,456 @@
+#!/usr/bin/env python3
+"""Convert PopCap-format PVZGE levels into the clean native level schema.
+
+The PopCap format expresses a level as a flat pool of objects tagged with
+`objclass`, wired together by `RTID(alias@scope)` strings. Reading one wave
+means walking LevelDefinition -> Modules -> WaveManagerModuleProperties ->
+WaveManagerProperties -> Waves[[RTID]] -> SpawnZombiesJitteredWaveActionProps.
+
+The native format drops that indirection: a level is an object, waves are a
+list, and a wave's zombies are a list. PopCap's GridX/GridY become col/row.
+Anything not modelled yet is kept verbatim under "extra" so an import never
+silently loses data - `coverage.py` reports how much that still is.
+"""
+import json, os, re, sys, glob, collections
+
+RTID_RE = re.compile(r'^RTID\(([^@]+)@([^)]+)\)$')
+LOCAL_SCOPES = (".", "CurrentLevel")
+
+
+def parse_rtid(value):
+    if not isinstance(value, str):
+        return None
+    m = RTID_RE.match(value.strip())
+    return (m.group(1), m.group(2)) if m else None
+
+
+def strip_rtid(value):
+    """Reduce an RTID to its bare alias; pass other values through."""
+    ref = parse_rtid(value)
+    return ref[0] if ref else value
+
+
+def placement(p, extra_keys=()):
+    """PopCap GridX/GridY placement -> {col,row,...}."""
+    out = {}
+    if p.get("GridX") is not None:
+        out["col"] = p["GridX"]
+    if p.get("GridY") is not None:
+        out["row"] = p["GridY"]
+    for k in extra_keys:
+        if p.get(k) is not None:
+            out[k.lower()] = strip_rtid(p[k])
+    return out
+
+
+class Level:
+    """Index of one PopCap level file, with RTID resolution over its aliases."""
+
+    def __init__(self, payload, source):
+        self.source = source
+        self.comment = payload.get("#comment", "")
+        self.objects = payload.get("objects", [])
+        self.by_alias = {}
+        for o in self.objects:
+            for alias in (o.get("aliases") or []):
+                self.by_alias[alias] = o
+        self.definition = next(
+            (o for o in self.objects if o.get("objclass") == "LevelDefinition"), None
+        )
+        self.consumed = set()
+
+    def resolve(self, value):
+        """Follow an RTID into this level's own objects; None if external."""
+        ref = parse_rtid(value)
+        if not ref:
+            return None
+        alias, scope = ref
+        if scope in LOCAL_SCOPES:
+            return self.take(alias)
+        return None
+
+    def take(self, alias):
+        """Fetch a local object by alias and mark it folded in."""
+        obj = self.by_alias.get(alias)
+        if obj is not None:
+            self.consumed.add(id(obj))
+        return obj
+
+    def external(self, value):
+        """-> 'alias@scope' for references pointing outside this file."""
+        ref = parse_rtid(value)
+        if not ref:
+            return None
+        alias, scope = ref
+        return None if scope in LOCAL_SCOPES else f"{alias}@{scope}"
+
+
+# --------------------------------------------------------------------------
+# wave actions
+# --------------------------------------------------------------------------
+
+def conv_zombie_entry(z):
+    out = {"type": strip_rtid(z.get("Type"))}
+    row = z.get("Row")
+    if row not in (None, ""):
+        try:
+            out["row"] = int(row)
+        except (TypeError, ValueError):
+            out["row"] = row
+    if z.get("Column") not in (None, ""):
+        out["col"] = z["Column"]
+    return out
+
+
+def conv_wave_action(lvl, obj):
+    cls = obj.get("objclass", "")
+    d = obj.get("objdata") or {}
+
+    if cls == "SpawnZombiesJitteredWaveActionProps":
+        act = {"kind": "spawn", "zombies": [conv_zombie_entry(z) for z in d.get("Zombies", [])]}
+        if d.get("AdditionalPlantfood"):
+            act["plantfood"] = d["AdditionalPlantfood"]
+        if d.get("DynamicPlantfood"):
+            act["dynamic_plantfood"] = d["DynamicPlantfood"]
+        if d.get("NotificationEvents"):
+            act["notify"] = d["NotificationEvents"]
+        if d.get("MustKillAllToNextWave"):
+            act["must_clear"] = True
+        if d.get("ZombieSpawnPattern"):
+            act["pattern"] = d["ZombieSpawnPattern"]
+        return act
+
+    if cls == "ModifyConveyorWaveActionProps":
+        act = {"kind": "conveyor"}
+        if d.get("Add"):
+            act["add"] = [{"type": a.get("PlantType"), "weight": a.get("Weight"),
+                           "max": a.get("MaxCount")} for a in d["Add"]]
+        if d.get("Remove"):
+            act["remove"] = [a.get("PlantType") for a in d["Remove"]]
+        return act
+
+    if cls == "SpawnGravestonesWaveActionProps":
+        return {"kind": "gravestones", "count": d.get("GravestoneCount"),
+                "col_start": d.get("SpawnColumnStart"), "col_end": d.get("SpawnColumnEnd")}
+
+    if cls == "WaveSchedulerProps":
+        act = {"kind": "schedule"}
+        for src, dst in [("TimeBeforeFirst", "delay"), ("TimeBetween", "interval"),
+                         ("Repeat", "repeat"), ("EndingWave", "ending_wave")]:
+            if d.get(src) is not None:
+                v = d[src]
+                act[dst] = ({"min": v.get("Min"), "max": v.get("Max")}
+                            if isinstance(v, dict) else v)
+        if d.get("Events"):
+            act["events"] = [conv_wave_action(lvl, lvl.resolve(e)) if lvl.resolve(e)
+                             else {"kind": "ref", "ref": lvl.external(e) or e}
+                             for e in d["Events"]]
+        return act
+
+    return {"kind": cls, "data": d}
+
+
+def conv_waves(lvl, wave_mgr_props):
+    d = wave_mgr_props.get("objdata") or {}
+    waves = []
+    for entry in d.get("Waves", []):
+        actions = []
+        for ref in (entry if isinstance(entry, list) else [entry]):
+            obj = lvl.resolve(ref)
+            if obj is None:
+                actions.append({"kind": "ref", "ref": lvl.external(ref) or ref})
+            else:
+                actions.append(conv_wave_action(lvl, obj))
+        if len(actions) == 1 and actions[0].get("kind") == "spawn":
+            waves.append(actions[0])
+        else:
+            waves.append({"kind": "multi", "actions": actions})
+
+    settings = {}
+    for src, dst in [("WaveCount", "count"), ("FlagWaveInterval", "flag_interval"),
+                     ("WaveSpendingPoints", "points"),
+                     ("WaveSpendingPointIncrement", "point_increment"),
+                     ("SuppressFlagZombie", "suppress_flag"),
+                     ("MinNextWaveHealthPercentage", "next_wave_health_min"),
+                     ("MaxNextWaveHealthPercentage", "next_wave_health_max"),
+                     ("SpawnColStart", "spawn_col_start"), ("SpawnColEnd", "spawn_col_end")]:
+        if src in d:
+            settings[dst] = d[src]
+    return waves, settings
+
+
+def attach_waves(lvl, out, d):
+    """Wire up waves from a module that owns a WaveManagerProps reference.
+
+    The reference is often omitted, in which case it defaults by convention to
+    the local alias `WaveManagerProps`.
+    """
+    wm = lvl.resolve(d.get("WaveManagerProps", "")) or lvl.take("WaveManagerProps")
+    if not wm:
+        return
+    waves, settings = conv_waves(lvl, wm)
+    out["waves"] = waves
+    if settings:
+        out.setdefault("wave_settings", {}).update(settings)
+
+
+def conv_seedbank(obj):
+    d = obj.get("objdata") or {}
+    if obj.get("objclass") == "ConveyorSeedBankProperties":
+        sb = {"mode": "conveyor"}
+        if d.get("InitialPlantList"):
+            sb["plants"] = [{"type": p.get("PlantType"), "weight": p.get("Weight"),
+                             "max": p.get("MaxCount")} for p in d["InitialPlantList"]]
+        if d.get("DropDelayConditions"):
+            sb["drop_delay"] = [{"delay": c.get("Delay"), "max_packets": c.get("MaxPackets")}
+                                for c in d["DropDelayConditions"]]
+        if d.get("SpeedConditions"):
+            sb["speed"] = [{"speed": c.get("Speed"), "max_packets": c.get("MaxPackets")}
+                           for c in d["SpeedConditions"]]
+        return sb
+
+    sb = {"mode": "chooser"}
+    if d.get("SelectionMethod"):
+        sb["selection"] = d["SelectionMethod"]
+    if d.get("PresetPlantList"):
+        sb["preset"] = [conv_preset_plant(p) for p in d["PresetPlantList"]]
+    for src, dst in [("PlantBlackList", "blacklist"), ("PlantExcludeList", "exclude"),
+                     ("PlantIncludeList", "include"), ("SuggestPlantList", "suggest"),
+                     ("OverrideSeedSlotsCount", "slots"), ("UnlockAll", "unlock_all"),
+                     ("AlwaysUseChooser", "always_chooser"),
+                     ("ExcludeListSunProducers", "exclude_sun_producers")]:
+        if d.get(src) is not None:
+            sb[dst] = [strip_rtid(x) for x in d[src]] if isinstance(d[src], list) else d[src]
+    if d.get("CardDecks"):
+        sb["decks"] = [strip_rtid(x) for x in d["CardDecks"]]
+    return sb
+
+
+def conv_preset_plant(p):
+    """A preset seed entry -> plant id, or {type, level} when a level is set."""
+    if isinstance(p, dict):
+        pid = strip_rtid(p.get("PlantType") or p.get("Type"))
+        lvl_ = p.get("Level")
+        return pid if lvl_ in (None, -1) else {"type": pid, "level": lvl_}
+    return strip_rtid(p)
+
+
+def conv_challenge(lvl, ref):
+    """Resolve a star-challenge RTID into a flat {type, ...} record."""
+    obj = lvl.resolve(ref)
+    if obj is None:
+        return {"type": (lvl.external(ref) or strip_rtid(ref))}
+    d = obj.get("objdata") or {}
+    cls = obj.get("objclass", "")
+    out = {"type": cls.replace("StarChallenge", "").replace("Props", "")}
+    for src, dst in [("Description", "description"), ("DescriptiveName", "name"),
+                     ("Count", "count"), ("Amount", "amount"), ("Distance", "distance"),
+                     ("MaxPlants", "max_plants"), ("SunProduced", "sun_produced")]:
+        if d.get(src) is not None:
+            out[dst] = d[src]
+    known = {"Description", "DescriptiveName", "Count", "Amount", "Distance",
+             "MaxPlants", "SunProduced", "DescriptionsMultilanguage",
+             "DescriptionsMultiLanguage", "Descriptions"}
+    rest = {k: v for k, v in d.items() if k not in known}
+    if rest:
+        out["params"] = rest
+    return out
+
+
+# --------------------------------------------------------------------------
+# module dispatch
+# --------------------------------------------------------------------------
+
+def handle_module(lvl, out, obj):
+    """Fold one resolved module into the native level. -> True if handled."""
+    cls = obj.get("objclass", "")
+    d = obj.get("objdata") or {}
+
+    if cls in ("SeedBankProperties", "ConveyorSeedBankProperties"):
+        out["seedbank"] = conv_seedbank(obj)
+
+    elif cls == "WaveManagerModuleProperties":
+        attach_waves(lvl, out, d)
+        dyn = [x for x in (d.get("DynamicZombies") or []) if x]
+        if dyn:
+            out["dynamic_zombies"] = [
+                {"start_wave": x.get("StartingWave"), "points": x.get("StartingPoints"),
+                 "increment": x.get("PointIncrementPerWave"),
+                 "pool": [strip_rtid(z) for z in x.get("ZombiePool", [])]} for x in dyn]
+
+    elif cls == "LevelOfTheDayModuleProperties":
+        attach_waves(lvl, out, d)
+        lod = {}
+        for src, dst in [("FlagCount", "flags"), ("WavesPerFlag", "waves_per_flag"),
+                         ("StartingPoints", "points"),
+                         ("PointIncrementPerWave", "point_increment"),
+                         ("PlantfoodToSpawnCount", "plantfood")]:
+            if d.get(src) is not None:
+                lod[dst] = d[src]
+        if d.get("ZombiePool"):
+            lod["pool"] = [strip_rtid(z) for z in d["ZombiePool"]]
+        if lod:
+            out["level_of_the_day_config"] = lod
+
+    elif cls == "StarChallengeModuleProperties":
+        ch = [conv_challenge(lvl, c) for c in (d.get("Challenges") or [])]
+        if d.get("ChallengesAlwaysAvailable") or d.get("ChallengeAlwaysAvailable"):
+            src = d.get("ChallengesAlwaysAvailable") or d.get("ChallengeAlwaysAvailable")
+            ch += [conv_challenge(lvl, c) for c in (src if isinstance(src, list) else [src])]
+        if ch:
+            out["challenges"] = ch
+        if d.get("Difficulties"):
+            out["difficulties"] = d["Difficulties"]
+
+    elif cls == "GravestoneProperties":
+        g = {}
+        for src, dst in [("GravestoneCount", "count"), ("SpawnColumnStart", "col_start"),
+                         ("SpawnColumnEnd", "col_end")]:
+            if d.get(src) is not None:
+                g[dst] = d[src]
+        if d.get("ForceSpawnData"):
+            g["forced"] = [placement(p, ("TypeName",)) for p in d["ForceSpawnData"]]
+        out["gravestones"] = g
+
+    elif cls == "InitialGridItemProperties":
+        init = out.setdefault("initial", {})
+        if d.get("InitialGridItemPlacements"):
+            init["grid_items"] = [placement(p, ("TypeName",))
+                                  for p in d["InitialGridItemPlacements"]]
+        if d.get("InitialGridItemMatrixes"):
+            init["grid_item_matrix"] = d["InitialGridItemMatrixes"]
+
+    elif cls == "InitialPlantProperties":
+        init = out.setdefault("initial", {})
+        if d.get("InitialPlantPlacements"):
+            init["plants"] = [placement(p, ("PlantType", "Level"))
+                              for p in d["InitialPlantPlacements"]]
+        if d.get("IsInitialIntensiveCarrotPlacements"):
+            init["intensive_carrots"] = True
+
+    elif cls == "InitialZombieProperties":
+        init = out.setdefault("initial", {})
+        if d.get("InitialZombiePlacements"):
+            init["zombies"] = [placement(p, ("TypeName", "Type"))
+                               for p in d["InitialZombiePlacements"]]
+
+    elif cls == "ProtectThePlantChallengeProperties":
+        obj_out = {"kind": "protect_plants",
+                   "must_protect": d.get("MustProtectCount")}
+        if d.get("Plants"):
+            obj_out["plants"] = [placement(p, ("PlantType", "Level")) for p in d["Plants"]]
+        out.setdefault("objectives", []).append(obj_out)
+
+    elif cls.startswith("TutorialLevel") and cls.endswith("Properties"):
+        # Each tutorial level carries its own marker class. The number in the
+        # class name identifies which scripted lesson it is.
+        digits = "".join(ch for ch in cls if ch.isdigit())
+        out["tutorial_script"] = "tutorial_%s" % digits if digits else "tutorial"
+        if digits == "1":
+            # Tutorial 1 teaches planting in a single lane, and every wave it
+            # spawns targets row 3, so the restriction is derived here rather
+            # than hand-edited into the level file.
+            out["plantable_rows"] = [3]
+        if d:
+            out.setdefault("tutorial_params", {}).update(d)
+
+    elif cls == "RailcartProperties":
+        rc = {}
+        if d.get("Railcarts"):
+            rc["carts"] = [{"col": r.get("Column"), "row": r.get("Row")}
+                           for r in d["Railcarts"]]
+        if d.get("Rails"):
+            rc["rails"] = [{"col": r.get("Column"), "row_start": r.get("RowStart"),
+                            "row_end": r.get("RowEnd")} for r in d["Rails"]]
+        if d.get("RailcartType"):
+            rc["type"] = strip_rtid(d["RailcartType"])
+        if d.get("DynamicRailCarts"):
+            rc["dynamic"] = d["DynamicRailCarts"]
+        out["railcarts"] = rc
+
+    else:
+        return False
+    return True
+
+
+def convert(payload, source):
+    lvl = Level(payload, source)
+    if not lvl.definition:
+        return None
+    dd = lvl.definition.get("objdata") or {}
+    lvl.consumed.add(id(lvl.definition))
+
+    out = collections.OrderedDict()
+    out["id"] = os.path.basename(source).replace(".json", "")
+    if lvl.comment:
+        out["comment"] = lvl.comment
+    out["name"] = dd.get("Name")
+    if dd.get("Description"):
+        out["description"] = dd["Description"]
+    if dd.get("WrittenBy"):
+        out["author"] = dd["WrittenBy"]
+    if dd.get("LevelNumber") is not None:
+        out["number"] = dd["LevelNumber"]
+
+    stage = lvl.external(dd.get("StageModule", "")) or strip_rtid(dd.get("StageModule", ""))
+    if stage:
+        out["stage"] = stage.split("@")[0]
+
+    for src, dst in [("PlantToIntroduce", "introduces_plant"),
+                     ("IsVasebreaker", "vasebreaker"),
+                     ("IsLevelOfTheDay", "level_of_the_day"),
+                     ("FirstIntroNarrative", "intro_narrative"),
+                     ("DraperPromo", "promo_plant")]:
+        if dd.get(src) is not None:
+            out[dst] = dd[src]
+
+    features, unmodelled = [], []
+    for ref in (dd.get("Modules") or []):
+        obj = lvl.resolve(ref)
+        if obj is None:
+            ext = lvl.external(ref)
+            if ext:
+                features.append(ext.split("@")[0])
+            continue
+        if not handle_module(lvl, out, obj):
+            unmodelled.append({"objclass": obj.get("objclass"),
+                               "aliases": obj.get("aliases"),
+                               "objdata": obj.get("objdata") or {}})
+    if features:
+        out["features"] = sorted(set(features))
+
+    # Sweep any remaining top-level modules the Modules list did not name.
+    for o in lvl.objects:
+        if id(o) in lvl.consumed:
+            continue
+        if handle_module(lvl, out, o):
+            lvl.consumed.add(id(o))
+
+    leftovers = [o for o in lvl.objects if id(o) not in lvl.consumed]
+    extra = unmodelled + leftovers
+    if extra:
+        out["extra"] = extra
+    return out
+
+
+def main():
+    src_dir, out_dir = sys.argv[1], sys.argv[2]
+    os.makedirs(out_dir, exist_ok=True)
+    ok = fail = 0
+    for f in sorted(glob.glob(os.path.join(src_dir, "*.json"))):
+        try:
+            native = convert(json.load(open(f, encoding="utf-8")), f)
+            if native is None:
+                fail += 1
+                continue
+            open(os.path.join(out_dir, os.path.basename(f)), "w", encoding="utf-8").write(
+                json.dumps(native, ensure_ascii=False, indent=1))
+            ok += 1
+        except Exception as e:
+            print(f"  !! {os.path.basename(f)}: {type(e).__name__}: {e}", file=sys.stderr)
+            fail += 1
+    print(f"converted {ok} levels ({fail} failed)")
+
+
+if __name__ == "__main__":
+    main()

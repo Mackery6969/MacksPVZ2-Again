@@ -1,0 +1,24 @@
+{
+ "id": "cantaloupe",
+ "stats": {
+  "damage": 100
+ },
+ "extra": {
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 18,
+   "w": 18
+  },
+  "SplashDamage": [
+   {
+    "Damage": 100,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "cantaloupe2",
+  "Props": "RTID(cantaloupe@ProjectileProps)"
+ }
+}

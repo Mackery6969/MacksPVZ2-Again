@@ -1,0 +1,31 @@
+{
+ "id": "birthday_pharaoh",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1200,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 450,
+  "weight": 100
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "PharoahAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "PharoahHitRect"
+  }
+ ],
+ "extra": {
+  "DamageExtends": false,
+  "ProtectsInside": true,
+  "ZombieInside": "birthday_pharaoh_inner"
+ }
+}

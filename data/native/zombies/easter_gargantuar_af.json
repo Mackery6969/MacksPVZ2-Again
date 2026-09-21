@@ -1,0 +1,30 @@
+{
+ "id": "easter_gargantuar_af",
+ "extends": "easter_gargantuar",
+ "stats": {
+  "toughness": 500,
+  "speed": 0.24,
+  "eat_dps": 100,
+  "wave_cost": 1500,
+  "weight": 3000
+ },
+ "sort": "Gargantuar",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "GargantuarAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "GargantuarHitRect"
+  }
+ ],
+ "extra": {
+  "ImpColumns": [
+   -2
+  ],
+  "ImpColumnsAreRelative": true,
+  "ImpType": "easter_egg_af",
+  "SmashDamage": 1500
+ }
+}

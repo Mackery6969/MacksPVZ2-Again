@@ -1,0 +1,10 @@
+{
+ "id": "railcart_egypt",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "RailType": "rail_egypt",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Egypt"
+ }
+}

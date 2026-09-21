@@ -1,0 +1,14 @@
+{
+ "id": "nightshade_mega",
+ "stats": {
+  "damage": 400
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "nightshade_mega_mint",
+  "Props": "RTID(nightshade_mega@ProjectileProps)"
+ }
+}

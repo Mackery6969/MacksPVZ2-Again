@@ -1,0 +1,17 @@
+{
+ "id": "sea_pea1",
+ "stats": {
+  "damage": 90
+ },
+ "extra": {
+  "BlueIgnitedType": "sea_pea1_flame",
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "SpeedMult": 1.5,
+  "YellowIgnitedType": "sea_pea1_flame",
+  "MintBoostedType": "sea_pea2",
+  "Props": "RTID(sea_pea1@ProjectileProps)"
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "id": "kongfu_bomb",
+ "extends": "normal",
+ "stats": {
+  "toughness": 500,
+  "speed": 0.335,
+  "eat_dps": 100,
+  "wave_cost": 400,
+  "weight": 800
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ExplodeDamageToPlants": 4001,
+  "ExplodeDamageToZombies": 1800
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "id": "stickybombrice",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 225,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 1,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "stickybomb",
+   "interval": {
+    "Max": 2,
+    "Min": 1.75
+   },
+   "projectile_plantfood": "stickybomb_pf"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ }
+}

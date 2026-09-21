@@ -1,0 +1,62 @@
+{
+ "id": "eighties_punk_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 400,
+  "speed": 0.23125,
+  "eat_dps": 100,
+  "wave_cost": 500,
+  "weight": 1000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "JamStyle": "jam_punk",
+  "PushCooldown": 2,
+  "SkunkChasingSpeedMult": 1,
+  "SkunkCooldown": 5,
+  "SkunkPositionList": [
+   {
+    "x": -1,
+    "y": -1
+   },
+   {
+    "x": 0,
+    "y": -1
+   },
+   {
+    "x": 1,
+    "y": -1
+   },
+   {
+    "x": -1,
+    "y": 0
+   },
+   {
+    "x": 1,
+    "y": 0
+   },
+   {
+    "x": -1,
+    "y": 1
+   },
+   {
+    "x": 0,
+    "y": 1
+   },
+   {
+    "x": 1,
+    "y": 1
+   }
+  ],
+  "SkunkType": "eighties_skunk"
+ }
+}

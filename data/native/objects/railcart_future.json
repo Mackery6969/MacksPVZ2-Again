@@ -1,0 +1,10 @@
+{
+ "id": "railcart_future",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "RailType": "rail_future",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Future"
+ }
+}

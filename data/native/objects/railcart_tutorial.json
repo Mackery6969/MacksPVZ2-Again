@@ -1,0 +1,10 @@
+{
+ "id": "railcart_tutorial",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "RailType": "rail_tutorial",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Frontyard"
+ }
+}

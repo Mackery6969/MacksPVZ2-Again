@@ -1,0 +1,18 @@
+{
+ "id": "akee",
+ "stats": {
+  "damage": 60
+ },
+ "extra": {
+  "MaxHitCount": {
+   "Max": 4,
+   "Min": 4
+  },
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "MintBoostedType": "akee_mint",
+  "Props": "RTID(akee@ProjectileProps)"
+ }
+}

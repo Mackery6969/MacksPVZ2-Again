@@ -1,0 +1,30 @@
+{
+ "id": "pyrevine",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 125,
+  "toughness": 300,
+  "cooldown": 12,
+  "cooldown_from": 0.833,
+  "beghouled_cost": 2000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "DPS": 20,
+  "DPSPlantfood": 600,
+  "FireDistance": 2,
+  "FireExtraDuration": 1.5,
+  "ImmuneToIceblock": true,
+  "MintDamageFactor": 4,
+  "PlantfoodDuration": 3,
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 3,
+   "PulseInitialDelay": 0.5
+  }
+ }
+}

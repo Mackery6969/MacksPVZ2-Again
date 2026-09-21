@@ -1,0 +1,25 @@
+{
+ "id": "birthday_juggler",
+ "extends": "normal",
+ "stats": {
+  "toughness": 420,
+  "speed": 0.2,
+  "eat_dps": 100,
+  "wave_cost": 450,
+  "weight": 3500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "MoveSpeedMultiplierWhileJuggling": 2,
+  "RotateDuration": 2
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "id": "easter_armor4",
+ "stats": {
+  "toughness": 2200,
+  "bowling_level": 4,
+  "is_metal": false,
+  "is_ice": false
+ }
+}

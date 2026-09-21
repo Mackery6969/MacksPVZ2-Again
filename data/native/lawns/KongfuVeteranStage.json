@@ -1,0 +1,57 @@
+{
+ "id": "KongfuVeteranStage",
+ "music": "Kongfu",
+ "mower": "mower_kongfu",
+ "railcart": "railcart_kongfu",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "kongfu_armor1",
+   "monk_armor1",
+   "abbot_armor1"
+  ],
+  "armor2": [
+   "kongfu_armor2",
+   "monk_armor2",
+   "abbot_armor2"
+  ],
+  "armor3": [
+   "kongfu_armor3",
+   "monk_armor3",
+   "abbot_armor3"
+  ],
+  "armor4": [
+   "kongfu_armor4",
+   "monk_armor4",
+   "abbot_armor4"
+  ],
+  "basic": [
+   "kongfu",
+   "monk",
+   "abbot"
+  ],
+  "flag": [
+   "kongfu_flag",
+   "monk_flag",
+   "abbot_flag"
+  ],
+  "gargantuar": [
+   "kongfu_bronze_strong",
+   "kongfu_bronze_hook",
+   "kongfu_bronze_chi"
+  ],
+  "imp": [
+   "kongfu_rocket_imp",
+   "monk_imp",
+   "abbot_imp"
+  ],
+  "rally": [
+   "kongfu_flag_veteran",
+   "monk_flag_veteran",
+   "abbot_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "kongfu_rack_torch"
+ ]
+}

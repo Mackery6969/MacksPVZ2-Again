@@ -1,0 +1,25 @@
+{
+ "id": "eighties_punk",
+ "extends": "normal",
+ "stats": {
+  "toughness": 250,
+  "speed": 0.23125,
+  "eat_dps": 100,
+  "wave_cost": 300,
+  "weight": 1000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "JamStyle": "jam_punk",
+  "PushCooldown": 2
+ }
+}

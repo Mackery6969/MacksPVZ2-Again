@@ -1,0 +1,13 @@
+{
+ "id": "turkey",
+ "stats": {
+  "damage": 0
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "ZombieTypeToSpawn": "turkeypult_turkey",
+  "MintBoostedType": "turkey_mint",
+  "Props": "RTID(turkey@ProjectileProps)"
+ }
+}

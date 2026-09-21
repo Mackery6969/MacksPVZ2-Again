@@ -1,0 +1,8 @@
+{
+ "id": "rail",
+ "category": "tile",
+ "extra": {
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Frontyard"
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "ModernStage",
+ "music": "Modern",
+ "mower": "mower_modern",
+ "railcart": "railcart_tutorial",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "tutorial_armor1"
+  ],
+  "armor2": [
+   "tutorial_armor2"
+  ],
+  "armor3": [
+   "tutorial_armor2"
+  ],
+  "armor4": [
+   "tutorial_armor4"
+  ],
+  "basic": [
+   "tutorial"
+  ],
+  "flag": [
+   "tutorial_flag"
+  ],
+  "gargantuar": [
+   "tutorial_gargantuar"
+  ],
+  "imp": [
+   "tutorial_imp"
+  ],
+  "rally": [
+   "tutorial_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

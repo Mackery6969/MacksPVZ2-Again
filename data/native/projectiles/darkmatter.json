@@ -1,0 +1,24 @@
+{
+ "id": "darkmatter",
+ "stats": {
+  "damage": 40
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 30,
+   "w": 30
+  },
+  "SplashDamage": [
+   {
+    "Damage": 80,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(darkmatter@ProjectileProps)"
+ }
+}

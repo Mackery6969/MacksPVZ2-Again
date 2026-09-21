@@ -1,0 +1,29 @@
+{
+ "id": "sea_pea_flame_blue",
+ "extends": "pea_flame_blue",
+ "stats": {
+  "damage": 30
+ },
+ "extra": {
+  "DamageScale": 3,
+  "DamageType": "fire",
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "SplashDamage": [
+   {
+    "Damage": 30,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "MintBoostedType": "sea_pea2_flame_blue",
+  "Props": "RTID(sea_pea_flame_blue@ProjectileProps)"
+ }
+}

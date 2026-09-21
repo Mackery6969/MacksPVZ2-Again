@@ -1,0 +1,29 @@
+{
+ "id": "feastivus_troglobite_2block",
+ "extends": "iceage_troglobite",
+ "stats": {
+  "toughness": 470,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 400,
+  "weight": 3500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "BullyAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "BullyHitRect"
+  }
+ ],
+ "extra": {
+  "ChillInsteadOfFreeze": true,
+  "ImpTypes": [
+   "feastivus_imp",
+   "holiday_imp"
+  ],
+  "NumberOfIceblocksToSpawnWith": 2
+ }
+}

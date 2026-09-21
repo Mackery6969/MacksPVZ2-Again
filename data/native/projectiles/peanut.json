@@ -1,0 +1,7 @@
+{
+ "id": "peanut",
+ "extra": {
+  "MintBoostedType": "peanut2",
+  "Props": "RTID(pea@ProjectileProps)"
+ }
+}

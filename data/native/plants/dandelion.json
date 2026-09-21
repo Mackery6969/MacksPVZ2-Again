@@ -1,0 +1,30 @@
+{
+ "id": "dandelion",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 275,
+  "toughness": 300,
+  "cooldown": 15,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 3000
+ },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "dandelion",
+   "interval": 1.9,
+   "interval_jitter": 0.2,
+   "projectile_plantfood": "dandelion_pf"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "BlowProjectileCount": 12,
+  "BlowRecoverTime": 15,
+  "PeaTypeBlew": "dandelion_blew"
+ }
+}

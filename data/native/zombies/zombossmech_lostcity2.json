@@ -1,0 +1,214 @@
+{
+ "id": "zombossmech_lostcity2",
+ "extends": "zomboss",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0
+ },
+ "sort": "Zomboss",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "LostcityZombossMechAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "LostcityZombossMechHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "FoeEatDamageReflectPct": 0.5,
+  "IdleColumn": 6,
+  "MissileType": "zomboss_lostcity_sandbag",
+  "ZombossMechLevel": 1,
+  "ZombossStages": [
+   {
+    "Actions": [
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 1,
+      "summonProps": {
+       "plantfoodchance": 0.1,
+       "pointMax": 3500,
+       "pointMin": 1500,
+       "zombieList": [
+        "lostcity_armor4",
+        "lostcity_armor2",
+        "lostcity_imp",
+        "lostcity_jane"
+       ]
+      },
+      "weight": 10
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 1,
+      "summonProps": {
+       "plantfoodchance": 0.1,
+       "pointMax": 2500,
+       "pointMin": 1500,
+       "zombieList": [
+        "lostcity_armor4",
+        "lostcity_armor2",
+        "lostcity_imp",
+        "lostcity_excavator"
+       ]
+      },
+      "weight": 10
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 10
+     }
+    ],
+    "AnimRateModifier": 1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 0,
+    "DamageIndexHalf": 2,
+    "HitPoints": 15000,
+    "MaxIdleTime": 2.5,
+    "MinIdleTime": 2,
+    "ParachuteColumn": {
+     "Max": 5,
+     "Min": 4
+    },
+    "ParachuteCount": {
+     "Max": 3,
+     "Min": 3
+    },
+    "ParachuteType": "lostcity_lostpilot_veteran_for_zomboss",
+    "StunDamageScale": 1.5,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2.5
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "summon",
+      "repeatMax": 3,
+      "repeatMin": 1,
+      "summonProps": {
+       "plantfoodchance": 0,
+       "pointMax": 3500,
+       "pointMin": 2500,
+       "zombieList": [
+        "lostcity_crystalskull",
+        "lostcity_bug_armor2",
+        "lostcity_bug_armor4"
+       ]
+      },
+      "weight": 20
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 4500,
+       "pointMin": 2500,
+       "zombieList": []
+      },
+      "weight": 15
+     }
+    ],
+    "AnimRateModifier": 1.1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 3,
+    "DamageIndexHalf": 4,
+    "HitPoints": 35000,
+    "MaxIdleTime": 1,
+    "MinIdleTime": 0.5,
+    "ParachuteColumn": {
+     "Max": 5,
+     "Min": 3
+    },
+    "ParachuteCount": {
+     "Max": 4,
+     "Min": 3
+    },
+    "ParachuteType": "lostcity_lostpilot_veteran_for_zomboss",
+    "StunDamageScale": 1.5,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 3
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 1,
+      "summonProps": {
+       "plantfoodchance": 0.1,
+       "pointMax": 4500,
+       "pointMin": 3500,
+       "zombieList": [
+        "lostcity_armor2",
+        "lostcity_gargantuar",
+        "lostcity_crystalskull",
+        "lostcity_impporter"
+       ]
+      },
+      "weight": 20
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 7
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 8
+     }
+    ],
+    "AnimRateModifier": 1.25,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 5,
+    "DamageIndexHalf": 6,
+    "HitPoints": 135000,
+    "MaxIdleTime": 0.7,
+    "MinIdleTime": 0.3,
+    "ParachuteColumn": {
+     "Max": 4,
+     "Min": 2
+    },
+    "ParachuteCount": {
+     "Max": 4,
+     "Min": 3
+    },
+    "ParachuteType": "lostcity_lostpilot_veteran_for_zomboss",
+    "StunDamageScale": 1.5,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 1.5
+   }
+  ]
+ }
+}

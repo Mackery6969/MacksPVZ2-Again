@@ -1,0 +1,26 @@
+{
+ "id": "electricpeashooter",
+ "family": "Electricity",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "CallsElectricCurrant": true,
+  "ImmuneToLightningCharge": true,
+  "PeaType": "electricpea",
+  "PeaTypePlantfood": "electricpea_pf",
+  "PlantfoodPeaCount": 5,
+  "RedAttackStunDuration": 0.25,
+  "ShootInterval": 2.7,
+  "ShootIntervalAdditional": 0.15
+ }
+}

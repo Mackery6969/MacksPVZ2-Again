@@ -1,0 +1,30 @@
+{
+ "id": "dino_bully_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 2470,
+  "speed": 0.16,
+  "eat_dps": 100,
+  "wave_cost": 1000,
+  "weight": 4500
+ },
+ "tags": {
+  "remove": [
+   "knockbackable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "BullyAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "BullyHitRect"
+  }
+ ],
+ "extra": {
+  "CraterLifetime": 25,
+  "SmashDamage": 1500
+ }
+}

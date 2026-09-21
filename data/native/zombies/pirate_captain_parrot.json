@@ -1,0 +1,38 @@
+{
+ "id": "pirate_captain_parrot",
+ "extends": "normal",
+ "stats": {
+  "toughness": 300,
+  "speed": 1.4,
+  "eat_dps": 100,
+  "wave_cost": 400,
+  "weight": 0
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable",
+   "divertable",
+   "enlightenable",
+   "hypnotizable",
+   "plantfood_carrier"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "PirateParrotAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "PirateParrotHitRect"
+  }
+ ],
+ "extra": {
+  "CanBeEasilySwallowedByChomper": true,
+  "FlyingSpeed": 1.4,
+  "KilledByShrinkingViolet": true
+ }
+}

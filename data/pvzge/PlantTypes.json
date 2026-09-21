@@ -1,0 +1,1530 @@
+{
+ "ailmint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "ailmint",
+   "Properties": "RTID(ailmint@PlantProps)"
+  }
+ },
+ "akee": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "akee",
+   "Properties": "RTID(akee@PlantProps)"
+  }
+ },
+ "aloe": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "aloe",
+   "Properties": "RTID(aloe@PlantProps)"
+  }
+ },
+ "anthurium": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "anthurium",
+   "Properties": "RTID(anthurium@PlantProps)"
+  }
+ },
+ "appeasemint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "appeasemint",
+   "Properties": "RTID(appeasemint@PlantProps)"
+  }
+ },
+ "applemortar": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "applemortar",
+   "Properties": "RTID(applemortar@PlantProps)"
+  }
+ },
+ "armamint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "armamint",
+   "Properties": "RTID(armamint@PlantProps)"
+  }
+ },
+ "asparagus": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "asparagus",
+   "Properties": "RTID(asparagus@PlantProps)"
+  }
+ },
+ "atombomb": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "atombomb",
+   "Properties": "RTID(atombomb@PlantProps)"
+  }
+ },
+ "atombomb_seedling": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "atombomb_seedling",
+   "Properties": "RTID(seedling@PlantProps)"
+  }
+ },
+ "bamboobusket": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bamboobusket",
+   "Properties": "RTID(bamboobusket@PlantProps)"
+  }
+ },
+ "bambooshoot": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bambooshoot",
+   "Properties": "RTID(bambooshoot@PlantProps)"
+  }
+ },
+ "bamboozle": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bamboozle",
+   "Properties": "RTID(bamboozle@PlantProps)"
+  }
+ },
+ "banana": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "banana",
+   "Properties": "RTID(banana@PlantProps)"
+  }
+ },
+ "blastberry": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "blastberry",
+   "Properties": "RTID(blastberry@PlantProps)"
+  }
+ },
+ "bloomerang": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bloomerang",
+   "Properties": "RTID(bloomerang@PlantProps)"
+  }
+ },
+ "bloominghearts": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bloominghearts",
+   "Properties": "RTID(bloominghearts@PlantProps)"
+  }
+ },
+ "blover": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "blover",
+   "Properties": "RTID(blover@PlantProps)"
+  }
+ },
+ "bombardmint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bombardmint",
+   "Properties": "RTID(bombardmint@PlantProps)"
+  }
+ },
+ "bonkchoy": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bonkchoy",
+   "Properties": "RTID(bonkchoy@PlantProps)"
+  }
+ },
+ "bowlingbulb": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bowlingbulb",
+   "Properties": "RTID(bowlingbulb@PlantProps)"
+  }
+ },
+ "bulbkekengi": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "bulbkekengi",
+   "Properties": "RTID(bulbkekengi@PlantProps)"
+  }
+ },
+ "buttercup": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "buttercup",
+   "Properties": "RTID(buttercup@PlantProps)"
+  }
+ },
+ "cabbagepult": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "cabbagepult",
+   "Properties": "RTID(cabbagepult@PlantProps)"
+  }
+ },
+ "cactus": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "cactus",
+   "Properties": "RTID(cactus@PlantProps)"
+  }
+ },
+ "cantaloupe": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "cantaloupe",
+   "Properties": "RTID(cantaloupe@PlantProps)"
+  }
+ },
+ "caulipower": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "caulipower",
+   "Properties": "RTID(caulipower@PlantProps)"
+  }
+ },
+ "celerystalker": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "celerystalker",
+   "Properties": "RTID(celerystalker@PlantProps)"
+  }
+ },
+ "chardguard": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "chardguard",
+   "Properties": "RTID(chardguard@PlantProps)"
+  }
+ },
+ "cherry_bomb": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "cherry_bomb",
+   "Properties": "RTID(cherry_bomb@PlantProps)"
+  }
+ },
+ "chilibean": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "chilibean",
+   "Properties": "RTID(chilibean@PlantProps)"
+  }
+ },
+ "chillypepper": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "chillypepper",
+   "Properties": "RTID(chillypepper@PlantProps)"
+  }
+ },
+ "chomper": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "chomper",
+   "Properties": "RTID(chomper@PlantProps)"
+  }
+ },
+ "citron": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "citron",
+   "Properties": "RTID(citron@PlantProps)"
+  }
+ },
+ "coconutcannon": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "coconutcannon",
+   "Properties": "RTID(coconutcannon@PlantProps)"
+  }
+ },
+ "coldsnapdragon": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "coldsnapdragon",
+   "Properties": "RTID(coldsnapdragon@PlantProps)"
+  }
+ },
+ "concealmint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "concealmint",
+   "Properties": "RTID(concealmint@PlantProps)"
+  }
+ },
+ "containmint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "containmint",
+   "Properties": "RTID(containmint@PlantProps)"
+  }
+ },
+ "cranjelly": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "cranjelly",
+   "Properties": "RTID(cranjelly@PlantProps)"
+  }
+ },
+ "dandelion": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "dandelion",
+   "Properties": "RTID(dandelion@PlantProps)"
+  }
+ },
+ "darkmatterdragonfruit": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "darkmatterdragonfruit",
+   "Properties": "RTID(darkmatterdragonfruit@PlantProps)"
+  }
+ },
+ "doomshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "doomshroom",
+   "Properties": "RTID(doomshroom@PlantProps)"
+  }
+ },
+ "dragonbabybruit": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "dragonbabybruit",
+   "Properties": "RTID(dragonbabybruit@PlantProps)"
+  }
+ },
+ "dragonbruit": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "dragonbruit",
+   "Properties": "RTID(dragonbruit@PlantProps)"
+  }
+ },
+ "dusklobber": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "dusklobber",
+   "Properties": "RTID(dusklobber@PlantProps)"
+  }
+ },
+ "electricblueberry": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "electricblueberry",
+   "Properties": "RTID(electricblueberry@PlantProps)"
+  }
+ },
+ "electriccurrant": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "electriccurrant",
+   "Properties": "RTID(electriccurrant@PlantProps)"
+  }
+ },
+ "electricpeashooter": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "electricpeashooter",
+   "Properties": "RTID(electricpeashooter@PlantProps)"
+  }
+ },
+ "empea": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "empea",
+   "Properties": "RTID(empea@PlantProps)"
+  }
+ },
+ "enchantmint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "enchantmint",
+   "Properties": "RTID(enchantmint@PlantProps)"
+  }
+ },
+ "endurian": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "endurian",
+   "Properties": "RTID(endurian@PlantProps)"
+  }
+ },
+ "enforcemint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "enforcemint",
+   "Properties": "RTID(enforcemint@PlantProps)"
+  }
+ },
+ "enlightenmint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "enlightenmint",
+   "Properties": "RTID(enlightenmint@PlantProps)"
+  }
+ },
+ "escaperoot": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "escaperoot",
+   "Properties": "RTID(escaperoot@PlantProps)"
+  }
+ },
+ "explodeonut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "explodeonut",
+   "Properties": "RTID(explodeonut@PlantProps)"
+  }
+ },
+ "filamint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "filamint",
+   "Properties": "RTID(filamint@PlantProps)"
+  }
+ },
+ "firegourd": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "firegourd",
+   "Properties": "RTID(firegourd@PlantProps)"
+  }
+ },
+ "firepeashooter": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "firepeashooter",
+   "Properties": "RTID(firepeashooter@PlantProps)"
+  }
+ },
+ "floawerPot": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "floawerPot",
+   "Properties": "RTID(floawerPot@PlantProps)"
+  }
+ },
+ "fumeshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "fumeshroom",
+   "Properties": "RTID(fumeshroom@PlantProps)"
+  }
+ },
+ "garlic": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "garlic",
+   "Properties": "RTID(garlic@PlantProps)"
+  }
+ },
+ "gatling": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "gatling",
+   "Properties": "RTID(gatling@PlantProps)"
+  }
+ },
+ "ghostpepper": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "ghostpepper",
+   "Properties": "RTID(ghostpepper@PlantProps)"
+  }
+ },
+ "glaciershroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "glaciershroom",
+   "Properties": "RTID(glaciershroom@PlantProps)"
+  }
+ },
+ "gloomshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "gloomshroom",
+   "Properties": "RTID(gloomshroom@PlantProps)"
+  }
+ },
+ "gloomvine": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "gloomvine",
+   "Properties": "RTID(gloomvine@PlantProps)"
+  }
+ },
+ "goldbloom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "goldbloom",
+   "Properties": "RTID(goldbloom@PlantProps)"
+  }
+ },
+ "goldleaf": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "goldleaf",
+   "Properties": "RTID(goldleaf@PlantProps)"
+  }
+ },
+ "grapeshot": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "grapeshot",
+   "Properties": "RTID(grapeshot@PlantProps)"
+  }
+ },
+ "gravebuster": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "gravebuster",
+   "Properties": "RTID(gravebuster@PlantProps)"
+  }
+ },
+ "grimrose": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "grimrose",
+   "Properties": "RTID(grimrose@PlantProps)"
+  }
+ },
+ "guacodile": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "guacodile",
+   "Properties": "RTID(guacodile@PlantProps)"
+  }
+ },
+ "gumnut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "gumnut",
+   "Properties": "RTID(gumnut@PlantProps)"
+  }
+ },
+ "hollybarrierleaf": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "hollybarrierleaf",
+   "Properties": "RTID(hollybarrierleaf@PlantProps)"
+  }
+ },
+ "hollybarrierleafplantfood": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "hollybarrierleafplantfood",
+   "Properties": "RTID(hollybarrierleafplantfood@PlantProps)"
+  }
+ },
+ "hollyknight": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "hollyknight",
+   "Properties": "RTID(hollyknight@PlantProps)"
+  }
+ },
+ "holonut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "holonut",
+   "Properties": "RTID(holonut@PlantProps)"
+  }
+ },
+ "homingthistle": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "homingthistle",
+   "Properties": "RTID(homingthistle@PlantProps)"
+  }
+ },
+ "hotdate": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "hotdate",
+   "Properties": "RTID(hotdate@PlantProps)"
+  }
+ },
+ "hotpotato": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "hotpotato",
+   "Properties": "RTID(hotpotato@PlantProps)"
+  }
+ },
+ "hurrikale": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "hurrikale",
+   "Properties": "RTID(hurrikale@PlantProps)"
+  }
+ },
+ "hypnoshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "hypnoshroom",
+   "Properties": "RTID(hypnoshroom@PlantProps)"
+  }
+ },
+ "icebloom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "icebloom",
+   "Properties": "RTID(icebloom@PlantProps)"
+  }
+ },
+ "iceburg": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "iceburg",
+   "Properties": "RTID(iceburg@PlantProps)"
+  }
+ },
+ "iceweed": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "iceweed",
+   "Properties": "RTID(iceweed@PlantProps)"
+  }
+ },
+ "imitater": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "imitater",
+   "Properties": "RTID(imitater@PlantProps)"
+  }
+ },
+ "inferno": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "inferno",
+   "Properties": "RTID(inferno@PlantProps)"
+  }
+ },
+ "intensivecarrot": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "intensivecarrot",
+   "Properties": "RTID(intensivecarrot@PlantProps)"
+  }
+ },
+ "jackolantern": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "jackolantern",
+   "Properties": "RTID(jackolantern@PlantProps)"
+  }
+ },
+ "jalapeno": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "jalapeno",
+   "Properties": "RTID(jalapeno@PlantProps)"
+  }
+ },
+ "kernelpult": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "kernelpult",
+   "Properties": "RTID(kernelpult@PlantProps)"
+  }
+ },
+ "laser_bean": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "laser_bean",
+   "Properties": "RTID(laser_bean@PlantProps)"
+  }
+ },
+ "lavaguava": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "lavaguava",
+   "Properties": "RTID(lavaguava@PlantProps)"
+  }
+ },
+ "lightningreed": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "lightningreed",
+   "Properties": "RTID(lightningreed@PlantProps)"
+  }
+ },
+ "lilypad": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "lilypad",
+   "Properties": "RTID(lilypad@PlantProps)"
+  }
+ },
+ "loquat": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "loquat",
+   "Properties": "RTID(loquat@PlantProps)"
+  }
+ },
+ "lotorpedo": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "lotorpedo",
+   "Properties": "RTID(lotorpedo@PlantProps)"
+  }
+ },
+ "lychee": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "lychee",
+   "Properties": "RTID(lychee@PlantProps)"
+  }
+ },
+ "magnetshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "magnetshroom",
+   "Properties": "RTID(magnetshroom@PlantProps)"
+  }
+ },
+ "magnifyinggrass": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "magnifyinggrass",
+   "Properties": "RTID(magnifyinggrass@PlantProps)"
+  }
+ },
+ "marigold": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "marigold",
+   "Properties": "RTID(marigold@PlantProps)"
+  }
+ },
+ "marigold_blue": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "marigold_blue",
+   "Properties": "RTID(marigold_blue@PlantProps)"
+  }
+ },
+ "marigold_green": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "marigold_green",
+   "Properties": "RTID(marigold_green@PlantProps)"
+  }
+ },
+ "marigold_orange": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "marigold_orange",
+   "Properties": "RTID(marigold_orange@PlantProps)"
+  }
+ },
+ "marigold_pink": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "marigold_pink",
+   "Properties": "RTID(marigold_pink@PlantProps)"
+  }
+ },
+ "marigold_purple": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "marigold_purple",
+   "Properties": "RTID(marigold_purple@PlantProps)"
+  }
+ },
+ "marigold_red": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "marigold_red",
+   "Properties": "RTID(marigold_red@PlantProps)"
+  }
+ },
+ "marigold_yellow": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "marigold_yellow",
+   "Properties": "RTID(marigold_yellow@PlantProps)"
+  }
+ },
+ "megagatling": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "megagatling",
+   "Properties": "RTID(megagatling@PlantProps)"
+  }
+ },
+ "melonpult": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "melonpult",
+   "Properties": "RTID(melonpult@PlantProps)"
+  }
+ },
+ "meteorflower": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "meteorflower",
+   "Properties": "RTID(meteorflower@PlantProps)"
+  }
+ },
+ "mirrornut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "mirrornut",
+   "Properties": "RTID(mirrornut@PlantProps)"
+  }
+ },
+ "missiletoe": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "missiletoe",
+   "Properties": "RTID(missiletoe@PlantProps)"
+  }
+ },
+ "moonbean": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "moonbean",
+   "Properties": "RTID(moonbean@PlantProps)"
+  }
+ },
+ "moonflower": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "moonflower",
+   "Properties": "RTID(moonflower@PlantProps)"
+  }
+ },
+ "murkadamia": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "murkadamia",
+   "Properties": "RTID(murkadamia@PlantProps)"
+  }
+ },
+ "nightshade": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "nightshade",
+   "Properties": "RTID(nightshade@PlantProps)"
+  }
+ },
+ "noctarine": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "noctarine",
+   "Properties": "RTID(noctarine@PlantProps)"
+  }
+ },
+ "parsnip": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "parsnip",
+   "Properties": "RTID(parsnip@PlantProps)"
+  }
+ },
+ "peach": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "peach",
+   "Properties": "RTID(peach@PlantProps)"
+  }
+ },
+ "peacommando": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "peacommando",
+   "Properties": "RTID(peacommando@PlantProps)"
+  }
+ },
+ "peanut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "peanut",
+   "Properties": "RTID(peanut@PlantProps)"
+  }
+ },
+ "peapod": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "peapod",
+   "Properties": "RTID(peapod@PlantProps)"
+  }
+ },
+ "peashooter": {
+  "objclass": "PlantType",
+  "objdata": {
+   "//PlantRedirection": [
+    {
+     "Type": "peashooter",
+     "Weight": 1
+    }
+   ],
+   "//ShiftedPlantFeatures": {
+    "ALMANAC": "RTID(peashooter@PlantAlmanac)"
+   },
+   "PlantBasedOn": "peashooter",
+   "Properties": "RTID(peashooter@PlantProps)"
+  }
+ },
+ "peppermint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "peppermint",
+   "Properties": "RTID(peppermint@PlantProps)"
+  }
+ },
+ "pepperpult": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "pepperpult",
+   "Properties": "RTID(pepperpult@PlantProps)"
+  }
+ },
+ "perfumeshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "perfumeshroom",
+   "Properties": "RTID(perfumeshroom@PlantProps)"
+  }
+ },
+ "phatbeet": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "phatbeet",
+   "Properties": "RTID(phatbeet@PlantProps)"
+  }
+ },
+ "phatbeet_rhythm": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "phatbeet_rhythm",
+   "Properties": "RTID(phatbeet_rhythm@PlantProps)"
+  }
+ },
+ "pineapple": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "pineapple",
+   "Properties": "RTID(pineapple@PlantProps)"
+  }
+ },
+ "pinkstarfruit": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "pinkstarfruit",
+   "Properties": "RTID(pinkstarfruit@PlantProps)"
+  }
+ },
+ "plantern": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "plantern",
+   "Properties": "RTID(plantern@PlantProps)"
+  }
+ },
+ "poisonpeashooter": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "poisonpeashooter",
+   "Properties": "RTID(poisonpeashooter@PlantProps)"
+  }
+ },
+ "potatomine": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "potatomine",
+   "Properties": "RTID(potatomine@PlantProps)"
+  }
+ },
+ "powerlily": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "powerlily",
+   "Properties": "RTID(powerlily@PlantProps)"
+  }
+ },
+ "powerplant": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "powerplant",
+   "Properties": "RTID(powerplant_epsilon@PlantProps)"
+  }
+ },
+ "powerplant_alpha": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "powerplant_alpha",
+   "Properties": "RTID(powerplant_alpha@PlantProps)"
+  }
+ },
+ "powerplant_beta": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "powerplant_beta",
+   "Properties": "RTID(powerplant_beta@PlantProps)"
+  }
+ },
+ "powerplant_delta": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "powerplant_delta",
+   "Properties": "RTID(powerplant_delta@PlantProps)"
+  }
+ },
+ "powerplant_epsilon": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "powerplant_epsilon",
+   "Properties": "RTID(powerplant_epsilon@PlantProps)"
+  }
+ },
+ "powerplant_gamma": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "powerplant_gamma",
+   "Properties": "RTID(powerplant_gamma@PlantProps)"
+  }
+ },
+ "primalpeashooter": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "primalpeashooter",
+   "Properties": "RTID(primalpeashooter@PlantProps)"
+  }
+ },
+ "primalpotatomine": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "primalpotatomine",
+   "Properties": "RTID(primalpotatomine@PlantProps)"
+  }
+ },
+ "primalsunflower": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "primalsunflower",
+   "Properties": "RTID(primalsunflower@PlantProps)"
+  }
+ },
+ "primalwallnut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "primalwallnut",
+   "Properties": "RTID(primalwallnut@PlantProps)"
+  }
+ },
+ "puffshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "puffshroom",
+   "Properties": "RTID(puffshroom@PlantProps)"
+  }
+ },
+ "pumpkin": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "pumpkin",
+   "Properties": "RTID(pumpkin@PlantProps)"
+  }
+ },
+ "pvine": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "pvine",
+   "Properties": "RTID(pvine@PlantProps)"
+  }
+ },
+ "pyrevine": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "pyrevine",
+   "Properties": "RTID(pyrevine@PlantProps)"
+  }
+ },
+ "redstinger": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "redstinger",
+   "Properties": "RTID(redstinger@PlantProps)"
+  }
+ },
+ "reinforcemint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "reinforcemint",
+   "Properties": "RTID(reinforcemint@PlantProps)"
+  }
+ },
+ "repeater": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "repeater",
+   "Properties": "RTID(repeater@PlantProps)"
+  }
+ },
+ "sapfling": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "sapfling",
+   "Properties": "RTID(sapfling@PlantProps)"
+  }
+ },
+ "scaredyshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "scaredyshroom",
+   "Properties": "RTID(scaredyshroom@PlantProps)"
+  }
+ },
+ "seashooter": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "seashooter",
+   "Properties": "RTID(seashooter@PlantProps)"
+  }
+ },
+ "seashroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "seashroom",
+   "Properties": "RTID(seashroom@PlantProps)"
+  }
+ },
+ "seedling": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "seedling",
+   "Properties": "RTID(seedling@PlantProps)"
+  }
+ },
+ "shadowpeashooter": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "shadowpeashooter",
+   "Properties": "RTID(shadowpeashooter@PlantProps)"
+  }
+ },
+ "shadowshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "shadowshroom",
+   "Properties": "RTID(shadowshroom@PlantProps)"
+  }
+ },
+ "shinevine": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "shinevine",
+   "Properties": "RTID(shinevine@PlantProps)"
+  }
+ },
+ "shootingstarfruit": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "shootingstarfruit",
+   "Properties": "RTID(shootingstarfruit@PlantProps)"
+  }
+ },
+ "shrinkingviolet": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "shrinkingviolet",
+   "Properties": "RTID(shrinkingviolet@PlantProps)"
+  }
+ },
+ "skyshooter": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "skyshooter",
+   "Properties": "RTID(skyshooter@PlantProps)"
+  }
+ },
+ "slingpea": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "slingpea",
+   "Properties": "RTID(slingpea@PlantProps)"
+  }
+ },
+ "snapdragon": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "snapdragon",
+   "Properties": "RTID(snapdragon@PlantProps)"
+  }
+ },
+ "snappea": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "snappea",
+   "Properties": "RTID(snappea@PlantProps)"
+  }
+ },
+ "snowdrop": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "snowdrop",
+   "Properties": "RTID(snowdrop@PlantProps)"
+  }
+ },
+ "snowpea": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "snowpea",
+   "Properties": "RTID(snowpea@PlantProps)"
+  }
+ },
+ "solarsage": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "solarsage",
+   "Properties": "RTID(solarsage@PlantProps)"
+  }
+ },
+ "solartomato": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "solartomato",
+   "Properties": "RTID(solartomato@PlantProps)"
+  }
+ },
+ "spearmint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "spearmint",
+   "Properties": "RTID(spearmint@PlantProps)"
+  }
+ },
+ "spikerock": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "spikerock",
+   "Properties": "RTID(spikerock@PlantProps)"
+  }
+ },
+ "spikeweed": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "spikeweed",
+   "Properties": "RTID(spikeweed@PlantProps)"
+  }
+ },
+ "splitpea": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "splitpea",
+   "Properties": "RTID(splitpea@PlantProps)"
+  }
+ },
+ "sporeshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "sporeshroom",
+   "Properties": "RTID(sporeshroom@PlantProps)"
+  }
+ },
+ "springbean": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "springbean",
+   "Properties": "RTID(springbean@PlantProps)"
+  }
+ },
+ "squash": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "squash",
+   "Properties": "RTID(squash@PlantProps)"
+  }
+ },
+ "stallia": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "stallia",
+   "Properties": "RTID(stallia@PlantProps)"
+  }
+ },
+ "starfruit": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "starfruit",
+   "Properties": "RTID(starfruit@PlantProps)"
+  }
+ },
+ "stickybombrice": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "stickybombrice",
+   "Properties": "RTID(stickybombrice@PlantProps)"
+  }
+ },
+ "strawburst": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "strawburst",
+   "Properties": "RTID(strawburst@PlantProps)"
+  }
+ },
+ "stunion": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "stunion",
+   "Properties": "RTID(stunion@PlantProps)"
+  }
+ },
+ "sunbean": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "sunbean",
+   "Properties": "RTID(sunbean@PlantProps)"
+  }
+ },
+ "sunflower": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "sunflower",
+   "Properties": "RTID(sunflower@PlantProps)"
+  }
+ },
+ "sunshroom": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "sunshroom",
+   "Properties": "RTID(sunshroom@PlantProps)"
+  }
+ },
+ "sweetpotato": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "sweetpotato",
+   "Properties": "RTID(sweetpotato@PlantProps)"
+  }
+ },
+ "tallnut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tallnut",
+   "Properties": "RTID(tallnut@PlantProps)"
+  }
+ },
+ "tanglekelp": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tanglekelp",
+   "Properties": "RTID(tanglekelp@PlantProps)"
+  }
+ },
+ "threepeater": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "threepeater",
+   "Properties": "RTID(threepeater@PlantProps)"
+  }
+ },
+ "thymewarp": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "thymewarp",
+   "Properties": "RTID(thymewarp@PlantProps)"
+  }
+ },
+ "toadstool": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "toadstool",
+   "Properties": "RTID(toadstool@PlantProps)"
+  }
+ },
+ "tool_projectile_bowling_explodeonut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowling_explodeonut",
+   "Properties": "RTID(tool_projectile_bowling_explodeonut@PlantProps)"
+  }
+ },
+ "tool_projectile_bowling_holonut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowling_holonut",
+   "Properties": "RTID(tool_projectile_bowling_holonut@PlantProps)"
+  }
+ },
+ "tool_projectile_bowling_primalwallnut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowling_primalwallnut",
+   "Properties": "RTID(tool_projectile_bowling_primalwallnut@PlantProps)"
+  }
+ },
+ "tool_projectile_bowling_tallnut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowling_tallnut",
+   "Properties": "RTID(tool_projectile_bowling_tallnut@PlantProps)"
+  }
+ },
+ "tool_projectile_bowling_wallnut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowling_wallnut",
+   "Properties": "RTID(tool_projectile_bowling_wallnut@PlantProps)"
+  }
+ },
+ "tool_projectile_bowlingbulb1": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowlingbulb1",
+   "Properties": "RTID(tool_projectile_bowlingbulb1@PlantProps)"
+  }
+ },
+ "tool_projectile_bowlingbulb2": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowlingbulb2",
+   "Properties": "RTID(tool_projectile_bowlingbulb2@PlantProps)"
+  }
+ },
+ "tool_projectile_bowlingbulb3": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowlingbulb3",
+   "Properties": "RTID(tool_projectile_bowlingbulb3@PlantProps)"
+  }
+ },
+ "tool_projectile_bowlingbulb_explode": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowlingbulb_explode",
+   "Properties": "RTID(tool_projectile_bowlingbulb_explode@PlantProps)"
+  }
+ },
+ "tool_projectile_bowlingbulb_iceburg": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "tool_projectile_bowlingbulb_iceburg",
+   "Properties": "RTID(tool_projectile_bowlingbulb_iceburg@PlantProps)"
+  }
+ },
+ "torchwood": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "torchwood",
+   "Properties": "RTID(torchwood@PlantProps)"
+  }
+ },
+ "turkeypult": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "turkeypult",
+   "Properties": "RTID(turkeypult@PlantProps)"
+  }
+ },
+ "turnip": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "turnip",
+   "Properties": "RTID(turnip@PlantProps)"
+  }
+ },
+ "twinsunflower": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "twinsunflower",
+   "Properties": "RTID(twinsunflower@PlantProps)"
+  }
+ },
+ "umbrellaleaf": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "umbrellaleaf",
+   "Properties": "RTID(umbrellaleaf@PlantProps)"
+  }
+ },
+ "vamporcini": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "vamporcini",
+   "Properties": "RTID(vamporcini@PlantProps)"
+  }
+ },
+ "wallnut": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "wallnut",
+   "Properties": "RTID(wallnut@PlantProps)"
+  }
+ },
+ "wasabiwhip": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "wasabiwhip",
+   "Properties": "RTID(wasabiwhip@PlantProps)"
+  }
+ },
+ "wintermelon": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "wintermelon",
+   "Properties": "RTID(wintermelon@PlantProps)"
+  }
+ },
+ "wintermint": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "wintermint",
+   "Properties": "RTID(wintermint@PlantProps)"
+  }
+ },
+ "witchhazel": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "witchhazel",
+   "Properties": "RTID(witchhazel@PlantProps)"
+  }
+ },
+ "xshot": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "xshot",
+   "Properties": "RTID(xshot@PlantProps)"
+  }
+ },
+ "zombiepotion_invisibility": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "zombiepotion_invisibility",
+   "Properties": "RTID(zombiepotion_invisibility@PlantProps)"
+  }
+ },
+ "zombiepotion_speed": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "zombiepotion_speed",
+   "Properties": "RTID(zombiepotion_speed@PlantProps)"
+  }
+ },
+ "zombiepotion_toughness": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "zombiepotion_toughness",
+   "Properties": "RTID(zombiepotion_toughness@PlantProps)"
+  }
+ },
+ "zoybeanpod": {
+  "objclass": "PlantType",
+  "objdata": {
+   "PlantBasedOn": "zoybeanpod",
+   "Properties": "RTID(zoybeanpod@PlantProps)"
+  }
+ }
+}

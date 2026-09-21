@@ -1,0 +1,22 @@
+{
+ "id": "poisonpeashooter",
+ "family": "Poison",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "PeaType": "pea_goo",
+  "PeaTypePlantfood": "pea_goo_pf",
+  "ShootInterval": 1.35,
+  "ShootIntervalAdditional": 0.15
+ }
+}

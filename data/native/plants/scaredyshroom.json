@@ -1,0 +1,25 @@
+{
+ "id": "scaredyshroom",
+ "family": "Poison",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "KnockbackChance": 0.2,
+  "KnockbackDistance": 0.2,
+  "PlantfoodSporeCount": 40,
+  "ShootInterval": 1.35,
+  "ShootIntervalAdditional": 0.15,
+  "SporeType": "scaredyshroom_spore",
+  "SporeTypePlantfood": "scaredyshroom_spore2"
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "id": "pinkstarfruit",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 225,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1500
+ },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "pinkstar",
+   "interval": 1.35,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "pinkstar_pf",
+   "plantfood_count": 20
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ }
+}

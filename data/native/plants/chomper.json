@@ -1,0 +1,32 @@
+{
+ "id": "chomper",
+ "family": "Melee",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1500
+ },
+ "components": [
+  {
+   "type": "melee"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 4,
+  "plantfood": false
+ },
+ "extra": {
+  "ChewTimePerZombie": 17,
+  "ChompFailDamage": 100,
+  "MaxContainZombieCount": 2,
+  "MintDamageFactor": 3,
+  "PlantfoodPullDuration": 3,
+  "PlantfoodPullSPS": 3,
+  "PlantfoodPushDuration": 3,
+  "PlantfoodPushSPS": 3,
+  "PlantfoodSwallowCount": 4
+ }
+}

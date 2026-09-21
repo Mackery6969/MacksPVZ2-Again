@@ -1,0 +1,15 @@
+{
+ "id": "kongfu_rack_fan",
+ "stats": {
+  "toughness": 800,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": false
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "TombstoneRect"
+  }
+ ]
+}

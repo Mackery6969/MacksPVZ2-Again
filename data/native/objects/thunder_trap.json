@@ -1,0 +1,18 @@
+{
+ "id": "thunder_trap",
+ "category": "tile",
+ "stats": {
+  "recover_delay": 7.5
+ },
+ "extra": {
+  "IntervalBetweenSquares": 0.1,
+  "LinkedTileTypes": [
+   "goldtile"
+  ],
+  "Rect": "RTID(TrapTileRect@RectangleProps)",
+  "SelfIncluded": true,
+  "SquareCracklingDuration": 10,
+  "ThunderArmorProtected": false,
+  "ThunderDamage": 8001
+ }
+}

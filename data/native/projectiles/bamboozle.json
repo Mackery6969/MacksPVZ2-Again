@@ -1,0 +1,16 @@
+{
+ "id": "bamboozle",
+ "stats": {
+  "damage": 600
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DestroysBalloons": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "Props": "RTID(bamboozle@ProjectileProps)"
+ }
+}

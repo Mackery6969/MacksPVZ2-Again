@@ -1,0 +1,29 @@
+{
+ "id": "applemortar",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 250,
+  "toughness": 300,
+  "cooldown": 8,
+  "cooldown_from": 1.25,
+  "beghouled_cost": 2500
+ },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "apple",
+   "projectile_plantfood": "apple_pf"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "ShootInterval": 1.75,
+  "ShootIntervalAdditional": 0.25,
+  "StunDuration": 0.75,
+  "StunDurationPF": 1
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "id": "solarsage",
+ "family": "Sun",
+ "stats": {
+  "sun_cost": 75,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 500
+ },
+ "components": [
+  {
+   "type": "sun_producer"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": true
+ },
+ "extra": {
+  "EnlightenChanceToInfect": 0.2,
+  "EnlightenProduceInterval": {
+   "Max": 14,
+   "Min": 10
+  },
+  "EnlightenSunValue": 50,
+  "EnlightenWalkSPS": 0.3,
+  "MaxAttackTime": 1,
+  "MintProductionFactor": 2,
+  "PlantfoodEnlightenCount": 3
+ }
+}

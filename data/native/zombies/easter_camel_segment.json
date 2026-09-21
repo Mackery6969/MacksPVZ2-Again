@@ -1,0 +1,33 @@
+{
+ "id": "easter_camel_segment",
+ "extends": "normal",
+ "stats": {
+  "toughness": 250,
+  "speed": 0.12,
+  "eat_dps": 100,
+  "wave_cost": 200,
+  "weight": 3000
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CamelSegmentAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CamelSegmentHitRect"
+  }
+ ],
+ "extra": {
+  "TeamMemberCount": [
+   0
+  ],
+  "TeammateType": "easter_camel_segment",
+  "ZombieInside": "easter"
+ }
+}

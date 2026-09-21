@@ -1,0 +1,32 @@
+{
+ "id": "future_jetpack_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 390,
+  "speed": 0.75,
+  "eat_dps": 150,
+  "wave_cost": 450,
+  "weight": 4000
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "FutureJetpackAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "FutureJetpackHitRect"
+  }
+ ],
+ "extra": {
+  "ChooseToSpawnOnNonDeckRows": true
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "id": "shallowpuddle",
+ "category": "tile",
+ "extra": {
+  "Rect": "RTID(TileDefaultRect@RectangleProps)"
+ }
+}

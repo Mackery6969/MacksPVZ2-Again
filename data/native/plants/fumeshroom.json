@@ -1,0 +1,27 @@
+{
+ "id": "fumeshroom",
+ "family": "Poison",
+ "stats": {
+  "sun_cost": 125,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "Damage": 40,
+  "DetectDistance": 4.5,
+  "MintDamageFactor": 3,
+  "PlantfoodDPS": 800,
+  "PlantfoodDuration": 3,
+  "PlantfoodKnockbackSPS": 3,
+  "ShootDistance": 5.5,
+  "ShootInterval": 2.4,
+  "ShootIntervalAdditional": 0.2
+ }
+}

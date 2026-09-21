@@ -1,0 +1,34 @@
+{
+ "id": "powerup_snow",
+ "stats": {
+  "damage": 450
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "ChillDuration": 5,
+  "IceBlockLevel": 1,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 25,
+   "w": 25
+  },
+  "SplashDamage": [
+   {
+    "ChillDuration": 5,
+    "Damage": 5,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   },
+   {
+    "Damage": 450,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "Props": "RTID(powerup_snow@ProjectileProps)"
+ }
+}

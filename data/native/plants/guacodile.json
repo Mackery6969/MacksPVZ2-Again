@@ -1,0 +1,30 @@
+{
+ "id": "guacodile",
+ "family": "Melee",
+ "stats": {
+  "sun_cost": 125,
+  "toughness": 50,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "melee"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "ChildrenBiteDamage": 150,
+  "KnockbackDistance": 2,
+  "PeaType": "guacodile",
+  "PeaTypeChild": "guacodile_child",
+  "PlantfoodTime": 2,
+  "ShootInterval": 1.35,
+  "ShootIntervalAdditional": 0.15
+ }
+}

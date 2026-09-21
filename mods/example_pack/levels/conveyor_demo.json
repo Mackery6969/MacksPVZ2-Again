@@ -1,0 +1,41 @@
+{
+ "id": "conveyor_demo",
+ "comment": "Example Pack - Conveyor Demo",
+ "name": "Belt Drill",
+ "description": "A conveyor level built from Front Lawn content: packets arrive on the belt for free, and the belt slows as it fills.",
+ "author": "example_pack",
+ "number": 1,
+ "stage": "TutorialStage",
+ "seedbank": {
+  "mode": "conveyor",
+  "plants": [
+   {"type": "peashooter", "weight": 100, "max": 4},
+   {"type": "sunflower", "weight": 60, "max": 2},
+   {"type": "wallnut", "weight": 40, "max": 2},
+   {"type": "potatomine", "weight": 30, "max": null}
+  ],
+  "drop_delay": [
+   {"delay": 3, "max_packets": 0},
+   {"delay": 6, "max_packets": 2},
+   {"delay": 9, "max_packets": 4},
+   {"delay": 12, "max_packets": 8}
+  ],
+  "speed": [
+   {"speed": 100, "max_packets": 0}
+  ]
+ },
+ "waves": [
+  {"kind": "spawn", "zombies": [{"type": "tutorial", "row": 3}]},
+  {"kind": "multi", "actions": [
+    {"kind": "spawn", "zombies": [{"type": "tutorial", "row": 2}, {"type": "tutorial", "row": 4}]},
+    {"kind": "conveyor", "remove": ["sunflower"]}
+  ]},
+  {"kind": "spawn", "plantfood": 1, "zombies": [
+    {"type": "tutorial_armor1", "row": 1},
+    {"type": "tutorial", "row": 3},
+    {"type": "tutorial_armor2", "row": 5}
+  ]}
+ ],
+ "wave_settings": {"count": 3, "flag_interval": 3},
+ "features": ["FrontLawnMowers", "DefaultZombieWinCondition", "ZombiesDeadWinCon"]
+}

@@ -1,0 +1,31 @@
+{
+ "id": "feastivus_piano",
+ "extends": "normal",
+ "stats": {
+  "toughness": 840,
+  "speed": 0.2,
+  "eat_dps": 4000,
+  "wave_cost": 450,
+  "weight": 2000
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "divertable",
+   "enlightenable",
+   "swallowable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CowboyPianoAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CowboyPianoHitRect"
+  }
+ ]
+}

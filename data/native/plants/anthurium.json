@@ -1,0 +1,29 @@
+{
+ "id": "anthurium",
+ "family": "Electricity",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "BigBoltType": "anthurium_bolt_big",
+  "BoltType": "anthurium_bolt",
+  "CallsElectricCurrant": true,
+  "ImmuneToLightningCharge": true,
+  "MintDamageFactor": 3,
+  "PlantfoodDamage": 1200,
+  "PlantfoodLightningCount": 3,
+  "PlantfoodSplashDamage": 400,
+  "RedAttackStunDuration": 1,
+  "ShootInterval": 1.35,
+  "ShootIntervalAdditional": 0.15
+ }
+}

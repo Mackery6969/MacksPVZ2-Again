@@ -1,0 +1,12 @@
+{
+ "id": "goldtile",
+ "category": "tile",
+ "extra": {
+  "PlantTypeIndicatesTo": "RTID(goldleaf@PlantTypes)",
+  "ProduceInterval": {
+   "Max": 20,
+   "Min": 20
+  },
+  "Rect": "RTID(TileDefaultRect@RectangleProps)"
+ }
+}

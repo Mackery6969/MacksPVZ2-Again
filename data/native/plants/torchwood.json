@@ -1,0 +1,41 @@
+{
+ "id": "torchwood",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 175,
+  "toughness": 2000,
+  "cooldown": 5,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "shooter"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 2,
+  "speed": 1,
+  "plantfood": true
+ },
+ "extra": {
+  "Damage": 6.25,
+  "DamageInterval": 1,
+  "DamageScale": 2,
+  "DamageScalePlantfooded": 3,
+  "DeathDamage": 450,
+  "DeathFireDuration": 5,
+  "ImmuneToIceblock": true,
+  "PlantfoodDuration": 5,
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 6,
+   "PulseInitialDelay": 0.5
+  },
+  "WarmingRadiusPlantfood": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 1.5,
+   "PulseInitialDelay": 0.5
+  }
+ }
+}

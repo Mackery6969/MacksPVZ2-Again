@@ -1,0 +1,26 @@
+{
+ "id": "skyshooter",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "pea_sky",
+   "interval": 0.9,
+   "interval_jitter": 0.1,
+   "projectile_plantfood": "pea_sky",
+   "plantfood_count": 75
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ }
+}

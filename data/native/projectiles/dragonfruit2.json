@@ -1,0 +1,22 @@
+{
+ "id": "dragonfruit2",
+ "stats": {
+  "damage": 100
+ },
+ "extra": {
+  "Size": {
+   "h": 16.2,
+   "w": 16.2
+  },
+  "SplashDamage": [
+   {
+    "Damage": 50,
+    "Range": {
+     "h": 1,
+     "w": 2
+    }
+   }
+  ],
+  "Props": "RTID(dragonfruit2@ProjectileProps)"
+ }
+}

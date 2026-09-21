@@ -1,0 +1,295 @@
+{
+ "id": "zombossmech_dino",
+ "extends": "zomboss",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0
+ },
+ "sort": "Zomboss",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ZombossMechAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ZombossMechHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "FoeEatDamageReflectPct": 0.5,
+  "IdleColumn": 6,
+  "MissileType": "zomboss_missile_dino",
+  "ZombossMechLevel": 0,
+  "ZombossStages": [
+   {
+    "Actions": [
+     {
+      "actionName": "walk",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 50
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 1200,
+       "pointMin": 400,
+       "zombieList": [
+        "dino",
+        "dino_imp",
+        "dino_armor1"
+       ]
+      },
+      "weight": 20
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "columnOffset": 1,
+       "dinoType": "raptor",
+       "pointMax": 600,
+       "pointMin": 300,
+       "zombieList": [
+        "dino",
+        "dino_armor1"
+       ]
+      },
+      "weight": 15
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "columnOffset": 3,
+       "dinoType": "stego",
+       "pointMax": 1000,
+       "pointMin": 200,
+       "zombieList": [
+        "dino",
+        "dino_imp",
+        "dino_armor1"
+       ]
+      },
+      "weight": 10
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 15
+     }
+    ],
+    "AnimRateModifier": 1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 0,
+    "DamageIndexHalf": 1,
+    "HitPoints": 5000,
+    "MaxIdleTime": 2,
+    "MinIdleTime": 1.5,
+    "MissileCount": {
+     "Max": 2,
+     "Min": 2
+    },
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 3
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "walk",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 50
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 1800,
+       "pointMin": 1200,
+       "zombieList": [
+        "dino_imp",
+        "dino_armor1",
+        "dino_armor2",
+        "dino_bully"
+       ]
+      },
+      "weight": 20
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "columnOffset": 1,
+       "dinoType": "ptero",
+       "pointMax": 1000,
+       "pointMin": 600,
+       "zombieList": [
+        "dino_armor1",
+        "dino_armor2",
+        "dino_armor3"
+       ]
+      },
+      "weight": 25
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 20
+     }
+    ],
+    "AnimRateModifier": 1.1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 2,
+    "DamageIndexHalf": 3,
+    "HitPoints": 9500,
+    "MaxIdleTime": 1.5,
+    "MinIdleTime": 1,
+    "MissileCount": {
+     "Max": 2,
+     "Min": 2
+    },
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2.5
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "walk",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 50
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 3000,
+       "pointMin": 1500,
+       "zombieList": [
+        "dino_imp",
+        "dino_armor3",
+        "dino_armor2",
+        "dino_bully",
+        "dino_armor3"
+       ]
+      },
+      "weight": 20
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "columnOffset": 3,
+       "dinoType": "ankylo",
+       "pointMax": 1500,
+       "pointMin": 600,
+       "zombieList": [
+        "dino_armor2",
+        "dino_armor3",
+        "dino_bully"
+       ]
+      },
+      "weight": 20
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "columnOffset": 1,
+       "dinoType": "tyranno",
+       "pointMax": 2001,
+       "pointMin": 2001,
+       "zombieList": [
+        "dino_gargantuar"
+       ]
+      },
+      "weight": 12
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 15
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 2,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 10
+     }
+    ],
+    "AnimRateModifier": 1.25,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 5,
+    "DamageIndexHalf": 6,
+    "HitPoints": 7000,
+    "MaxIdleTime": 1.5,
+    "MinIdleTime": 0.75,
+    "MissileCount": {
+     "Max": 3,
+     "Min": 2
+    },
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2
+   }
+  ]
+ }
+}

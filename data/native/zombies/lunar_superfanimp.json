@@ -1,0 +1,33 @@
+{
+ "id": "lunar_superfanimp",
+ "extends": "normal",
+ "stats": {
+  "toughness": 270,
+  "speed": 0.22,
+  "eat_dps": 100,
+  "wave_cost": 200,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "grabbable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ImpAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ImpHitRect"
+  }
+ ],
+ "extra": {
+  "CanBeKickedByAllstar": true,
+  "ExplosionDamage": 301,
+  "KilledByShrinkingViolet": true,
+  "MaxTriggerColumn": 2,
+  "MinTriggerColumn": 0
+ }
+}

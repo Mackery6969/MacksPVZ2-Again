@@ -1,0 +1,26 @@
+{
+ "id": "pea_shadow_pf_2",
+ "stats": {
+  "damage": 1200
+ },
+ "extra": {
+  "CancelsKnockbackFlying": true,
+  "CannotBeReversedByJester": true,
+  "DamageType": "ray",
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SplashDamage": [
+   {
+    "Damage": 1200,
+    "Range": {
+     "h": 100,
+     "w": 200
+    }
+   }
+  ],
+  "Props": "RTID(pea_shadow_pf_2@ProjectileProps)"
+ }
+}

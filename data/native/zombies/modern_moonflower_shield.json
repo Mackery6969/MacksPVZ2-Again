@@ -1,0 +1,40 @@
+{
+ "id": "modern_moonflower_shield",
+ "extends": "normal",
+ "stats": {
+  "toughness": 5000,
+  "speed": 0,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "divertable",
+   "draggable",
+   "enlightenable",
+   "grabbable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "snap_targetable",
+   "swallowable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ModernMoonflowerShieldAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ModernMoonflowerShieldHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0
+ }
+}

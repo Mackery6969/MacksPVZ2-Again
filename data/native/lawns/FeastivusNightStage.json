@@ -1,0 +1,41 @@
+{
+ "id": "FeastivusNightStage",
+ "music": "Iceage",
+ "mower": "mower_modern",
+ "railcart": "railcart_tutorial",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "feastivus_armor1"
+  ],
+  "armor2": [
+   "feastivus_armor2"
+  ],
+  "armor3": [
+   "feastivus_armor3"
+  ],
+  "armor4": [
+   "feastivus_armor3"
+  ],
+  "basic": [
+   "feastivus"
+  ],
+  "flag": [
+   "feastivus_flag"
+  ],
+  "gargantuar": [
+   "holiday_gargantuar",
+   "feastivus_gargantuar"
+  ],
+  "imp": [
+   "holiday_imp",
+   "feastivus_imp"
+  ],
+  "rally": [
+   "feastivus_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

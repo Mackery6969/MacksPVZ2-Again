@@ -1,0 +1,16 @@
+{
+ "id": "homing_thistle1",
+ "stats": {
+  "damage": 160
+ },
+ "extra": {
+  "DestroysBalloons": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 1.5,
+  "MintBoostedType": "homing_thistle2",
+  "Props": "RTID(homing_thistle1@ProjectileProps)"
+ }
+}

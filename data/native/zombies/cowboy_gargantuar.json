@@ -1,0 +1,28 @@
+{
+ "id": "cowboy_gargantuar",
+ "extends": "gargantuar",
+ "stats": {
+  "toughness": 3600,
+  "speed": 0.24,
+  "eat_dps": 100,
+  "wave_cost": 1500,
+  "weight": 3000
+ },
+ "sort": "Gargantuar",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "GargantuarAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "GargantuarHitRect"
+  }
+ ],
+ "extra": {
+  "ImpType": "west_bullrider",
+  "SmashDamage": 1500,
+  "SplashDamageToPlants": 40,
+  "SplashDamageToZombies": 100
+ }
+}

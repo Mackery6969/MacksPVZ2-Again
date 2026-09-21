@@ -1,0 +1,7 @@
+{
+ "id": "sapfling",
+ "category": "liquid",
+ "extra": {
+  "TileLiquidBasedOn": "sapfling"
+ }
+}

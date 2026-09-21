@@ -1,0 +1,72 @@
+{
+ "id": "sky_drone",
+ "extends": "normal",
+ "stats": {
+  "toughness": 800,
+  "speed": 1.8,
+  "eat_dps": 50,
+  "wave_cost": 2000,
+  "weight": 10
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable",
+   "carriable",
+   "chompable",
+   "divertable",
+   "enlightenable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "sap_detectable",
+   "shrinkable",
+   "sporeable",
+   "swallowable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "PirateParrotAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "PirateParrotHitRect"
+  }
+ ],
+ "extra": {
+  "CarriedArmorType": "sky_armor3",
+  "FlyingSpeed": 1.8,
+  "LowPriorityPlantTypes": [
+   "wallnut",
+   "tallnut",
+   "pineapple",
+   "peanut",
+   "wallnut",
+   "peach",
+   "chardguard",
+   "turnip",
+   "holonut",
+   "sweetpotato",
+   "endurian",
+   "lychee",
+   "pumpkin",
+   "bamboobusket",
+   "hollybarrierleaf",
+   "hollybarrierleafplantfood",
+   "primalwallnut"
+  ],
+  "PlantEatingRangeRadius": 10,
+  "TimeBeforeFirst": {
+   "Max": 8,
+   "Min": 4
+  },
+  "TimeBetween": {
+   "Max": 12,
+   "Min": 8
+  }
+ }
+}

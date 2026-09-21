@@ -1,0 +1,9 @@
+{
+ "id": "dark_armor3",
+ "stats": {
+  "toughness": 1600,
+  "bowling_level": 3,
+  "is_metal": true,
+  "is_ice": false
+ }
+}

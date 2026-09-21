@@ -1,0 +1,4854 @@
+{
+ "ailmint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Poison",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 12,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "PoisonDPS": 50,
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "akee": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "CabbageType": "akee",
+   "CabbageTypePlantfood": "akee_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "SunCost": 175,
+   "ThrowInterval": 2.85,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "aloe": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.5,
+   "ExtraHealingTime": 2,
+   "Family": "Defence",
+   "HealHPS": 100,
+   "HealHPSPlantfood": 1000,
+   "HealingInterval": 0.5,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 4
+   },
+   "PlantfoodLastingTime": 10,
+   "SelfQuringHealth": 450,
+   "SunCost": 75,
+   "Toughness": 450
+  }
+ },
+ "anthurium": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "BigBoltType": "anthurium_bolt_big",
+   "BoltType": "anthurium_bolt",
+   "CallsElectricCurrant": true,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Electricity",
+   "ImmuneToLightningCharge": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodDamage": 1200,
+   "PlantfoodLightningCount": 3,
+   "PlantfoodSplashDamage": 400,
+   "RedAttackStunDuration": 1,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "appeasemint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Peashooter",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 12,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "PeaCount": 6,
+   "PeaInterval": 0.25,
+   "PeaType": "pea_mega_mint",
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "applemortar": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2500,
+   "CabbageType": "apple",
+   "CabbageTypePlantfood": "apple_pf",
+   "Cooldown": 8,
+   "CooldownFrom": 1.25,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "ShootInterval": 1.75,
+   "ShootIntervalAdditional": 0.25,
+   "StunDuration": 0.75,
+   "StunDurationPF": 1,
+   "SunCost": 250,
+   "Toughness": 300
+  }
+ },
+ "armamint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Lobber",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 12,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "ProjectileCount": 5,
+   "ProjectileInterval": 0.25,
+   "ProjectileType": "armamint",
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "asparagus": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Damage": 20,
+   "DamagePlantfood": 800,
+   "Family": "Lobber",
+   "IdleReloadClips": 3,
+   "MaxClips": 7,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 5,
+   "ReloadDuration": 6,
+   "ShootInterval": 1.75,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 225,
+   "Toughness": 300
+  }
+ },
+ "atombomb": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "ExplodeDamage": 1800,
+   "ExplodeProjectileType": "atombomb",
+   "ExplodeSeedlingCount": 2,
+   "Family": "Explosive",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodCallingType": [
+    "atombomb",
+    "atombomb_seedling",
+    "seedling"
+   ],
+   "SeedlingType": "atombomb_seedling",
+   "SunCost": 275,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 100,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.25
+   }
+  }
+ },
+ "bamboobusket": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 4000,
+   "BeghouledCost": 2000,
+   "CannotBeKilledBySurfboard": true,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "IsNotAPlant": true,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "SunCost": 75,
+   "Toughness": 2000
+  }
+ },
+ "bambooshoot": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackDistance": 4,
+   "AttackInterval": 0.3,
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Damage": 30,
+   "DamagePlantfood": 100,
+   "Family": "Sharp",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "PlantfoodDistance": 9,
+   "PlantfoodKnockBackDistance": 1,
+   "PlantfoodTossChance": 0.7,
+   "SunCost": 175,
+   "Toughness": 300
+  }
+ },
+ "bamboozle": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BambooshotType": "bamboozle",
+   "BeghouledCost": 2000,
+   "Cooldown": 15,
+   "CooldownFrom": 0.5,
+   "Family": "Defence",
+   "MaxProjectileCount": 5,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "SunCost": 225,
+   "Toughness": 1000
+  }
+ },
+ "banana": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BananaType": "banana",
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 4
+   },
+   "RestTime": 20,
+   "SunCost": 500,
+   "Toughness": 300
+  }
+ },
+ "blastberry": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "CabbageType": "blastberry",
+   "CabbageTypePlantfood": "blastberry_pf",
+   "Cooldown": 10,
+   "CooldownFrom": 0.6,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "ShootInterval": 2.85,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 175,
+   "Toughness": 300
+  }
+ },
+ "bloomerang": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "BoomerangType": "boomerang",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Sharp",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PierceCount": 3,
+   "PlantfoodBoomerangCount": 16,
+   "ShootInterval": 2.7,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 175,
+   "Toughness": 300
+  }
+ },
+ "bloominghearts": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "CabbageType": "blooming_heart",
+   "CabbageTypePlantfood": "blooming_heart_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Poison",
+   "ImmuneToBoomBox": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "SunCost": 150,
+   "ThrowInterval": 2.85,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "blover": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "BlowDuration": 3,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Slow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDurationFactor": 3,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "bombardmint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "ExplosionDamage": 1800,
+   "ExplosionInterval": 0.25,
+   "ExplosionTime": 3,
+   "Family": "Explosive",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 16,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "bonkchoy": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 0.3,
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Damage": 15,
+   "DamageHeavy": 30,
+   "DamagePlantfood": 60,
+   "Family": "Melee",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodHitCount": 25,
+   "SunCost": 150,
+   "TombDetectorWidth": 3,
+   "Toughness": 300,
+   "ZombieDetectorWidth": 4
+  }
+ },
+ "bowlingbulb": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AmmoRefreshTime": 4,
+   "BeghouledCost": 2000,
+   "Bowling0": "bowling0",
+   "Bowling1": "bowling1",
+   "Bowling2": "bowling2",
+   "BowlingPlantfood": "bowling_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "LoadOrder": "012",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 6
+   },
+   "RollOrder": "012",
+   "StartingHeight": 0,
+   "SunCost": 200,
+   "Toughness": 300
+  }
+ },
+ "bulbkekengi": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "PlantfoodDuration": 15,
+   "SunCost": 75,
+   "Toughness": 300
+  }
+ },
+ "buttercup": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "ButterDamage": 100,
+   "ButterDamagePlantfood": 150,
+   "ButterDuration": 8,
+   "ButterThrowInterval": 1,
+   "ButterType": "buttercup_butter",
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Slow",
+   "LiquidType": "butter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "SunCost": 25,
+   "TileButterDurationPlantfood": 150,
+   "Toughness": 900
+  }
+ },
+ "cabbagepult": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CabbageType": "cabbage",
+   "CabbageTypePlantfood": "cabbage_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "SunCost": 100,
+   "ThrowInterval": 2.7,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "cactus": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Sharp",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "PeaType": "cactus",
+   "PeaTypePlantfood": "cactus_pf",
+   "PierceCount": 3,
+   "PierceCountAdditional": 1,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "StabDamage": 10,
+   "StabDamagePlantfood": 20,
+   "StabInterval": 0.5,
+   "SunCost": 175,
+   "Toughness": 300
+  }
+ },
+ "cantaloupe": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2500,
+   "CabbageType": "cantaloupe",
+   "CabbageTypePlantfood": "cantaloupe_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "ExtraHeightAboveTargets": 200,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "SunCost": 500,
+   "ThrowInterval": 2.7,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "caulipower": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackCooldownBetween": {
+    "Max": 12,
+    "Min": 12
+   },
+   "AttackCooldownStart": {
+    "Max": 10,
+    "Min": 10
+   },
+   "AttackProjectileType": "caulipower",
+   "BeghouledCost": 3500,
+   "Cooldown": 45,
+   "CooldownFrom": 0.3333,
+   "DetectInterval": {
+    "Max": 2,
+    "Min": 1
+   },
+   "Family": "Magic",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 5
+   },
+   "PlantfoodFlickCount": 5,
+   "PlantfoodFlickDistance": 3,
+   "SunCost": 250,
+   "Toughness": 300,
+   "WeightTargetGargantuarZombie": 5,
+   "WeightTargetNormalZombie": 55,
+   "WeightTargetOtherZombie": 40
+  }
+ },
+ "celerystalker": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "DamagePerHit": 25,
+   "Family": "Melee",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 2,
+   "PlantfoodChildrenCount": 3,
+   "RetractionDelay": 3,
+   "SunCost": 50,
+   "Toughness": 1200
+  }
+ },
+ "chardguard": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "BounceDistance": 3,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "MaxBounceTime": 3,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "SunCost": 75,
+   "Toughness": 1500
+  }
+ },
+ "cherry_bomb": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 35,
+   "CooldownFrom": 1,
+   "Damage": 1800,
+   "Family": "Explosive",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "chilibean": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "CannotBeHealedByAloe": true,
+   "ChiliStunDuration": 10,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Poison",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintPoisonDPS": 60,
+   "MintStunDurationFactor": 2,
+   "PlantfoodChildrenCount": 3,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "chillypepper": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "ChillDuration": 10,
+   "Cooldown": 25,
+   "CooldownFrom": 1,
+   "Damage": 1200,
+   "Family": "Cold",
+   "FreezeDuration": 10,
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "chomper": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "ChewTimePerZombie": 17,
+   "ChompFailDamage": 100,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Melee",
+   "MaxContainZombieCount": 2,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 4
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodPullDuration": 3,
+   "PlantfoodPullSPS": 3,
+   "PlantfoodPushDuration": 3,
+   "PlantfoodPushSPS": 3,
+   "PlantfoodSwallowCount": 4,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "citron": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "CallsElectricCurrant": true,
+   "ChargeTime": 7,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Electricity",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "PeaType": "citron",
+   "PeaTypePlantfood": "citron_pf",
+   "RedStunDuration": 5,
+   "SunCost": 350,
+   "Toughness": 300
+  }
+ },
+ "coconutcannon": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AlwaysShoots": false,
+   "BeghouledCost": 3000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Lobber",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "PeaType": "coconut",
+   "PeaTypePlantfood": "coconut_pf",
+   "RestTime": 15,
+   "SunCost": 400,
+   "Toughness": 300
+  }
+ },
+ "coldsnapdragon": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 1.85,
+   "AttackIntervalAdditional": 0.15,
+   "BeghouledCost": 2000,
+   "ChillDuration": 10,
+   "ChillDurationPlantfood": 10,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Damage": 30,
+   "DamagePlantfood": 1200,
+   "Family": "Cold",
+   "FreezeDuration": 0,
+   "FreezeDurationPlantfood": 10,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 225,
+   "Toughness": 300
+  }
+ },
+ "concealmint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Shadow",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 12,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SlapDamage": 600,
+   "SunCost": 0,
+   "Toughness": 300,
+   "ZombiesToDrag": 6
+  }
+ },
+ "containmint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Slow",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 16,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "StunDuration": 10,
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "cranjelly": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "DPS": 3000,
+   "Family": "Slow",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 75,
+   "Toughness": 300,
+   "Velocity": 5
+  }
+ },
+ "dandelion": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "BlowProjectileCount": 12,
+   "BlowRecoverTime": 15,
+   "Cooldown": 15,
+   "CooldownFrom": 0.75,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "dandelion",
+   "PeaTypeBlew": "dandelion_blew",
+   "PeaTypePlantfood": "dandelion_pf",
+   "ShootInterval": 1.9,
+   "ShootIntervalAdditional": 0.2,
+   "SunCost": 275,
+   "Toughness": 300
+  }
+ },
+ "darkmatterdragonfruit": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 4000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "DarkMatterEffectDuration": 6,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 3,
+   "PeaType": "darkmatter",
+   "PeaTypeShadow": "darkmatter_shadow",
+   "PlantFoodDPS": 400,
+   "PlantFoodSplashDPS": 100,
+   "PlantfoodDuration": 6,
+   "PlantfoodKnockbackSPS": 1.5,
+   "ShootInterval": 2.7,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 350,
+   "Toughness": 300
+  }
+ },
+ "doomshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 35,
+   "CooldownFrom": 1,
+   "Damage": 2700,
+   "Family": "Explosive",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 225,
+   "TileCrackleDuration": 180,
+   "Toughness": 300
+  }
+ },
+ "dragonbabybruit": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CabbageType": "dragonfruit",
+   "CabbageTypePlantfood": "dragonfruit_pf",
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "PoisonDPS": 40,
+   "PoisonDuration": 3,
+   "SunCost": 50,
+   "ThrowInterval": 6,
+   "Toughness": 300
+  }
+ },
+ "dragonbruit": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "CabbageType": "dragonfruit",
+   "CabbageTypePlantfood": "dragonfruit_pf",
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "PoisonDPS": 40,
+   "PoisonDuration": 3,
+   "SunCost": 200,
+   "ThrowInterval": 7,
+   "Toughness": 350
+  }
+ },
+ "dusklobber": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2500,
+   "CabbageType": "dusklobber",
+   "CabbageTypePlantfood": "dusklobber_pf",
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PlantfoodProjectilesToFire": 4,
+   "SunCost": 150,
+   "ThrowInterval": 2.85,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "electricblueberry": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackCooldownBetween": 12,
+   "AttackCooldownBetweenAdditional": 0,
+   "AttackCooldownStart": 10,
+   "AttackCooldownStartAdditional": 0,
+   "BeghouledCost": 4500,
+   "CallsElectricCurrant": true,
+   "Cooldown": 45,
+   "CooldownFrom": 0.3333,
+   "Family": "Electricity",
+   "ImmuneToLightningCharge": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 4
+   },
+   "MintDamageFactor": 2,
+   "NormalCloudSpeed": 10,
+   "NormalLightningBoltDamage": 5000,
+   "PlantFoodCloudSpeed": 10,
+   "PlantFoodLightningBoltDamage": 5000,
+   "RedAttackStunDuration": 1,
+   "SunCost": 150,
+   "Toughness": 300,
+   "WeightTargetGargantuarZombie": 5,
+   "WeightTargetNormalZombie": 55,
+   "WeightTargetOtherZombie": 40
+  }
+ },
+ "electriccurrant": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CallsElectricCurrant": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.001,
+   "Damage": 12,
+   "DamagePlantfood": 20,
+   "DirectDamageInterval": 0.25,
+   "Family": "Electricity",
+   "ImmuneToBoomBox": true,
+   "ImmuneToLightningCharge": true,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 5,
+   "PlantfoodDuration": 5,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "electricpeashooter": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2500,
+   "CallsElectricCurrant": true,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Electricity",
+   "ImmuneToLightningCharge": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "electricpea",
+   "PeaTypePlantfood": "electricpea_pf",
+   "PlantfoodPeaCount": 5,
+   "RedAttackStunDuration": 0.25,
+   "ShootInterval": 2.7,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 200,
+   "Toughness": 300
+  }
+ },
+ "empea": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 25,
+   "CooldownFrom": 0.6,
+   "Family": "Electricity",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintStunDurationFactor": 2,
+   "StunDuration": 10,
+   "SunCost": 25,
+   "Toughness": 2000
+  }
+ },
+ "enchantmint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Magic",
+   "HypnotizedZombieCount": 3,
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 16,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "endurian": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 6000,
+   "BeghouledCost": 1000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 3
+   },
+   "StabDamage": 10,
+   "StabDamagePFExtra": 5,
+   "StabInterval": 0.5,
+   "SunCost": 100,
+   "Toughness": 3000
+  }
+ },
+ "enforcemint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "DamageMultiplier": 2,
+   "Family": "Melee",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 18,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "ShrinkTime": 1.5,
+   "SpeedScale": 0.75,
+   "SunCost": 0,
+   "Toughness": 300,
+   "ZombiesToShrink": 10
+  }
+ },
+ "enlightenmint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Sun",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 10,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SunCost": 0,
+   "SunProduction": 150,
+   "Toughness": 300
+  }
+ },
+ "escaperoot": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "ChargeTime": 10,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Damage": 1800,
+   "DamagePrimal": 2700,
+   "Family": "Explosive",
+   "GrapeType": "grapeshot",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "explodeonut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorDamage": 1800,
+   "ArmorToughness": 4000,
+   "BeghouledCost": 2000,
+   "CallsMirrorNutsOnDamaged": true,
+   "CannotBeHealedByAloe": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Damage": 1800,
+   "Family": "Explosive",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 50,
+   "Toughness": 3000
+  }
+ },
+ "filamint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CallsElectricCurrant": true,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Damage": 400,
+   "Family": "Electricity",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "ImmuneToLightningCharge": true,
+   "Lifespan": 12,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "RedAttackStunDuration": 5,
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "firegourd": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackDPS": 150,
+   "AttackDistanceMax": 5,
+   "AttackDistanceMin": 1,
+   "AttackDuration": 5,
+   "BeghouledCost": 2500,
+   "ChargingTime": 14,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "DamageScaleToRacks": 2,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodDPS": 300,
+   "PlantfoodDistance": 12,
+   "PlantfoodDuration": 5,
+   "ReloadingTime": 6,
+   "SunCost": 200,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 100,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "firepeashooter": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "PeaType": "pea_flame_yellow",
+   "PlantfoodDamageInterval": 0.25,
+   "PlantfoodDamagePerHit": 80,
+   "PlantfoodDuration": 5,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 175,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 100,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.25
+   }
+  }
+ },
+ "floawerPot": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "MoveToPosTime": 2.5,
+   "SunCost": 100,
+   "Toughness": 300,
+   "ToughnessPlantfooded": 900
+  }
+ },
+ "fumeshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Damage": 40,
+   "DetectDistance": 4.5,
+   "Family": "Poison",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodDPS": 800,
+   "PlantfoodDuration": 3,
+   "PlantfoodKnockbackSPS": 3,
+   "ShootDistance": 5.5,
+   "ShootInterval": 2.4,
+   "ShootIntervalAdditional": 0.2,
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "garlic": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "DisgustDuration": 1.5,
+   "DisgustDurationPlantfood": 1.5,
+   "Family": "Poison",
+   "LaneChangeDuration": 0.6,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 6,
+    "SpeedMult": 1
+   },
+   "MintStunDuration": 10,
+   "ReceivesDamageWhenEaten": 150,
+   "StunDuration": 0,
+   "StunDurationPlantfood": 6,
+   "SunCost": 50,
+   "Toughness": 900
+  }
+ },
+ "gatling": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 4000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea",
+   "PeaTypePlantfood": "pea",
+   "PeaTypesPlantfood": [
+    "pea",
+    "pea_flame_yellow",
+    "pea_flame_blue"
+   ],
+   "PlantfoodPeaCount": 60,
+   "ShootInterval": 0.9,
+   "ShootIntervalAdditional": 0.1,
+   "SunCost": 450,
+   "Toughness": 300
+  }
+ },
+ "ghostpepper": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 15,
+   "CooldownFrom": 0.6667,
+   "ExplodeDamage": 450,
+   "Family": "Fire",
+   "GhostDamage": 30,
+   "GhostDamageCooldownTime": 0.5,
+   "ImmuneToIceblock": true,
+   "Lifetime": 10,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodDamageMult": 3,
+   "PlantfoodDuration": 3.5,
+   "SunCost": 75,
+   "Toughness": 300
+  }
+ },
+ "glaciershroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 4000,
+   "ChillDuration": 5,
+   "ChillDurationAmbience": 2,
+   "Cooldown": 30,
+   "CooldownFrom": 0.5,
+   "EatChillDuration": 3,
+   "EatFreezeDuration": 3,
+   "EatFreezeInterval": 3.5,
+   "Family": "Cold",
+   "FreezeDamage": 20,
+   "FreezeDuration": 5,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 5,
+   "MintFreezeDurationFactor": 5,
+   "SunCost": 300,
+   "Toughness": 700,
+   "WakeTime": 25
+  }
+ },
+ "gloomshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "DPS": 100,
+   "DPSPlantfood": 1543,
+   "DamageDuration": 0.5,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 3,
+   "PoisonDPS": 60,
+   "ShootInterval": 1.5,
+   "SunCost": 250,
+   "Toughness": 300
+  }
+ },
+ "gloomvine": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 2.7,
+   "AttackIntervalAdditional": 0.15,
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "DPSPlantfood": 1543,
+   "Damage": 45,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "SunCost": 125,
+   "Toughness": 250
+  }
+ },
+ "goldbloom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 75,
+   "CooldownFrom": 0.0005,
+   "Family": "Sun",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintProductionFactor": 3,
+   "ProduceValue0": 100,
+   "ProduceValue1": 125,
+   "ProduceValue2": 150,
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "goldleaf": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 0,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Nope",
+   "SunCost": 50,
+   "SunCostIncrement": 25,
+   "TileType": "goldtile",
+   "Toughness": 300
+  }
+ },
+ "grapeshot": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 35,
+   "CooldownFrom": 1,
+   "Damage": 1800,
+   "Family": "Explosive",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "PeaType": "grapeshot",
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "gravebuster": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "BustTime": 4,
+   "CannotBePushedByFootballMech": true,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "Family": "Slow",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "grimrose": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Shadow",
+   "KillCountPerAttack": 1,
+   "KillCountPlantfood": 3,
+   "MaxKills": 1,
+   "MaxKillsPowered": 3,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "MintIgnoringDragCount": true,
+   "ReloadInterval": 10,
+   "SlapDamage": 600,
+   "SunCost": 75,
+   "Toughness": 300
+  }
+ },
+ "guacodile": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "ChildrenBiteDamage": 150,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Melee",
+   "KnockbackDistance": 2,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "guacodile",
+   "PeaTypeChild": "guacodile_child",
+   "PlantfoodTime": 2,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 125,
+   "Toughness": 50
+  }
+ },
+ "gumnut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BaseGumHealth": 4000,
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "PlantfoodGumProjectileCount": 5,
+   "PlantfoodGumProjectileType": "gumnut",
+   "SunCost": 125,
+   "Toughness": 450,
+   "ZombieGumHealthMult": 3
+  }
+ },
+ "hollybarrierleaf": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 4000,
+   "BeghouledCost": 1000,
+   "CannotBeKilledBySurfboard": false,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "IsNotAPlant": true,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 3
+   },
+   "StabDamage": 20,
+   "StabInterval": 1,
+   "SunCost": 25,
+   "Toughness": 1500
+  }
+ },
+ "hollybarrierleafplantfood": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 4000,
+   "BeghouledCost": 2000,
+   "CannotBeKilledBySurfboard": false,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "IsNotAPlant": true,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 3
+   },
+   "StabDamage": 40,
+   "StabInterval": 1,
+   "SunCost": 75,
+   "Toughness": 2500
+  }
+ },
+ "hollyknight": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackDamage": 20,
+   "AttackInterval": 1,
+   "BeghouledCost": 1000,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "HollyProjectileType": "hollyleaf",
+   "HollyProjectileTypePlantfood": "hollyleaf_pf",
+   "MaxProjectileCount": 3,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1.5,
+    "SpeedMult": 1
+   },
+   "SunCost": 150,
+   "Toughness": 2500
+  }
+ },
+ "holonut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "CallsElectricCurrant": true,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 15,
+   "CooldownFrom": 0.667,
+   "DelayBeforeRecoverFromDeath": 15,
+   "DelayBeforeRegenFromDamage": 15,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 4,
+    "SpeedMult": 3
+   },
+   "SunCost": 75,
+   "Toughness": 2000
+  }
+ },
+ "homingthistle": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Sharp",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "homing_thistle",
+   "PeaTypePlantfood": "homing_thistle_pf",
+   "PlantfoodPeaCount": 20,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 250,
+   "Toughness": 300
+  }
+ },
+ "hotdate": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 25,
+   "CooldownFrom": 1,
+   "Family": "Fire",
+   "FlameDamage": 1000,
+   "FlameDuration": 5,
+   "ImmuneToIceblock": true,
+   "LaneChangeTime": 0.6,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "NormalAttractWidth": 2,
+   "PlantFoodDurationSeconds": 6,
+   "PlantfoodAttractWidth": 4,
+   "SunCost": 175,
+   "TimeBetweenLaneChanges": 5,
+   "Toughness": 2000,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 100,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "hotpotato": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 0,
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "StartingHeight": 60,
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "hurrikale": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Slow",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDurationFactor": 2,
+   "PushDuration": 3,
+   "SunCost": 100,
+   "Toughness": 300
+  }
+ },
+ "hypnoshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeHealedByAloe": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Magic",
+   "HypnoedZombieDamageScale": 0.95,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintHealZombies": true,
+   "MintPotionLevel": 3,
+   "SunCost": 125,
+   "Toughness": 50
+  }
+ },
+ "icebloom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "ChillDuration": 5,
+   "Cooldown": 30,
+   "CooldownFrom": 0.5,
+   "Damage3x3": 200,
+   "DamageFullBoard": 50,
+   "Family": "Cold",
+   "FreezeDuration": 10,
+   "HypnotizingProjectileCount": 4,
+   "HypnotizingProjectileType": "icebloom",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintChillDurationFactor": 4,
+   "MintDamageFactor": 3,
+   "SunCost": 200,
+   "Toughness": 300
+  }
+ },
+ "iceburg": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "ChillDuration": 0,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Cold",
+   "FreezeDuration": 10,
+   "ImmuneToIceblock": true,
+   "Mint3x3Freezing": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintFreezeDurationFactor": 4,
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "iceweed": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 0.5,
+   "BeghouledCost": 1000,
+   "ChillDuration": 3,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Damage": 10,
+   "DamagePowered": 20,
+   "Family": "Cold",
+   "FreezeDuration": 0,
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "PlantfoodDPS": 200,
+   "PlantfoodDamageReceiveMult": 0.2,
+   "PlantfoodDragSPS": 6,
+   "PlantfoodMaxSpike": 3,
+   "SawType": "iceweed_saw",
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "imitater": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 0,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "SunCost": 0,
+   "Toughness": 30000
+  }
+ },
+ "inferno": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 25,
+   "CooldownFrom": 0.4,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "SunCost": 200,
+   "TornadoInterval": {
+    "Max": 6.05,
+    "Min": 5.95
+   },
+   "TornadoType": "inferno_tornado",
+   "TornadoTypePlantfood": "inferno_tornado_pf",
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 100,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.25
+   }
+  }
+ },
+ "intensivecarrot": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Magic",
+   "HealthReturns": 0.5,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintHealthReturnsFactor": 2,
+   "SunCost": 100,
+   "Toughness": 300
+  }
+ },
+ "jackolantern": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "DPS": 300,
+   "DPSPlantfood": 300,
+   "Distance": 3,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodFireCount": 9,
+   "RechargeTime": 5,
+   "ShootDuration": 4.3,
+   "SunCost": 225,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "jalapeno": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 35,
+   "CooldownFrom": 1,
+   "Damage": 1800,
+   "Duration": 5,
+   "Family": "Fire",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "kernelpult": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "ButterType": "butter",
+   "CabbageType": "corn",
+   "CabbageTypePlantfood": "butter2",
+   "ChanceToButter": 0.3,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintChanceToButterFactor": 3,
+   "SunCost": 100,
+   "ThrowInterval": 2.7,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "laser_bean": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Damage": 40,
+   "DamagePlantfood": 1800,
+   "Family": "Sharp",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "ShootInterval": 2.7,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 200,
+   "Toughness": 300
+  }
+ },
+ "lavaguava": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 15,
+   "CooldownFrom": 0.667,
+   "ExplosionDamage": 200,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "LiquidType": "lava",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "MintLiquidType": "lava_mint",
+   "PlantFoodDPS": 100,
+   "PlantFoodDurationSeconds": 10,
+   "SunCost": 75,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 100,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "lightningreed": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 0.95,
+   "AttackIntervalAdditional": 0.1,
+   "BeghouledCost": 1000,
+   "CallsElectricCurrant": true,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Damage": 10,
+   "Family": "Electricity",
+   "ImmuneToLightningCharge": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "PlantfoodDPS": 200,
+   "PlantfoodDuration": 15,
+   "RedAttackStunDuration": 0.25,
+   "SplashCount": 3,
+   "SplashDamage": 10,
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "lilypad": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "SunCost": 25,
+   "Toughness": 300
+  }
+ },
+ "loquat": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Damage": 0,
+   "Family": "Slow",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDurationFactor": 2,
+   "SunCost": 100,
+   "TornadoDuration": 3.5,
+   "Toughness": 300,
+   "ZombieDraggingFactor": 4
+  }
+ },
+ "lotorpedo": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "CabbageType": "lotus",
+   "CabbageTypeInWater": "lotus_torpedo",
+   "CabbageTypePlantfood": "lotus_torpedo_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "ShootInterval": 2.85,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 325,
+   "Toughness": 300
+  }
+ },
+ "lychee": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "DamagePerHit": 20,
+   "DamagePerHitPlantfood": 40,
+   "Family": "Defence",
+   "HealthBetweenHits": 100,
+   "HealthBetweenHitsPlantfood": 50,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "PlantfoodDamageReceiveMult": 0.5,
+   "SunCost": 150,
+   "Toughness": 3000
+  }
+ },
+ "magnetshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 15,
+   "CooldownFrom": 0.667,
+   "Family": "Slow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 5
+   },
+   "PlantfoodAbsorbDuration": 1.5,
+   "PlantfoodThrowDamage": 300,
+   "RestTime": 10,
+   "SunCost": 100,
+   "Toughness": 300
+  }
+ },
+ "magnifyinggrass": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 10
+   },
+   "PeaType": "magnifying_grass",
+   "PlantfoodDPS": 200,
+   "PlantfoodDuration": 3,
+   "PlantfoodDurationExtendPerProducer": 0.15,
+   "ShineVineShootInterval": 12,
+   "ShineVineShootIntervalAdditional": 4,
+   "ShootInterval": 0.333,
+   "ShootSunCost": 50,
+   "SunCost": 50,
+   "SunProducerList": [
+    "sunflower",
+    "twinsunflower",
+    "sunshroom",
+    "primalsunflower",
+    "moonflower",
+    "shinevine"
+   ],
+   "Toughness": 300
+  }
+ },
+ "marigold": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "ChanceToTurn": 0.5,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Slow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "PlantfoodTime": 1,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "marigold_blue": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Cold",
+   "FreezeTime": 5,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintFreezeDurationFactor": 4,
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "marigold_green": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "PeaCount": 12,
+   "PeaType": "pea",
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "marigold_orange": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "ExplodeDamage": 400,
+   "Family": "Explosive",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "marigold_pink": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Magic",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "PlantList": [
+    "puffshroom",
+    "fumeshroom",
+    "scaredyshroom",
+    "puffshroom",
+    "fumeshroom",
+    "scaredyshroom",
+    "gloomvine",
+    "hypnoshroom",
+    "vamporcini"
+   ],
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "marigold_purple": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Poison",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDPSFactor": 2,
+   "PlantfoodTime": 3,
+   "PoisonDPS": 20,
+   "PoisonDuration": 10,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "marigold_red": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Fire",
+   "FireDamage": 150,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "marigold_yellow": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintProductionFactor": 2,
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "SunDropValue": 150,
+   "Toughness": 300
+  }
+ },
+ "megagatling": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 4000,
+   "ChanceToPlantfood": 0.03,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea",
+   "PeaTypePlantfood": "pea",
+   "PlantfoodPeaCount": 150,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 450,
+   "Toughness": 300
+  }
+ },
+ "melonpult": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2500,
+   "CabbageType": "melon",
+   "CabbageTypePlantfood": "melon_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "SunCost": 325,
+   "ThrowInterval": 2.7,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "meteorflower": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2500,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "LavaDuration": 10,
+   "LiquidType": "moltenpool",
+   "MeteorCountOnce": 2,
+   "MeteorType": "meteor",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintLiquidType": "moltenpool_mint",
+   "RestTime": 7,
+   "SecondMeteorMissChance": 0.35,
+   "SunCost": 250,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "mirrornut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AccumulatedDamagePerShot": 2000,
+   "BeghouledCost": 1000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 25,
+   "CooldownFrom": 0.5,
+   "DeathRayDamage": 550,
+   "Family": "Defence",
+   "MaxShots": 4,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PeaType": "magnifying_grass",
+   "ShieldLifespan": 15,
+   "ShootInterval": 0.15,
+   "SunCost": 150,
+   "Toughness": 4000
+  }
+ },
+ "missiletoe": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BananaType": "missiletoe",
+   "BeghouledCost": 3000,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Cold",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 4
+   },
+   "RestTime": 20,
+   "SunCost": 500,
+   "Toughness": 300
+  }
+ },
+ "moonbean": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "CannotBeHealedByAloe": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0.375,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 5,
+   "PlantBombExplosionRadius": 40,
+   "PlantBombExplosionRadiusPlantfood": 25,
+   "PlantDamage": 500,
+   "PlantDamagePlantfood": 0,
+   "SunCost": 25,
+   "Toughness": 150,
+   "ZombieBombExplosionRadius": 80,
+   "ZombieBombExplosionRadiusPlantfood": 80,
+   "ZombieDamage": 900,
+   "ZombieDamagePlantfood": 1250
+  }
+ },
+ "moonflower": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 10,
+   "CooldownFrom": 0,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "PlantfoodTime": 1,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "SunValue": 25,
+   "SunValueList": [
+    25,
+    50,
+    75,
+    100
+   ],
+   "Toughness": 300
+  }
+ },
+ "murkadamia": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 13,
+   "CooldownFrom": 0.77,
+   "Family": "Shadow",
+   "FoeEatDamageReflectPct": 0.25,
+   "JellyCooldown": 5,
+   "JellyInitialPct": 0.6,
+   "JellyRecoveryHPS": 100,
+   "JellyToughness": 2500,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 4
+   },
+   "MintDamageFactor": 8,
+   "ShieldToughness": 2000,
+   "SunCost": 100,
+   "Toughness": 2500
+  }
+ },
+ "nightshade": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "DetectDistanceNormal": 1.5,
+   "DetectDistanceShadow": 9,
+   "Family": "Shadow",
+   "LeafRespawnCooldown": 5,
+   "MaxProjectiles": 3,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "PlantfoodTime": 3,
+   "ShadowPoweredDamageScale": 0.5,
+   "ShootInterval": 2.7,
+   "ShootIntervalAdditional": 0,
+   "SunCost": 75,
+   "Toughness": 300
+  }
+ },
+ "noctarine": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Shadow",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "NormalAttackDamage": 20,
+   "NormalAttackInterval": 0.5,
+   "NormalLifespan": 20,
+   "ShadowAttackDamage": 30,
+   "ShadowAttackInterval": 0.5,
+   "ShadowLifespan": 25,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "parsnip": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 0.8,
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "DamagePerSnip": 70,
+   "Family": "Melee",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 2,
+   "PlantfoodSummonCount": 2,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "peach": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "HealInterval": 10,
+   "HealthPerHeal": 150,
+   "HealthPlantfoodHeal": 450,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 3
+   },
+   "PlantfoodDuration": 10,
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "peacommando": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": {
+    "Max": 7,
+    "Min": 5
+   },
+   "BeghouledCost": 5000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "FlyTime": {
+    "Max": 4,
+    "Min": 3
+   },
+   "FlyToTargetTime": {
+    "Max": 2,
+    "Min": 1
+   },
+   "HeadCountFactor": 1,
+   "HeadCountFactorPlantfood": 2,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintPlantfoodDamageFactor": 5,
+   "PeaType": "pea_commando",
+   "PlantfoodRayDamage": 600,
+   "ShootCount": 2,
+   "ShootCountPlantfood": 2,
+   "SunCost": 450,
+   "Toughness": 300
+  }
+ },
+ "peanut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 6000,
+   "BeghouledCost": 1500,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 15,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 2
+   },
+   "PeaType": "peanut",
+   "PlantfoodPeaCount": 60,
+   "ShootInterval": 0.65,
+   "ShootIntervalAdditional": 0.15,
+   "ShootIntervalSemi": 1.35,
+   "ShootIntervalSemiAdditional": 0.15,
+   "SunCost": 150,
+   "Toughness": 6000
+  }
+ },
+ "peapod": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea",
+   "PeaTypePlantfood": "pea_mega",
+   "PlantfoodPeaCount": 5,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "peashooter": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea",
+   "PeaTypePlantfood": "pea",
+   "PlantfoodPeaCount": 60,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 100,
+   "Toughness": 300
+  }
+ },
+ "peppermint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Fire",
+   "FireDPS": 225,
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 16,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "pepperpult": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "CabbageType": "pepper",
+   "CabbageTypePlantfood": "pepper_pf",
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SunCost": 200,
+   "ThrowInterval": 2.85,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 300,
+    "PulseCooldown": 3,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "perfumeshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 30,
+   "CooldownFrom": 0.666667,
+   "Damage": 0,
+   "Duration": 9,
+   "Family": "Nope",
+   "ImmuneToBoomBox": true,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "phatbeet": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 1,
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Damage": 15,
+   "DamageHeavy": 45,
+   "Family": "Melee",
+   "ImmuneToBoomBox": true,
+   "ImmuneToSpeakerHit": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "PlantfoodDamageFar": 200,
+   "PlantfoodDamageNear": 800,
+   "SunCost": 150,
+   "TimesHeavy": 4,
+   "TimesHeavyAdditional": 2,
+   "Toughness": 300
+  }
+ },
+ "phatbeet_rhythm": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Melee",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "pineapple": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 6000,
+   "BeghouledCost": 2000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "PlantfoodDuration": 10,
+   "SpinDuration": 2,
+   "SunCost": 125,
+   "Toughness": 6000
+  }
+ },
+ "pinkstarfruit": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pinkstar",
+   "PeaTypePlantfood": "pinkstar_pf",
+   "PlantfoodPeaCount": 20,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 225,
+   "Toughness": 300
+  }
+ },
+ "plantern": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintProductionFactor": 2,
+   "SunCost": 75,
+   "Toughness": 300
+  }
+ },
+ "poisonpeashooter": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Poison",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea_goo",
+   "PeaTypePlantfood": "pea_goo_pf",
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "potatomine": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "ChargeTime": 14,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Damage": 1800,
+   "Family": "Explosive",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodChildrenCount": 2,
+   "SunCost": 25,
+   "Toughness": 300
+  }
+ },
+ "powerlily": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 60,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ProduceCount": 1,
+   "SunCost": 175,
+   "Toughness": 300
+  }
+ },
+ "powerplant": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.8,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "SunCost": 250,
+   "SunCostList": [
+    0,
+    250,
+    500,
+    1000,
+    2000,
+    4000,
+    8000
+   ],
+   "TileType": "powertile_epsilon",
+   "Toughness": 3000
+  }
+ },
+ "powerplant_alpha": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.8,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "SunCost": 250,
+   "SunCostList": [
+    0,
+    250,
+    500,
+    1000,
+    2000,
+    4000,
+    8000
+   ],
+   "TileType": "powertile_alpha",
+   "Toughness": 3000
+  }
+ },
+ "powerplant_beta": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.8,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "SunCost": 250,
+   "SunCostList": [
+    0,
+    250,
+    500,
+    1000,
+    2000,
+    4000,
+    8000
+   ],
+   "TileType": "powertile_beta",
+   "Toughness": 3000
+  }
+ },
+ "powerplant_delta": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.8,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "SunCost": 250,
+   "SunCostList": [
+    0,
+    250,
+    500,
+    1000,
+    2000,
+    4000,
+    8000
+   ],
+   "TileType": "powertile_delta",
+   "Toughness": 3000
+  }
+ },
+ "powerplant_epsilon": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.8,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "SunCost": 250,
+   "SunCostList": [
+    0,
+    250,
+    500,
+    1000,
+    2000,
+    4000,
+    8000
+   ],
+   "TileType": "powertile_epsilon",
+   "Toughness": 3000
+  }
+ },
+ "powerplant_gamma": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.8,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "SunCost": 250,
+   "SunCostList": [
+    0,
+    250,
+    500,
+    1000,
+    2000,
+    4000,
+    8000
+   ],
+   "TileType": "powertile_gamma",
+   "Toughness": 3000
+  }
+ },
+ "primalpeashooter": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "KnockbackChance": 0.5,
+   "KnockbackDistance": 1,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea_primal",
+   "PeaTypePlantfood": "pea_primal",
+   "PlantfoodPeaCount": 5,
+   "ShootInterval": 2.85,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 175,
+   "Toughness": 300
+  }
+ },
+ "primalpotatomine": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "ChargeTime": 6,
+   "Cooldown": 25,
+   "CooldownFrom": 0.6,
+   "Damage": 2700,
+   "Family": "Explosive",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodChildrenCount": 2,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "primalsunflower": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 0,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintProductionFactor": 2,
+   "PlantfoodTime": 1,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 75,
+   "SunValue": 75,
+   "Toughness": 300
+  }
+ },
+ "primalwallnut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 4000,
+   "BeghouledCost": 2000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 4,
+    "SpeedMult": 1
+   },
+   "SunCost": 75,
+   "Toughness": 4000
+  }
+ },
+ "puffshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 300,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Poison",
+   "LifeSpan": 60,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintIgnoringLifeSpan": true,
+   "PeaType": "puffshroom_spore",
+   "PeaTypePlantfood": "puffshroom_spore",
+   "PlantfoodPeaCount": 30,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 0,
+   "Toughness": 150
+  }
+ },
+ "pumpkin": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 4000,
+   "BeghouledCost": 2000,
+   "CallsMirrorNutsOnDamaged": true,
+   "CannotBeKilledBySurfboard": true,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "SunCost": 150,
+   "Toughness": 4000
+  }
+ },
+ "pvine": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea",
+   "PlantfoodPeaCount": 60,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "pyrevine": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 12,
+   "CooldownFrom": 0.833,
+   "DPS": 20,
+   "DPSPlantfood": 600,
+   "Family": "Fire",
+   "FireDistance": 2,
+   "FireExtraDuration": 1.5,
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 4,
+   "PlantfoodDuration": 3,
+   "SunCost": 125,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 3,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "redstinger": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "DamageScale0": 1,
+   "DamageScale1": 0.3333333,
+   "DamageScale2": 0.2,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintPlantfoodDPSMult": 5,
+   "PFDPS": 200,
+   "PFDuration": 5,
+   "ShootInterval": 1.75,
+   "ShootIntervalAdditional": 0.25,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "reinforcemint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Defence",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "KnockBackDistance": 1.4,
+   "Lifespan": 15,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "repeater": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea",
+   "PeaTypeMega": "pea_mega",
+   "PeaTypePlantfood": "pea",
+   "PlantfoodPeaCount": 90,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 200,
+   "Toughness": 300
+  }
+ },
+ "sapfling": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CabbageType": "sapfling",
+   "CabbageTypePlantfood": "sapfling_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Slow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintKnockBackDistance": 3,
+   "SunCost": 75,
+   "ThrowInterval": 2.85,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "scaredyshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Poison",
+   "KnockbackChance": 0.2,
+   "KnockbackDistance": 0.2,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PlantfoodSporeCount": 40,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SporeType": "scaredyshroom_spore",
+   "SporeTypePlantfood": "scaredyshroom_spore2",
+   "SunCost": 25,
+   "Toughness": 300
+  }
+ },
+ "seashooter": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea",
+   "PeaTypePlantfood": "pea",
+   "PeaTypeSea": "sea_pea",
+   "PeaTypeSeaPlantfood": "sea_pea",
+   "PlantfoodPeaCount": 60,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 275,
+   "Toughness": 300
+  }
+ },
+ "seashroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 300,
+   "Cooldown": 8,
+   "CooldownFrom": 1,
+   "FadeSpeedMultInWater": 0.5,
+   "Family": "Poison",
+   "LifeSpan": 50,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintIgnoringLifeSpan": true,
+   "PeaType": "seashroom_spore",
+   "PeaTypePlantfood": "seashroom_spore",
+   "PlantfoodPeaCount": 30,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 0,
+   "Toughness": 150
+  }
+ },
+ "seedling": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Explode0Damage": 600,
+   "Explode0SeedlingCount": 0,
+   "Explode1Damage": 1200,
+   "Explode1SeedlingCount": 1,
+   "ExplodeProjectileType": "atombomb",
+   "Family": "Explosive",
+   "GrowUpType": "atombomb",
+   "GrowingTime": 24,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodCallingType": [
+    "atombomb",
+    "atombomb_seedling",
+    "seedling"
+   ],
+   "SeedlingType": "seedling",
+   "SunCost": 225,
+   "Toughness": 300
+  }
+ },
+ "shadowpeashooter": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "PeaType": "pea_shadow",
+   "PeaTypePlantfood0": "pea_shadow_pf_0",
+   "PeaTypePlantfood1": "pea_shadow_pf_1",
+   "PeaTypePlantfood2": "pea_shadow_pf_2",
+   "PerfumeBuffDuration": 3,
+   "PlantfoodPeaCount": 60,
+   "RayDamage0": 40,
+   "RayDamage1": 70,
+   "RayInterval": 2.3,
+   "RayIntervalAdditional": 0.2,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 225,
+   "Toughness": 300,
+   "ZombiesToDrag": 1,
+   "ZombiesToDragShadowPowered": 2
+  }
+ },
+ "shadowshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeHealedByAloe": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Shadow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "PoisonDPS": 30,
+   "PoisonDuration": 30,
+   "SunCost": 50,
+   "Toughness": 50
+  }
+ },
+ "shinevine": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackDamage": 10,
+   "AttackInterval": 3,
+   "AttackStunDuration": 2,
+   "AttackSunValuePerZombie": 5,
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 0,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintProductionFactor": 2,
+   "PlantfoodDamage": 20,
+   "PlantfoodStunDuration": 10,
+   "PlantfoodSunValuePerZombie": 5,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "ProduceSunValue": 50,
+   "SunCost": 75,
+   "Toughness": 300
+  }
+ },
+ "shootingstarfruit": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "shootingstar",
+   "PeaTypePlantfood": "shootingstar_pf",
+   "ShootInterval": 0.9,
+   "ShootIntervalAdditional": 0.1,
+   "SunCost": 500,
+   "Toughness": 300
+  }
+ },
+ "shrinkingviolet": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 15,
+   "CooldownFrom": 0.3333,
+   "DamageMultiplier": 2,
+   "Family": "Magic",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "ShrinkTime": 1.5,
+   "SpeedScale": 0.75,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "skyshooter": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea_sky",
+   "PeaTypePlantfood": "pea_sky",
+   "PlantfoodPeaCount": 75,
+   "ShootInterval": 0.9,
+   "ShootIntervalAdditional": 0.1,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "slingpea": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaCountPerShot": 5,
+   "PeaCountPerShotPlantfood": 10,
+   "PeaType": "pea_sling_0",
+   "PeaTypePlantfood": "pea_sling_0_pf",
+   "PlantfoodShootTime": 4,
+   "ShootInterval": {
+    "Max": 5,
+    "Min": 4
+   },
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "snapdragon": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 1.85,
+   "AttackIntervalAdditional": 0.15,
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Damage": 30,
+   "DamagePlantfood": 1800,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "snappea": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "ChewTimePerZombie": 20,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Melee",
+   "HeadDamage": 400,
+   "MaxContainZombieCount": 1,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 5,
+   "PeaType": "pea_snap",
+   "PlantfoodSwallowCount": 4,
+   "SunCost": 200,
+   "Toughness": 300
+  }
+ },
+ "snowdrop": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2500,
+   "ButterType": "snowdrop_freeze",
+   "CabbageType": "snowdrop",
+   "CabbageTypePlantfood": "snowdrop_freeze",
+   "ChanceToButter": 0.3,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "DetectsTNTSpark": true,
+   "Family": "Cold",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintChanceToButterFactor": 3,
+   "SunCost": 200,
+   "ThrowInterval": 2.025,
+   "ThrowIntervalAdditional": 0.225,
+   "Toughness": 300
+  }
+ },
+ "snowpea": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2500,
+   "ChanceToFreeze": 0,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Cold",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaFreezeType": "pea_snow",
+   "PeaType": "pea_snow",
+   "PeaTypePlantfood": "pea_snow",
+   "PlantfoodPeaCount": 60,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "solarsage": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "EnlightenChanceToInfect": 0.2,
+   "EnlightenProduceInterval": {
+    "Max": 14,
+    "Min": 10
+   },
+   "EnlightenSunValue": 50,
+   "EnlightenWalkSPS": 0.3,
+   "Family": "Sun",
+   "MaxAttackTime": 1,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintProductionFactor": 2,
+   "PlantfoodEnlightenCount": 3,
+   "SunCost": 75,
+   "Toughness": 300
+  }
+ },
+ "solartomato": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 25,
+   "CooldownFrom": 0.8,
+   "Family": "Sun",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintProductionFactor": 2,
+   "StunDuration": 8,
+   "SunCost": 100,
+   "SunValuePerZombie": 50,
+   "Toughness": 3000
+  }
+ },
+ "spearmint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Sharp",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 18,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SawType": "spearmint_saw",
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "spikerock": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 0.5,
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Damage": 20,
+   "Family": "Sharp",
+   "ImmuneToBoomBox": true,
+   "MaxSpike": 3,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "PlantfoodDPS": 800,
+   "PlantfoodDragSPS": 3,
+   "PlantfoodDuration": 5,
+   "PlantfoodSideDPS": 60,
+   "SunCost": 250,
+   "Toughness": 900
+  }
+ },
+ "spikeweed": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": 0.5,
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Damage": 10,
+   "Family": "Sharp",
+   "ImmuneToBoomBox": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 5,
+   "PlantfoodDPS": 400,
+   "PlantfoodDragSPS": 3,
+   "PlantfoodDuration": 5,
+   "PlantfoodSideDPS": 20,
+   "SunCost": 100,
+   "Toughness": 300
+  }
+ },
+ "splitpea": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PlantfoodPeaCount": 60,
+   "PlantfoodPeaCountBack": 90,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 125,
+   "Toughness": 300
+  }
+ },
+ "sporeshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "CabbageType": "sporeshroom_spore",
+   "CabbageTypePlantfood": "sporeshroom_spore_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Poison",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "ShootInterval": 2.85,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "springbean": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 10,
+   "CooldownFrom": 0.5,
+   "Family": "Slow",
+   "KnockbackDistance": 1,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 5
+   },
+   "MintKnockBackDistanceFactor": 5,
+   "RestTime": 10,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "squash": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Melee",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 3,
+   "MintIgnoringSmashTime": true,
+   "PlantfoodSmashTime": 2,
+   "SmashDamage": 1800,
+   "SmashTime": 1,
+   "SunCost": 50,
+   "Toughness": 300
+  }
+ },
+ "stallia": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Slow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintKnockBackDistance": 3,
+   "PerfumeDuration": 12,
+   "PerfumeDurationPlantfood": 12,
+   "SunCost": 0,
+   "Toughness": 300
+  }
+ },
+ "starfruit": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "star",
+   "PeaTypePlantfood": "star_pf",
+   "PlantfoodPeaCount": 30,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "stickybombrice": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "CabbageType": "stickybomb",
+   "CabbageTypePlantfood": "stickybomb_pf",
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "Family": "Lobber",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "SunCost": 225,
+   "ThrowInterval": {
+    "Max": 2,
+    "Min": 1.75
+   },
+   "Toughness": 300
+  }
+ },
+ "strawburst": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 3000,
+   "CabbageType0": "strawburst0",
+   "CabbageType1": "strawburst1",
+   "CabbageType2": "strawburst2",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Damage0": 200,
+   "Damage1": 400,
+   "Damage2": 900,
+   "DamagePlantfood": 400,
+   "Family": "Explosive",
+   "GrowTime0": 7.5,
+   "GrowTime1": 10,
+   "GrowTime2": 15,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintDamageFactor": 3,
+   "SunCost": 400,
+   "Toughness": 300
+  }
+ },
+ "stunion": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "DetectDistance": 1,
+   "DetectDistancePlantfood": 4,
+   "Family": "Slow",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintPoisonDPS": 60,
+   "StunDistance": 1.5,
+   "StunDuration": 12,
+   "StunDurationPlantfood": 18,
+   "SunCost": 25,
+   "Toughness": 300
+  }
+ },
+ "sunbean": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeHealedByAloe": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintProductionFactor": 3,
+   "SunCost": 50,
+   "SunPerHitpoint": 0.2,
+   "Toughness": 50
+  }
+ },
+ "sunflower": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 0,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintProductionFactor": 2,
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 50,
+   "SunValue": 50,
+   "Toughness": 300
+  }
+ },
+ "sunshroom": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 0,
+   "Family": "Sun",
+   "GrowTime0_1": 18,
+   "GrowTime1_2": 54,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 5
+   },
+   "MintProductionFactor": 2,
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceCountdownStartAdditional_AtNight": 5,
+   "ProduceCountdownStart_AtNight": 5,
+   "ProduceInterval": 32,
+   "ProduceIntervalAdditional": 4,
+   "ProduceIntervalAdditional_AtNight": 1.5,
+   "ProduceInterval_AtNight": 23.5,
+   "SunCost": 25,
+   "SunValue": 25,
+   "SunValueList": [
+    25,
+    50,
+    75
+   ],
+   "Toughness": 300
+  }
+ },
+ "sweetpotato": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttractsEveryFrame": false,
+   "BeghouledCost": 1000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Defence",
+   "LaneChangeTime": 0.6,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "NormalAttractWidth": 2,
+   "PlantFoodDurationSeconds": 6,
+   "PlantfoodAttractWidth": 4,
+   "SunCost": 150,
+   "TimeBetweenLaneChanges": 5,
+   "Toughness": 4000
+  }
+ },
+ "tallnut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 6000,
+   "BeghouledCost": 1000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 5,
+    "SpeedMult": 1
+   },
+   "SunCost": 125,
+   "Toughness": 8000
+  }
+ },
+ "tanglekelp": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeDetectedByCatapult": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "DamageWhenDragFailed": 400,
+   "Family": "Melee",
+   "ImmuneToIceblock": true,
+   "MaxDraggedZombieCount": 1,
+   "MaxDraggedZombieCountPlantfood": 5,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 3,
+   "MintIgnoringDragCount": true,
+   "SunCost": 25,
+   "Toughness": 300
+  }
+ },
+ "threepeater": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 4000,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "pea",
+   "PeaTypePlantfood": "pea",
+   "PlantfoodPeaCount": 30,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 300,
+   "Toughness": 300
+  }
+ },
+ "thymewarp": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 60,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "SunCost": 75,
+   "Toughness": 300,
+   "WarpTime": 5
+  }
+ },
+ "toadstool": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "ChewTime": 30,
+   "ChewTimePF": 3,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Sun",
+   "MaxZombieChewCount": 1,
+   "MaxZombieChewCountPF": 4,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 5
+   },
+   "MintProductionFactor": 2,
+   "SunCost": 200,
+   "SunProducePerZombie": 50,
+   "SunProducePerZombiePF": 50,
+   "TongueDistance": 3.5,
+   "TongueDistancePf": 4,
+   "TongueSlapDamage": 50,
+   "TongueSlapDamagePF": 100,
+   "Toughness": 300,
+   "WaitTimePF": 6
+  }
+ },
+ "tool_projectile_bowling_explodeonut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 30,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling_explode_o_nut",
+   "SpeedX": 4,
+   "StartingHeight": 0,
+   "SunCost": 200,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowling_holonut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 30,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling_infinut",
+   "SpeedX": 4,
+   "StartingHeight": 0,
+   "SunCost": 200,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowling_primalwallnut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling_primal_wallnut",
+   "SpeedX": 4,
+   "StartingHeight": 0,
+   "SunCost": 250,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowling_tallnut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling_tallnut",
+   "SpeedX": 3.5,
+   "StartingHeight": 0,
+   "SunCost": 250,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowling_wallnut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling_wallnut",
+   "SpeedX": 4,
+   "StartingHeight": 0,
+   "SunCost": 200,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowlingbulb1": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 0.01,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling0",
+   "StartingHeight": 30,
+   "SunCost": 0,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowlingbulb2": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 0.01,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling1",
+   "StartingHeight": 30,
+   "SunCost": 0,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowlingbulb3": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 0.01,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling2",
+   "StartingHeight": 30,
+   "SunCost": 0,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowlingbulb_explode": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 0.01,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling_pf",
+   "StartingHeight": 30,
+   "SunCost": 0,
+   "Toughness": 1
+  }
+ },
+ "tool_projectile_bowlingbulb_iceburg": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 0.01,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "ProjectileType": "bowling_iceberg",
+   "StartingHeight": 30,
+   "SunCost": 50,
+   "Toughness": 1
+  }
+ },
+ "torchwood": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Damage": 6.25,
+   "DamageInterval": 1,
+   "DamageScale": 2,
+   "DamageScalePlantfooded": 3,
+   "DeathDamage": 450,
+   "DeathFireDuration": 5,
+   "Family": "Peashooter",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 2,
+    "SpeedMult": 1
+   },
+   "PlantfoodDuration": 5,
+   "SunCost": 175,
+   "Toughness": 2000,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.5
+   }
+  }
+ },
+ "turkeypult": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CabbageType": "turkey",
+   "CabbageTypePlantfood": "turkey_big",
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Magic",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "SunCost": 150,
+   "ThrowInterval": 2.85,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "turnip": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 500,
+   "CallsMirrorNutsOnDamaged": true,
+   "CannotBeGrabbedByParrot": true,
+   "CannotBePushedByFootballMech": true,
+   "Cooldown": 10,
+   "CooldownFrom": 0.75,
+   "Family": "Defence",
+   "ImmuneToSpeakerWave": true,
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "SunCost": 50,
+   "Toughness": 2000
+  }
+ },
+ "twinsunflower": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 10,
+   "CooldownFrom": 1,
+   "Family": "Sun",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintProductionFactor": 2,
+   "PlantfoodTime": 3,
+   "ProduceCountdownStart": 5,
+   "ProduceCountdownStartAdditional": 5,
+   "ProduceInterval": 23.5,
+   "ProduceIntervalAdditional": 1.5,
+   "SunCost": 125,
+   "SunValue": 100,
+   "Toughness": 300
+  }
+ },
+ "umbrellaleaf": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SunCost": 100,
+   "Toughness": 300
+  }
+ },
+ "vamporcini": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackDuration": 6,
+   "AttackDurationPlantfood": 10,
+   "BeghouledCost": 3000,
+   "Cooldown": 20,
+   "CooldownFrom": 1,
+   "DPS": 40,
+   "DPSPlantfood": 40,
+   "Family": "Poison",
+   "MaxToughness": 6000,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "MintDamageFactor": 5,
+   "SunCost": 100,
+   "Toughness": 4000
+  }
+ },
+ "wallnut": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "ArmorToughness": 4000,
+   "BeghouledCost": 1000,
+   "CallsMirrorNutsOnDamaged": true,
+   "Cooldown": 20,
+   "CooldownFrom": 0.75,
+   "Family": "Defence",
+   "MintBoostedProps": {
+    "Plantfood": true,
+    "ResistanceMult": 3,
+    "SpeedMult": 1
+   },
+   "SunCost": 50,
+   "Toughness": 4000
+  }
+ },
+ "wasabiwhip": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackDamage": 40,
+   "AttackInterval": 0.6,
+   "AttackSplashSamage": 20,
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Fire",
+   "ImmuneToIceblock": true,
+   "MaxDistance": 2.5,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 3,
+   "PlantfoodDPS": 400,
+   "PlantfoodDuration": 5,
+   "SunCost": 225,
+   "Toughness": 300,
+   "WarmingRadius": {
+    "GridItemDamage": 200,
+    "PulseCooldown": 6,
+    "PulseInitialDelay": 0.5
+   },
+   "WarmingRadiusPlantfood": {
+    "GridItemDamage": 100,
+    "PulseCooldown": 1.5,
+    "PulseInitialDelay": 0.25
+   }
+  }
+ },
+ "wintermelon": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 5000,
+   "CabbageType": "winter_melon",
+   "CabbageTypePlantfood": "winter_melon_pf",
+   "Cooldown": 5,
+   "CooldownFrom": 0.5,
+   "DetectsTNTSpark": true,
+   "Family": "Cold",
+   "ImmuneToIceblock": true,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "SunCost": 500,
+   "ThrowInterval": 2.7,
+   "ThrowIntervalAdditional": 0.15,
+   "Toughness": 300
+  }
+ },
+ "wintermint": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1000,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 85,
+   "CooldownFrom": 0,
+   "Family": "Cold",
+   "ImmuneToBoomBox": true,
+   "ImmuneToIceblock": true,
+   "Lifespan": 10,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 1
+   },
+   "SunCost": 0,
+   "Toughness": 300,
+   "ZombieChillDuration": 10
+  }
+ },
+ "witchhazel": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "AttackInterval": {
+    "Max": 1.5,
+    "Min": 0.5
+   },
+   "BeghouledCost": 2000,
+   "Cooldown": 30,
+   "CooldownFrom": 0.5,
+   "FailedTransDamage": 1200,
+   "FailedTransDamagePlantfood": 2400,
+   "Family": "Magic",
+   "MaxTransTime": 2,
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "MintDamageFactor": 3,
+   "RechargeTime": {
+    "Max": 18.5,
+    "Min": 17.5
+   },
+   "ShroomType": "puffshroom",
+   "ShroomTypeMint": "fumeshroom",
+   "ShroomTypePlantfood": "toadstool",
+   "ShroomTypePlantfoodMint": "hypnoshroom",
+   "SunCost": 200,
+   "Toughness": 300
+  }
+ },
+ "xshot": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 1500,
+   "Cooldown": 5,
+   "CooldownFrom": 1,
+   "Family": "Peashooter",
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 2
+   },
+   "PeaType": "rotobaga",
+   "PeaTypePlantfood": "rotobaga_pf",
+   "PlantfoodPeaCount": 60,
+   "ShootInterval": 1.35,
+   "ShootIntervalAdditional": 0.15,
+   "SunCost": 150,
+   "Toughness": 300
+  }
+ },
+ "zombiepotion_invisibility": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 0,
+   "CannotBeDetectedByCatapult": true,
+   "CannotBePushedByFootballMech": true,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 0.01,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "MaxEnchantLevel": 1,
+   "SunCost": 0,
+   "Toughness": 1
+  }
+ },
+ "zombiepotion_speed": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 0,
+   "CannotBeDetectedByCatapult": true,
+   "CannotBePushedByFootballMech": true,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 0.01,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "MaxEnchantLevel": 3,
+   "SunCost": 0,
+   "Toughness": 1
+  }
+ },
+ "zombiepotion_toughness": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 0,
+   "CannotBeDetectedByCatapult": true,
+   "CannotBePushedByFootballMech": true,
+   "CannotBeSheepenedByWizard": true,
+   "Cooldown": 0.01,
+   "CooldownFrom": 1,
+   "Family": "Nope",
+   "ImmuneToIceblock": true,
+   "MaxEnchantLevel": 3,
+   "SunCost": 0,
+   "Toughness": 1
+  }
+ },
+ "zoybeanpod": {
+  "objclass": "PlantProperties",
+  "objdata": {
+   "BeghouledCost": 2000,
+   "Cooldown": 20,
+   "CooldownFrom": 0.5,
+   "Family": "Magic",
+   "GrowthInterval": {
+    "Max": 4,
+    "Min": 3.5
+   },
+   "MintBoostedProps": {
+    "Plantfood": false,
+    "ResistanceMult": 1,
+    "SpeedMult": 3
+   },
+   "MintPotionLevel": 3,
+   "SummonType": [
+    {
+     "Type": "zoybean",
+     "Weight": 50
+    },
+    {
+     "Type": "zoybean_armor1",
+     "Weight": 30
+    },
+    {
+     "Type": "zoybean_armor2",
+     "Weight": 20
+    }
+   ],
+   "SummonTypePlantfood": [
+    {
+     "Type": "zoybean_gargantuar",
+     "Weight": 1
+    }
+   ],
+   "SunCost": 200,
+   "Toughness": 300
+  }
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "BirthdayStage",
+ "music": "Modern",
+ "mower": "mower_modern",
+ "railcart": "railcart_tutorial",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "birthday_armor1"
+  ],
+  "armor2": [
+   "birthday_armor2"
+  ],
+  "armor3": [
+   "birthday_armor2"
+  ],
+  "armor4": [
+   "birthday_armor4"
+  ],
+  "basic": [
+   "birthday"
+  ],
+  "flag": [
+   "birthday_flag"
+  ],
+  "gargantuar": [
+   "birthday_gargantuar"
+  ],
+  "imp": [
+   "tutorial_imp"
+  ],
+  "rally": [
+   "birthday_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

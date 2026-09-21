@@ -1,0 +1,23 @@
+{
+ "id": "lotus",
+ "stats": {
+  "damage": 120
+ },
+ "extra": {
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "SplashDamageOnWater": [
+   {
+    "Damage": 60,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "lotus2",
+  "Props": "RTID(lotus@ProjectileProps)"
+ }
+}

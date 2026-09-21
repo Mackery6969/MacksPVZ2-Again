@@ -1,0 +1,16 @@
+{
+ "id": "pea",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_flame_blue",
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "YellowIgnitedType": "pea_flame_yellow",
+  "MintBoostedType": "pea2",
+  "Props": "RTID(pea@ProjectileProps)"
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "id": "parsnip_child_mint",
+ "extends": "parsnip_child",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamagePerHit": 700,
+  "Size": {
+   "h": 48,
+   "w": 144
+  },
+  "Props": "RTID(parsnip_child_mint@ProjectileProps)"
+ }
+}

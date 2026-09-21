@@ -1,0 +1,26 @@
+{
+ "id": "pea_sling_1",
+ "stats": {
+  "damage": 60
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_sling_1_flame_blue",
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 1.5,
+  "SplashDamage": [
+   {
+    "Damage": 30,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "YellowIgnitedType": "pea_sling_1_flame_yellow",
+  "MintBoostedType": "pea_sling_2",
+  "Props": "RTID(pea_sling_1@ProjectileProps)"
+ }
+}

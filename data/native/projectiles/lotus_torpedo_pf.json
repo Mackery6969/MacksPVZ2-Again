@@ -1,0 +1,35 @@
+{
+ "id": "lotus_torpedo_pf",
+ "stats": {
+  "damage": 1200
+ },
+ "extra": {
+  "KnockbackDistance": 2,
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "SplashDamage": [
+   {
+    "Damage": 200,
+    "KnockbackDistance": 2,
+    "Range": {
+     "h": 3,
+     "w": 3
+    },
+    "StunDuration": 3
+   }
+  ],
+  "SplashDamageOnWater": [
+   {
+    "Damage": 400,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "lotus_torpedo_pf_mint",
+  "Props": "RTID(lotus_torpedo_pf@ProjectileProps)"
+ }
+}

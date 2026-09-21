@@ -1,0 +1,32 @@
+{
+ "id": "pea_sky1_flame_blue",
+ "stats": {
+  "damage": 60
+ },
+ "extra": {
+  "CancelsKnockbackFlying": true,
+  "CannotInterruptOtherKnockback": true,
+  "DamageScale": 3,
+  "DamageType": "fire",
+  "KnockbackDistance": 0.15,
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 1.5,
+  "SplashDamage": [
+   {
+    "KnockbackDistance": 0.15,
+    "Range": {
+     "h": 1,
+     "w": 0.5
+    }
+   }
+  ],
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "MintBoostedType": "pea_sky2_flame_blue",
+  "Props": "RTID(pea_sky1_flame_blue@ProjectileProps)"
+ }
+}

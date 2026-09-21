@@ -1,0 +1,41 @@
+{
+ "id": "zomboni",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1100,
+  "speed": 0.2,
+  "eat_dps": 1000,
+  "wave_cost": 400,
+  "weight": 4000
+ },
+ "tags": {
+  "add": [
+   "deep_water",
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable",
+   "divertable",
+   "draggable",
+   "enlightenable",
+   "grabbable",
+   "gummable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ZomboniAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ZomboniHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0
+ }
+}

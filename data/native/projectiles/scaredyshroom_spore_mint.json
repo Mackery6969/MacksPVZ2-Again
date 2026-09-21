@@ -1,0 +1,15 @@
+{
+ "id": "scaredyshroom_spore_mint",
+ "extends": "scaredyshroom_spore2",
+ "stats": {
+  "damage": 100
+ },
+ "extra": {
+  "KnockbackDistance": 0.5,
+  "Size": {
+   "h": 15,
+   "w": 15
+  },
+  "Props": "RTID(scaredyshroom_spore_mint@ProjectileProps)"
+ }
+}

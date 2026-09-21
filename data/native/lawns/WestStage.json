@@ -1,0 +1,39 @@
+{
+ "id": "WestStage",
+ "music": "Cowboy",
+ "mower": "mower_cowboy",
+ "railcart": "railcart_cowboy",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "cowboy_armor1"
+  ],
+  "armor2": [
+   "cowboy_armor2"
+  ],
+  "armor3": [
+   "cowboy_armor2"
+  ],
+  "armor4": [
+   "cowboy_armor4"
+  ],
+  "basic": [
+   "cowboy"
+  ],
+  "flag": [
+   "cowboy_flag"
+  ],
+  "gargantuar": [
+   "cowboy_gargantuar"
+  ],
+  "imp": [
+   "west_bullrider"
+  ],
+  "rally": [
+   "cowboy_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_cowboy"
+ ]
+}

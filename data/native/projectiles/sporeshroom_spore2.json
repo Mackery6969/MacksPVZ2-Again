@@ -1,0 +1,14 @@
+{
+ "id": "sporeshroom_spore2",
+ "stats": {
+  "damage": 250
+ },
+ "extra": {
+  "CarriesSporeShroom": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(sporeshroom_spore2@ProjectileProps)"
+ }
+}

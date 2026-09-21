@@ -1,0 +1,60 @@
+{
+ "id": "cannon",
+ "extends": "normal",
+ "stats": {
+  "toughness": 600,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 700,
+  "weight": 1500
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable",
+   "divertable",
+   "enlightenable",
+   "grabbable",
+   "hypnotizable",
+   "shrinkable",
+   "swallowable",
+   "tossable",
+   "transformable",
+   "warpable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "PirateCannonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "PirateCannonHitRect"
+  }
+ ],
+ "extra": {
+  "ChooseToSpawnOnNonDeckRows": true,
+  "ExplodeColumns": [
+   5,
+   4,
+   3,
+   2
+  ],
+  "ExplodeImpCount": 5,
+  "ExplodeImpCountAdditional": 0,
+  "ImpType": "pirate_imp",
+  "MaxImpCount": 5,
+  "MaxImpCountAdditional": 0,
+  "ShootColumns": [
+   5,
+   4
+  ],
+  "ShootInterval": 7.5,
+  "ShootIntervalAdditional": 0.5,
+  "TimeBefore": 3,
+  "TimeBeforeAdditional": 1
+ }
+}

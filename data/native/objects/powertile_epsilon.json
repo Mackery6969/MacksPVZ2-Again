@@ -1,0 +1,8 @@
+{
+ "id": "powertile_epsilon",
+ "category": "tile",
+ "extra": {
+  "DefaultPropagationDelay": 2,
+  "Rect": "RTID(TileDefaultRect@RectangleProps)"
+ }
+}

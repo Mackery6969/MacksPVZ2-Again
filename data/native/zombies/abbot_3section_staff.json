@@ -1,0 +1,39 @@
+{
+ "id": "abbot_3section_staff",
+ "extends": "normal",
+ "stats": {
+  "toughness": 900,
+  "speed": 0.22,
+  "eat_dps": 100,
+  "wave_cost": 400,
+  "weight": 2000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "Abbot3SectionStaffAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "BlockBackwardDistance": 1,
+  "HammerDuration": 4,
+  "Hit1Damage": 200,
+  "Hit2Damage": 400,
+  "LeapForwardDistance": 1.45,
+  "PlantBlockers": [
+   "tallnut"
+  ],
+  "ProjectileDamageMult": 1,
+  "ProjectileDetectRadius": 160,
+  "RestDuration": 0,
+  "ZombieBlockers": [
+   "future_protector_shield",
+   "modern_moonflower_shield",
+   "future_infinut_shield"
+  ]
+ }
+}

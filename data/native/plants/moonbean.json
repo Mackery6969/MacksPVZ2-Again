@@ -1,0 +1,33 @@
+{
+ "id": "moonbean",
+ "family": "Sun",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 150,
+  "cooldown": 20,
+  "cooldown_from": 0.375,
+  "beghouled_cost": 500
+ },
+ "components": [
+  {
+   "type": "sun_producer"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": true
+ },
+ "extra": {
+  "CannotBeHealedByAloe": true,
+  "MintDamageFactor": 5,
+  "PlantBombExplosionRadius": 40,
+  "PlantBombExplosionRadiusPlantfood": 25,
+  "PlantDamage": 500,
+  "PlantDamagePlantfood": 0,
+  "ZombieBombExplosionRadius": 80,
+  "ZombieBombExplosionRadiusPlantfood": 80,
+  "ZombieDamage": 900,
+  "ZombieDamagePlantfood": 1250
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "id": "example_showdown",
+ "comment": "Example Pack - Showdown",
+ "name": "Sprinter Showdown",
+ "description": "Demonstrates a mod-authored level mixing stock and custom content.",
+ "author": "example_pack",
+ "number": 1,
+ "stage": "TutorialStage",
+ "seedbank": {
+  "mode": "chooser",
+  "selection": "preset",
+  "preset": ["peashooter", "sunflower", "splitpea_mk2"]
+ },
+ "waves": [
+  {"kind": "spawn", "zombies": [{"type": "tutorial", "row": 3}]},
+  {"kind": "spawn", "zombies": [{"type": "sprinter", "row": 2}, {"type": "sprinter", "row": 4}]},
+  {"kind": "spawn", "zombies": [
+    {"type": "tutorial", "row": 1},
+    {"type": "sprinter", "row": 3},
+    {"type": "tutorial_armor2", "row": 5}
+  ]}
+ ],
+ "wave_settings": {"count": 3, "flag_interval": 3}
+}

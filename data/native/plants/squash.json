@@ -1,0 +1,28 @@
+{
+ "id": "squash",
+ "family": "Melee",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "melee"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "MintDamageFactor": 3,
+  "MintIgnoringSmashTime": true,
+  "PlantfoodSmashTime": 2,
+  "SmashDamage": 1800,
+  "SmashTime": 1
+ }
+}

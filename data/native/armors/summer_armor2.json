@@ -1,0 +1,9 @@
+{
+ "id": "summer_armor2",
+ "stats": {
+  "toughness": 1100,
+  "bowling_level": 2,
+  "is_metal": true,
+  "is_ice": false
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "id": "sky_dronemaker",
+ "extends": "normal",
+ "stats": {
+  "toughness": 2000,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 1400,
+  "weight": 2500
+ },
+ "tags": {
+  "add": [
+   "deep_water"
+  ],
+  "remove": [
+   "divertable",
+   "enlightenable",
+   "grabbable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "shrinkable",
+   "sporeable",
+   "toss_detectable",
+   "tossable",
+   "transformable",
+   "zomboss_damageable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "DarkKingAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "DarkKingHitRect"
+  }
+ ],
+ "extra": {
+  "DroneInterval": {
+   "Max": 20,
+   "Min": 16
+  },
+  "PlantablePlants": [
+   "ghostpepper"
+  ],
+  "TargetListBecomesBlackList": false,
+  "ValidDroneTargets": [
+   "sky",
+   "sky_electric",
+   "sky_flag",
+   "sky_armor1",
+   "sky_armor2"
+  ],
+  "ZombossLaneSummon": true
+ }
+}

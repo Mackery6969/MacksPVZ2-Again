@@ -1,0 +1,14 @@
+{
+ "id": "nightshade_mint",
+ "extends": "nightshade",
+ "stats": {
+  "damage": 1000
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(nightshade_mint@ProjectileProps)"
+ }
+}

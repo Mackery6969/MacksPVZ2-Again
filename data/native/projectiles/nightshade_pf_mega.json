@@ -1,0 +1,13 @@
+{
+ "id": "nightshade_pf_mega",
+ "stats": {
+  "damage": 800
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(nightshade_pf_mega@ProjectileProps)"
+ }
+}

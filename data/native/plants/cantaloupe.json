@@ -1,0 +1,28 @@
+{
+ "id": "cantaloupe",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 500,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 2500
+ },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "cantaloupe",
+   "interval": 2.7,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "cantaloupe_pf"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "ExtraHeightAboveTargets": 200
+ }
+}

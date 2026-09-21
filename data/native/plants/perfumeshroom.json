@@ -1,0 +1,17 @@
+{
+ "id": "perfumeshroom",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 30,
+  "cooldown_from": 0.666667,
+  "beghouled_cost": 1000
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "Damage": 0,
+  "Duration": 9,
+  "ImmuneToBoomBox": true
+ }
+}

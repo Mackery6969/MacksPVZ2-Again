@@ -1,0 +1,24 @@
+{
+ "id": "wintermelon",
+ "family": "Cold",
+ "stats": {
+  "sun_cost": 500,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 5000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "CabbageType": "winter_melon",
+  "CabbageTypePlantfood": "winter_melon_pf",
+  "DetectsTNTSpark": true,
+  "ImmuneToIceblock": true,
+  "ThrowInterval": 2.7,
+  "ThrowIntervalAdditional": 0.15
+ }
+}

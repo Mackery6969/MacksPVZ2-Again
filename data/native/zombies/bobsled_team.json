@@ -1,0 +1,42 @@
+{
+ "id": "bobsled_team",
+ "extends": "normal",
+ "stats": {
+  "toughness": 390,
+  "speed": 0.3,
+  "eat_dps": 100,
+  "wave_cost": 200,
+  "weight": 100
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "divertable",
+   "draggable",
+   "enlightenable",
+   "grabbable",
+   "gummable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "sporeable",
+   "swallowable",
+   "tossable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "BobsledTeamAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "BobsledTeamHitRect"
+  }
+ ],
+ "extra": {
+  "BobsledType": "bobsled",
+  "ChiliStunDurationMult": 0
+ }
+}

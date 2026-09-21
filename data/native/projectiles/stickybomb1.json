@@ -1,0 +1,16 @@
+{
+ "id": "stickybomb1",
+ "stats": {
+  "damage": 120
+ },
+ "extra": {
+  "BombRiceExplodeSize": {
+   "h": 3,
+   "w": 2
+  },
+  "BombRiceLevel": 1,
+  "BombRiceLifespan": 2,
+  "MintBoostedType": "stickybomb2",
+  "Props": "RTID(stickybomb1@ProjectileProps)"
+ }
+}

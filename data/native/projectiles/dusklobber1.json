@@ -1,0 +1,23 @@
+{
+ "id": "dusklobber1",
+ "stats": {
+  "damage": 15
+ },
+ "extra": {
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "SplashDamage": [
+   {
+    "Damage": 75,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "dusklobber2",
+  "Props": "RTID(dusklobber1@ProjectileProps)"
+ }
+}

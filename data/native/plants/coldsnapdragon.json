@@ -1,0 +1,28 @@
+{
+ "id": "coldsnapdragon",
+ "family": "Cold",
+ "stats": {
+  "sun_cost": 225,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackInterval": 1.85,
+  "AttackIntervalAdditional": 0.15,
+  "ChillDuration": 10,
+  "ChillDurationPlantfood": 10,
+  "Damage": 30,
+  "DamagePlantfood": 1200,
+  "FreezeDuration": 0,
+  "FreezeDurationPlantfood": 10,
+  "ImmuneToIceblock": true,
+  "MintDamageFactor": 3
+ }
+}

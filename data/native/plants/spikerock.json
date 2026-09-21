@@ -1,0 +1,27 @@
+{
+ "id": "spikerock",
+ "family": "Sharp",
+ "stats": {
+  "sun_cost": 250,
+  "toughness": 900,
+  "cooldown": 5,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackInterval": 0.5,
+  "Damage": 20,
+  "ImmuneToBoomBox": true,
+  "MaxSpike": 3,
+  "MintDamageFactor": 5,
+  "PlantfoodDPS": 800,
+  "PlantfoodDragSPS": 3,
+  "PlantfoodDuration": 5,
+  "PlantfoodSideDPS": 60
+ }
+}

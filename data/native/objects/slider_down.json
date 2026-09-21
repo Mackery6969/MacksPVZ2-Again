@@ -1,0 +1,7 @@
+{
+ "id": "slider_down",
+ "category": "tile",
+ "extra": {
+  "Rect": "RTID(SliderTileRect@RectangleProps)"
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "id": "strawburst",
+ "family": "Explosive",
+ "stats": {
+  "sun_cost": 400,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 3000
+ },
+ "components": [
+  {
+   "type": "explosive"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "CabbageType0": "strawburst0",
+  "CabbageType1": "strawburst1",
+  "CabbageType2": "strawburst2",
+  "Damage0": 200,
+  "Damage1": 400,
+  "Damage2": 900,
+  "DamagePlantfood": 400,
+  "GrowTime0": 7.5,
+  "GrowTime1": 10,
+  "GrowTime2": 15,
+  "MintDamageFactor": 3
+ }
+}

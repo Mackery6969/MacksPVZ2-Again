@@ -1,0 +1,26 @@
+{
+ "id": "snowdrop_freeze",
+ "stats": {
+  "damage": 30
+ },
+ "extra": {
+  "ChillDuration": 10,
+  "FreezeDuration": 6,
+  "IceBlockLevel": 1,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SplashDamage": [
+   {
+    "ChillDuration": 10,
+    "FreezeDuration": 5,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "Props": "RTID(snowdrop_freeze@ProjectileProps)"
+ }
+}

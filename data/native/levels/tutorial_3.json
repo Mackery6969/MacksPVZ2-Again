@@ -1,0 +1,77 @@
+{
+ "id": "tutorial_3",
+ "comment": "Tutorial 3",
+ "name": "[TUTORIAL_LEVEL_NAME]",
+ "description": "[PLAYERS_HOUSE]",
+ "number": 3,
+ "stage": "TutorialStage",
+ "tutorial_script": "tutorial_3",
+ "seedbank": {
+  "mode": "chooser",
+  "selection": "preset",
+  "preset": [
+   "peashooter",
+   "sunflower",
+   "wallnut"
+  ]
+ },
+ "waves": [
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial_armor1",
+     "row": 3
+    },
+    {
+     "type": "tutorial_armor1",
+     "row": 4
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial_armor1",
+     "row": 3
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial_armor1",
+     "row": 2
+    },
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    }
+   ]
+  }
+ ],
+ "wave_settings": {
+  "count": 3,
+  "flag_interval": 3,
+  "points": 100,
+  "point_increment": 10,
+  "next_wave_health_min": 0.6,
+  "next_wave_health_max": 0.75
+ },
+ "features": [
+  "DefaultZombieWinCondition",
+  "FastSunDropper",
+  "SeedPacketHalfTimeModule",
+  "StandardIntro",
+  "TutorialMowers",
+  "TutorialPeashooterDeath",
+  "ZombiesDeadWinCon"
+ ]
+}

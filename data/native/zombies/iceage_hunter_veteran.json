@@ -1,0 +1,27 @@
+{
+ "id": "iceage_hunter_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1100,
+  "speed": 0.2,
+  "eat_dps": 150,
+  "wave_cost": 700,
+  "weight": 2500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChillInsteadOfFreeze": true,
+  "LobInterval": 3,
+  "LobIntervalAdditional": 0.5,
+  "SnowballType": "hunter_snowball"
+ }
+}

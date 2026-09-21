@@ -1,0 +1,14 @@
+{
+ "id": "puffshroom_spore",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "MintBoostedType": "puffshroom_spore2",
+  "Props": "RTID(puffshroom_spore@ProjectileProps)"
+ }
+}

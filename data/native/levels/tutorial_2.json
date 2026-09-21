@@ -1,0 +1,92 @@
+{
+ "id": "tutorial_2",
+ "comment": "Tutorial 2",
+ "name": "[TUTORIAL_LEVEL_NAME]",
+ "description": "[PLAYERS_HOUSE]",
+ "number": 2,
+ "stage": "TutorialStage",
+ "tutorial_script": "tutorial_2",
+ "seedbank": {
+  "mode": "chooser",
+  "selection": "preset",
+  "preset": [
+   "peashooter",
+   "sunflower"
+  ]
+ },
+ "waves": [
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial",
+     "row": 3
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial",
+     "row": 2
+    },
+    {
+     "type": "tutorial",
+     "row": 3
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial",
+     "row": 4
+    },
+    {
+     "type": "tutorial"
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial",
+     "row": 2
+    },
+    {
+     "type": "tutorial",
+     "row": 4
+    },
+    {
+     "type": "tutorial",
+     "row": 3
+    },
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    }
+   ]
+  }
+ ],
+ "wave_settings": {
+  "count": 4,
+  "flag_interval": 4,
+  "points": 100,
+  "point_increment": 10,
+  "next_wave_health_min": 0.5,
+  "next_wave_health_max": 0.65
+ },
+ "features": [
+  "DefaultSunDropper",
+  "DefaultZombieWinCondition",
+  "FrontLawnMowers",
+  "StandardIntro",
+  "TutorialPeashooterDeath",
+  "ZombiesDeadWinCon"
+ ]
+}

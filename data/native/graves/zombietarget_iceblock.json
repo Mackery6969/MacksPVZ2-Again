@@ -1,0 +1,19 @@
+{
+ "id": "zombietarget_iceblock",
+ "stats": {
+  "toughness": 600,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": true
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "BackpackRect"
+  }
+ ],
+ "extra": {
+  "AllowPlantsInSquare": true,
+  "FireDamageScaleIfMeltable": 3
+ }
+}

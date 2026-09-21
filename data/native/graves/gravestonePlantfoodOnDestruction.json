@@ -1,0 +1,16 @@
+{
+ "id": "gravestonePlantfoodOnDestruction",
+ "stats": {
+  "toughness": 700,
+  "flying": false,
+  "gravebuster_plantable": true,
+  "hot_potato_meltable": false,
+  "plantfood_count": 1
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "TombstoneRect"
+  }
+ ]
+}

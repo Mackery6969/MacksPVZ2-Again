@@ -1,0 +1,14 @@
+{
+ "id": "cabbage1",
+ "stats": {
+  "damage": 80
+ },
+ "extra": {
+  "Size": {
+   "h": 28,
+   "w": 28
+  },
+  "MintBoostedType": "cabbage2",
+  "Props": "RTID(cabbage1@ProjectileProps)"
+ }
+}

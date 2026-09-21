@@ -1,0 +1,18 @@
+{
+ "id": "zombiepotion_speed",
+ "category": "potion",
+ "stats": {
+  "toughness": 1
+ },
+ "extra": {
+  "BeghouledCost": 0,
+  "CannotBeDetectedByCatapult": true,
+  "CannotBePushedByFootballMech": true,
+  "CannotBeSheepenedByWizard": true,
+  "Cooldown": 0.01,
+  "CooldownFrom": 1,
+  "ImmuneToIceblock": true,
+  "MaxEnchantLevel": 3,
+  "SunCost": 0
+ }
+}

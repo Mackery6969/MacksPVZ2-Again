@@ -1,0 +1,16 @@
+{
+ "id": "sky_bolt_positive",
+ "stats": {
+  "damage": 0
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "PositiveCharge": 1,
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "Props": "RTID(sky_bolt_positive@ProjectileProps)"
+ }
+}

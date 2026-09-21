@@ -1,0 +1,26 @@
+{
+ "id": "seashroom",
+ "family": "Poison",
+ "stats": {
+  "sun_cost": 0,
+  "toughness": 150,
+  "cooldown": 8,
+  "cooldown_from": 1,
+  "beghouled_cost": 300
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "FadeSpeedMultInWater": 0.5,
+  "LifeSpan": 50,
+  "MintIgnoringLifeSpan": true,
+  "PeaType": "seashroom_spore",
+  "PeaTypePlantfood": "seashroom_spore",
+  "PlantfoodPeaCount": 30,
+  "ShootInterval": 1.35,
+  "ShootIntervalAdditional": 0.15
+ }
+}

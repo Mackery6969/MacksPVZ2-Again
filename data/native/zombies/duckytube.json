@@ -1,0 +1,31 @@
+{
+ "id": "duckytube",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.17,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 1000
+ },
+ "sort": "Normal",
+ "tags": {
+  "add": [
+   "deep_water"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChooseToSpawnOnDeepWaterRows": true,
+  "SpeedScaleInWater": 2
+ }
+}

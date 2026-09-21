@@ -1,0 +1,20 @@
+{
+ "id": "pea_flame_yellow",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_flame_blue",
+  "DamageScale": 2,
+  "DamageType": "fire",
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "MintBoostedType": "pea2_flame_yellow",
+  "Props": "RTID(pea_flame_yellow@ProjectileProps)"
+ }
+}

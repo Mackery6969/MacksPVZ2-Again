@@ -1,0 +1,37 @@
+{
+ "id": "iceage_weasel",
+ "extends": "normal",
+ "stats": {
+  "toughness": 40,
+  "speed": 1.5,
+  "eat_dps": 75,
+  "wave_cost": 10,
+  "weight": 0
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "enlightenable",
+   "grabbable",
+   "pushable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CowboyChickenAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CowboyChickenHitRect"
+  }
+ ],
+ "extra": {
+  "CanBeEasilySwallowedByChomper": true,
+  "ChillInsteadOfFreeze": true,
+  "DoesNotDamageHeavilyToGarlic": true,
+  "KilledByShrinkingViolet": true
+ }
+}

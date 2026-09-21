@@ -1,0 +1,16 @@
+{
+ "id": "sprinter",
+ "extends": "normal",
+ "stats": {
+  "toughness": 120,
+  "speed": 0.55,
+  "eat_dps": 80,
+  "wave_cost": 150,
+  "weight": 800
+ },
+ "sort": "Normal",
+ "tags": {
+  "add": ["fast"],
+  "remove": ["swallowable", "grabbable"]
+ }
+}

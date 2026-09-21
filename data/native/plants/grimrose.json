@@ -1,0 +1,26 @@
+{
+ "id": "grimrose",
+ "family": "Shadow",
+ "stats": {
+  "sun_cost": 75,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "KillCountPerAttack": 1,
+  "KillCountPlantfood": 3,
+  "MaxKills": 1,
+  "MaxKillsPowered": 3,
+  "MintDamageFactor": 3,
+  "MintIgnoringDragCount": true,
+  "ReloadInterval": 10,
+  "SlapDamage": 600
+ }
+}

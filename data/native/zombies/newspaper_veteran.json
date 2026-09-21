@@ -1,0 +1,28 @@
+{
+ "id": "newspaper_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 490,
+  "speed": 0.22,
+  "eat_dps": 100,
+  "wave_cost": 1200,
+  "weight": 4000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChooseToSpawnOnNonDeckRows": true,
+  "EnragedDamageScale": 10,
+  "EnragedSpeedScale": 4,
+  "NewspaperBowlingLevel": 2,
+  "NewspaperHealth": 1800
+ }
+}

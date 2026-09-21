@@ -1,0 +1,9 @@
+{
+ "id": "rail_pirate",
+ "category": "tile",
+ "extends": "rail",
+ "extra": {
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Pirate"
+ }
+}

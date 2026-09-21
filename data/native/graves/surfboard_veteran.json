@@ -1,0 +1,15 @@
+{
+ "id": "surfboard_veteran",
+ "stats": {
+  "toughness": 1100,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": false
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "SurfBoardRect"
+  }
+ ]
+}

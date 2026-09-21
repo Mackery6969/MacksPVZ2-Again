@@ -1,0 +1,38 @@
+{
+ "id": "future_gargantuar",
+ "extends": "gargantuar",
+ "stats": {
+  "toughness": 3600,
+  "speed": 0.16,
+  "eat_dps": 100,
+  "wave_cost": 2000,
+  "weight": 2500
+ },
+ "sort": "Gargantuar",
+ "tags": {
+  "remove": [
+   "divertable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "GargantuarAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "GargantuarHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "EyeLaserDelayBetweenShots": 12.5,
+  "EyeLaserMaxColumn": 5,
+  "EyeLaserMinDistance": 1.5,
+  "EyeLaserSweepLength": 1.5,
+  "EyeLaserSweepTime": 1,
+  "EyeLaserTotalDamage": 1000,
+  "ImpType": "future_imp",
+  "SmashDamage": 1500
+ }
+}

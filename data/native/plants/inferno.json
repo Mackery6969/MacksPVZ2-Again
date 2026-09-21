@@ -1,0 +1,35 @@
+{
+ "id": "inferno",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 25,
+  "cooldown_from": 0.4,
+  "beghouled_cost": 2000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "ImmuneToIceblock": true,
+  "TornadoInterval": {
+   "Max": 6.05,
+   "Min": 5.95
+  },
+  "TornadoType": "inferno_tornado",
+  "TornadoTypePlantfood": "inferno_tornado_pf",
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 6,
+   "PulseInitialDelay": 0.5
+  },
+  "WarmingRadiusPlantfood": {
+   "GridItemDamage": 100,
+   "PulseCooldown": 1.5,
+   "PulseInitialDelay": 0.25
+  }
+ }
+}

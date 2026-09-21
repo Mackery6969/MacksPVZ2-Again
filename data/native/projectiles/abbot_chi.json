@@ -1,0 +1,18 @@
+{
+ "id": "abbot_chi",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DetectsEaterDetectDisabledPlants": true,
+  "FootballPush": true,
+  "IgnoredBy3SectionStaff": true,
+  "KnockbackDistance": 1,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(abbot_chi@ProjectileProps)"
+ }
+}

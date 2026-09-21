@@ -1,0 +1,12 @@
+{
+ "id": "railcart_beach",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "AboveTide": true,
+  "RailType": "rail_beach",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "UseRopeMoveSounds": true,
+  "WorldName": "Beach"
+ }
+}

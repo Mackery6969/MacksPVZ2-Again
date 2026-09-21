@@ -1,0 +1,15 @@
+{
+ "id": "butter",
+ "stats": {
+  "damage": 60
+ },
+ "extra": {
+  "ButterDuration": 8,
+  "Size": {
+   "h": 40,
+   "w": 40
+  },
+  "MintBoostedType": "butter2",
+  "Props": "RTID(butter@ProjectileProps)"
+ }
+}

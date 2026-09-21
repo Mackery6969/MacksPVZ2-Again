@@ -1,0 +1,37 @@
+{
+ "id": "foodfight_turkey",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1,
+  "speed": 2,
+  "eat_dps": 50,
+  "wave_cost": 10,
+  "weight": 0
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "enlightenable",
+   "grabbable",
+   "sporeable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CowboyChickenAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CowboyChickenHitRect"
+  }
+ ],
+ "extra": {
+  "CanBeEasilySwallowedByChomper": true,
+  "DoesNotDamageHeavilyToGarlic": true,
+  "KilledByShrinkingViolet": true,
+  "WalkSPSVarience": 0
+ }
+}

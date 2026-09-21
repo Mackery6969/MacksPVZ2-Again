@@ -1,0 +1,39 @@
+{
+ "id": "SummerNightsStage",
+ "music": "Modern",
+ "mower": "mower_modern",
+ "railcart": "railcart_tutorial",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "summer_armor1"
+  ],
+  "armor2": [
+   "summer_armor2"
+  ],
+  "armor3": [
+   "summer_armor2"
+  ],
+  "armor4": [
+   "summer_armor2"
+  ],
+  "basic": [
+   "summer_basic"
+  ],
+  "flag": [
+   "summer_flag"
+  ],
+  "gargantuar": [
+   "summer_gargantuar"
+  ],
+  "imp": [
+   "summer_imp"
+  ],
+  "rally": [
+   "summer_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

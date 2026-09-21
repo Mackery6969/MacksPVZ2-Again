@@ -1,0 +1,18 @@
+{
+ "id": "pea1_snap",
+ "extends": "pea1",
+ "stats": {
+  "damage": 120
+ },
+ "extra": {
+  "BlueIgnitedType": "pea1_snap_flame_blue",
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 1.5,
+  "YellowIgnitedType": "pea1_snap_flame_yellow",
+  "MintBoostedType": "pea2_snap",
+  "Props": "RTID(pea1_snap@ProjectileProps)"
+ }
+}

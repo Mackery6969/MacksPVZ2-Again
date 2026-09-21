@@ -1,0 +1,24 @@
+{
+ "id": "phatbeet_rhythm",
+ "family": "Melee",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "melee"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "MintDamageFactor": 3
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "id": "pea2_flame_blue",
+ "stats": {
+  "damage": 100
+ },
+ "extra": {
+  "DamageScale": 3,
+  "DamageType": "fire",
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 2,
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "Props": "RTID(pea2_flame_blue@ProjectileProps)"
+ }
+}

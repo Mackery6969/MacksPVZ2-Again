@@ -1,0 +1,28 @@
+{
+ "id": "zomboss_missile_dino",
+ "stats": {
+  "damage": 500
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamageType": "fire",
+  "IgnoredBy3SectionStaff": true,
+  "ShakesScreenOnImpact": true,
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "SplashDamage": [
+   {
+    "Damage": 250,
+    "Range": {
+     "h": 1,
+     "w": 3
+    }
+   }
+  ],
+  "SupressArmorProtection": true,
+  "TileCrackleTime": 10,
+  "Props": "RTID(zomboss_missile_dino@ProjectileProps)"
+ }
+}

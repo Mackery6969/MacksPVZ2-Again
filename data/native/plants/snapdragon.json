@@ -1,0 +1,24 @@
+{
+ "id": "snapdragon",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackInterval": 1.85,
+  "AttackIntervalAdditional": 0.15,
+  "Damage": 30,
+  "DamagePlantfood": 1800,
+  "ImmuneToIceblock": true,
+  "MintDamageFactor": 3
+ }
+}

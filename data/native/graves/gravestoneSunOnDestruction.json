@@ -1,0 +1,18 @@
+{
+ "id": "gravestoneSunOnDestruction",
+ "stats": {
+  "toughness": 700,
+  "flying": false,
+  "gravebuster_plantable": true,
+  "hot_potato_meltable": false
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "TombstoneRect"
+  }
+ ],
+ "extra": {
+  "SunValue": 100
+ }
+}

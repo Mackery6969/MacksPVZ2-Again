@@ -1,0 +1,36 @@
+{
+ "id": "marigold_orange",
+ "family": "Explosive",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "explosive"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "ExplodeDamage": 400,
+  "ImmuneToIceblock": true,
+  "MintDamageFactor": 3,
+  "PlantfoodTime": 3,
+  "ProduceCountdownStart": 5,
+  "ProduceCountdownStartAdditional": 5,
+  "ProduceInterval": 23.5,
+  "ProduceIntervalAdditional": 1.5,
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 6,
+   "PulseInitialDelay": 0.5
+  }
+ }
+}

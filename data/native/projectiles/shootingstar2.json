@@ -1,0 +1,13 @@
+{
+ "id": "shootingstar2",
+ "stats": {
+  "damage": 90
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(shootingstar2@ProjectileProps)"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "id": "airraid_2",
+ "extends": "homing_thistle_pf",
+ "stats": {
+  "damage": 30
+ },
+ "extra": {
+  "DamageToShip": 30,
+  "NegativeCharge": 0,
+  "PositiveCharge": 0,
+  "Size": {
+   "h": 4,
+   "w": 4
+  },
+  "Props": "RTID(airraid_2@ProjectileProps)"
+ }
+}

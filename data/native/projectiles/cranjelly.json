@@ -1,0 +1,17 @@
+{
+ "id": "cranjelly",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "LiquidType": "cranjelly",
+  "Size": {
+   "h": 40,
+   "w": 40
+  },
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "Props": "RTID(cranjelly@ProjectileProps)"
+ }
+}

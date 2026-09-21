@@ -1,0 +1,39 @@
+{
+ "id": "ArenaStage",
+ "music": "Dark",
+ "mower": "mower_dark",
+ "railcart": "railcart_tutorial",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "dark_armor1"
+  ],
+  "armor2": [
+   "dark_armor2"
+  ],
+  "armor3": [
+   "dark_armor3"
+  ],
+  "armor4": [
+   "dark_armor4"
+  ],
+  "basic": [
+   "dark"
+  ],
+  "flag": [
+   "dark_flag"
+  ],
+  "gargantuar": [
+   "dark_gargantuar"
+  ],
+  "imp": [
+   "dark_imp"
+  ],
+  "rally": [
+   "dark_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

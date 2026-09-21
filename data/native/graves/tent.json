@@ -1,0 +1,34 @@
+{
+ "id": "tent",
+ "stats": {
+  "toughness": 700,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": false
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "BackpackRect"
+  },
+  {
+   "type": "grave_summon",
+   "interval_min": 10,
+   "interval_max": 12,
+   "zombies": [
+    {
+     "type": "lostcity",
+     "weight": 60
+    },
+    {
+     "type": "lostcity_armor1",
+     "weight": 30
+    },
+    {
+     "type": "lostcity_armor2",
+     "weight": 10
+    }
+   ]
+  }
+ ]
+}

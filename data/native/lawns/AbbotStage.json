@@ -1,0 +1,39 @@
+{
+ "id": "AbbotStage",
+ "music": "Kongfu",
+ "mower": "mower_kongfu",
+ "railcart": "railcart_kongfu",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "abbot_armor1"
+  ],
+  "armor2": [
+   "abbot_armor2"
+  ],
+  "armor3": [
+   "abbot_armor3"
+  ],
+  "armor4": [
+   "abbot_armor4"
+  ],
+  "basic": [
+   "abbot"
+  ],
+  "flag": [
+   "abbot_flag"
+  ],
+  "gargantuar": [
+   "kongfu_bronze_chi"
+  ],
+  "imp": [
+   "abbot_imp"
+  ],
+  "rally": [
+   "abbot_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "kongfu_rack_torch"
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "id": "football_mech",
+ "extends": "normal",
+ "stats": {
+  "toughness": 2000,
+  "speed": 0.2,
+  "eat_dps": 100,
+  "wave_cost": 1000,
+  "weight": 4000
+ },
+ "tags": {
+  "add": [
+   "deep_water",
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "divertable",
+   "draggable",
+   "enlightenable",
+   "grabbable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "FutureFootballMechAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "FutureFootballMechHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "EMPStunTimeScale": 1,
+  "PushFailDamage": 400
+ }
+}

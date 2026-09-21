@@ -1,0 +1,21 @@
+{
+ "id": "stallia",
+ "family": "Slow",
+ "stats": {
+  "sun_cost": 0,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 1,
+  "beghouled_cost": 500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "MintKnockBackDistance": 3,
+  "PerfumeDuration": 12,
+  "PerfumeDurationPlantfood": 12
+ }
+}

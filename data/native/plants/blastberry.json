@@ -1,0 +1,27 @@
+{
+ "id": "blastberry",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 175,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 0.6,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "blastberry",
+   "projectile_plantfood": "blastberry_pf"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "ShootInterval": 2.85,
+  "ShootIntervalAdditional": 0.15
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "id": "moltenpool_mint",
+ "category": "liquid",
+ "extra": {
+  "TileLiquidBasedOn": "moltenpool"
+ }
+}

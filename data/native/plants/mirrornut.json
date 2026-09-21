@@ -1,0 +1,31 @@
+{
+ "id": "mirrornut",
+ "family": "Defence",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 4000,
+  "cooldown": 25,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "blocker"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 3,
+  "plantfood": true
+ },
+ "extra": {
+  "AccumulatedDamagePerShot": 2000,
+  "CallsMirrorNutsOnDamaged": true,
+  "DeathRayDamage": 550,
+  "MaxShots": 4,
+  "MintDamageFactor": 3,
+  "PeaType": "magnifying_grass",
+  "ShieldLifespan": 15,
+  "ShootInterval": 0.15
+ }
+}

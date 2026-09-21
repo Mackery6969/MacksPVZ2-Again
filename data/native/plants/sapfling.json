@@ -1,0 +1,23 @@
+{
+ "id": "sapfling",
+ "family": "Slow",
+ "stats": {
+  "sun_cost": 75,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "CabbageType": "sapfling",
+  "CabbageTypePlantfood": "sapfling_pf",
+  "MintKnockBackDistance": 3,
+  "ThrowInterval": 2.85,
+  "ThrowIntervalAdditional": 0.15
+ }
+}

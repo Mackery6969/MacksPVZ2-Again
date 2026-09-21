@@ -1,0 +1,215 @@
+{
+ "id": "zombossmech_iceage",
+ "extends": "zomboss",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0
+ },
+ "sort": "Zomboss",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "IceageZombossMechAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "IceageZombossMechHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "FoeEatDamageReflectPct": 0.5,
+  "GlacierBlockZombieList": [
+   [],
+   [
+    "iceage",
+    "iceage_weasel",
+    "iceage_imp",
+    ""
+   ],
+   [
+    "iceage",
+    "iceage_imp",
+    ""
+   ],
+   [
+    "iceage",
+    "iceage_imp",
+    ""
+   ],
+   [
+    "iceage",
+    "iceage_hunter",
+    "iceage_armor3"
+   ],
+   [
+    "iceage_armor3",
+    "iceage_hunter",
+    "iceage_dodo"
+   ],
+   [
+    "iceage_armor3",
+    "iceage_hunter",
+    "iceage_dodo"
+   ],
+   [
+    "iceage_armor3",
+    "iceage_hunter",
+    "iceage_dodo"
+   ]
+  ],
+  "GlacierToughness": 1750,
+  "IdleColumn": 6,
+  "MissileType": "zomboss_missile_iceage",
+  "ZombossMechLevel": 0,
+  "ZombossStages": [
+   {
+    "Actions": [
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 3000,
+       "pointMin": 1100,
+       "zombieList": []
+      },
+      "weight": 5
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 6
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 1,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 10
+     }
+    ],
+    "AnimRateModifier": 1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 0,
+    "DamageIndexHalf": 0,
+    "HitPoints": 5000,
+    "MaxIdleTime": 2.5,
+    "MinIdleTime": 1.5,
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 3
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 3000,
+       "pointMin": 1100,
+       "zombieList": []
+      },
+      "weight": 5
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 6
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 1,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 10
+     }
+    ],
+    "AnimRateModifier": 1.1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 3,
+    "DamageIndexHalf": 3,
+    "HitPoints": 4000,
+    "MaxIdleTime": 2,
+    "MinIdleTime": 1,
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2.5
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "summon",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 3000,
+       "pointMin": 1100,
+       "zombieList": []
+      },
+      "weight": 5
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 6
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 1,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 8
+     }
+    ],
+    "AnimRateModifier": 1.25,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 6,
+    "DamageIndexHalf": 6,
+    "HitPoints": 4000,
+    "MaxIdleTime": 1.5,
+    "MinIdleTime": 0.75,
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2
+   }
+  ]
+ }
+}

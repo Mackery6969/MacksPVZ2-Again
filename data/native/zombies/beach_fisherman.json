@@ -1,0 +1,44 @@
+{
+ "id": "beach_fisherman",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1000,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 700,
+  "weight": 1500
+ },
+ "tags": {
+  "add": [
+   "deep_water"
+  ],
+  "remove": [
+   "divertable",
+   "grabbable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "zomboss_damageable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "DelayBeforeReeling": 0.3,
+  "DelayBetweenCasting": 2.5,
+  "PlantablePlants": [
+   "tanglekelp",
+   "ghostpepper",
+   "solarsage",
+   "guacodile"
+  ],
+  "ZombossLaneSummon": true
+ }
+}

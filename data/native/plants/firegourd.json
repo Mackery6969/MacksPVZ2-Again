@@ -1,0 +1,40 @@
+{
+ "id": "firegourd",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackDPS": 150,
+  "AttackDistanceMax": 5,
+  "AttackDistanceMin": 1,
+  "AttackDuration": 5,
+  "ChargingTime": 14,
+  "DamageScaleToRacks": 2,
+  "ImmuneToIceblock": true,
+  "MintDamageFactor": 3,
+  "PlantfoodDPS": 300,
+  "PlantfoodDistance": 12,
+  "PlantfoodDuration": 5,
+  "ReloadingTime": 6,
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 6,
+   "PulseInitialDelay": 0.5
+  },
+  "WarmingRadiusPlantfood": {
+   "GridItemDamage": 100,
+   "PulseCooldown": 1.5,
+   "PulseInitialDelay": 0.5
+  }
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "id": "explodeonut",
+ "family": "Explosive",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 3000,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "explosive",
+   "damage": 1800
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "ArmorDamage": 1800,
+  "ArmorToughness": 4000,
+  "CallsMirrorNutsOnDamaged": true,
+  "CannotBeHealedByAloe": true,
+  "MintDamageFactor": 3
+ }
+}

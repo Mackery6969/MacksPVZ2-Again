@@ -1,0 +1,35 @@
+{
+ "id": "abbot_fan",
+ "extends": "normal",
+ "stats": {
+  "toughness": 550,
+  "speed": 0.135,
+  "eat_dps": 100,
+  "wave_cost": 300,
+  "weight": 2000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "StormMaxDistance": 5,
+  "StormMinColumn": 2,
+  "StormMovingTime": 2,
+  "StormType": "abbot_fan_storm",
+  "TimeBeforeFirst": {
+   "Max": 4,
+   "Min": 3
+  },
+  "TimeBetween": {
+   "Max": 6,
+   "Min": 5
+  }
+ }
+}

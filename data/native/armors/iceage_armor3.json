@@ -1,0 +1,9 @@
+{
+ "id": "iceage_armor3",
+ "stats": {
+  "toughness": 1600,
+  "bowling_level": 3,
+  "is_metal": false,
+  "is_ice": true
+ }
+}

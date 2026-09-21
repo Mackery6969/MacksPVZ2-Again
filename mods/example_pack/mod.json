@@ -1,0 +1,6 @@
+{
+  "id": "example_pack",
+  "name": "Example Pack",
+  "version": "1.0.0",
+  "description": "Reference mod demonstrating content extension points: new zombies (JSON and .tres), new plants, new levels, and data overrides. See example_override for replacing a built-in behaviour."
+}

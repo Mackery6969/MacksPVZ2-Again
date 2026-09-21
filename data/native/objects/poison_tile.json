@@ -1,0 +1,7 @@
+{
+ "id": "poison_tile",
+ "category": "liquid",
+ "extra": {
+  "TileLiquidBasedOn": "goo"
+ }
+}

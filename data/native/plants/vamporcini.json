@@ -1,0 +1,24 @@
+{
+ "id": "vamporcini",
+ "family": "Poison",
+ "stats": {
+  "sun_cost": 100,
+  "toughness": 4000,
+  "cooldown": 20,
+  "cooldown_from": 1,
+  "beghouled_cost": 3000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackDuration": 6,
+  "AttackDurationPlantfood": 10,
+  "DPS": 40,
+  "DPSPlantfood": 40,
+  "MaxToughness": 6000,
+  "MintDamageFactor": 5
+ }
+}

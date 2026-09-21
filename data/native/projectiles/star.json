@@ -1,0 +1,14 @@
+{
+ "id": "star",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "star2",
+  "Props": "RTID(star@ProjectileProps)"
+ }
+}

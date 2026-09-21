@@ -1,0 +1,26 @@
+{
+ "id": "lostcity_jane",
+ "extends": "normal",
+ "stats": {
+  "toughness": 350,
+  "speed": 0.25,
+  "eat_dps": 100,
+  "wave_cost": 200,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "sap_detectable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "LostcityJaneAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "LostcityJaneHitRect"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "id": "leprachaun_dodo",
+ "extends": "stpatrick_dodo",
+ "stats": {
+  "toughness": 490,
+  "speed": 0.3,
+  "eat_dps": 100,
+  "wave_cost": 600,
+  "weight": 3500
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "enlightenable",
+   "pushable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "IceageDodoAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "IceageDodoHitRect"
+  }
+ ],
+ "extra": {
+  "ChillInsteadOfFreeze": true,
+  "ChooseToSpawnOnNonDeckRows": true,
+  "KilledByShrinkingViolet": true,
+  "PlantsToFlyOver": [
+   "iceweed",
+   "spikeweed",
+   "spikerock",
+   "iceburg",
+   "wallnut",
+   "potatomine",
+   "lavaguava",
+   "endurian",
+   "cactus",
+   "primalwallnut",
+   "primalpotatomine",
+   "escaperoot",
+   "murkadamia",
+   "tombtangler",
+   "vamporcini"
+  ]
+ }
+}

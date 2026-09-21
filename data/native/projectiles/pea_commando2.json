@@ -1,0 +1,26 @@
+{
+ "id": "pea_commando2",
+ "extends": "pea2",
+ "stats": {
+  "damage": 750
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_commando2_flame_blue",
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "SpeedMult": 2,
+  "SplashDamage": [
+   {
+    "Damage": 375,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "YellowIgnitedType": "pea_commando2_flame_yellow",
+  "Props": "RTID(pea_commando2@ProjectileProps)"
+ }
+}

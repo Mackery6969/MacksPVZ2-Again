@@ -1,0 +1,13 @@
+{
+ "id": "hunter_snowball",
+ "extra": {
+  "ChillDuration": 5,
+  "FreezeDuration": 10,
+  "IceBlockLevel": 1,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(hunter_snowball@ProjectileProps)"
+ }
+}

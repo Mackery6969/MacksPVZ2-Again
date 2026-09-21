@@ -1,0 +1,27 @@
+{
+ "id": "potatomine",
+ "family": "Explosive",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "explosive",
+   "damage": 1800,
+   "charge_time": 14,
+   "plantfood_children": 2
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "MintDamageFactor": 3
+ }
+}

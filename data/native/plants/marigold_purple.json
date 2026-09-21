@@ -1,0 +1,26 @@
+{
+ "id": "marigold_purple",
+ "family": "Poison",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "MintDPSFactor": 2,
+  "PlantfoodTime": 3,
+  "PoisonDPS": 20,
+  "PoisonDuration": 10,
+  "ProduceCountdownStart": 5,
+  "ProduceCountdownStartAdditional": 5,
+  "ProduceInterval": 23.5,
+  "ProduceIntervalAdditional": 1.5
+ }
+}

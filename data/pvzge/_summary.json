@@ -1,0 +1,135 @@
+{
+ "PlantProps": {
+  "entries": 216,
+  "objects": 216,
+  "classes": [
+   "PlantProperties"
+  ]
+ },
+ "PlantTypes": {
+  "entries": 217,
+  "objects": 217,
+  "classes": [
+   "PlantType"
+  ]
+ },
+ "ZombieProps": {
+  "entries": 377,
+  "objects": 377,
+  "classes": [
+   "ZombieProperties"
+  ]
+ },
+ "ZombieTypes": {
+  "entries": 473,
+  "objects": 473,
+  "classes": [
+   "ZombieType"
+  ]
+ },
+ "ProjectileProps": {
+  "entries": 343,
+  "objects": 343,
+  "classes": [
+   "ProjectileProperties"
+  ]
+ },
+ "ProjectileTypes": {
+  "entries": 350,
+  "objects": 350,
+  "classes": [
+   "ProjectileType"
+  ]
+ },
+ "ArmorProps": {
+  "entries": 52,
+  "objects": 52,
+  "classes": [
+   "ArmorProperties"
+  ]
+ },
+ "ArmorTypes": {
+  "entries": 65,
+  "objects": 65,
+  "classes": [
+   "ArmorType"
+  ]
+ },
+ "LawnProps": {
+  "entries": 48,
+  "objects": 48,
+  "classes": [
+   "LawnProperties"
+  ]
+ },
+ "TileProps": {
+  "entries": 36,
+  "objects": 36,
+  "classes": [
+   "TileProperties"
+  ]
+ },
+ "GridItemTypes": {
+  "entries": 90,
+  "objects": 90,
+  "classes": [
+   "PlantType",
+   "TileLiquidType",
+   "TileType",
+   "TombstoneType"
+  ]
+ },
+ "PropertySheets": {
+  "entries": 84,
+  "objects": 102,
+  "classes": [
+   "?",
+   "BoardPropertySheet",
+   "ComponentWarmingRadiusGlobalProperties",
+   "CostumePropertySheet",
+   "DangerRoomMiniGamePropertySheet",
+   "DangerRoomPropertySheet",
+   "DinosaurAnkylosaurusPropertySheet",
+   "DinosaurPterodactylPropertySheet",
+   "DinosaurRaptorPropertySheet",
+   "DinosaurStegosaurusPropertySheet",
+   "DinosaurTyrannosaurusPropertySheet",
+   "EffectObjectAnimSequencePropertySheet",
+   "EffectObjectPropertySheet",
+   "EffectObject_BurrowAttackProps",
+   "EffectObject_DamageOverTimeProps",
+   "EffectObject_StrawburstPlantfoodProps",
+   "EffectObject_StretchedScrollingImageProps",
+   "GamePropertySheet",
+   "GeneratedGradientPropertySheet",
+   "LevelPowerupSet",
+   "MiniGameMusicEnableList",
+   "PlantBoostPropertySheet",
+   "PlayerProfileProperties",
+   "SeedChooserFamilyPriorityList",
+   "SeedChooserPriorityList",
+   "SpawnEffectAnimIDResourceGroup",
+   "StoreTryPreviewPropertySheet",
+   "TideEffectsProps",
+   "TreasureYetiExcludelistProps",
+   "TreasureYetiSchedulingProps",
+   "WaveManagerProperties",
+   "WorldMapPropertySheet",
+   "WorldSpecificDangerRoomMiniGameProperties",
+   "WorldSpecificDangerRoomProperties",
+   "ZenGardenBeePropertySheet",
+   "ZenGardenFloatingTextProps",
+   "ZenGardenPlantSlotProps",
+   "ZenGardenPropertySheet",
+   "ZombieSpawnerPattern",
+   "ZombieSpeedConditionsMap"
+  ]
+ },
+ "TombstoneProps": {
+  "entries": 30,
+  "objects": 30,
+  "classes": [
+   "TombstoneProperties"
+  ]
+ }
+}

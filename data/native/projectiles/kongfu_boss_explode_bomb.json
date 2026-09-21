@@ -1,0 +1,14 @@
+{
+ "id": "kongfu_boss_explode_bomb",
+ "stats": {
+  "damage": 1800
+ },
+ "extra": {
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "SupressArmorProtection": true,
+  "Props": "RTID(kongfu_boss_explode_bomb@ProjectileProps)"
+ }
+}

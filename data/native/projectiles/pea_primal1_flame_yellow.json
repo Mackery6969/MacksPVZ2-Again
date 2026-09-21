@@ -1,0 +1,19 @@
+{
+ "id": "pea_primal1_flame_yellow",
+ "stats": {
+  "damage": 180
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_primal1_flame_blue",
+  "DamageScale": 2,
+  "DamageType": "fire",
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "StunDuration": 1,
+  "MintBoostedType": "pea_primal2_flame_yellow",
+  "Props": "RTID(pea_primal1_flame_yellow@ProjectileProps)"
+ }
+}

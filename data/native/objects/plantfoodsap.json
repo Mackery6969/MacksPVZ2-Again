@@ -1,0 +1,7 @@
+{
+ "id": "plantfoodsap",
+ "category": "liquid",
+ "extra": {
+  "TileLiquidBasedOn": "sapfling"
+ }
+}

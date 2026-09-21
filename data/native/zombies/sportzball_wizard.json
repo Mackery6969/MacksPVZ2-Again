@@ -1,0 +1,28 @@
+{
+ "id": "sportzball_wizard",
+ "extends": "normal",
+ "stats": {
+  "toughness": 490,
+  "speed": 0.12,
+  "eat_dps": 100,
+  "wave_cost": 800,
+  "weight": 3500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "TimeBeforeFirst": 7,
+  "TimeBeforeFirstAdditional": 2,
+  "TimeBetween": 11,
+  "TimeBetweenAdditional": 3,
+  "WitchHazelPriority": 1
+ }
+}

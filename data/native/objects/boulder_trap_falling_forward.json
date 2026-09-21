@@ -1,0 +1,13 @@
+{
+ "id": "boulder_trap_falling_forward",
+ "category": "tile",
+ "stats": {
+  "recover_delay": 7.5
+ },
+ "extra": {
+  "BoulderType": "trap_boulder",
+  "BoulderXOffset": 0.5,
+  "BoulderY": 0,
+  "Rect": "RTID(TrapTileRect@RectangleProps)"
+ }
+}

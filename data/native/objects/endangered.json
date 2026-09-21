@@ -1,0 +1,7 @@
+{
+ "id": "endangered",
+ "category": "tile",
+ "extra": {
+  "Rect": "RTID(TileDefaultRect@RectangleProps)"
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "id": "sky_zomboss_storm",
+ "extra": {
+  "CanBeKilledByAnthurium": true,
+  "CanBeKilledByLoquat": true,
+  "CannotBeReversedByJester": true,
+  "DetectsEaterDetectDisabledPlants": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 50,
+   "w": 100
+  },
+  "Props": "RTID(sky_zomboss_storm@ProjectileProps)"
+ }
+}

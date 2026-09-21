@@ -1,0 +1,30 @@
+{
+ "id": "dark_imp_dragon",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.22,
+  "eat_dps": 100,
+  "wave_cost": 150,
+  "weight": 2000
+ },
+ "sort": "Normal",
+ "tags": {
+  "remove": [
+   "grabbable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ImpAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ImpHitRect"
+  }
+ ],
+ "extra": {
+  "KilledByShrinkingViolet": true
+ }
+}

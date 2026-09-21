@@ -1,0 +1,8 @@
+{
+ "id": "powertile_alpha",
+ "category": "tile",
+ "extra": {
+  "DefaultPropagationDelay": 2,
+  "Rect": "RTID(TileDefaultRect@RectangleProps)"
+ }
+}

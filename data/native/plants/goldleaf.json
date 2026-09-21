@@ -1,0 +1,15 @@
+{
+ "id": "goldleaf",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 0
+ },
+ "extra": {
+  "SunCostIncrement": 25,
+  "TileType": "goldtile"
+ }
+}

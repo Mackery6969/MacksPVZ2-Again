@@ -1,0 +1,14 @@
+{
+ "id": "puffshroom_spore2",
+ "stats": {
+  "damage": 100
+ },
+ "extra": {
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "SpeedMult": 2,
+  "Props": "RTID(puffshroom_spore2@ProjectileProps)"
+ }
+}

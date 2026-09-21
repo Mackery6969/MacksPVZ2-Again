@@ -1,0 +1,23 @@
+{
+ "id": "bloominghearts",
+ "family": "Poison",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "CabbageType": "blooming_heart",
+  "CabbageTypePlantfood": "blooming_heart_pf",
+  "ImmuneToBoomBox": true,
+  "ThrowInterval": 2.85,
+  "ThrowIntervalAdditional": 0.15
+ }
+}

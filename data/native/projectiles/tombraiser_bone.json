@@ -1,0 +1,17 @@
+{
+ "id": "tombraiser_bone",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "Props": "RTID(tombraiser_bone@ProjectileProps)"
+ }
+}

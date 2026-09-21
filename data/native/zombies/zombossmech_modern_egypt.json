@@ -1,0 +1,203 @@
+{
+ "id": "zombossmech_modern_egypt",
+ "extends": "zombossmech_egypt",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0
+ },
+ "sort": "Zomboss",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ZombossMechAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ZombossMechHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "FoeEatDamageReflectPct": 0.5,
+  "MissileType": "zomboss_missile_egypt",
+  "ZombossMechLevel": 0,
+  "ZombossStages": [
+   {
+    "Actions": [
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 3
+     },
+     {
+      "actionName": "walk",
+      "repeatMax": 3,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 5
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 8
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1400,
+       "zombieList": [
+        "explorer",
+        "pharaoh",
+        "mummy_armor1",
+        "mummy_armor2",
+        "tomb_raiser"
+       ]
+      },
+      "weight": 12
+     }
+    ],
+    "AnimRateModifier": 1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 0,
+    "DamageIndexHalf": 0,
+    "HitPoints": 5000,
+    "MaxIdleTime": 1,
+    "MinIdleTime": 0.5,
+    "StunDamageScale": 1.5,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 3
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 7
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 8
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2500,
+       "pointMin": 2200,
+       "zombieList": [
+        "mummy",
+        "mummy_armor1",
+        "mummy_armor2",
+        "egypt_imp",
+        "egypt_gargantuar"
+       ]
+      },
+      "weight": 14
+     }
+    ],
+    "AnimRateModifier": 1.1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 3,
+    "DamageIndexHalf": 3,
+    "HitPoints": 9000,
+    "MaxIdleTime": 0.5,
+    "MinIdleTime": 0.5,
+    "StunDamageScale": 1.5,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2.5
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 1950,
+       "pointMin": 1350,
+       "zombieList": [
+        "mummy_armor1",
+        "mummy_armor2",
+        "tomb_raiser",
+        "pharaoh",
+        "explorer"
+       ]
+      },
+      "weight": 12
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 7
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 2,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 5
+     }
+    ],
+    "AnimRateModifier": 1.25,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 6,
+    "DamageIndexHalf": 6,
+    "HitPoints": 8500,
+    "MaxIdleTime": 0.5,
+    "MinIdleTime": 0.2,
+    "StunDamageScale": 1.5,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2
+   }
+  ]
+ }
+}

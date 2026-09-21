@@ -1,0 +1,30 @@
+{
+ "id": "sweetpotato",
+ "family": "Defence",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 4000,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "blocker"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 1,
+  "plantfood": true
+ },
+ "extra": {
+  "AttractsEveryFrame": false,
+  "CallsMirrorNutsOnDamaged": true,
+  "LaneChangeTime": 0.6,
+  "NormalAttractWidth": 2,
+  "PlantFoodDurationSeconds": 6,
+  "PlantfoodAttractWidth": 4,
+  "TimeBetweenLaneChanges": 5
+ }
+}

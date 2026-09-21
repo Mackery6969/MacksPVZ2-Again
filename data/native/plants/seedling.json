@@ -1,0 +1,37 @@
+{
+ "id": "seedling",
+ "family": "Explosive",
+ "stats": {
+  "sun_cost": 225,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "explosive"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "Explode0Damage": 600,
+  "Explode0SeedlingCount": 0,
+  "Explode1Damage": 1200,
+  "Explode1SeedlingCount": 1,
+  "ExplodeProjectileType": "atombomb",
+  "GrowUpType": "atombomb",
+  "GrowingTime": 24,
+  "MintDamageFactor": 3,
+  "PlantfoodCallingType": [
+   "atombomb",
+   "atombomb_seedling",
+   "seedling"
+  ],
+  "SeedlingType": "seedling"
+ }
+}

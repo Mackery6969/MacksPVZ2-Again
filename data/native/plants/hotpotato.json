@@ -1,0 +1,20 @@
+{
+ "id": "hotpotato",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 0,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 1,
+  "beghouled_cost": 0
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "ImmuneToIceblock": true,
+  "StartingHeight": 60
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "id": "powerplant",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 250,
+  "toughness": 3000,
+  "cooldown": 10,
+  "cooldown_from": 0.8,
+  "beghouled_cost": 1000
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "ImmuneToIceblock": true,
+  "SunCostList": [
+   0,
+   250,
+   500,
+   1000,
+   2000,
+   4000,
+   8000
+  ],
+  "TileType": "powertile_epsilon"
+ }
+}

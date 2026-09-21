@@ -1,0 +1,42 @@
+{
+ "id": "sky_battleplane",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1000,
+  "speed": 0.2,
+  "eat_dps": 100,
+  "wave_cost": 700,
+  "weight": 4000
+ },
+ "tags": {
+  "remove": [
+   "draggable",
+   "enlightenable",
+   "swallowable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "SkyBattlePlaneAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "SkyBattlePlaneHitRect"
+  }
+ ],
+ "extra": {
+  "ArmDroppingHealthPct": -100,
+  "BulletSpeed": 13,
+  "BulletType": "sky_battleplane_bullet",
+  "ChooseToSpawnOnDeepWaterRows": true,
+  "ChooseToSpawnOnNonDeckRows": true,
+  "CrashDamage": 1200,
+  "CrashDamageToShip": 1200,
+  "ImpArmDroppingHealthPct": 0.5,
+  "ImpDeathSpeedMult": 2,
+  "ImpToughness": 390,
+  "SkyCityShipDetectXOffset": -60
+ }
+}

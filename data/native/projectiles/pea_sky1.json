@@ -1,0 +1,29 @@
+{
+ "id": "pea_sky1",
+ "stats": {
+  "damage": 60
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_sky1_flame_blue",
+  "CancelsKnockbackFlying": true,
+  "CannotInterruptOtherKnockback": true,
+  "KnockbackDistance": 0.15,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 1.5,
+  "SplashDamage": [
+   {
+    "KnockbackDistance": 0.15,
+    "Range": {
+     "h": 1,
+     "w": 0.5
+    }
+   }
+  ],
+  "YellowIgnitedType": "pea_sky1_flame_yellow",
+  "MintBoostedType": "pea_sky2",
+  "Props": "RTID(pea_sky1@ProjectileProps)"
+ }
+}

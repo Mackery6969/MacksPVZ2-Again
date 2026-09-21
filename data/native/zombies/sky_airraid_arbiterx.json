@@ -1,0 +1,46 @@
+{
+ "id": "sky_airraid_arbiterx",
+ "extends": "normal",
+ "stats": {
+  "toughness": 8000,
+  "speed": 0.4,
+  "eat_dps": 100,
+  "wave_cost": 2400,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "attractable",
+   "draggable",
+   "enlightenable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "SkyArbiterXAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "SkyArbiterXHitRect"
+  }
+ ],
+ "extra": {
+  "ChooseToSpawnOnDeepWaterRows": true,
+  "ChooseToSpawnOnNonDeckRows": true,
+  "CrashBackwardTime": 0.4,
+  "CrashDamage": 2000,
+  "CrashDamageToShip": 2000,
+  "CrashForwardTime": 0.2,
+  "FogLifeSpanMiddle": 11,
+  "FogLifeSpanSide1": 8,
+  "FogLifeSpanSide2": 5,
+  "KnockBackDistanceScale": 0.1,
+  "ShootingStyles": [],
+  "SkyCityShipDetectXOffset": -120,
+  "WalkSPSParalyzed": 0.67
+ }
+}

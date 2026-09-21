@@ -1,0 +1,43 @@
+{
+ "id": "LunarStage",
+ "music": "Kongfu",
+ "mower": "mower_lostcity",
+ "railcart": "railcart_tutorial",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "lunar_armor1"
+  ],
+  "armor2": [
+   "lunar_armor2"
+  ],
+  "armor3": [
+   "lunar_armor2"
+  ],
+  "armor4": [
+   "lunar_armor2"
+  ],
+  "basic": [
+   "lunar"
+  ],
+  "flag": [
+   "lunar_flag"
+  ],
+  "gargantuar": [
+   "kongfu_bronze_chi",
+   "kongfu_bronze_hook",
+   "kongfu_bronze_strong"
+  ],
+  "imp": [
+   "kongfu_rocket_imp",
+   "monk_imp",
+   "abbot_imp"
+  ],
+  "rally": [
+   "lunar_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

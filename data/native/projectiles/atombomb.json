@@ -1,0 +1,14 @@
+{
+ "id": "atombomb",
+ "stats": {
+  "damage": 0
+ },
+ "extra": {
+  "PlantTypeToSpawn": "atombomb_seedling",
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(atombomb@ProjectileProps)"
+ }
+}

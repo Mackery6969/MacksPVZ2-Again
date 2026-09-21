@@ -1,0 +1,10 @@
+{
+ "id": "rail_beach",
+ "category": "tile",
+ "extends": "rail",
+ "extra": {
+  "AboveTide": true,
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Beach"
+ }
+}

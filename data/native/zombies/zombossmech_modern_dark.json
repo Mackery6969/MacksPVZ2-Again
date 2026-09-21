@@ -1,0 +1,238 @@
+{
+ "id": "zombossmech_modern_dark",
+ "extends": "zombossmech_dark",
+ "stats": {
+  "toughness": 190,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0
+ },
+ "sort": "Zomboss",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ZombossMechAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ZombossMechHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "FoeEatDamageReflectPct": 0.5,
+  "IdleColumn": 6,
+  "MissileType": "zomboss_missile_dark",
+  "ZombossMechLevel": 0,
+  "ZombossStages": [
+   {
+    "Actions": [
+     {
+      "actionName": "walk",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 5
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2200,
+       "pointMin": 600,
+       "zombieList": [
+        "dark",
+        "dark_armor2",
+        "dark_juggler",
+        "dark_wizard"
+       ]
+      },
+      "weight": 20
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 2,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 10
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 8
+     }
+    ],
+    "AnimRateModifier": 1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 0,
+    "DamageIndexHalf": 0,
+    "DragonImpCount": 1,
+    "DragonImpCountAdditional": 1,
+    "FireballCount": 2,
+    "FireballCountAdditional": 1,
+    "HitPoints": 11000,
+    "MaxIdleTime": 2.5,
+    "MinIdleTime": 1.5,
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 3
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "walk",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 5
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "plantfoodchance": 0.7,
+       "pointMax": 3700,
+       "pointMin": 2600,
+       "zombieList": [
+        "dark",
+        "dark_armor1",
+        "dark_armor2",
+        "dark_imp",
+        "dark_gargantuar"
+       ]
+      },
+      "weight": 20
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 2,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 6
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 7
+     }
+    ],
+    "AnimRateModifier": 1.1,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 3,
+    "DamageIndexHalf": 3,
+    "DragonImpCount": 1,
+    "DragonImpCountAdditional": 2,
+    "FireballCount": 2,
+    "FireballCountAdditional": 3,
+    "HitPoints": 13000,
+    "MaxIdleTime": 2,
+    "MinIdleTime": 1,
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2.5
+   },
+   {
+    "Actions": [
+     {
+      "actionName": "walk",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 5
+     },
+     {
+      "actionName": "summon",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 4400,
+       "pointMin": 3200,
+       "zombieList": [
+        "dark_wizard",
+        "dark_armor1",
+        "dark_juggler",
+        "dark_armor3",
+        "dark_juggler",
+        "dark_wizard"
+       ]
+      },
+      "weight": 25
+     },
+     {
+      "actionName": "rush",
+      "repeatMax": 1,
+      "repeatMin": 1,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 8
+     },
+     {
+      "actionName": "shoot",
+      "repeatMax": 2,
+      "repeatMin": 2,
+      "summonProps": {
+       "pointMax": 2000,
+       "pointMin": 1000,
+       "zombieList": []
+      },
+      "weight": 24
+     }
+    ],
+    "AnimRateModifier": 1.25,
+    "ChilledDurationFromFrozen": 10,
+    "DamageIndexFull": 6,
+    "DamageIndexHalf": 6,
+    "DragonImpCount": 3,
+    "DragonImpCountAdditional": 3,
+    "FireballCount": 6,
+    "FireballCountAdditional": 6,
+    "HitPoints": 15000,
+    "MaxIdleTime": 1.5,
+    "MinIdleTime": 0.75,
+    "StunDamageScale": 1.25,
+    "StunStaggerBackMovement": 1,
+    "StunStaggerBackTime": 0.4,
+    "StunTime": 2
+   }
+  ]
+ }
+}

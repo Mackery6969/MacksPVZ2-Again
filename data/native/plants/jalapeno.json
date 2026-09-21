@@ -1,0 +1,24 @@
+{
+ "id": "jalapeno",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 125,
+  "toughness": 300,
+  "cooldown": 35,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "Damage": 1800,
+  "Duration": 5,
+  "ImmuneToBoomBox": true,
+  "ImmuneToIceblock": true,
+  "MintDamageFactor": 3
+ }
+}

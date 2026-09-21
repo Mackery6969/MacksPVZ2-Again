@@ -1,0 +1,39 @@
+{
+ "id": "SpringStage",
+ "music": "Modern",
+ "mower": "mower_modern",
+ "railcart": "railcart_tutorial",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "easter_armor1"
+  ],
+  "armor2": [
+   "easter_armor2"
+  ],
+  "armor3": [
+   "easter_armor2"
+  ],
+  "armor4": [
+   "easter_armor4"
+  ],
+  "basic": [
+   "easter"
+  ],
+  "flag": [
+   "easter_flag"
+  ],
+  "gargantuar": [
+   "easter_gargantuar"
+  ],
+  "imp": [
+   "easter_imp"
+  ],
+  "rally": [
+   "easter_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

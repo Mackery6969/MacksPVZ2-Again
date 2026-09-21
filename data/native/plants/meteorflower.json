@@ -1,0 +1,36 @@
+{
+ "id": "meteorflower",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 250,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 2500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "ImmuneToIceblock": true,
+  "LavaDuration": 10,
+  "LiquidType": "moltenpool",
+  "MeteorCountOnce": 2,
+  "MeteorType": "meteor",
+  "MintLiquidType": "moltenpool_mint",
+  "RestTime": 7,
+  "SecondMeteorMissChance": 0.35,
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 6,
+   "PulseInitialDelay": 0.5
+  },
+  "WarmingRadiusPlantfood": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 1.5,
+   "PulseInitialDelay": 0.5
+  }
+ }
+}

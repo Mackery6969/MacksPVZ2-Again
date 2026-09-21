@@ -1,0 +1,15 @@
+{
+ "id": "sapfling",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "Size": {
+   "h": 16.2,
+   "w": 16.2
+  },
+  "TileLiquid": {
+   "Duration": 15,
+   "Type": "sap"
+  },
+  "Props": "RTID(sapfling@ProjectileProps)"
+ }
+}

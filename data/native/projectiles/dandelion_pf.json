@@ -1,0 +1,22 @@
+{
+ "id": "dandelion_pf",
+ "stats": {
+  "damage": 300
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SplashDamage": [
+   {
+    "Damage": 300,
+    "Range": {
+     "h": 1,
+     "w": 2
+    }
+   }
+  ],
+  "Props": "RTID(dandelion_pf@ProjectileProps)"
+ }
+}

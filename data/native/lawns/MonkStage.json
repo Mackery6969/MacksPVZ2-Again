@@ -1,0 +1,39 @@
+{
+ "id": "MonkStage",
+ "music": "Kongfu",
+ "mower": "mower_kongfu",
+ "railcart": "railcart_kongfu",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "monk_armor1"
+  ],
+  "armor2": [
+   "monk_armor2"
+  ],
+  "armor3": [
+   "monk_armor3"
+  ],
+  "armor4": [
+   "monk_armor4"
+  ],
+  "basic": [
+   "monk"
+  ],
+  "flag": [
+   "monk_flag"
+  ],
+  "gargantuar": [
+   "kongfu_bronze_hook"
+  ],
+  "imp": [
+   "monk_imp"
+  ],
+  "rally": [
+   "monk_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "kongfu_rack_torch"
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "id": "springbean",
+ "family": "Slow",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 5,
+  "plantfood": false
+ },
+ "extra": {
+  "KnockbackDistance": 1,
+  "MintKnockBackDistanceFactor": 5,
+  "RestTime": 10
+ }
+}

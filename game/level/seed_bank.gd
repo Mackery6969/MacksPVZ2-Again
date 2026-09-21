@@ -1,0 +1,103 @@
+class_name SeedBank
+extends Node
+## The player's seed slots: what can be planted, and when each is ready again.
+##
+## Availability is two independent gates - the packet must have recharged, and
+## the player must be able to afford it. Keeping them separate means the HUD
+## can show *why* a packet is unusable.
+##
+## This is the chooser bank, where slots are fixed and recharge after use.
+## ConveyorSeedBank replaces that with a belt of free packets.
+
+signal changed
+
+## Scales every recharge time. Levels listing SeedPacketHalfTimeModule set
+## this to 0.5, which is what the early tutorial levels use.
+@export var recharge_scale: float = 1.0
+
+var packets: Array[SeedPacket] = []
+
+
+## Rebuilds the slots from a level's seed list ({kind, id} entries).
+func setup(seeds: Array, half_recharge: bool = false) -> void:
+	recharge_scale = 0.5 if half_recharge else 1.0
+	packets.clear()
+	for seed in seeds:
+		var kind := StringName(seed.get("kind", &"plant"))
+		var id := StringName(seed.get("id", &""))
+		var def: EntityDef = Data.zombie(id) if kind == &"zombie" else Data.plant(id)
+		if def == null:
+			push_warning("SeedBank: unknown %s '%s'" % [kind, id])
+			continue
+		packets.append(SeedPacket.create(
+				kind, id,
+				int(def.stat(&"sun_cost", 100)),
+				float(def.stat(&"cooldown", 5.0)) * recharge_scale,
+				float(def.stat(&"cooldown_from", 1.0))))
+	changed.emit()
+
+
+func _process(delta: float) -> void:
+	var any := false
+	for p in packets:
+		if p.tick(delta):
+			any = true
+	if any:
+		changed.emit()
+
+
+func packet(slot: int) -> SeedPacket:
+	return packets[slot] if slot >= 0 and slot < packets.size() else null
+
+
+func size() -> int:
+	return packets.size()
+
+
+## True when the packet has recharged. Affordability is checked separately so
+## the HUD can distinguish "still charging" from "not enough sun".
+func is_recharged(slot: int) -> bool:
+	var p := packet(slot)
+	return p != null and p.is_recharged()
+
+
+func can_afford(slot: int, sun: int) -> bool:
+	var p := packet(slot)
+	return p != null and sun >= p.cost
+
+
+func can_use(slot: int, sun: int) -> bool:
+	return is_recharged(slot) and can_afford(slot, sun)
+
+
+## Starts the packet recharging after a successful placement.
+func spend(slot: int) -> void:
+	var p := packet(slot)
+	if p != null:
+		p.spend()
+		changed.emit()
+
+
+## What a successful placement does to the packet. The chooser recharges it;
+## a conveyor belt takes it away instead.
+func consume(slot: int) -> void:
+	spend(slot)
+
+
+## Sun charged for a placement. Conveyor packets are free.
+func cost_of(slot: int) -> int:
+	var p := packet(slot)
+	return p.cost if p != null else 0
+
+
+## True when the slot list itself changes shape, so the HUD knows to rebuild
+## its buttons rather than just restyle them.
+func slots_are_stable() -> bool:
+	return true
+
+
+func slot_of(kind: StringName, id: StringName) -> int:
+	for i in packets.size():
+		if packets[i].kind == kind and packets[i].id == id:
+			return i
+	return -1

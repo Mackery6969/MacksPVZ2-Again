@@ -1,0 +1,7 @@
+{
+ "id": "slider_up_modern",
+ "category": "tile",
+ "extra": {
+  "Rect": "RTID(SliderTileRect@RectangleProps)"
+ }
+}

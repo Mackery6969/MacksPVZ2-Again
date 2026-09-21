@@ -1,0 +1,23 @@
+{
+ "id": "pea_goo1",
+ "stats": {
+  "damage": 90
+ },
+ "extra": {
+  "PoisonStacked": {
+   "DPS": 30,
+   "Duration": 5
+  },
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 1.5,
+  "ZombieSpeedStacked": {
+   "Duration": 5,
+   "SpeedMult": 0.9
+  },
+  "MintBoostedType": "pea_goo2",
+  "Props": "RTID(pea_goo1@ProjectileProps)"
+ }
+}

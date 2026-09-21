@@ -1,0 +1,35 @@
+{
+ "id": "feastivus_camel_manyhump",
+ "extends": "feastivus_camel_onehump",
+ "stats": {
+  "toughness": 250,
+  "speed": 0.12,
+  "eat_dps": 100,
+  "wave_cost": 1200,
+  "weight": 3000
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CamelSegmentAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CamelSegmentHitRect"
+  }
+ ],
+ "extra": {
+  "TeamMemberCount": [
+   5,
+   6,
+   7
+  ],
+  "TeammateType": "feastivus_camel_segment",
+  "ZombieInside": "mummy"
+ }
+}

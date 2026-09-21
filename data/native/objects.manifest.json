@@ -1,0 +1,242 @@
+{
+ "boulder_trap_falling_backward": {
+  "file": "objects/boulder_trap_falling_backward.json",
+  "category": "tile"
+ },
+ "boulder_trap_falling_forward": {
+  "file": "objects/boulder_trap_falling_forward.json",
+  "category": "tile"
+ },
+ "butter": {
+  "file": "objects/butter.json",
+  "category": "liquid"
+ },
+ "cranjelly": {
+  "file": "objects/cranjelly.json",
+  "category": "liquid"
+ },
+ "endangered": {
+  "file": "objects/endangered.json",
+  "category": "tile"
+ },
+ "flame_spreader_trap": {
+  "file": "objects/flame_spreader_trap.json",
+  "category": "tile"
+ },
+ "goldtile": {
+  "file": "objects/goldtile.json",
+  "category": "tile"
+ },
+ "goo": {
+  "file": "objects/goo.json",
+  "category": "liquid"
+ },
+ "goopuddle": {
+  "file": "objects/goopuddle.json",
+  "category": "liquid"
+ },
+ "goopuddle_eternal": {
+  "file": "objects/goopuddle_eternal.json",
+  "category": "liquid"
+ },
+ "lava": {
+  "file": "objects/lava.json",
+  "category": "liquid"
+ },
+ "lava_mint": {
+  "file": "objects/lava_mint.json",
+  "category": "liquid"
+ },
+ "lavaguava": {
+  "file": "objects/lavaguava.json",
+  "category": "liquid"
+ },
+ "moltenpool": {
+  "file": "objects/moltenpool.json",
+  "category": "liquid"
+ },
+ "moltenpool_mint": {
+  "file": "objects/moltenpool_mint.json",
+  "category": "liquid"
+ },
+ "plantfoodsap": {
+  "file": "objects/plantfoodsap.json",
+  "category": "liquid"
+ },
+ "poison_tile": {
+  "file": "objects/poison_tile.json",
+  "category": "liquid"
+ },
+ "potholepool": {
+  "file": "objects/potholepool.json",
+  "category": "tile"
+ },
+ "potholepuddle": {
+  "file": "objects/potholepuddle.json",
+  "category": "tile"
+ },
+ "powertile": {
+  "file": "objects/powertile.json",
+  "category": "tile"
+ },
+ "powertile_alpha": {
+  "file": "objects/powertile_alpha.json",
+  "category": "tile"
+ },
+ "powertile_beta": {
+  "file": "objects/powertile_beta.json",
+  "category": "tile"
+ },
+ "powertile_delta": {
+  "file": "objects/powertile_delta.json",
+  "category": "tile"
+ },
+ "powertile_epsilon": {
+  "file": "objects/powertile_epsilon.json",
+  "category": "tile"
+ },
+ "powertile_gamma": {
+  "file": "objects/powertile_gamma.json",
+  "category": "tile"
+ },
+ "protect_plant": {
+  "file": "objects/protect_plant.json",
+  "category": "tile"
+ },
+ "rail": {
+  "file": "objects/rail.json",
+  "category": "tile"
+ },
+ "rail_beach": {
+  "file": "objects/rail_beach.json",
+  "category": "tile"
+ },
+ "rail_cowboy": {
+  "file": "objects/rail_cowboy.json",
+  "category": "tile"
+ },
+ "rail_dark": {
+  "file": "objects/rail_dark.json",
+  "category": "tile"
+ },
+ "rail_egypt": {
+  "file": "objects/rail_egypt.json",
+  "category": "tile"
+ },
+ "rail_future": {
+  "file": "objects/rail_future.json",
+  "category": "tile"
+ },
+ "rail_kongfu": {
+  "file": "objects/rail_kongfu.json",
+  "category": "tile"
+ },
+ "rail_pirate": {
+  "file": "objects/rail_pirate.json",
+  "category": "tile"
+ },
+ "rail_sky": {
+  "file": "objects/rail_sky.json",
+  "category": "tile"
+ },
+ "rail_tutorial": {
+  "file": "objects/rail_tutorial.json",
+  "category": "tile"
+ },
+ "railcart": {
+  "file": "objects/railcart.json",
+  "category": "tile"
+ },
+ "railcart_beach": {
+  "file": "objects/railcart_beach.json",
+  "category": "tile"
+ },
+ "railcart_cowboy": {
+  "file": "objects/railcart_cowboy.json",
+  "category": "tile"
+ },
+ "railcart_dark": {
+  "file": "objects/railcart_dark.json",
+  "category": "tile"
+ },
+ "railcart_dark_above": {
+  "file": "objects/railcart_dark_above.json",
+  "category": "tile"
+ },
+ "railcart_egypt": {
+  "file": "objects/railcart_egypt.json",
+  "category": "tile"
+ },
+ "railcart_future": {
+  "file": "objects/railcart_future.json",
+  "category": "tile"
+ },
+ "railcart_kongfu": {
+  "file": "objects/railcart_kongfu.json",
+  "category": "tile"
+ },
+ "railcart_pirate": {
+  "file": "objects/railcart_pirate.json",
+  "category": "tile"
+ },
+ "railcart_sky": {
+  "file": "objects/railcart_sky.json",
+  "category": "tile"
+ },
+ "railcart_tutorial": {
+  "file": "objects/railcart_tutorial.json",
+  "category": "tile"
+ },
+ "railcart_tutorial_above": {
+  "file": "objects/railcart_tutorial_above.json",
+  "category": "tile"
+ },
+ "sap": {
+  "file": "objects/sap.json",
+  "category": "liquid"
+ },
+ "sapfling": {
+  "file": "objects/sapfling.json",
+  "category": "liquid"
+ },
+ "shallowpuddle": {
+  "file": "objects/shallowpuddle.json",
+  "category": "tile"
+ },
+ "slider_down": {
+  "file": "objects/slider_down.json",
+  "category": "tile"
+ },
+ "slider_down_modern": {
+  "file": "objects/slider_down_modern.json",
+  "category": "tile"
+ },
+ "slider_up": {
+  "file": "objects/slider_up.json",
+  "category": "tile"
+ },
+ "slider_up_modern": {
+  "file": "objects/slider_up_modern.json",
+  "category": "tile"
+ },
+ "taichitile": {
+  "file": "objects/taichitile.json",
+  "category": "tile"
+ },
+ "thunder_trap": {
+  "file": "objects/thunder_trap.json",
+  "category": "tile"
+ },
+ "zombiepotion_invisibility": {
+  "file": "objects/zombiepotion_invisibility.json",
+  "category": "potion"
+ },
+ "zombiepotion_speed": {
+  "file": "objects/zombiepotion_speed.json",
+  "category": "potion"
+ },
+ "zombiepotion_toughness": {
+  "file": "objects/zombiepotion_toughness.json",
+  "category": "potion"
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "id": "blastberry_small_pf",
+ "stats": {
+  "damage": 120
+ },
+ "extra": {
+  "Size": {
+   "h": 15,
+   "w": 15
+  },
+  "SplashDamage": [
+   {
+    "Damage": 120,
+    "Range": {
+     "h": 1,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "blastberry_small_pf_mint",
+  "Props": "RTID(blastberry_small_pf@ProjectileProps)"
+ }
+}

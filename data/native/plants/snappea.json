@@ -1,0 +1,29 @@
+{
+ "id": "snappea",
+ "family": "Melee",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "melee"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "ChewTimePerZombie": 20,
+  "HeadDamage": 400,
+  "MaxContainZombieCount": 1,
+  "MintDamageFactor": 5,
+  "PeaType": "pea_snap",
+  "PlantfoodSwallowCount": 4
+ }
+}

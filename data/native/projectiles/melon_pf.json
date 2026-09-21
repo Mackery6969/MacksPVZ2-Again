@@ -1,0 +1,23 @@
+{
+ "id": "melon_pf",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "ShakesScreenOnImpact": true,
+  "Size": {
+   "h": 18,
+   "w": 18
+  },
+  "SplashDamage": [
+   {
+    "Damage": 100,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(melon_pf@ProjectileProps)"
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "id": "bonkchoy",
+ "family": "Melee",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "melee",
+   "damage": 15,
+   "damage_heavy": 30,
+   "interval": 0.3,
+   "detect_width": 4,
+   "tomb_detect_width": 3
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "DamagePlantfood": 60,
+  "MintDamageFactor": 3,
+  "PlantfoodHitCount": 25
+ }
+}

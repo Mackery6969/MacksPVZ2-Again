@@ -1,0 +1,18 @@
+{
+ "id": "blooming_heart_pf",
+ "stats": {
+  "damage": 300
+ },
+ "extra": {
+  "DefenceRateList": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "Size": {
+   "h": 15,
+   "w": 15
+  },
+  "Props": "RTID(blooming_heart_pf@ProjectileProps)"
+ }
+}

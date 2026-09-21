@@ -1,0 +1,17 @@
+{
+ "id": "tool_projectile_bowling_wallnut",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 1,
+  "cooldown": 20,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "extra": {
+  "ImmuneToIceblock": true,
+  "ProjectileType": "bowling_wallnut",
+  "SpeedX": 4,
+  "StartingHeight": 0
+ }
+}

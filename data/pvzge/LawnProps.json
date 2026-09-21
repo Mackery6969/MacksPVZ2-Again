@@ -1,0 +1,1928 @@
+{
+ "AbbotStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "abbot_armor1"
+   ],
+   "Armor2_Zombie": [
+    "abbot_armor2"
+   ],
+   "Armor3_Zombie": [
+    "abbot_armor3"
+   ],
+   "Armor4_Zombie": [
+    "abbot_armor4"
+   ],
+   "Basic_Zombie": [
+    "abbot"
+   ],
+   "Flag_Zombie": [
+    "abbot_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "kongfu_bronze_chi"
+   ],
+   "Gravestone": [
+    "kongfu_rack_torch"
+   ],
+   "Imp_Zombie": [
+    "abbot_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_kongfu",
+   "Music": "Kongfu",
+   "RailCart": "railcart_kongfu",
+   "Rally_Zombie": [
+    "abbot_flag_veteran"
+   ]
+  }
+ },
+ "ArenaStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "dark_armor1"
+   ],
+   "Armor2_Zombie": [
+    "dark_armor2"
+   ],
+   "Armor3_Zombie": [
+    "dark_armor3"
+   ],
+   "Armor4_Zombie": [
+    "dark_armor4"
+   ],
+   "Basic_Zombie": [
+    "dark"
+   ],
+   "Flag_Zombie": [
+    "dark_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "dark_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "dark_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_dark",
+   "Music": "Dark",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "dark_flag_veteran"
+   ]
+  }
+ },
+ "BeachStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "beach_armor1",
+    "beach_fem_armor1"
+   ],
+   "Armor2_Zombie": [
+    "beach_armor2",
+    "beach_fem_armor2"
+   ],
+   "Armor3_Zombie": [
+    "beach_armor2",
+    "beach_fem_armor2"
+   ],
+   "Armor4_Zombie": [
+    "beach_armor4",
+    "beach_fem_armor4"
+   ],
+   "Basic_Zombie": [
+    "beach",
+    "beach_fem"
+   ],
+   "Flag_Zombie": [
+    "beach_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "beach_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "beach_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_beach",
+   "Music": "Beach",
+   "RailCart": "railcart_beach",
+   "Rally_Zombie": [
+    "beach_flag_veteran"
+   ]
+  }
+ },
+ "BeachTutorialStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "beach_armor1",
+    "beach_fem_armor1"
+   ],
+   "Armor2_Zombie": [
+    "beach_armor2",
+    "beach_fem_armor2"
+   ],
+   "Armor3_Zombie": [
+    "beach_armor2",
+    "beach_fem_armor2"
+   ],
+   "Armor4_Zombie": [
+    "beach_armor4",
+    "beach_fem_armor4"
+   ],
+   "Basic_Zombie": [
+    "beach",
+    "beach_fem"
+   ],
+   "Flag_Zombie": [
+    "beach_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "beach_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "beach_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_beach",
+   "Music": "Beach",
+   "RailCart": "railcart_beach",
+   "Rally_Zombie": [
+    "beach_flag_veteran"
+   ]
+  }
+ },
+ "BirthdayStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "birthday_armor1"
+   ],
+   "Armor2_Zombie": [
+    "birthday_armor2"
+   ],
+   "Armor3_Zombie": [
+    "birthday_armor2"
+   ],
+   "Armor4_Zombie": [
+    "birthday_armor4"
+   ],
+   "Basic_Zombie": [
+    "birthday"
+   ],
+   "Flag_Zombie": [
+    "birthday_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "birthday_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "tutorial_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "birthday_flag"
+   ]
+  }
+ },
+ "CircusStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "tutorial_armor1"
+   ],
+   "Armor2_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor3_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor4_Zombie": [
+    "tutorial_armor4"
+   ],
+   "Basic_Zombie": [
+    "tutorial"
+   ],
+   "Flag_Zombie": [
+    "tutorial_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "tutorial_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "tutorial_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "tutorial_flag_veteran"
+   ]
+  }
+ },
+ "DarkStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "dark_armor1"
+   ],
+   "Armor2_Zombie": [
+    "dark_armor2"
+   ],
+   "Armor3_Zombie": [
+    "dark_armor3"
+   ],
+   "Armor4_Zombie": [
+    "dark_armor4"
+   ],
+   "Basic_Zombie": [
+    "dark"
+   ],
+   "Flag_Zombie": [
+    "dark_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "dark_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_dark"
+   ],
+   "Imp_Zombie": [
+    "dark_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_dark",
+   "Music": "Dark",
+   "RailCart": "railcart_dark",
+   "Rally_Zombie": [
+    "dark_flag_veteran"
+   ]
+  }
+ },
+ "DarkTutorialStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "dark_armor1"
+   ],
+   "Armor2_Zombie": [
+    "dark_armor2"
+   ],
+   "Armor3_Zombie": [
+    "dark_armor3"
+   ],
+   "Armor4_Zombie": [
+    "dark_armor4"
+   ],
+   "Basic_Zombie": [
+    "dark"
+   ],
+   "Flag_Zombie": [
+    "dark_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "dark_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_dark"
+   ],
+   "Imp_Zombie": [
+    "dark_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_dark",
+   "Music": "Dark",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "dark_flag_veteran"
+   ]
+  }
+ },
+ "DinoStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "dino_armor1"
+   ],
+   "Armor2_Zombie": [
+    "dino_armor2"
+   ],
+   "Armor3_Zombie": [
+    "dino_armor3"
+   ],
+   "Armor4_Zombie": [
+    "dino_armor4"
+   ],
+   "Basic_Zombie": [
+    "dino"
+   ],
+   "Flag_Zombie": [
+    "dino_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "dino_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "dino_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_dino",
+   "Music": "Dino",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "dino_flag_veteran"
+   ]
+  }
+ },
+ "DinoTutorialStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "dino_armor1"
+   ],
+   "Armor2_Zombie": [
+    "dino_armor2"
+   ],
+   "Armor3_Zombie": [
+    "dino_armor3"
+   ],
+   "Armor4_Zombie": [
+    "dino_armor4"
+   ],
+   "Basic_Zombie": [
+    "dino"
+   ],
+   "Flag_Zombie": [
+    "dino_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "dino_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "dino_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_dino",
+   "Music": "Dino",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "dino_flag_veteran"
+   ]
+  }
+ },
+ "EgyptNightStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "mummy_armor1"
+   ],
+   "Armor2_Zombie": [
+    "mummy_armor2"
+   ],
+   "Armor3_Zombie": [
+    "mummy_armor2"
+   ],
+   "Armor4_Zombie": [
+    "mummy_armor4"
+   ],
+   "Basic_Zombie": [
+    "mummy"
+   ],
+   "Flag_Zombie": [
+    "mummy_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "egypt_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_egypt"
+   ],
+   "Imp_Zombie": [
+    "egypt_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_egypt",
+   "Music": "Egypt",
+   "RailCart": "railcart_egypt",
+   "Rally_Zombie": [
+    "mummy_flag_veteran"
+   ]
+  }
+ },
+ "EgyptStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "mummy_armor1"
+   ],
+   "Armor2_Zombie": [
+    "mummy_armor2"
+   ],
+   "Armor3_Zombie": [
+    "mummy_armor2"
+   ],
+   "Armor4_Zombie": [
+    "mummy_armor4"
+   ],
+   "Basic_Zombie": [
+    "mummy"
+   ],
+   "Flag_Zombie": [
+    "mummy_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "egypt_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_egypt"
+   ],
+   "Imp_Zombie": [
+    "egypt_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_egypt",
+   "Music": "Egypt",
+   "RailCart": "railcart_egypt",
+   "Rally_Zombie": [
+    "mummy_flag_veteran"
+   ]
+  }
+ },
+ "EightiesStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "eighties_armor1"
+   ],
+   "Armor2_Zombie": [
+    "eighties_armor2"
+   ],
+   "Armor3_Zombie": [
+    "eighties_armor2"
+   ],
+   "Armor4_Zombie": [
+    "eighties_armor4"
+   ],
+   "Basic_Zombie": [
+    "eighties"
+   ],
+   "Flag_Zombie": [
+    "eighties_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "eighties_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "eighties_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_eighties",
+   "Music": "Eighties",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "eighties_flag_veteran"
+   ]
+  }
+ },
+ "EightiesTutorialStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "eighties_armor1"
+   ],
+   "Armor2_Zombie": [
+    "eighties_armor2"
+   ],
+   "Armor3_Zombie": [
+    "eighties_armor2"
+   ],
+   "Armor4_Zombie": [
+    "eighties_armor4"
+   ],
+   "Basic_Zombie": [
+    "eighties"
+   ],
+   "Flag_Zombie": [
+    "eighties_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "eighties_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "eighties_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_eighties",
+   "Music": "Eighties",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "eighties_flag_veteran"
+   ]
+  }
+ },
+ "FallsStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "foodfight_armor1"
+   ],
+   "Armor2_Zombie": [
+    "foodfight_armor2"
+   ],
+   "Armor3_Zombie": [
+    "foodfight_armor2"
+   ],
+   "Armor4_Zombie": [
+    "foodfight_armor2"
+   ],
+   "Basic_Zombie": [
+    "foodfight"
+   ],
+   "Flag_Zombie": [
+    "foodfight_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "summer_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "summer_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_cowboy",
+   "Music": "Lostcity",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "foodfight_flag"
+   ]
+  }
+ },
+ "FarmStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "cowboy_armor1"
+   ],
+   "Armor2_Zombie": [
+    "cowboy_armor2"
+   ],
+   "Armor3_Zombie": [
+    "cowboy_armor2"
+   ],
+   "Armor4_Zombie": [
+    "cowboy_armor4"
+   ],
+   "Basic_Zombie": [
+    "cowboy"
+   ],
+   "Flag_Zombie": [
+    "cowboy_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "cowboy_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_cowboy"
+   ],
+   "Imp_Zombie": [
+    "west_bullrider"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_cowboy",
+   "Music": "Cowboy",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "cowboy_flag_veteran"
+   ]
+  }
+ },
+ "FeastivusNightStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "feastivus_armor1"
+   ],
+   "Armor2_Zombie": [
+    "feastivus_armor2"
+   ],
+   "Armor3_Zombie": [
+    "feastivus_armor3"
+   ],
+   "Armor4_Zombie": [
+    "feastivus_armor3"
+   ],
+   "Basic_Zombie": [
+    "feastivus"
+   ],
+   "Flag_Zombie": [
+    "feastivus_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "holiday_gargantuar",
+    "feastivus_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "holiday_imp",
+    "feastivus_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_modern",
+   "Music": "Iceage",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "feastivus_flag"
+   ]
+  }
+ },
+ "FeastivusStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "feastivus_armor1"
+   ],
+   "Armor2_Zombie": [
+    "feastivus_armor2"
+   ],
+   "Armor3_Zombie": [
+    "feastivus_armor3"
+   ],
+   "Armor4_Zombie": [
+    "feastivus_armor3"
+   ],
+   "Basic_Zombie": [
+    "feastivus"
+   ],
+   "Flag_Zombie": [
+    "feastivus_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "holiday_gargantuar",
+    "feastivus_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "holiday_imp",
+    "feastivus_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_modern",
+   "Music": "Iceage",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "feastivus_flag"
+   ]
+  }
+ },
+ "FrontLawnStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "tutorial_armor1"
+   ],
+   "Armor2_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor3_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor4_Zombie": [
+    "tutorial_armor4"
+   ],
+   "Basic_Zombie": [
+    "tutorial"
+   ],
+   "Flag_Zombie": [
+    "tutorial_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "tutorial_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "tutorial_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_modern",
+   "Music": "Tutorial",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "tutorial_flag_veteran"
+   ]
+  }
+ },
+ "FutureNightStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "future_armor1"
+   ],
+   "Armor2_Zombie": [
+    "future_armor2"
+   ],
+   "Armor3_Zombie": [
+    "future_armor2"
+   ],
+   "Armor4_Zombie": [
+    "future_armor4"
+   ],
+   "Basic_Zombie": [
+    "future"
+   ],
+   "Flag_Zombie": [
+    "future_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "future_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_future"
+   ],
+   "Imp_Zombie": [
+    "future_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_future",
+   "Music": "Future",
+   "RailCart": "railcart_future",
+   "Rally_Zombie": [
+    "future_flag_veteran"
+   ]
+  }
+ },
+ "FutureStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "future_armor1"
+   ],
+   "Armor2_Zombie": [
+    "future_armor2"
+   ],
+   "Armor3_Zombie": [
+    "future_armor2"
+   ],
+   "Armor4_Zombie": [
+    "future_armor4"
+   ],
+   "Basic_Zombie": [
+    "future"
+   ],
+   "Flag_Zombie": [
+    "future_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "future_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_future"
+   ],
+   "Imp_Zombie": [
+    "future_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_future",
+   "Music": "Future",
+   "RailCart": "railcart_future",
+   "Rally_Zombie": [
+    "future_flag_veteran"
+   ]
+  }
+ },
+ "FutureTutorialStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "future_armor1"
+   ],
+   "Armor2_Zombie": [
+    "future_armor2"
+   ],
+   "Armor3_Zombie": [
+    "future_armor2"
+   ],
+   "Armor4_Zombie": [
+    "future_armor4"
+   ],
+   "Basic_Zombie": [
+    "future"
+   ],
+   "Flag_Zombie": [
+    "future_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "future_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_future"
+   ],
+   "Imp_Zombie": [
+    "future_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_future",
+   "Music": "Future",
+   "RailCart": "railcart_future",
+   "Rally_Zombie": [
+    "future_flag_veteran"
+   ]
+  }
+ },
+ "GreenStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "tutorial_armor1"
+   ],
+   "Armor2_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor3_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor4_Zombie": [
+    "tutorial_armor4"
+   ],
+   "Basic_Zombie": [
+    "tutorial"
+   ],
+   "Flag_Zombie": [
+    "tutorial_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "tutorial_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "tutorial_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "tutorial_flag_veteran"
+   ]
+  }
+ },
+ "HalloweenStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "halloween_armor1"
+   ],
+   "Armor2_Zombie": [
+    "halloween_armor2"
+   ],
+   "Armor3_Zombie": [
+    "halloween_armor2"
+   ],
+   "Armor4_Zombie": [
+    "halloween_armor2"
+   ],
+   "Basic_Zombie": [
+    "halloween"
+   ],
+   "Flag_Zombie": [
+    "halloween_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "halloween_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_cowboy"
+   ],
+   "Imp_Zombie": [
+    "halloween_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_dark",
+   "Music": "Dark",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "halloween_flag"
+   ]
+  }
+ },
+ "HeroesStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "tutorial_armor1"
+   ],
+   "Armor2_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor3_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor4_Zombie": [
+    "tutorial_armor4"
+   ],
+   "Basic_Zombie": [
+    "tutorial"
+   ],
+   "Flag_Zombie": [
+    "tutorial_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "tutorial_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "tutorial_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_modern",
+   "Music": "Lostcity",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "tutorial_flag_veteran"
+   ]
+  }
+ },
+ "IceageStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "iceage_armor1"
+   ],
+   "Armor2_Zombie": [
+    "iceage_armor2"
+   ],
+   "Armor3_Zombie": [
+    "iceage_armor3"
+   ],
+   "Armor4_Zombie": [
+    "iceage_armor4"
+   ],
+   "Basic_Zombie": [
+    "iceage"
+   ],
+   "Flag_Zombie": [
+    "iceage_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "iceage_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_iceage"
+   ],
+   "Imp_Zombie": [
+    "iceage_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_iceage",
+   "Music": "Iceage",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "iceage_flag_veteran"
+   ]
+  }
+ },
+ "IceageTutorialStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "iceage_armor1"
+   ],
+   "Armor2_Zombie": [
+    "iceage_armor2"
+   ],
+   "Armor3_Zombie": [
+    "iceage_armor3"
+   ],
+   "Armor4_Zombie": [
+    "iceage_armor4"
+   ],
+   "Basic_Zombie": [
+    "iceage"
+   ],
+   "Flag_Zombie": [
+    "iceage_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "iceage_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_iceage"
+   ],
+   "Imp_Zombie": [
+    "iceage_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_iceage",
+   "Music": "Iceage",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "iceage_flag_veteran"
+   ]
+  }
+ },
+ "IceageVeteranStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "iceage_armor1"
+   ],
+   "Armor2_Zombie": [
+    "iceage_armor2"
+   ],
+   "Armor3_Zombie": [
+    "iceage_armor3"
+   ],
+   "Armor4_Zombie": [
+    "iceage_armor4"
+   ],
+   "Basic_Zombie": [
+    "iceage"
+   ],
+   "Flag_Zombie": [
+    "iceage_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "iceage_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_iceage"
+   ],
+   "Imp_Zombie": [
+    "iceage_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_iceage",
+   "Music": "Iceage",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "iceage_flag_veteran"
+   ]
+  }
+ },
+ "KongfuBossStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "kongfu_armor1",
+    "monk_armor1",
+    "abbot_armor1"
+   ],
+   "Armor2_Zombie": [
+    "kongfu_armor2",
+    "monk_armor2",
+    "abbot_armor2"
+   ],
+   "Armor3_Zombie": [
+    "kongfu_armor3",
+    "monk_armor3",
+    "abbot_armor3"
+   ],
+   "Armor4_Zombie": [
+    "kongfu_armor4",
+    "monk_armor4",
+    "abbot_armor4"
+   ],
+   "Basic_Zombie": [
+    "kongfu",
+    "monk",
+    "abbot"
+   ],
+   "Flag_Zombie": [
+    "kongfu_flag",
+    "monk_flag",
+    "abbot_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "kongfu_bronze_strong",
+    "kongfu_bronze_hook",
+    "kongfu_bronze_chi"
+   ],
+   "Gravestone": [
+    "kongfu_rack_torch"
+   ],
+   "Imp_Zombie": [
+    "kongfu_rocket_imp",
+    "monk_imp",
+    "abbot_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_kongfu",
+   "Music": "Kongfu",
+   "RailCart": "railcart_kongfu",
+   "Rally_Zombie": [
+    "kongfu_flag_veteran",
+    "monk_flag_veteran",
+    "abbot_flag_veteran"
+   ]
+  }
+ },
+ "KongfuStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "kongfu_armor1"
+   ],
+   "Armor2_Zombie": [
+    "kongfu_armor2"
+   ],
+   "Armor3_Zombie": [
+    "kongfu_armor3"
+   ],
+   "Armor4_Zombie": [
+    "kongfu_armor4"
+   ],
+   "Basic_Zombie": [
+    "kongfu"
+   ],
+   "Flag_Zombie": [
+    "kongfu_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "kongfu_bronze_strong"
+   ],
+   "Gravestone": [
+    "kongfu_rack_torch"
+   ],
+   "Imp_Zombie": [
+    "kongfu_rocket_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_kongfu",
+   "Music": "Kongfu",
+   "RailCart": "railcart_kongfu",
+   "Rally_Zombie": [
+    "kongfu_flag_veteran"
+   ]
+  }
+ },
+ "KongfuVeteranStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "kongfu_armor1",
+    "monk_armor1",
+    "abbot_armor1"
+   ],
+   "Armor2_Zombie": [
+    "kongfu_armor2",
+    "monk_armor2",
+    "abbot_armor2"
+   ],
+   "Armor3_Zombie": [
+    "kongfu_armor3",
+    "monk_armor3",
+    "abbot_armor3"
+   ],
+   "Armor4_Zombie": [
+    "kongfu_armor4",
+    "monk_armor4",
+    "abbot_armor4"
+   ],
+   "Basic_Zombie": [
+    "kongfu",
+    "monk",
+    "abbot"
+   ],
+   "Flag_Zombie": [
+    "kongfu_flag",
+    "monk_flag",
+    "abbot_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "kongfu_bronze_strong",
+    "kongfu_bronze_hook",
+    "kongfu_bronze_chi"
+   ],
+   "Gravestone": [
+    "kongfu_rack_torch"
+   ],
+   "Imp_Zombie": [
+    "kongfu_rocket_imp",
+    "monk_imp",
+    "abbot_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_kongfu",
+   "Music": "Kongfu",
+   "RailCart": "railcart_kongfu",
+   "Rally_Zombie": [
+    "kongfu_flag_veteran",
+    "monk_flag_veteran",
+    "abbot_flag_veteran"
+   ]
+  }
+ },
+ "LostCityNightStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "lostcity_armor1"
+   ],
+   "Armor2_Zombie": [
+    "lostcity_armor2"
+   ],
+   "Armor3_Zombie": [
+    "lostcity_armor2"
+   ],
+   "Armor4_Zombie": [
+    "lostcity_armor4"
+   ],
+   "Basic_Zombie": [
+    "lostcity"
+   ],
+   "Flag_Zombie": [
+    "lostcity_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "lostcity_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_lostcity"
+   ],
+   "Imp_Zombie": [
+    "lostcity_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_lostcity",
+   "Music": "Lostcity",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "lostcity_flag_veteran"
+   ]
+  }
+ },
+ "LostCityStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "lostcity_armor1"
+   ],
+   "Armor2_Zombie": [
+    "lostcity_armor2"
+   ],
+   "Armor3_Zombie": [
+    "lostcity_armor2"
+   ],
+   "Armor4_Zombie": [
+    "lostcity_armor4"
+   ],
+   "Basic_Zombie": [
+    "lostcity"
+   ],
+   "Flag_Zombie": [
+    "lostcity_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "lostcity_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_lostcity"
+   ],
+   "Imp_Zombie": [
+    "lostcity_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_lostcity",
+   "Music": "Lostcity",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "lostcity_flag_veteran"
+   ]
+  }
+ },
+ "LostCityTutorialStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "lostcity_armor1"
+   ],
+   "Armor2_Zombie": [
+    "lostcity_armor2"
+   ],
+   "Armor3_Zombie": [
+    "lostcity_armor2"
+   ],
+   "Armor4_Zombie": [
+    "lostcity_armor4"
+   ],
+   "Basic_Zombie": [
+    "lostcity"
+   ],
+   "Flag_Zombie": [
+    "lostcity_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "lostcity_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_lostcity"
+   ],
+   "Imp_Zombie": [
+    "lostcity_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_lostcity",
+   "Music": "Lostcity",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "lostcity_flag_veteran"
+   ]
+  }
+ },
+ "LunarStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "lunar_armor1"
+   ],
+   "Armor2_Zombie": [
+    "lunar_armor2"
+   ],
+   "Armor3_Zombie": [
+    "lunar_armor2"
+   ],
+   "Armor4_Zombie": [
+    "lunar_armor2"
+   ],
+   "Basic_Zombie": [
+    "lunar"
+   ],
+   "Flag_Zombie": [
+    "lunar_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "kongfu_bronze_chi",
+    "kongfu_bronze_hook",
+    "kongfu_bronze_strong"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "kongfu_rocket_imp",
+    "monk_imp",
+    "abbot_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_lostcity",
+   "Music": "Kongfu",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "lunar_flag"
+   ]
+  }
+ },
+ "ModernNightStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "tutorial_armor1"
+   ],
+   "Armor2_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor3_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor4_Zombie": [
+    "tutorial_armor4"
+   ],
+   "Basic_Zombie": [
+    "tutorial"
+   ],
+   "Flag_Zombie": [
+    "tutorial_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "tutorial_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "tutorial_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "tutorial_flag_veteran"
+   ]
+  }
+ },
+ "ModernStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "tutorial_armor1"
+   ],
+   "Armor2_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor3_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor4_Zombie": [
+    "tutorial_armor4"
+   ],
+   "Basic_Zombie": [
+    "tutorial"
+   ],
+   "Flag_Zombie": [
+    "tutorial_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "tutorial_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "tutorial_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "tutorial_flag_veteran"
+   ]
+  }
+ },
+ "MonkStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "monk_armor1"
+   ],
+   "Armor2_Zombie": [
+    "monk_armor2"
+   ],
+   "Armor3_Zombie": [
+    "monk_armor3"
+   ],
+   "Armor4_Zombie": [
+    "monk_armor4"
+   ],
+   "Basic_Zombie": [
+    "monk"
+   ],
+   "Flag_Zombie": [
+    "monk_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "kongfu_bronze_hook"
+   ],
+   "Gravestone": [
+    "kongfu_rack_torch"
+   ],
+   "Imp_Zombie": [
+    "monk_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_kongfu",
+   "Music": "Kongfu",
+   "RailCart": "railcart_kongfu",
+   "Rally_Zombie": [
+    "monk_flag_veteran"
+   ]
+  }
+ },
+ "PaddysStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "stpatrick_armor1"
+   ],
+   "Armor2_Zombie": [
+    "stpatrick_armor2"
+   ],
+   "Armor3_Zombie": [
+    "stpatrick_armor2"
+   ],
+   "Armor4_Zombie": [
+    "stpatrick_armor2"
+   ],
+   "Basic_Zombie": [
+    "stpatrick"
+   ],
+   "Flag_Zombie": [
+    "stpatrick_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "tutorial_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "stpatrick_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_lostcity",
+   "Music": "Lostcity",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "stpatrick_flag"
+   ]
+  }
+ },
+ "PersuitStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "tutorial_armor1"
+   ],
+   "Armor2_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor3_Zombie": [
+    "tutorial_armor2"
+   ],
+   "Armor4_Zombie": [
+    "tutorial_armor4"
+   ],
+   "Basic_Zombie": [
+    "tutorial"
+   ],
+   "Flag_Zombie": [
+    "tutorial_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "tutorial_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "tutorial_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "tutorial_flag_veteran"
+   ]
+  }
+ },
+ "PirateStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "pirate_armor1"
+   ],
+   "Armor2_Zombie": [
+    "pirate_armor2"
+   ],
+   "Armor3_Zombie": [
+    "pirate_armor2"
+   ],
+   "Armor4_Zombie": [
+    "pirate_armor4"
+   ],
+   "Basic_Zombie": [
+    "pirate"
+   ],
+   "Flag_Zombie": [
+    "pirate_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "pirate_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_pirate"
+   ],
+   "Imp_Zombie": [
+    "pirate_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_pirate",
+   "Music": "Pirate",
+   "RailCart": "railcart_pirate",
+   "Rally_Zombie": [
+    "pirate_flag_veteran"
+   ]
+  }
+ },
+ "SkyStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "sky_armor1"
+   ],
+   "Armor2_Zombie": [
+    "sky_armor2"
+   ],
+   "Armor3_Zombie": [
+    "sky_armor2"
+   ],
+   "Armor4_Zombie": [
+    "sky_armor2"
+   ],
+   "Basic_Zombie": [
+    "sky"
+   ],
+   "Flag_Zombie": [
+    "sky_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "sky_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "sky_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_future",
+   "Music": "Sky",
+   "RailCart": "railcart_sky",
+   "Rally_Zombie": [
+    "sky_flag"
+   ],
+   "SuppressYeti": true
+  }
+ },
+ "SkyUnarmedStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "sky_unarmed_armor1"
+   ],
+   "Armor2_Zombie": [
+    "sky_unarmed_armor2"
+   ],
+   "Armor3_Zombie": [
+    "sky_unarmed_armor2"
+   ],
+   "Armor4_Zombie": [
+    "sky_unarmed_armor2"
+   ],
+   "Basic_Zombie": [
+    "sky_unarmed"
+   ],
+   "Flag_Zombie": [
+    "sky_unarmed_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "sky_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "sky_imp"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_future",
+   "Music": "Sky",
+   "RailCart": "railcart_sky",
+   "Rally_Zombie": [
+    "sky_unarmed_flag"
+   ],
+   "SuppressYeti": true
+  }
+ },
+ "SportzballStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "sportzball_armor1"
+   ],
+   "Armor2_Zombie": [
+    "sportzball_armor2"
+   ],
+   "Armor3_Zombie": [
+    "sportzball_armor2"
+   ],
+   "Armor4_Zombie": [
+    "sportzball_armor2"
+   ],
+   "Basic_Zombie": [
+    "sportzball"
+   ],
+   "Flag_Zombie": [
+    "sportzball_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "sportzball_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "sportzball_imp"
+   ],
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "sportzball_flag"
+   ]
+  }
+ },
+ "SpringStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "easter_armor1"
+   ],
+   "Armor2_Zombie": [
+    "easter_armor2"
+   ],
+   "Armor3_Zombie": [
+    "easter_armor2"
+   ],
+   "Armor4_Zombie": [
+    "easter_armor4"
+   ],
+   "Basic_Zombie": [
+    "easter"
+   ],
+   "Flag_Zombie": [
+    "easter_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "easter_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "easter_imp"
+   ],
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "easter_flag"
+   ]
+  }
+ },
+ "SummerNightsStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "summer_armor1"
+   ],
+   "Armor2_Zombie": [
+    "summer_armor2"
+   ],
+   "Armor3_Zombie": [
+    "summer_armor2"
+   ],
+   "Armor4_Zombie": [
+    "summer_armor2"
+   ],
+   "Basic_Zombie": [
+    "summer_basic"
+   ],
+   "Flag_Zombie": [
+    "summer_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "summer_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "summer_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "summer_flag"
+   ]
+  }
+ },
+ "ValentinesStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "valentines_armor1"
+   ],
+   "Armor2_Zombie": [
+    "valentines_armor2"
+   ],
+   "Armor3_Zombie": [
+    "valentines_armor2"
+   ],
+   "Armor4_Zombie": [
+    "valentines_armor4"
+   ],
+   "Basic_Zombie": [
+    "valentines"
+   ],
+   "Flag_Zombie": [
+    "valentines_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "valentines_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_tutorial"
+   ],
+   "Imp_Zombie": [
+    "valentines_imp"
+   ],
+   "IsAtNight": true,
+   "Mower": "mower_modern",
+   "Music": "Modern",
+   "RailCart": "railcart_tutorial",
+   "Rally_Zombie": [
+    "valentines_flag"
+   ]
+  }
+ },
+ "WestStage": {
+  "objclass": "LawnProperties",
+  "objdata": {
+   "Armor1_Zombie": [
+    "cowboy_armor1"
+   ],
+   "Armor2_Zombie": [
+    "cowboy_armor2"
+   ],
+   "Armor3_Zombie": [
+    "cowboy_armor2"
+   ],
+   "Armor4_Zombie": [
+    "cowboy_armor4"
+   ],
+   "Basic_Zombie": [
+    "cowboy"
+   ],
+   "Flag_Zombie": [
+    "cowboy_flag"
+   ],
+   "Gargantuar_Zombie": [
+    "cowboy_gargantuar"
+   ],
+   "Gravestone": [
+    "gravestone_cowboy"
+   ],
+   "Imp_Zombie": [
+    "west_bullrider"
+   ],
+   "IsAtNight": false,
+   "Mower": "mower_cowboy",
+   "Music": "Cowboy",
+   "RailCart": "railcart_cowboy",
+   "Rally_Zombie": [
+    "cowboy_flag_veteran"
+   ]
+  }
+ }
+}

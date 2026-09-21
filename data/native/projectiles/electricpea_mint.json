@@ -1,0 +1,18 @@
+{
+ "id": "electricpea_mint",
+ "stats": {
+  "damage": 100
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamageType": "electricity",
+  "ElectricDamage": 100,
+  "ElectricInterval": 0.5,
+  "ElectricTargetCount": 2,
+  "Size": {
+   "h": 24,
+   "w": 24
+  },
+  "Props": "RTID(electricpea_mint@ProjectileProps)"
+ }
+}

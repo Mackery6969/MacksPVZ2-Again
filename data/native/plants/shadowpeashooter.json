@@ -1,0 +1,33 @@
+{
+ "id": "shadowpeashooter",
+ "family": "Shadow",
+ "stats": {
+  "sun_cost": 225,
+  "toughness": 300,
+  "cooldown": 10,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "MintDamageFactor": 5,
+  "PeaType": "pea_shadow",
+  "PeaTypePlantfood0": "pea_shadow_pf_0",
+  "PeaTypePlantfood1": "pea_shadow_pf_1",
+  "PeaTypePlantfood2": "pea_shadow_pf_2",
+  "PerfumeBuffDuration": 3,
+  "PlantfoodPeaCount": 60,
+  "RayDamage0": 40,
+  "RayDamage1": 70,
+  "RayInterval": 2.3,
+  "RayIntervalAdditional": 0.2,
+  "ShootInterval": 1.35,
+  "ShootIntervalAdditional": 0.15,
+  "ZombiesToDrag": 1,
+  "ZombiesToDragShadowPowered": 2
+ }
+}

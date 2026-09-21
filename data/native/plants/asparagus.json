@@ -1,0 +1,31 @@
+{
+ "id": "asparagus",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 225,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 3000
+ },
+ "components": [
+  {
+   "type": "lobber"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "Damage": 20,
+  "DamagePlantfood": 800,
+  "IdleReloadClips": 3,
+  "MaxClips": 7,
+  "MintDamageFactor": 5,
+  "ReloadDuration": 6,
+  "ShootInterval": 1.75,
+  "ShootIntervalAdditional": 0.15
+ }
+}

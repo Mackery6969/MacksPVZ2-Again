@@ -1,0 +1,7 @@
+{
+ "id": "lava",
+ "category": "liquid",
+ "extra": {
+  "TileLiquidBasedOn": "lavaguava"
+ }
+}

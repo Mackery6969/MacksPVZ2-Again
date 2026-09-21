@@ -1,0 +1,31 @@
+{
+ "id": "monk_torch",
+ "extends": "normal",
+ "stats": {
+  "toughness": 270,
+  "speed": 0.3,
+  "eat_dps": 100,
+  "wave_cost": 250,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "carriable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "AttackRectWithFire": "RTID(MonkTorchWithFireAttackRect@RectangleProps)",
+  "FireDPS": 1000,
+  "HitRectWithFire": "RTID(MonkTorchWithFireHitRect@RectangleProps)"
+ }
+}

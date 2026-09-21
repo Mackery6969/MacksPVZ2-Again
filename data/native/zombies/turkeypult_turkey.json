@@ -1,0 +1,38 @@
+{
+ "id": "turkeypult_turkey",
+ "extends": "normal",
+ "stats": {
+  "toughness": 55,
+  "speed": 2,
+  "eat_dps": 65,
+  "wave_cost": 10,
+  "weight": 0
+ },
+ "tags": {
+  "add": [
+   "deep_water",
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "enlightenable",
+   "grabbable",
+   "sporeable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "TurkeyPultTurkeyAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CowboyChickenHitRect"
+  }
+ ],
+ "extra": {
+  "CanBeEasilySwallowedByChomper": true,
+  "DoesNotDamageHeavilyToGarlic": true,
+  "KilledByShrinkingViolet": true,
+  "WalkSPSVarience": 0
+ }
+}

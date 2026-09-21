@@ -1,0 +1,20 @@
+{
+ "id": "pea_snap_flame_blue",
+ "extends": "pea_flame_blue",
+ "stats": {
+  "damage": 40
+ },
+ "extra": {
+  "DamageScale": 3,
+  "DamageType": "fire",
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "MintBoostedType": "pea2_snap_flame_blue",
+  "Props": "RTID(pea_snap_flame_blue@ProjectileProps)"
+ }
+}

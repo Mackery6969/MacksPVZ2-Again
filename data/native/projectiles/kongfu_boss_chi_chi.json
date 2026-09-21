@@ -1,0 +1,28 @@
+{
+ "id": "kongfu_boss_chi_chi",
+ "extends": "abbot_chi",
+ "stats": {
+  "damage": 400
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DetectsEaterDetectDisabledPlants": true,
+  "FootballPush": true,
+  "IgnoredBy3SectionStaff": true,
+  "KnockbackDistance": 2,
+  "Size": {
+   "h": 56,
+   "w": 56
+  },
+  "SplashDamage": [
+   {
+    "KnockbackDistance": 2,
+    "Range": {
+     "h": 1,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(kongfu_boss_chi_chi@ProjectileProps)"
+ }
+}

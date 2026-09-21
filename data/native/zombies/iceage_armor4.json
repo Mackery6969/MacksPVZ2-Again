@@ -1,0 +1,34 @@
+{
+ "id": "iceage_armor4",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 700,
+  "weight": 4000
+ },
+ "sort": "Normal",
+ "tags": {
+  "remove": [
+   "plantfood_carrier"
+  ]
+ },
+ "components": [
+  {
+   "type": "armor",
+   "armor": "iceage_armor4"
+  },
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChillInsteadOfFreeze": true
+ }
+}

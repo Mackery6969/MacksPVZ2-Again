@@ -1,0 +1,2623 @@
+{
+ "abbot_chi": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "abbot_chi",
+   "Props": "RTID(abbot_chi@ProjectileProps)"
+  }
+ },
+ "abbot_fan_storm": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "abbot_fan_storm",
+   "Props": "RTID(abbot_fan_storm@ProjectileProps)"
+  }
+ },
+ "airraid_0": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "airraid_0",
+   "Props": "RTID(airraid_0@ProjectileProps)"
+  }
+ },
+ "airraid_1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "airraid_1",
+   "Props": "RTID(airraid_1@ProjectileProps)"
+  }
+ },
+ "airraid_2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "homing_thistle_pf",
+   "Props": "RTID(airraid_2@ProjectileProps)"
+  }
+ },
+ "airraid_bolt_negative": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sky_bolt_negative",
+   "Props": "RTID(airraid_2@ProjectileProps)"
+  }
+ },
+ "airraid_bolt_positive": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sky_bolt_positive",
+   "Props": "RTID(airraid_2@ProjectileProps)"
+  }
+ },
+ "akee": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "akee_mint",
+   "ProjectileBasedOn": "akee",
+   "Props": "RTID(akee@ProjectileProps)"
+  }
+ },
+ "akee_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "akee",
+   "Props": "RTID(akee_mint@ProjectileProps)"
+  }
+ },
+ "akee_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "akee_pf_mint",
+   "ProjectileBasedOn": "akee_pf",
+   "Props": "RTID(akee_pf@ProjectileProps)"
+  }
+ },
+ "akee_pf_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "akee_pf",
+   "Props": "RTID(akee_pf_mint@ProjectileProps)"
+  }
+ },
+ "anthurium_bolt": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "anthurium_bolt2",
+   "ProjectileBasedOn": "anthurium_bolt",
+   "Props": "RTID(anthurium_bolt@ProjectileProps)"
+  }
+ },
+ "anthurium_bolt1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "anthurium_bolt2",
+   "ProjectileBasedOn": "anthurium_bolt",
+   "Props": "RTID(anthurium_bolt1@ProjectileProps)"
+  }
+ },
+ "anthurium_bolt2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "anthurium_bolt",
+   "Props": "RTID(anthurium_bolt2@ProjectileProps)"
+  }
+ },
+ "anthurium_bolt_big": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "anthurium_bolt_big2",
+   "ProjectileBasedOn": "anthurium_bolt_big",
+   "Props": "RTID(anthurium_bolt_big@ProjectileProps)"
+  }
+ },
+ "anthurium_bolt_big1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "anthurium_bolt_big2",
+   "ProjectileBasedOn": "anthurium_bolt_big",
+   "Props": "RTID(anthurium_bolt_big1@ProjectileProps)"
+  }
+ },
+ "anthurium_bolt_big2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "anthurium_bolt_big",
+   "Props": "RTID(anthurium_bolt_big2@ProjectileProps)"
+  }
+ },
+ "apple": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "apple2",
+   "ProjectileBasedOn": "apple",
+   "Props": "RTID(apple@ProjectileProps)"
+  }
+ },
+ "apple1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "apple2",
+   "ProjectileBasedOn": "apple1",
+   "Props": "RTID(apple1@ProjectileProps)"
+  }
+ },
+ "apple2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "apple2",
+   "Props": "RTID(apple2@ProjectileProps)"
+  }
+ },
+ "apple_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "apple_pf",
+   "Props": "RTID(apple_pf@ProjectileProps)"
+  }
+ },
+ "armamint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "armamint",
+   "Props": "RTID(armamint@ProjectileProps)"
+  }
+ },
+ "atombomb": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "atombomb",
+   "Props": "RTID(atombomb@ProjectileProps)"
+  }
+ },
+ "bamboozle": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bamboozle",
+   "Props": "RTID(bamboozle@ProjectileProps)"
+  }
+ },
+ "banana": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "banana2",
+   "ProjectileBasedOn": "banana",
+   "Props": "RTID(banana@ProjectileProps)"
+  }
+ },
+ "banana1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "banana2",
+   "ProjectileBasedOn": "banana",
+   "Props": "RTID(banana1@ProjectileProps)"
+  }
+ },
+ "banana2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "banana",
+   "Props": "RTID(banana2@ProjectileProps)"
+  }
+ },
+ "blastberry": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "blastberry2",
+   "ProjectileBasedOn": "blastberry",
+   "Props": "RTID(blastberry@ProjectileProps)"
+  }
+ },
+ "blastberry1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "blastberry2",
+   "ProjectileBasedOn": "blastberry1",
+   "Props": "RTID(blastberry1@ProjectileProps)"
+  }
+ },
+ "blastberry2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "blastberry2",
+   "Props": "RTID(blastberry2@ProjectileProps)"
+  }
+ },
+ "blastberry_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "blastberry_pf_mint",
+   "ProjectileBasedOn": "blastberry_pf",
+   "Props": "RTID(blastberry_pf@ProjectileProps)"
+  }
+ },
+ "blastberry_pf_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "blastberry_pf",
+   "Props": "RTID(blastberry_pf_mint@ProjectileProps)"
+  }
+ },
+ "blastberry_small": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "blastberry_small2",
+   "ProjectileBasedOn": "blastberry_small",
+   "Props": "RTID(blastberry_small@ProjectileProps)"
+  }
+ },
+ "blastberry_small1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "blastberry_small2",
+   "ProjectileBasedOn": "blastberry_small1",
+   "Props": "RTID(blastberry_small1@ProjectileProps)"
+  }
+ },
+ "blastberry_small2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "blastberry_small2",
+   "Props": "RTID(blastberry_small2@ProjectileProps)"
+  }
+ },
+ "blastberry_small_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "blastberry_small_pf_mint",
+   "ProjectileBasedOn": "blastberry_small_pf",
+   "Props": "RTID(blastberry_small_pf@ProjectileProps)"
+  }
+ },
+ "blastberry_small_pf_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "blastberry_small_pf",
+   "Props": "RTID(blastberry_small_pf_mint@ProjectileProps)"
+  }
+ },
+ "blooming_heart": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "blooming_heart2",
+   "ProjectileBasedOn": "blooming_heart",
+   "Props": "RTID(blooming_heart@ProjectileProps)"
+  }
+ },
+ "blooming_heart1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "blooming_heart2",
+   "ProjectileBasedOn": "blooming_heart1",
+   "Props": "RTID(blooming_heart1@ProjectileProps)"
+  }
+ },
+ "blooming_heart2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "blooming_heart2",
+   "Props": "RTID(blooming_heart2@ProjectileProps)"
+  }
+ },
+ "blooming_heart_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "blooming_heart_pf",
+   "Props": "RTID(blooming_heart_pf@ProjectileProps)"
+  }
+ },
+ "boomerang": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "boomerang2",
+   "ProjectileBasedOn": "boomerang",
+   "Props": "RTID(boomerang@ProjectileProps)"
+  }
+ },
+ "boomerang1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "boomerang2",
+   "ProjectileBasedOn": "boomerang2",
+   "Props": "RTID(boomerang1@ProjectileProps)"
+  }
+ },
+ "boomerang2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "boomerang2",
+   "Props": "RTID(boomerang2@ProjectileProps)"
+  }
+ },
+ "bowling0": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "bowling0_mint",
+   "ProjectileBasedOn": "bowling0",
+   "Props": "RTID(bowling0@ProjectileProps)"
+  }
+ },
+ "bowling0_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling0",
+   "Props": "RTID(bowling0_mint@ProjectileProps)"
+  }
+ },
+ "bowling1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "bowling1_mint",
+   "ProjectileBasedOn": "bowling1",
+   "Props": "RTID(bowling1@ProjectileProps)"
+  }
+ },
+ "bowling1_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling1",
+   "Props": "RTID(bowling1_mint@ProjectileProps)"
+  }
+ },
+ "bowling2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "bowling2_mint",
+   "ProjectileBasedOn": "bowling2",
+   "Props": "RTID(bowling2@ProjectileProps)"
+  }
+ },
+ "bowling2_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling2",
+   "Props": "RTID(bowling2_mint@ProjectileProps)"
+  }
+ },
+ "bowling_explode_o_nut": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling_explode_o_nut",
+   "Props": "RTID(bowling_explode_o_nut@ProjectileProps)"
+  }
+ },
+ "bowling_iceberg": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling_iceberg",
+   "Props": "RTID(bowling_iceberg@ProjectileProps)"
+  }
+ },
+ "bowling_infinut": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling_infinut",
+   "Props": "RTID(bowling_infinut@ProjectileProps)"
+  }
+ },
+ "bowling_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "bowling_pf_mint",
+   "ProjectileBasedOn": "bowling_pf",
+   "Props": "RTID(bowling_pf@ProjectileProps)"
+  }
+ },
+ "bowling_pf_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling_pf",
+   "Props": "RTID(bowling_pf_mint@ProjectileProps)"
+  }
+ },
+ "bowling_primal_wallnut": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling_primal_wallnut",
+   "Props": "RTID(bowling_primal_wallnut@ProjectileProps)"
+  }
+ },
+ "bowling_tallnut": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling_tallnut",
+   "Props": "RTID(bowling_tallnut@ProjectileProps)"
+  }
+ },
+ "bowling_wallnut": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "bowling_wallnut",
+   "Props": "RTID(bowling_wallnut@ProjectileProps)"
+  }
+ },
+ "busketball": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "busketball",
+   "Props": "RTID(busketball@ProjectileProps)"
+  }
+ },
+ "butter": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "butter2",
+   "ProjectileBasedOn": "butter",
+   "Props": "RTID(butter@ProjectileProps)"
+  }
+ },
+ "butter1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "butter2",
+   "ProjectileBasedOn": "butter1",
+   "Props": "RTID(butter1@ProjectileProps)"
+  }
+ },
+ "butter2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "butter2",
+   "Props": "RTID(butter2@ProjectileProps)"
+  }
+ },
+ "buttercup_butter": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "butter",
+   "Props": "RTID(buttercup_butter@ProjectileProps)"
+  }
+ },
+ "cabbage": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "cabbage2",
+   "ProjectileBasedOn": "cabbage",
+   "Props": "RTID(cabbage@ProjectileProps)"
+  }
+ },
+ "cabbage1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "cabbage2",
+   "ProjectileBasedOn": "cabbage1",
+   "Props": "RTID(cabbage1@ProjectileProps)"
+  }
+ },
+ "cabbage2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "cabbage2",
+   "Props": "RTID(cabbage2@ProjectileProps)"
+  }
+ },
+ "cabbage_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "cabbage_pf",
+   "Props": "RTID(cabbage_pf@ProjectileProps)"
+  }
+ },
+ "cactus": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "cactus2",
+   "ProjectileBasedOn": "cactus",
+   "Props": "RTID(cactus@ProjectileProps)"
+  }
+ },
+ "cactus1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "cactus2",
+   "ProjectileBasedOn": "cactus1",
+   "Props": "RTID(cactus1@ProjectileProps)"
+  }
+ },
+ "cactus2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "cactus2",
+   "Props": "RTID(cactus2@ProjectileProps)"
+  }
+ },
+ "cactus_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "cactus_pf2",
+   "ProjectileBasedOn": "cactus_pf",
+   "Props": "RTID(cactus_pf@ProjectileProps)"
+  }
+ },
+ "cactus_pf1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "cactus_pf2",
+   "ProjectileBasedOn": "cactus_pf",
+   "Props": "RTID(cactus_pf1@ProjectileProps)"
+  }
+ },
+ "cactus_pf2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "cactus_pf",
+   "Props": "RTID(cactus_pf2@ProjectileProps)"
+  }
+ },
+ "cantaloupe": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "cantaloupe2",
+   "ProjectileBasedOn": "cantaloupe",
+   "Props": "RTID(cantaloupe@ProjectileProps)"
+  }
+ },
+ "cantaloupe1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "cantaloupe2",
+   "ProjectileBasedOn": "cantaloupe1",
+   "Props": "RTID(cantaloupe1@ProjectileProps)"
+  }
+ },
+ "cantaloupe2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "cantaloupe2",
+   "Props": "RTID(cantaloupe2@ProjectileProps)"
+  }
+ },
+ "cantaloupe_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "cantaloupe_pf",
+   "Props": "RTID(cantaloupe_pf@ProjectileProps)"
+  }
+ },
+ "caulipower": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "caulipower",
+   "Props": "RTID(caulipower@ProjectileProps)"
+  }
+ },
+ "citron": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "citron2",
+   "ProjectileBasedOn": "citron",
+   "Props": "RTID(citron@ProjectileProps)"
+  }
+ },
+ "citron1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "citron2",
+   "ProjectileBasedOn": "citron1",
+   "Props": "RTID(citron1@ProjectileProps)"
+  }
+ },
+ "citron2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "citron2",
+   "Props": "RTID(citron2@ProjectileProps)"
+  }
+ },
+ "citron_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "citron_pf_mint",
+   "ProjectileBasedOn": "citron_pf",
+   "Props": "RTID(citron_pf@ProjectileProps)"
+  }
+ },
+ "citron_pf_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "citron_pf",
+   "Props": "RTID(citron_pf_mint@ProjectileProps)"
+  }
+ },
+ "coconut": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "coconut_mint",
+   "ProjectileBasedOn": "coconut",
+   "Props": "RTID(coconut@ProjectileProps)"
+  }
+ },
+ "coconut_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "coconut",
+   "Props": "RTID(coconut_mint@ProjectileProps)"
+  }
+ },
+ "coconut_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "coconut_pf",
+   "Props": "RTID(coconut_pf@ProjectileProps)"
+  }
+ },
+ "corn": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "corn2",
+   "ProjectileBasedOn": "corn",
+   "Props": "RTID(corn@ProjectileProps)"
+  }
+ },
+ "corn1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "corn2",
+   "ProjectileBasedOn": "corn1",
+   "Props": "RTID(corn1@ProjectileProps)"
+  }
+ },
+ "corn2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "corn2",
+   "Props": "RTID(corn2@ProjectileProps)"
+  }
+ },
+ "cranjelly": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "cranjelly",
+   "Props": "RTID(cranjelly@ProjectileProps)"
+  }
+ },
+ "dandelion": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "dandelion2",
+   "ProjectileBasedOn": "dandelion",
+   "Props": "RTID(dandelion@ProjectileProps)"
+  }
+ },
+ "dandelion1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "dandelion2",
+   "ProjectileBasedOn": "dandelion1",
+   "Props": "RTID(dandelion1@ProjectileProps)"
+  }
+ },
+ "dandelion2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "dandelion2",
+   "Props": "RTID(dandelion2@ProjectileProps)"
+  }
+ },
+ "dandelion_blew": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "dandelion1",
+   "ProjectileBasedOn": "dandelion_blew",
+   "Props": "RTID(dandelion_blew@ProjectileProps)"
+  }
+ },
+ "dandelion_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "dandelion_pf",
+   "Props": "RTID(dandelion_pf@ProjectileProps)"
+  }
+ },
+ "darkmatter": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "darkmatter",
+   "Props": "RTID(darkmatter@ProjectileProps)"
+  }
+ },
+ "darkmatter_shadow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "darkmatter_shadow",
+   "Props": "RTID(darkmatter_shadow@ProjectileProps)"
+  }
+ },
+ "dragonfruit": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "dragonfruit2",
+   "ProjectileBasedOn": "dragonfruit",
+   "Props": "RTID(dragonfruit@ProjectileProps)"
+  }
+ },
+ "dragonfruit1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "dragonfruit2",
+   "ProjectileBasedOn": "dragonfruit1",
+   "Props": "RTID(dragonfruit1@ProjectileProps)"
+  }
+ },
+ "dragonfruit2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "dragonfruit2",
+   "Props": "RTID(dragonfruit2@ProjectileProps)"
+  }
+ },
+ "dragonfruit_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "dragonfruit_pf",
+   "Props": "RTID(dragonfruit_pf@ProjectileProps)"
+  }
+ },
+ "dusklobber": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "dusklobber2",
+   "ProjectileBasedOn": "dusklobber",
+   "Props": "RTID(dusklobber@ProjectileProps)"
+  }
+ },
+ "dusklobber1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "dusklobber2",
+   "ProjectileBasedOn": "dusklobber1",
+   "Props": "RTID(dusklobber1@ProjectileProps)"
+  }
+ },
+ "dusklobber2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "dusklobber2",
+   "Props": "RTID(dusklobber2@ProjectileProps)"
+  }
+ },
+ "dusklobber_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "dusklobber_pf",
+   "Props": "RTID(dusklobber_pf@ProjectileProps)"
+  }
+ },
+ "eighties_gargantuar_wave": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "eighties_gargantuar_wave",
+   "Props": "RTID(eighties_gargantuar_wave@ProjectileProps)"
+  }
+ },
+ "eighties_speaker_wave": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "eighties_speaker_wave",
+   "Props": "RTID(eighties_speaker_wave@ProjectileProps)"
+  }
+ },
+ "electricpea": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "electricpea_mint",
+   "ProjectileBasedOn": "electricpea",
+   "Props": "RTID(electricpea@ProjectileProps)"
+  }
+ },
+ "electricpea_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "electricpea_mint",
+   "Props": "RTID(electricpea_mint@ProjectileProps)"
+  }
+ },
+ "electricpea_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "electricpea_pf",
+   "Props": "RTID(electricpea_pf@ProjectileProps)"
+  }
+ },
+ "electricpea_small": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "electricpea_small",
+   "Props": "RTID(electricpea_small@ProjectileProps)"
+  }
+ },
+ "grapeshot": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "grapeshot_mint",
+   "ProjectileBasedOn": "grapeshot",
+   "Props": "RTID(grapeshot@ProjectileProps)"
+  }
+ },
+ "grapeshot_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "grapeshot",
+   "Props": "RTID(grapeshot_mint@ProjectileProps)"
+  }
+ },
+ "guacodile": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "guacodile2",
+   "ProjectileBasedOn": "guacodile",
+   "Props": "RTID(guacodile@ProjectileProps)"
+  }
+ },
+ "guacodile1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "guacodile2",
+   "ProjectileBasedOn": "guacodile1",
+   "Props": "RTID(guacodile1@ProjectileProps)"
+  }
+ },
+ "guacodile2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "guacodile2",
+   "Props": "RTID(guacodile2@ProjectileProps)"
+  }
+ },
+ "guacodile_child": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "guacodile_child_mint",
+   "ProjectileBasedOn": "guacodile_child",
+   "Props": "RTID(guacodile_child@ProjectileProps)"
+  }
+ },
+ "guacodile_child_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "guacodile_child",
+   "Props": "RTID(guacodile_child_mint@ProjectileProps)"
+  }
+ },
+ "gumnut": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "gumnut",
+   "Props": "RTID(gumnut@ProjectileProps)"
+  }
+ },
+ "hollyleaf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "hollyleaf",
+   "Props": "RTID(hollyleaf@ProjectileProps)"
+  }
+ },
+ "hollyleaf_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "hollyleaf_pf",
+   "Props": "RTID(hollyleaf_pf@ProjectileProps)"
+  }
+ },
+ "homing_thistle": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "homing_thistle2",
+   "ProjectileBasedOn": "homing_thistle",
+   "Props": "RTID(homing_thistle@ProjectileProps)"
+  }
+ },
+ "homing_thistle1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "homing_thistle2",
+   "ProjectileBasedOn": "homing_thistle1",
+   "Props": "RTID(homing_thistle1@ProjectileProps)"
+  }
+ },
+ "homing_thistle2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "homing_thistle2",
+   "Props": "RTID(homing_thistle2@ProjectileProps)"
+  }
+ },
+ "homing_thistle_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "homing_thistle_pf",
+   "Props": "RTID(homing_thistle_pf@ProjectileProps)"
+  }
+ },
+ "hunter_snowball": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "hunter_snowball",
+   "Props": "RTID(hunter_snowball@ProjectileProps)"
+  }
+ },
+ "icebloom": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "snowdrop_freeze",
+   "Props": "RTID(icebloom@ProjectileProps)"
+  }
+ },
+ "iceweed_saw": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "iceweed_saw",
+   "Props": "RTID(iceweed_saw@ProjectileProps)"
+  }
+ },
+ "inferno_tornado": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "inferno_tornado_pf",
+   "ProjectileBasedOn": "inferno_tornado",
+   "Props": "RTID(inferno_tornado@ProjectileProps)"
+  }
+ },
+ "inferno_tornado_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "inferno_tornado",
+   "Props": "RTID(inferno_tornado_pf@ProjectileProps)"
+  }
+ },
+ "kongfu_boss_blade_chi": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "kongfu_boss_blade_chi",
+   "Props": "RTID(kongfu_boss_blade_chi@ProjectileProps)"
+  }
+ },
+ "kongfu_boss_chi_chi": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "abbot_chi",
+   "Props": "RTID(kongfu_boss_chi_chi@ProjectileProps)"
+  }
+ },
+ "kongfu_boss_chi_rack": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "kongfu_boss_chi_rack",
+   "Props": "RTID(kongfu_boss_chi_rack@ProjectileProps)"
+  }
+ },
+ "kongfu_boss_explode_bomb": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "kongfu_boss_explode_bomb",
+   "Props": "RTID(kongfu_boss_explode_bomb@ProjectileProps)"
+  }
+ },
+ "lotus": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "lotus2",
+   "ProjectileBasedOn": "lotus",
+   "Props": "RTID(lotus@ProjectileProps)"
+  }
+ },
+ "lotus1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "lotus2",
+   "ProjectileBasedOn": "lotus1",
+   "Props": "RTID(lotus1@ProjectileProps)"
+  }
+ },
+ "lotus2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "lotus2",
+   "Props": "RTID(lotus2@ProjectileProps)"
+  }
+ },
+ "lotus_torpedo": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "lotus_torpedo_mint",
+   "ProjectileBasedOn": "lotus_torpedo",
+   "Props": "RTID(lotus_torpedo@ProjectileProps)"
+  }
+ },
+ "lotus_torpedo_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "lotus_torpedo",
+   "Props": "RTID(lotus_torpedo_mint@ProjectileProps)"
+  }
+ },
+ "lotus_torpedo_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "lotus_torpedo_pf_mint",
+   "ProjectileBasedOn": "lotus_torpedo_pf",
+   "Props": "RTID(lotus_torpedo_pf@ProjectileProps)"
+  }
+ },
+ "lotus_torpedo_pf_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "lotus_torpedo_pf",
+   "Props": "RTID(lotus_torpedo_pf_mint@ProjectileProps)"
+  }
+ },
+ "magnifying_grass": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "magnifying_grass2",
+   "ProjectileBasedOn": "magnifying_grass",
+   "Props": "RTID(magnifying_grass@ProjectileProps)"
+  }
+ },
+ "magnifying_grass1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "magnifying_grass2",
+   "ProjectileBasedOn": "magnifying_grass1",
+   "Props": "RTID(magnifying_grass1@ProjectileProps)"
+  }
+ },
+ "magnifying_grass2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "magnifying_grass2",
+   "Props": "RTID(magnifying_grass2@ProjectileProps)"
+  }
+ },
+ "melon": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "melon2",
+   "ProjectileBasedOn": "melon",
+   "Props": "RTID(melon@ProjectileProps)"
+  }
+ },
+ "melon1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "melon2",
+   "ProjectileBasedOn": "melon1",
+   "Props": "RTID(melon1@ProjectileProps)"
+  }
+ },
+ "melon2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "melon2",
+   "Props": "RTID(melon2@ProjectileProps)"
+  }
+ },
+ "melon_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "melon_pf",
+   "Props": "RTID(melon_pf@ProjectileProps)"
+  }
+ },
+ "meteor": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "meteor_mint",
+   "ProjectileBasedOn": "meteor",
+   "Props": "RTID(meteor@ProjectileProps)"
+  }
+ },
+ "meteor_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "meteor",
+   "Props": "RTID(meteor_mint@ProjectileProps)"
+  }
+ },
+ "missiletoe": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "missiletoe2",
+   "ProjectileBasedOn": "missiletoe",
+   "Props": "RTID(missiletoe@ProjectileProps)"
+  }
+ },
+ "missiletoe1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "missiletoe2",
+   "ProjectileBasedOn": "missiletoe1",
+   "Props": "RTID(missiletoe1@ProjectileProps)"
+  }
+ },
+ "missiletoe2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "missiletoe2",
+   "Props": "RTID(missiletoe2@ProjectileProps)"
+  }
+ },
+ "mower_beach": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_beach",
+   "Props": "RTID(mower_beach@ProjectileProps)"
+  }
+ },
+ "mower_cowboy": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_cowboy",
+   "Props": "RTID(mower_cowboy@ProjectileProps)"
+  }
+ },
+ "mower_dark": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_dark",
+   "Props": "RTID(mower_dark@ProjectileProps)"
+  }
+ },
+ "mower_dino": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_dino",
+   "Props": "RTID(mower_dino@ProjectileProps)"
+  }
+ },
+ "mower_egypt": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_egypt",
+   "Props": "RTID(mower_egypt@ProjectileProps)"
+  }
+ },
+ "mower_eighties": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_eighties",
+   "Props": "RTID(mower_eighties@ProjectileProps)"
+  }
+ },
+ "mower_future": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_future",
+   "Props": "RTID(mower_future@ProjectileProps)"
+  }
+ },
+ "mower_iceage": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_iceage",
+   "Props": "RTID(mower_iceage@ProjectileProps)"
+  }
+ },
+ "mower_kongfu": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_kongfu",
+   "Props": "RTID(mower_kongfu@ProjectileProps)"
+  }
+ },
+ "mower_lostcity": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_lostcity",
+   "Props": "RTID(mower_lostcity@ProjectileProps)"
+  }
+ },
+ "mower_modern": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_modern",
+   "Props": "RTID(mower_modern@ProjectileProps)"
+  }
+ },
+ "mower_pirate": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "mower_pirate",
+   "Props": "RTID(mower_pirate@ProjectileProps)"
+  }
+ },
+ "nightshade": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "nightshade_mint",
+   "ProjectileBasedOn": "nightshade",
+   "Props": "RTID(nightshade@ProjectileProps)"
+  }
+ },
+ "nightshade_mega": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "nightshade_mega_mint",
+   "ProjectileBasedOn": "nightshade_mega",
+   "Props": "RTID(nightshade_mega@ProjectileProps)"
+  }
+ },
+ "nightshade_mega_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "nightshade_mega",
+   "Props": "RTID(nightshade_mega_mint@ProjectileProps)"
+  }
+ },
+ "nightshade_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "nightshade",
+   "Props": "RTID(nightshade_mint@ProjectileProps)"
+  }
+ },
+ "nightshade_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "nightshade_pf",
+   "Props": "RTID(nightshade_pf@ProjectileProps)"
+  }
+ },
+ "nightshade_pf_mega": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "nightshade_pf_mega",
+   "Props": "RTID(nightshade_pf_mega@ProjectileProps)"
+  }
+ },
+ "octopus": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "octopus",
+   "Props": "RTID(octopus@ProjectileProps)"
+  }
+ },
+ "parsnip_child": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "parsnip_child_mint",
+   "ProjectileBasedOn": "parsnip_child",
+   "Props": "RTID(parsnip_child@ProjectileProps)"
+  }
+ },
+ "parsnip_child_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "parsnip_child",
+   "Props": "RTID(parsnip_child_mint@ProjectileProps)"
+  }
+ },
+ "parsnip_child_small": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "parsnip_child_small_mint",
+   "ProjectileBasedOn": "parsnip_child_small",
+   "Props": "RTID(parsnip_child_small@ProjectileProps)"
+  }
+ },
+ "parsnip_child_small_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "parsnip_child_small",
+   "Props": "RTID(parsnip_child_small_mint@ProjectileProps)"
+  }
+ },
+ "pea": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "//ProjectileRedirection": [
+    {
+     "Type": "coconut_pf",
+     "Weight": 1
+    },
+    {
+     "Type": "coconut",
+     "Weight": 1
+    }
+   ],
+   "MintBoostedType": "pea2",
+   "ProjectileBasedOn": "pea",
+   "Props": "RTID(pea@ProjectileProps)"
+  }
+ },
+ "pea1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2",
+   "ProjectileBasedOn": "pea1",
+   "Props": "RTID(pea1@ProjectileProps)"
+  }
+ },
+ "pea1_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_flame_blue",
+   "ProjectileBasedOn": "pea1_flame_blue",
+   "Props": "RTID(pea1_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea1_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_flame_yellow",
+   "ProjectileBasedOn": "pea1_flame_yellow",
+   "Props": "RTID(pea1_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea1_snap": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_snap",
+   "ProjectileBasedOn": "pea1",
+   "Props": "RTID(pea1_snap@ProjectileProps)"
+  }
+ },
+ "pea1_snap_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_snap_flame_blue",
+   "ProjectileBasedOn": "pea1_flame_blue",
+   "Props": "RTID(pea1_snap_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea1_snap_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_snap_flame_yellow",
+   "ProjectileBasedOn": "pea1_flame_yellow",
+   "Props": "RTID(pea1_snap_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2",
+   "Props": "RTID(pea2@ProjectileProps)"
+  }
+ },
+ "pea2_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2_flame_blue",
+   "Props": "RTID(pea2_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea2_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2_flame_yellow",
+   "Props": "RTID(pea2_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea2_snap": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2",
+   "Props": "RTID(pea2_snap@ProjectileProps)"
+  }
+ },
+ "pea2_snap_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2_flame_blue",
+   "Props": "RTID(pea2_snap_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea2_snap_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2_flame_yellow",
+   "Props": "RTID(pea2_snap_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_commando": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_commando2",
+   "ProjectileBasedOn": "pea",
+   "Props": "RTID(pea_commando@ProjectileProps)"
+  }
+ },
+ "pea_commando1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_commando2",
+   "ProjectileBasedOn": "pea1",
+   "Props": "RTID(pea_commando1@ProjectileProps)"
+  }
+ },
+ "pea_commando1_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_commando2_flame_blue",
+   "ProjectileBasedOn": "pea1_flame_blue",
+   "Props": "RTID(pea_commando1_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_commando1_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_commando2_flame_yellow",
+   "ProjectileBasedOn": "pea1_flame_yellow",
+   "Props": "RTID(pea_commando1_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_commando2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2",
+   "Props": "RTID(pea_commando2@ProjectileProps)"
+  }
+ },
+ "pea_commando2_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2_flame_blue",
+   "Props": "RTID(pea_commando2_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_commando2_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2_flame_yellow",
+   "Props": "RTID(pea_commando2_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_commando_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_commando2_flame_blue",
+   "ProjectileBasedOn": "pea_flame_blue",
+   "Props": "RTID(pea_commando_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_commando_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_commando2_flame_yellow",
+   "ProjectileBasedOn": "pea_flame_yellow",
+   "Props": "RTID(pea_commando_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_flame_blue",
+   "ProjectileBasedOn": "pea_flame_blue",
+   "Props": "RTID(pea_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_flame_yellow",
+   "ProjectileBasedOn": "pea_flame_yellow",
+   "Props": "RTID(pea_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_goo": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_goo2",
+   "ProjectileBasedOn": "pea_goo",
+   "Props": "RTID(pea_goo@ProjectileProps)"
+  }
+ },
+ "pea_goo1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_goo2",
+   "ProjectileBasedOn": "pea_goo1",
+   "Props": "RTID(pea_goo1@ProjectileProps)"
+  }
+ },
+ "pea_goo2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_goo2",
+   "Props": "RTID(pea_goo2@ProjectileProps)"
+  }
+ },
+ "pea_goo_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_goo_pf",
+   "Props": "RTID(pea_goo_pf@ProjectileProps)"
+  }
+ },
+ "pea_mega": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_mega",
+   "Props": "RTID(pea_mega@ProjectileProps)"
+  }
+ },
+ "pea_mega_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_mega_flame_blue",
+   "Props": "RTID(pea_mega_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_mega_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_mega_flame_yellow",
+   "Props": "RTID(pea_mega_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_mega_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_mega",
+   "Props": "RTID(pea_mega_mint@ProjectileProps)"
+  }
+ },
+ "pea_mega_mint_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_mega_flame_blue",
+   "Props": "RTID(pea_mega_mint_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_mega_mint_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_mega_flame_yellow",
+   "Props": "RTID(pea_mega_mint_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_primal": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_primal2",
+   "ProjectileBasedOn": "pea_primal",
+   "Props": "RTID(pea_primal@ProjectileProps)"
+  }
+ },
+ "pea_primal1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_primal2",
+   "ProjectileBasedOn": "pea_primal1",
+   "Props": "RTID(pea_primal1@ProjectileProps)"
+  }
+ },
+ "pea_primal1_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_primal2_flame_blue",
+   "ProjectileBasedOn": "pea_primal1_flame_blue",
+   "Props": "RTID(pea_primal1_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_primal1_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_primal2_flame_yellow",
+   "ProjectileBasedOn": "pea_primal1_flame_yellow",
+   "Props": "RTID(pea_primal1_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_primal2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_primal2",
+   "Props": "RTID(pea_primal2@ProjectileProps)"
+  }
+ },
+ "pea_primal2_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_primal2_flame_blue",
+   "Props": "RTID(pea_primal2_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_primal2_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_primal2_flame_yellow",
+   "Props": "RTID(pea_primal2_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_primal_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_primal2_flame_blue",
+   "ProjectileBasedOn": "pea_primal_flame_blue",
+   "Props": "RTID(pea_primal_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_primal_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_primal2_flame_yellow",
+   "ProjectileBasedOn": "pea_primal_flame_yellow",
+   "Props": "RTID(pea_primal_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_shadow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_shadow2",
+   "ProjectileBasedOn": "pea_shadow",
+   "Props": "RTID(pea_shadow@ProjectileProps)"
+  }
+ },
+ "pea_shadow1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_shadow2",
+   "ProjectileBasedOn": "pea_shadow1",
+   "Props": "RTID(pea_shadow1@ProjectileProps)"
+  }
+ },
+ "pea_shadow2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_shadow2",
+   "Props": "RTID(pea_shadow2@ProjectileProps)"
+  }
+ },
+ "pea_shadow_pf_0": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_shadow_pf_2",
+   "ProjectileBasedOn": "pea_shadow_pf_0",
+   "Props": "RTID(pea_shadow_pf_0@ProjectileProps)"
+  }
+ },
+ "pea_shadow_pf_1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_shadow_pf_2",
+   "ProjectileBasedOn": "pea_shadow_pf_1",
+   "Props": "RTID(pea_shadow_pf_1@ProjectileProps)"
+  }
+ },
+ "pea_shadow_pf_2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_shadow_pf_2",
+   "Props": "RTID(pea_shadow_pf_2@ProjectileProps)"
+  }
+ },
+ "pea_sky": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sky2",
+   "ProjectileBasedOn": "pea_sky",
+   "Props": "RTID(pea_sky@ProjectileProps)"
+  }
+ },
+ "pea_sky1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sky2",
+   "ProjectileBasedOn": "pea_sky1",
+   "Props": "RTID(pea_sky1@ProjectileProps)"
+  }
+ },
+ "pea_sky1_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sky2_flame_blue",
+   "ProjectileBasedOn": "pea_sky1_flame_blue",
+   "Props": "RTID(pea_sky1_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sky1_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sky2_flame_yellow",
+   "ProjectileBasedOn": "pea_sky1_flame_yellow",
+   "Props": "RTID(pea_sky1_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_sky2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sky2",
+   "Props": "RTID(pea_sky2@ProjectileProps)"
+  }
+ },
+ "pea_sky2_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sky2_flame_blue",
+   "Props": "RTID(pea_sky2_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sky2_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sky2_flame_yellow",
+   "Props": "RTID(pea_sky2_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_sky_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sky2_flame_blue",
+   "ProjectileBasedOn": "pea_sky_flame_blue",
+   "Props": "RTID(pea_sky_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sky_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sky2_flame_yellow",
+   "ProjectileBasedOn": "pea_sky_flame_yellow",
+   "Props": "RTID(pea_sky_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_sling_0": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2",
+   "ProjectileBasedOn": "pea_sling_0",
+   "Props": "RTID(pea_sling_0@ProjectileProps)"
+  }
+ },
+ "pea_sling_0_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_flame_blue",
+   "ProjectileBasedOn": "pea_sling_0_flame_blue",
+   "Props": "RTID(pea_sling_0_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sling_0_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_flame_yellow",
+   "ProjectileBasedOn": "pea_sling_0_flame_yellow",
+   "Props": "RTID(pea_sling_0_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_sling_0_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_pf",
+   "ProjectileBasedOn": "pea_sling_0",
+   "Props": "RTID(pea_sling_0_pf@ProjectileProps)"
+  }
+ },
+ "pea_sling_0_pf_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_pf_flame_blue",
+   "ProjectileBasedOn": "pea_sling_0_flame_blue",
+   "Props": "RTID(pea_sling_0_pf_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sling_0_pf_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_pf_flame_yellow",
+   "ProjectileBasedOn": "pea_sling_0_flame_yellow",
+   "Props": "RTID(pea_sling_0_pf_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_sling_1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2",
+   "ProjectileBasedOn": "pea_sling_1",
+   "Props": "RTID(pea_sling_1@ProjectileProps)"
+  }
+ },
+ "pea_sling_1_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_flame_blue",
+   "ProjectileBasedOn": "pea_sling_1_flame_blue",
+   "Props": "RTID(pea_sling_1_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sling_1_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_flame_yellow",
+   "ProjectileBasedOn": "pea_sling_1_flame_yellow",
+   "Props": "RTID(pea_sling_1_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_sling_1_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_pf",
+   "ProjectileBasedOn": "pea_sling_1",
+   "Props": "RTID(pea_sling_1_pf@ProjectileProps)"
+  }
+ },
+ "pea_sling_1_pf_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_pf_flame_blue",
+   "ProjectileBasedOn": "pea_sling_1_flame_blue",
+   "Props": "RTID(pea_sling_1_pf_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sling_1_pf_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_sling_2_pf_flame_yellow",
+   "ProjectileBasedOn": "pea_sling_1_flame_yellow",
+   "Props": "RTID(pea_sling_1_pf_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_sling_2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sling_2",
+   "Props": "RTID(pea_sling_2@ProjectileProps)"
+  }
+ },
+ "pea_sling_2_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sling_2_flame_blue",
+   "Props": "RTID(pea_sling_2_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sling_2_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sling_2_flame_yellow",
+   "Props": "RTID(pea_sling_2_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_sling_2_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sling_2",
+   "Props": "RTID(pea_sling_2_pf@ProjectileProps)"
+  }
+ },
+ "pea_sling_2_pf_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sling_2_flame_blue",
+   "Props": "RTID(pea_sling_2_pf_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_sling_2_pf_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_sling_2_flame_yellow",
+   "Props": "RTID(pea_sling_2_pf_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_snap": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_snap",
+   "ProjectileBasedOn": "pea",
+   "Props": "RTID(pea_snap@ProjectileProps)"
+  }
+ },
+ "pea_snap_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_snap_flame_blue",
+   "ProjectileBasedOn": "pea_flame_blue",
+   "Props": "RTID(pea_snap_flame_blue@ProjectileProps)"
+  }
+ },
+ "pea_snap_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea2_snap_flame_yellow",
+   "ProjectileBasedOn": "pea_flame_yellow",
+   "Props": "RTID(pea_snap_flame_yellow@ProjectileProps)"
+  }
+ },
+ "pea_snow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_snow2",
+   "ProjectileBasedOn": "pea_snow",
+   "Props": "RTID(pea_snow@ProjectileProps)"
+  }
+ },
+ "pea_snow1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pea_snow2",
+   "ProjectileBasedOn": "pea_snow1",
+   "Props": "RTID(pea_snow1@ProjectileProps)"
+  }
+ },
+ "pea_snow2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea_snow2",
+   "Props": "RTID(pea_snow2@ProjectileProps)"
+  }
+ },
+ "peanut": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "peanut2",
+   "ProjectileBasedOn": "peanut",
+   "Props": "RTID(pea@ProjectileProps)"
+  }
+ },
+ "peanut1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "peanut1",
+   "Props": "RTID(pea1@ProjectileProps)"
+  }
+ },
+ "peanut2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "peanut2",
+   "Props": "RTID(pea2@ProjectileProps)"
+  }
+ },
+ "pepper": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pepper2",
+   "ProjectileBasedOn": "pepper",
+   "Props": "RTID(pepper@ProjectileProps)"
+  }
+ },
+ "pepper1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pepper2",
+   "ProjectileBasedOn": "pepper1",
+   "Props": "RTID(pepper1@ProjectileProps)"
+  }
+ },
+ "pepper2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pepper2",
+   "Props": "RTID(pepper2@ProjectileProps)"
+  }
+ },
+ "pepper_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pepper_pf",
+   "Props": "RTID(pepper_pf@ProjectileProps)"
+  }
+ },
+ "pinkstar": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pinkstar2",
+   "ProjectileBasedOn": "pinkstar",
+   "Props": "RTID(pinkstar@ProjectileProps)"
+  }
+ },
+ "pinkstar1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "pinkstar2",
+   "ProjectileBasedOn": "pinkstar1",
+   "Props": "RTID(pinkstar1@ProjectileProps)"
+  }
+ },
+ "pinkstar2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pinkstar2",
+   "Props": "RTID(pinkstar2@ProjectileProps)"
+  }
+ },
+ "pinkstar_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pinkstar_pf",
+   "Props": "RTID(star_pf@ProjectileProps)"
+  }
+ },
+ "powerup_snow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "powerup_snow",
+   "Props": "RTID(powerup_snow@ProjectileProps)"
+  }
+ },
+ "puffshroom_spore": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "puffshroom_spore2",
+   "ProjectileBasedOn": "puffshroom_spore",
+   "Props": "RTID(puffshroom_spore@ProjectileProps)"
+  }
+ },
+ "puffshroom_spore1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "puffshroom_spore2",
+   "ProjectileBasedOn": "puffshroom_spore1",
+   "Props": "RTID(puffshroom_spore1@ProjectileProps)"
+  }
+ },
+ "puffshroom_spore2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "puffshroom_spore2",
+   "Props": "RTID(puffshroom_spore2@ProjectileProps)"
+  }
+ },
+ "redstinger": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "redstinger2",
+   "ProjectileBasedOn": "redstinger",
+   "Props": "RTID(redstinger@ProjectileProps)"
+  }
+ },
+ "redstinger1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "redstinger2",
+   "ProjectileBasedOn": "redstinger1",
+   "Props": "RTID(redstinger1@ProjectileProps)"
+  }
+ },
+ "redstinger2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "redstinger2",
+   "Props": "RTID(redstinger2@ProjectileProps)"
+  }
+ },
+ "redstinger_weak": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "redstinger1",
+   "ProjectileBasedOn": "redstinger_weak",
+   "Props": "RTID(redstinger_weak@ProjectileProps)"
+  }
+ },
+ "rotobaga": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "rotobaga2",
+   "ProjectileBasedOn": "rotobaga",
+   "Props": "RTID(rotobaga@ProjectileProps)"
+  }
+ },
+ "rotobaga1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "rotobaga2",
+   "ProjectileBasedOn": "rotobaga1",
+   "Props": "RTID(rotobaga1@ProjectileProps)"
+  }
+ },
+ "rotobaga2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "rotobaga2",
+   "Props": "RTID(rotobaga2@ProjectileProps)"
+  }
+ },
+ "rotobaga_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "rotobaga_pf",
+   "Props": "RTID(rotobaga_pf@ProjectileProps)"
+  }
+ },
+ "sapfling": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sapfling",
+   "Props": "RTID(sapfling@ProjectileProps)"
+  }
+ },
+ "sapfling_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sapfling",
+   "Props": "RTID(sapfling_pf@ProjectileProps)"
+  }
+ },
+ "scaredyshroom_spore": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "scaredyshroom_spore_mint",
+   "ProjectileBasedOn": "scaredyshroom_spore",
+   "Props": "RTID(scaredyshroom_spore@ProjectileProps)"
+  }
+ },
+ "scaredyshroom_spore1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "scaredyshroom_spore_mint",
+   "ProjectileBasedOn": "scaredyshroom_spore1",
+   "Props": "RTID(scaredyshroom_spore1@ProjectileProps)"
+  }
+ },
+ "scaredyshroom_spore2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "scaredyshroom_spore_mint",
+   "ProjectileBasedOn": "scaredyshroom_spore2",
+   "Props": "RTID(scaredyshroom_spore2@ProjectileProps)"
+  }
+ },
+ "scaredyshroom_spore_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "scaredyshroom_spore2",
+   "Props": "RTID(scaredyshroom_spore_mint@ProjectileProps)"
+  }
+ },
+ "sea_pea": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sea_pea2",
+   "ProjectileBasedOn": "sea_pea",
+   "Props": "RTID(sea_pea@ProjectileProps)"
+  }
+ },
+ "sea_pea1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sea_pea2",
+   "ProjectileBasedOn": "sea_pea1",
+   "Props": "RTID(sea_pea1@ProjectileProps)"
+  }
+ },
+ "sea_pea1_flame": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sea_pea2_flame",
+   "ProjectileBasedOn": "sea_pea1_flame",
+   "Props": "RTID(sea_pea1_flame@ProjectileProps)"
+  }
+ },
+ "sea_pea1_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sea_pea2_flame_blue",
+   "ProjectileBasedOn": "pea1_flame_blue",
+   "Props": "RTID(sea_pea1_flame_blue@ProjectileProps)"
+  }
+ },
+ "sea_pea1_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sea_pea2_flame_yellow",
+   "ProjectileBasedOn": "pea1_flame_yellow",
+   "Props": "RTID(sea_pea1_flame_yellow@ProjectileProps)"
+  }
+ },
+ "sea_pea2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sea_pea2",
+   "Props": "RTID(sea_pea2@ProjectileProps)"
+  }
+ },
+ "sea_pea2_flame": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sea_pea2_flame",
+   "Props": "RTID(sea_pea2_flame@ProjectileProps)"
+  }
+ },
+ "sea_pea2_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2_flame_blue",
+   "Props": "RTID(sea_pea2_flame_blue@ProjectileProps)"
+  }
+ },
+ "sea_pea2_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "pea2_flame_yellow",
+   "Props": "RTID(sea_pea2_flame_yellow@ProjectileProps)"
+  }
+ },
+ "sea_pea_flame": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sea_pea2_flame",
+   "ProjectileBasedOn": "sea_pea_flame",
+   "Props": "RTID(sea_pea_flame@ProjectileProps)"
+  }
+ },
+ "sea_pea_flame_blue": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sea_pea2_flame_blue",
+   "ProjectileBasedOn": "pea_flame_blue",
+   "Props": "RTID(sea_pea_flame_blue@ProjectileProps)"
+  }
+ },
+ "sea_pea_flame_yellow": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sea_pea2_flame_yellow",
+   "ProjectileBasedOn": "pea_flame_yellow",
+   "Props": "RTID(sea_pea_flame_yellow@ProjectileProps)"
+  }
+ },
+ "seashroom_spore": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "seashroom_spore2",
+   "ProjectileBasedOn": "seashroom_spore",
+   "Props": "RTID(puffshroom_spore@ProjectileProps)"
+  }
+ },
+ "seashroom_spore1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "seashroom_spore2",
+   "ProjectileBasedOn": "seashroom_spore1",
+   "Props": "RTID(puffshroom_spore1@ProjectileProps)"
+  }
+ },
+ "seashroom_spore2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "seashroom_spore2",
+   "Props": "RTID(puffshroom_spore2@ProjectileProps)"
+  }
+ },
+ "shootingstar": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "shootingstar2",
+   "ProjectileBasedOn": "shootingstar",
+   "Props": "RTID(shootingstar@ProjectileProps)"
+  }
+ },
+ "shootingstar1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "shootingstar2",
+   "ProjectileBasedOn": "shootingstar1",
+   "Props": "RTID(shootingstar1@ProjectileProps)"
+  }
+ },
+ "shootingstar2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "shootingstar2",
+   "Props": "RTID(shootingstar2@ProjectileProps)"
+  }
+ },
+ "shootingstar_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "shootingstar_pf",
+   "Props": "RTID(shootingstar_pf@ProjectileProps)"
+  }
+ },
+ "sky_battleplane_bullet": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sky_battleplane_bullet",
+   "Props": "RTID(sky_battleplane_bullet@ProjectileProps)"
+  }
+ },
+ "sky_bolt_negative": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sky_bolt_negative",
+   "Props": "RTID(sky_bolt_negative@ProjectileProps)"
+  }
+ },
+ "sky_bolt_positive": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sky_bolt_positive",
+   "Props": "RTID(sky_bolt_positive@ProjectileProps)"
+  }
+ },
+ "sky_zomboss_storm": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sky_zomboss_storm",
+   "Props": "RTID(sky_zomboss_storm@ProjectileProps)"
+  }
+ },
+ "snowdrop": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "snowdrop",
+   "Props": "RTID(snowdrop@ProjectileProps)"
+  }
+ },
+ "snowdrop_freeze": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "snowdrop_freeze",
+   "Props": "RTID(snowdrop_freeze@ProjectileProps)"
+  }
+ },
+ "spearmint_saw": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "spearmint_saw",
+   "Props": "RTID(spearmint_saw@ProjectileProps)"
+  }
+ },
+ "sporeshroom_spore": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sporeshroom_spore2",
+   "ProjectileBasedOn": "sporeshroom_spore",
+   "Props": "RTID(sporeshroom_spore@ProjectileProps)"
+  }
+ },
+ "sporeshroom_spore1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "sporeshroom_spore2",
+   "ProjectileBasedOn": "sporeshroom_spore1",
+   "Props": "RTID(sporeshroom_spore1@ProjectileProps)"
+  }
+ },
+ "sporeshroom_spore2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sporeshroom_spore2",
+   "Props": "RTID(sporeshroom_spore2@ProjectileProps)"
+  }
+ },
+ "sporeshroom_spore_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "sporeshroom_spore_pf",
+   "Props": "RTID(sporeshroom_spore_pf@ProjectileProps)"
+  }
+ },
+ "star": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "star2",
+   "ProjectileBasedOn": "star",
+   "Props": "RTID(star@ProjectileProps)"
+  }
+ },
+ "star1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "star2",
+   "ProjectileBasedOn": "star1",
+   "Props": "RTID(star1@ProjectileProps)"
+  }
+ },
+ "star2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "star2",
+   "Props": "RTID(star2@ProjectileProps)"
+  }
+ },
+ "star_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "star_pf",
+   "Props": "RTID(star_pf@ProjectileProps)"
+  }
+ },
+ "stickybomb": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "stickybomb2",
+   "ProjectileBasedOn": "stickybomb",
+   "Props": "RTID(stickybomb@ProjectileProps)"
+  }
+ },
+ "stickybomb1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "stickybomb2",
+   "ProjectileBasedOn": "stickybomb1",
+   "Props": "RTID(stickybomb1@ProjectileProps)"
+  }
+ },
+ "stickybomb2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "stickybomb2",
+   "Props": "RTID(stickybomb2@ProjectileProps)"
+  }
+ },
+ "stickybomb_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "stickybomb_pf_mint",
+   "ProjectileBasedOn": "stickybomb_pf",
+   "Props": "RTID(stickybomb_pf@ProjectileProps)"
+  }
+ },
+ "stickybomb_pf_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "stickybomb_pf",
+   "Props": "RTID(stickybomb_pf_mint@ProjectileProps)"
+  }
+ },
+ "strawburst0": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "strawburst0_mint",
+   "ProjectileBasedOn": "strawburst0",
+   "Props": "RTID(strawburst0@ProjectileProps)"
+  }
+ },
+ "strawburst0_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "strawburst0",
+   "Props": "RTID(strawburst0_mint@ProjectileProps)"
+  }
+ },
+ "strawburst1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "strawburst1_mint",
+   "ProjectileBasedOn": "strawburst1",
+   "Props": "RTID(strawburst1@ProjectileProps)"
+  }
+ },
+ "strawburst1_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "strawburst1",
+   "Props": "RTID(strawburst1_mint@ProjectileProps)"
+  }
+ },
+ "strawburst2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "strawburst2_mint",
+   "ProjectileBasedOn": "strawburst2",
+   "Props": "RTID(strawburst2@ProjectileProps)"
+  }
+ },
+ "strawburst2_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "strawburst2",
+   "Props": "RTID(strawburst2_mint@ProjectileProps)"
+  }
+ },
+ "tombraiser_bone": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "tombraiser_bone",
+   "Props": "RTID(tombraiser_bone@ProjectileProps)"
+  }
+ },
+ "trap_boulder": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "trap_boulder",
+   "Props": "RTID(trap_boulder@ProjectileProps)"
+  }
+ },
+ "turkey": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "turkey_mint",
+   "ProjectileBasedOn": "turkey",
+   "Props": "RTID(turkey@ProjectileProps)"
+  }
+ },
+ "turkey_big": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "turkey_big_mint",
+   "ProjectileBasedOn": "turkey_big",
+   "Props": "RTID(turkey_big@ProjectileProps)"
+  }
+ },
+ "turkey_big_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "turkey_big",
+   "Props": "RTID(turkey_big_mint@ProjectileProps)"
+  }
+ },
+ "turkey_mint": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "turkey",
+   "Props": "RTID(turkey_mint@ProjectileProps)"
+  }
+ },
+ "winter_melon": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "winter_melon2",
+   "ProjectileBasedOn": "winter_melon",
+   "Props": "RTID(winter_melon@ProjectileProps)"
+  }
+ },
+ "winter_melon1": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "MintBoostedType": "winter_melon2",
+   "ProjectileBasedOn": "winter_melon1",
+   "Props": "RTID(winter_melon1@ProjectileProps)"
+  }
+ },
+ "winter_melon2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "winter_melon2",
+   "Props": "RTID(winter_melon2@ProjectileProps)"
+  }
+ },
+ "winter_melon_pf": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "winter_melon_pf",
+   "Props": "RTID(winter_melon_pf@ProjectileProps)"
+  }
+ },
+ "zomboss_lostcity_sandbag": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "zomboss_lostcity_sandbag",
+   "Props": "RTID(zomboss_lostcity_sandbag@ProjectileProps)"
+  }
+ },
+ "zomboss_missile_cowboy": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "zomboss_missile_cowboy",
+   "Props": "RTID(zomboss_missile_cowboy@ProjectileProps)"
+  }
+ },
+ "zomboss_missile_dark": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "zomboss_missile_dark",
+   "Props": "RTID(zomboss_missile_dark@ProjectileProps)"
+  }
+ },
+ "zomboss_missile_dino": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "zomboss_missile_dino",
+   "Props": "RTID(zomboss_missile_dino@ProjectileProps)"
+  }
+ },
+ "zomboss_missile_egypt": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "zomboss_missile_egypt",
+   "Props": "RTID(zomboss_missile_egypt@ProjectileProps)"
+  }
+ },
+ "zomboss_missile_egypt2": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "zomboss_missile_egypt",
+   "Props": "RTID(zomboss_missile_egypt2@ProjectileProps)"
+  }
+ },
+ "zomboss_missile_future": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "zomboss_missile_future",
+   "Props": "RTID(zomboss_missile_future@ProjectileProps)"
+  }
+ },
+ "zomboss_missile_iceage": {
+  "objclass": "ProjectileType",
+  "objdata": {
+   "ProjectileBasedOn": "zomboss_missile_iceage",
+   "Props": "RTID(zomboss_missile_iceage@ProjectileProps)"
+  }
+ }
+}

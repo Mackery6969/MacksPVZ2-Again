@@ -1,0 +1,7 @@
+{
+ "id": "potholepool",
+ "category": "tile",
+ "extra": {
+  "Rect": "RTID(TileDefaultRect@RectangleProps)"
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "id": "butter",
+ "category": "liquid",
+ "extra": {
+  "TileLiquidBasedOn": "butter"
+ }
+}

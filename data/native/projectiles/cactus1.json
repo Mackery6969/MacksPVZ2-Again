@@ -1,0 +1,20 @@
+{
+ "id": "cactus1",
+ "stats": {
+  "damage": 90
+ },
+ "extra": {
+  "DestroysBalloons": true,
+  "MaxHitCount": {
+   "Max": 4,
+   "Min": 3
+  },
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 1.5,
+  "MintBoostedType": "cactus2",
+  "Props": "RTID(cactus1@ProjectileProps)"
+ }
+}

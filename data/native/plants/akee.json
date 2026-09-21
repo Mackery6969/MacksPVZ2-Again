@@ -1,0 +1,25 @@
+{
+ "id": "akee",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 175,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 3000
+ },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "akee",
+   "interval": 2.85,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "akee_pf"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "id": "winter_melon_pf",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "ChillDuration": 5,
+  "IceBlockLevel": 1,
+  "ShakesScreenOnImpact": true,
+  "Size": {
+   "h": 18,
+   "w": 18
+  },
+  "SplashDamage": [
+   {
+    "ChillDuration": 5,
+    "Damage": 200,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(winter_melon_pf@ProjectileProps)"
+ }
+}

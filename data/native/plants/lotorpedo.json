@@ -1,0 +1,28 @@
+{
+ "id": "lotorpedo",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 325,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 3000
+ },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "lotus",
+   "projectile_plantfood": "lotus_torpedo_pf"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "CabbageTypeInWater": "lotus_torpedo",
+  "ShootInterval": 2.85,
+  "ShootIntervalAdditional": 0.15
+ }
+}

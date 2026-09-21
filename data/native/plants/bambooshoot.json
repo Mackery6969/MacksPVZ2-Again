@@ -1,0 +1,26 @@
+{
+ "id": "bambooshoot",
+ "family": "Sharp",
+ "stats": {
+  "sun_cost": 175,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 2000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackDistance": 4,
+  "AttackInterval": 0.3,
+  "Damage": 30,
+  "DamagePlantfood": 100,
+  "MintDamageFactor": 5,
+  "PlantfoodDistance": 9,
+  "PlantfoodKnockBackDistance": 1,
+  "PlantfoodTossChance": 0.7
+ }
+}

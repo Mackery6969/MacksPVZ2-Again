@@ -1,0 +1,33 @@
+{
+ "id": "electricblueberry",
+ "family": "Electricity",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 300,
+  "cooldown": 45,
+  "cooldown_from": 0.3333,
+  "beghouled_cost": 4500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 4,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackCooldownBetween": 12,
+  "AttackCooldownBetweenAdditional": 0,
+  "AttackCooldownStart": 10,
+  "AttackCooldownStartAdditional": 0,
+  "CallsElectricCurrant": true,
+  "ImmuneToLightningCharge": true,
+  "MintDamageFactor": 2,
+  "NormalCloudSpeed": 10,
+  "NormalLightningBoltDamage": 5000,
+  "PlantFoodCloudSpeed": 10,
+  "PlantFoodLightningBoltDamage": 5000,
+  "RedAttackStunDuration": 1,
+  "WeightTargetGargantuarZombie": 5,
+  "WeightTargetNormalZombie": 55,
+  "WeightTargetOtherZombie": 40
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "id": "mower_dino",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 150,
+   "w": 50
+  },
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "Props": "RTID(mower_dino@ProjectileProps)"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "id": "icebloom",
+ "extends": "snowdrop_freeze",
+ "stats": {
+  "damage": 5
+ },
+ "extra": {
+  "IceBlockLevel": 1,
+  "IcebloomBlock": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SplashDamage": [],
+  "Props": "RTID(icebloom@ProjectileProps)"
+ }
+}

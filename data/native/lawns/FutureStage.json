@@ -1,0 +1,39 @@
+{
+ "id": "FutureStage",
+ "music": "Future",
+ "mower": "mower_future",
+ "railcart": "railcart_future",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "future_armor1"
+  ],
+  "armor2": [
+   "future_armor2"
+  ],
+  "armor3": [
+   "future_armor2"
+  ],
+  "armor4": [
+   "future_armor4"
+  ],
+  "basic": [
+   "future"
+  ],
+  "flag": [
+   "future_flag"
+  ],
+  "gargantuar": [
+   "future_gargantuar"
+  ],
+  "imp": [
+   "future_imp"
+  ],
+  "rally": [
+   "future_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_future"
+ ]
+}

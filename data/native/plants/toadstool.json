@@ -1,0 +1,35 @@
+{
+ "id": "toadstool",
+ "family": "Sun",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1500
+ },
+ "components": [
+  {
+   "type": "sun_producer"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 5,
+  "plantfood": false
+ },
+ "extra": {
+  "ChewTime": 30,
+  "ChewTimePF": 3,
+  "MaxZombieChewCount": 1,
+  "MaxZombieChewCountPF": 4,
+  "MintProductionFactor": 2,
+  "SunProducePerZombie": 50,
+  "SunProducePerZombiePF": 50,
+  "TongueDistance": 3.5,
+  "TongueDistancePf": 4,
+  "TongueSlapDamage": 50,
+  "TongueSlapDamagePF": 100,
+  "WaitTimePF": 6
+ }
+}

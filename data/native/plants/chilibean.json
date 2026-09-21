@@ -1,0 +1,23 @@
+{
+ "id": "chilibean",
+ "family": "Poison",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 2000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeHealedByAloe": true,
+  "ChiliStunDuration": 10,
+  "MintPoisonDPS": 60,
+  "MintStunDurationFactor": 2,
+  "PlantfoodChildrenCount": 3
+ }
+}

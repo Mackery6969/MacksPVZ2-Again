@@ -1,0 +1,39 @@
+{
+ "id": "magnifyinggrass",
+ "family": "Sun",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 500
+ },
+ "components": [
+  {
+   "type": "sun_producer"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 10,
+  "plantfood": false
+ },
+ "extra": {
+  "PeaType": "magnifying_grass",
+  "PlantfoodDPS": 200,
+  "PlantfoodDuration": 3,
+  "PlantfoodDurationExtendPerProducer": 0.15,
+  "ShineVineShootInterval": 12,
+  "ShineVineShootIntervalAdditional": 4,
+  "ShootInterval": 0.333,
+  "ShootSunCost": 50,
+  "SunProducerList": [
+   "sunflower",
+   "twinsunflower",
+   "sunshroom",
+   "primalsunflower",
+   "moonflower",
+   "shinevine"
+  ]
+ }
+}

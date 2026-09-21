@@ -1,0 +1,29 @@
+{
+ "id": "aloe",
+ "family": "Defence",
+ "stats": {
+  "sun_cost": 75,
+  "toughness": 450,
+  "cooldown": 20,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "blocker"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 4,
+  "plantfood": true
+ },
+ "extra": {
+  "ExtraHealingTime": 2,
+  "HealHPS": 100,
+  "HealHPSPlantfood": 1000,
+  "HealingInterval": 0.5,
+  "PlantfoodLastingTime": 10,
+  "SelfQuringHealth": 450
+ }
+}

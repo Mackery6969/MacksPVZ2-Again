@@ -1,0 +1,17 @@
+{
+ "id": "tool_projectile_bowling_tallnut",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 250,
+  "toughness": 1,
+  "cooldown": 20,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "extra": {
+  "ImmuneToIceblock": true,
+  "ProjectileType": "bowling_tallnut",
+  "SpeedX": 3.5,
+  "StartingHeight": 0
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "id": "empea",
+ "family": "Electricity",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 2000,
+  "cooldown": 25,
+  "cooldown_from": 0.6,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "ImmuneToIceblock": true,
+  "MintStunDurationFactor": 2,
+  "StunDuration": 10
+ }
+}

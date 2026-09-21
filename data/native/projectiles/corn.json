@@ -1,0 +1,16 @@
+{
+ "id": "corn",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "MintBoostedType": "corn2",
+  "Props": "RTID(corn@ProjectileProps)"
+ }
+}

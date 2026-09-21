@@ -1,0 +1,23 @@
+{
+ "id": "dandelion1",
+ "stats": {
+  "damage": 150
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SplashDamage": [
+   {
+    "Damage": 150,
+    "Range": {
+     "h": 1,
+     "w": 2
+    }
+   }
+  ],
+  "MintBoostedType": "dandelion2",
+  "Props": "RTID(dandelion1@ProjectileProps)"
+ }
+}

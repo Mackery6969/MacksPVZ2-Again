@@ -1,0 +1,29 @@
+{
+ "id": "lychee",
+ "family": "Defence",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 3000,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 2000
+ },
+ "components": [
+  {
+   "type": "blocker"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 1,
+  "plantfood": true
+ },
+ "extra": {
+  "CallsMirrorNutsOnDamaged": true,
+  "DamagePerHit": 20,
+  "DamagePerHitPlantfood": 40,
+  "HealthBetweenHits": 100,
+  "HealthBetweenHitsPlantfood": 50,
+  "PlantfoodDamageReceiveMult": 0.5
+ }
+}

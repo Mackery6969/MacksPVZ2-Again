@@ -1,0 +1,35 @@
+{
+ "id": "iceage_weaselhoarder",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 350,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "sporeable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChillInsteadOfFreeze": true,
+  "WeaselTypeName": "iceage_weasel",
+  "WeaselingDuration": 2,
+  "WeaselingDurationVariance": 1,
+  "WeaselingHealthPercentage": 0.8,
+  "WeaselingInterval": 0.3,
+  "WeaselingIntervalVariance": 0.1
+ }
+}

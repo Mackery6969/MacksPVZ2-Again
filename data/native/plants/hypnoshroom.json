@@ -1,0 +1,22 @@
+{
+ "id": "hypnoshroom",
+ "family": "Magic",
+ "stats": {
+  "sun_cost": 125,
+  "toughness": 50,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeHealedByAloe": true,
+  "HypnoedZombieDamageScale": 0.95,
+  "MintHealZombies": true,
+  "MintPotionLevel": 3
+ }
+}

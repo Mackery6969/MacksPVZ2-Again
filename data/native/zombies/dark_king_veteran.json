@@ -1,0 +1,59 @@
+{
+ "id": "dark_king_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1500,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 1000,
+  "weight": 1800
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "divertable",
+   "grabbable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "shrinkable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "DarkKingAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "DarkKingHitRect"
+  }
+ ],
+ "extra": {
+  "ArmorToGive": "dark_armor3",
+  "DelayBetweenKnightings": 2.5,
+  "KnightingAreaW": 2,
+  "PlantablePlants": [
+   "cherry_bomb",
+   "jalapeno",
+   "powerlily",
+   "iceburg",
+   "empea",
+   "solarsage",
+   "powerplant",
+   "goldleaf",
+   "grapeshot"
+  ],
+  "TargetListBecomesBlackList": true,
+  "ValidKnightTargets": [
+   "dark_king",
+   "dark_king_veteran",
+   "future_protector_shield",
+   "future_infinut_shield"
+  ]
+ }
+}

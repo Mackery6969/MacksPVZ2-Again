@@ -1,0 +1,28 @@
+{
+ "id": "endurian",
+ "family": "Defence",
+ "stats": {
+  "sun_cost": 100,
+  "toughness": 3000,
+  "cooldown": 15,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "blocker",
+   "armor_toughness": 6000
+  }
+ ],
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 3,
+  "plantfood": true
+ },
+ "extra": {
+  "CallsMirrorNutsOnDamaged": true,
+  "StabDamage": 10,
+  "StabDamagePFExtra": 5,
+  "StabInterval": 0.5
+ }
+}

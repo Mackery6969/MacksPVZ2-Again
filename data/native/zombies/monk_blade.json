@@ -1,0 +1,25 @@
+{
+ "id": "monk_blade",
+ "extends": "normal",
+ "stats": {
+  "toughness": 600,
+  "speed": 0.24,
+  "eat_dps": 100,
+  "wave_cost": 150,
+  "weight": 1500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "AttackRectWithBlade": "RTID(BladeAttackRect@RectangleProps)",
+  "BladeDamage": 250
+ }
+}

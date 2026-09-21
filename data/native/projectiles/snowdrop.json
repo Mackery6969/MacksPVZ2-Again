@@ -1,0 +1,24 @@
+{
+ "id": "snowdrop",
+ "stats": {
+  "damage": 30
+ },
+ "extra": {
+  "ChillDuration": 10,
+  "IceBlockLevel": 1,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SplashDamage": [
+   {
+    "ChillDuration": 10,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "Props": "RTID(snowdrop@ProjectileProps)"
+ }
+}

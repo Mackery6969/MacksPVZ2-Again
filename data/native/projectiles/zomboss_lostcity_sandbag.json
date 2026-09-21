@@ -1,0 +1,16 @@
+{
+ "id": "zomboss_lostcity_sandbag",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "SuppressArmorImpactSound": true,
+  "Props": "RTID(zomboss_lostcity_sandbag@ProjectileProps)"
+ }
+}

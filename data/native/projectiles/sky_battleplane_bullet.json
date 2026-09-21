@@ -1,0 +1,14 @@
+{
+ "id": "sky_battleplane_bullet",
+ "stats": {
+  "damage": 30
+ },
+ "extra": {
+  "DamageToShip": 20,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(sky_battleplane_bullet@ProjectileProps)"
+ }
+}

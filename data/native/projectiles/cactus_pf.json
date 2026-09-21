@@ -1,0 +1,19 @@
+{
+ "id": "cactus_pf",
+ "stats": {
+  "damage": 40
+ },
+ "extra": {
+  "DestroysBalloons": true,
+  "MaxHitCount": {
+   "Max": 4,
+   "Min": 3
+  },
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "cactus_pf2",
+  "Props": "RTID(cactus_pf@ProjectileProps)"
+ }
+}

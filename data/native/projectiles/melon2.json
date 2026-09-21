@@ -1,0 +1,22 @@
+{
+ "id": "melon2",
+ "stats": {
+  "damage": 240
+ },
+ "extra": {
+  "Size": {
+   "h": 18,
+   "w": 18
+  },
+  "SplashDamage": [
+   {
+    "Damage": 120,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(melon2@ProjectileProps)"
+ }
+}

@@ -1,0 +1,15 @@
+{
+ "id": "corn2",
+ "stats": {
+  "damage": 60
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "Props": "RTID(corn2@ProjectileProps)"
+ }
+}

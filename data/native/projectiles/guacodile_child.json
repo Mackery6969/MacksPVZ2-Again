@@ -1,0 +1,14 @@
+{
+ "id": "guacodile_child",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamagePerHit": 70,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 48,
+   "w": 100
+  },
+  "MintBoostedType": "guacodile_child_mint",
+  "Props": "RTID(guacodile_child@ProjectileProps)"
+ }
+}

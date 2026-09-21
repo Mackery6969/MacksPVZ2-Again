@@ -1,0 +1,27 @@
+{
+ "id": "turnip",
+ "family": "Defence",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 2000,
+  "cooldown": 10,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 500
+ },
+ "components": [
+  {
+   "type": "blocker"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 1,
+  "plantfood": true
+ },
+ "extra": {
+  "CallsMirrorNutsOnDamaged": true,
+  "CannotBeGrabbedByParrot": true,
+  "CannotBePushedByFootballMech": true,
+  "ImmuneToSpeakerWave": true
+ }
+}

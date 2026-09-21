@@ -1,0 +1,13 @@
+{
+ "id": "eighties_speaker_wave",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DetectsEaterDetectDisabledPlants": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 50,
+   "w": 50
+  },
+  "Props": "RTID(eighties_speaker_wave@ProjectileProps)"
+ }
+}

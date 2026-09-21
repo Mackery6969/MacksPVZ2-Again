@@ -1,0 +1,26 @@
+{
+ "id": "darkmatter_shadow",
+ "stats": {
+  "damage": 40
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DarkMatterDuration": 10,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 30,
+   "w": 30
+  },
+  "SplashDamage": [
+   {
+    "Damage": 80,
+    "DarkMatterDuration": 10,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(darkmatter_shadow@ProjectileProps)"
+ }
+}

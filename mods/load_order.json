@@ -1,0 +1,9 @@
+{
+  "//": "Highest priority first. Packs listed here override everything below them; the base game sits implicitly at the bottom. Packs not listed are appended below these, alphabetically. Packs named in 'disabled' stay installed but contribute nothing.",
+  "order": [
+    "example_pack"
+  ],
+  "disabled": [
+    "example_override"
+  ]
+}

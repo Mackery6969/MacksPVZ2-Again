@@ -1,0 +1,13 @@
+{
+ "id": "rotobaga_pf",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "Props": "RTID(rotobaga_pf@ProjectileProps)"
+ }
+}

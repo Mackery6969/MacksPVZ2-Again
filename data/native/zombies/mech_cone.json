@@ -1,0 +1,40 @@
+{
+ "id": "mech_cone",
+ "extends": "normal",
+ "stats": {
+  "toughness": 2500,
+  "speed": 0.16,
+  "eat_dps": 100,
+  "wave_cost": 650,
+  "weight": 4000
+ },
+ "tags": {
+  "add": [
+   "deep_water",
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "divertable",
+   "draggable",
+   "enlightenable",
+   "grabbable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "FutureMechConeAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "FutureMechConeHitRect"
+  }
+ ],
+ "extra": {
+  "ChiliStunDurationMult": 0,
+  "EMPStunTimeScale": 1
+ }
+}

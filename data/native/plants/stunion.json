@@ -1,0 +1,24 @@
+{
+ "id": "stunion",
+ "family": "Slow",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 0.75,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "DetectDistance": 1,
+  "DetectDistancePlantfood": 4,
+  "MintPoisonDPS": 60,
+  "StunDistance": 1.5,
+  "StunDuration": 12,
+  "StunDurationPlantfood": 18
+ }
+}

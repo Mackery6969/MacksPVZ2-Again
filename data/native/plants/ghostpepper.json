@@ -1,0 +1,26 @@
+{
+ "id": "ghostpepper",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 75,
+  "toughness": 300,
+  "cooldown": 15,
+  "cooldown_from": 0.6667,
+  "beghouled_cost": 1500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "ExplodeDamage": 450,
+  "GhostDamage": 30,
+  "GhostDamageCooldownTime": 0.5,
+  "ImmuneToIceblock": true,
+  "Lifetime": 10,
+  "MintDamageFactor": 3,
+  "PlantfoodDamageMult": 3,
+  "PlantfoodDuration": 3.5
+ }
+}

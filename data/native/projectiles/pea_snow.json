@@ -1,0 +1,18 @@
+{
+ "id": "pea_snow",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "BlueIgnitedType": "pea",
+  "ChillDuration": 10,
+  "IceBlockLevel": 1,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "YellowIgnitedType": "pea",
+  "MintBoostedType": "pea_snow2",
+  "Props": "RTID(pea_snow@ProjectileProps)"
+ }
+}

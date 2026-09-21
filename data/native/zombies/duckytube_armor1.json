@@ -1,0 +1,35 @@
+{
+ "id": "duckytube_armor1",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.17,
+  "eat_dps": 100,
+  "wave_cost": 200,
+  "weight": 3000
+ },
+ "sort": "Normal",
+ "tags": {
+  "add": [
+   "deep_water"
+  ]
+ },
+ "components": [
+  {
+   "type": "armor",
+   "armor": "modern_armor1"
+  },
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChooseToSpawnOnDeepWaterRows": true,
+  "SpeedScaleInWater": 2
+ }
+}

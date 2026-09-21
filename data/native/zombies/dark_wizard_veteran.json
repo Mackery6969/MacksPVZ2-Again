@@ -1,0 +1,28 @@
+{
+ "id": "dark_wizard_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 630,
+  "speed": 0.12,
+  "eat_dps": 100,
+  "wave_cost": 1200,
+  "weight": 3500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "TimeBeforeFirst": 7,
+  "TimeBeforeFirstAdditional": 2,
+  "TimeBetween": 4,
+  "TimeBetweenAdditional": 1,
+  "WitchHazelPriority": 1
+ }
+}

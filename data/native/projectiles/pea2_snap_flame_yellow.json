@@ -1,0 +1,21 @@
+{
+ "id": "pea2_snap_flame_yellow",
+ "extends": "pea2_flame_yellow",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "BlueIgnitedType": "pea2_snap_flame_blue",
+  "DamageScale": 2,
+  "DamageType": "fire",
+  "MeltsIceTile": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 2,
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "Props": "RTID(pea2_snap_flame_yellow@ProjectileProps)"
+ }
+}

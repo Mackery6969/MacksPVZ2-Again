@@ -1,0 +1,16 @@
+{
+ "id": "chicken_ge",
+ "extends": "normal",
+ "extra": {
+  "ZombieRedirection": [
+   {
+    "Type": "chicken",
+    "Weight": 100
+   },
+   {
+    "Type": "chicken_pumpkin",
+    "Weight": 1
+   }
+  ]
+ }
+}

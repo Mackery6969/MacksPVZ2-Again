@@ -1,0 +1,41 @@
+{
+ "id": "sunshroom",
+ "family": "Sun",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 0,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "sun_producer",
+   "interval": 32,
+   "interval_jitter": 4,
+   "first_delay": 5,
+   "first_delay_jitter": 5
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 5,
+  "plantfood": true
+ },
+ "extra": {
+  "GrowTime0_1": 18,
+  "GrowTime1_2": 54,
+  "MintProductionFactor": 2,
+  "PlantfoodTime": 3,
+  "ProduceCountdownStartAdditional_AtNight": 5,
+  "ProduceCountdownStart_AtNight": 5,
+  "ProduceIntervalAdditional_AtNight": 1.5,
+  "ProduceInterval_AtNight": 23.5,
+  "SunValue": 25,
+  "SunValueList": [
+   25,
+   50,
+   75
+  ]
+ }
+}

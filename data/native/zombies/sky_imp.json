@@ -1,0 +1,33 @@
+{
+ "id": "sky_imp",
+ "extends": "normal",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.22,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 1000
+ },
+ "sort": "Normal",
+ "tags": {
+  "remove": [
+   "grabbable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ImpAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ImpHitRect"
+  }
+ ],
+ "extra": {
+  "IgnoredInWaves": true,
+  "JumpSPS": 3,
+  "KilledByShrinkingViolet": true,
+  "SkyCityShipDetectXOffset": -40
+ }
+}

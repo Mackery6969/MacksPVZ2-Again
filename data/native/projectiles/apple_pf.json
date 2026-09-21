@@ -1,0 +1,24 @@
+{
+ "id": "apple_pf",
+ "stats": {
+  "damage": 250
+ },
+ "extra": {
+  "Size": {
+   "h": 30,
+   "w": 30
+  },
+  "SplashDamage": [
+   {
+    "Damage": 50,
+    "Range": {
+     "h": 1,
+     "w": 1
+    },
+    "StunDuration": 1
+   }
+  ],
+  "StunDuration": 3,
+  "Props": "RTID(apple_pf@ProjectileProps)"
+ }
+}

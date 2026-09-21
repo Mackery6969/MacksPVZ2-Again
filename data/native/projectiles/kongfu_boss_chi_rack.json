@@ -1,0 +1,37 @@
+{
+ "id": "kongfu_boss_chi_rack",
+ "stats": {
+  "damage": 500
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "RackTypes": [
+   "kongfu_rack_torch",
+   "kongfu_rack_blade",
+   "kongfu_rack_bomb",
+   "kongfu_rack_flag",
+   "kongfu_rack_nunchaku",
+   "kongfu_rack_hammer",
+   "kongfu_rack_helmet",
+   "kongfu_rack_fan",
+   "kongfu_rack_3section_staff"
+  ],
+  "ShakesScreenOnImpact": true,
+  "Size": {
+   "h": 12,
+   "w": 12
+  },
+  "SplashDamage": [
+   {
+    "Damage": 250,
+    "Range": {
+     "h": 1,
+     "w": 3
+    }
+   }
+  ],
+  "SupressArmorProtection": true,
+  "Props": "RTID(kongfu_boss_chi_rack@ProjectileProps)"
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "id": "SkyUnarmedStage",
+ "music": "Sky",
+ "mower": "mower_future",
+ "railcart": "railcart_sky",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "sky_unarmed_armor1"
+  ],
+  "armor2": [
+   "sky_unarmed_armor2"
+  ],
+  "armor3": [
+   "sky_unarmed_armor2"
+  ],
+  "armor4": [
+   "sky_unarmed_armor2"
+  ],
+  "basic": [
+   "sky_unarmed"
+  ],
+  "flag": [
+   "sky_unarmed_flag"
+  ],
+  "gargantuar": [
+   "sky_gargantuar"
+  ],
+  "imp": [
+   "sky_imp"
+  ],
+  "rally": [
+   "sky_unarmed_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ],
+ "extra": {
+  "SuppressYeti": true
+ }
+}

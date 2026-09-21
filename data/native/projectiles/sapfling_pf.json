@@ -1,0 +1,16 @@
+{
+ "id": "sapfling_pf",
+ "extends": "sapfling",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "Size": {
+   "h": 16.2,
+   "w": 16.2
+  },
+  "TileLiquid": {
+   "Duration": 30,
+   "Type": "plantfoodsap"
+  },
+  "Props": "RTID(sapfling_pf@ProjectileProps)"
+ }
+}

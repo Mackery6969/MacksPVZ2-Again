@@ -1,0 +1,14 @@
+{
+ "id": "bowling2",
+ "stats": {
+  "damage": 180
+ },
+ "extra": {
+  "Size": {
+   "h": 30,
+   "w": 30
+  },
+  "MintBoostedType": "bowling2_mint",
+  "Props": "RTID(bowling2@ProjectileProps)"
+ }
+}

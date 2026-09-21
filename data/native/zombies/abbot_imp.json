@@ -1,0 +1,40 @@
+{
+ "id": "abbot_imp",
+ "extends": "normal",
+ "stats": {
+  "toughness": 600,
+  "speed": 0.22,
+  "eat_dps": 100,
+  "wave_cost": 400,
+  "weight": 500
+ },
+ "tags": {
+  "remove": [
+   "grabbable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "ImpAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "ImpHitRect"
+  }
+ ],
+ "extra": {
+  "IntroSpeedScale": 4,
+  "KilledByShrinkingViolet": true,
+  "ProjectileAbsorbingFactor": -150,
+  "ShieldColumn": {
+   "Max": 7,
+   "Min": 5
+  },
+  "ShieldDuration": {
+   "Max": 10,
+   "Min": 12
+  },
+  "ShieldingDamageScale": 0.4
+ }
+}

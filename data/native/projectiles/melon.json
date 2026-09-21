@@ -1,0 +1,23 @@
+{
+ "id": "melon",
+ "stats": {
+  "damage": 80
+ },
+ "extra": {
+  "Size": {
+   "h": 18,
+   "w": 18
+  },
+  "SplashDamage": [
+   {
+    "Damage": 40,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "MintBoostedType": "melon2",
+  "Props": "RTID(melon@ProjectileProps)"
+ }
+}

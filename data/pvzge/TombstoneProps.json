@@ -1,0 +1,352 @@
+{
+ "backpack": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(BackpackRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 500
+  }
+ },
+ "eightiesarcadecabinet": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(CabinetRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "JamStyle": "jam_8bit",
+   "SummonInterval": {
+    "Max": 12,
+    "Min": 10
+   },
+   "SummonnedZombies": [
+    {
+     "Type": "eighties_8bit",
+     "Weight": 60
+    },
+    {
+     "Type": "eighties_8bit_armor1",
+     "Weight": 30
+    },
+    {
+     "Type": "eighties_8bit_armor2",
+     "Weight": 10
+    }
+   ],
+   "Toughness": 600
+  }
+ },
+ "gravestonePlantfoodOnDestruction": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "PlantfoodCount": 1,
+   "Toughness": 700
+  }
+ },
+ "gravestoneSunOnDestruction": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "SunValue": 100,
+   "Toughness": 700
+  }
+ },
+ "gravestone_cowboy": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "gravestone_dark": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "gravestone_egypt": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "gravestone_future": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": true,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "gravestone_iceage": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "gravestone_lostcity": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "gravestone_pirate": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "gravestone_tutorial": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": true,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "kongfu_TNT": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "DefaultRopeLength": 1,
+   "ExplodeDamage": 1800,
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HitRectHidden": true,
+   "HotPotatoMeltable": false,
+   "Toughness": 100000
+  }
+ },
+ "kongfu_rack_3section_staff": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "kongfu_rack_blade": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "kongfu_rack_bomb": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "kongfu_rack_fan": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "kongfu_rack_flag": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "kongfu_rack_hammer": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "kongfu_rack_helmet": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "kongfu_rack_nunchaku": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "kongfu_rack_torch": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 800
+  }
+ },
+ "planttarget_iceblock": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "AllowPlantsInSquare": true,
+   "FireDamageScaleIfMeltable": 3,
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": true,
+   "Toughness": 600
+  }
+ },
+ "planttarget_squid": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "AllowPlantsInSquare": true,
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 400
+  }
+ },
+ "speaker": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitDamage": 10,
+   "HitRect": "RTID(TombstoneRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 500,
+   "WaveProjectile": "eighties_speaker_wave"
+  }
+ },
+ "surfboard": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(SurfBoardRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 700
+  }
+ },
+ "surfboard_veteran": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(SurfBoardRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "Toughness": 1100
+  }
+ },
+ "tent": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(BackpackRect@RectangleProps)",
+   "HotPotatoMeltable": false,
+   "SummonInterval": {
+    "Max": 12,
+    "Min": 10
+   },
+   "SummonnedZombies": [
+    {
+     "Type": "lostcity",
+     "Weight": 60
+    },
+    {
+     "Type": "lostcity_armor1",
+     "Weight": 30
+    },
+    {
+     "Type": "lostcity_armor2",
+     "Weight": 10
+    }
+   ],
+   "Toughness": 700
+  }
+ },
+ "zombietarget_iceblock": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "AllowPlantsInSquare": true,
+   "FireDamageScaleIfMeltable": 3,
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(BackpackRect@RectangleProps)",
+   "HotPotatoMeltable": true,
+   "Toughness": 600
+  }
+ },
+ "zomboss_iceage_glacier_block": {
+  "objclass": "TombstoneProperties",
+  "objdata": {
+   "FireDamageScaleIfMeltable": 3,
+   "Flying": false,
+   "GraveBusterPlantable": false,
+   "HitRect": "RTID(BackpackRect@RectangleProps)",
+   "HotPotatoMeltable": true,
+   "Toughness": 600
+  }
+ }
+}

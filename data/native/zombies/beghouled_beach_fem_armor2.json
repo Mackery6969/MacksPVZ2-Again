@@ -1,0 +1,26 @@
+{
+ "id": "beghouled_beach_fem_armor2",
+ "extends": "beach_fem_armor2",
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 400,
+  "weight": 4000
+ },
+ "sort": "Normal",
+ "components": [
+  {
+   "type": "armor",
+   "armor": "beach_armor2"
+  },
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ]
+}

@@ -1,0 +1,502 @@
+{
+ "//": "PVZGE music per world, from the build's asset paths. A lawn cue is an optional intro then a loop; phases escalate as the level progresses, which is what the 'stage' parameter drives. A world with a single phase and no intro is a static loop.",
+ "worlds": {
+  "beach": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Beach"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Beach",
+    "intro": "P2_Start_Beach"
+   },
+   "lawn_phase3": {
+    "intro": "P3_Start_Beach",
+    "loop": "P3_LP_Beach"
+   },
+   "lawn_phase4": {
+    "loop": "P4_LP_Beach",
+    "intro": "P4_Start_Beach"
+   },
+   "choose_seeds": {
+    "loop": "CYS_LP_Beach",
+    "intro": "CYS_Start_Beach"
+   },
+   "victory": {
+    "oneshot": "VIC_Beach"
+   },
+   "lose": {
+    "oneshot": "LOSE_Beach"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Beach"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Beach"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Beach"
+   },
+   "minigame": {
+    "oneshot": "MG_Beach"
+   }
+  },
+  "cowboy": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Cowboy"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Cowboy",
+    "intro": "P2_Start_Cowboy"
+   },
+   "lawn_phase3": {
+    "intro": "P3_Start_Cowboy",
+    "loop": "P3_LP_Cowboy"
+   },
+   "lawn_phase4": {
+    "loop": "P4_LP_Cowboy",
+    "intro": "P4_Start_Cowboy"
+   },
+   "choose_seeds": {
+    "loop": "CYS_LP1_Cowboy",
+    "intro": "CYS_Start_Cowboy"
+   },
+   "victory": {
+    "oneshot": "VIC_Cowboy"
+   },
+   "lose": {
+    "oneshot": "LOSE_Cowboy"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Cowboy"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Cowboy"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Cowboy"
+   },
+   "minigame": {
+    "oneshot": "MG_Cowboy"
+   }
+  },
+  "dark": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Dark"
+   },
+   "lawn_phase2": {
+    "intro": "P2_Start_Dark",
+    "loop": "P2_LP_Dark"
+   },
+   "lawn_phase3": {
+    "intro": "P3_Start_Dark",
+    "loop": "P3_LP_Dark"
+   },
+   "lawn_phase4": {
+    "loop": "P4_LP_Dark",
+    "intro": "P4_Start_Dark"
+   },
+   "choose_seeds": {
+    "intro": "CYS_Start_Dark",
+    "loop": "CYS_LP_Dark"
+   },
+   "victory": {
+    "oneshot": "VIC_Dark"
+   },
+   "lose": {
+    "oneshot": "LOSE_Dark"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Dark"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Dark"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Dark"
+   },
+   "minigame": {
+    "oneshot": "MG_Dark"
+   }
+  },
+  "dino": {
+   "lawn_phase1": {
+    "intro": "P1_Start_Dino",
+    "loop": "P1_LP_Dino"
+   },
+   "lawn_phase2": {
+    "intro": "P2_Start_Dino",
+    "loop": "P2_LP_Dino"
+   },
+   "lawn_phase3": {
+    "loop": "P3_LP_Dino"
+   },
+   "lawn_phase4": {
+    "intro": "P4_Start_Dino",
+    "loop": "P4_LP_Dino"
+   },
+   "choose_seeds": {
+    "intro": "CYS_Start_Dino",
+    "loop": "CYS_LP_Dino"
+   },
+   "victory": {
+    "oneshot": "VIC_Dino"
+   },
+   "lose": {
+    "oneshot": "LOSE_Dino"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Dino"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Dino"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Dino"
+   },
+   "minigame": {
+    "oneshot": "MG_Dino"
+   }
+  },
+  "egypt": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Egypt"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Egypt"
+   },
+   "lawn_phase3": {
+    "loop": "P3_LP_Egypt"
+   },
+   "lawn_phase4": {
+    "loop": "P4_LP_Egypt",
+    "intro": "P4_Start_Egypt"
+   },
+   "choose_seeds": {
+    "loop": "CYS_LP_Egypt"
+   },
+   "victory": {
+    "oneshot": "VIC_Egypt"
+   },
+   "lose": {
+    "oneshot": "LOSE_Egypt"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Egypt"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Egypt"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Egypt"
+   },
+   "minigame": {
+    "oneshot": "MG_Egypt"
+   }
+  },
+  "eighties": {
+   "choose_seeds": {
+    "loop": "CYS_LP_Eighties",
+    "intro": "CYS_Start_Eighties"
+   },
+   "victory": {
+    "oneshot": "VIC_Eighties"
+   },
+   "lose": {
+    "oneshot": "LOSE_Eighties"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Eighties"
+   }
+  },
+  "future": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Future"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Future",
+    "intro": "P2_Start_Future"
+   },
+   "lawn_phase3": {
+    "loop": "P3_LP_Future",
+    "intro": "P3_Start_Future"
+   },
+   "lawn_phase4": {
+    "loop": "P4_LP_Future",
+    "intro": "P4_Start_Future"
+   },
+   "choose_seeds": {
+    "loop": "CYS_LP_Future",
+    "intro": "CYS_Start_Future"
+   },
+   "victory": {
+    "oneshot": "VIC_Future"
+   },
+   "lose": {
+    "oneshot": "LOSE_Future"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Future"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Future"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Future"
+   },
+   "minigame": {
+    "oneshot": "MG_Future"
+   }
+  },
+  "iceage": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Iceage"
+   },
+   "lawn_phase2": {
+    "intro": "P2_Start_Iceage",
+    "loop": "P2_LP_Iceage"
+   },
+   "lawn_phase3": {
+    "loop": "P3_LP_Iceage",
+    "intro": "P3_Start_Iceage"
+   },
+   "lawn_phase4": {
+    "intro": "P4_Start_Iceage",
+    "loop": "P4_LP_Iceage"
+   },
+   "choose_seeds": {
+    "intro": "CYS_Start_Iceage",
+    "loop": "CYS_LP_Iceage"
+   },
+   "victory": {
+    "oneshot": "VIC_Iceage"
+   },
+   "lose": {
+    "oneshot": "LOSE_Iceage"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Iceage"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Iceage"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Iceage"
+   },
+   "minigame": {
+    "oneshot": "MG_Iceage"
+   }
+  },
+  "jam": {},
+  "kongfu": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Kongfu"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Kongfu",
+    "intro": "P2_Start_Kongfu"
+   },
+   "lawn_phase3": {
+    "intro": "P3_Start_Kongfu",
+    "loop": "P3_LP_Kongfu"
+   },
+   "lawn_phase4": {
+    "loop": "P4_LP_Kongfu",
+    "intro": "P4_Start_Kongfu"
+   },
+   "choose_seeds": {
+    "intro": "CYS_Start_Kongfu",
+    "loop": "CYS_LP_Kongfu"
+   },
+   "victory": {
+    "oneshot": "VIC_Kongfu"
+   },
+   "lose": {
+    "oneshot": "LOSE_Kongfu"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Kongfu"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Kongfu"
+   },
+   "minigame": {
+    "oneshot": "MG_Kongfu"
+   }
+  },
+  "lostcity": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Lostcity"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Lostcity",
+    "intro": "P2_Start_Lostcity"
+   },
+   "lawn_phase3": {
+    "intro": "P3_Start_Lostcity",
+    "loop": "P3_LP_Lostcity"
+   },
+   "lawn_phase4": {
+    "intro": "P4_Start_Lostcity",
+    "loop": "P4_LP_Lostcity"
+   },
+   "choose_seeds": {
+    "loop": "CYS_LP_Lostcity",
+    "intro": "CYS_Start_Lostcity"
+   },
+   "victory": {
+    "oneshot": "VIC_Lostcity"
+   },
+   "lose": {
+    "oneshot": "LOSE_Lostcity"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Lostcity"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Lostcity"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Lostcity"
+   },
+   "minigame": {
+    "oneshot": "MG_Lostcity"
+   }
+  },
+  "modern": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Modern"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Modern"
+   },
+   "lawn_phase3": {
+    "intro": "P3_Start_Modern",
+    "loop": "P3_LP_Modern"
+   },
+   "lawn_phase4": {
+    "intro": "P4_Start_Modern",
+    "loop": "P4_LP_Modern"
+   },
+   "choose_seeds": {
+    "loop": "CYS_LP_Modern",
+    "intro": "CYS_Start_Modern"
+   },
+   "victory": {
+    "oneshot": "VIC_Modern"
+   },
+   "lose": {
+    "oneshot": "LOSE_Modern"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Modern"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Modern"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Modern"
+   },
+   "minigame": {
+    "oneshot": "MG_Modern"
+   }
+  },
+  "pirate": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Pirate"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Pirate",
+    "intro": "P2_Start_Pirate"
+   },
+   "lawn_phase3": {
+    "loop": "P3_LP_Pirate",
+    "intro": "P3_Start_Pirate"
+   },
+   "lawn_phase4": {
+    "loop": "P4_LP_Pirate",
+    "intro": "P4_Start_Pirate"
+   },
+   "choose_seeds": {
+    "loop": "CYS_LP_Pirate",
+    "intro": "CYS_Start_Pirate"
+   },
+   "victory": {
+    "oneshot": "VIC_Pirate"
+   },
+   "lose": {
+    "oneshot": "LOSE_Pirate"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Pirate"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Pirate"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Pirate"
+   },
+   "minigame": {
+    "oneshot": "MG_Pirate"
+   }
+  },
+  "sky": {
+   "lawn_phase1": {
+    "loop": "P1_LP_Sky"
+   },
+   "lawn_phase2": {
+    "loop": "P2_LP_Sky",
+    "intro": "P2_Start_Sky"
+   },
+   "lawn_phase3": {
+    "intro": "P3_Start_Sky",
+    "loop": "P3_LP_Sky"
+   },
+   "lawn_phase4": {
+    "intro": "P4_Start_Sky",
+    "loop": "P4_LP_Sky"
+   },
+   "choose_seeds": {
+    "loop": "CYS_LP_Sky",
+    "intro": "CYS_Start_Sky"
+   },
+   "victory": {
+    "oneshot": "VIC_Sky"
+   },
+   "lose": {
+    "oneshot": "LOSE_Sky"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Sky"
+   },
+   "ultimate_battle": {
+    "oneshot": "UB_Sky"
+   },
+   "zomboss_intro": {
+    "oneshot": "ZBI_Sky"
+   },
+   "minigame": {
+    "oneshot": "MG_Sky"
+   }
+  },
+  "tutorial": {
+   "lose": {
+    "oneshot": "LOSE_Tutorial"
+   },
+   "leave": {
+    "oneshot": "LEAVE_Tutorial"
+   },
+   "lawn_phase1": {
+    "loop": "LP_Tutorial"
+   }
+  },
+  "victory": {
+   "ultimate_battle": {
+    "oneshot": "UB_Victory"
+   },
+   "minigame": {
+    "oneshot": "MG_Victory"
+   }
+  },
+  "zomboss": {}
+ }
+}

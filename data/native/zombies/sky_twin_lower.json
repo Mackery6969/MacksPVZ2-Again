@@ -1,0 +1,43 @@
+{
+ "id": "sky_twin_lower",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1500,
+  "speed": 0.4,
+  "eat_dps": 1000,
+  "wave_cost": 900,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "attractable",
+   "draggable",
+   "enlightenable",
+   "swallowable",
+   "tossable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "SkyTwinAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "SkyTwinHitRect"
+  }
+ ],
+ "extra": {
+  "ChooseToSpawnOnDeepWaterRows": true,
+  "ChooseToSpawnOnNonDeckRows": true,
+  "CrashBackwardTime": 0.4,
+  "CrashDamageToShip": 2000,
+  "CrashForwardTime": 0.2,
+  "KnockBackDistanceScale": 0.5,
+  "ParalyzedDamageToPartnerScale": 0.5,
+  "PartnerType": "",
+  "SkyCityShipDetectXOffset": -80,
+  "WalkSPSParalyzed": 0.67
+ }
+}

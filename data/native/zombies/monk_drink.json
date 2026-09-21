@@ -1,0 +1,30 @@
+{
+ "id": "monk_drink",
+ "extends": "normal",
+ "stats": {
+  "toughness": 600,
+  "speed": 0.2,
+  "eat_dps": 100,
+  "wave_cost": 500,
+  "weight": 3000
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "MonkDrinkAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ArmDroppingHealthPct": 0.25,
+  "DrinkHealthPct": 0.5,
+  "DrinkingDamageMult": 0.25,
+  "DrunkDamageMult": 0.5,
+  "DrunkEatingDamageScale": 2,
+  "DrunkWalkingSpeedScale": 2,
+  "HitDamage": 250
+ }
+}

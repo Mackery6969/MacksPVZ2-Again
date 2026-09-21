@@ -1,0 +1,22 @@
+{
+ "id": "zoybean",
+ "extends": "normal",
+ "stats": {
+  "toughness": 300,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 1000
+ },
+ "sort": "Normal",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ]
+}

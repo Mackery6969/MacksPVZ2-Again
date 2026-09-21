@@ -1,0 +1,25 @@
+{
+ "id": "shootingstarfruit",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 500,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 3000
+ },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "shootingstar",
+   "interval": 0.9,
+   "interval_jitter": 0.1,
+   "projectile_plantfood": "shootingstar_pf"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ }
+}

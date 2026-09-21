@@ -1,0 +1,23 @@
+{
+ "id": "blastberry_small_pf_mint",
+ "extends": "blastberry_small_pf",
+ "stats": {
+  "damage": 600
+ },
+ "extra": {
+  "Size": {
+   "h": 15,
+   "w": 15
+  },
+  "SplashDamage": [
+   {
+    "Damage": 600,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "Props": "RTID(blastberry_small_pf_mint@ProjectileProps)"
+ }
+}

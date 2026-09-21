@@ -1,0 +1,25 @@
+{
+ "id": "buttercup",
+ "family": "Slow",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 900,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "ButterDamage": 100,
+  "ButterDamagePlantfood": 150,
+  "ButterDuration": 8,
+  "ButterThrowInterval": 1,
+  "ButterType": "buttercup_butter",
+  "LiquidType": "butter",
+  "TileButterDurationPlantfood": 150
+ }
+}

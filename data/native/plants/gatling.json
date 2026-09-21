@@ -1,0 +1,33 @@
+{
+ "id": "gatling",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 450,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 4000
+ },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "pea",
+   "interval": 0.9,
+   "interval_jitter": 0.1,
+   "projectile_plantfood": "pea",
+   "plantfood_count": 60
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "PeaTypesPlantfood": [
+   "pea",
+   "pea_flame_yellow",
+   "pea_flame_blue"
+  ]
+ }
+}

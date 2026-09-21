@@ -1,0 +1,22 @@
+{
+ "id": "citron2",
+ "stats": {
+  "damage": 4000
+ },
+ "extra": {
+  "Size": {
+   "h": 40,
+   "w": 40
+  },
+  "SplashDamage": [
+   {
+    "Damage": 100,
+    "Range": {
+     "h": 1,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(citron2@ProjectileProps)"
+ }
+}

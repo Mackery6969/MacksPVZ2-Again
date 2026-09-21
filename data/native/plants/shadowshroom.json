@@ -1,0 +1,22 @@
+{
+ "id": "shadowshroom",
+ "family": "Shadow",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 50,
+  "cooldown": 10,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeHealedByAloe": true,
+  "MintDamageFactor": 3,
+  "PoisonDPS": 30,
+  "PoisonDuration": 30
+ }
+}

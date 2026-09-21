@@ -1,0 +1,18 @@
+{
+ "id": "zomboss_iceage_glacier_block",
+ "stats": {
+  "toughness": 600,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": true
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "BackpackRect"
+  }
+ ],
+ "extra": {
+  "FireDamageScaleIfMeltable": 3
+ }
+}

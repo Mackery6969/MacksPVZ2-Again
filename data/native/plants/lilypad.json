@@ -1,0 +1,14 @@
+{
+ "id": "lilypad",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 25,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "LostCityNightStage",
+ "music": "Lostcity",
+ "mower": "mower_lostcity",
+ "railcart": "railcart_tutorial",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "lostcity_armor1"
+  ],
+  "armor2": [
+   "lostcity_armor2"
+  ],
+  "armor3": [
+   "lostcity_armor2"
+  ],
+  "armor4": [
+   "lostcity_armor4"
+  ],
+  "basic": [
+   "lostcity"
+  ],
+  "flag": [
+   "lostcity_flag"
+  ],
+  "gargantuar": [
+   "lostcity_gargantuar"
+  ],
+  "imp": [
+   "lostcity_imp"
+  ],
+  "rally": [
+   "lostcity_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_lostcity"
+ ]
+}

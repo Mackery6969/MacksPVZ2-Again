@@ -1,0 +1,23 @@
+{
+ "id": "bowling_iceberg",
+ "extra": {
+  "ChillDuration": 3,
+  "FreezeDuration": 7,
+  "IceBlockLevel": 1,
+  "Size": {
+   "h": 30,
+   "w": 30
+  },
+  "SplashDamage": [
+   {
+    "ChillDuration": 3,
+    "FreezeDuration": 7,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "Props": "RTID(bowling_iceberg@ProjectileProps)"
+ }
+}

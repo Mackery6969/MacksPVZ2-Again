@@ -1,0 +1,27 @@
+{
+ "id": "primalpotatomine",
+ "family": "Explosive",
+ "stats": {
+  "sun_cost": 50,
+  "toughness": 300,
+  "cooldown": 25,
+  "cooldown_from": 0.6,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "explosive",
+   "damage": 2700,
+   "charge_time": 6,
+   "plantfood_children": 2
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "MintDamageFactor": 3
+ }
+}

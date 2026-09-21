@@ -1,0 +1,13 @@
+{
+ "id": "abbot_fan_storm",
+ "extra": {
+  "DiesWhenLosingZombies": false,
+  "IgnoredBy3SectionStaff": true,
+  "MaxCarryingZombies": 1,
+  "Size": {
+   "h": 70,
+   "w": 4
+  },
+  "Props": "RTID(abbot_fan_storm@ProjectileProps)"
+ }
+}

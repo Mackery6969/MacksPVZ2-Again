@@ -1,0 +1,8 @@
+{
+ "id": "protect_plant",
+ "category": "tile",
+ "extends": "endangered",
+ "extra": {
+  "Rect": "RTID(TileDefaultRect@RectangleProps)"
+ }
+}

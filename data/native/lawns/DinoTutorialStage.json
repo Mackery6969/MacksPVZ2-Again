@@ -1,0 +1,39 @@
+{
+ "id": "DinoTutorialStage",
+ "music": "Dino",
+ "mower": "mower_dino",
+ "railcart": "railcart_tutorial",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "dino_armor1"
+  ],
+  "armor2": [
+   "dino_armor2"
+  ],
+  "armor3": [
+   "dino_armor3"
+  ],
+  "armor4": [
+   "dino_armor4"
+  ],
+  "basic": [
+   "dino"
+  ],
+  "flag": [
+   "dino_flag"
+  ],
+  "gargantuar": [
+   "dino_gargantuar"
+  ],
+  "imp": [
+   "dino_imp"
+  ],
+  "rally": [
+   "dino_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

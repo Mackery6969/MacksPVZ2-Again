@@ -1,0 +1,3327 @@
+{
+ "abbot": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot@ZombieProps)",
+   "ZombieBasedOn": "abbot"
+  }
+ },
+ "abbot_3section_staff": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_3section_staff@ZombieProps)",
+   "ZombieBasedOn": "abbot_3section_staff"
+  }
+ },
+ "abbot_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_armor1@ZombieProps)",
+   "ZombieBasedOn": "abbot_armor1"
+  }
+ },
+ "abbot_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_armor2@ZombieProps)",
+   "ZombieBasedOn": "abbot_armor2"
+  }
+ },
+ "abbot_armor3": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_armor3@ZombieProps)",
+   "ZombieBasedOn": "abbot_armor3"
+  }
+ },
+ "abbot_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_armor4@ZombieProps)",
+   "ZombieBasedOn": "abbot_armor4"
+  }
+ },
+ "abbot_chi": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_chi@ZombieProps)",
+   "ZombieBasedOn": "abbot_chi"
+  }
+ },
+ "abbot_fan": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_fan@ZombieProps)",
+   "ZombieBasedOn": "abbot_fan"
+  }
+ },
+ "abbot_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_flag@ZombieProps)",
+   "ZombieBasedOn": "abbot_flag"
+  }
+ },
+ "abbot_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "abbot_flag_veteran"
+  }
+ },
+ "abbot_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_imp@ZombieProps)",
+   "ZombieBasedOn": "abbot_imp"
+  }
+ },
+ "abbot_torch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(abbot_torch@ZombieProps)",
+   "ZombieBasedOn": "abbot_torch"
+  }
+ },
+ "barrelroller": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(barrelroller@ZombieProps)",
+   "ZombieBasedOn": "barrelroller"
+  }
+ },
+ "beach": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach@ZombieProps)",
+   "ZombieBasedOn": "beach"
+  }
+ },
+ "beach_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_armor1@ZombieProps)",
+   "ZombieBasedOn": "beach_armor1"
+  }
+ },
+ "beach_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_armor2@ZombieProps)",
+   "ZombieBasedOn": "beach_armor2"
+  }
+ },
+ "beach_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_armor4@ZombieProps)",
+   "ZombieBasedOn": "beach_armor4"
+  }
+ },
+ "beach_fem": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_fem@ZombieProps)",
+   "ZombieBasedOn": "beach_fem"
+  }
+ },
+ "beach_fem_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_fem_armor1@ZombieProps)",
+   "ZombieBasedOn": "beach_fem_armor1"
+  }
+ },
+ "beach_fem_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_fem_armor2@ZombieProps)",
+   "ZombieBasedOn": "beach_fem_armor2"
+  }
+ },
+ "beach_fem_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_fem_armor4@ZombieProps)",
+   "ZombieBasedOn": "beach_fem_armor4"
+  }
+ },
+ "beach_fisherman": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_fisherman@ZombieProps)",
+   "ZombieBasedOn": "beach_fisherman"
+  }
+ },
+ "beach_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_flag@ZombieProps)",
+   "ZombieBasedOn": "beach_flag"
+  }
+ },
+ "beach_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "beach_flag_veteran"
+  }
+ },
+ "beach_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "beach_gargantuar"
+  }
+ },
+ "beach_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_imp@ZombieProps)",
+   "ZombieBasedOn": "beach_imp"
+  }
+ },
+ "beach_octopus": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_octopus@ZombieProps)",
+   "ZombieBasedOn": "beach_octopus"
+  }
+ },
+ "beach_snorkel": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_snorkel@ZombieProps)",
+   "ZombieBasedOn": "beach_snorkel"
+  }
+ },
+ "beach_surfer": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_surfer@ZombieProps)",
+   "ZombieBasedOn": "beach_surfer"
+  }
+ },
+ "beach_surfer_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_surfer_veteran@ZombieProps)",
+   "ZombieBasedOn": "beach_surfer_veteran"
+  }
+ },
+ "beghouled": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "tutorial"
+  }
+ },
+ "beghouled_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor1@ZombieProps)",
+   "ZombieBasedOn": "tutorial_armor1"
+  }
+ },
+ "beghouled_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor2@ZombieProps)",
+   "ZombieBasedOn": "tutorial_armor2"
+  }
+ },
+ "beghouled_beach": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach@ZombieProps)",
+   "ZombieBasedOn": "beach"
+  }
+ },
+ "beghouled_beach_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_armor1@ZombieProps)",
+   "ZombieBasedOn": "beach_armor1"
+  }
+ },
+ "beghouled_beach_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_armor2@ZombieProps)",
+   "ZombieBasedOn": "beach_armor2"
+  }
+ },
+ "beghouled_beach_fem": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_fem@ZombieProps)",
+   "ZombieBasedOn": "beach_fem"
+  }
+ },
+ "beghouled_beach_fem_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_fem_armor1@ZombieProps)",
+   "ZombieBasedOn": "beach_fem_armor1"
+  }
+ },
+ "beghouled_beach_fem_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beach_fem_armor2@ZombieProps)",
+   "ZombieBasedOn": "beach_fem_armor2"
+  }
+ },
+ "beghouled_cowboy": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy@ZombieProps)",
+   "ZombieBasedOn": "cowboy"
+  }
+ },
+ "beghouled_cowboy_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy_armor1@ZombieProps)",
+   "ZombieBasedOn": "cowboy_armor1"
+  }
+ },
+ "beghouled_cowboy_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy_armor2@ZombieProps)",
+   "ZombieBasedOn": "cowboy_armor2"
+  }
+ },
+ "beghouled_dark": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark@ZombieProps)",
+   "ZombieBasedOn": "dark"
+  }
+ },
+ "beghouled_dark_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_armor1@ZombieProps)",
+   "ZombieBasedOn": "dark_armor1"
+  }
+ },
+ "beghouled_dark_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_armor2@ZombieProps)",
+   "ZombieBasedOn": "dark_armor2"
+  }
+ },
+ "beghouled_future": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future@ZombieProps)",
+   "ZombieBasedOn": "future"
+  }
+ },
+ "beghouled_future_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_armor1@ZombieProps)",
+   "ZombieBasedOn": "future_armor1"
+  }
+ },
+ "beghouled_future_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_armor2@ZombieProps)",
+   "ZombieBasedOn": "future_armor2"
+  }
+ },
+ "beghouled_iceage": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage@ZombieProps)",
+   "ZombieBasedOn": "iceage"
+  }
+ },
+ "beghouled_iceage_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_armor1@ZombieProps)",
+   "ZombieBasedOn": "iceage_armor1"
+  }
+ },
+ "beghouled_iceage_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_armor2@ZombieProps)",
+   "ZombieBasedOn": "iceage_armor2"
+  }
+ },
+ "beghouled_lostcity": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity@ZombieProps)",
+   "ZombieBasedOn": "lostcity"
+  }
+ },
+ "beghouled_lostcity_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_armor1@ZombieProps)",
+   "ZombieBasedOn": "lostcity_armor1"
+  }
+ },
+ "beghouled_lostcity_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_armor2@ZombieProps)",
+   "ZombieBasedOn": "lostcity_armor2"
+  }
+ },
+ "beghouled_mmummy": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy@ZombieProps)",
+   "ZombieBasedOn": "mummy"
+  }
+ },
+ "beghouled_mmummy_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy_armor1@ZombieProps)",
+   "ZombieBasedOn": "mummy_armor1"
+  }
+ },
+ "beghouled_mmummy_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy_armor2@ZombieProps)",
+   "ZombieBasedOn": "mummy_armor2"
+  }
+ },
+ "beghouled_newspaper": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(beghouled_newspaper@ZombieProps)",
+   "ZombieBasedOn": "modern_newspaper"
+  }
+ },
+ "beghouled_pirate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate@ZombieProps)",
+   "ZombieBasedOn": "pirate"
+  }
+ },
+ "beghouled_pirate_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_armor1@ZombieProps)",
+   "ZombieBasedOn": "pirate_armor1"
+  }
+ },
+ "beghouled_pirate_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_armor2@ZombieProps)",
+   "ZombieBasedOn": "pirate_armor2"
+  }
+ },
+ "birthday": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "birthday"
+  }
+ },
+ "birthday_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor1@ZombieProps)",
+   "ZombieBasedOn": "birthday_armored"
+  }
+ },
+ "birthday_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor2@ZombieProps)",
+   "ZombieBasedOn": "birthday_armored"
+  }
+ },
+ "birthday_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor4@ZombieProps)",
+   "ZombieBasedOn": "birthday_armored"
+  }
+ },
+ "birthday_armored": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "birthday_armored"
+  }
+ },
+ "birthday_barrel": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_barrel@ZombieProps)",
+   "ZombieBasedOn": "birthday_barrel"
+  }
+ },
+ "birthday_barrelroller": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(birthday_barrelroller@ZombieProps)",
+   "ZombieBasedOn": "birthday_barrelroller"
+  }
+ },
+ "birthday_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_flag@ZombieProps)",
+   "ZombieBasedOn": "birthday_flag"
+  }
+ },
+ "birthday_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(birthday_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "birthday_gargantuar"
+  }
+ },
+ "birthday_jetpack": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_jetpack@ZombieProps)",
+   "ZombieBasedOn": "birthday_jetpack"
+  }
+ },
+ "birthday_juggler": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_juggler@ZombieProps)",
+   "ZombieBasedOn": "birthday_juggler"
+  }
+ },
+ "birthday_pharaoh": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(birthday_pharaoh@ZombieProps)",
+   "ZombieBasedOn": "birthday_pharaoh"
+  }
+ },
+ "birthday_pharaoh_inner": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pharaoh_inner@ZombieProps)",
+   "ZombieBasedOn": "birthday_pharaoh_inner"
+  }
+ },
+ "birthday_troglobite": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_troglobite@ZombieProps)",
+   "ZombieBasedOn": "birthday_troglobite"
+  }
+ },
+ "birthday_troglobite_1block": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_troglobite_1block@ZombieProps)",
+   "ZombieBasedOn": "birthday_troglobite"
+  }
+ },
+ "birthday_troglobite_2block": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_troglobite_2block@ZombieProps)",
+   "ZombieBasedOn": "birthday_troglobite"
+  }
+ },
+ "bobsled": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(bobsled@ZombieProps)",
+   "ZombieBasedOn": "bobsled"
+  }
+ },
+ "bobsled_team": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(bobsled_team@ZombieProps)",
+   "ZombieBasedOn": "bobsled_team"
+  }
+ },
+ "camel_manyhump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_manyhump@ZombieProps)",
+   "ZombieBasedOn": "camel_onehump"
+  }
+ },
+ "camel_manyhump_touch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_manyhump_touch@ZombieProps)",
+   "ZombieBasedOn": "camel_onehump_touch"
+  }
+ },
+ "camel_onehump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_onehump@ZombieProps)",
+   "ZombieBasedOn": "camel_onehump"
+  }
+ },
+ "camel_onehump_touch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_onehump_touch@ZombieProps)",
+   "ZombieBasedOn": "camel_onehump_touch"
+  }
+ },
+ "camel_segment": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_segment@ZombieProps)",
+   "ZombieBasedOn": "camel_segment"
+  }
+ },
+ "camel_segment_touch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_segment_touch@ZombieProps)",
+   "ZombieBasedOn": "camel_segment_touch"
+  }
+ },
+ "camel_threehump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_threehump@ZombieProps)",
+   "ZombieBasedOn": "camel_onehump"
+  }
+ },
+ "camel_threehump_touch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_threehump_touch@ZombieProps)",
+   "ZombieBasedOn": "camel_onehump_touch"
+  }
+ },
+ "camel_twohump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_twohump@ZombieProps)",
+   "ZombieBasedOn": "camel_onehump"
+  }
+ },
+ "camel_twohump_touch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(camel_twohump_touch@ZombieProps)",
+   "ZombieBasedOn": "camel_onehump_touch"
+  }
+ },
+ "cannon": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cannon@ZombieProps)",
+   "ZombieBasedOn": "cannon"
+  }
+ },
+ "catapult": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(catapult@ZombieProps)",
+   "ZombieBasedOn": "catapult"
+  }
+ },
+ "chicken": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(chicken@ZombieProps)",
+   "ZombieBasedOn": "chicken"
+  }
+ },
+ "chicken_farmer": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(chicken_farmer@ZombieProps)",
+   "ZombieBasedOn": "chicken_farmer"
+  }
+ },
+ "chicken_ge": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieRedirection": [
+    {
+     "Type": "chicken",
+     "Weight": 100
+    },
+    {
+     "Type": "chicken_pumpkin",
+     "Weight": 1
+    }
+   ]
+  }
+ },
+ "chicken_pumpkin": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(chicken_pumpkin@ZombieProps)",
+   "ZombieBasedOn": "chicken_pumpkin"
+  }
+ },
+ "cowboy": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy@ZombieProps)",
+   "ZombieBasedOn": "cowboy"
+  }
+ },
+ "cowboy_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy_armor1@ZombieProps)",
+   "ZombieBasedOn": "cowboy_armor1"
+  }
+ },
+ "cowboy_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy_armor2@ZombieProps)",
+   "ZombieBasedOn": "cowboy_armor2"
+  }
+ },
+ "cowboy_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy_armor4@ZombieProps)",
+   "ZombieBasedOn": "cowboy_armor4"
+  }
+ },
+ "cowboy_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy_flag@ZombieProps)",
+   "ZombieBasedOn": "cowboy_flag"
+  }
+ },
+ "cowboy_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "cowboy_flag_veteran"
+  }
+ },
+ "cowboy_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(cowboy_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "cowboy_gargantuar"
+  }
+ },
+ "dark": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark@ZombieProps)",
+   "ZombieBasedOn": "dark"
+  }
+ },
+ "dark_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_armor1@ZombieProps)",
+   "ZombieBasedOn": "dark_armor1"
+  }
+ },
+ "dark_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_armor2@ZombieProps)",
+   "ZombieBasedOn": "dark_armor2"
+  }
+ },
+ "dark_armor3": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_armor3@ZombieProps)",
+   "ZombieBasedOn": "dark_armor3"
+  }
+ },
+ "dark_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_armor4@ZombieProps)",
+   "ZombieBasedOn": "dark_armor4"
+  }
+ },
+ "dark_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_flag@ZombieProps)",
+   "ZombieBasedOn": "dark_flag"
+  }
+ },
+ "dark_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "dark_flag_veteran"
+  }
+ },
+ "dark_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "dark_gargantuar"
+  }
+ },
+ "dark_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_imp@ZombieProps)",
+   "ZombieBasedOn": "dark_imp"
+  }
+ },
+ "dark_imp_dragon": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_imp_dragon@ZombieProps)",
+   "ZombieBasedOn": "dark_imp_dragon"
+  }
+ },
+ "dark_juggler": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_juggler@ZombieProps)",
+   "ZombieBasedOn": "dark_juggler"
+  }
+ },
+ "dark_king": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_king@ZombieProps)",
+   "ZombieBasedOn": "dark_king"
+  }
+ },
+ "dark_king_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_king_veteran@ZombieProps)",
+   "ZombieBasedOn": "dark_king_veteran"
+  }
+ },
+ "dark_wizard": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_wizard@ZombieProps)",
+   "ZombieBasedOn": "dark_wizard"
+  }
+ },
+ "dark_wizard_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_wizard_veteran@ZombieProps)",
+   "ZombieBasedOn": "dark_wizard_veteran"
+  }
+ },
+ "dino": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino@ZombieProps)",
+   "ZombieBasedOn": "dino"
+  }
+ },
+ "dino_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_armor1@ZombieProps)",
+   "ZombieBasedOn": "dino_armor1"
+  }
+ },
+ "dino_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_armor2@ZombieProps)",
+   "ZombieBasedOn": "dino_armor2"
+  }
+ },
+ "dino_armor3": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_armor3@ZombieProps)",
+   "ZombieBasedOn": "dino_armor3"
+  }
+ },
+ "dino_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_armor4@ZombieProps)",
+   "ZombieBasedOn": "dino_armor4"
+  }
+ },
+ "dino_bully": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_bully@ZombieProps)",
+   "ZombieBasedOn": "dino_bully"
+  }
+ },
+ "dino_bully_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_bully_veteran@ZombieProps)",
+   "ZombieBasedOn": "dino_bully_veteran"
+  }
+ },
+ "dino_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_flag@ZombieProps)",
+   "ZombieBasedOn": "dino_flag"
+  }
+ },
+ "dino_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "dino_flag_veteran"
+  }
+ },
+ "dino_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "dino_gargantuar"
+  }
+ },
+ "dino_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dino_imp@ZombieProps)",
+   "ZombieBasedOn": "dino_imp"
+  }
+ },
+ "disco_mech": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(disco_mech@ZombieProps)",
+   "ZombieBasedOn": "disco_mech"
+  }
+ },
+ "duckytube": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(duckytube@ZombieProps)",
+   "ZombieBasedOn": "duckytube"
+  }
+ },
+ "duckytube_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(duckytube_armor1@ZombieProps)",
+   "ZombieBasedOn": "duckytube_armor1"
+  }
+ },
+ "duckytube_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(duckytube_armor2@ZombieProps)",
+   "ZombieBasedOn": "duckytube_armor2"
+  }
+ },
+ "duckytube_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(duckytube_armor4@ZombieProps)",
+   "ZombieBasedOn": "duckytube_armor4"
+  }
+ },
+ "duckytube_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(duckytube_flag@ZombieProps)",
+   "ZombieBasedOn": "duckytube_flag"
+  }
+ },
+ "duckytube_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(duckytube_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "duckytube_flag_veteran"
+  }
+ },
+ "easter": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "easter"
+  }
+ },
+ "easter_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_armor1@ZombieProps)",
+   "ZombieBasedOn": "easter_armor1"
+  }
+ },
+ "easter_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_armor2@ZombieProps)",
+   "ZombieBasedOn": "easter_armor2"
+  }
+ },
+ "easter_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_armor4@ZombieProps)",
+   "ZombieBasedOn": "easter_armor4"
+  }
+ },
+ "easter_camel_manyhump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_camel_manyhump@ZombieProps)",
+   "ZombieBasedOn": "easter_camel_onehump"
+  }
+ },
+ "easter_camel_onehump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_camel_onehump@ZombieProps)",
+   "ZombieBasedOn": "easter_camel_onehump"
+  }
+ },
+ "easter_camel_segment": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_camel_segment@ZombieProps)",
+   "ZombieBasedOn": "easter_camel_segment"
+  }
+ },
+ "easter_camel_threehump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_camel_threehump@ZombieProps)",
+   "ZombieBasedOn": "easter_camel_onehump"
+  }
+ },
+ "easter_camel_twohump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_camel_twohump@ZombieProps)",
+   "ZombieBasedOn": "easter_camel_onehump"
+  }
+ },
+ "easter_egg": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_egg@ZombieProps)",
+   "ZombieBasedOn": "easter_egg"
+  }
+ },
+ "easter_egg_af": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_egg_af@ZombieProps)",
+   "ZombieBasedOn": "easter_egg"
+  }
+ },
+ "easter_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_flag@ZombieProps)",
+   "ZombieBasedOn": "easter_flag"
+  }
+ },
+ "easter_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "easter_gargantuar"
+  }
+ },
+ "easter_gargantuar_af": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_gargantuar_af@ZombieProps)",
+   "ZombieBasedOn": "easter_gargantuar"
+  }
+ },
+ "easter_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "easter_imp"
+  }
+ },
+ "easter_poncho": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho@ZombieProps)",
+   "ZombieBasedOn": "easter_poncho"
+  }
+ },
+ "easter_poncho_no_plate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho_no_plate@ZombieProps)",
+   "ZombieBasedOn": "easter_poncho"
+  }
+ },
+ "easter_poncho_plate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho_plate@ZombieProps)",
+   "ZombieBasedOn": "easter_poncho"
+  }
+ },
+ "easter_wizard": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_wizard@ZombieProps)",
+   "ZombieBasedOn": "easter_wizard"
+  }
+ },
+ "egypt_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(egypt_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "egypt_gargantuar"
+  }
+ },
+ "egypt_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(egypt_imp@ZombieProps)",
+   "ZombieBasedOn": "egypt_imp"
+  }
+ },
+ "eighties": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties@ZombieProps)",
+   "ZombieBasedOn": "eighties"
+  }
+ },
+ "eighties_8bit": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_8bit@ZombieProps)",
+   "ZombieBasedOn": "eighties_8bit"
+  }
+ },
+ "eighties_8bit_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_8bit_armor1@ZombieProps)",
+   "ZombieBasedOn": "eighties_8bit_armor1"
+  }
+ },
+ "eighties_8bit_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_8bit_armor2@ZombieProps)",
+   "ZombieBasedOn": "eighties_8bit_armor2"
+  }
+ },
+ "eighties_arcade": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_arcade@ZombieProps)",
+   "ZombieBasedOn": "eighties_arcade"
+  }
+ },
+ "eighties_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_armor1@ZombieProps)",
+   "ZombieBasedOn": "eighties_armor1"
+  }
+ },
+ "eighties_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_armor2@ZombieProps)",
+   "ZombieBasedOn": "eighties_armor2"
+  }
+ },
+ "eighties_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_armor4@ZombieProps)",
+   "ZombieBasedOn": "eighties_armor4"
+  }
+ },
+ "eighties_boombox": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_boombox@ZombieProps)",
+   "ZombieBasedOn": "eighties_boombox"
+  }
+ },
+ "eighties_breakdancer": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_breakdancer@ZombieProps)",
+   "ZombieBasedOn": "eighties_breakdancer"
+  }
+ },
+ "eighties_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_flag@ZombieProps)",
+   "ZombieBasedOn": "eighties_flag"
+  }
+ },
+ "eighties_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "eighties_flag_veteran"
+  }
+ },
+ "eighties_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "eighties_gargantuar"
+  }
+ },
+ "eighties_glitter": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_glitter@ZombieProps)",
+   "ZombieBasedOn": "eighties_glitter"
+  }
+ },
+ "eighties_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_imp@ZombieProps)",
+   "ZombieBasedOn": "eighties_imp"
+  }
+ },
+ "eighties_mc": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_mc@ZombieProps)",
+   "ZombieBasedOn": "eighties_mc"
+  }
+ },
+ "eighties_punk": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_punk@ZombieProps)",
+   "ZombieBasedOn": "eighties_punk"
+  }
+ },
+ "eighties_punk_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_punk_veteran@ZombieProps)",
+   "ZombieBasedOn": "eighties_punk_veteran"
+  }
+ },
+ "eighties_skunk": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(eighties_skunk@ZombieProps)",
+   "ZombieBasedOn": "eighties_skunk"
+  }
+ },
+ "explorer": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(explorer@ZombieProps)",
+   "ZombieBasedOn": "explorer"
+  }
+ },
+ "explorer_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(explorer_veteran@ZombieProps)",
+   "ZombieBasedOn": "explorer_veteran"
+  }
+ },
+ "feastivus": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus@ZombieProps)",
+   "ZombieBasedOn": "feastivus"
+  }
+ },
+ "feastivus_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_armor1@ZombieProps)",
+   "ZombieBasedOn": "feastivus_armor1"
+  }
+ },
+ "feastivus_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_armor2@ZombieProps)",
+   "ZombieBasedOn": "feastivus_armor2"
+  }
+ },
+ "feastivus_armor3": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_armor3@ZombieProps)",
+   "ZombieBasedOn": "feastivus"
+  }
+ },
+ "feastivus_camel_manyhump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_camel_manyhump@ZombieProps)",
+   "ZombieBasedOn": "feastivus_camel_onehump"
+  }
+ },
+ "feastivus_camel_onehump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_camel_onehump@ZombieProps)",
+   "ZombieBasedOn": "feastivus_camel_onehump"
+  }
+ },
+ "feastivus_camel_segment": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_camel_segment@ZombieProps)",
+   "ZombieBasedOn": "feastivus_camel_segment"
+  }
+ },
+ "feastivus_camel_threehump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_camel_threehump@ZombieProps)",
+   "ZombieBasedOn": "feastivus_camel_onehump"
+  }
+ },
+ "feastivus_camel_twohump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_camel_twohump@ZombieProps)",
+   "ZombieBasedOn": "feastivus_camel_onehump"
+  }
+ },
+ "feastivus_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_flag@ZombieProps)",
+   "ZombieBasedOn": "feastivus_flag"
+  }
+ },
+ "feastivus_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "feastivus_gargantuar"
+  }
+ },
+ "feastivus_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "feastivus_imp"
+  }
+ },
+ "feastivus_piano": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(piano@ZombieProps)",
+   "ZombieBasedOn": "feastivus_piano"
+  }
+ },
+ "feastivus_poncho": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho@ZombieProps)",
+   "ZombieBasedOn": "feastivus_poncho"
+  }
+ },
+ "feastivus_poncho_no_plate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho_no_plate@ZombieProps)",
+   "ZombieBasedOn": "feastivus_poncho_no_plate"
+  }
+ },
+ "feastivus_poncho_plate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho_plate@ZombieProps)",
+   "ZombieBasedOn": "feastivus_poncho_plate"
+  }
+ },
+ "feastivus_swashbuckler": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(swashbuckler@ZombieProps)",
+   "ZombieBasedOn": "feastivus_swashbuckler"
+  }
+ },
+ "feastivus_troglobite": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_troglobite@ZombieProps)",
+   "ZombieBasedOn": "iceage_troglobite"
+  }
+ },
+ "feastivus_troglobite_1block": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_troglobite_1block@ZombieProps)",
+   "ZombieBasedOn": "iceage_troglobite"
+  }
+ },
+ "feastivus_troglobite_2block": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(feastivus_troglobite_2block@ZombieProps)",
+   "ZombieBasedOn": "iceage_troglobite"
+  }
+ },
+ "foodfight": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(foodfight@ZombieProps)",
+   "ZombieBasedOn": "foodfight"
+  }
+ },
+ "foodfight_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(foodfight_armor1@ZombieProps)",
+   "ZombieBasedOn": "foodfight_armor1"
+  }
+ },
+ "foodfight_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(foodfight_armor2@ZombieProps)",
+   "ZombieBasedOn": "foodfight_armor2"
+  }
+ },
+ "foodfight_chefster": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_juggler@ZombieProps)",
+   "ZombieBasedOn": "foodfight_chefster"
+  }
+ },
+ "foodfight_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(foodfight_flag@ZombieProps)",
+   "ZombieBasedOn": "foodfight_flag"
+  }
+ },
+ "foodfight_gobbler_king": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(foodfight_gobbler_king@ZombieProps)",
+   "ZombieBasedOn": "foodfight_gobbler_king"
+  }
+ },
+ "foodfight_turkey": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(foodfight_turkey@ZombieProps)",
+   "ZombieBasedOn": "foodfight_turkey"
+  }
+ },
+ "football_mech": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(football_mech@ZombieProps)",
+   "ZombieBasedOn": "football_mech"
+  }
+ },
+ "future": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future@ZombieProps)",
+   "ZombieBasedOn": "future"
+  }
+ },
+ "future_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_armor1@ZombieProps)",
+   "ZombieBasedOn": "future_armor1"
+  }
+ },
+ "future_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_armor2@ZombieProps)",
+   "ZombieBasedOn": "future_armor2"
+  }
+ },
+ "future_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_armor4@ZombieProps)",
+   "ZombieBasedOn": "future_armor4"
+  }
+ },
+ "future_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_flag@ZombieProps)",
+   "ZombieBasedOn": "future_flag"
+  }
+ },
+ "future_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "future_flag_veteran"
+  }
+ },
+ "future_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "future_gargantuar"
+  }
+ },
+ "future_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_imp@ZombieProps)",
+   "ZombieBasedOn": "future_imp"
+  }
+ },
+ "future_infinut_shield": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_infinut_shield@ZombieProps)",
+   "ZombieBasedOn": "future_infinut_shield"
+  }
+ },
+ "future_jetpack": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_jetpack@ZombieProps)",
+   "ZombieBasedOn": "future_jetpack"
+  }
+ },
+ "future_jetpack_disco": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_jetpack_disco@ZombieProps)",
+   "ZombieBasedOn": "future_jetpack_disco"
+  }
+ },
+ "future_jetpack_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_jetpack_veteran@ZombieProps)",
+   "ZombieBasedOn": "future_jetpack_veteran"
+  }
+ },
+ "future_protector": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_protector@ZombieProps)",
+   "ZombieBasedOn": "future_protector"
+  }
+ },
+ "future_protector_shield": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_protector_shield@ZombieProps)",
+   "ZombieBasedOn": "future_protector_shield"
+  }
+ },
+ "future_protector_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(future_protector_veteran@ZombieProps)",
+   "ZombieBasedOn": "future_protector"
+  }
+ },
+ "halloween": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(halloween@ZombieProps)",
+   "ZombieBasedOn": "halloween"
+  }
+ },
+ "halloween_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(halloween_armor1@ZombieProps)",
+   "ZombieBasedOn": "halloween_armor1"
+  }
+ },
+ "halloween_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(halloween_armor2@ZombieProps)",
+   "ZombieBasedOn": "halloween_armor2"
+  }
+ },
+ "halloween_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(halloween_flag@ZombieProps)",
+   "ZombieBasedOn": "halloween_flag"
+  }
+ },
+ "halloween_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(halloween_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "halloween_gargantuar"
+  }
+ },
+ "halloween_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "halloween_imp"
+  }
+ },
+ "holiday_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(holiday_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "holiday_gargantuar"
+  }
+ },
+ "holiday_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "holiday_imp"
+  }
+ },
+ "iceage": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage@ZombieProps)",
+   "ZombieBasedOn": "iceage"
+  }
+ },
+ "iceage_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_armor1@ZombieProps)",
+   "ZombieBasedOn": "iceage_armor1"
+  }
+ },
+ "iceage_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_armor2@ZombieProps)",
+   "ZombieBasedOn": "iceage_armor2"
+  }
+ },
+ "iceage_armor3": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_armor3@ZombieProps)",
+   "ZombieBasedOn": "iceage_armor3"
+  }
+ },
+ "iceage_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_armor4@ZombieProps)",
+   "ZombieBasedOn": "iceage_armor4"
+  }
+ },
+ "iceage_dodo": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_dodo@ZombieProps)",
+   "ZombieBasedOn": "iceage_dodo"
+  }
+ },
+ "iceage_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_flag@ZombieProps)",
+   "ZombieBasedOn": "iceage_flag"
+  }
+ },
+ "iceage_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "iceage_flag_veteran"
+  }
+ },
+ "iceage_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "iceage_gargantuar"
+  }
+ },
+ "iceage_hunter": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_hunter@ZombieProps)",
+   "ZombieBasedOn": "iceage_hunter"
+  }
+ },
+ "iceage_hunter_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_hunter_veteran@ZombieProps)",
+   "ZombieBasedOn": "iceage_hunter_veteran"
+  }
+ },
+ "iceage_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_imp@ZombieProps)",
+   "ZombieBasedOn": "iceage_imp"
+  }
+ },
+ "iceage_troglobite": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_troglobite@ZombieProps)",
+   "ZombieBasedOn": "iceage_troglobite"
+  }
+ },
+ "iceage_troglobite_1block": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_troglobite_1block@ZombieProps)",
+   "ZombieBasedOn": "iceage_troglobite"
+  }
+ },
+ "iceage_troglobite_2block": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_troglobite_2block@ZombieProps)",
+   "ZombieBasedOn": "iceage_troglobite"
+  }
+ },
+ "iceage_troglobite_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_troglobite_veteran@ZombieProps)",
+   "ZombieBasedOn": "iceage_troglobite_veteran"
+  }
+ },
+ "iceage_weasel": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_weasel@ZombieProps)",
+   "ZombieBasedOn": "iceage_weasel"
+  }
+ },
+ "iceage_weaselhoarder": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_weaselhoarder@ZombieProps)",
+   "ZombieBasedOn": "iceage_weaselhoarder"
+  }
+ },
+ "kongfu": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu@ZombieProps)",
+   "ZombieBasedOn": "kongfu"
+  }
+ },
+ "kongfu_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_armor1@ZombieProps)",
+   "ZombieBasedOn": "kongfu_armor1"
+  }
+ },
+ "kongfu_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_armor2@ZombieProps)",
+   "ZombieBasedOn": "kongfu_armor2"
+  }
+ },
+ "kongfu_armor3": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_armor3@ZombieProps)",
+   "ZombieBasedOn": "kongfu_armor3"
+  }
+ },
+ "kongfu_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_armor4@ZombieProps)",
+   "ZombieBasedOn": "kongfu_armor4"
+  }
+ },
+ "kongfu_bomb": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_bomb@ZombieProps)",
+   "ZombieBasedOn": "kongfu_bomb"
+  }
+ },
+ "kongfu_boss_blade": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_boss_blade@ZombieProps)",
+   "ZombieBasedOn": "kongfu_boss_blade"
+  }
+ },
+ "kongfu_boss_chi": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_boss_chi@ZombieProps)",
+   "ZombieBasedOn": "kongfu_boss_chi"
+  }
+ },
+ "kongfu_boss_explode": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_boss_explode@ZombieProps)",
+   "ZombieBasedOn": "kongfu_boss_explode"
+  }
+ },
+ "kongfu_bronze_chi": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "//": "Use 'kongfu_bronze_chi_without_torch' with 'abbot_fan'!!",
+   "Properties": "RTID(kongfu_bronze_chi@ZombieProps)",
+   "ZombieBasedOn": "kongfu_bronze_chi"
+  }
+ },
+ "kongfu_bronze_chi_without_torch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_bronze_chi_without_torch@ZombieProps)",
+   "ZombieBasedOn": "kongfu_bronze_chi"
+  }
+ },
+ "kongfu_bronze_hook": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_bronze_hook@ZombieProps)",
+   "ZombieBasedOn": "kongfu_bronze_hook"
+  }
+ },
+ "kongfu_bronze_statue": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_bronze_statue@ZombieProps)",
+   "ZombieBasedOn": "kongfu_bronze_statue"
+  }
+ },
+ "kongfu_bronze_strong": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_bronze_strong@ZombieProps)",
+   "ZombieBasedOn": "kongfu_bronze_strong"
+  }
+ },
+ "kongfu_chi": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_chi@ZombieProps)",
+   "ZombieBasedOn": "kongfu_chi"
+  }
+ },
+ "kongfu_drink": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_drink@ZombieProps)",
+   "ZombieBasedOn": "kongfu_drink"
+  }
+ },
+ "kongfu_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_flag@ZombieProps)",
+   "ZombieBasedOn": "kongfu_flag"
+  }
+ },
+ "kongfu_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "kongfu_flag_veteran"
+  }
+ },
+ "kongfu_gong": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_gong@ZombieProps)",
+   "ZombieBasedOn": "kongfu_gong"
+  }
+ },
+ "kongfu_hammer": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_hammer@ZombieProps)",
+   "ZombieBasedOn": "kongfu_hammer"
+  }
+ },
+ "kongfu_rocket_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_rocket_imp@ZombieProps)",
+   "ZombieBasedOn": "kongfu_rocket_imp"
+  }
+ },
+ "kongfu_torch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(kongfu_torch@ZombieProps)",
+   "ZombieBasedOn": "kongfu_torch"
+  }
+ },
+ "lawn": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn"
+  }
+ },
+ "lawn_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn_armor1"
+  }
+ },
+ "lawn_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn_armor2"
+  }
+ },
+ "lawn_armor3": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn_armor3"
+  }
+ },
+ "lawn_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn_armor4"
+  }
+ },
+ "lawn_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn_flag"
+  }
+ },
+ "lawn_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn_flag_veteran"
+  }
+ },
+ "lawn_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn_gargantuar"
+  }
+ },
+ "lawn_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "ZombieBasedOn": "lawn_imp"
+  }
+ },
+ "leprachaun_dodo": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_dodo@ZombieProps)",
+   "ZombieBasedOn": "stpatrick_dodo"
+  }
+ },
+ "leprachaun_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "stpatrick_imp"
+  }
+ },
+ "lostcity": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity@ZombieProps)",
+   "ZombieBasedOn": "lostcity"
+  }
+ },
+ "lostcity_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_armor1@ZombieProps)",
+   "ZombieBasedOn": "lostcity_armor1"
+  }
+ },
+ "lostcity_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_armor2@ZombieProps)",
+   "ZombieBasedOn": "lostcity_armor2"
+  }
+ },
+ "lostcity_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_armor4@ZombieProps)",
+   "ZombieBasedOn": "lostcity_armor4"
+  }
+ },
+ "lostcity_bug": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_bug@ZombieProps)",
+   "ZombieBasedOn": "lostcity_bug"
+  }
+ },
+ "lostcity_bug_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_bug_armor1@ZombieProps)",
+   "ZombieBasedOn": "lostcity_bug_armor1"
+  }
+ },
+ "lostcity_bug_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_bug_armor2@ZombieProps)",
+   "ZombieBasedOn": "lostcity_bug_armor2"
+  }
+ },
+ "lostcity_bug_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_bug_armor4@ZombieProps)",
+   "ZombieBasedOn": "lostcity_bug_armor4"
+  }
+ },
+ "lostcity_crystalskull": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_crystalskull@ZombieProps)",
+   "ZombieBasedOn": "lostcity_crystalskull"
+  }
+ },
+ "lostcity_excavator": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_excavator@ZombieProps)",
+   "ZombieBasedOn": "lostcity_excavator"
+  }
+ },
+ "lostcity_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_flag@ZombieProps)",
+   "ZombieBasedOn": "lostcity_flag"
+  }
+ },
+ "lostcity_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "lostcity_flag_veteran"
+  }
+ },
+ "lostcity_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "lostcity_gargantuar"
+  }
+ },
+ "lostcity_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_imp@ZombieProps)",
+   "ZombieBasedOn": "lostcity_imp"
+  }
+ },
+ "lostcity_impporter": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_impporter@ZombieProps)",
+   "ZombieBasedOn": "lostcity_impporter"
+  }
+ },
+ "lostcity_jane": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_jane@ZombieProps)",
+   "ZombieBasedOn": "lostcity_jane"
+  }
+ },
+ "lostcity_lostpilot": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_lostpilot@ZombieProps)",
+   "ZombieBasedOn": "lostcity_lostpilot"
+  }
+ },
+ "lostcity_lostpilot_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_lostpilot_veteran@ZombieProps)",
+   "ZombieBasedOn": "lostcity_lostpilot_veteran"
+  }
+ },
+ "lostcity_lostpilot_veteran_for_zomboss": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_lostpilot_veteran_for_zomboss@ZombieProps)",
+   "ZombieBasedOn": "lostcity_lostpilot_veteran"
+  }
+ },
+ "lostcity_lostpilot_veteran_with_zombies": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_lostpilot_veteran_with_zombies@ZombieProps)",
+   "ZombieBasedOn": "lostcity_lostpilot_veteran"
+  }
+ },
+ "lostcity_relichunter": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lostcity_relichunter@ZombieProps)",
+   "ZombieBasedOn": "lostcity_relichunter"
+  }
+ },
+ "lunar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "lunar"
+  }
+ },
+ "lunar_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lunar_armor1@ZombieProps)",
+   "ZombieBasedOn": "lunar_armor1"
+  }
+ },
+ "lunar_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lunar_armor2@ZombieProps)",
+   "ZombieBasedOn": "lunar_armor2"
+  }
+ },
+ "lunar_camel_manyhump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lunar_camel_manyhump@ZombieProps)",
+   "ZombieBasedOn": "lunar_camel_onehump"
+  }
+ },
+ "lunar_camel_onehump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lunar_camel_onehump@ZombieProps)",
+   "ZombieBasedOn": "lunar_camel_onehump"
+  }
+ },
+ "lunar_camel_segment": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lunar_camel_segment@ZombieProps)",
+   "ZombieBasedOn": "lunar_camel_segment"
+  }
+ },
+ "lunar_camel_threehump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lunar_camel_threehump@ZombieProps)",
+   "ZombieBasedOn": "lunar_camel_onehump"
+  }
+ },
+ "lunar_camel_twohump": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(lunar_camel_twohump@ZombieProps)",
+   "ZombieBasedOn": "lunar_camel_onehump"
+  }
+ },
+ "lunar_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_flag@ZombieProps)",
+   "ZombieBasedOn": "lunar_flag"
+  }
+ },
+ "lunar_superfanimp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(modern_superfanimp@ZombieProps)",
+   "ZombieBasedOn": "lunar_superfanimp"
+  }
+ },
+ "mech_cone": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mech_cone@ZombieProps)",
+   "ZombieBasedOn": "mech_cone"
+  }
+ },
+ "modern_allstar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(modern_allstar@ZombieProps)",
+   "ZombieBasedOn": "modern_allstar"
+  }
+ },
+ "modern_balloon": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(modern_balloon@ZombieProps)",
+   "ZombieBasedOn": "modern_balloon"
+  }
+ },
+ "modern_moonflower_shield": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(modern_moonflower_shield@ZombieProps)",
+   "ZombieBasedOn": "modern_moonflower_shield"
+  }
+ },
+ "modern_newspaper": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(newspaper@ZombieProps)",
+   "ZombieBasedOn": "modern_newspaper"
+  }
+ },
+ "modern_superfanimp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(modern_superfanimp@ZombieProps)",
+   "ZombieBasedOn": "modern_superfanimp"
+  }
+ },
+ "monk": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk@ZombieProps)",
+   "ZombieBasedOn": "monk"
+  }
+ },
+ "monk_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_armor1@ZombieProps)",
+   "ZombieBasedOn": "monk_armor1"
+  }
+ },
+ "monk_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_armor2@ZombieProps)",
+   "ZombieBasedOn": "monk_armor2"
+  }
+ },
+ "monk_armor3": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_armor3@ZombieProps)",
+   "ZombieBasedOn": "monk_armor3"
+  }
+ },
+ "monk_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_armor4@ZombieProps)",
+   "ZombieBasedOn": "monk_armor4"
+  }
+ },
+ "monk_blade": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_blade@ZombieProps)",
+   "ZombieBasedOn": "monk_blade"
+  }
+ },
+ "monk_drink": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_drink@ZombieProps)",
+   "ZombieBasedOn": "monk_drink"
+  }
+ },
+ "monk_drink_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_drink_veteran@ZombieProps)",
+   "ZombieBasedOn": "monk_drink_veteran"
+  }
+ },
+ "monk_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_flag@ZombieProps)",
+   "ZombieBasedOn": "monk_flag"
+  }
+ },
+ "monk_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "monk_flag_veteran"
+  }
+ },
+ "monk_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_imp@ZombieProps)",
+   "ZombieBasedOn": "monk_imp"
+  }
+ },
+ "monk_nunchaku": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_nunchaku@ZombieProps)",
+   "ZombieBasedOn": "monk_nunchaku"
+  }
+ },
+ "monk_torch": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(monk_torch@ZombieProps)",
+   "ZombieBasedOn": "monk_torch"
+  }
+ },
+ "mummy": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy@ZombieProps)",
+   "ZombieBasedOn": "mummy"
+  }
+ },
+ "mummy_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy_armor1@ZombieProps)",
+   "ZombieBasedOn": "mummy_armor1"
+  }
+ },
+ "mummy_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy_armor2@ZombieProps)",
+   "ZombieBasedOn": "mummy_armor2"
+  }
+ },
+ "mummy_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy_armor4@ZombieProps)",
+   "ZombieBasedOn": "mummy_armor4"
+  }
+ },
+ "mummy_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy_flag@ZombieProps)",
+   "ZombieBasedOn": "mummy_flag"
+  }
+ },
+ "mummy_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(mummy_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "mummy_flag_veteran"
+  }
+ },
+ "newspaper_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(newspaper_veteran@ZombieProps)",
+   "ZombieBasedOn": "newspaper_veteran"
+  }
+ },
+ "pelican": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pelican@ZombieProps)",
+   "ZombieBasedOn": "pelican"
+  }
+ },
+ "pharaoh": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pharaoh@ZombieProps)",
+   "ZombieBasedOn": "pharaoh"
+  }
+ },
+ "pharaoh_inner": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pharaoh_inner@ZombieProps)",
+   "ZombieBasedOn": "pharaoh_inner"
+  }
+ },
+ "pharaoh_weak": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pharaoh_weak@ZombieProps)",
+   "ZombieBasedOn": "pharaoh_weak"
+  }
+ },
+ "piano": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(piano@ZombieProps)",
+   "ZombieBasedOn": "piano"
+  }
+ },
+ "pirate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate@ZombieProps)",
+   "ZombieBasedOn": "pirate"
+  }
+ },
+ "pirate_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_armor1@ZombieProps)",
+   "ZombieBasedOn": "pirate_armor1"
+  }
+ },
+ "pirate_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_armor2@ZombieProps)",
+   "ZombieBasedOn": "pirate_armor2"
+  }
+ },
+ "pirate_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_armor4@ZombieProps)",
+   "ZombieBasedOn": "pirate_armor4"
+  }
+ },
+ "pirate_barrel": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_barrel@ZombieProps)",
+   "ZombieBasedOn": "pirate_barrel"
+  }
+ },
+ "pirate_captain": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_captain@ZombieProps)",
+   "ZombieBasedOn": "pirate_captain"
+  }
+ },
+ "pirate_captain_parrot": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_captain_parrot@ZombieProps)",
+   "ZombieBasedOn": "pirate_captain_parrot"
+  }
+ },
+ "pirate_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_flag@ZombieProps)",
+   "ZombieBasedOn": "pirate_flag"
+  }
+ },
+ "pirate_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "pirate_flag_veteran"
+  }
+ },
+ "pirate_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "pirate_gargantuar"
+  }
+ },
+ "pirate_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(pirate_imp@ZombieProps)",
+   "ZombieBasedOn": "pirate_imp"
+  }
+ },
+ "poncho": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho@ZombieProps)",
+   "ZombieBasedOn": "poncho"
+  }
+ },
+ "poncho_no_plate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho_no_plate@ZombieProps)",
+   "ZombieBasedOn": "poncho_no_plate"
+  }
+ },
+ "poncho_plate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(poncho_plate@ZombieProps)",
+   "ZombieBasedOn": "poncho_plate"
+  }
+ },
+ "prospector": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(prospector@ZombieProps)",
+   "ZombieBasedOn": "prospector"
+  }
+ },
+ "ra": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(ra@ZombieProps)",
+   "ZombieBasedOn": "ra"
+  }
+ },
+ "seagull": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(seagull@ZombieProps)",
+   "ZombieBasedOn": "seagull"
+  }
+ },
+ "sky": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky@ZombieProps)",
+   "ZombieBasedOn": "sky"
+  }
+ },
+ "sky_airraid_arbiterx": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_airraid_arbiterx@ZombieProps)",
+   "ZombieBasedOn": "sky_airraid_arbiterx"
+  }
+ },
+ "sky_airraid_twin": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_airraid_twin@ZombieProps)",
+   "ZombieBasedOn": "sky_airraid_twin"
+  }
+ },
+ "sky_arbiterx": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_arbiterx@ZombieProps)",
+   "ZombieBasedOn": "sky_arbiterx"
+  }
+ },
+ "sky_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_armor1@ZombieProps)",
+   "ZombieBasedOn": "sky_armor1"
+  }
+ },
+ "sky_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_armor2@ZombieProps)",
+   "ZombieBasedOn": "sky_armor2"
+  }
+ },
+ "sky_battery": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_battery@ZombieProps)",
+   "ZombieBasedOn": "sky_battery"
+  }
+ },
+ "sky_battery_lower": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_battery@ZombieProps)",
+   "ZombieBasedOn": "sky_battery_lower"
+  }
+ },
+ "sky_battleplane": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_battleplane@ZombieProps)",
+   "ZombieBasedOn": "sky_battleplane"
+  }
+ },
+ "sky_drone": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_drone@ZombieProps)",
+   "ZombieBasedOn": "sky_drone"
+  }
+ },
+ "sky_dronemaker": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_dronemaker@ZombieProps)",
+   "ZombieBasedOn": "sky_dronemaker"
+  }
+ },
+ "sky_dronemaker_alt": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_dronemaker_alt@ZombieProps)",
+   "ZombieBasedOn": "sky_dronemaker"
+  }
+ },
+ "sky_dropship": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_dropship@ZombieProps)",
+   "ZombieBasedOn": "sky_dropship"
+  }
+ },
+ "sky_electric": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_electric@ZombieProps)",
+   "ZombieBasedOn": "sky_electric"
+  }
+ },
+ "sky_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_flag@ZombieProps)",
+   "ZombieBasedOn": "sky_flag"
+  }
+ },
+ "sky_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "sky_gargantuar"
+  }
+ },
+ "sky_gargantuar_armor2_thrower": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_gargantuar_armor2_thrower@ZombieProps)",
+   "ZombieBasedOn": "sky_gargantuar_armor2_thrower"
+  }
+ },
+ "sky_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_imp@ZombieProps)",
+   "ZombieBasedOn": "sky_imp"
+  }
+ },
+ "sky_twin": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_twin@ZombieProps)",
+   "ZombieBasedOn": "sky_twin"
+  }
+ },
+ "sky_twin_lower": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_twin_lower@ZombieProps)",
+   "ZombieBasedOn": "sky_twin_lower"
+  }
+ },
+ "sky_twin_upper": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_twin_upper@ZombieProps)",
+   "ZombieBasedOn": "sky_twin_upper"
+  }
+ },
+ "sky_unarmed": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky@ZombieProps)",
+   "ZombieBasedOn": "sky_unarmed"
+  }
+ },
+ "sky_unarmed_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_armor1@ZombieProps)",
+   "ZombieBasedOn": "sky_unarmed"
+  }
+ },
+ "sky_unarmed_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_armor2@ZombieProps)",
+   "ZombieBasedOn": "sky_unarmed"
+  }
+ },
+ "sky_unarmed_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sky_flag@ZombieProps)",
+   "ZombieBasedOn": "sky_unarmed_flag"
+  }
+ },
+ "sportzball": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "sportzball"
+  }
+ },
+ "sportzball_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sportzball_armor1@ZombieProps)",
+   "ZombieBasedOn": "sportzball_armor1"
+  }
+ },
+ "sportzball_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sportzball_armor2@ZombieProps)",
+   "ZombieBasedOn": "sportzball_armor2"
+  }
+ },
+ "sportzball_balloon": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(modern_balloon@ZombieProps)",
+   "ZombieBasedOn": "sportzball_balloon"
+  }
+ },
+ "sportzball_buckethead": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sportzball_armor2@ZombieProps)",
+   "ZombieBasedOn": "sportzball_armor2"
+  }
+ },
+ "sportzball_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_flag@ZombieProps)",
+   "ZombieBasedOn": "sportzball_flag"
+  }
+ },
+ "sportzball_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sportzball_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "sportzball_gargantuar"
+  }
+ },
+ "sportzball_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(sportzball_imp@ZombieProps)",
+   "ZombieBasedOn": "sportzball_imp"
+  }
+ },
+ "sportzball_wizard": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(dark_wizard@ZombieProps)",
+   "ZombieBasedOn": "sportzball_wizard"
+  }
+ },
+ "spring_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "easter_imp"
+  }
+ },
+ "stpatrick": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "stpatrick"
+  }
+ },
+ "stpatrick_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(stpatrick_armor1@ZombieProps)",
+   "ZombieBasedOn": "stpatrick_armor1"
+  }
+ },
+ "stpatrick_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(stpatrick_armor2@ZombieProps)",
+   "ZombieBasedOn": "stpatrick_armor2"
+  }
+ },
+ "stpatrick_dodo": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(iceage_dodo@ZombieProps)",
+   "ZombieBasedOn": "stpatrick_dodo"
+  }
+ },
+ "stpatrick_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_flag@ZombieProps)",
+   "ZombieBasedOn": "stpatrick_flag"
+  }
+ },
+ "stpatrick_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "stpatrick_imp"
+  }
+ },
+ "summer_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(summer_armor1@ZombieProps)",
+   "ZombieBasedOn": "summer_armor1"
+  }
+ },
+ "summer_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(summer_armor2@ZombieProps)",
+   "ZombieBasedOn": "summer_armor2"
+  }
+ },
+ "summer_basic": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(summer@ZombieProps)",
+   "ZombieBasedOn": "summer_basic"
+  }
+ },
+ "summer_bug": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(summer_bug@ZombieProps)",
+   "ZombieBasedOn": "summer_bug"
+  }
+ },
+ "summer_bug_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(summer_bug_armor1@ZombieProps)",
+   "ZombieBasedOn": "summer_bug_armor1"
+  }
+ },
+ "summer_bug_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(summer_bug_armor2@ZombieProps)",
+   "ZombieBasedOn": "summer_bug_armor2"
+  }
+ },
+ "summer_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(summer_flag@ZombieProps)",
+   "ZombieBasedOn": "summer_flag"
+  }
+ },
+ "summer_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(summer_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "summer_gargantuar"
+  }
+ },
+ "summer_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "summer_imp"
+  }
+ },
+ "supernova_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(supernova_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "supernova_gargantuar"
+  }
+ },
+ "swashbuckler": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(swashbuckler@ZombieProps)",
+   "ZombieBasedOn": "swashbuckler"
+  }
+ },
+ "tomb_raiser": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tomb_raiser@ZombieProps)",
+   "ZombieBasedOn": "tomb_raiser"
+  }
+ },
+ "treasureyeti": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(treasureyeti@ZombieProps)",
+   "ZombieBasedOn": "treasureyeti"
+  }
+ },
+ "turkeypult_big_turkey": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(turkeypult_big_turkey@ZombieProps)",
+   "ZombieBasedOn": "turkeypult_big_turkey"
+  }
+ },
+ "turkeypult_big_turkey_mint": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(turkeypult_big_turkey_mint@ZombieProps)",
+   "ZombieBasedOn": "turkeypult_big_turkey"
+  }
+ },
+ "turkeypult_turkey": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(turkeypult_turkey@ZombieProps)",
+   "ZombieBasedOn": "turkeypult_turkey"
+  }
+ },
+ "turkeypult_turkey_mint": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(turkeypult_turkey_mint@ZombieProps)",
+   "ZombieBasedOn": "turkeypult_turkey"
+  }
+ },
+ "tutorial": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "//ZombieRedirection": [
+    {
+     "Type": "tutorial_armor1",
+     "Weight": 1
+    },
+    {
+     "Type": "tutorial_armor2",
+     "Weight": 1
+    },
+    {
+     "Type": "tutorial_armor4",
+     "Weight": 1
+    }
+   ],
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "tutorial"
+  }
+ },
+ "tutorial_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor1@ZombieProps)",
+   "ZombieBasedOn": "tutorial_armor1"
+  }
+ },
+ "tutorial_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor2@ZombieProps)",
+   "ZombieBasedOn": "tutorial_armor2"
+  }
+ },
+ "tutorial_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor4@ZombieProps)",
+   "ZombieBasedOn": "tutorial_armor4"
+  }
+ },
+ "tutorial_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_flag@ZombieProps)",
+   "ZombieBasedOn": "tutorial_flag"
+  }
+ },
+ "tutorial_flag_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_flag_veteran@ZombieProps)",
+   "ZombieBasedOn": "tutorial_flag_veteran"
+  }
+ },
+ "tutorial_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "tutorial_gargantuar"
+  }
+ },
+ "tutorial_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "tutorial_imp"
+  }
+ },
+ "valentines": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial@ZombieProps)",
+   "ZombieBasedOn": "valentines"
+  }
+ },
+ "valentines_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor1@ZombieProps)",
+   "ZombieBasedOn": "valentines_armor1"
+  }
+ },
+ "valentines_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_armor2@ZombieProps)",
+   "ZombieBasedOn": "valentines_armor2"
+  }
+ },
+ "valentines_armor4": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(easter_armor4@ZombieProps)",
+   "ZombieBasedOn": "valentines"
+  }
+ },
+ "valentines_flag": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_flag@ZombieProps)",
+   "ZombieBasedOn": "valentines_flag"
+  }
+ },
+ "valentines_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(valentines_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "valentines_gargantuar"
+  }
+ },
+ "valentines_imp": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(tutorial_imp@ZombieProps)",
+   "ZombieBasedOn": "valentines_imp"
+  }
+ },
+ "vase_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(vase_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "vase_gargantuar"
+  }
+ },
+ "west_bull": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(west_bull@ZombieProps)",
+   "ZombieBasedOn": "west_bull"
+  }
+ },
+ "west_bull_veteran": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(west_bull_veteran@ZombieProps)",
+   "ZombieBasedOn": "west_bull_veteran"
+  }
+ },
+ "west_bull_veteran_plantern_5": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(west_bull_veteran_plantern_5@ZombieProps)",
+   "ZombieBasedOn": "west_bull_veteran"
+  }
+ },
+ "west_bullrider": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(west_bullrider@ZombieProps)",
+   "ZombieBasedOn": "west_bullrider"
+  }
+ },
+ "zomboni": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zomboni@ZombieProps)",
+   "ZombieBasedOn": "zomboni"
+  }
+ },
+ "zombossmech_beach": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_beach@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_beach"
+  }
+ },
+ "zombossmech_beach2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_beach2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_beach2"
+  }
+ },
+ "zombossmech_cowboy": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_cowboy@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_cowboy"
+  }
+ },
+ "zombossmech_cowboy2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_cowboy2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_cowboy2"
+  }
+ },
+ "zombossmech_dark": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_dark@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_dark"
+  }
+ },
+ "zombossmech_dark2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_dark2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_dark2"
+  }
+ },
+ "zombossmech_dino": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_dino@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_dino"
+  }
+ },
+ "zombossmech_dino2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_dino2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_dino2"
+  }
+ },
+ "zombossmech_egypt": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_egypt@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_egypt"
+  }
+ },
+ "zombossmech_egypt2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_egypt2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_egypt2"
+  }
+ },
+ "zombossmech_eighties": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_eighties@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_eighties"
+  }
+ },
+ "zombossmech_eighties2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_eighties2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_eighties2"
+  }
+ },
+ "zombossmech_future": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_future@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_future"
+  }
+ },
+ "zombossmech_future2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_future2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_future2"
+  }
+ },
+ "zombossmech_iceage": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_iceage@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_iceage"
+  }
+ },
+ "zombossmech_iceage2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_iceage2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_iceage2"
+  }
+ },
+ "zombossmech_lostcity": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_lostcity@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_lostcity"
+  }
+ },
+ "zombossmech_lostcity2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_lostcity2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_lostcity2"
+  }
+ },
+ "zombossmech_modern1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern1@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_modern1"
+  }
+ },
+ "zombossmech_modern_beach": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_beach@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_beach"
+  }
+ },
+ "zombossmech_modern_cowboy": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_cowboy@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_cowboy"
+  }
+ },
+ "zombossmech_modern_dark": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_dark@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_dark"
+  }
+ },
+ "zombossmech_modern_dino": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_dino@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_dino"
+  }
+ },
+ "zombossmech_modern_egypt": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_egypt@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_egypt"
+  }
+ },
+ "zombossmech_modern_eighties": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_eighties@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_eighties"
+  }
+ },
+ "zombossmech_modern_future": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_future@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_future"
+  }
+ },
+ "zombossmech_modern_iceage": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_iceage@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_iceage"
+  }
+ },
+ "zombossmech_modern_lostcity": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_lostcity@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_lostcity"
+  }
+ },
+ "zombossmech_modern_pirate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_modern_pirate@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_pirate"
+  }
+ },
+ "zombossmech_pirate": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_pirate@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_pirate"
+  }
+ },
+ "zombossmech_pirate2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_pirate2@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_pirate2"
+  }
+ },
+ "zombossmech_sky": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zombossmech_sky@ZombieProps)",
+   "ZombieBasedOn": "zombossmech_sky"
+  }
+ },
+ "zoybean": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zoybean@ZombieProps)",
+   "ZombieBasedOn": "zoybean"
+  }
+ },
+ "zoybean_armor1": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zoybean_armor1@ZombieProps)",
+   "ZombieBasedOn": "zoybean_armor1"
+  }
+ },
+ "zoybean_armor2": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zoybean_armor2@ZombieProps)",
+   "ZombieBasedOn": "zoybean_armor2"
+  }
+ },
+ "zoybean_gargantuar": {
+  "objclass": "ZombieType",
+  "objdata": {
+   "Properties": "RTID(zoybean_gargantuar@ZombieProps)",
+   "ZombieBasedOn": "zoybean_gargantuar"
+  }
+ }
+}

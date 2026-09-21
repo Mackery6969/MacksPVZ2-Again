@@ -1,0 +1,19 @@
+{
+ "id": "zomboss_missile_dark",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DragonImpType": "dark_imp_dragon",
+  "FlameDamage": 3600,
+  "FlameDuration": 4,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 30,
+   "w": 30
+  },
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "SupressArmorProtection": true,
+  "WarmsOnImpact": true,
+  "Props": "RTID(zomboss_missile_dark@ProjectileProps)"
+ }
+}

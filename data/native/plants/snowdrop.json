@@ -1,0 +1,27 @@
+{
+ "id": "snowdrop",
+ "family": "Cold",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 2500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "ButterType": "snowdrop_freeze",
+  "CabbageType": "snowdrop",
+  "CabbageTypePlantfood": "snowdrop_freeze",
+  "ChanceToButter": 0.3,
+  "DetectsTNTSpark": true,
+  "ImmuneToIceblock": true,
+  "MintChanceToButterFactor": 3,
+  "ThrowInterval": 2.025,
+  "ThrowIntervalAdditional": 0.225
+ }
+}

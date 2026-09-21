@@ -1,0 +1,7 @@
+{
+ "id": "goo",
+ "category": "liquid",
+ "extra": {
+  "TileLiquidBasedOn": "goo"
+ }
+}

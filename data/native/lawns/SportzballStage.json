@@ -1,0 +1,39 @@
+{
+ "id": "SportzballStage",
+ "music": "Modern",
+ "mower": "mower_modern",
+ "railcart": "railcart_tutorial",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "sportzball_armor1"
+  ],
+  "armor2": [
+   "sportzball_armor2"
+  ],
+  "armor3": [
+   "sportzball_armor2"
+  ],
+  "armor4": [
+   "sportzball_armor2"
+  ],
+  "basic": [
+   "sportzball"
+  ],
+  "flag": [
+   "sportzball_flag"
+  ],
+  "gargantuar": [
+   "sportzball_gargantuar"
+  ],
+  "imp": [
+   "sportzball_imp"
+  ],
+  "rally": [
+   "sportzball_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "id": "armamint",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 0,
+  "toughness": 300,
+  "cooldown": 85,
+  "cooldown_from": 0,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "lobber"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "ImmuneToBoomBox": true,
+  "ImmuneToIceblock": true,
+  "Lifespan": 12,
+  "ProjectileCount": 5,
+  "ProjectileInterval": 0.25,
+  "ProjectileType": "armamint"
+ }
+}

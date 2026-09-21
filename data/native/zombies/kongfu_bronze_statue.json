@@ -1,0 +1,43 @@
+{
+ "id": "kongfu_bronze_statue",
+ "extends": "gargantuar",
+ "stats": {
+  "toughness": 9000,
+  "speed": 0,
+  "eat_dps": 100,
+  "wave_cost": 2500,
+  "weight": 2750
+ },
+ "sort": "Gargantuar",
+ "tags": {
+  "add": [
+   "flickable"
+  ],
+  "remove": [
+   "hypnotizable",
+   "toss_detectable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "GargantuarAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "GargantuarHitRect"
+  }
+ ],
+ "extra": {
+  "LifeSpan": {
+   "Max": 35,
+   "Min": 25
+  },
+  "WalkSPSVarience": 0,
+  "ZombiesToSpawn": [
+   "kongfu_bronze_strong",
+   "kongfu_bronze_hook",
+   "kongfu_bronze_chi"
+  ]
+ }
+}

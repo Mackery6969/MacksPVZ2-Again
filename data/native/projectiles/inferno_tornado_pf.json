@@ -1,0 +1,23 @@
+{
+ "id": "inferno_tornado_pf",
+ "extends": "inferno_tornado",
+ "stats": {
+  "damage": 80
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamageInterval": 0.13,
+  "DamageTimes": 32,
+  "DamageToCarriedZombies": 80,
+  "DamageType": "fire",
+  "IgnoredBy3SectionStaff": true,
+  "MaxCarriedZombies": 6,
+  "MaxCarryingZombies": 1,
+  "MaxLanesToCross": 1,
+  "Size": {
+   "h": 170,
+   "w": 4
+  },
+  "Props": "RTID(inferno_tornado_pf@ProjectileProps)"
+ }
+}

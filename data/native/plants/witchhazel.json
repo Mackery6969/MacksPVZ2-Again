@@ -1,0 +1,34 @@
+{
+ "id": "witchhazel",
+ "family": "Magic",
+ "stats": {
+  "sun_cost": 200,
+  "toughness": 300,
+  "cooldown": 30,
+  "cooldown_from": 0.5,
+  "beghouled_cost": 2000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackInterval": {
+   "Max": 1.5,
+   "Min": 0.5
+  },
+  "FailedTransDamage": 1200,
+  "FailedTransDamagePlantfood": 2400,
+  "MaxTransTime": 2,
+  "MintDamageFactor": 3,
+  "RechargeTime": {
+   "Max": 18.5,
+   "Min": 17.5
+  },
+  "ShroomType": "puffshroom",
+  "ShroomTypeMint": "fumeshroom",
+  "ShroomTypePlantfood": "toadstool",
+  "ShroomTypePlantfoodMint": "hypnoshroom"
+ }
+}

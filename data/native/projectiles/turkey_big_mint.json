@@ -1,0 +1,13 @@
+{
+ "id": "turkey_big_mint",
+ "extends": "turkey_big",
+ "stats": {
+  "damage": 0
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "ZombieTypeToSpawn": "turkeypult_big_turkey_mint",
+  "Props": "RTID(turkey_big_mint@ProjectileProps)"
+ }
+}

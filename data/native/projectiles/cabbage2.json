@@ -1,0 +1,13 @@
+{
+ "id": "cabbage2",
+ "stats": {
+  "damage": 120
+ },
+ "extra": {
+  "Size": {
+   "h": 28,
+   "w": 28
+  },
+  "Props": "RTID(cabbage2@ProjectileProps)"
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "id": "flame_spreader_trap",
+ "category": "tile",
+ "stats": {
+  "recover_delay": 7.5
+ },
+ "extra": {
+  "ArmorProtection": false,
+  "FlameDPS": 1800,
+  "FlameDuration": 3,
+  "FlyingIncluded": false,
+  "Rect": "RTID(TrapTileRect@RectangleProps)"
+ }
+}

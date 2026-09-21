@@ -1,0 +1,29 @@
+{
+ "id": "meteor",
+ "stats": {
+  "damage": 100
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamageType": "fire",
+  "ShakesScreenOnImpact": true,
+  "Size": {
+   "h": 7,
+   "w": 7
+  },
+  "SplashDamage": [
+   {
+    "Damage": 100,
+    "Range": {
+     "h": 1,
+     "w": 3
+    }
+   }
+  ],
+  "SuppressArmorImpactSound": true,
+  "SuppressZombieImpactSound": true,
+  "WarmsOnImpact": true,
+  "MintBoostedType": "meteor_mint",
+  "Props": "RTID(meteor@ProjectileProps)"
+ }
+}

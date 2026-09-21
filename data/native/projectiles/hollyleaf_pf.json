@@ -1,0 +1,30 @@
+{
+ "id": "hollyleaf_pf",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "KnockbackDistance": 1,
+  "PlantTypeToSpawn": "hollybarrierleafplantfood",
+  "PlantTypesToReplace": [
+   "hollybarrierleafplantfood",
+   "hollybarrierleaf"
+  ],
+  "Size": {
+   "h": 50,
+   "w": 50
+  },
+  "SplashDamage": [
+   {
+    "Damage": 200,
+    "KnockbackDistance": 1,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(hollyleaf_pf@ProjectileProps)"
+ }
+}

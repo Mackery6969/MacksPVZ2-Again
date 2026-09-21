@@ -1,0 +1,25 @@
+{
+ "id": "loquat",
+ "family": "Slow",
+ "stats": {
+  "sun_cost": 100,
+  "toughness": 300,
+  "cooldown": 20,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "Damage": 0,
+  "ImmuneToBoomBox": true,
+  "ImmuneToIceblock": true,
+  "MintDurationFactor": 2,
+  "TornadoDuration": 3.5,
+  "ZombieDraggingFactor": 4
+ }
+}

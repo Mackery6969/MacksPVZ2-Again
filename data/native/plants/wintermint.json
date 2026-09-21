@@ -1,0 +1,23 @@
+{
+ "id": "wintermint",
+ "family": "Cold",
+ "stats": {
+  "sun_cost": 0,
+  "toughness": 300,
+  "cooldown": 85,
+  "cooldown_from": 0,
+  "beghouled_cost": 1000
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 1,
+  "plantfood": false
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "ImmuneToBoomBox": true,
+  "ImmuneToIceblock": true,
+  "Lifespan": 10,
+  "ZombieChillDuration": 10
+ }
+}

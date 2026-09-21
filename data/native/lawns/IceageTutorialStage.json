@@ -1,0 +1,39 @@
+{
+ "id": "IceageTutorialStage",
+ "music": "Iceage",
+ "mower": "mower_iceage",
+ "railcart": "railcart_tutorial",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "iceage_armor1"
+  ],
+  "armor2": [
+   "iceage_armor2"
+  ],
+  "armor3": [
+   "iceage_armor3"
+  ],
+  "armor4": [
+   "iceage_armor4"
+  ],
+  "basic": [
+   "iceage"
+  ],
+  "flag": [
+   "iceage_flag"
+  ],
+  "gargantuar": [
+   "iceage_gargantuar"
+  ],
+  "imp": [
+   "iceage_imp"
+  ],
+  "rally": [
+   "iceage_flag_veteran"
+  ]
+ },
+ "gravestones": [
+  "gravestone_iceage"
+ ]
+}

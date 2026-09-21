@@ -1,0 +1,12 @@
+{
+ "id": "trap_boulder",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 140,
+   "w": 140
+  },
+  "Props": "RTID(trap_boulder@ProjectileProps)"
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "id": "rail_dark",
+ "category": "tile",
+ "extends": "rail",
+ "extra": {
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Dark"
+ }
+}

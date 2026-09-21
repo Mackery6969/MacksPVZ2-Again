@@ -1,0 +1,37 @@
+{
+ "id": "abbot_chi",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1100,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 700,
+  "weight": 2500
+ },
+ "tags": {
+  "remove": [
+   "divertable",
+   "grabbable",
+   "plantfood_carrier"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "ChiType": "abbot_chi",
+  "PlantablePlants": [
+   "solarsage",
+   "cherry_bomb"
+  ],
+  "TimeBeforeFirst": 6,
+  "TimeBetween": 12
+ }
+}

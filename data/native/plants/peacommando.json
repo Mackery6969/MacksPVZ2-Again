@@ -1,0 +1,42 @@
+{
+ "id": "peacommando",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 450,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 5000
+ },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "pea_commando"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackInterval": {
+   "Max": 7,
+   "Min": 5
+  },
+  "FlyTime": {
+   "Max": 4,
+   "Min": 3
+  },
+  "FlyToTargetTime": {
+   "Max": 2,
+   "Min": 1
+  },
+  "HeadCountFactor": 1,
+  "HeadCountFactorPlantfood": 2,
+  "MintPlantfoodDamageFactor": 5,
+  "PlantfoodRayDamage": 600,
+  "ShootCount": 2,
+  "ShootCountPlantfood": 2
+ }
+}

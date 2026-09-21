@@ -1,0 +1,25 @@
+{
+ "id": "modern_allstar",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1100,
+  "speed": 0.16,
+  "eat_dps": 100,
+  "wave_cost": 1500,
+  "weight": 3500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "BullyAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "BullyHitRect"
+  }
+ ],
+ "extra": {
+  "RunningSpeedScale": 9,
+  "SmashDamage": 1500
+ }
+}

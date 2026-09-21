@@ -1,0 +1,470 @@
+{
+ "beach_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "beach_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "beach_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "cowboy_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "cowboy_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "cowboy_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "dark_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "dark_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "dark_armor3": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 3,
+   "Toughness": 1600,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "dark_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "dino_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "dino_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "dino_armor3": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 3,
+   "Toughness": 1800,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "dino_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "egypt_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "egypt_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "egypt_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "eighties_8bit_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "eighties_8bit_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "eighties_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "eighties_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "eighties_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "future_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "future_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "future_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "halloween_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "halloween_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "halloween_armor3": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 3,
+   "Toughness": 1600,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "iceage_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "iceage_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "iceage_armor3": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 3,
+   "Toughness": 1600,
+   "isIce": true,
+   "isMetal": false
+  }
+ },
+ "iceage_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "kongfu_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "kongfu_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "kongfu_armor3": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 3,
+   "Toughness": 1600,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "kongfu_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "lostcity_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "lostcity_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "lostcity_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "modern_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "modern_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "modern_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "pirate_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "pirate_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "pirate_armor4": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 4,
+   "Toughness": 2200,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "sky_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "sky_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "sky_armor3": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 3,
+   "Toughness": 1600,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "summer_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "summer_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ },
+ "zoybean_armor1": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 1,
+   "Toughness": 370,
+   "isIce": false,
+   "isMetal": false
+  }
+ },
+ "zoybean_armor2": {
+  "objclass": "ArmorProperties",
+  "objdata": {
+   "BowlingLevel": 2,
+   "Toughness": 1100,
+   "isIce": false,
+   "isMetal": true
+  }
+ }
+}

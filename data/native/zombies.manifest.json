@@ -1,0 +1,1894 @@
+{
+ "abbot": {
+  "file": "zombies/abbot.json",
+  "extends": "normal"
+ },
+ "abbot_3section_staff": {
+  "file": "zombies/abbot_3section_staff.json",
+  "extends": "normal"
+ },
+ "abbot_armor1": {
+  "file": "zombies/abbot_armor1.json",
+  "extends": "normal"
+ },
+ "abbot_armor2": {
+  "file": "zombies/abbot_armor2.json",
+  "extends": "normal"
+ },
+ "abbot_armor3": {
+  "file": "zombies/abbot_armor3.json",
+  "extends": "normal"
+ },
+ "abbot_armor4": {
+  "file": "zombies/abbot_armor4.json",
+  "extends": "normal"
+ },
+ "abbot_chi": {
+  "file": "zombies/abbot_chi.json",
+  "extends": "normal"
+ },
+ "abbot_fan": {
+  "file": "zombies/abbot_fan.json",
+  "extends": "normal"
+ },
+ "abbot_flag": {
+  "file": "zombies/abbot_flag.json",
+  "extends": "normal"
+ },
+ "abbot_flag_veteran": {
+  "file": "zombies/abbot_flag_veteran.json",
+  "extends": "normal"
+ },
+ "abbot_imp": {
+  "file": "zombies/abbot_imp.json",
+  "extends": "normal"
+ },
+ "abbot_torch": {
+  "file": "zombies/abbot_torch.json",
+  "extends": "normal"
+ },
+ "barrelroller": {
+  "file": "zombies/barrelroller.json",
+  "extends": "normal"
+ },
+ "beach": {
+  "file": "zombies/beach.json",
+  "extends": "normal"
+ },
+ "beach_armor1": {
+  "file": "zombies/beach_armor1.json",
+  "extends": "normal"
+ },
+ "beach_armor2": {
+  "file": "zombies/beach_armor2.json",
+  "extends": "normal"
+ },
+ "beach_armor4": {
+  "file": "zombies/beach_armor4.json",
+  "extends": "normal"
+ },
+ "beach_fem": {
+  "file": "zombies/beach_fem.json",
+  "extends": "normal"
+ },
+ "beach_fem_armor1": {
+  "file": "zombies/beach_fem_armor1.json",
+  "extends": "normal"
+ },
+ "beach_fem_armor2": {
+  "file": "zombies/beach_fem_armor2.json",
+  "extends": "normal"
+ },
+ "beach_fem_armor4": {
+  "file": "zombies/beach_fem_armor4.json",
+  "extends": "normal"
+ },
+ "beach_fisherman": {
+  "file": "zombies/beach_fisherman.json",
+  "extends": "normal"
+ },
+ "beach_flag": {
+  "file": "zombies/beach_flag.json",
+  "extends": "normal"
+ },
+ "beach_flag_veteran": {
+  "file": "zombies/beach_flag_veteran.json",
+  "extends": "normal"
+ },
+ "beach_gargantuar": {
+  "file": "zombies/beach_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "beach_imp": {
+  "file": "zombies/beach_imp.json",
+  "extends": "normal"
+ },
+ "beach_octopus": {
+  "file": "zombies/beach_octopus.json",
+  "extends": "normal"
+ },
+ "beach_snorkel": {
+  "file": "zombies/beach_snorkel.json",
+  "extends": "normal"
+ },
+ "beach_surfer": {
+  "file": "zombies/beach_surfer.json",
+  "extends": "normal"
+ },
+ "beach_surfer_veteran": {
+  "file": "zombies/beach_surfer_veteran.json",
+  "extends": "normal"
+ },
+ "beghouled": {
+  "file": "zombies/beghouled.json",
+  "extends": "tutorial"
+ },
+ "beghouled_armor1": {
+  "file": "zombies/beghouled_armor1.json",
+  "extends": "tutorial_armor1"
+ },
+ "beghouled_armor2": {
+  "file": "zombies/beghouled_armor2.json",
+  "extends": "tutorial_armor2"
+ },
+ "beghouled_beach": {
+  "file": "zombies/beghouled_beach.json",
+  "extends": "beach"
+ },
+ "beghouled_beach_armor1": {
+  "file": "zombies/beghouled_beach_armor1.json",
+  "extends": "beach_armor1"
+ },
+ "beghouled_beach_armor2": {
+  "file": "zombies/beghouled_beach_armor2.json",
+  "extends": "beach_armor2"
+ },
+ "beghouled_beach_fem": {
+  "file": "zombies/beghouled_beach_fem.json",
+  "extends": "beach_fem"
+ },
+ "beghouled_beach_fem_armor1": {
+  "file": "zombies/beghouled_beach_fem_armor1.json",
+  "extends": "beach_fem_armor1"
+ },
+ "beghouled_beach_fem_armor2": {
+  "file": "zombies/beghouled_beach_fem_armor2.json",
+  "extends": "beach_fem_armor2"
+ },
+ "beghouled_cowboy": {
+  "file": "zombies/beghouled_cowboy.json",
+  "extends": "cowboy"
+ },
+ "beghouled_cowboy_armor1": {
+  "file": "zombies/beghouled_cowboy_armor1.json",
+  "extends": "cowboy_armor1"
+ },
+ "beghouled_cowboy_armor2": {
+  "file": "zombies/beghouled_cowboy_armor2.json",
+  "extends": "cowboy_armor2"
+ },
+ "beghouled_dark": {
+  "file": "zombies/beghouled_dark.json",
+  "extends": "dark"
+ },
+ "beghouled_dark_armor1": {
+  "file": "zombies/beghouled_dark_armor1.json",
+  "extends": "dark_armor1"
+ },
+ "beghouled_dark_armor2": {
+  "file": "zombies/beghouled_dark_armor2.json",
+  "extends": "dark_armor2"
+ },
+ "beghouled_future": {
+  "file": "zombies/beghouled_future.json",
+  "extends": "future"
+ },
+ "beghouled_future_armor1": {
+  "file": "zombies/beghouled_future_armor1.json",
+  "extends": "future_armor1"
+ },
+ "beghouled_future_armor2": {
+  "file": "zombies/beghouled_future_armor2.json",
+  "extends": "future_armor2"
+ },
+ "beghouled_iceage": {
+  "file": "zombies/beghouled_iceage.json",
+  "extends": "iceage"
+ },
+ "beghouled_iceage_armor1": {
+  "file": "zombies/beghouled_iceage_armor1.json",
+  "extends": "iceage_armor1"
+ },
+ "beghouled_iceage_armor2": {
+  "file": "zombies/beghouled_iceage_armor2.json",
+  "extends": "iceage_armor2"
+ },
+ "beghouled_lostcity": {
+  "file": "zombies/beghouled_lostcity.json",
+  "extends": "lostcity"
+ },
+ "beghouled_lostcity_armor1": {
+  "file": "zombies/beghouled_lostcity_armor1.json",
+  "extends": "lostcity_armor1"
+ },
+ "beghouled_lostcity_armor2": {
+  "file": "zombies/beghouled_lostcity_armor2.json",
+  "extends": "lostcity_armor2"
+ },
+ "beghouled_mmummy": {
+  "file": "zombies/beghouled_mmummy.json",
+  "extends": "mummy"
+ },
+ "beghouled_mmummy_armor1": {
+  "file": "zombies/beghouled_mmummy_armor1.json",
+  "extends": "mummy_armor1"
+ },
+ "beghouled_mmummy_armor2": {
+  "file": "zombies/beghouled_mmummy_armor2.json",
+  "extends": "mummy_armor2"
+ },
+ "beghouled_newspaper": {
+  "file": "zombies/beghouled_newspaper.json",
+  "extends": "modern_newspaper"
+ },
+ "beghouled_pirate": {
+  "file": "zombies/beghouled_pirate.json",
+  "extends": "pirate"
+ },
+ "beghouled_pirate_armor1": {
+  "file": "zombies/beghouled_pirate_armor1.json",
+  "extends": "pirate_armor1"
+ },
+ "beghouled_pirate_armor2": {
+  "file": "zombies/beghouled_pirate_armor2.json",
+  "extends": "pirate_armor2"
+ },
+ "birthday": {
+  "file": "zombies/birthday.json",
+  "extends": "normal"
+ },
+ "birthday_armor1": {
+  "file": "zombies/birthday_armor1.json",
+  "extends": "birthday_armored"
+ },
+ "birthday_armor2": {
+  "file": "zombies/birthday_armor2.json",
+  "extends": "birthday_armored"
+ },
+ "birthday_armor4": {
+  "file": "zombies/birthday_armor4.json",
+  "extends": "birthday_armored"
+ },
+ "birthday_armored": {
+  "file": "zombies/birthday_armored.json",
+  "extends": "normal"
+ },
+ "birthday_barrel": {
+  "file": "zombies/birthday_barrel.json",
+  "extends": "normal"
+ },
+ "birthday_barrelroller": {
+  "file": "zombies/birthday_barrelroller.json",
+  "extends": "normal"
+ },
+ "birthday_flag": {
+  "file": "zombies/birthday_flag.json",
+  "extends": "normal"
+ },
+ "birthday_gargantuar": {
+  "file": "zombies/birthday_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "birthday_jetpack": {
+  "file": "zombies/birthday_jetpack.json",
+  "extends": "normal"
+ },
+ "birthday_juggler": {
+  "file": "zombies/birthday_juggler.json",
+  "extends": "normal"
+ },
+ "birthday_pharaoh": {
+  "file": "zombies/birthday_pharaoh.json",
+  "extends": "normal"
+ },
+ "birthday_pharaoh_inner": {
+  "file": "zombies/birthday_pharaoh_inner.json",
+  "extends": "normal"
+ },
+ "birthday_troglobite": {
+  "file": "zombies/birthday_troglobite.json",
+  "extends": "normal"
+ },
+ "birthday_troglobite_1block": {
+  "file": "zombies/birthday_troglobite_1block.json",
+  "extends": "birthday_troglobite"
+ },
+ "birthday_troglobite_2block": {
+  "file": "zombies/birthday_troglobite_2block.json",
+  "extends": "birthday_troglobite"
+ },
+ "bobsled": {
+  "file": "zombies/bobsled.json",
+  "extends": "normal"
+ },
+ "bobsled_team": {
+  "file": "zombies/bobsled_team.json",
+  "extends": "normal"
+ },
+ "camel_manyhump": {
+  "file": "zombies/camel_manyhump.json",
+  "extends": "camel_onehump"
+ },
+ "camel_manyhump_touch": {
+  "file": "zombies/camel_manyhump_touch.json",
+  "extends": "camel_onehump_touch"
+ },
+ "camel_onehump": {
+  "file": "zombies/camel_onehump.json",
+  "extends": "normal"
+ },
+ "camel_onehump_touch": {
+  "file": "zombies/camel_onehump_touch.json",
+  "extends": "normal"
+ },
+ "camel_segment": {
+  "file": "zombies/camel_segment.json",
+  "extends": "normal"
+ },
+ "camel_segment_touch": {
+  "file": "zombies/camel_segment_touch.json",
+  "extends": "normal"
+ },
+ "camel_threehump": {
+  "file": "zombies/camel_threehump.json",
+  "extends": "camel_onehump"
+ },
+ "camel_threehump_touch": {
+  "file": "zombies/camel_threehump_touch.json",
+  "extends": "camel_onehump_touch"
+ },
+ "camel_twohump": {
+  "file": "zombies/camel_twohump.json",
+  "extends": "camel_onehump"
+ },
+ "camel_twohump_touch": {
+  "file": "zombies/camel_twohump_touch.json",
+  "extends": "camel_onehump_touch"
+ },
+ "cannon": {
+  "file": "zombies/cannon.json",
+  "extends": "normal"
+ },
+ "catapult": {
+  "file": "zombies/catapult.json",
+  "extends": "normal"
+ },
+ "chicken": {
+  "file": "zombies/chicken.json",
+  "extends": "normal"
+ },
+ "chicken_farmer": {
+  "file": "zombies/chicken_farmer.json",
+  "extends": "normal"
+ },
+ "chicken_ge": {
+  "file": "zombies/chicken_ge.json",
+  "extends": "normal"
+ },
+ "chicken_pumpkin": {
+  "file": "zombies/chicken_pumpkin.json",
+  "extends": "normal"
+ },
+ "cowboy": {
+  "file": "zombies/cowboy.json",
+  "extends": "normal"
+ },
+ "cowboy_armor1": {
+  "file": "zombies/cowboy_armor1.json",
+  "extends": "normal"
+ },
+ "cowboy_armor2": {
+  "file": "zombies/cowboy_armor2.json",
+  "extends": "normal"
+ },
+ "cowboy_armor4": {
+  "file": "zombies/cowboy_armor4.json",
+  "extends": "normal"
+ },
+ "cowboy_flag": {
+  "file": "zombies/cowboy_flag.json",
+  "extends": "normal"
+ },
+ "cowboy_flag_veteran": {
+  "file": "zombies/cowboy_flag_veteran.json",
+  "extends": "normal"
+ },
+ "cowboy_gargantuar": {
+  "file": "zombies/cowboy_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "dark": {
+  "file": "zombies/dark.json",
+  "extends": "normal"
+ },
+ "dark_armor1": {
+  "file": "zombies/dark_armor1.json",
+  "extends": "normal"
+ },
+ "dark_armor2": {
+  "file": "zombies/dark_armor2.json",
+  "extends": "normal"
+ },
+ "dark_armor3": {
+  "file": "zombies/dark_armor3.json",
+  "extends": "normal"
+ },
+ "dark_armor4": {
+  "file": "zombies/dark_armor4.json",
+  "extends": "normal"
+ },
+ "dark_flag": {
+  "file": "zombies/dark_flag.json",
+  "extends": "normal"
+ },
+ "dark_flag_veteran": {
+  "file": "zombies/dark_flag_veteran.json",
+  "extends": "normal"
+ },
+ "dark_gargantuar": {
+  "file": "zombies/dark_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "dark_imp": {
+  "file": "zombies/dark_imp.json",
+  "extends": "normal"
+ },
+ "dark_imp_dragon": {
+  "file": "zombies/dark_imp_dragon.json",
+  "extends": "normal"
+ },
+ "dark_juggler": {
+  "file": "zombies/dark_juggler.json",
+  "extends": "normal"
+ },
+ "dark_king": {
+  "file": "zombies/dark_king.json",
+  "extends": "normal"
+ },
+ "dark_king_veteran": {
+  "file": "zombies/dark_king_veteran.json",
+  "extends": "normal"
+ },
+ "dark_wizard": {
+  "file": "zombies/dark_wizard.json",
+  "extends": "normal"
+ },
+ "dark_wizard_veteran": {
+  "file": "zombies/dark_wizard_veteran.json",
+  "extends": "normal"
+ },
+ "dino": {
+  "file": "zombies/dino.json",
+  "extends": "normal"
+ },
+ "dino_armor1": {
+  "file": "zombies/dino_armor1.json",
+  "extends": "normal"
+ },
+ "dino_armor2": {
+  "file": "zombies/dino_armor2.json",
+  "extends": "normal"
+ },
+ "dino_armor3": {
+  "file": "zombies/dino_armor3.json",
+  "extends": "normal"
+ },
+ "dino_armor4": {
+  "file": "zombies/dino_armor4.json",
+  "extends": "normal"
+ },
+ "dino_bully": {
+  "file": "zombies/dino_bully.json",
+  "extends": "normal"
+ },
+ "dino_bully_veteran": {
+  "file": "zombies/dino_bully_veteran.json",
+  "extends": "normal"
+ },
+ "dino_flag": {
+  "file": "zombies/dino_flag.json",
+  "extends": "normal"
+ },
+ "dino_flag_veteran": {
+  "file": "zombies/dino_flag_veteran.json",
+  "extends": "normal"
+ },
+ "dino_gargantuar": {
+  "file": "zombies/dino_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "dino_imp": {
+  "file": "zombies/dino_imp.json",
+  "extends": "normal"
+ },
+ "disco_mech": {
+  "file": "zombies/disco_mech.json",
+  "extends": "normal"
+ },
+ "duckytube": {
+  "file": "zombies/duckytube.json",
+  "extends": "normal"
+ },
+ "duckytube_armor1": {
+  "file": "zombies/duckytube_armor1.json",
+  "extends": "normal"
+ },
+ "duckytube_armor2": {
+  "file": "zombies/duckytube_armor2.json",
+  "extends": "normal"
+ },
+ "duckytube_armor4": {
+  "file": "zombies/duckytube_armor4.json",
+  "extends": "normal"
+ },
+ "duckytube_flag": {
+  "file": "zombies/duckytube_flag.json",
+  "extends": "normal"
+ },
+ "duckytube_flag_veteran": {
+  "file": "zombies/duckytube_flag_veteran.json",
+  "extends": "normal"
+ },
+ "easter": {
+  "file": "zombies/easter.json",
+  "extends": "normal"
+ },
+ "easter_armor1": {
+  "file": "zombies/easter_armor1.json",
+  "extends": "normal"
+ },
+ "easter_armor2": {
+  "file": "zombies/easter_armor2.json",
+  "extends": "normal"
+ },
+ "easter_armor4": {
+  "file": "zombies/easter_armor4.json",
+  "extends": "normal"
+ },
+ "easter_camel_manyhump": {
+  "file": "zombies/easter_camel_manyhump.json",
+  "extends": "easter_camel_onehump"
+ },
+ "easter_camel_onehump": {
+  "file": "zombies/easter_camel_onehump.json",
+  "extends": "normal"
+ },
+ "easter_camel_segment": {
+  "file": "zombies/easter_camel_segment.json",
+  "extends": "normal"
+ },
+ "easter_camel_threehump": {
+  "file": "zombies/easter_camel_threehump.json",
+  "extends": "easter_camel_onehump"
+ },
+ "easter_camel_twohump": {
+  "file": "zombies/easter_camel_twohump.json",
+  "extends": "easter_camel_onehump"
+ },
+ "easter_egg": {
+  "file": "zombies/easter_egg.json",
+  "extends": "normal"
+ },
+ "easter_egg_af": {
+  "file": "zombies/easter_egg_af.json",
+  "extends": "easter_egg"
+ },
+ "easter_flag": {
+  "file": "zombies/easter_flag.json",
+  "extends": "normal"
+ },
+ "easter_gargantuar": {
+  "file": "zombies/easter_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "easter_gargantuar_af": {
+  "file": "zombies/easter_gargantuar_af.json",
+  "extends": "easter_gargantuar"
+ },
+ "easter_imp": {
+  "file": "zombies/easter_imp.json",
+  "extends": "normal"
+ },
+ "easter_poncho": {
+  "file": "zombies/easter_poncho.json",
+  "extends": "normal"
+ },
+ "easter_poncho_no_plate": {
+  "file": "zombies/easter_poncho_no_plate.json",
+  "extends": "easter_poncho"
+ },
+ "easter_poncho_plate": {
+  "file": "zombies/easter_poncho_plate.json",
+  "extends": "easter_poncho"
+ },
+ "easter_wizard": {
+  "file": "zombies/easter_wizard.json",
+  "extends": "normal"
+ },
+ "egypt_gargantuar": {
+  "file": "zombies/egypt_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "egypt_imp": {
+  "file": "zombies/egypt_imp.json",
+  "extends": "normal"
+ },
+ "eighties": {
+  "file": "zombies/eighties.json",
+  "extends": "normal"
+ },
+ "eighties_8bit": {
+  "file": "zombies/eighties_8bit.json",
+  "extends": "normal"
+ },
+ "eighties_8bit_armor1": {
+  "file": "zombies/eighties_8bit_armor1.json",
+  "extends": "normal"
+ },
+ "eighties_8bit_armor2": {
+  "file": "zombies/eighties_8bit_armor2.json",
+  "extends": "normal"
+ },
+ "eighties_arcade": {
+  "file": "zombies/eighties_arcade.json",
+  "extends": "normal"
+ },
+ "eighties_armor1": {
+  "file": "zombies/eighties_armor1.json",
+  "extends": "normal"
+ },
+ "eighties_armor2": {
+  "file": "zombies/eighties_armor2.json",
+  "extends": "normal"
+ },
+ "eighties_armor4": {
+  "file": "zombies/eighties_armor4.json",
+  "extends": "normal"
+ },
+ "eighties_boombox": {
+  "file": "zombies/eighties_boombox.json",
+  "extends": "normal"
+ },
+ "eighties_breakdancer": {
+  "file": "zombies/eighties_breakdancer.json",
+  "extends": "normal"
+ },
+ "eighties_flag": {
+  "file": "zombies/eighties_flag.json",
+  "extends": "normal"
+ },
+ "eighties_flag_veteran": {
+  "file": "zombies/eighties_flag_veteran.json",
+  "extends": "normal"
+ },
+ "eighties_gargantuar": {
+  "file": "zombies/eighties_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "eighties_glitter": {
+  "file": "zombies/eighties_glitter.json",
+  "extends": "normal"
+ },
+ "eighties_imp": {
+  "file": "zombies/eighties_imp.json",
+  "extends": "normal"
+ },
+ "eighties_mc": {
+  "file": "zombies/eighties_mc.json",
+  "extends": "normal"
+ },
+ "eighties_punk": {
+  "file": "zombies/eighties_punk.json",
+  "extends": "normal"
+ },
+ "eighties_punk_veteran": {
+  "file": "zombies/eighties_punk_veteran.json",
+  "extends": "normal"
+ },
+ "eighties_skunk": {
+  "file": "zombies/eighties_skunk.json",
+  "extends": "normal"
+ },
+ "explorer": {
+  "file": "zombies/explorer.json",
+  "extends": "normal"
+ },
+ "explorer_veteran": {
+  "file": "zombies/explorer_veteran.json",
+  "extends": "normal"
+ },
+ "feastivus": {
+  "file": "zombies/feastivus.json",
+  "extends": "normal"
+ },
+ "feastivus_armor1": {
+  "file": "zombies/feastivus_armor1.json",
+  "extends": "normal"
+ },
+ "feastivus_armor2": {
+  "file": "zombies/feastivus_armor2.json",
+  "extends": "normal"
+ },
+ "feastivus_armor3": {
+  "file": "zombies/feastivus_armor3.json",
+  "extends": "feastivus"
+ },
+ "feastivus_camel_manyhump": {
+  "file": "zombies/feastivus_camel_manyhump.json",
+  "extends": "feastivus_camel_onehump"
+ },
+ "feastivus_camel_onehump": {
+  "file": "zombies/feastivus_camel_onehump.json",
+  "extends": "normal"
+ },
+ "feastivus_camel_segment": {
+  "file": "zombies/feastivus_camel_segment.json",
+  "extends": "normal"
+ },
+ "feastivus_camel_threehump": {
+  "file": "zombies/feastivus_camel_threehump.json",
+  "extends": "feastivus_camel_onehump"
+ },
+ "feastivus_camel_twohump": {
+  "file": "zombies/feastivus_camel_twohump.json",
+  "extends": "feastivus_camel_onehump"
+ },
+ "feastivus_flag": {
+  "file": "zombies/feastivus_flag.json",
+  "extends": "normal"
+ },
+ "feastivus_gargantuar": {
+  "file": "zombies/feastivus_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "feastivus_imp": {
+  "file": "zombies/feastivus_imp.json",
+  "extends": "normal"
+ },
+ "feastivus_piano": {
+  "file": "zombies/feastivus_piano.json",
+  "extends": "normal"
+ },
+ "feastivus_poncho": {
+  "file": "zombies/feastivus_poncho.json",
+  "extends": "normal"
+ },
+ "feastivus_poncho_no_plate": {
+  "file": "zombies/feastivus_poncho_no_plate.json",
+  "extends": "normal"
+ },
+ "feastivus_poncho_plate": {
+  "file": "zombies/feastivus_poncho_plate.json",
+  "extends": "normal"
+ },
+ "feastivus_swashbuckler": {
+  "file": "zombies/feastivus_swashbuckler.json",
+  "extends": "normal"
+ },
+ "feastivus_troglobite": {
+  "file": "zombies/feastivus_troglobite.json",
+  "extends": "iceage_troglobite"
+ },
+ "feastivus_troglobite_1block": {
+  "file": "zombies/feastivus_troglobite_1block.json",
+  "extends": "iceage_troglobite"
+ },
+ "feastivus_troglobite_2block": {
+  "file": "zombies/feastivus_troglobite_2block.json",
+  "extends": "iceage_troglobite"
+ },
+ "foodfight": {
+  "file": "zombies/foodfight.json",
+  "extends": "normal"
+ },
+ "foodfight_armor1": {
+  "file": "zombies/foodfight_armor1.json",
+  "extends": "normal"
+ },
+ "foodfight_armor2": {
+  "file": "zombies/foodfight_armor2.json",
+  "extends": "normal"
+ },
+ "foodfight_chefster": {
+  "file": "zombies/foodfight_chefster.json",
+  "extends": "normal"
+ },
+ "foodfight_flag": {
+  "file": "zombies/foodfight_flag.json",
+  "extends": "normal"
+ },
+ "foodfight_gobbler_king": {
+  "file": "zombies/foodfight_gobbler_king.json",
+  "extends": "normal"
+ },
+ "foodfight_turkey": {
+  "file": "zombies/foodfight_turkey.json",
+  "extends": "normal"
+ },
+ "football_mech": {
+  "file": "zombies/football_mech.json",
+  "extends": "normal"
+ },
+ "future": {
+  "file": "zombies/future.json",
+  "extends": "normal"
+ },
+ "future_armor1": {
+  "file": "zombies/future_armor1.json",
+  "extends": "normal"
+ },
+ "future_armor2": {
+  "file": "zombies/future_armor2.json",
+  "extends": "normal"
+ },
+ "future_armor4": {
+  "file": "zombies/future_armor4.json",
+  "extends": "normal"
+ },
+ "future_flag": {
+  "file": "zombies/future_flag.json",
+  "extends": "normal"
+ },
+ "future_flag_veteran": {
+  "file": "zombies/future_flag_veteran.json",
+  "extends": "normal"
+ },
+ "future_gargantuar": {
+  "file": "zombies/future_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "future_imp": {
+  "file": "zombies/future_imp.json",
+  "extends": "normal"
+ },
+ "future_infinut_shield": {
+  "file": "zombies/future_infinut_shield.json",
+  "extends": "normal"
+ },
+ "future_jetpack": {
+  "file": "zombies/future_jetpack.json",
+  "extends": "normal"
+ },
+ "future_jetpack_disco": {
+  "file": "zombies/future_jetpack_disco.json",
+  "extends": "normal"
+ },
+ "future_jetpack_veteran": {
+  "file": "zombies/future_jetpack_veteran.json",
+  "extends": "normal"
+ },
+ "future_protector": {
+  "file": "zombies/future_protector.json",
+  "extends": "normal"
+ },
+ "future_protector_shield": {
+  "file": "zombies/future_protector_shield.json",
+  "extends": "normal"
+ },
+ "future_protector_veteran": {
+  "file": "zombies/future_protector_veteran.json",
+  "extends": "future_protector"
+ },
+ "halloween": {
+  "file": "zombies/halloween.json",
+  "extends": "normal"
+ },
+ "halloween_armor1": {
+  "file": "zombies/halloween_armor1.json",
+  "extends": "normal"
+ },
+ "halloween_armor2": {
+  "file": "zombies/halloween_armor2.json",
+  "extends": "normal"
+ },
+ "halloween_flag": {
+  "file": "zombies/halloween_flag.json",
+  "extends": "normal"
+ },
+ "halloween_gargantuar": {
+  "file": "zombies/halloween_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "halloween_imp": {
+  "file": "zombies/halloween_imp.json",
+  "extends": "normal"
+ },
+ "holiday_gargantuar": {
+  "file": "zombies/holiday_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "holiday_imp": {
+  "file": "zombies/holiday_imp.json",
+  "extends": "normal"
+ },
+ "iceage": {
+  "file": "zombies/iceage.json",
+  "extends": "normal"
+ },
+ "iceage_armor1": {
+  "file": "zombies/iceage_armor1.json",
+  "extends": "normal"
+ },
+ "iceage_armor2": {
+  "file": "zombies/iceage_armor2.json",
+  "extends": "normal"
+ },
+ "iceage_armor3": {
+  "file": "zombies/iceage_armor3.json",
+  "extends": "normal"
+ },
+ "iceage_armor4": {
+  "file": "zombies/iceage_armor4.json",
+  "extends": "normal"
+ },
+ "iceage_dodo": {
+  "file": "zombies/iceage_dodo.json",
+  "extends": "normal"
+ },
+ "iceage_flag": {
+  "file": "zombies/iceage_flag.json",
+  "extends": "normal"
+ },
+ "iceage_flag_veteran": {
+  "file": "zombies/iceage_flag_veteran.json",
+  "extends": "normal"
+ },
+ "iceage_gargantuar": {
+  "file": "zombies/iceage_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "iceage_hunter": {
+  "file": "zombies/iceage_hunter.json",
+  "extends": "normal"
+ },
+ "iceage_hunter_veteran": {
+  "file": "zombies/iceage_hunter_veteran.json",
+  "extends": "normal"
+ },
+ "iceage_imp": {
+  "file": "zombies/iceage_imp.json",
+  "extends": "normal"
+ },
+ "iceage_troglobite": {
+  "file": "zombies/iceage_troglobite.json",
+  "extends": "normal"
+ },
+ "iceage_troglobite_1block": {
+  "file": "zombies/iceage_troglobite_1block.json",
+  "extends": "iceage_troglobite"
+ },
+ "iceage_troglobite_2block": {
+  "file": "zombies/iceage_troglobite_2block.json",
+  "extends": "iceage_troglobite"
+ },
+ "iceage_troglobite_veteran": {
+  "file": "zombies/iceage_troglobite_veteran.json",
+  "extends": "normal"
+ },
+ "iceage_weasel": {
+  "file": "zombies/iceage_weasel.json",
+  "extends": "normal"
+ },
+ "iceage_weaselhoarder": {
+  "file": "zombies/iceage_weaselhoarder.json",
+  "extends": "normal"
+ },
+ "kongfu": {
+  "file": "zombies/kongfu.json",
+  "extends": "normal"
+ },
+ "kongfu_armor1": {
+  "file": "zombies/kongfu_armor1.json",
+  "extends": "normal"
+ },
+ "kongfu_armor2": {
+  "file": "zombies/kongfu_armor2.json",
+  "extends": "normal"
+ },
+ "kongfu_armor3": {
+  "file": "zombies/kongfu_armor3.json",
+  "extends": "normal"
+ },
+ "kongfu_armor4": {
+  "file": "zombies/kongfu_armor4.json",
+  "extends": "normal"
+ },
+ "kongfu_bomb": {
+  "file": "zombies/kongfu_bomb.json",
+  "extends": "normal"
+ },
+ "kongfu_boss_blade": {
+  "file": "zombies/kongfu_boss_blade.json",
+  "extends": "zomboss"
+ },
+ "kongfu_boss_chi": {
+  "file": "zombies/kongfu_boss_chi.json",
+  "extends": "zomboss"
+ },
+ "kongfu_boss_explode": {
+  "file": "zombies/kongfu_boss_explode.json",
+  "extends": "zomboss"
+ },
+ "kongfu_bronze_chi": {
+  "file": "zombies/kongfu_bronze_chi.json",
+  "extends": "gargantuar"
+ },
+ "kongfu_bronze_chi_without_torch": {
+  "file": "zombies/kongfu_bronze_chi_without_torch.json",
+  "extends": "kongfu_bronze_chi"
+ },
+ "kongfu_bronze_hook": {
+  "file": "zombies/kongfu_bronze_hook.json",
+  "extends": "gargantuar"
+ },
+ "kongfu_bronze_statue": {
+  "file": "zombies/kongfu_bronze_statue.json",
+  "extends": "gargantuar"
+ },
+ "kongfu_bronze_strong": {
+  "file": "zombies/kongfu_bronze_strong.json",
+  "extends": "gargantuar"
+ },
+ "kongfu_chi": {
+  "file": "zombies/kongfu_chi.json",
+  "extends": "normal"
+ },
+ "kongfu_drink": {
+  "file": "zombies/kongfu_drink.json",
+  "extends": "normal"
+ },
+ "kongfu_flag": {
+  "file": "zombies/kongfu_flag.json",
+  "extends": "normal"
+ },
+ "kongfu_flag_veteran": {
+  "file": "zombies/kongfu_flag_veteran.json",
+  "extends": "normal"
+ },
+ "kongfu_gong": {
+  "file": "zombies/kongfu_gong.json",
+  "extends": "normal"
+ },
+ "kongfu_hammer": {
+  "file": "zombies/kongfu_hammer.json",
+  "extends": "normal"
+ },
+ "kongfu_rocket_imp": {
+  "file": "zombies/kongfu_rocket_imp.json",
+  "extends": "normal"
+ },
+ "kongfu_torch": {
+  "file": "zombies/kongfu_torch.json",
+  "extends": "normal"
+ },
+ "lawn": {
+  "file": "zombies/lawn.json",
+  "extends": "normal"
+ },
+ "lawn_armor1": {
+  "file": "zombies/lawn_armor1.json",
+  "extends": "normal"
+ },
+ "lawn_armor2": {
+  "file": "zombies/lawn_armor2.json",
+  "extends": "normal"
+ },
+ "lawn_armor3": {
+  "file": "zombies/lawn_armor3.json",
+  "extends": "normal"
+ },
+ "lawn_armor4": {
+  "file": "zombies/lawn_armor4.json",
+  "extends": "normal"
+ },
+ "lawn_flag": {
+  "file": "zombies/lawn_flag.json",
+  "extends": "normal"
+ },
+ "lawn_flag_veteran": {
+  "file": "zombies/lawn_flag_veteran.json",
+  "extends": "normal"
+ },
+ "lawn_gargantuar": {
+  "file": "zombies/lawn_gargantuar.json",
+  "extends": "normal"
+ },
+ "lawn_imp": {
+  "file": "zombies/lawn_imp.json",
+  "extends": "normal"
+ },
+ "leprachaun_dodo": {
+  "file": "zombies/leprachaun_dodo.json",
+  "extends": "stpatrick_dodo"
+ },
+ "leprachaun_imp": {
+  "file": "zombies/leprachaun_imp.json",
+  "extends": "stpatrick_imp"
+ },
+ "lostcity": {
+  "file": "zombies/lostcity.json",
+  "extends": "normal"
+ },
+ "lostcity_armor1": {
+  "file": "zombies/lostcity_armor1.json",
+  "extends": "normal"
+ },
+ "lostcity_armor2": {
+  "file": "zombies/lostcity_armor2.json",
+  "extends": "normal"
+ },
+ "lostcity_armor4": {
+  "file": "zombies/lostcity_armor4.json",
+  "extends": "normal"
+ },
+ "lostcity_bug": {
+  "file": "zombies/lostcity_bug.json",
+  "extends": "normal"
+ },
+ "lostcity_bug_armor1": {
+  "file": "zombies/lostcity_bug_armor1.json",
+  "extends": "normal"
+ },
+ "lostcity_bug_armor2": {
+  "file": "zombies/lostcity_bug_armor2.json",
+  "extends": "normal"
+ },
+ "lostcity_bug_armor4": {
+  "file": "zombies/lostcity_bug_armor4.json",
+  "extends": "normal"
+ },
+ "lostcity_crystalskull": {
+  "file": "zombies/lostcity_crystalskull.json",
+  "extends": "normal"
+ },
+ "lostcity_excavator": {
+  "file": "zombies/lostcity_excavator.json",
+  "extends": "normal"
+ },
+ "lostcity_flag": {
+  "file": "zombies/lostcity_flag.json",
+  "extends": "normal"
+ },
+ "lostcity_flag_veteran": {
+  "file": "zombies/lostcity_flag_veteran.json",
+  "extends": "normal"
+ },
+ "lostcity_gargantuar": {
+  "file": "zombies/lostcity_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "lostcity_imp": {
+  "file": "zombies/lostcity_imp.json",
+  "extends": "normal"
+ },
+ "lostcity_impporter": {
+  "file": "zombies/lostcity_impporter.json",
+  "extends": "normal"
+ },
+ "lostcity_jane": {
+  "file": "zombies/lostcity_jane.json",
+  "extends": "normal"
+ },
+ "lostcity_lostpilot": {
+  "file": "zombies/lostcity_lostpilot.json",
+  "extends": "normal"
+ },
+ "lostcity_lostpilot_veteran": {
+  "file": "zombies/lostcity_lostpilot_veteran.json",
+  "extends": "normal"
+ },
+ "lostcity_lostpilot_veteran_for_zomboss": {
+  "file": "zombies/lostcity_lostpilot_veteran_for_zomboss.json",
+  "extends": "lostcity_lostpilot_veteran"
+ },
+ "lostcity_lostpilot_veteran_with_zombies": {
+  "file": "zombies/lostcity_lostpilot_veteran_with_zombies.json",
+  "extends": "lostcity_lostpilot_veteran"
+ },
+ "lostcity_relichunter": {
+  "file": "zombies/lostcity_relichunter.json",
+  "extends": "normal"
+ },
+ "lunar": {
+  "file": "zombies/lunar.json",
+  "extends": "normal"
+ },
+ "lunar_armor1": {
+  "file": "zombies/lunar_armor1.json",
+  "extends": "normal"
+ },
+ "lunar_armor2": {
+  "file": "zombies/lunar_armor2.json",
+  "extends": "normal"
+ },
+ "lunar_camel_manyhump": {
+  "file": "zombies/lunar_camel_manyhump.json",
+  "extends": "lunar_camel_onehump"
+ },
+ "lunar_camel_onehump": {
+  "file": "zombies/lunar_camel_onehump.json",
+  "extends": "normal"
+ },
+ "lunar_camel_segment": {
+  "file": "zombies/lunar_camel_segment.json",
+  "extends": "normal"
+ },
+ "lunar_camel_threehump": {
+  "file": "zombies/lunar_camel_threehump.json",
+  "extends": "lunar_camel_onehump"
+ },
+ "lunar_camel_twohump": {
+  "file": "zombies/lunar_camel_twohump.json",
+  "extends": "lunar_camel_onehump"
+ },
+ "lunar_flag": {
+  "file": "zombies/lunar_flag.json",
+  "extends": "normal"
+ },
+ "lunar_superfanimp": {
+  "file": "zombies/lunar_superfanimp.json",
+  "extends": "normal"
+ },
+ "mech_cone": {
+  "file": "zombies/mech_cone.json",
+  "extends": "normal"
+ },
+ "modern_allstar": {
+  "file": "zombies/modern_allstar.json",
+  "extends": "normal"
+ },
+ "modern_balloon": {
+  "file": "zombies/modern_balloon.json",
+  "extends": "normal"
+ },
+ "modern_moonflower_shield": {
+  "file": "zombies/modern_moonflower_shield.json",
+  "extends": "normal"
+ },
+ "modern_newspaper": {
+  "file": "zombies/modern_newspaper.json",
+  "extends": "normal"
+ },
+ "modern_superfanimp": {
+  "file": "zombies/modern_superfanimp.json",
+  "extends": "normal"
+ },
+ "monk": {
+  "file": "zombies/monk.json",
+  "extends": "normal"
+ },
+ "monk_armor1": {
+  "file": "zombies/monk_armor1.json",
+  "extends": "normal"
+ },
+ "monk_armor2": {
+  "file": "zombies/monk_armor2.json",
+  "extends": "normal"
+ },
+ "monk_armor3": {
+  "file": "zombies/monk_armor3.json",
+  "extends": "normal"
+ },
+ "monk_armor4": {
+  "file": "zombies/monk_armor4.json",
+  "extends": "normal"
+ },
+ "monk_blade": {
+  "file": "zombies/monk_blade.json",
+  "extends": "normal"
+ },
+ "monk_drink": {
+  "file": "zombies/monk_drink.json",
+  "extends": "normal"
+ },
+ "monk_drink_veteran": {
+  "file": "zombies/monk_drink_veteran.json",
+  "extends": "normal"
+ },
+ "monk_flag": {
+  "file": "zombies/monk_flag.json",
+  "extends": "normal"
+ },
+ "monk_flag_veteran": {
+  "file": "zombies/monk_flag_veteran.json",
+  "extends": "normal"
+ },
+ "monk_imp": {
+  "file": "zombies/monk_imp.json",
+  "extends": "normal"
+ },
+ "monk_nunchaku": {
+  "file": "zombies/monk_nunchaku.json",
+  "extends": "normal"
+ },
+ "monk_torch": {
+  "file": "zombies/monk_torch.json",
+  "extends": "normal"
+ },
+ "mummy": {
+  "file": "zombies/mummy.json",
+  "extends": "normal"
+ },
+ "mummy_armor1": {
+  "file": "zombies/mummy_armor1.json",
+  "extends": "normal"
+ },
+ "mummy_armor2": {
+  "file": "zombies/mummy_armor2.json",
+  "extends": "normal"
+ },
+ "mummy_armor4": {
+  "file": "zombies/mummy_armor4.json",
+  "extends": "normal"
+ },
+ "mummy_flag": {
+  "file": "zombies/mummy_flag.json",
+  "extends": "normal"
+ },
+ "mummy_flag_veteran": {
+  "file": "zombies/mummy_flag_veteran.json",
+  "extends": "normal"
+ },
+ "newspaper_veteran": {
+  "file": "zombies/newspaper_veteran.json",
+  "extends": "normal"
+ },
+ "pelican": {
+  "file": "zombies/pelican.json",
+  "extends": "normal"
+ },
+ "pharaoh": {
+  "file": "zombies/pharaoh.json",
+  "extends": "normal"
+ },
+ "pharaoh_inner": {
+  "file": "zombies/pharaoh_inner.json",
+  "extends": "normal"
+ },
+ "pharaoh_weak": {
+  "file": "zombies/pharaoh_weak.json",
+  "extends": "normal"
+ },
+ "piano": {
+  "file": "zombies/piano.json",
+  "extends": "normal"
+ },
+ "pirate": {
+  "file": "zombies/pirate.json",
+  "extends": "normal"
+ },
+ "pirate_armor1": {
+  "file": "zombies/pirate_armor1.json",
+  "extends": "normal"
+ },
+ "pirate_armor2": {
+  "file": "zombies/pirate_armor2.json",
+  "extends": "normal"
+ },
+ "pirate_armor4": {
+  "file": "zombies/pirate_armor4.json",
+  "extends": "normal"
+ },
+ "pirate_barrel": {
+  "file": "zombies/pirate_barrel.json",
+  "extends": "normal"
+ },
+ "pirate_captain": {
+  "file": "zombies/pirate_captain.json",
+  "extends": "normal"
+ },
+ "pirate_captain_parrot": {
+  "file": "zombies/pirate_captain_parrot.json",
+  "extends": "normal"
+ },
+ "pirate_flag": {
+  "file": "zombies/pirate_flag.json",
+  "extends": "normal"
+ },
+ "pirate_flag_veteran": {
+  "file": "zombies/pirate_flag_veteran.json",
+  "extends": "normal"
+ },
+ "pirate_gargantuar": {
+  "file": "zombies/pirate_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "pirate_imp": {
+  "file": "zombies/pirate_imp.json",
+  "extends": "normal"
+ },
+ "poncho": {
+  "file": "zombies/poncho.json",
+  "extends": "normal"
+ },
+ "poncho_no_plate": {
+  "file": "zombies/poncho_no_plate.json",
+  "extends": "normal"
+ },
+ "poncho_plate": {
+  "file": "zombies/poncho_plate.json",
+  "extends": "normal"
+ },
+ "prospector": {
+  "file": "zombies/prospector.json",
+  "extends": "normal"
+ },
+ "ra": {
+  "file": "zombies/ra.json",
+  "extends": "normal"
+ },
+ "seagull": {
+  "file": "zombies/seagull.json",
+  "extends": "normal"
+ },
+ "sky": {
+  "file": "zombies/sky.json",
+  "extends": "normal"
+ },
+ "sky_airraid_arbiterx": {
+  "file": "zombies/sky_airraid_arbiterx.json",
+  "extends": "normal"
+ },
+ "sky_airraid_twin": {
+  "file": "zombies/sky_airraid_twin.json",
+  "extends": "normal"
+ },
+ "sky_arbiterx": {
+  "file": "zombies/sky_arbiterx.json",
+  "extends": "normal"
+ },
+ "sky_armor1": {
+  "file": "zombies/sky_armor1.json",
+  "extends": "normal"
+ },
+ "sky_armor2": {
+  "file": "zombies/sky_armor2.json",
+  "extends": "normal"
+ },
+ "sky_battery": {
+  "file": "zombies/sky_battery.json",
+  "extends": "normal"
+ },
+ "sky_battery_lower": {
+  "file": "zombies/sky_battery_lower.json",
+  "extends": "normal"
+ },
+ "sky_battleplane": {
+  "file": "zombies/sky_battleplane.json",
+  "extends": "normal"
+ },
+ "sky_drone": {
+  "file": "zombies/sky_drone.json",
+  "extends": "normal"
+ },
+ "sky_dronemaker": {
+  "file": "zombies/sky_dronemaker.json",
+  "extends": "normal"
+ },
+ "sky_dronemaker_alt": {
+  "file": "zombies/sky_dronemaker_alt.json",
+  "extends": "sky_dronemaker"
+ },
+ "sky_dropship": {
+  "file": "zombies/sky_dropship.json",
+  "extends": "normal"
+ },
+ "sky_electric": {
+  "file": "zombies/sky_electric.json",
+  "extends": "normal"
+ },
+ "sky_flag": {
+  "file": "zombies/sky_flag.json",
+  "extends": "normal"
+ },
+ "sky_gargantuar": {
+  "file": "zombies/sky_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "sky_gargantuar_armor2_thrower": {
+  "file": "zombies/sky_gargantuar_armor2_thrower.json",
+  "extends": "gargantuar"
+ },
+ "sky_imp": {
+  "file": "zombies/sky_imp.json",
+  "extends": "normal"
+ },
+ "sky_twin": {
+  "file": "zombies/sky_twin.json",
+  "extends": "normal"
+ },
+ "sky_twin_lower": {
+  "file": "zombies/sky_twin_lower.json",
+  "extends": "normal"
+ },
+ "sky_twin_upper": {
+  "file": "zombies/sky_twin_upper.json",
+  "extends": "normal"
+ },
+ "sky_unarmed": {
+  "file": "zombies/sky_unarmed.json",
+  "extends": "normal"
+ },
+ "sky_unarmed_armor1": {
+  "file": "zombies/sky_unarmed_armor1.json",
+  "extends": "sky_unarmed"
+ },
+ "sky_unarmed_armor2": {
+  "file": "zombies/sky_unarmed_armor2.json",
+  "extends": "sky_unarmed"
+ },
+ "sky_unarmed_flag": {
+  "file": "zombies/sky_unarmed_flag.json",
+  "extends": "normal"
+ },
+ "sportzball": {
+  "file": "zombies/sportzball.json",
+  "extends": "normal"
+ },
+ "sportzball_armor1": {
+  "file": "zombies/sportzball_armor1.json",
+  "extends": "normal"
+ },
+ "sportzball_armor2": {
+  "file": "zombies/sportzball_armor2.json",
+  "extends": "normal"
+ },
+ "sportzball_balloon": {
+  "file": "zombies/sportzball_balloon.json",
+  "extends": "normal"
+ },
+ "sportzball_buckethead": {
+  "file": "zombies/sportzball_buckethead.json",
+  "extends": "sportzball_armor2"
+ },
+ "sportzball_flag": {
+  "file": "zombies/sportzball_flag.json",
+  "extends": "normal"
+ },
+ "sportzball_gargantuar": {
+  "file": "zombies/sportzball_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "sportzball_imp": {
+  "file": "zombies/sportzball_imp.json",
+  "extends": "normal"
+ },
+ "sportzball_wizard": {
+  "file": "zombies/sportzball_wizard.json",
+  "extends": "normal"
+ },
+ "spring_imp": {
+  "file": "zombies/spring_imp.json",
+  "extends": "easter_imp"
+ },
+ "stpatrick": {
+  "file": "zombies/stpatrick.json",
+  "extends": "normal"
+ },
+ "stpatrick_armor1": {
+  "file": "zombies/stpatrick_armor1.json",
+  "extends": "normal"
+ },
+ "stpatrick_armor2": {
+  "file": "zombies/stpatrick_armor2.json",
+  "extends": "normal"
+ },
+ "stpatrick_dodo": {
+  "file": "zombies/stpatrick_dodo.json",
+  "extends": "normal"
+ },
+ "stpatrick_flag": {
+  "file": "zombies/stpatrick_flag.json",
+  "extends": "normal"
+ },
+ "stpatrick_imp": {
+  "file": "zombies/stpatrick_imp.json",
+  "extends": "normal"
+ },
+ "summer_armor1": {
+  "file": "zombies/summer_armor1.json",
+  "extends": "normal"
+ },
+ "summer_armor2": {
+  "file": "zombies/summer_armor2.json",
+  "extends": "normal"
+ },
+ "summer_basic": {
+  "file": "zombies/summer_basic.json",
+  "extends": "normal"
+ },
+ "summer_bug": {
+  "file": "zombies/summer_bug.json",
+  "extends": "normal"
+ },
+ "summer_bug_armor1": {
+  "file": "zombies/summer_bug_armor1.json",
+  "extends": "normal"
+ },
+ "summer_bug_armor2": {
+  "file": "zombies/summer_bug_armor2.json",
+  "extends": "normal"
+ },
+ "summer_flag": {
+  "file": "zombies/summer_flag.json",
+  "extends": "normal"
+ },
+ "summer_gargantuar": {
+  "file": "zombies/summer_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "summer_imp": {
+  "file": "zombies/summer_imp.json",
+  "extends": "normal"
+ },
+ "supernova_gargantuar": {
+  "file": "zombies/supernova_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "swashbuckler": {
+  "file": "zombies/swashbuckler.json",
+  "extends": "normal"
+ },
+ "tomb_raiser": {
+  "file": "zombies/tomb_raiser.json",
+  "extends": "normal"
+ },
+ "treasureyeti": {
+  "file": "zombies/treasureyeti.json",
+  "extends": "normal"
+ },
+ "turkeypult_big_turkey": {
+  "file": "zombies/turkeypult_big_turkey.json",
+  "extends": "normal"
+ },
+ "turkeypult_big_turkey_mint": {
+  "file": "zombies/turkeypult_big_turkey_mint.json",
+  "extends": "turkeypult_big_turkey"
+ },
+ "turkeypult_turkey": {
+  "file": "zombies/turkeypult_turkey.json",
+  "extends": "normal"
+ },
+ "turkeypult_turkey_mint": {
+  "file": "zombies/turkeypult_turkey_mint.json",
+  "extends": "turkeypult_turkey"
+ },
+ "tutorial": {
+  "file": "zombies/tutorial.json",
+  "extends": "normal"
+ },
+ "tutorial_armor1": {
+  "file": "zombies/tutorial_armor1.json",
+  "extends": "normal"
+ },
+ "tutorial_armor2": {
+  "file": "zombies/tutorial_armor2.json",
+  "extends": "normal"
+ },
+ "tutorial_armor4": {
+  "file": "zombies/tutorial_armor4.json",
+  "extends": "normal"
+ },
+ "tutorial_flag": {
+  "file": "zombies/tutorial_flag.json",
+  "extends": "normal"
+ },
+ "tutorial_flag_veteran": {
+  "file": "zombies/tutorial_flag_veteran.json",
+  "extends": "normal"
+ },
+ "tutorial_gargantuar": {
+  "file": "zombies/tutorial_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "tutorial_imp": {
+  "file": "zombies/tutorial_imp.json",
+  "extends": "normal"
+ },
+ "valentines": {
+  "file": "zombies/valentines.json",
+  "extends": "normal"
+ },
+ "valentines_armor1": {
+  "file": "zombies/valentines_armor1.json",
+  "extends": "normal"
+ },
+ "valentines_armor2": {
+  "file": "zombies/valentines_armor2.json",
+  "extends": "normal"
+ },
+ "valentines_armor4": {
+  "file": "zombies/valentines_armor4.json",
+  "extends": "valentines"
+ },
+ "valentines_flag": {
+  "file": "zombies/valentines_flag.json",
+  "extends": "normal"
+ },
+ "valentines_gargantuar": {
+  "file": "zombies/valentines_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "valentines_imp": {
+  "file": "zombies/valentines_imp.json",
+  "extends": "normal"
+ },
+ "vase_gargantuar": {
+  "file": "zombies/vase_gargantuar.json",
+  "extends": "gargantuar"
+ },
+ "west_bull": {
+  "file": "zombies/west_bull.json",
+  "extends": "normal"
+ },
+ "west_bull_veteran": {
+  "file": "zombies/west_bull_veteran.json",
+  "extends": "normal"
+ },
+ "west_bull_veteran_plantern_5": {
+  "file": "zombies/west_bull_veteran_plantern_5.json",
+  "extends": "west_bull_veteran"
+ },
+ "west_bullrider": {
+  "file": "zombies/west_bullrider.json",
+  "extends": "normal"
+ },
+ "zomboni": {
+  "file": "zombies/zomboni.json",
+  "extends": "normal"
+ },
+ "zombossmech_beach": {
+  "file": "zombies/zombossmech_beach.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_beach2": {
+  "file": "zombies/zombossmech_beach2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_cowboy": {
+  "file": "zombies/zombossmech_cowboy.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_cowboy2": {
+  "file": "zombies/zombossmech_cowboy2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_dark": {
+  "file": "zombies/zombossmech_dark.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_dark2": {
+  "file": "zombies/zombossmech_dark2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_dino": {
+  "file": "zombies/zombossmech_dino.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_dino2": {
+  "file": "zombies/zombossmech_dino2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_egypt": {
+  "file": "zombies/zombossmech_egypt.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_egypt2": {
+  "file": "zombies/zombossmech_egypt2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_eighties": {
+  "file": "zombies/zombossmech_eighties.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_eighties2": {
+  "file": "zombies/zombossmech_eighties2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_future": {
+  "file": "zombies/zombossmech_future.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_future2": {
+  "file": "zombies/zombossmech_future2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_iceage": {
+  "file": "zombies/zombossmech_iceage.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_iceage2": {
+  "file": "zombies/zombossmech_iceage2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_lostcity": {
+  "file": "zombies/zombossmech_lostcity.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_lostcity2": {
+  "file": "zombies/zombossmech_lostcity2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_modern1": {
+  "file": "zombies/zombossmech_modern1.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_modern_beach": {
+  "file": "zombies/zombossmech_modern_beach.json",
+  "extends": "zombossmech_beach"
+ },
+ "zombossmech_modern_cowboy": {
+  "file": "zombies/zombossmech_modern_cowboy.json",
+  "extends": "zombossmech_cowboy"
+ },
+ "zombossmech_modern_dark": {
+  "file": "zombies/zombossmech_modern_dark.json",
+  "extends": "zombossmech_dark"
+ },
+ "zombossmech_modern_dino": {
+  "file": "zombies/zombossmech_modern_dino.json",
+  "extends": "zombossmech_dino"
+ },
+ "zombossmech_modern_egypt": {
+  "file": "zombies/zombossmech_modern_egypt.json",
+  "extends": "zombossmech_egypt"
+ },
+ "zombossmech_modern_eighties": {
+  "file": "zombies/zombossmech_modern_eighties.json",
+  "extends": "zombossmech_eighties"
+ },
+ "zombossmech_modern_future": {
+  "file": "zombies/zombossmech_modern_future.json",
+  "extends": "zombossmech_future"
+ },
+ "zombossmech_modern_iceage": {
+  "file": "zombies/zombossmech_modern_iceage.json",
+  "extends": "zombossmech_iceage"
+ },
+ "zombossmech_modern_lostcity": {
+  "file": "zombies/zombossmech_modern_lostcity.json",
+  "extends": "zombossmech_lostcity"
+ },
+ "zombossmech_modern_pirate": {
+  "file": "zombies/zombossmech_modern_pirate.json",
+  "extends": "zombossmech_pirate"
+ },
+ "zombossmech_pirate": {
+  "file": "zombies/zombossmech_pirate.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_pirate2": {
+  "file": "zombies/zombossmech_pirate2.json",
+  "extends": "zomboss"
+ },
+ "zombossmech_sky": {
+  "file": "zombies/zombossmech_sky.json",
+  "extends": "zomboss"
+ },
+ "zoybean": {
+  "file": "zombies/zoybean.json",
+  "extends": "normal"
+ },
+ "zoybean_armor1": {
+  "file": "zombies/zoybean_armor1.json",
+  "extends": "normal"
+ },
+ "zoybean_armor2": {
+  "file": "zombies/zoybean_armor2.json",
+  "extends": "normal"
+ },
+ "zoybean_gargantuar": {
+  "file": "zombies/zoybean_gargantuar.json",
+  "extends": "gargantuar"
+ }
+}

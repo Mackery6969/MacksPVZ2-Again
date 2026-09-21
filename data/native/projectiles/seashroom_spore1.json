@@ -1,0 +1,7 @@
+{
+ "id": "seashroom_spore1",
+ "extra": {
+  "MintBoostedType": "seashroom_spore2",
+  "Props": "RTID(puffshroom_spore1@ProjectileProps)"
+ }
+}

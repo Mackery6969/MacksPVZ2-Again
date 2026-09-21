@@ -1,0 +1,19 @@
+{
+ "id": "buttercup_butter",
+ "extends": "butter",
+ "stats": {
+  "damage": 100
+ },
+ "extra": {
+  "ButterDuration": 8,
+  "Size": {
+   "h": 40,
+   "w": 40
+  },
+  "TileLiquid": {
+   "Duration": 120,
+   "Type": "butter"
+  },
+  "Props": "RTID(buttercup_butter@ProjectileProps)"
+ }
+}

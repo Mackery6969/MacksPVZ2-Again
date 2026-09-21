@@ -1,0 +1,15 @@
+{
+ "id": "powerlily",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 175,
+  "toughness": 300,
+  "cooldown": 60,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "ProduceCount": 1
+ }
+}

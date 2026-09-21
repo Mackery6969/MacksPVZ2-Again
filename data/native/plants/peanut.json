@@ -1,0 +1,31 @@
+{
+ "id": "peanut",
+ "family": "Defence",
+ "stats": {
+  "sun_cost": 150,
+  "toughness": 6000,
+  "cooldown": 15,
+  "cooldown_from": 1,
+  "beghouled_cost": 1500
+ },
+ "components": [
+  {
+   "type": "blocker",
+   "armor_toughness": 6000
+  }
+ ],
+ "mint_boost": {
+  "resistance": 3,
+  "speed": 2,
+  "plantfood": true
+ },
+ "extra": {
+  "CallsMirrorNutsOnDamaged": true,
+  "PeaType": "peanut",
+  "PlantfoodPeaCount": 60,
+  "ShootInterval": 0.65,
+  "ShootIntervalAdditional": 0.15,
+  "ShootIntervalSemi": 1.35,
+  "ShootIntervalSemiAdditional": 0.15
+ }
+}

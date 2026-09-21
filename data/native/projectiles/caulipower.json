@@ -1,0 +1,17 @@
+{
+ "id": "caulipower",
+ "stats": {
+  "damage": 0
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "Hypnotizing": true,
+  "IgnoreTombstones": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 28,
+   "w": 28
+  },
+  "Props": "RTID(caulipower@ProjectileProps)"
+ }
+}

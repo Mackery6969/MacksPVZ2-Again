@@ -1,0 +1,26 @@
+{
+ "id": "dino_gargantuar",
+ "extends": "gargantuar",
+ "stats": {
+  "toughness": 5400,
+  "speed": 0.16,
+  "eat_dps": 100,
+  "wave_cost": 1800,
+  "weight": 3000
+ },
+ "sort": "Gargantuar",
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "GargantuarAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "GargantuarHitRect"
+  }
+ ],
+ "extra": {
+  "ImpType": "dino_imp",
+  "SmashDamage": 1500
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "id": "HalloweenStage",
+ "music": "Dark",
+ "mower": "mower_dark",
+ "railcart": "railcart_tutorial",
+ "night": true,
+ "zombie_roster": {
+  "armor1": [
+   "halloween_armor1"
+  ],
+  "armor2": [
+   "halloween_armor2"
+  ],
+  "armor3": [
+   "halloween_armor2"
+  ],
+  "armor4": [
+   "halloween_armor2"
+  ],
+  "basic": [
+   "halloween"
+  ],
+  "flag": [
+   "halloween_flag"
+  ],
+  "gargantuar": [
+   "halloween_gargantuar"
+  ],
+  "imp": [
+   "halloween_imp"
+  ],
+  "rally": [
+   "halloween_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_cowboy"
+ ]
+}

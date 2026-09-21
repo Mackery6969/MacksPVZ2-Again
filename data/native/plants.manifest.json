@@ -1,0 +1,858 @@
+{
+ "ailmint": {
+  "file": "plants/ailmint.json",
+  "family": "Poison"
+ },
+ "akee": {
+  "file": "plants/akee.json",
+  "family": "Lobber"
+ },
+ "aloe": {
+  "file": "plants/aloe.json",
+  "family": "Defence"
+ },
+ "anthurium": {
+  "file": "plants/anthurium.json",
+  "family": "Electricity"
+ },
+ "appeasemint": {
+  "file": "plants/appeasemint.json",
+  "family": "Peashooter"
+ },
+ "applemortar": {
+  "file": "plants/applemortar.json",
+  "family": "Lobber"
+ },
+ "armamint": {
+  "file": "plants/armamint.json",
+  "family": "Lobber"
+ },
+ "asparagus": {
+  "file": "plants/asparagus.json",
+  "family": "Lobber"
+ },
+ "atombomb": {
+  "file": "plants/atombomb.json",
+  "family": "Explosive"
+ },
+ "atombomb_seedling": {
+  "file": "plants/atombomb_seedling.json",
+  "family": "Explosive"
+ },
+ "bamboobusket": {
+  "file": "plants/bamboobusket.json",
+  "family": "Defence"
+ },
+ "bambooshoot": {
+  "file": "plants/bambooshoot.json",
+  "family": "Sharp"
+ },
+ "bamboozle": {
+  "file": "plants/bamboozle.json",
+  "family": "Defence"
+ },
+ "banana": {
+  "file": "plants/banana.json",
+  "family": "Lobber"
+ },
+ "blastberry": {
+  "file": "plants/blastberry.json",
+  "family": "Lobber"
+ },
+ "bloomerang": {
+  "file": "plants/bloomerang.json",
+  "family": "Sharp"
+ },
+ "bloominghearts": {
+  "file": "plants/bloominghearts.json",
+  "family": "Poison"
+ },
+ "blover": {
+  "file": "plants/blover.json",
+  "family": "Slow"
+ },
+ "bombardmint": {
+  "file": "plants/bombardmint.json",
+  "family": "Explosive"
+ },
+ "bonkchoy": {
+  "file": "plants/bonkchoy.json",
+  "family": "Melee"
+ },
+ "bowlingbulb": {
+  "file": "plants/bowlingbulb.json",
+  "family": "Peashooter"
+ },
+ "bulbkekengi": {
+  "file": "plants/bulbkekengi.json",
+  "family": "Nope"
+ },
+ "buttercup": {
+  "file": "plants/buttercup.json",
+  "family": "Slow"
+ },
+ "cabbagepult": {
+  "file": "plants/cabbagepult.json",
+  "family": "Lobber"
+ },
+ "cactus": {
+  "file": "plants/cactus.json",
+  "family": "Sharp"
+ },
+ "cantaloupe": {
+  "file": "plants/cantaloupe.json",
+  "family": "Lobber"
+ },
+ "caulipower": {
+  "file": "plants/caulipower.json",
+  "family": "Magic"
+ },
+ "celerystalker": {
+  "file": "plants/celerystalker.json",
+  "family": "Melee"
+ },
+ "chardguard": {
+  "file": "plants/chardguard.json",
+  "family": "Defence"
+ },
+ "cherry_bomb": {
+  "file": "plants/cherry_bomb.json",
+  "family": "Explosive"
+ },
+ "chilibean": {
+  "file": "plants/chilibean.json",
+  "family": "Poison"
+ },
+ "chillypepper": {
+  "file": "plants/chillypepper.json",
+  "family": "Cold"
+ },
+ "chomper": {
+  "file": "plants/chomper.json",
+  "family": "Melee"
+ },
+ "citron": {
+  "file": "plants/citron.json",
+  "family": "Electricity"
+ },
+ "coconutcannon": {
+  "file": "plants/coconutcannon.json",
+  "family": "Lobber"
+ },
+ "coldsnapdragon": {
+  "file": "plants/coldsnapdragon.json",
+  "family": "Cold"
+ },
+ "concealmint": {
+  "file": "plants/concealmint.json",
+  "family": "Shadow"
+ },
+ "containmint": {
+  "file": "plants/containmint.json",
+  "family": "Slow"
+ },
+ "cranjelly": {
+  "file": "plants/cranjelly.json",
+  "family": "Slow"
+ },
+ "dandelion": {
+  "file": "plants/dandelion.json",
+  "family": "Peashooter"
+ },
+ "darkmatterdragonfruit": {
+  "file": "plants/darkmatterdragonfruit.json",
+  "family": "Shadow"
+ },
+ "doomshroom": {
+  "file": "plants/doomshroom.json",
+  "family": "Explosive"
+ },
+ "dragonbabybruit": {
+  "file": "plants/dragonbabybruit.json",
+  "family": "Shadow"
+ },
+ "dragonbruit": {
+  "file": "plants/dragonbruit.json",
+  "family": "Shadow"
+ },
+ "dusklobber": {
+  "file": "plants/dusklobber.json",
+  "family": "Shadow"
+ },
+ "electricblueberry": {
+  "file": "plants/electricblueberry.json",
+  "family": "Electricity"
+ },
+ "electriccurrant": {
+  "file": "plants/electriccurrant.json",
+  "family": "Electricity"
+ },
+ "electricpeashooter": {
+  "file": "plants/electricpeashooter.json",
+  "family": "Electricity"
+ },
+ "empea": {
+  "file": "plants/empea.json",
+  "family": "Electricity"
+ },
+ "enchantmint": {
+  "file": "plants/enchantmint.json",
+  "family": "Magic"
+ },
+ "endurian": {
+  "file": "plants/endurian.json",
+  "family": "Defence"
+ },
+ "enforcemint": {
+  "file": "plants/enforcemint.json",
+  "family": "Melee"
+ },
+ "enlightenmint": {
+  "file": "plants/enlightenmint.json",
+  "family": "Sun"
+ },
+ "escaperoot": {
+  "file": "plants/escaperoot.json",
+  "family": "Explosive"
+ },
+ "explodeonut": {
+  "file": "plants/explodeonut.json",
+  "family": "Explosive"
+ },
+ "filamint": {
+  "file": "plants/filamint.json",
+  "family": "Electricity"
+ },
+ "firegourd": {
+  "file": "plants/firegourd.json",
+  "family": "Fire"
+ },
+ "firepeashooter": {
+  "file": "plants/firepeashooter.json",
+  "family": "Fire"
+ },
+ "floawerPot": {
+  "file": "plants/floawerPot.json",
+  "family": "Nope"
+ },
+ "fumeshroom": {
+  "file": "plants/fumeshroom.json",
+  "family": "Poison"
+ },
+ "garlic": {
+  "file": "plants/garlic.json",
+  "family": "Poison"
+ },
+ "gatling": {
+  "file": "plants/gatling.json",
+  "family": "Peashooter"
+ },
+ "ghostpepper": {
+  "file": "plants/ghostpepper.json",
+  "family": "Fire"
+ },
+ "glaciershroom": {
+  "file": "plants/glaciershroom.json",
+  "family": "Cold"
+ },
+ "gloomshroom": {
+  "file": "plants/gloomshroom.json",
+  "family": "Shadow"
+ },
+ "gloomvine": {
+  "file": "plants/gloomvine.json",
+  "family": "Shadow"
+ },
+ "goldbloom": {
+  "file": "plants/goldbloom.json",
+  "family": "Sun"
+ },
+ "goldleaf": {
+  "file": "plants/goldleaf.json",
+  "family": "Nope"
+ },
+ "grapeshot": {
+  "file": "plants/grapeshot.json",
+  "family": "Explosive"
+ },
+ "gravebuster": {
+  "file": "plants/gravebuster.json",
+  "family": "Slow"
+ },
+ "grimrose": {
+  "file": "plants/grimrose.json",
+  "family": "Shadow"
+ },
+ "guacodile": {
+  "file": "plants/guacodile.json",
+  "family": "Melee"
+ },
+ "gumnut": {
+  "file": "plants/gumnut.json",
+  "family": "Defence"
+ },
+ "hollybarrierleaf": {
+  "file": "plants/hollybarrierleaf.json",
+  "family": "Defence"
+ },
+ "hollybarrierleafplantfood": {
+  "file": "plants/hollybarrierleafplantfood.json",
+  "family": "Defence"
+ },
+ "hollyknight": {
+  "file": "plants/hollyknight.json",
+  "family": "Defence"
+ },
+ "holonut": {
+  "file": "plants/holonut.json",
+  "family": "Defence"
+ },
+ "homingthistle": {
+  "file": "plants/homingthistle.json",
+  "family": "Sharp"
+ },
+ "hotdate": {
+  "file": "plants/hotdate.json",
+  "family": "Fire"
+ },
+ "hotpotato": {
+  "file": "plants/hotpotato.json",
+  "family": "Fire"
+ },
+ "hurrikale": {
+  "file": "plants/hurrikale.json",
+  "family": "Slow"
+ },
+ "hypnoshroom": {
+  "file": "plants/hypnoshroom.json",
+  "family": "Magic"
+ },
+ "icebloom": {
+  "file": "plants/icebloom.json",
+  "family": "Cold"
+ },
+ "iceburg": {
+  "file": "plants/iceburg.json",
+  "family": "Cold"
+ },
+ "iceweed": {
+  "file": "plants/iceweed.json",
+  "family": "Cold"
+ },
+ "imitater": {
+  "file": "plants/imitater.json",
+  "family": "Nope"
+ },
+ "inferno": {
+  "file": "plants/inferno.json",
+  "family": "Fire"
+ },
+ "intensivecarrot": {
+  "file": "plants/intensivecarrot.json",
+  "family": "Magic"
+ },
+ "jackolantern": {
+  "file": "plants/jackolantern.json",
+  "family": "Fire"
+ },
+ "jalapeno": {
+  "file": "plants/jalapeno.json",
+  "family": "Fire"
+ },
+ "kernelpult": {
+  "file": "plants/kernelpult.json",
+  "family": "Lobber"
+ },
+ "laser_bean": {
+  "file": "plants/laser_bean.json",
+  "family": "Sharp"
+ },
+ "lavaguava": {
+  "file": "plants/lavaguava.json",
+  "family": "Fire"
+ },
+ "lightningreed": {
+  "file": "plants/lightningreed.json",
+  "family": "Electricity"
+ },
+ "lilypad": {
+  "file": "plants/lilypad.json",
+  "family": "Nope"
+ },
+ "loquat": {
+  "file": "plants/loquat.json",
+  "family": "Slow"
+ },
+ "lotorpedo": {
+  "file": "plants/lotorpedo.json",
+  "family": "Lobber"
+ },
+ "lychee": {
+  "file": "plants/lychee.json",
+  "family": "Defence"
+ },
+ "magnetshroom": {
+  "file": "plants/magnetshroom.json",
+  "family": "Slow"
+ },
+ "magnifyinggrass": {
+  "file": "plants/magnifyinggrass.json",
+  "family": "Sun"
+ },
+ "marigold": {
+  "file": "plants/marigold.json",
+  "family": "Slow"
+ },
+ "marigold_blue": {
+  "file": "plants/marigold_blue.json",
+  "family": "Cold"
+ },
+ "marigold_green": {
+  "file": "plants/marigold_green.json",
+  "family": "Peashooter"
+ },
+ "marigold_orange": {
+  "file": "plants/marigold_orange.json",
+  "family": "Explosive"
+ },
+ "marigold_pink": {
+  "file": "plants/marigold_pink.json",
+  "family": "Magic"
+ },
+ "marigold_purple": {
+  "file": "plants/marigold_purple.json",
+  "family": "Poison"
+ },
+ "marigold_red": {
+  "file": "plants/marigold_red.json",
+  "family": "Fire"
+ },
+ "marigold_yellow": {
+  "file": "plants/marigold_yellow.json",
+  "family": "Sun"
+ },
+ "megagatling": {
+  "file": "plants/megagatling.json",
+  "family": "Peashooter"
+ },
+ "melonpult": {
+  "file": "plants/melonpult.json",
+  "family": "Lobber"
+ },
+ "meteorflower": {
+  "file": "plants/meteorflower.json",
+  "family": "Fire"
+ },
+ "mirrornut": {
+  "file": "plants/mirrornut.json",
+  "family": "Defence"
+ },
+ "missiletoe": {
+  "file": "plants/missiletoe.json",
+  "family": "Cold"
+ },
+ "moonbean": {
+  "file": "plants/moonbean.json",
+  "family": "Sun"
+ },
+ "moonflower": {
+  "file": "plants/moonflower.json",
+  "family": "Shadow"
+ },
+ "murkadamia": {
+  "file": "plants/murkadamia.json",
+  "family": "Shadow"
+ },
+ "nightshade": {
+  "file": "plants/nightshade.json",
+  "family": "Shadow"
+ },
+ "noctarine": {
+  "file": "plants/noctarine.json",
+  "family": "Shadow"
+ },
+ "parsnip": {
+  "file": "plants/parsnip.json",
+  "family": "Melee"
+ },
+ "peach": {
+  "file": "plants/peach.json",
+  "family": "Defence"
+ },
+ "peacommando": {
+  "file": "plants/peacommando.json",
+  "family": "Peashooter"
+ },
+ "peanut": {
+  "file": "plants/peanut.json",
+  "family": "Defence"
+ },
+ "peapod": {
+  "file": "plants/peapod.json",
+  "family": "Peashooter"
+ },
+ "peashooter": {
+  "file": "plants/peashooter.json",
+  "family": "Peashooter"
+ },
+ "peppermint": {
+  "file": "plants/peppermint.json",
+  "family": "Fire"
+ },
+ "pepperpult": {
+  "file": "plants/pepperpult.json",
+  "family": "Fire"
+ },
+ "perfumeshroom": {
+  "file": "plants/perfumeshroom.json",
+  "family": "Nope"
+ },
+ "phatbeet": {
+  "file": "plants/phatbeet.json",
+  "family": "Melee"
+ },
+ "phatbeet_rhythm": {
+  "file": "plants/phatbeet_rhythm.json",
+  "family": "Melee"
+ },
+ "pineapple": {
+  "file": "plants/pineapple.json",
+  "family": "Defence"
+ },
+ "pinkstarfruit": {
+  "file": "plants/pinkstarfruit.json",
+  "family": "Peashooter"
+ },
+ "plantern": {
+  "file": "plants/plantern.json",
+  "family": "Sun"
+ },
+ "poisonpeashooter": {
+  "file": "plants/poisonpeashooter.json",
+  "family": "Poison"
+ },
+ "potatomine": {
+  "file": "plants/potatomine.json",
+  "family": "Explosive"
+ },
+ "powerlily": {
+  "file": "plants/powerlily.json",
+  "family": "Nope"
+ },
+ "powerplant": {
+  "file": "plants/powerplant.json",
+  "family": "Nope"
+ },
+ "powerplant_alpha": {
+  "file": "plants/powerplant_alpha.json",
+  "family": "Nope"
+ },
+ "powerplant_beta": {
+  "file": "plants/powerplant_beta.json",
+  "family": "Nope"
+ },
+ "powerplant_delta": {
+  "file": "plants/powerplant_delta.json",
+  "family": "Nope"
+ },
+ "powerplant_epsilon": {
+  "file": "plants/powerplant_epsilon.json",
+  "family": "Nope"
+ },
+ "powerplant_gamma": {
+  "file": "plants/powerplant_gamma.json",
+  "family": "Nope"
+ },
+ "primalpeashooter": {
+  "file": "plants/primalpeashooter.json",
+  "family": "Peashooter"
+ },
+ "primalpotatomine": {
+  "file": "plants/primalpotatomine.json",
+  "family": "Explosive"
+ },
+ "primalsunflower": {
+  "file": "plants/primalsunflower.json",
+  "family": "Sun"
+ },
+ "primalwallnut": {
+  "file": "plants/primalwallnut.json",
+  "family": "Defence"
+ },
+ "puffshroom": {
+  "file": "plants/puffshroom.json",
+  "family": "Poison"
+ },
+ "pumpkin": {
+  "file": "plants/pumpkin.json",
+  "family": "Defence"
+ },
+ "pvine": {
+  "file": "plants/pvine.json",
+  "family": "Peashooter"
+ },
+ "pyrevine": {
+  "file": "plants/pyrevine.json",
+  "family": "Fire"
+ },
+ "redstinger": {
+  "file": "plants/redstinger.json",
+  "family": "Peashooter"
+ },
+ "reinforcemint": {
+  "file": "plants/reinforcemint.json",
+  "family": "Defence"
+ },
+ "repeater": {
+  "file": "plants/repeater.json",
+  "family": "Peashooter"
+ },
+ "sapfling": {
+  "file": "plants/sapfling.json",
+  "family": "Slow"
+ },
+ "scaredyshroom": {
+  "file": "plants/scaredyshroom.json",
+  "family": "Poison"
+ },
+ "seashooter": {
+  "file": "plants/seashooter.json",
+  "family": "Peashooter"
+ },
+ "seashroom": {
+  "file": "plants/seashroom.json",
+  "family": "Poison"
+ },
+ "seedling": {
+  "file": "plants/seedling.json",
+  "family": "Explosive"
+ },
+ "shadowpeashooter": {
+  "file": "plants/shadowpeashooter.json",
+  "family": "Shadow"
+ },
+ "shadowshroom": {
+  "file": "plants/shadowshroom.json",
+  "family": "Shadow"
+ },
+ "shinevine": {
+  "file": "plants/shinevine.json",
+  "family": "Sun"
+ },
+ "shootingstarfruit": {
+  "file": "plants/shootingstarfruit.json",
+  "family": "Peashooter"
+ },
+ "shrinkingviolet": {
+  "file": "plants/shrinkingviolet.json",
+  "family": "Magic"
+ },
+ "skyshooter": {
+  "file": "plants/skyshooter.json",
+  "family": "Peashooter"
+ },
+ "slingpea": {
+  "file": "plants/slingpea.json",
+  "family": "Lobber"
+ },
+ "snapdragon": {
+  "file": "plants/snapdragon.json",
+  "family": "Fire"
+ },
+ "snappea": {
+  "file": "plants/snappea.json",
+  "family": "Melee"
+ },
+ "snowdrop": {
+  "file": "plants/snowdrop.json",
+  "family": "Cold"
+ },
+ "snowpea": {
+  "file": "plants/snowpea.json",
+  "family": "Cold"
+ },
+ "solarsage": {
+  "file": "plants/solarsage.json",
+  "family": "Sun"
+ },
+ "solartomato": {
+  "file": "plants/solartomato.json",
+  "family": "Sun"
+ },
+ "spearmint": {
+  "file": "plants/spearmint.json",
+  "family": "Sharp"
+ },
+ "spikerock": {
+  "file": "plants/spikerock.json",
+  "family": "Sharp"
+ },
+ "spikeweed": {
+  "file": "plants/spikeweed.json",
+  "family": "Sharp"
+ },
+ "splitpea": {
+  "file": "plants/splitpea.json",
+  "family": "Peashooter"
+ },
+ "sporeshroom": {
+  "file": "plants/sporeshroom.json",
+  "family": "Poison"
+ },
+ "springbean": {
+  "file": "plants/springbean.json",
+  "family": "Slow"
+ },
+ "squash": {
+  "file": "plants/squash.json",
+  "family": "Melee"
+ },
+ "stallia": {
+  "file": "plants/stallia.json",
+  "family": "Slow"
+ },
+ "starfruit": {
+  "file": "plants/starfruit.json",
+  "family": "Peashooter"
+ },
+ "stickybombrice": {
+  "file": "plants/stickybombrice.json",
+  "family": "Lobber"
+ },
+ "strawburst": {
+  "file": "plants/strawburst.json",
+  "family": "Explosive"
+ },
+ "stunion": {
+  "file": "plants/stunion.json",
+  "family": "Slow"
+ },
+ "sunbean": {
+  "file": "plants/sunbean.json",
+  "family": "Sun"
+ },
+ "sunflower": {
+  "file": "plants/sunflower.json",
+  "family": "Sun"
+ },
+ "sunshroom": {
+  "file": "plants/sunshroom.json",
+  "family": "Sun"
+ },
+ "sweetpotato": {
+  "file": "plants/sweetpotato.json",
+  "family": "Defence"
+ },
+ "tallnut": {
+  "file": "plants/tallnut.json",
+  "family": "Defence"
+ },
+ "tanglekelp": {
+  "file": "plants/tanglekelp.json",
+  "family": "Melee"
+ },
+ "threepeater": {
+  "file": "plants/threepeater.json",
+  "family": "Peashooter"
+ },
+ "thymewarp": {
+  "file": "plants/thymewarp.json",
+  "family": "Nope"
+ },
+ "toadstool": {
+  "file": "plants/toadstool.json",
+  "family": "Sun"
+ },
+ "tool_projectile_bowling_explodeonut": {
+  "file": "plants/tool_projectile_bowling_explodeonut.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowling_holonut": {
+  "file": "plants/tool_projectile_bowling_holonut.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowling_primalwallnut": {
+  "file": "plants/tool_projectile_bowling_primalwallnut.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowling_tallnut": {
+  "file": "plants/tool_projectile_bowling_tallnut.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowling_wallnut": {
+  "file": "plants/tool_projectile_bowling_wallnut.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowlingbulb1": {
+  "file": "plants/tool_projectile_bowlingbulb1.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowlingbulb2": {
+  "file": "plants/tool_projectile_bowlingbulb2.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowlingbulb3": {
+  "file": "plants/tool_projectile_bowlingbulb3.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowlingbulb_explode": {
+  "file": "plants/tool_projectile_bowlingbulb_explode.json",
+  "family": "Nope"
+ },
+ "tool_projectile_bowlingbulb_iceburg": {
+  "file": "plants/tool_projectile_bowlingbulb_iceburg.json",
+  "family": "Nope"
+ },
+ "torchwood": {
+  "file": "plants/torchwood.json",
+  "family": "Peashooter"
+ },
+ "turkeypult": {
+  "file": "plants/turkeypult.json",
+  "family": "Magic"
+ },
+ "turnip": {
+  "file": "plants/turnip.json",
+  "family": "Defence"
+ },
+ "twinsunflower": {
+  "file": "plants/twinsunflower.json",
+  "family": "Sun"
+ },
+ "umbrellaleaf": {
+  "file": "plants/umbrellaleaf.json",
+  "family": "Defence"
+ },
+ "vamporcini": {
+  "file": "plants/vamporcini.json",
+  "family": "Poison"
+ },
+ "wallnut": {
+  "file": "plants/wallnut.json",
+  "family": "Defence"
+ },
+ "wasabiwhip": {
+  "file": "plants/wasabiwhip.json",
+  "family": "Fire"
+ },
+ "wintermelon": {
+  "file": "plants/wintermelon.json",
+  "family": "Cold"
+ },
+ "wintermint": {
+  "file": "plants/wintermint.json",
+  "family": "Cold"
+ },
+ "witchhazel": {
+  "file": "plants/witchhazel.json",
+  "family": "Magic"
+ },
+ "xshot": {
+  "file": "plants/xshot.json",
+  "family": "Peashooter"
+ },
+ "zoybeanpod": {
+  "file": "plants/zoybeanpod.json",
+  "family": "Magic"
+ }
+}

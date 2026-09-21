@@ -1,0 +1,15 @@
+{
+ "id": "magnifying_grass2",
+ "stats": {
+  "damage": 1650
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 2,
+  "Props": "RTID(magnifying_grass2@ProjectileProps)"
+ }
+}

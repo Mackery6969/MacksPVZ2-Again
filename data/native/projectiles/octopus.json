@@ -1,0 +1,12 @@
+{
+ "id": "octopus",
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "IgnoredBy3SectionStaff": true,
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "Props": "RTID(octopus@ProjectileProps)"
+ }
+}

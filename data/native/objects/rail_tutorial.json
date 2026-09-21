@@ -1,0 +1,9 @@
+{
+ "id": "rail_tutorial",
+ "category": "tile",
+ "extends": "rail",
+ "extra": {
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Frontyard"
+ }
+}

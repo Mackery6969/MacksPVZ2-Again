@@ -1,0 +1,40 @@
+{
+ "id": "west_bull",
+ "extends": "normal",
+ "stats": {
+  "toughness": 1300,
+  "speed": 0.2,
+  "eat_dps": 100,
+  "wave_cost": 600,
+  "weight": 1000
+ },
+ "tags": {
+  "add": [
+   "normal_death_when_mowed"
+  ],
+  "remove": [
+   "attractable",
+   "divertable",
+   "enlightenable",
+   "grabbable",
+   "swallowable",
+   "transformable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CowboyBullAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CowboyBullHitRect"
+  }
+ ],
+ "extra": {
+  "BullRunAgainDelay": 5,
+  "ImpThrowDistance": 4,
+  "ImpType": "west_bullrider",
+  "RushSPS": 1
+ }
+}

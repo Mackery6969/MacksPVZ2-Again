@@ -1,0 +1,17 @@
+{
+ "id": "gumnut",
+ "stats": {
+  "damage": 0
+ },
+ "extra": {
+  "BaseGumHealth": 4000,
+  "CannotBeReversedByJester": true,
+  "IgnoreTombstones": true,
+  "Size": {
+   "h": 40,
+   "w": 40
+  },
+  "ZombieGumHealthMult": 3,
+  "Props": "RTID(gumnut@ProjectileProps)"
+ }
+}

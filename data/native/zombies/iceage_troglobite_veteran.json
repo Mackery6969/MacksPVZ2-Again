@@ -1,0 +1,29 @@
+{
+ "id": "iceage_troglobite_veteran",
+ "extends": "normal",
+ "stats": {
+  "toughness": 700,
+  "speed": 0.16,
+  "eat_dps": 100,
+  "wave_cost": 900,
+  "weight": 3500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "BullyAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "BullyHitRect"
+  }
+ ],
+ "extra": {
+  "ChillInsteadOfFreeze": true,
+  "ImpTypes": [
+   "iceage_hunter",
+   "iceage_hunter_veteran"
+  ],
+  "NumberOfIceblocksToSpawnWith": 3
+ }
+}

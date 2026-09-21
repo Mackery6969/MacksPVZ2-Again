@@ -1,0 +1,33 @@
+{
+ "id": "beach_octopus",
+ "extends": "normal",
+ "stats": {
+  "toughness": 910,
+  "speed": 0.12,
+  "eat_dps": 100,
+  "wave_cost": 900,
+  "weight": 3500
+ },
+ "tags": {
+  "add": [
+   "deep_water"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "BullyAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "BullyHitRect"
+  }
+ ],
+ "extra": {
+  "OctopusType": "octopus",
+  "TimeBeforeFirst": 7,
+  "TimeBeforeFirstAdditional": 2,
+  "TimeBetween": 11,
+  "TimeBetweenAdditional": 3
+ }
+}

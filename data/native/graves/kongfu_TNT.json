@@ -1,0 +1,20 @@
+{
+ "id": "kongfu_TNT",
+ "stats": {
+  "toughness": 100000,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": false
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "TombstoneRect"
+  }
+ ],
+ "extra": {
+  "DefaultRopeLength": 1,
+  "ExplodeDamage": 1800,
+  "HitRectHidden": true
+ }
+}

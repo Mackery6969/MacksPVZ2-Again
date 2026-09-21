@@ -1,0 +1,15 @@
+{
+ "id": "homing_thistle2",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "DestroysBalloons": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 2,
+  "Props": "RTID(homing_thistle2@ProjectileProps)"
+ }
+}

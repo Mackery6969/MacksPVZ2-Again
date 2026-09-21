@@ -1,0 +1,20 @@
+{
+ "id": "zomboss",
+ "kind": "zombie_archetype",
+ "tags": [
+  "carriable",
+  "chompable",
+  "deep_water",
+  "flickable",
+  "gummable",
+  "homing_targetable",
+  "hypnotizable",
+  "knockbackable",
+  "lane_movable",
+  "pushable",
+  "sporeable",
+  "transformable",
+  "warpable",
+  "zomboss_damageable"
+ ]
+}

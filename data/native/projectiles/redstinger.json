@@ -1,0 +1,14 @@
+{
+ "id": "redstinger",
+ "stats": {
+  "damage": 30
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "redstinger2",
+  "Props": "RTID(redstinger@ProjectileProps)"
+ }
+}

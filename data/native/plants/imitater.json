@@ -1,0 +1,15 @@
+{
+ "id": "imitater",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 0,
+  "toughness": 30000,
+  "cooldown": 20,
+  "cooldown_from": 0,
+  "beghouled_cost": 0
+ },
+ "extra": {
+  "CannotBeSheepenedByWizard": true,
+  "ImmuneToIceblock": true
+ }
+}

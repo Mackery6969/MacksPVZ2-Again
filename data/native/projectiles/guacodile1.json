@@ -1,0 +1,15 @@
+{
+ "id": "guacodile1",
+ "stats": {
+  "damage": 60
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "SpeedMult": 1.5,
+  "MintBoostedType": "guacodile2",
+  "Props": "RTID(guacodile1@ProjectileProps)"
+ }
+}

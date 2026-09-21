@@ -1,0 +1,28 @@
+{
+ "id": "coconutcannon",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 400,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 3000
+ },
+ "components": [
+  {
+   "type": "lobber"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 3,
+  "plantfood": false
+ },
+ "extra": {
+  "AlwaysShoots": false,
+  "ImmuneToIceblock": true,
+  "PeaType": "coconut",
+  "PeaTypePlantfood": "coconut_pf",
+  "RestTime": 15
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "id": "rotobaga",
+ "stats": {
+  "damage": 10
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "rotobaga2",
+  "Props": "RTID(rotobaga@ProjectileProps)"
+ }
+}

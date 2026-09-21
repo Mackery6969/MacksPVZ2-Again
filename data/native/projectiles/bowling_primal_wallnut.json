@@ -1,0 +1,27 @@
+{
+ "id": "bowling_primal_wallnut",
+ "stats": {
+  "damage": 1000
+ },
+ "extra": {
+  "CannotBeReversedByJester": true,
+  "DamageBowlingLevel": 1,
+  "IgnoredBy3SectionStaff": true,
+  "KnockbackDistance": 1,
+  "ShakesScreenOnImpact": true,
+  "Size": {
+   "h": 50,
+   "w": 50
+  },
+  "SplashDamage": [
+   {
+    "KnockbackDistance": 0.5,
+    "Range": {
+     "h": 1,
+     "w": 1.5
+    }
+   }
+  ],
+  "Props": "RTID(bowling_primal_wallnut@ProjectileProps)"
+ }
+}

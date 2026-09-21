@@ -1,0 +1,10 @@
+{
+ "id": "railcart_kongfu",
+ "category": "tile",
+ "extends": "railcart",
+ "extra": {
+  "RailType": "rail_kongfu",
+  "Rect": "RTID(TileDefaultRect@RectangleProps)",
+  "WorldName": "Kongfu"
+ }
+}

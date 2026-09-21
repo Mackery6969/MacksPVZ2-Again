@@ -1,0 +1,27 @@
+{
+ "id": "splitpea",
+ "family": "Peashooter",
+ "stats": {
+  "sun_cost": 125,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "shooter",
+   "interval": 1.35,
+   "interval_jitter": 0.15,
+   "plantfood_count": 60
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "PlantfoodPeaCountBack": 90
+ }
+}

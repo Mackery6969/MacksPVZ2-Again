@@ -1,0 +1,14 @@
+{
+ "id": "pinkstar1",
+ "stats": {
+  "damage": 50
+ },
+ "extra": {
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "pinkstar2",
+  "Props": "RTID(pinkstar1@ProjectileProps)"
+ }
+}

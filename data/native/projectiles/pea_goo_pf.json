@@ -1,0 +1,19 @@
+{
+ "id": "pea_goo_pf",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "LeapBackDistance": 2,
+  "Poison": {
+   "DPS": 50,
+   "Duration": 5
+  },
+  "Size": {
+   "h": 160,
+   "w": 160
+  },
+  "TileLiquidType": "goo",
+  "Props": "RTID(pea_goo_pf@ProjectileProps)"
+ }
+}

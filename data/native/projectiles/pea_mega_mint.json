@@ -1,0 +1,22 @@
+{
+ "id": "pea_mega_mint",
+ "extends": "pea_mega",
+ "stats": {
+  "damage": 1800
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_mega_mint_flame_blue",
+  "ProjectileEmissions": [
+   {
+    "Count": 10,
+    "Type": "pea2"
+   }
+  ],
+  "Size": {
+   "h": 20,
+   "w": 20
+  },
+  "YellowIgnitedType": "pea_mega_mint_flame_yellow",
+  "Props": "RTID(pea_mega_mint@ProjectileProps)"
+ }
+}

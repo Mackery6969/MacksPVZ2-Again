@@ -1,0 +1,18 @@
+{
+ "id": "planttarget_squid",
+ "stats": {
+  "toughness": 400,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": false
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "TombstoneRect"
+  }
+ ],
+ "extra": {
+  "AllowPlantsInSquare": true
+ }
+}

@@ -1,0 +1,289 @@
+{
+ "boulder_trap_falling_backward": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "BoulderType": "trap_boulder",
+   "BoulderXOffset": -0.5,
+   "BoulderY": 0,
+   "DefaultRecoverDelay": 7.5,
+   "Rect": "RTID(TrapTileRect@RectangleProps)"
+  }
+ },
+ "boulder_trap_falling_forward": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "BoulderType": "trap_boulder",
+   "BoulderXOffset": 0.5,
+   "BoulderY": 0,
+   "DefaultRecoverDelay": 7.5,
+   "Rect": "RTID(TrapTileRect@RectangleProps)"
+  }
+ },
+ "endangered": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "flame_spreader_trap": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "ArmorProtection": false,
+   "DefaultRecoverDelay": 7.5,
+   "FlameDPS": 1800,
+   "FlameDuration": 3,
+   "FlyingIncluded": false,
+   "Rect": "RTID(TrapTileRect@RectangleProps)"
+  }
+ },
+ "goldtile": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "PlantTypeIndicatesTo": "RTID(goldleaf@PlantTypes)",
+   "ProduceInterval": {
+    "Max": 20,
+    "Min": 20
+   },
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "potholepuddle": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "powertile_alpha": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "DefaultPropagationDelay": 2,
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "powertile_beta": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "DefaultPropagationDelay": 2,
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "powertile_delta": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "DefaultPropagationDelay": 2,
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "powertile_epsilon": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "DefaultPropagationDelay": 2,
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "powertile_gamma": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "DefaultPropagationDelay": 2,
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "rail_beach": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "AboveTide": true,
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Beach"
+  }
+ },
+ "rail_cowboy": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Cowboy"
+  }
+ },
+ "rail_dark": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Dark"
+  }
+ },
+ "rail_egypt": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Egypt"
+  }
+ },
+ "rail_future": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Future"
+  }
+ },
+ "rail_kongfu": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Kongfu"
+  }
+ },
+ "rail_pirate": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Pirate"
+  }
+ },
+ "rail_sky": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Sky"
+  }
+ },
+ "rail_tutorial": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Frontyard"
+  }
+ },
+ "railcart_beach": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "AboveTide": true,
+   "RailType": "rail_beach",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "UseRopeMoveSounds": true,
+   "WorldName": "Beach"
+  }
+ },
+ "railcart_cowboy": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "RailType": "rail_cowboy",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Cowboy"
+  }
+ },
+ "railcart_dark": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "RailType": "rail_dark",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Dark"
+  }
+ },
+ "railcart_dark_above": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "AboveTide": true,
+   "RailType": "rail_dark",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Dark"
+  }
+ },
+ "railcart_egypt": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "RailType": "rail_egypt",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Egypt"
+  }
+ },
+ "railcart_future": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "RailType": "rail_future",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Future"
+  }
+ },
+ "railcart_kongfu": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "RailType": "rail_kongfu",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Kongfu"
+  }
+ },
+ "railcart_pirate": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "RailType": "rail_pirate",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Pirate"
+  }
+ },
+ "railcart_sky": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "RailType": "rail_sky",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Sky"
+  }
+ },
+ "railcart_tutorial": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "RailType": "rail_tutorial",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Frontyard"
+  }
+ },
+ "railcart_tutorial_above": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "AboveTide": true,
+   "RailType": "rail_tutorial",
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "WorldName": "Frontyard"
+  }
+ },
+ "shallowpuddle": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(TileDefaultRect@RectangleProps)"
+  }
+ },
+ "slider_down": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(SliderTileRect@RectangleProps)"
+  }
+ },
+ "slider_up": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "Rect": "RTID(SliderTileRect@RectangleProps)"
+  }
+ },
+ "taichitile": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "//": "spd = ln(sun * 0.04 + 1)",
+   "LifeSpan": 60,
+   "Rect": "RTID(TileDefaultRect@RectangleProps)",
+   "SunCostFactor": 0.04
+  }
+ },
+ "thunder_trap": {
+  "objclass": "TileProperties",
+  "objdata": {
+   "DefaultRecoverDelay": 7.5,
+   "IntervalBetweenSquares": 0.1,
+   "LinkedTileTypes": [
+    "goldtile"
+   ],
+   "Rect": "RTID(TrapTileRect@RectangleProps)",
+   "SelfIncluded": true,
+   "SquareCracklingDuration": 10,
+   "ThunderArmorProtected": false,
+   "ThunderDamage": 8001
+  }
+ }
+}

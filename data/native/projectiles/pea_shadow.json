@@ -1,0 +1,15 @@
+{
+ "id": "pea_shadow",
+ "stats": {
+  "damage": 20
+ },
+ "extra": {
+  "CancelsKnockbackFlying": true,
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "MintBoostedType": "pea_shadow2",
+  "Props": "RTID(pea_shadow@ProjectileProps)"
+ }
+}

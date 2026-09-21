@@ -1,0 +1,22 @@
+{
+ "id": "blastberry_small2",
+ "stats": {
+  "damage": 75
+ },
+ "extra": {
+  "Size": {
+   "h": 15,
+   "w": 15
+  },
+  "SplashDamage": [
+   {
+    "Damage": 75,
+    "Range": {
+     "h": 1,
+     "w": 1
+    }
+   }
+  ],
+  "Props": "RTID(blastberry_small2@ProjectileProps)"
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "id": "stickybomb_pf_mint",
+ "extends": "stickybomb_pf",
+ "stats": {
+  "damage": 200
+ },
+ "extra": {
+  "BombRiceExplodeSize": {
+   "h": 3,
+   "w": 3
+  },
+  "BombRiceLevel": 3,
+  "BombRiceLifespan": 3,
+  "Props": "RTID(stickybomb_pf_mint@ProjectileProps)"
+ }
+}

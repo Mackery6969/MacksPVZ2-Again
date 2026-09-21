@@ -1,0 +1,16 @@
+{
+ "id": "tool_projectile_bowlingbulb_explode",
+ "family": "Nope",
+ "stats": {
+  "sun_cost": 0,
+  "toughness": 1,
+  "cooldown": 0.01,
+  "cooldown_from": 1,
+  "beghouled_cost": 1000
+ },
+ "extra": {
+  "ImmuneToIceblock": true,
+  "ProjectileType": "bowling_pf",
+  "StartingHeight": 30
+ }
+}

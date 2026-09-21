@@ -1,0 +1,23 @@
+{
+ "id": "pepper2",
+ "stats": {
+  "damage": 250
+ },
+ "extra": {
+  "DamageType": "fire",
+  "Size": {
+   "h": 16.2,
+   "w": 16.2
+  },
+  "SplashDamage": [
+   {
+    "Damage": 100,
+    "Range": {
+     "h": 3,
+     "w": 3
+    }
+   }
+  ],
+  "Props": "RTID(pepper2@ProjectileProps)"
+ }
+}

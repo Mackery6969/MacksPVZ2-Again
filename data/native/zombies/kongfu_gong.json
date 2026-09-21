@@ -1,0 +1,42 @@
+{
+ "id": "kongfu_gong",
+ "extends": "normal",
+ "stats": {
+  "toughness": 250,
+  "speed": 0.15,
+  "eat_dps": 100,
+  "wave_cost": 350,
+  "weight": 500
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "SummonCount": {
+   "Max": 3,
+   "Min": 2
+  },
+  "TimeBeforeSummon": {
+   "Max": 12,
+   "Min": 9
+  },
+  "TimeBetweenSummon": {
+   "Max": 10,
+   "Min": 7
+  },
+  "ZombieSummonDistance": {
+   "Max": 1,
+   "Min": 0
+  },
+  "ZombiesToSummon": [
+   "kongfu_bomb"
+  ]
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "id": "slingpea",
+ "family": "Lobber",
+ "stats": {
+  "sun_cost": 125,
+  "toughness": 300,
+  "cooldown": 5,
+  "beghouled_cost": 1000
+ },
+ "components": [
+  {
+   "type": "lobber"
+  }
+ ],
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "PeaCountPerShot": 5,
+  "PeaCountPerShotPlantfood": 10,
+  "PeaType": "pea_sling_0",
+  "PeaTypePlantfood": "pea_sling_0_pf",
+  "PlantfoodShootTime": 4,
+  "ShootInterval": {
+   "Max": 5,
+   "Min": 4
+  }
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "id": "halloween_armor1",
+ "stats": {
+  "toughness": 370,
+  "bowling_level": 1,
+  "is_metal": false,
+  "is_ice": false
+ }
+}

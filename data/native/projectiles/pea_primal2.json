@@ -1,0 +1,16 @@
+{
+ "id": "pea_primal2",
+ "stats": {
+  "damage": 300
+ },
+ "extra": {
+  "BlueIgnitedType": "pea_primal2_flame_blue",
+  "Size": {
+   "h": 16,
+   "w": 16
+  },
+  "StunDuration": 1,
+  "YellowIgnitedType": "pea_primal2_flame_yellow",
+  "Props": "RTID(pea_primal2@ProjectileProps)"
+ }
+}

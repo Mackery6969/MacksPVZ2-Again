@@ -1,0 +1,37 @@
+{
+ "id": "eightiesarcadecabinet",
+ "stats": {
+  "toughness": 600,
+  "flying": false,
+  "gravebuster_plantable": false,
+  "hot_potato_meltable": false
+ },
+ "components": [
+  {
+   "type": "hit_rect",
+   "rect": "CabinetRect"
+  },
+  {
+   "type": "grave_summon",
+   "interval_min": 10,
+   "interval_max": 12,
+   "zombies": [
+    {
+     "type": "eighties_8bit",
+     "weight": 60
+    },
+    {
+     "type": "eighties_8bit_armor1",
+     "weight": 30
+    },
+    {
+     "type": "eighties_8bit_armor2",
+     "weight": 10
+    }
+   ]
+  }
+ ],
+ "extra": {
+  "JamStyle": "jam_8bit"
+ }
+}

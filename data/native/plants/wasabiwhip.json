@@ -1,0 +1,36 @@
+{
+ "id": "wasabiwhip",
+ "family": "Fire",
+ "stats": {
+  "sun_cost": 225,
+  "toughness": 300,
+  "cooldown": 5,
+  "cooldown_from": 1,
+  "beghouled_cost": 1500
+ },
+ "mint_boost": {
+  "resistance": 1,
+  "speed": 2,
+  "plantfood": false
+ },
+ "extra": {
+  "AttackDamage": 40,
+  "AttackInterval": 0.6,
+  "AttackSplashSamage": 20,
+  "ImmuneToIceblock": true,
+  "MaxDistance": 2.5,
+  "MintDamageFactor": 3,
+  "PlantfoodDPS": 400,
+  "PlantfoodDuration": 5,
+  "WarmingRadius": {
+   "GridItemDamage": 200,
+   "PulseCooldown": 6,
+   "PulseInitialDelay": 0.5
+  },
+  "WarmingRadiusPlantfood": {
+   "GridItemDamage": 100,
+   "PulseCooldown": 1.5,
+   "PulseInitialDelay": 0.25
+  }
+ }
+}

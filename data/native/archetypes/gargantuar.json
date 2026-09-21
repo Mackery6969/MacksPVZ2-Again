@@ -1,0 +1,24 @@
+{
+ "id": "gargantuar",
+ "kind": "zombie_archetype",
+ "tags": [
+  "attractable",
+  "carriable",
+  "chompable",
+  "deep_water",
+  "divertable",
+  "gummable",
+  "homing_targetable",
+  "hypnotizable",
+  "knockbackable",
+  "normal_death_when_mowed",
+  "pushable",
+  "sap_detectable",
+  "shrinkable",
+  "snap_targetable",
+  "sporeable",
+  "toss_detectable",
+  "warpable",
+  "zomboss_damageable"
+ ]
+}

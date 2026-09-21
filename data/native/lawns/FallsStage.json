@@ -1,0 +1,39 @@
+{
+ "id": "FallsStage",
+ "music": "Lostcity",
+ "mower": "mower_cowboy",
+ "railcart": "railcart_tutorial",
+ "night": false,
+ "zombie_roster": {
+  "armor1": [
+   "foodfight_armor1"
+  ],
+  "armor2": [
+   "foodfight_armor2"
+  ],
+  "armor3": [
+   "foodfight_armor2"
+  ],
+  "armor4": [
+   "foodfight_armor2"
+  ],
+  "basic": [
+   "foodfight"
+  ],
+  "flag": [
+   "foodfight_flag"
+  ],
+  "gargantuar": [
+   "summer_gargantuar"
+  ],
+  "imp": [
+   "summer_imp"
+  ],
+  "rally": [
+   "foodfight_flag"
+  ]
+ },
+ "gravestones": [
+  "gravestone_tutorial"
+ ]
+}

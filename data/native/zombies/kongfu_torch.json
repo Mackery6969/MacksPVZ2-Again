@@ -1,0 +1,33 @@
+{
+ "id": "kongfu_torch",
+ "extends": "normal",
+ "stats": {
+  "toughness": 250,
+  "speed": 0.25,
+  "eat_dps": 100,
+  "wave_cost": 250,
+  "weight": 3000
+ },
+ "tags": {
+  "remove": [
+   "carriable"
+  ]
+ },
+ "components": [
+  {
+   "type": "attack_rect",
+   "rect": "CommonAttackRect"
+  },
+  {
+   "type": "hit_rect",
+   "rect": "CommonHitRect"
+  }
+ ],
+ "extra": {
+  "AttackRectWithFire": "RTID(ExplorerWithFireAttackRect@RectangleProps)",
+  "FireDPS": 1000,
+  "HammerDuration": 3,
+  "HitRectWithFire": "RTID(ExplorerWithFireHitRect@RectangleProps)",
+  "RestDuration": 0
+ }
+}
