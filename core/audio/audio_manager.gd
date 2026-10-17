@@ -68,9 +68,8 @@ func _pick_backend() -> AudioBackend:
 func play(id: StringName, position: Variant = null) -> void:
 	if muted:
 		return
-	var event := catalog.get_event(id)
+	var event := _find_event(id)
 	if event == null:
-		_report_missing(id)
 		return
 	backend.play(event, position)
 
@@ -78,9 +77,8 @@ func play(id: StringName, position: Variant = null) -> void:
 func play_music(id: StringName) -> void:
 	if muted:
 		return
-	var event := catalog.get_event(id)
+	var event := _find_event(id)
 	if event == null:
-		_report_missing(id)
 		return
 	backend.play_music(event)
 
@@ -99,6 +97,14 @@ func set_bus_volume(bus: StringName, linear: float) -> void:
 
 func has_event(id: StringName) -> bool:
 	return catalog.has_event(id)
+
+
+## The catalog event for `id`, or null after reporting it missing.
+func _find_event(id: StringName) -> AudioEvent:
+	var event := catalog.get_event(id)
+	if event == null:
+		_report_missing(id)
+	return event
 
 
 func _report_missing(id: StringName) -> void:
