@@ -125,28 +125,32 @@ func _load_campaigns(dir_path: String, mod: StringName) -> void:
 	var fname := dir.get_next()
 	while fname != "":
 		if not dir.current_is_dir():
-			var path := dir_path.path_join(fname)
-			var campaign: CampaignDef = null
-			if fname.ends_with(".json"):
-				var parsed = _read_json(path)
-				if parsed is Dictionary:
-					campaign = CampaignDef.from_dict(parsed)
-					if campaign.id == &"":
-						campaign.id = StringName(fname.get_basename())
-				else:
-					_errors.append("%s: not a JSON object" % path)
-			elif fname.ends_with(".tres") or fname.ends_with(".res"):
-				var res = load(path)
-				if res is CampaignDef:
-					campaign = res
-				else:
-					_errors.append("%s: not a CampaignDef resource" % path)
-			if campaign != null:
-				campaign.source_mod = mod
-				campaign.source_path = path
-				campaigns[campaign.id] = campaign
+			_load_campaign_file(dir_path.path_join(fname), fname, mod)
 		fname = dir.get_next()
 	dir.list_dir_end()
+
+
+func _load_campaign_file(path: String, fname: String, mod: StringName) -> void:
+	var campaign: CampaignDef = null
+	if fname.ends_with(".json"):
+		var parsed = _read_json(path)
+		if not parsed is Dictionary:
+			_errors.append("%s: not a JSON object" % path)
+			return
+		campaign = CampaignDef.from_dict(parsed)
+		if campaign.id == &"":
+			campaign.id = StringName(fname.get_basename())
+	elif fname.ends_with(".tres") or fname.ends_with(".res"):
+		var res = load(path)
+		if not res is CampaignDef:
+			_errors.append("%s: not a CampaignDef resource" % path)
+			return
+		campaign = res
+	if campaign == null:
+		return
+	campaign.source_mod = mod
+	campaign.source_path = path
+	campaigns[campaign.id] = campaign
 
 
 func _read_json(path: String) -> Variant:
