@@ -166,6 +166,13 @@ def main():
         while "%s/%s" % (dest_dir, fname) in taken:
             n += 1
             fname = "%s__%d.mp3" % (base, n)
+        # Names and music paths come from the build; refuse any that would
+        # land outside Assets/PVZGE (e.g. "../" components).
+        target = os.path.abspath(os.path.join(root, dest_dir, fname))
+        if "/" in base or "\\" in base or \
+                not target.startswith(os.path.abspath(root) + os.sep):
+            print("  !! skipping unsafe name %r" % base, file=sys.stderr)
+            continue
         taken.add("%s/%s" % (dest_dir, fname))
         planned[dest_dir].append((src, fname))
 

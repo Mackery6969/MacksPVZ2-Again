@@ -97,6 +97,11 @@ def main():
             continue
 
         name = payload.get("name") or os.path.basename(path).split(".")[0]
+        # The name comes from the asset itself; keep it to one path component
+        # so a "../" or absolute name cannot write outside out_dir.
+        name = os.path.basename(str(name).replace("\\", "/"))
+        if name in ("", ".", ".."):
+            name = os.path.basename(path).split(".")[0]
         dest = os.path.join(out_dir, name)
         os.makedirs(dest, exist_ok=True)
         with open(os.path.join(dest, "skeleton.json"), "w", encoding="utf-8") as fh:

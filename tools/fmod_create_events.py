@@ -16,6 +16,7 @@ catalog grows.
     python3 tools/fmod_create_events.py <project.fspro dir> [--dry-run]
 """
 import json, glob, os, re, sys, uuid
+from xml.sax.saxutils import escape, unescape
 
 CATALOG = "data/native/audio/events.json"
 
@@ -57,7 +58,7 @@ def scan_project(root):
                            text)
         if 'class="MasterEventFolder"' in text:
             master = fid.group(1)
-        folders[fid.group(1)] = (name.group(1) if name else "",
+        folders[fid.group(1)] = (unescape(name.group(1)) if name else "",
                                  parent.group(1) if parent else None)
 
     for path in glob.glob(os.path.join(meta, "Event", "*.xml")):
@@ -68,7 +69,7 @@ def scan_project(root):
         name = re.search(r'<property name="name">\s*<value>([^<]*)</value>', text)
         parent = re.search(r'<relationship name="folder">\s*<destination>(\{[^}]+\})',
                            text)
-        events[eid.group(1)] = (name.group(1) if name else "",
+        events[eid.group(1)] = (unescape(name.group(1)) if name else "",
                                 parent.group(1) if parent else None)
 
     def path_of(fid, table):
@@ -111,7 +112,7 @@ def serialization_model(root):
 def folder_xml(model, fid, name, parent):
     return (HEADER % model
             + '\t<object class="EventFolder" id="%s">\n' % fid
-            + '\t\t<property name="name">\n\t\t\t<value>%s</value>\n\t\t</property>\n' % name
+            + '\t\t<property name="name">\n\t\t\t<value>%s</value>\n\t\t</property>\n' % escape(name)
             + '\t\t<relationship name="folder">\n\t\t\t<destination>%s</destination>\n'
               '\t\t</relationship>\n' % parent
             + '\t</object>\n</objects>\n')
@@ -130,7 +131,7 @@ def event_xml(model, name, folder, bus):
 
     x = HEADER % model
     x += '\t<object class="Event" id="%s">\n' % e
-    x += '\t\t<property name="name">\n\t\t\t<value>%s</value>\n\t\t</property>\n' % name
+    x += '\t\t<property name="name">\n\t\t\t<value>%s</value>\n\t\t</property>\n' % escape(name)
     x += '\t\t<property name="outputFormat">\n\t\t\t<value>1</value>\n\t\t</property>\n'
     x += rel("folder", folder) + rel("mixer", mixer) + rel("masterTrack", track)
     x += rel("mixerInput", minput) + rel("automatableProperties", props)
