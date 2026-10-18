@@ -455,7 +455,8 @@ func place_entity(kind: StringName, id: StringName, row: int, col: int) -> Chara
 				if String(tag).begins_with("provides:"):
 					_cell_provides[Vector2i(col, row)] = \
 							StringName(String(tag).substr(9))
-		p.died.connect(func(who): _on_placed_plant_died(who, row, col))
+		# Read the cell at death time: move_plant may have carried it elsewhere.
+		p.died.connect(func(who): _on_placed_plant_died(who, who.row, who.col))
 		Audio.play(&"plant.place", p.position)
 	return p
 
@@ -526,6 +527,8 @@ func dig_up(row: int, col: int) -> bool:
 	if p == null:
 		return false
 	remove_plant(row, col)
+	# A dug-up carrier takes its provision with it, as when it is eaten.
+	_cell_provides.erase(Vector2i(col, row))
 	Audio.play(&"plant.dig", p.position)
 	p.queue_free()
 	return true
