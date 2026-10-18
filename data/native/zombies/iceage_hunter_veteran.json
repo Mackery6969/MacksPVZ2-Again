@@ -9,18 +9,12 @@
   "weight": 2500,
   "sun_cost": 125
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
+ "tags": {
+  "add": [
+   "chill_only"
+  ]
+ },
  "extra": {
-  "ChillInsteadOfFreeze": true,
   "LobInterval": 3,
   "LobIntervalAdditional": 0.5,
   "SnowballType": "hunter_snowball"

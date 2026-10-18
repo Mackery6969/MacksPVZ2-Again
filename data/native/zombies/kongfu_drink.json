@@ -4,21 +4,10 @@
  "stats": {
   "toughness": 600,
   "speed": 0.2,
-  "eat_dps": 100,
   "wave_cost": 400,
   "weight": 3000,
   "sun_cost": 100
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "ArmDroppingHealthPct": 0.25,
   "DrinkHealthPct": 0.5,

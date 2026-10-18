@@ -1,24 +1,6 @@
 {
  "id": "lostcity_lostpilot_veteran_with_zombies",
  "extends": "lostcity_lostpilot_veteran",
- "stats": {
-  "toughness": 500,
-  "speed": 0.185,
-  "eat_dps": 100,
-  "wave_cost": 250,
-  "weight": 3000,
-  "sun_cost": 75
- },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "HangingNoEatTimeUntilDrop": 3,
   "ZombiesToBringWith": [

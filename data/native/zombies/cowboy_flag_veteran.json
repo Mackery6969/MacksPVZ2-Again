@@ -15,16 +15,6 @@
    "plantfood_carrier"
   ]
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "DanceSPSScale": 1.2
  }

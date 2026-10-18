@@ -1,27 +1,18 @@
 {
  "id": "kongfu_boss_explode",
  "extends": "zomboss",
- "stats": {
-  "toughness": 190,
-  "speed": 0.185,
-  "eat_dps": 100,
-  "wave_cost": 100,
-  "weight": 0,
-  "sun_cost": 50
- },
  "sort": "Zomboss",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarHitRect"
+   "rect": "GargantuarHitRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "rect": "GargantuarHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
-  "ChiliStunDurationMult": 0,
   "FoeEatDamageReflectPct": 0.5,
   "MissileType": "kongfu_boss_explode_bomb",
   "SummonColumn": 6,

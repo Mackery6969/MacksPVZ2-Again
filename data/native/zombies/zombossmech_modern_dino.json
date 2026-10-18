@@ -1,27 +1,8 @@
 {
  "id": "zombossmech_modern_dino",
  "extends": "zombossmech_dino",
- "stats": {
-  "toughness": 190,
-  "speed": 0.185,
-  "eat_dps": 100,
-  "wave_cost": 100,
-  "weight": 0,
-  "sun_cost": 50
- },
  "sort": "Zomboss",
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "ZombossMechAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "ZombossMechHitRect"
-  }
- ],
  "extra": {
-  "ChiliStunDurationMult": 0,
   "FoeEatDamageReflectPct": 0.5,
   "IdleColumn": 6,
   "MissileType": "zomboss_missile_dino",

@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 380,
   "speed": 0.3,
-  "eat_dps": 100,
   "wave_cost": 150,
   "weight": 4000,
   "sun_cost": 75
@@ -19,12 +18,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "FutureJetpackAttackRect"
+   "rect": "FutureJetpackAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "FutureJetpackHitRect"
+   "rect": "FutureJetpackHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

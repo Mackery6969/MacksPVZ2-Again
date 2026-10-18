@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 1000,
   "speed": 0.2,
-  "eat_dps": 100,
   "wave_cost": 700,
   "weight": 4000,
   "sun_cost": 125
@@ -19,12 +18,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "SkyBattlePlaneAttackRect"
+   "rect": "SkyBattlePlaneAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "SkyBattlePlaneHitRect"
+   "rect": "SkyBattlePlaneHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

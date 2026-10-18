@@ -80,6 +80,95 @@ STATS = {
 }
 
 
+# Zombie behaviour, derived the same way plant behaviour is: from the fields
+# an entry carries. ZombieSort is the tempting discriminator and the wrong one
+# - it separates Normal from Gargantuar from Zomboss, which says nothing about
+# what a zombie does. Unlike plants, a zombie can match several of these at
+# once: a gargantuar both smashes and throws an imp.
+# Health fraction a gargantuar throws its imp at when the entry does not say.
+DEFAULT_IMP_THROW_AT = 0.5
+
+
+def flatten_range(cfg, slot, value):
+    """Write `value` into `cfg[slot]`, splitting PopCap's {Min, Max} pairs.
+
+    A range becomes `slot` and `slot_max`, which is what cfg_range reads at
+    runtime. Keeping both ends rather than a midpoint and a jitter means a
+    `{Min: 0, Max: 1}` column range stays exactly that.
+    """
+    if isinstance(value, dict) and ("Min" in value or "Max" in value):
+        low = value.get("Min", value.get("Max"))
+        high = value.get("Max", low)
+        cfg[slot] = low
+        if high != low:
+            cfg[slot + "_max"] = high
+    else:
+        cfg[slot] = value
+
+ZOMBIE_BEHAVIOURS = [
+    ("smasher", ("SmashDamage",),
+     {"SmashDamage": "damage", "SmashDistance": "distance",
+      "MaxSmashTargetCount": "max_targets", "HammerDuration": "windup",
+      "RestDuration": "rest"}),
+
+    ("spawn_inside", ("ZombieInside",),
+     {"ZombieInside": "zombie", "ProtectsInside": "protects"}),
+
+    ("escort", ("TeammateType",),
+     {"TeammateType": "teammate", "TeamMemberCount": "count"}),
+
+    ("summoner", ("ZombiesToSummon", "ZombieCountToSummon", "ZombiesToSpawn"),
+     {"ZombiesToSummon": "zombies", "ZombieTypesToSummonBecomingFlag": "zombies",
+      "ZombiesToSpawn": "zombies",
+      "ZombieCountToSummon": "count", "SummonCount": "count",
+      "TimeBeforeSummon": "first_delay", "TimeBetweenSummon": "interval",
+      "SummonTime": "interval", "ZombieSummonDistance": "distance"}),
+
+    # A zombie that is only around for a while: the Kung-Fu bronze statue
+    # stands spawning gargantuars until its time runs out.
+    ("lifespan", ("Lifespan", "LifeSpan"),
+     {"Lifespan": "duration", "LifeSpan": "duration"}),
+
+    ("enrage", ("EnragedDamageScale", "EnragedSpeedScale", "EnrageHealthPct"),
+     {"EnragedDamageScale": "damage_scale",
+      "EnragedEatingDamageScale": "damage_scale",
+      "EnragedSpeedScale": "speed_scale",
+      "EnragedWalkingSpeedScale": "speed_scale",
+      "EnrageHealthPct": "health_pct"}),
+]
+
+# Extra health pools PopCap stores as a bare number rather than as an entry in
+# ArmorProps. They behave exactly like armor - destroyed before the body takes
+# a hit - so they become armor components with an inline toughness. A poncho
+# zombie carries two, which is why these stack rather than pick one.
+# BugToughness is deliberately absent: every zombie carrying it reads 0.
+INLINE_ARMOR = {
+    "ShieldToughness": "plate",
+    "PonchoToughness": "poncho",
+    "BalloonToughness": "balloon",
+    "BoardToughness": "board",
+    "GlacierToughness": "glacier",
+    "NewspaperHealth": "newspaper",
+}
+
+# Interaction modifiers. PopCap writes these as per-plant exceptions on the
+# zombie; the ones with a consumer in this build become typed stats or tags,
+# and the rest stay in `extra` until the plant they answer to exists.
+#
+# ChiliStunDurationMult reads 0 on all 54 zombies that carry it, so it is
+# flatly "cannot be stunned" rather than a scale - but it is imported as the
+# scale it is named for, so a mod can hand out partial resistance.
+ZOMBIE_MODIFIERS = {
+    "ChiliStunDurationMult": "stun_scale",
+    "SpeedScaleInWater": "water_speed_scale",
+}
+
+ZOMBIE_TRAITS = {
+    # Ice hits these, but it chills instead of holding them still.
+    "ChillInsteadOfFreeze": "chill_only",
+}
+
+
 def split_zombie(name, entry, prop_lookup):
     d = entry.get("objdata") or {}
     out = collections.OrderedDict()
@@ -104,6 +193,10 @@ def split_zombie(name, entry, prop_lookup):
     else:
         # A zombie with no wave cost still must not be free to place.
         stats["sun_cost"] = derive_sun_cost(stats.get("wave_cost", 0))
+
+    for src_key, dst in ZOMBIE_MODIFIERS.items():
+        if merged.get(src_key) is not None:
+            stats[dst] = merged[src_key]
     if stats:
         out["stats"] = stats
 
@@ -116,6 +209,9 @@ def split_zombie(name, entry, prop_lookup):
         if not merged.get(flag):
             tags.append(tag)
     for flag, tag in TRAIT_FLAGS.items():
+        if merged.get(flag):
+            tags.append(tag)
+    for flag, tag in ZOMBIE_TRAITS.items():
         if merged.get(flag):
             tags.append(tag)
     if tags:
@@ -136,12 +232,90 @@ def split_zombie(name, entry, prop_lookup):
         components.append({"type": "attack_rect", "rect": strip_rtid(merged["AttackRect"])})
     if merged.get("HitRect"):
         components.append({"type": "hit_rect", "rect": strip_rtid(merged["HitRect"])})
+
+    known = (set(STATS) | set(CAPABILITY_FLAGS) | set(TRAIT_FLAGS)
+             | set(ZOMBIE_MODIFIERS) | set(ZOMBIE_TRAITS)
+             | {"SunCost", "ZombieSort", "StartingArmors", "AttackRect",
+                "HitRect", "ZombieBasedOn", "Properties"})
+
+    for field, slot in INLINE_ARMOR.items():
+        if merged.get(field):
+            components.append({"type": "armor", "slot": slot,
+                               "toughness": merged[field]})
+            known.add(field)
+
+    for ctype, triggers, fields in ZOMBIE_BEHAVIOURS:
+        if not any(merged.get(t) is not None for t in triggers):
+            continue
+        cfg = {"type": ctype}
+        for src_key, dst in fields.items():
+            if merged.get(src_key) is None:
+                continue
+            flatten_range(cfg, dst, strip_rtid(merged[src_key]))
+            known.add(src_key)
+        known.update(triggers)
+        components.append(cfg)
+
+    # Carrying an imp means one of two different things, and the field that
+    # tells them apart is SmashDamage. A gargantuar throws its imp over the
+    # plants as it is worn down; a barrel, a bull or a dropship simply lets
+    # its rider out when it breaks, which is ZombieInside's mechanic.
+    #
+    # The throw thresholds are only stated for three zombies. Every other
+    # gargantuar throws at half health, which the game hard-codes and the data
+    # therefore omits - so that default lives here rather than in 24 files.
+    imp = merged.get("ImpTypes") or merged.get("ImpType")
+    if imp is not None:
+        thresholds = [merged[k] for k in ("HealthPercentThrowImp0",
+                                          "HealthPercentThrowImp1",
+                                          "HealthPercentThrowImp2")
+                      if merged.get(k) is not None]
+        if thresholds or merged.get("SmashDamage") is not None:
+            comp = {"type": "imp_thrower"}
+            if isinstance(imp, list):
+                comp["imps"] = [strip_rtid(i) for i in imp]
+            else:
+                comp["imp"] = strip_rtid(imp)
+            comp["throw_at"] = thresholds or [DEFAULT_IMP_THROW_AT]
+            if merged.get("ImpThrowDistance") is not None:
+                comp["distance"] = merged["ImpThrowDistance"]
+            if merged.get("ImpCount") is not None:
+                comp["count"] = merged["ImpCount"]
+            components.append(comp)
+        else:
+            inside = {"type": "spawn_inside"}
+            inside["zombie"] = (strip_rtid(imp[0]) if isinstance(imp, list)
+                                else strip_rtid(imp))
+            if merged.get("ImpCount") is not None:
+                inside["count"] = merged["ImpCount"]
+            components.append(inside)
+        known.update(("ImpType", "ImpTypes", "ImpCount", "ImpThrowDistance",
+                      "HealthPercentThrowImp0", "HealthPercentThrowImp1",
+                      "HealthPercentThrowImp2"))
+
+    # Two unrelated things summon. An abbot gives one shout and a group walks
+    # on - the field is literally ZombieTypesToSummonBecomingFlag, a one-off as
+    # it turns into the wave's flag zombie. A gong or a bronze statue keeps
+    # calling on a timer. Having an interval is what tells them apart.
+    for comp in components:
+        if comp["type"] != "summoner" or "interval" in comp:
+            continue
+        comp["once"] = True
+        # An abbot's count says how many to pick from its list. A statue
+        # states a list and no count, which reads as one of each - that is
+        # the three bronze gargantuars, not three rolls of the same die.
+        if "count" not in comp:
+            comp["each"] = True
+
+    # Losing the last of its protection is what enrages a newspaper zombie;
+    # the data says only how much faster and harder it gets.
+    for comp in components:
+        if comp["type"] == "enrage" and "health_pct" not in comp:
+            comp["on_armor_broken"] = True
+
     if components:
         out["components"] = components
 
-    known = (set(STATS) | set(CAPABILITY_FLAGS) | set(TRAIT_FLAGS)
-             | {"ZombieSort", "StartingArmors", "AttackRect", "HitRect",
-                "ZombieBasedOn", "Properties"})
     rest = {k: v for k, v in merged.items() if k not in known}
     if rest:
         out["extra"] = rest
@@ -660,6 +834,57 @@ def write_objects(data_dir, out_root):
           f"{len(EXTRA_TERRAIN)} terrain types defined here)")
 
 
+def majority(built, members, extract):
+    """-> the set of values `extract` yields for more than half of `members`."""
+    counts = collections.Counter()
+    for m in members:
+        counts.update(set(extract(built[m])))
+    half = len(members) / 2
+    return {v for v, c in counts.items() if c > half}
+
+
+def component_keys(entry):
+    """-> each component as a canonical string, so whole components compare."""
+    return [json.dumps(c, sort_keys=True) for c in entry.get("components", [])]
+
+
+def modal_stats(built, members):
+    """-> the most common value for each stat, over members that state it."""
+    per_key = collections.defaultdict(collections.Counter)
+    for m in members:
+        for key, value in (built[m].get("stats") or {}).items():
+            per_key[key][json.dumps(value, sort_keys=True)] += 1
+    out = {}
+    for key, counts in per_key.items():
+        value, count = counts.most_common(1)[0]
+        # A stat only defaults when most of the archetype agrees on it;
+        # otherwise every member had better state its own.
+        if count > len(members) / 2:
+            out[key] = json.loads(value)
+    return out
+
+
+def component_delta(native, default_keys):
+    """-> this entry's components as a plain list, or an add/remove delta.
+
+    Stating a type the archetype already has replaces it, so only components
+    the archetype does not already carry verbatim need listing. A type the
+    archetype has and this entry does not has to be removed by name - a
+    bronze statue is a gargantuar that does not smash.
+    """
+    mine = component_keys(native)
+    keep = [json.loads(k) for k in mine if k not in default_keys]
+    default_types = {json.loads(k)["type"] for k in default_keys}
+    drop = sorted(default_types - {c["type"] for c in native.get("components", [])})
+    if not drop:
+        return keep
+    delta = {}
+    if keep:
+        delta["add"] = keep
+    delta["remove"] = drop
+    return delta
+
+
 def main():
     data_dir, out_root = sys.argv[1], sys.argv[2]
     types = json.load(open(os.path.join(data_dir, "ZombieTypes.json"), encoding="utf-8"))
@@ -680,34 +905,56 @@ def main():
 
     # Derive each archetype's default tag set: tags held by a majority of its
     # members. Entities then store only their difference from that default.
+    # An archetype is the shape its members agree on - tags, stats and whole
+    # components. Every world's gargantuar is the same 3600-health smasher
+    # that throws an imp at half health, so that belongs in one file and each
+    # world's entry says only which imp.
     archetypes = {}
     for sort, members in by_sort.items():
-        counts = collections.Counter()
-        for m in members:
-            for t in built[m].get("tags", []):
-                counts[t] += 1
-        half = len(members) / 2
-        archetypes[sort] = sorted(t for t, c in counts.items() if c > half)
+        archetypes[sort] = {
+            "tags": majority(built, members, lambda e: e.get("tags", [])),
+            "stats": modal_stats(built, members),
+            "components": majority(built, members, component_keys),
+        }
 
     arch_dir = os.path.join(out_root, "archetypes")
     out_dir = os.path.join(out_root, "zombies")
     fresh_dir(arch_dir)
     fresh_dir(out_dir)
 
-    for sort, tags in archetypes.items():
+    for sort, shape in archetypes.items():
         slug = sort.lower()
-        json.dump({"id": slug, "kind": "zombie_archetype", "tags": tags},
-                  open(os.path.join(arch_dir, f"{slug}.json"), "w", encoding="utf-8"),
-                  ensure_ascii=False, indent=1)
+        out = collections.OrderedDict()
+        out["id"] = slug
+        out["kind"] = "zombie_archetype"
+        out["tags"] = sorted(shape["tags"])
+        out["stats"] = shape["stats"]
+        out["components"] = [json.loads(k) for k in sorted(shape["components"])]
+        open(os.path.join(arch_dir, f"{slug}.json"), "w", encoding="utf-8").write(
+            json.dumps(out, ensure_ascii=False, indent=1))
+
+    # split_zombie already resolved every entry in full, so an entry that
+    # extends another zombie can be trimmed against that parent's complete
+    # shape just as one extending an archetype is trimmed against its
+    # defaults. Captured up front because the loop below consumes `tags`.
+    full = {n: {"tags": set(e.get("tags", [])),
+                "stats": e.get("stats") or {},
+                "components": set(component_keys(e))}
+            for n, e in built.items()}
 
     manifest = {}
     before = after = 0
+    comps_before = comps_after = 0
     for name, native in built.items():
         sort = native.get("sort") or "Normal"
-        default = set(archetypes[sort])
         mine = set(native.pop("tags", []))
         before += len(mine)
+        comps_before += len(native.get("components", []))
 
+        parent = native.pop("extends", None)
+        shape = full[parent] if parent in full else archetypes[sort]
+
+        default = set(shape["tags"])
         delta = {}
         added, removed = sorted(mine - default), sorted(default - mine)
         if added:
@@ -716,10 +963,20 @@ def main():
             delta["remove"] = removed
         after += len(added) + len(removed)
 
+        native["stats"] = {k: v for k, v in native.get("stats", {}).items()
+                           if shape["stats"].get(k) != v}
+        native["components"] = component_delta(native, shape["components"])
+        for k in ("stats", "components"):
+            if not native.get(k):
+                native.pop(k, None)
+        comps_after += len(native.get("components", []) if
+                           isinstance(native.get("components"), list) else
+                           native.get("components", {}).get("add", []))
+
         # Rebuild in a stable, readable key order.
         out = collections.OrderedDict()
         out["id"] = native["id"]
-        out["extends"] = native.pop("extends", None) or sort.lower()
+        out["extends"] = parent or sort.lower()
         for k in ("stats", "sort"):
             if k in native:
                 out[k] = native[k]
@@ -737,6 +994,8 @@ def main():
     print(f"wrote {len(manifest)} zombies + {len(archetypes)} archetypes")
     print(f"archetypes: {sorted(archetypes)}")
     print(f"tag lines: {before} -> {after}  ({(1-after/before)*100:.0f}% less noise)")
+    print(f"component entries: {comps_before} -> {comps_after}"
+          f"  ({(1-comps_after/comps_before)*100:.0f}% less repetition)")
 
     write_plants(data_dir, out_root)
 

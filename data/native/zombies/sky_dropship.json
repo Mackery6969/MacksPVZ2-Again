@@ -4,10 +4,10 @@
  "stats": {
   "toughness": 1200,
   "speed": 0,
-  "eat_dps": 100,
   "wave_cost": 100,
   "weight": 0,
-  "sun_cost": 50
+  "sun_cost": 50,
+  "stun_scale": 0
  },
  "tags": {
   "add": [
@@ -34,20 +34,23 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "FutureProtectorShieldAttackRect"
+   "rect": "FutureProtectorShieldAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "FutureProtectorShieldHitRect"
+   "rect": "FutureProtectorShieldHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "count": {
+    "Max": 4,
+    "Min": 3
+   },
+   "type": "spawn_inside",
+   "zombie": "sky_imp"
   }
  ],
  "extra": {
-  "ChiliStunDurationMult": 0,
-  "ImpCount": {
-   "Max": 4,
-   "Min": 3
-  },
   "ImpFlyingDuration": {
    "Max": 3.5,
    "Min": 3
@@ -57,7 +60,6 @@
    1
   ],
   "ImpLandingRows": [],
-  "ImpType": "sky_imp",
   "TimeBeforeFirst": {
    "Max": 2,
    "Min": 1

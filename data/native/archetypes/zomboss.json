@@ -16,5 +16,24 @@
   "transformable",
   "warpable",
   "zomboss_damageable"
+ ],
+ "stats": {
+  "toughness": 190,
+  "speed": 0.185,
+  "eat_dps": 100,
+  "wave_cost": 100,
+  "weight": 0,
+  "sun_cost": 50,
+  "stun_scale": 0
+ },
+ "components": [
+  {
+   "rect": "ZombossMechAttackRect",
+   "type": "attack_rect"
+  },
+  {
+   "rect": "ZombossMechHitRect",
+   "type": "hit_rect"
+  }
  ]
 }

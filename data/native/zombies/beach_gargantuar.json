@@ -1,28 +1,17 @@
 {
  "id": "beach_gargantuar",
  "extends": "gargantuar",
- "stats": {
-  "toughness": 3600,
-  "speed": 0.24,
-  "eat_dps": 100,
-  "wave_cost": 1500,
-  "weight": 3000,
-  "sun_cost": 225
- },
  "sort": "Gargantuar",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "imp": "beach_imp",
+   "throw_at": [
+    0.5
+   ],
+   "type": "imp_thrower"
   }
  ],
  "extra": {
-  "ImpType": "beach_imp",
-  "SmashDamage": 1500,
   "SpeedScaleOnLand": 0.8,
   "TakingDamageScaleOnLand": 0.9
  }

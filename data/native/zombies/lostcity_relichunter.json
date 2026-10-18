@@ -4,21 +4,10 @@
  "stats": {
   "toughness": 760,
   "speed": 0.155,
-  "eat_dps": 100,
   "wave_cost": 550,
   "weight": 3000,
   "sun_cost": 125
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "ChooseToSpawnOnNonDeckRows": true,
   "LandingColumns": [

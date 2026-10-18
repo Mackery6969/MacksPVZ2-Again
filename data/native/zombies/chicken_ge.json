@@ -4,6 +4,12 @@
  "stats": {
   "sun_cost": 50
  },
+ "components": {
+  "remove": [
+   "attack_rect",
+   "hit_rect"
+  ]
+ },
  "extra": {
   "ZombieRedirection": [
    {

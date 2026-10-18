@@ -3,7 +3,7 @@
  "events": [
   {
    "id": "plant.place",
-   "fmod": "event:/SFX/Plants/Place"
+   "fmod": "event:/SFX/Plants/Plant"
   },
   {
    "id": "plant.dig",
@@ -51,7 +51,7 @@
   },
   {
    "id": "zombie.eat",
-   "fmod": "event:/SFX/Zombies/Eat"
+   "fmod": "event:/SFX/Zombies/Chew"
   },
   {
    "id": "zombie.hit",
@@ -64,6 +64,22 @@
   {
    "id": "zombie.armor.break",
    "fmod": "event:/SFX/Zombies/ArmorBreak"
+  },
+  {
+   "id": "zombie.smash",
+   "fmod": "event:/SFX/Zombies/Smash"
+  },
+  {
+   "id": "zombie.imp.throw",
+   "fmod": "event:/SFX/Zombies/ImpThrow"
+  },
+  {
+   "id": "zombie.summon",
+   "fmod": "event:/SFX/Zombies/Summon"
+  },
+  {
+   "id": "zombie.enrage",
+   "fmod": "event:/SFX/Zombies/Enrage"
   },
   {
    "id": "mower.trigger",
@@ -79,7 +95,7 @@
   },
   {
    "id": "ui.seed.select",
-   "fmod": "event:/SFX/UI/SeedSelect"
+   "fmod": "event:/SFX/UI/Select"
   },
   {
    "id": "ui.seed.refuse",
@@ -95,23 +111,13 @@
   },
   {
    "id": "music.lawn.tutorial",
-   "fmod": "event:/Music/Playerhouse",
+   "fmod": "event:/Music/InGame/Playerhouse",
    "music": true,
    "//": "Front Lawn. PVZGE calls the track 'Tutorial'; the event is Playerhouse."
   },
   {
-   "id": "music.chooseseeds.tutorial",
-   "fmod": "event:/Music/ChooseSeeds/Playerhouse",
-   "music": true
-  },
-  {
-   "id": "music.victory.tutorial",
-   "fmod": "event:/Music/Victory/Playerhouse",
-   "music": true
-  },
-  {
    "id": "music.lose.tutorial",
-   "fmod": "event:/Music/Lose/Playerhouse",
+   "fmod": "event:/Music/InGame/Lose/Playerhouse",
    "music": true
   },
   {
@@ -143,6 +149,67 @@
   {
    "id": "ui.fastforward.off",
    "fmod": "event:/SFX/UI/FastForwardOff"
+  },
+  {
+   "id": "plant.dig.water",
+   "fmod": "event:/SFX/Plants/DigWater"
+  },
+  {
+   "id": "ui.chooseseeds.open",
+   "fmod": "event:/SFX/UI/ChooseYourSeeds/Open"
+  },
+  {
+   "id": "ui.chooseseeds.close",
+   "fmod": "event:/SFX/UI/ChooseYourSeeds/Close"
+  },
+  {
+   "id": "ui.chooseseeds.remove",
+   "fmod": "event:/SFX/UI/ChooseYourSeeds/Remove"
+  },
+  {
+   "id": "music.leave.tutorial",
+   "fmod": "event:/Music/InGame/Leave/Playerhouse",
+   "music": true
+  },
+  {
+   "id": "music.lawn.egypt",
+   "fmod": "event:/Music/InGame/Egypt",
+   "music": true
+  },
+  {
+   "id": "music.leave.egypt",
+   "fmod": "event:/Music/InGame/Leave/Egypt",
+   "music": true
+  },
+  {
+   "id": "music.lose.egypt",
+   "fmod": "event:/Music/InGame/Lose/Egypt",
+   "music": true
+  },
+  {
+   "id": "music.victory.egypt",
+   "fmod": "event:/Music/InGame/Victory/Egypt",
+   "music": true
+  },
+  {
+   "id": "music.minigame.egypt",
+   "fmod": "event:/Music/InGame/Minigame/Egypt",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.egypt",
+   "fmod": "event:/Music/InGame/UltimateBattle/Egypt",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.egypt",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Egypt",
+   "music": true
+  },
+  {
+   "id": "music.zomboss",
+   "fmod": "event:/Music/InGame/Zomboss/Zomboss",
+   "music": true
   }
  ]
 }

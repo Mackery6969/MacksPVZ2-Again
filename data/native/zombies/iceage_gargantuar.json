@@ -1,32 +1,24 @@
 {
  "id": "iceage_gargantuar",
  "extends": "gargantuar",
- "stats": {
-  "toughness": 3600,
-  "speed": 0.24,
-  "eat_dps": 100,
-  "wave_cost": 1500,
-  "weight": 3000,
-  "sun_cost": 225
- },
  "sort": "Gargantuar",
+ "tags": {
+  "add": [
+   "chill_only"
+  ]
+ },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "imp": "iceage_imp",
+   "throw_at": [
+    0.8,
+    0.6,
+    0.4
+   ],
+   "type": "imp_thrower"
   }
  ],
  "extra": {
-  "ChanceToReverseImp": 0.25,
-  "ChillInsteadOfFreeze": true,
-  "HealthPercentThrowImp0": 0.8,
-  "HealthPercentThrowImp1": 0.6,
-  "HealthPercentThrowImp2": 0.4,
-  "ImpType": "iceage_imp",
-  "SmashDamage": 1500
+  "ChanceToReverseImp": 0.25
  }
 }

@@ -4,19 +4,14 @@
  "stats": {
   "toughness": 600,
   "speed": 0.2,
-  "eat_dps": 100,
   "wave_cost": 700,
   "weight": 3000,
   "sun_cost": 125
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "MonkDrinkVeteranAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "rect": "MonkDrinkVeteranAttackRect",
+   "type": "attack_rect"
   }
  ],
  "extra": {

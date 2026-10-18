@@ -58,6 +58,10 @@ func _run() -> void:
 	_test_plant_behaviour_coverage()
 	await _test_new_plant_behaviours()
 	await _test_zombie_status_effects()
+	_test_zombie_behaviour_coverage()
+	_test_zombie_archetypes()
+	await _test_zombie_behaviours()
+	await _test_zombie_resistances()
 	_test_zombie_sun_costs()
 	await _test_level_save_state()
 	_test_simplified_level_schema()
@@ -1444,6 +1448,194 @@ func _test_new_plant_behaviours() -> void:
 		check("the gargantuar was too heavy to lift",
 				is_instance_valid(heavy) and not heavy.is_dead)
 	board2.queue_free()
+	end_section()
+
+
+
+## Behaviour comes from the fields a zombie carries, the same inversion the
+## plants went through. ZombieSort would have been the obvious discriminator
+## and the useless one: it separates Normal from Gargantuar and says nothing
+## about what either does.
+func _test_zombie_behaviour_coverage() -> void:
+	section("zombie coverage")
+	# Hitboxes are data, not behaviour; a zombie with only those still just
+	# walks and bites.
+	var hitboxes: Array[StringName] = [&"attack_rect", &"hit_rect"]
+	var with_behaviour := 0
+	var unimplemented: Array[StringName] = []
+	var kinds := {}
+	for id in Data.zombies:
+		var def: ZombieDef = Data.zombies[id]
+		var any := false
+		for spec in def.components:
+			if hitboxes.has(spec.type):
+				continue
+			if Components.has_type(spec.type):
+				any = true
+				kinds[spec.type] = int(kinds.get(spec.type, 0)) + 1
+			elif not unimplemented.has(spec.type):
+				unimplemented.append(spec.type)
+		if any:
+			with_behaviour += 1
+	check("every declared zombie behaviour is implemented",
+			unimplemented.is_empty(), str(unimplemented))
+	check("a good share of the roster does something",
+			with_behaviour >= 200, "%d of %d" % [with_behaviour, Data.zombies.size()])
+	print("        (%d of %d zombies have a working behaviour: %s)"
+			% [with_behaviour, Data.zombies.size(), str(kinds)])
+	end_section()
+
+
+## Every world's gargantuar is the same zombie with one twist, so the shared
+## part belongs in the archetype and each entry should carry only its
+## difference. This checks the inheritance actually delivers the shared part.
+func _test_zombie_archetypes() -> void:
+	section("zombie archetypes")
+	var garg: ZombieDef = Data.zombie(&"beach_gargantuar")
+	check("a world gargantuar loaded", garg != null)
+	check_eq("it inherits the archetype", garg.extends_id, &"gargantuar")
+	check_eq("including toughness it never states", garg.toughness, 3600.0)
+	var smash: ComponentSpec = garg.component_spec(&"smasher")
+	check("and the shared smasher", smash != null)
+	if smash != null:
+		check_eq("at archetype damage", float(smash.config.get(&"damage", 0.0)), 1500.0)
+	var throw: ComponentSpec = garg.component_spec(&"imp_thrower")
+	check("while stating its own imp", throw != null)
+	if throw != null:
+		check_eq("which is this world's", StringName(throw.config.get(&"imp", &"")),
+				&"beach_imp")
+
+	# The file itself has to stay small, or the archetype is decoration.
+	var raw := FileAccess.get_file_as_string("res://data/native/zombies/beach_gargantuar.json")
+	check("its file stays a delta", raw.length() < 400, "%d bytes" % raw.length())
+
+	# Kung-Fu is the real overhaul of the gargantuar, so it must be able to
+	# drop what the archetype gave it.
+	var statue: ZombieDef = Data.zombie(&"kongfu_bronze_statue")
+	check("the bronze statue loaded", statue != null)
+	check("it opts out of smashing", statue.component_spec(&"smasher") == null)
+	check("summons instead", statue.component_spec(&"summoner") != null)
+	check("and is temporary", statue.component_spec(&"lifespan") != null)
+	check_eq("with its own toughness", statue.toughness, 9000.0)
+
+	# Two of one component type is meaningful: a poncho zombie wears a plate
+	# over a poncho and both have to be chewed through.
+	var poncho: ZombieDef = Data.zombie(&"easter_poncho")
+	check("the poncho zombie loaded", poncho != null)
+	check_eq("it keeps both armor pools",
+			poncho.components_of(&"armor").size(), 2)
+	end_section()
+
+
+func _test_zombie_behaviours() -> void:
+	section("zombie behaviours")
+	var board := _make_board()
+
+	# A smasher stops at a plant and flattens it, rather than nibbling.
+	var wall: Plant = board.place_plant(&"wallnut", 1, 2)
+	check("a wall-nut placed", wall != null)
+	var garg: Zombie = board.spawn_zombie(&"beach_gargantuar", 1)
+	check("a gargantuar spawned", garg != null)
+	check("its attack is claimed by a component", garg.attack_claimed)
+	if wall != null and garg != null:
+		var wall_hp: float = wall.health
+		garg.position.x = wall.position.x
+		garg.col = wall.col
+		await _wait_game_seconds(1.2)
+		check("the wall-nut was smashed, not eaten",
+				not is_instance_valid(wall) or wall.health < wall_hp)
+
+	# Worn down to half, a gargantuar throws its imp over the defences.
+	var thrower: Zombie = board.spawn_zombie(&"beach_gargantuar", 2)
+	var before := board.zombie_count()
+	thrower.take_damage(thrower.max_health * 0.6, null)
+	await get_tree().process_frame
+	check("an imp was thrown at half health", board.zombie_count() > before,
+			"%d -> %d" % [before, board.zombie_count()])
+
+	# A camel lets its mummy out when it dies.
+	var camel: Zombie = board.spawn_zombie(&"camel_onehump", 3)
+	check("a camel spawned", camel != null)
+	var riders := board.zombie_count()
+	camel.die()
+	await get_tree().process_frame
+	check("the rider got out", board.zombie_count() >= riders,
+			"%d -> %d" % [riders, board.zombie_count()])
+	board.queue_free()
+
+	# An escort arrives as several bodies from one spawn, and the members must
+	# not bring escorts of their own.
+	var board2 := _make_board()
+	var lead: Zombie = board2.spawn_zombie(&"camel_onehump", 0)
+	check("a train leader spawned", lead != null)
+	check("it brought company", board2.zombies_in_row(0).size() > 1,
+			"%d in the lane" % board2.zombies_in_row(0).size())
+	check("the train is finite", board2.zombie_count() < 20,
+			"%d zombies" % board2.zombie_count())
+	for z: Zombie in board2.zombies_in_row(0):
+		if z != lead:
+			check("members are marked as escorting", z.has_tag(&"escorting"))
+			break
+	board2.queue_free()
+
+	# Losing the last of its armor enrages a newspaper zombie.
+	var board3 := _make_board()
+	var news: Zombie = board3.spawn_zombie(&"modern_newspaper", 2)
+	check("a newspaper zombie spawned", news != null)
+	var paced: float = news.speed
+	check("it starts calm", not news.has_tag(&"enraged"))
+	# Exactly the paper's worth of damage: the armor absorbs all of it, so
+	# nothing reaches the body and no damage signal fires. It must still rage.
+	news.take_damage(800.0, null)
+	await get_tree().process_frame
+	check("it survived losing the paper", not news.is_dead)
+	check_eq("which took no health", news.health, news.max_health)
+	check("and is enraged anyway", news.has_tag(&"enraged"))
+	check("moving faster than before", news.speed > paced,
+			"%f -> %f" % [paced, news.speed])
+	board3.queue_free()
+	end_section()
+
+
+## Resistances are the other half of what separates one world's zombies from
+## another's, and they are stats rather than components.
+func _test_zombie_resistances() -> void:
+	section("zombie resistance")
+	var board := _make_board()
+
+	var plain: Zombie = board.spawn_zombie(&"tutorial", 0)
+	plain.apply_stun(2.0)
+	check("an ordinary zombie can be stunned", plain.is_stunned())
+
+	# Every zombie carrying ChiliStunDurationMult reads 0: a mech does not stop.
+	var mech: ZombieDef = Data.zombie(&"football_mech")
+	check("a stun-proof zombie exists", mech != null)
+	check_eq("its stun scale is zero", mech.stun_scale, 0.0)
+	var proof: Zombie = board.spawn_zombie(&"football_mech", 1)
+	proof.apply_stun(2.0)
+	check("so stunning it does nothing", not proof.is_stunned())
+	check("and it says why", proof.has_tag(&"stun_immune"))
+
+	# Ice chills a troglobite instead of holding it.
+	var trog: Zombie = board.spawn_zombie(&"iceage_troglobite", 2)
+	check("a chill-only zombie spawned", trog != null)
+	check("it is tagged chill_only", trog.has_tag(&"chill_only"))
+	trog.apply_freeze(2.0)
+	check("freezing only slows it", not trog.is_stunned())
+	check("but it is slowed", trog.has_tag(&"slowed"))
+	check("and never frozen solid", not trog.has_tag(&"frozen"))
+
+	# A ducky-tube zombie swims faster than it walks.
+	var duck: Zombie = board.spawn_zombie(&"duckytube", 3)
+	var on_land: float = duck.current_speed()
+	board.set_terrain(3, duck.col, &"water")
+	check("water speeds it up", duck.current_speed() > on_land,
+			"%f -> %f" % [on_land, duck.current_speed()])
+	var walker: Zombie = board.spawn_zombie(&"tutorial", 4)
+	board.set_terrain(4, walker.col, &"water")
+	check_eq("an ordinary zombie is unaffected by it",
+			walker.current_speed(), walker.speed)
+	board.queue_free()
 	end_section()
 
 

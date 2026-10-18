@@ -2,26 +2,24 @@
  "id": "easter_poncho",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 300,
   "weight": 4000,
   "sun_cost": 75
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
+   "slot": "plate",
+   "toughness": 1100,
+   "type": "armor"
   },
   {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "slot": "poncho",
+   "toughness": 60,
+   "type": "armor"
   }
  ],
  "extra": {
-  "ChanceToPlate": 0.5,
-  "PonchoToughness": 60,
-  "ShieldToughness": 1100
+  "ChanceToPlate": 0.5
  }
 }

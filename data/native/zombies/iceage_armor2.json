@@ -2,29 +2,21 @@
  "id": "iceage_armor2",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 400,
   "weight": 4000,
   "sun_cost": 100
  },
  "sort": "Normal",
+ "tags": {
+  "add": [
+   "chill_only"
+  ]
+ },
  "components": [
   {
-   "type": "armor",
-   "armor": "iceage_armor2"
-  },
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "armor": "iceage_armor2",
+   "type": "armor"
   }
- ],
- "extra": {
-  "ChillInsteadOfFreeze": true
- }
+ ]
 }

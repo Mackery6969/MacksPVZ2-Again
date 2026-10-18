@@ -21,12 +21,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CowboyPianoAttackRect"
+   "rect": "CowboyPianoAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "CowboyPianoHitRect"
+   "rect": "CowboyPianoHitRect",
+   "type": "hit_rect"
   }
  ]
 }

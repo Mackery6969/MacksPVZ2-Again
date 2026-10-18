@@ -17,12 +17,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "ImpAttackRect"
+   "rect": "ImpAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "ImpHitRect"
+   "rect": "ImpHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

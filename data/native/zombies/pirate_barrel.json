@@ -4,10 +4,10 @@
  "stats": {
   "toughness": 1100,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 100,
   "weight": 0,
-  "sun_cost": 50
+  "sun_cost": 50,
+  "stun_scale": 0
  },
  "tags": {
   "add": [
@@ -28,16 +28,16 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "PirateBarrelAttackRect"
+   "rect": "PirateBarrelAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "PirateBarrelHitRect"
+   "rect": "PirateBarrelHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "type": "spawn_inside",
+   "zombie": "pirate_imp"
   }
- ],
- "extra": {
-  "ChiliStunDurationMult": 0,
-  "ImpType": "pirate_imp"
- }
+ ]
 }

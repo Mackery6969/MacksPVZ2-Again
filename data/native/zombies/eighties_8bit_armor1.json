@@ -2,9 +2,7 @@
  "id": "eighties_8bit_armor1",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 200,
   "weight": 3000,
   "sun_cost": 75
@@ -12,16 +10,8 @@
  "sort": "Normal",
  "components": [
   {
-   "type": "armor",
-   "armor": "eighties_8bit_armor1"
-  },
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "armor": "eighties_8bit_armor1",
+   "type": "armor"
   }
  ]
 }

@@ -4,13 +4,13 @@
  "stats": {
   "toughness": 490,
   "speed": 0.3,
-  "eat_dps": 100,
   "wave_cost": 600,
   "weight": 3500,
   "sun_cost": 125
  },
  "tags": {
   "add": [
+   "chill_only",
    "normal_death_when_mowed"
   ],
   "remove": [
@@ -20,16 +20,15 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "IceageDodoAttackRect"
+   "rect": "IceageDodoAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "IceageDodoHitRect"
+   "rect": "IceageDodoHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
-  "ChillInsteadOfFreeze": true,
   "ChooseToSpawnOnNonDeckRows": true,
   "KilledByShrinkingViolet": true,
   "PlantsToFlyOver": [

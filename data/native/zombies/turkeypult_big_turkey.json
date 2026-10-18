@@ -22,12 +22,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "TurkeyPultBigTurkeyAttackRect"
+   "rect": "TurkeyPultBigTurkeyAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "TurkeyPultBigTurkeyHitRect"
+   "rect": "TurkeyPultBigTurkeyHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

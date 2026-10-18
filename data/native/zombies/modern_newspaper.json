@@ -4,25 +4,24 @@
  "stats": {
   "toughness": 460,
   "speed": 0.22,
-  "eat_dps": 100,
   "wave_cost": 700,
   "weight": 4000,
   "sun_cost": 125
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
+   "slot": "newspaper",
+   "toughness": 800,
+   "type": "armor"
   },
   {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "damage_scale": 4,
+   "on_armor_broken": true,
+   "speed_scale": 4,
+   "type": "enrage"
   }
  ],
  "extra": {
-  "EnragedDamageScale": 4,
-  "EnragedSpeedScale": 4,
-  "NewspaperBowlingLevel": 1,
-  "NewspaperHealth": 800
+  "NewspaperBowlingLevel": 1
  }
 }

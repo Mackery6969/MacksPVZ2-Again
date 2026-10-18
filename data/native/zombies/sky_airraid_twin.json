@@ -21,12 +21,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "SkyAirRaidTwinAttackRect"
+   "rect": "SkyAirRaidTwinAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "SkyAirRaidTwinHitRect"
+   "rect": "SkyAirRaidTwinHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

@@ -4,22 +4,11 @@
  "stats": {
   "toughness": 700,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 300,
   "weight": 1000,
   "sun_cost": 75
  },
  "sort": "Normal",
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "ChooseToSpawnOnNonDeckRows": true,
   "NegativeBoltType": "sky_bolt_negative",

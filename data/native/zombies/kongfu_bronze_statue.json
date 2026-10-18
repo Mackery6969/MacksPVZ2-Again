@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 9000,
   "speed": 0,
-  "eat_dps": 100,
   "wave_cost": 2500,
   "weight": 2750,
   "sun_cost": 350
@@ -19,26 +18,29 @@
    "toss_detectable"
   ]
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
-  }
- ],
- "extra": {
-  "LifeSpan": {
-   "Max": 35,
-   "Min": 25
-  },
-  "WalkSPSVarience": 0,
-  "ZombiesToSpawn": [
-   "kongfu_bronze_strong",
-   "kongfu_bronze_hook",
-   "kongfu_bronze_chi"
+ "components": {
+  "add": [
+   {
+    "each": true,
+    "once": true,
+    "type": "summoner",
+    "zombies": [
+     "kongfu_bronze_strong",
+     "kongfu_bronze_hook",
+     "kongfu_bronze_chi"
+    ]
+   },
+   {
+    "duration": 25,
+    "duration_max": 35,
+    "type": "lifespan"
+   }
+  ],
+  "remove": [
+   "smasher"
   ]
+ },
+ "extra": {
+  "WalkSPSVarience": 0
  }
 }

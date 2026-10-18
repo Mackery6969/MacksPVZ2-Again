@@ -4,21 +4,10 @@
  "stats": {
   "toughness": 550,
   "speed": 0.135,
-  "eat_dps": 100,
   "wave_cost": 300,
   "weight": 2000,
   "sun_cost": 75
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "StormMaxDistance": 5,
   "StormMinColumn": 2,

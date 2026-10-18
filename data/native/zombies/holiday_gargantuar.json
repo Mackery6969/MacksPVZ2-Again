@@ -1,28 +1,17 @@
 {
  "id": "holiday_gargantuar",
  "extends": "gargantuar",
- "stats": {
-  "toughness": 3600,
-  "speed": 0.24,
-  "eat_dps": 100,
-  "wave_cost": 1500,
-  "weight": 3000,
-  "sun_cost": 225
- },
  "sort": "Gargantuar",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "imp": "holiday_imp",
+   "throw_at": [
+    0.5
+   ],
+   "type": "imp_thrower"
   }
  ],
  "extra": {
-  "CowboyPianoDancingSpeedScale": 0.7,
-  "ImpType": "holiday_imp",
-  "SmashDamage": 1500
+  "CowboyPianoDancingSpeedScale": 0.7
  }
 }

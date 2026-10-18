@@ -2,9 +2,7 @@
  "id": "birthday_barrelroller",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.2,
-  "eat_dps": 100,
   "wave_cost": 500,
   "weight": 2000,
   "sun_cost": 100
@@ -17,16 +15,6 @@
    "attractable"
   ]
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "BarrelType": "birthday_barrel"
  }

@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 1,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 100,
   "weight": 1000,
   "sun_cost": 50
@@ -17,28 +16,23 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
+   "each": true,
+   "once": true,
+   "type": "summoner",
+   "zombies": [
+    {
+     "Type": "easter_imp",
+     "Weight": 2
+    },
+    {
+     "Type": "dark_imp_dragon",
+     "Weight": 1
+    }
+   ]
   },
   {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "duration": 3,
+   "type": "lifespan"
   }
- ],
- "extra": {
-  "Lifespan": {
-   "Max": 3,
-   "Min": 3
-  },
-  "ZombiesToSpawn": [
-   {
-    "Type": "easter_imp",
-    "Weight": 2
-   },
-   {
-    "Type": "dark_imp_dragon",
-    "Weight": 1
-   }
-  ]
- }
+ ]
 }

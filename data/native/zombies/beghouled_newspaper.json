@@ -2,26 +2,13 @@
  "id": "beghouled_newspaper",
  "extends": "modern_newspaper",
  "stats": {
-  "toughness": 325,
-  "speed": 0.22,
-  "eat_dps": 100,
-  "wave_cost": 700,
-  "weight": 4000,
-  "sun_cost": 125
+  "toughness": 325
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "slot": "newspaper",
+   "toughness": 600,
+   "type": "armor"
   }
- ],
- "extra": {
-  "EnragedDamageScale": 4,
-  "EnragedSpeedScale": 4,
-  "NewspaperHealth": 600
- }
+ ]
 }

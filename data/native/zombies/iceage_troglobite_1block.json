@@ -2,28 +2,10 @@
  "id": "iceage_troglobite_1block",
  "extends": "iceage_troglobite",
  "stats": {
-  "toughness": 470,
-  "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 400,
-  "weight": 3500,
   "sun_cost": 100
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "BullyAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "BullyHitRect"
-  }
- ],
  "extra": {
-  "ChillInsteadOfFreeze": true,
-  "ImpTypes": [
-   "iceage_imp"
-  ],
   "NumberOfIceblocksToSpawnWith": 1
  }
 }

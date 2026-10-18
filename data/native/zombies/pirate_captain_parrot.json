@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 300,
   "speed": 1.4,
-  "eat_dps": 100,
   "wave_cost": 400,
   "weight": 0,
   "sun_cost": 100
@@ -23,12 +22,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "PirateParrotAttackRect"
+   "rect": "PirateParrotAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "PirateParrotHitRect"
+   "rect": "PirateParrotHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

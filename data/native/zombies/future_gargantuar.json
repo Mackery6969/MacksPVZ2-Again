@@ -2,12 +2,11 @@
  "id": "future_gargantuar",
  "extends": "gargantuar",
  "stats": {
-  "toughness": 3600,
   "speed": 0.16,
-  "eat_dps": 100,
   "wave_cost": 2000,
   "weight": 2500,
-  "sun_cost": 300
+  "sun_cost": 300,
+  "stun_scale": 0
  },
  "sort": "Gargantuar",
  "tags": {
@@ -17,23 +16,19 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "imp": "future_imp",
+   "throw_at": [
+    0.5
+   ],
+   "type": "imp_thrower"
   }
  ],
  "extra": {
-  "ChiliStunDurationMult": 0,
   "EyeLaserDelayBetweenShots": 12.5,
   "EyeLaserMaxColumn": 5,
   "EyeLaserMinDistance": 1.5,
   "EyeLaserSweepLength": 1.5,
   "EyeLaserSweepTime": 1,
-  "EyeLaserTotalDamage": 1000,
-  "ImpType": "future_imp",
-  "SmashDamage": 1500
+  "EyeLaserTotalDamage": 1000
  }
 }

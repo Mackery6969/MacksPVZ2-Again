@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 250,
   "speed": 0.2,
-  "eat_dps": 100,
   "wave_cost": 550,
   "weight": 4500,
   "sun_cost": 125
@@ -12,16 +11,8 @@
  "sort": "Normal",
  "components": [
   {
-   "type": "armor",
-   "armor": "kongfu_armor3"
-  },
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "armor": "kongfu_armor3",
+   "type": "armor"
   }
  ]
 }

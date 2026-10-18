@@ -2,32 +2,12 @@
  "id": "camel_threehump_touch",
  "extends": "camel_onehump_touch",
  "stats": {
-  "toughness": 250,
-  "speed": 0.12,
-  "eat_dps": 100,
   "wave_cost": 500,
-  "weight": 3000,
   "sun_cost": 100
  },
- "tags": {
-  "add": [
-   "normal_death_when_mowed"
-  ]
- },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CamelSegmentAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CamelSegmentHitRect"
-  }
- ],
  "extra": {
   "TeamMemberCount": [
    5
-  ],
-  "ZombieInside": "mummy"
+  ]
  }
 }

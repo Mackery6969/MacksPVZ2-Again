@@ -17,6 +17,10 @@
   "zombie.hit": "hit0",
   "zombie.die": "death0",
   "zombie.armor.break": "bd_break0",
+  "zombie.smash": "g_smash0",
+  "zombie.imp.throw": "impThrow0",
+  "zombie.summon": "summon",
+  "zombie.enrage": "getAngry",
   "mower.trigger": "engine",
   "wave.start": "wave",
   "wave.huge": "hugewave",
@@ -25,16 +29,13 @@
   "level.win": "VIC_Modern",
   "level.lose": "LOSE_Tutorial",
   "music.lawn.tutorial": "LP_Tutorial",
-  "music.chooseseeds.tutorial": "CYS_LP_Modern",
-  "music.victory.tutorial": "VIC_Modern",
   "music.lose.tutorial": "LOSE_Tutorial",
   "music.zengarden": "zen00",
   "ui.fastforward.on": "2x",
   "ui.fastforward.off": "2x_off"
  },
  "loop": [
-  "music.lawn.tutorial",
-  "music.chooseseeds.tutorial"
+  "music.lawn.tutorial"
  ],
  "//notes": {
   "music.zengarden": "zen00 is attached as a representative; the garden shuffles all of zen00..zen17, so build this as a shuffled multi instrument in Studio."

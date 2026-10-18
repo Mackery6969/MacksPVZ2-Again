@@ -4,27 +4,30 @@
  "stats": {
   "toughness": 700,
   "speed": 0.16,
-  "eat_dps": 100,
   "wave_cost": 900,
   "weight": 3500,
   "sun_cost": 150
  },
+ "tags": {
+  "add": [
+   "chill_only"
+  ]
+ },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "BullyAttackRect"
+   "rect": "BullyAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "BullyHitRect"
+   "rect": "BullyHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "type": "spawn_inside",
+   "zombie": "iceage_hunter"
   }
  ],
  "extra": {
-  "ChillInsteadOfFreeze": true,
-  "ImpTypes": [
-   "iceage_hunter",
-   "iceage_hunter_veteran"
-  ],
   "NumberOfIceblocksToSpawnWith": 3
  }
 }

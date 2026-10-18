@@ -14,16 +14,6 @@
    "carriable"
   ]
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "AttackRectWithFire": "RTID(ExplorerWithFireAttackRect@RectangleProps)",
   "FireDPS": 1000,

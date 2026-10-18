@@ -1,31 +1,25 @@
 {
  "id": "kongfu_boss_blade",
  "extends": "zomboss",
- "stats": {
-  "toughness": 190,
-  "speed": 0.185,
-  "eat_dps": 100,
-  "wave_cost": 100,
-  "weight": 0,
-  "sun_cost": 50
- },
  "sort": "Zomboss",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarHitRect"
+   "rect": "GargantuarHitRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "rect": "GargantuarHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "damage": 3600,
+   "distance": 150,
+   "type": "smasher"
   }
  ],
  "extra": {
   "ChiType": "kongfu_boss_blade_chi",
-  "ChiliStunDurationMult": 0,
   "FoeEatDamageReflectPct": 0.5,
-  "SmashDamage": 3600,
-  "SmashDistance": 150,
   "SummonColumn": 6,
   "ZombossMechLevel": 0,
   "ZombossStages": [

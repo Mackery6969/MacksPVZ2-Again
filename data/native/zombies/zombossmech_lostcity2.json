@@ -1,27 +1,18 @@
 {
  "id": "zombossmech_lostcity2",
  "extends": "zomboss",
- "stats": {
-  "toughness": 190,
-  "speed": 0.185,
-  "eat_dps": 100,
-  "wave_cost": 100,
-  "weight": 0,
-  "sun_cost": 50
- },
  "sort": "Zomboss",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "LostcityZombossMechAttackRect"
+   "rect": "LostcityZombossMechAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "LostcityZombossMechHitRect"
+   "rect": "LostcityZombossMechHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
-  "ChiliStunDurationMult": 0,
   "FoeEatDamageReflectPct": 0.5,
   "IdleColumn": 6,
   "MissileType": "zomboss_lostcity_sandbag",

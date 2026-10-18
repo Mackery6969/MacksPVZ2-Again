@@ -538,7 +538,11 @@ func dig_up(row: int, col: int) -> bool:
 
 ## `x_offset` is in cells, pushing the zombie further right of the spawn line
 ## so that several zombies entering the same lane do not overlap.
-func spawn_zombie(id: StringName, row: int, x_offset: float = 0.0) -> Zombie:
+## `marks` are runtime tags set BEFORE the zombie initializes, so its own
+## components see them during setup. That is what stops an escort from
+## bringing an escort, or a summoner from summoning summoners.
+func spawn_zombie(id: StringName, row: int, x_offset: float = 0.0,
+		marks: Array = []) -> Zombie:
 	var def := Data.zombie(id)
 	if def == null:
 		push_warning("Board: unknown zombie '%s'" % id)
@@ -551,6 +555,8 @@ func spawn_zombie(id: StringName, row: int, x_offset: float = 0.0) -> Zombie:
 			grid_to_world(z.row, 0).y)
 	z.name = "Zombie_%s" % id
 	_entities.add_child(z)
+	for mark in marks:
+		z.set_runtime_tag(StringName(mark), true)
 	z.initialize(def, self)
 
 	_zombies_by_row[z.row].append(z)
@@ -559,6 +565,19 @@ func spawn_zombie(id: StringName, row: int, x_offset: float = 0.0) -> Zombie:
 	z.tree_exiting.connect(_on_zombie_gone.bind(z))
 	z.reached_house.connect(_on_zombie_reached_house)
 	Audio.play(&"zombie.spawn", z.position)
+	return z
+
+
+## Spawns a zombie at a point on the lawn rather than off the right edge.
+## Used by zombies that bring or release others - a thrown imp, a camel's
+## mummy - where the spawn point is where the parent is, not the spawn line.
+func spawn_zombie_at(id: StringName, row: int, x: float,
+		marks: Array = []) -> Zombie:
+	var z := spawn_zombie(id, row, 0.0, marks)
+	if z == null:
+		return null
+	z.position.x = clampf(x, house_x(), spawn_x())
+	z.col = world_to_col(z.position.x)
 	return z
 
 

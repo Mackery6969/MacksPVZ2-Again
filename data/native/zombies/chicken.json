@@ -21,12 +21,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CowboyChickenAttackRect"
+   "rect": "CowboyChickenAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "CowboyChickenHitRect"
+   "rect": "CowboyChickenHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

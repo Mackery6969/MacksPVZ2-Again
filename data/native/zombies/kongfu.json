@@ -2,9 +2,7 @@
  "id": "kongfu",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 100,
   "weight": 1000,
   "sun_cost": 50
@@ -12,21 +10,17 @@
  "sort": "Normal",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "count": 3,
+   "once": true,
+   "type": "summoner",
+   "zombies": [
+    "kongfu",
+    "kongfu_armor1",
+    "kongfu_armor2"
+   ]
   }
  ],
  "extra": {
-  "ReckWarningRect": "RTID(KongfuReckWarningRect@RectangleProps)",
-  "ZombieCountToSummon": 3,
-  "ZombieTypesToSummonBecomingFlag": [
-   "kongfu",
-   "kongfu_armor1",
-   "kongfu_armor2"
-  ]
+  "ReckWarningRect": "RTID(KongfuReckWarningRect@RectangleProps)"
  }
 }

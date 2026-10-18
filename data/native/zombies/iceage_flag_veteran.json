@@ -11,21 +11,11 @@
  },
  "sort": "Normal",
  "tags": {
+  "add": [
+   "chill_only"
+  ],
   "remove": [
    "plantfood_carrier"
   ]
- },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
- "extra": {
-  "ChillInsteadOfFreeze": true
  }
 }

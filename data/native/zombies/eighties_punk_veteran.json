@@ -4,21 +4,10 @@
  "stats": {
   "toughness": 400,
   "speed": 0.23125,
-  "eat_dps": 100,
   "wave_cost": 500,
   "weight": 1000,
   "sun_cost": 100
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "JamStyle": "jam_punk",
   "PushCooldown": 2,

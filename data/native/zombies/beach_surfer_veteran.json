@@ -4,23 +4,18 @@
  "stats": {
   "toughness": 350,
   "speed": 0.15,
-  "eat_dps": 100,
   "wave_cost": 1400,
   "weight": 4000,
   "sun_cost": 225
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "slot": "board",
+   "toughness": 1100,
+   "type": "armor"
   }
  ],
  "extra": {
-  "BoardToughness": 1100,
   "DamageOnStabbing": 1500,
   "PlantBlockers": [
    "tallnut"

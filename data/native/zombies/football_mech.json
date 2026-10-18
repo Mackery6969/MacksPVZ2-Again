@@ -4,10 +4,10 @@
  "stats": {
   "toughness": 2000,
   "speed": 0.2,
-  "eat_dps": 100,
   "wave_cost": 1000,
   "weight": 4000,
-  "sun_cost": 175
+  "sun_cost": 175,
+  "stun_scale": 0
  },
  "tags": {
   "add": [
@@ -26,16 +26,15 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "FutureFootballMechAttackRect"
+   "rect": "FutureFootballMechAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "FutureFootballMechHitRect"
+   "rect": "FutureFootballMechHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
-  "ChiliStunDurationMult": 0,
   "EMPStunTimeScale": 1,
   "PushFailDamage": 400
  }

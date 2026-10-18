@@ -228,12 +228,13 @@ func _resolve(id: StringName, raw: Variant, pool: Dictionary,
 			else:
 				def.inherit_from(parent)
 		elif archetypes.has(parent_id):
-			var arch_tags: Array = archetypes[parent_id].get("tags", [])
+			# An archetype is a bare definition - the shape its members share -
+			# so it is inherited by the same path a parent entity is.
+			var arch := _def_from_archetype(parent_id, kind)
 			if authored:
-				for t in arch_tags:
-					def.add_tag(StringName(t))
+				def.merge_under(arch)
 			else:
-				def.set_tags(arch_tags)
+				def.inherit_from(arch)
 		else:
 			_errors.append("%s: unknown extends target '%s'" % [id, parent_id])
 
@@ -252,9 +253,15 @@ func _resolve(id: StringName, raw: Variant, pool: Dictionary,
 		for t in (tag_field.get("add", []) as Array):
 			def.add_tag(StringName(t))
 
-	for c in (source.get("components", []) as Array):
-		if c is Dictionary:
-			def.put_component(ComponentSpec.from_dict(c))
+	# Components are either a plain list, or an add/remove delta against what
+	# the archetype supplied - the same two shapes tags come in.
+	var comp_field: Variant = source.get("components")
+	if comp_field is Array:
+		_apply_components(def, comp_field)
+	elif comp_field is Dictionary:
+		for t in (comp_field.get("remove", []) as Array):
+			def.remove_components(StringName(t))
+		_apply_components(def, comp_field.get("add", []))
 
 	# Family and sort are classification, not stats, so they are set directly.
 	if source.has("family"):
@@ -268,6 +275,37 @@ func _resolve(id: StringName, raw: Variant, pool: Dictionary,
 		def.category = ObjectDef.category_from_string(str(source["category"]))
 
 	def.extra = source.get("extra", {})
+	return def
+
+
+## Lays one source's component list onto `def`.
+##
+## Stating a type the parent already had replaces it - that is how a world's
+## gargantuar keeps the shared smasher and swaps only its imp. Stating the
+## same type twice in ONE list means another of it, because a poncho zombie
+## wears a plate over a poncho and both have to absorb.
+func _apply_components(def: EntityDef, list: Array) -> void:
+	var stated: Dictionary = {}
+	for c in list:
+		if not (c is Dictionary):
+			continue
+		var spec := ComponentSpec.from_dict(c)
+		if stated.has(spec.type):
+			def.components.append(spec)
+		else:
+			def.put_component(spec)
+			stated[spec.type] = true
+
+
+## Builds a definition out of an archetype entry so it can be inherited from.
+func _def_from_archetype(id: StringName, kind: StringName) -> EntityDef:
+	var raw: Dictionary = archetypes.get(id, {})
+	var def: EntityDef = _new_def(kind)
+	def.id = id
+	def.kind = kind
+	def.set_tags(raw.get("tags", []))
+	def.apply_stats(raw.get("stats", {}))
+	_apply_components(def, raw.get("components", []))
 	return def
 
 

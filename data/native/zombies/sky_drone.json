@@ -30,12 +30,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "PirateParrotAttackRect"
+   "rect": "PirateParrotAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "PirateParrotHitRect"
+   "rect": "PirateParrotHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

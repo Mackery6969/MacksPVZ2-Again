@@ -41,7 +41,24 @@ func cfg_jittered(key: StringName, jitter_key: StringName, fallback: float = 0.0
 	return scaled(seconds)
 
 
+## Config value drawn uniformly from a `key` / `key_max` pair, which is how
+## PopCap's {Min, Max} ranges arrive. A key with no `_max` is a fixed value.
+func cfg_range(key: StringName, fallback: float = 0.0) -> float:
+	var low := float(config.get(key, fallback))
+	var high := float(config.get(StringName(String(key) + "_max"), low))
+	return low if is_equal_approx(low, high) else randf_range(low, high)
+
+
 ## Scales a duration by the host's attack rate.
 func scaled(seconds: float) -> float:
 	var rate: float = host.attack_rate if host != null else 1.0
 	return seconds / maxf(rate, 0.01)
+
+
+## Whether this component takes over the host's attack. A zombie whose attack
+## is claimed still stops at whatever blocks it, but deals no bite damage -
+## the component does the damage instead, on its own schedule. This is how a
+## gargantuar smashes rather than eats without the zombie knowing what a
+## gargantuar is.
+func claims_attack() -> bool:
+	return false

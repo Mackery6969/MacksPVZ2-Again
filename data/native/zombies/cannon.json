@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 600,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 700,
   "weight": 1500,
   "sun_cost": 125
@@ -28,12 +27,16 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "PirateCannonAttackRect"
+   "rect": "PirateCannonAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "PirateCannonHitRect"
+   "rect": "PirateCannonHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "type": "spawn_inside",
+   "zombie": "pirate_imp"
   }
  ],
  "extra": {
@@ -46,7 +49,6 @@
   ],
   "ExplodeImpCount": 5,
   "ExplodeImpCountAdditional": 0,
-  "ImpType": "pirate_imp",
   "MaxImpCount": 5,
   "MaxImpCountAdditional": 0,
   "ShootColumns": [

@@ -17,6 +17,15 @@ extends EntityDef
 ## mod-authored zombie is priced without having to say so.
 @export var sun_cost: int = 0
 
+@export_group("Resistance")
+## How long a stun lasts on this zombie, as a multiplier. 0 is immunity, which
+## is what every zombie in PopCap's data that carries the field actually says;
+## a fraction is available to mods that want partial resistance.
+@export_range(0.0, 4.0, 0.05) var stun_scale: float = 1.0
+## Speed multiplier while standing on water. Ducky-tube zombies swim faster
+## than they walk, which is the whole point of them.
+@export_range(0.0, 4.0, 0.05) var water_speed_scale: float = 1.0
+
 @export_group("Classification")
 ## PopCap's ZombieSort: Normal, Gargantuar, Zomboss, ...
 @export var sort: StringName = &"Normal"
@@ -38,6 +47,8 @@ func stat(name: StringName, fallback: Variant = 0.0) -> Variant:
 		&"wave_cost": return wave_cost
 		&"weight": return weight
 		&"sun_cost": return placement_cost()
+		&"stun_scale": return stun_scale
+		&"water_speed_scale": return water_speed_scale
 	return custom_stats.get(name, fallback)
 
 
@@ -49,13 +60,15 @@ func set_stat(name: StringName, value: Variant) -> bool:
 		&"wave_cost": wave_cost = int(value)
 		&"weight": weight = int(value)
 		&"sun_cost": sun_cost = int(value)
+		&"stun_scale": stun_scale = float(value)
+		&"water_speed_scale": water_speed_scale = float(value)
 		_: return false
 	return true
 
 
 func stat_names() -> Array[StringName]:
 	return [&"toughness", &"speed", &"eat_dps", &"wave_cost", &"weight",
-			&"sun_cost"]
+			&"sun_cost", &"stun_scale", &"water_speed_scale"]
 
 
 func _copy_stats_to(target: EntityDef) -> void:
@@ -66,4 +79,6 @@ func _copy_stats_to(target: EntityDef) -> void:
 		target.wave_cost = wave_cost
 		target.weight = weight
 		target.sun_cost = sun_cost
+		target.stun_scale = stun_scale
+		target.water_speed_scale = water_speed_scale
 		target.sort = sort

@@ -27,5 +27,19 @@
   "transformable",
   "warpable",
   "zomboss_damageable"
+ ],
+ "stats": {
+  "toughness": 190,
+  "eat_dps": 100
+ },
+ "components": [
+  {
+   "rect": "CommonAttackRect",
+   "type": "attack_rect"
+  },
+  {
+   "rect": "CommonHitRect",
+   "type": "hit_rect"
+  }
  ]
 }

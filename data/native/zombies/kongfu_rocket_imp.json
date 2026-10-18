@@ -2,9 +2,7 @@
  "id": "kongfu_rocket_imp",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.4,
-  "eat_dps": 100,
   "wave_cost": 100,
   "weight": 1000,
   "sun_cost": 50
@@ -16,12 +14,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "ImpAttackRect"
+   "rect": "ImpAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "ImpHitRect"
+   "rect": "ImpHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

@@ -11,6 +11,7 @@
  },
  "tags": {
   "add": [
+   "chill_only",
    "normal_death_when_mowed"
   ],
   "remove": [
@@ -21,17 +22,16 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CowboyChickenAttackRect"
+   "rect": "CowboyChickenAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "CowboyChickenHitRect"
+   "rect": "CowboyChickenHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
   "CanBeEasilySwallowedByChomper": true,
-  "ChillInsteadOfFreeze": true,
   "DoesNotDamageHeavilyToGarlic": true,
   "KilledByShrinkingViolet": true
  }

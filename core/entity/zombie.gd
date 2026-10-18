@@ -37,6 +37,9 @@ enum Allegiance {
 @export var eat_dps: float = 100.0
 
 var target: Character = null
+## Set when a component claims the attack, so this zombie stops to fight but
+## does not bite - see EntityComponent.claims_attack.
+var attack_claimed: bool = false
 
 var _eat_accumulator: float = 0.0
 ## Status effects, as remaining seconds. A slow also stores its factor so the
@@ -45,6 +48,10 @@ var _stun_left: float = 0.0
 var _slow_left: float = 0.0
 var _slow_factor: float = 1.0
 var _base_speed: float = 0.0
+## From the definition: how long stuns last here (0 is immunity) and how
+## differently this zombie moves over water.
+var _stun_scale: float = 1.0
+var _water_speed_scale: float = 1.0
 ## reached_house fires once; the board decides what happens next.
 var _announced_house: bool = false
 
@@ -53,6 +60,12 @@ func _on_initialized() -> void:
 	speed = float(def.stat(&"speed", speed))
 	eat_dps = float(def.stat(&"eat_dps", eat_dps))
 	_base_speed = speed
+	_stun_scale = float(def.stat(&"stun_scale", 1.0))
+	_water_speed_scale = float(def.stat(&"water_speed_scale", 1.0))
+	for c in components():
+		if c.claims_attack():
+			attack_claimed = true
+			break
 	queue_redraw()
 
 
@@ -77,6 +90,26 @@ func set_allegiance(value: Allegiance) -> void:
 	queue_redraw()
 
 
+## Lanes per second right now, after terrain. Water is the only terrain that
+## changes a zombie's pace; a ducky-tube zombie swims faster than it walks,
+## and a zombie without tubes would be getting its feet wet either way.
+func current_speed() -> float:
+	if _water_speed_scale != 1.0 and board != null:
+		var terrain: StringName = board.terrain_at(row, col)
+		if terrain == &"water" or terrain == &"deep_water":
+			return speed * _water_speed_scale
+	return speed
+
+
+## Permanently scales how fast this zombie moves and how hard it bites.
+## Separate from apply_buff, which expires: an enraged zombie stays enraged.
+func scale_aggression(speed_scale: float, damage_scale: float) -> void:
+	_base_speed *= speed_scale
+	speed = _base_speed * (_slow_factor if _slow_left > 0.0 else 1.0)
+	eat_dps *= damage_scale
+	queue_redraw()
+
+
 ## -1 walking toward the house, +1 walking away from it.
 func direction() -> int:
 	return 1 if is_charmed() else -1
@@ -89,7 +122,13 @@ func direction() -> int:
 ## Halts the zombie entirely for `seconds`. Freezing is a stun that also
 ## chills, so both routes end up here.
 func apply_stun(seconds: float) -> void:
-	_stun_left = maxf(_stun_left, seconds)
+	var held := seconds * _stun_scale
+	if held <= 0.0:
+		# Not a silent no-op: the plant that tried still wants to know, and a
+		# chili-proof mech reading "immune" is useful in a log.
+		set_runtime_tag(&"stun_immune", true)
+		return
+	_stun_left = maxf(_stun_left, held)
 	set_runtime_tag(&"stunned", true)
 	queue_redraw()
 
@@ -107,10 +146,18 @@ func apply_slow(factor: float, seconds: float) -> void:
 
 
 ## Chilled and held in place at once, the usual effect of an ice plant.
+##
+## A `chill_only` zombie is slowed but never held: ice does not set a troglobite
+## or a Hot Date in a block, it just cools them. The chill lasts the full freeze
+## duration there rather than the usual double, since nothing thaws.
 func apply_freeze(seconds: float) -> void:
+	if has_tag(&"chill_only"):
+		apply_slow(0.5, seconds * 2.0)
+		return
 	apply_stun(seconds)
 	apply_slow(0.5, seconds * 2.0)
-	set_runtime_tag(&"frozen", true)
+	if is_stunned():
+		set_runtime_tag(&"frozen", true)
 
 
 func is_stunned() -> bool:
@@ -149,7 +196,7 @@ func _process(delta: float) -> void:
 
 
 func _walk(delta: float) -> void:
-	position.x += direction() * speed * board.cell_size.x * delta
+	position.x += direction() * current_speed() * board.cell_size.x * delta
 	col = board.world_to_col(position.x)
 
 	var ahead := _find_target()
@@ -181,7 +228,8 @@ func _find_target() -> Character:
 		return null
 
 	var plant: Plant = board.plant_at(row, col)
-	if plant != null and not plant.is_dead and _can_eat(plant):
+	# A smashing zombie flattens plants it could never have eaten.
+	if plant != null and not plant.is_dead and (attack_claimed or _can_eat(plant)):
 		return plant
 	# Graves and objects do not block a zombie, so nothing else is checked.
 	return null
@@ -194,6 +242,8 @@ func _can_eat(plant: Plant) -> bool:
 
 
 func _attack(delta: float) -> void:
+	if attack_claimed:
+		return
 	_eat_accumulator += eat_dps * delta
 	var whole := floorf(_eat_accumulator)
 	if whole >= 1.0:

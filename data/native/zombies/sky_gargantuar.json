@@ -1,39 +1,27 @@
 {
  "id": "sky_gargantuar",
  "extends": "gargantuar",
- "stats": {
-  "toughness": 3600,
-  "speed": 0.24,
-  "eat_dps": 100,
-  "wave_cost": 1500,
-  "weight": 3000,
-  "sun_cost": 225
- },
  "sort": "Gargantuar",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "imp": "sky_imp",
+   "throw_at": [
+    0.7,
+    0.3
+   ],
+   "type": "imp_thrower"
   }
  ],
  "extra": {
-  "HealthPercentThrowImp0": 0.7,
-  "HealthPercentThrowImp1": 0.3,
   "ImpColumns": [
    0,
    1,
    2
   ],
-  "ImpType": "sky_imp",
   "JamStyle": "jam_metal",
   "ShipDPS": 300,
   "SkyCityShipDetectXOffset": -70,
   "SkyCityShipDetectXOffsetFiring": -100,
-  "SmashDamage": 1500,
   "WaveType": "eighties_gargantuar_wave"
  }
 }

@@ -4,10 +4,10 @@
  "stats": {
   "toughness": 390,
   "speed": 0.3,
-  "eat_dps": 100,
   "wave_cost": 200,
   "weight": 100,
-  "sun_cost": 75
+  "sun_cost": 75,
+  "stun_scale": 0
  },
  "tags": {
   "add": [
@@ -28,16 +28,15 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "BobsledTeamAttackRect"
+   "rect": "BobsledTeamAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "BobsledTeamHitRect"
+   "rect": "BobsledTeamHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
-  "BobsledType": "bobsled",
-  "ChiliStunDurationMult": 0
+  "BobsledType": "bobsled"
  }
 }

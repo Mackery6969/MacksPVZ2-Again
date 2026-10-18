@@ -4,24 +4,17 @@
  "stats": {
   "toughness": 5400,
   "speed": 0.16,
-  "eat_dps": 100,
   "wave_cost": 1800,
-  "weight": 3000,
   "sun_cost": 275
  },
  "sort": "Gargantuar",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "imp": "dino_imp",
+   "throw_at": [
+    0.5
+   ],
+   "type": "imp_thrower"
   }
- ],
- "extra": {
-  "ImpType": "dino_imp",
-  "SmashDamage": 1500
- }
+ ]
 }

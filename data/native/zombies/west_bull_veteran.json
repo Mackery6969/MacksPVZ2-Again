@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 1400,
   "speed": 0.2,
-  "eat_dps": 100,
   "wave_cost": 1000,
   "weight": 1000,
   "sun_cost": 175
@@ -24,19 +23,21 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CowboyBullAttackRect"
+   "rect": "CowboyBullAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "CowboyBullHitRect"
+   "rect": "CowboyBullHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "type": "spawn_inside",
+   "zombie": "west_bullrider"
   }
  ],
  "extra": {
   "BullRammingDamage": 2000,
   "BullRunAgainDelay": 5,
-  "ImpThrowDistance": 4,
-  "ImpType": "west_bullrider",
   "RushSPS": 2
  }
 }

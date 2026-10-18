@@ -2,33 +2,16 @@
  "id": "lunar_camel_twohump",
  "extends": "lunar_camel_onehump",
  "stats": {
-  "toughness": 250,
-  "speed": 0.12,
-  "eat_dps": 100,
   "wave_cost": 800,
-  "weight": 3000,
   "sun_cost": 150
- },
- "tags": {
-  "add": [
-   "normal_death_when_mowed"
-  ]
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CamelSegmentAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CamelSegmentHitRect"
+   "count": [
+    4
+   ],
+   "teammate": "lunar_camel_segment",
+   "type": "escort"
   }
- ],
- "extra": {
-  "TeamMemberCount": [
-   4
-  ],
-  "TeammateType": "lunar_camel_segment",
-  "ZombieInside": "lunar"
- }
+ ]
 }

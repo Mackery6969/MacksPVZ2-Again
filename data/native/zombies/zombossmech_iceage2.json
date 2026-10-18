@@ -1,27 +1,23 @@
 {
  "id": "zombossmech_iceage2",
  "extends": "zomboss",
- "stats": {
-  "toughness": 190,
-  "speed": 0.185,
-  "eat_dps": 100,
-  "wave_cost": 100,
-  "weight": 0,
-  "sun_cost": 50
- },
  "sort": "Zomboss",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "IceageZombossMechAttackRect"
+   "rect": "IceageZombossMechAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "IceageZombossMechHitRect"
+   "rect": "IceageZombossMechHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "slot": "glacier",
+   "toughness": 2250,
+   "type": "armor"
   }
  ],
  "extra": {
-  "ChiliStunDurationMult": 0,
   "FoeEatDamageReflectPct": 0.5,
   "GlacierBlockZombieList": [
    [],
@@ -62,7 +58,6 @@
     "iceage_dodo"
    ]
   ],
-  "GlacierToughness": 2250,
   "MissileType": "zomboss_missile_iceage",
   "ZombossMechLevel": 1,
   "ZombossStages": [

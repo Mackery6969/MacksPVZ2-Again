@@ -4,21 +4,10 @@
  "stats": {
   "toughness": 420,
   "speed": 0.15,
-  "eat_dps": 100,
   "wave_cost": 500,
   "weight": 1000,
   "sun_cost": 100
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "ParrotCooldown": 7,
   "ParrotRetryCooldown": 1

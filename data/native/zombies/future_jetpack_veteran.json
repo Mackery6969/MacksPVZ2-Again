@@ -19,12 +19,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "FutureJetpackAttackRect"
+   "rect": "FutureJetpackAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "FutureJetpackHitRect"
+   "rect": "FutureJetpackHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

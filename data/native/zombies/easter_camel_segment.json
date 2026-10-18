@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 250,
   "speed": 0.12,
-  "eat_dps": 100,
   "wave_cost": 200,
   "weight": 3000,
   "sun_cost": 75
@@ -16,19 +15,23 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CamelSegmentAttackRect"
+   "rect": "CamelSegmentAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "CamelSegmentHitRect"
+   "rect": "CamelSegmentHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "type": "spawn_inside",
+   "zombie": "easter"
+  },
+  {
+   "count": [
+    0
+   ],
+   "teammate": "easter_camel_segment",
+   "type": "escort"
   }
- ],
- "extra": {
-  "TeamMemberCount": [
-   0
-  ],
-  "TeammateType": "easter_camel_segment",
-  "ZombieInside": "easter"
- }
+ ]
 }

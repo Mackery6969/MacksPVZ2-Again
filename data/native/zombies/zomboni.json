@@ -7,7 +7,8 @@
   "eat_dps": 1000,
   "wave_cost": 400,
   "weight": 4000,
-  "sun_cost": 100
+  "sun_cost": 100,
+  "stun_scale": 0
  },
  "tags": {
   "add": [
@@ -28,15 +29,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "ZomboniAttackRect"
+   "rect": "ZomboniAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "ZomboniHitRect"
+   "rect": "ZomboniHitRect",
+   "type": "hit_rect"
   }
- ],
- "extra": {
-  "ChiliStunDurationMult": 0
- }
+ ]
 }

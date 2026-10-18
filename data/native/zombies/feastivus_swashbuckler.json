@@ -2,23 +2,11 @@
  "id": "feastivus_swashbuckler",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 150,
   "weight": 1500,
   "sun_cost": 75
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "ChanceToFallIntoSea": 0.05,
   "ChooseToSpawnOnNonDeckRows": true,

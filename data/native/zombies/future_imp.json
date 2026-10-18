@@ -4,10 +4,10 @@
  "stats": {
   "toughness": 270,
   "speed": 0.22,
-  "eat_dps": 100,
   "wave_cost": 150,
   "weight": 1000,
-  "sun_cost": 75
+  "sun_cost": 75,
+  "stun_scale": 0
  },
  "tags": {
   "add": [
@@ -23,16 +23,15 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "ImpAttackRect"
+   "rect": "ImpAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "ImpHitRect"
+   "rect": "ImpHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
-  "ChiliStunDurationMult": 0,
   "EMPStunTimeScale": 1,
   "IgnoredInWaves": true,
   "KilledByShrinkingViolet": true

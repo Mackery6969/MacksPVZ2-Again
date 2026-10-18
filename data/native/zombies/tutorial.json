@@ -2,38 +2,26 @@
  "id": "tutorial",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 100,
   "weight": 1000,
   "sun_cost": 50
  },
  "sort": "Normal",
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
  "extra": {
   "ChanceToReverse": 0,
   "//ZombieRedirection": [
    {
-	"Type": "tutorial_armor1",
-	"Weight": 1
+    "Type": "tutorial_armor1",
+    "Weight": 1
    },
    {
-	"Type": "tutorial_armor2",
-	"Weight": 1
+    "Type": "tutorial_armor2",
+    "Weight": 1
    },
    {
-	"Type": "tutorial_armor4",
-	"Weight": 1
+    "Type": "tutorial_armor4",
+    "Weight": 1
    }
   ]
  }

@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 1100,
   "speed": 0.16,
-  "eat_dps": 100,
   "wave_cost": 450,
   "weight": 4500,
   "sun_cost": 100
@@ -16,16 +15,19 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "BullyAttackRect"
+   "rect": "BullyAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "BullyHitRect"
+   "rect": "BullyHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "damage": 0,
+   "type": "smasher"
   }
  ],
  "extra": {
-  "CraterLifetime": 0,
-  "SmashDamage": 0
+  "CraterLifetime": 0
  }
 }

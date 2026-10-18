@@ -7,7 +7,8 @@
   "eat_dps": 75,
   "wave_cost": 10,
   "weight": 0,
-  "sun_cost": 50
+  "sun_cost": 50,
+  "stun_scale": 0
  },
  "tags": {
   "add": [
@@ -21,17 +22,16 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CowboyChickenAttackRect"
+   "rect": "CowboyChickenAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "CowboyChickenHitRect"
+   "rect": "CowboyChickenHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
   "CanBeEasilySwallowedByChomper": true,
-  "ChiliStunDurationMult": 0,
   "DoesNotDamageHeavilyToGarlic": true,
   "FartInterval": 3,
   "FartStunDuration": 2,

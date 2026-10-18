@@ -2,27 +2,19 @@
  "id": "summer_gargantuar",
  "extends": "gargantuar",
  "stats": {
-  "toughness": 3600,
-  "speed": 0.2,
-  "eat_dps": 100,
-  "wave_cost": 1500,
-  "weight": 3000,
-  "sun_cost": 225
+  "speed": 0.2
  },
  "sort": "Gargantuar",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "imp": "summer_imp",
+   "throw_at": [
+    0.5
+   ],
+   "type": "imp_thrower"
   }
  ],
  "extra": {
-  "HeatInterval": 1,
-  "ImpType": "summer_imp",
-  "SmashDamage": 1500
+  "HeatInterval": 1
  }
 }

@@ -21,12 +21,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "SkyTwinAttackRect"
+   "rect": "SkyTwinAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "SkyTwinHitRect"
+   "rect": "SkyTwinHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

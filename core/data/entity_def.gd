@@ -131,6 +131,16 @@ func put_component(spec: ComponentSpec) -> void:
 	components.append(spec)
 
 
+## Drops every component of one type, which is how an entry opts out of
+## something its archetype supplied.
+func remove_components(type: StringName) -> void:
+	var kept: Array[ComponentSpec] = []
+	for c in components:
+		if c != null and c.type != type:
+			kept.append(c)
+	components = kept
+
+
 ## Copies the inheritable parts of `parent` onto this definition.
 func inherit_from(parent: EntityDef) -> void:
 	set_tags(parent.tags)

@@ -1,33 +1,28 @@
 {
  "id": "kongfu_bronze_chi_without_torch",
  "extends": "kongfu_bronze_chi",
- "stats": {
-  "toughness": 4700,
-  "speed": 0.125,
-  "eat_dps": 100,
-  "wave_cost": 1500,
-  "weight": 3000,
-  "sun_cost": 225
- },
  "sort": "Gargantuar",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "count": 3,
+   "interval": 2,
+   "type": "summoner",
+   "zombies": [
+    "kongfu_hammer",
+    "kongfu_bomb",
+    "kongfu_drink",
+    "kongfu_drink",
+    "monk_blade",
+    "monk_nunchaku",
+    "monk_drink"
+   ]
   }
  ],
  "extra": {
-  "SmashDamage": 1500,
   "SummonColumn": {
    "Max": 7,
    "Min": 6
   },
-  "SummonCount": 3,
-  "SummonTime": 2,
   "TimeBeforeSkills": {
    "Max": 20,
    "Min": 12
@@ -35,15 +30,6 @@
   "TimeBetweenSkills": {
    "Max": 24,
    "Min": 16
-  },
-  "ZombiesToSummon": [
-   "kongfu_hammer",
-   "kongfu_bomb",
-   "kongfu_drink",
-   "kongfu_drink",
-   "monk_blade",
-   "monk_nunchaku",
-   "monk_drink"
-  ]
+  }
  }
 }

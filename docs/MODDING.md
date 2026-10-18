@@ -88,6 +88,84 @@ disabled and be opted into. `mods/example_override/` is exactly that case.
 zombie, and you inherit its stats, tags and components. `tags.add` and
 `tags.remove` are applied on top, so you only write the differences.
 
+### What an archetype carries
+
+An archetype is not just a tag bundle - it holds the stats and whole
+components its members agree on. Every world's gargantuar is the same
+3600-health smasher that throws an imp at half health, so that lives in
+`data/native/archetypes/gargantuar.json` and each world's entry says only
+which imp:
+
+```json
+{
+ "id": "beach_gargantuar",
+ "extends": "gargantuar",
+ "components": [{ "type": "imp_thrower", "imp": "beach_imp", "throw_at": [0.5] }]
+}
+```
+
+Naming a component type the archetype already has **replaces** it, which is
+how that entry keeps the shared smasher and swaps only the imp. Naming the
+same type twice in one list means **another** of it - a poncho zombie wears a
+plate over a poncho and both have to be chewed through.
+
+To drop something the archetype gave you, use the delta form, which mirrors
+how tags work. Kung-Fu's bronze statue is a gargantuar that does not smash:
+
+```json
+{
+ "id": "bronze_statue",
+ "extends": "gargantuar",
+ "stats": { "toughness": 9000, "speed": 0 },
+ "components": {
+  "remove": ["smasher"],
+  "add": [{ "type": "summoner", "zombies": ["bronze_hook"], "once": true, "each": true },
+          { "type": "lifespan", "duration": 25, "duration_max": 35 }]
+ }
+}
+```
+
+### What a zombie does
+
+Behaviour comes from components, the same as for plants. Built-in zombie
+behaviours:
+
+| Component | What it does |
+| --- | --- |
+| `smasher` | Flattens what blocks it in one blow instead of biting, then rests |
+| `imp_thrower` | Throws a rider past the defences as it is worn down |
+| `spawn_inside` | Lets out whatever was riding inside when it dies |
+| `escort` | Brings a column of identical zombies along from one spawn |
+| `summoner` | Calls more zombies onto the lane, once or on a timer |
+| `enrage` | Gets faster and hits harder once its armor is gone |
+| `lifespan` | Dies of its own accord after a while |
+| `armor` | A pool destroyed before the body takes a hit |
+
+A component returning `true` from `claims_attack()` takes the zombie's attack
+over: the zombie still stops at whatever blocks it, but deals no bite damage
+and the component does the damage on its own schedule. That is the whole of
+what makes a gargantuar not a biter, and `Zombie` never mentions gargantuars.
+
+Anything that brings more zombies marks what it spawns **before** the new
+zombie initializes, so the spawned one's own components see it during setup -
+`escorting` for an escort's members, `summoned` for a summoner's. That is what
+stops an abbot, whose summon list contains abbots, from turning one wave into
+every wave.
+
+### Resistance
+
+Two stats on a zombie change how plants land on it:
+
+- `stun_scale` - how long a stun lasts here. `0` is immunity, which is what
+  every zombie in PopCap's data that carries the field actually says; a
+  fraction gives partial resistance. An immune zombie gets a `stun_immune` tag
+  so the reason is visible.
+- `water_speed_scale` - speed multiplier while standing on water. A ducky-tube
+  zombie swims at twice its walking pace.
+
+The `chill_only` tag makes ice slow a zombie without ever holding it: a
+troglobite is cooled, not set in a block.
+
 A `.tres` works the same way, except that it is already complete when it
 loads - its parent only fills in what the resource left unset, rather than
 overwriting what you authored. `mods/example_pack/zombies/brute.tres` is a

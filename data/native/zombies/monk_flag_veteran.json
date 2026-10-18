@@ -9,15 +9,5 @@
   "weight": 100,
   "sun_cost": 50
  },
- "sort": "Normal",
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ]
+ "sort": "Normal"
 }

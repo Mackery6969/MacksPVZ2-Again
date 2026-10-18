@@ -28,12 +28,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CatapultAttackRect"
+   "rect": "CatapultAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "CatapultHitRect"
+   "rect": "CatapultHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

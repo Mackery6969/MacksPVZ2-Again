@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 250,
   "speed": 0.12,
-  "eat_dps": 100,
   "wave_cost": 100,
   "weight": 3000,
   "sun_cost": 50
@@ -16,18 +15,21 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CamelSegmentAttackRect"
+   "rect": "CamelSegmentAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "CamelSegmentHitRect"
+   "rect": "CamelSegmentHitRect",
+   "type": "hit_rect"
+  },
+  {
+   "type": "spawn_inside",
+   "zombie": "mummy"
   }
  ],
  "extra": {
   "TeamMemberCount": [
    0
-  ],
-  "ZombieInside": "mummy"
+  ]
  }
 }

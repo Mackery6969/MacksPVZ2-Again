@@ -4,19 +4,14 @@
  "stats": {
   "toughness": 900,
   "speed": 0.22,
-  "eat_dps": 100,
   "wave_cost": 400,
   "weight": 2000,
   "sun_cost": 100
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "Abbot3SectionStaffAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "rect": "Abbot3SectionStaffAttackRect",
+   "type": "attack_rect"
   }
  ],
  "extra": {

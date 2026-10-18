@@ -4,6 +4,30 @@
  "stats": {
   "sun_cost": 50
  },
+ "tags": {
+  "add": [
+   "divertable",
+   "enlightenable",
+   "grabbable",
+   "hypnotizable",
+   "plantfood_carrier",
+   "shrinkable",
+   "sporeable",
+   "toss_detectable",
+   "tossable",
+   "transformable",
+   "zomboss_damageable"
+  ],
+  "remove": [
+   "deep_water"
+  ]
+ },
+ "components": {
+  "remove": [
+   "attack_rect",
+   "hit_rect"
+  ]
+ },
  "extra": {
   "TargetListBecomesBlackList": true,
   "ValidDroneTargets": [

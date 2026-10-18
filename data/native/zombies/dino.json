@@ -2,22 +2,11 @@
  "id": "dino",
  "extends": "normal",
  "stats": {
-  "toughness": 190,
   "speed": 0.22,
   "eat_dps": 150,
   "wave_cost": 100,
   "weight": 1000,
   "sun_cost": 50
  },
- "sort": "Normal",
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ]
+ "sort": "Normal"
 }

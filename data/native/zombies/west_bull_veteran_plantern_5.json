@@ -2,41 +2,11 @@
  "id": "west_bull_veteran_plantern_5",
  "extends": "west_bull_veteran",
  "stats": {
-  "toughness": 1400,
-  "speed": 0.5,
-  "eat_dps": 100,
-  "wave_cost": 1000,
-  "weight": 1000,
-  "sun_cost": 175
+  "speed": 0.5
  },
- "tags": {
-  "add": [
-   "normal_death_when_mowed"
-  ],
-  "remove": [
-   "attractable",
-   "divertable",
-   "enlightenable",
-   "grabbable",
-   "swallowable",
-   "transformable"
-  ]
- },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CowboyBullAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CowboyBullHitRect"
-  }
- ],
  "extra": {
   "BullRammingDamage": 2000,
   "BullRunAgainDelay": 0.5,
-  "ImpThrowDistance": 5,
-  "ImpType": "west_bullrider",
   "RushSPS": 2
  }
 }

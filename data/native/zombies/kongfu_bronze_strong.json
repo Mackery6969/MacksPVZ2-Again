@@ -3,27 +3,17 @@
  "extends": "gargantuar",
  "stats": {
   "toughness": 6000,
-  "speed": 0.16,
-  "eat_dps": 100,
-  "wave_cost": 1500,
-  "weight": 3000,
-  "sun_cost": 225
+  "speed": 0.16
  },
  "sort": "Gargantuar",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "health_pct": 0.3,
+   "speed_scale": 2.5,
+   "type": "enrage"
   }
  ],
  "extra": {
-  "EnrageHealthPct": 0.3,
-  "EnragedSmashingSpeedScale": 1.5,
-  "EnragedWalkingSpeedScale": 2.5,
-  "SmashDamage": 1500
+  "EnragedSmashingSpeedScale": 1.5
  }
 }

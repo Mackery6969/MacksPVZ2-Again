@@ -4,19 +4,18 @@
  "stats": {
   "toughness": 490,
   "speed": 0.19,
-  "eat_dps": 100,
   "wave_cost": 600,
   "weight": 1000,
   "sun_cost": 125
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "BullyAttackRect"
+   "rect": "BullyAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "BullyHitRect"
+   "rect": "BullyHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {

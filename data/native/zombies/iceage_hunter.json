@@ -4,23 +4,16 @@
  "stats": {
   "toughness": 700,
   "speed": 0.12,
-  "eat_dps": 100,
   "wave_cost": 500,
   "weight": 3500,
   "sun_cost": 100
  },
- "components": [
-  {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
-  }
- ],
+ "tags": {
+  "add": [
+   "chill_only"
+  ]
+ },
  "extra": {
-  "ChillInsteadOfFreeze": true,
   "FarAttackRange": 4,
   "SnowballType": "hunter_snowball",
   "SnowballsPerBarrage": 3

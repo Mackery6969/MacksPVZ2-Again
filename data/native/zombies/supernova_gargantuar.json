@@ -2,26 +2,15 @@
  "id": "supernova_gargantuar",
  "extends": "gargantuar",
  "stats": {
-  "toughness": 3600,
-  "speed": 0.24,
-  "eat_dps": 100,
   "wave_cost": 2500,
-  "weight": 3000,
   "sun_cost": 350
  },
  "sort": "Gargantuar",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "GargantuarAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "GargantuarHitRect"
+   "damage": 2700,
+   "max_targets": 999999,
+   "type": "smasher"
   }
- ],
- "extra": {
-  "MaxSmashTargetCount": 999999,
-  "SmashDamage": 2700
- }
+ ]
 }

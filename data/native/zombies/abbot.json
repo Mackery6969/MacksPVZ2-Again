@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 250,
   "speed": 0.2,
-  "eat_dps": 100,
   "wave_cost": 100,
   "weight": 1000,
   "sun_cost": 50
@@ -12,21 +11,17 @@
  "sort": "Normal",
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "CommonAttackRect"
-  },
-  {
-   "type": "hit_rect",
-   "rect": "CommonHitRect"
+   "count": 3,
+   "once": true,
+   "type": "summoner",
+   "zombies": [
+    "abbot",
+    "abbot_armor1",
+    "abbot_armor2"
+   ]
   }
  ],
  "extra": {
-  "ReckWarningRect": "RTID(KongfuReckWarningRect@RectangleProps)",
-  "ZombieCountToSummon": 3,
-  "ZombieTypesToSummonBecomingFlag": [
-   "abbot",
-   "abbot_armor1",
-   "abbot_armor2"
-  ]
+  "ReckWarningRect": "RTID(KongfuReckWarningRect@RectangleProps)"
  }
 }

@@ -4,7 +4,6 @@
  "stats": {
   "toughness": 350,
   "speed": 0.185,
-  "eat_dps": 100,
   "wave_cost": 450,
   "weight": 3000,
   "sun_cost": 100
@@ -16,12 +15,12 @@
  },
  "components": [
   {
-   "type": "attack_rect",
-   "rect": "ImpAttackRect"
+   "rect": "ImpAttackRect",
+   "type": "attack_rect"
   },
   {
-   "type": "hit_rect",
-   "rect": "ImpHitRect"
+   "rect": "ImpHitRect",
+   "type": "hit_rect"
   }
  ],
  "extra": {
