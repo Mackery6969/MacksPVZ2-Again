@@ -1153,7 +1153,6 @@ func _test_overhaul_scale_mod() -> void:
 		if o.name == "no_synthetic_escape":
 			custom = o
 	check("the custom objective is live", custom != null)
-	end_section()
 	if custom != null:
 		check("it starts met", custom.is_met())
 		# A synthetic zombie reaching the house must break it.
@@ -1169,6 +1168,7 @@ func _test_overhaul_scale_mod() -> void:
 		check_eq("with its level", campaign.first_level(), &"neon_1")
 		check("base campaign untouched", Data.campaign(&"tutorial") != null)
 
+	end_section()
 	runner.queue_free()
 	board.queue_free()
 
