@@ -82,8 +82,6 @@ func direction() -> int:
 	return 1 if is_charmed() else -1
 
 
-# --- movement and attack -------------------------------------------------
-
 # --- status effects ------------------------------------------------------
 
 ## Halts the zombie entirely for `seconds`. Freezing is a stun that also
