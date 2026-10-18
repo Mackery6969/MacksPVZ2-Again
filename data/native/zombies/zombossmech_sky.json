@@ -2,266 +2,202 @@
  "id": "zombossmech_sky",
  "extends": "zomboss",
  "sort": "Zomboss",
- "extra": {
-  "BatteryLowerType": "sky_battery_lower",
-  "BatteryType": "sky_battery",
-  "BulletType": "sky_battleplane_bullet",
-  "FoeEatDamageReflectPct": 0.5,
-  "IdleColumn": 6,
-  "SmashDistance": 1,
-  "StompDamageToZombies": 1500,
-  "ThunderStormType": "sky_zomboss_storm",
-  "ZombossMechLevel": 0,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+ "components": [
+  {
+   "idle_column": 6,
+   "mech_level": 0,
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 4
       },
-      "weight": 4
-     },
-     {
-      "actionName": "rush2",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush2",
+       "repeat": 1,
+       "weight": 7
       },
-      "weight": 7
-     },
-     {
-      "actionName": "walk",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "walk",
+       "repeat": 1,
+       "weight": 2
       },
-      "weight": 2
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 9
       },
-      "weight": 9
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2600,
-       "pointMin": 600,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 600,
+       "points_max": 2600,
+       "repeat": 2,
+       "weight": 12,
+       "zombies": [
         "sky",
         "sky_armor1",
         "sky_armor2",
         "sky_electric",
         "sky_dronemaker"
        ]
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 8000,
+     "idle": 0.5,
+     "idle_max": 1,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 4,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0,
+      "ThunderCount": {
+       "Max": 3,
+       "Min": 2
       },
-      "weight": 12
+      "ThunderLinkedPlantCount": {
+       "Max": 3,
+       "Min": 2
+      }
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 8000,
-    "MaxIdleTime": 1,
-    "MinIdleTime": 0.5,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 4,
-    "ThunderCount": {
-     "Max": 3,
-     "Min": 2
     },
-    "ThunderLinkedPlantCount": {
-     "Max": 3,
-     "Min": 2
-    }
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 1,
+       "weight": 2
       },
-      "weight": 2
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "rush2",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush2",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 3500,
-       "pointMin": 2200,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 2200,
+       "points_max": 3500,
+       "repeat": 2,
+       "weight": 14,
+       "zombies": [
         "sky",
         "sky_armor1",
         "sky_armor2",
         "sky_battleplane",
         "sky_twin"
        ]
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 16000,
+     "idle": 0.5,
+     "idle_max": 0.7,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 3.5,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3,
+      "ThunderCount": {
+       "Max": 5,
+       "Min": 4
       },
-      "weight": 14
+      "ThunderLinkedPlantCount": {
+       "Max": 3,
+       "Min": 2
+      }
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 16000,
-    "MaxIdleTime": 0.7,
-    "MinIdleTime": 0.5,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3.5,
-    "ThunderCount": {
-     "Max": 5,
-     "Min": 4
     },
-    "ThunderLinkedPlantCount": {
-     "Max": 3,
-     "Min": 2
-    }
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 1
       },
-      "weight": 1
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2950,
-       "pointMin": 1350,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 1350,
+       "points_max": 2950,
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 12,
+       "zombies": [
         "sky",
         "sky_armor1",
         "sky_gargantuar",
         "sky_arbiterx"
        ]
       },
-      "weight": 12
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "columnOffset": -2,
-       "plantfoodchance": 0,
-       "pointMax": 100,
-       "pointMin": 100,
-       "zombieList": [
+      {
+       "action": "summon",
+       "column_offset": -2,
+       "plantfood_chance": 0,
+       "points": 100,
+       "points_max": 100,
+       "repeat": 1,
+       "weight": 3,
+       "zombies": [
         "sky_dropship"
        ]
       },
-      "weight": 3
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 4
       },
-      "weight": 4
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 5
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 5
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 12000,
+     "idle": 0.4,
+     "idle_max": 0.6,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 3,
+     "tuning": {
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6,
+      "ShipRushProjectileCount": 160,
+      "TurnsIntoShipInThisStage": true
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "HitPoints": 12000,
-    "MaxIdleTime": 0.6,
-    "MinIdleTime": 0.4,
-    "ShipRushProjectileCount": 160,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3,
-    "TurnsIntoShipInThisStage": true
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "BatteryLowerType": "sky_battery_lower",
+  "BatteryType": "sky_battery",
+  "BulletType": "sky_battleplane_bullet",
+  "FoeEatDamageReflectPct": 0.5,
+  "SmashDistance": 1,
+  "StompDamageToZombies": 1500,
+  "ThunderStormType": "sky_zomboss_storm"
  }
 }

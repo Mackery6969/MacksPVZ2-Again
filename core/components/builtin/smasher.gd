@@ -45,9 +45,15 @@ func _process(delta: float) -> void:
 		return
 	# Nothing in front means nothing to wind up for.
 	if not is_instance_valid(host.target) or host.target.is_dead:
-		_timer = scaled(windup)
-		host.set_runtime_tag(&"smashing", false)
-		return
+		# A boss never walks into a plant, so nothing hands it a target -
+		# it has to look down at what it is standing over itself, or the
+		# three bosses that carry SmashDamage would never use it.
+		if host.movement_claimed:
+			host.target = host.board.plant_at(host.row, host.col)
+		if not is_instance_valid(host.target) or host.target.is_dead:
+			_timer = scaled(windup)
+			host.set_runtime_tag(&"smashing", false)
+			return
 	host.set_runtime_tag(&"smashing", true)
 	_timer -= delta
 	if _timer > 0.0:

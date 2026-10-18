@@ -2,34 +2,28 @@
  "id": "zombossmech_beach2",
  "extends": "zomboss",
  "sort": "Zomboss",
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "IdleColumn": 6,
-  "MissileType": "zomboss_missile_dark",
-  "ZombossMechLevel": 1,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+ "components": [
+  {
+   "idle_column": 6,
+   "mech_level": 1,
+   "missile": "zomboss_missile_dark",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0,
-       "pointMax": 2000,
-       "pointMin": 1500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0,
+       "points": 1500,
+       "points_max": 2000,
+       "repeat": 2,
+       "weight": 15,
+       "zombies": [
         "beach",
         "beach_armor2",
         "beach_armor4",
@@ -38,119 +32,88 @@
         "beach_snorkel"
        ]
       },
-      "weight": 15
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 5
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 5
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 12000,
+     "idle": 2,
+     "idle_max": 2.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 3,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 12000,
-    "MaxIdleTime": 2.5,
-    "MinIdleTime": 2,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 20
       },
-      "weight": 20
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.2,
-       "pointMax": 3000,
-       "pointMin": 2500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.2,
+       "points": 2500,
+       "points_max": 3000,
+       "repeat": 2,
+       "weight": 20,
+       "zombies": [
         "beach_surfer_veteran",
         "beach_fem_armor4",
         "beach_octopus",
         "beach_fem_armor2"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 12
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 12
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 10,
+     "health": 16000,
+     "idle": 1.75,
+     "idle_max": 2,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2.5,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 16000,
-    "MaxIdleTime": 2,
-    "MinIdleTime": 1.75,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.2,
-       "pointMax": 2800,
-       "pointMin": 2500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.2,
+       "points": 2500,
+       "points_max": 2800,
+       "repeat": 2,
+       "weight": 20,
+       "zombies": [
         "beach_imp",
         "beach_fem_armor4",
         "beach_armor2",
@@ -159,43 +122,36 @@
         "beach_gargantuar"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 5
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 5
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 10,
+     "health": 25000,
+     "idle": 1.75,
+     "idle_max": 2,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2,
+     "tuning": {
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "HitPoints": 25000,
-    "MaxIdleTime": 2,
-    "MinIdleTime": 1.75,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5
  }
 }

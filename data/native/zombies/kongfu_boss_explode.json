@@ -10,115 +10,88 @@
   {
    "rect": "GargantuarHitRect",
    "type": "hit_rect"
-  }
- ],
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "MissileType": "kongfu_boss_explode_bomb",
-  "SummonColumn": 6,
-  "ZombossMechLevel": 0,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+  },
+  {
+   "mech_level": 0,
+   "missile": "kongfu_boss_explode_bomb",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 1100,
-       "pointMin": 600,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 600,
+       "points_max": 1100,
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 20,
+       "zombies": [
         "kongfu",
         "kongfu_armor1",
         "kongfu_torch",
         "kongfu_hammer"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "imps",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "imps",
+       "repeat": 1,
+       "weight": 4
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 6000,
+     "idle": 2.5,
+     "idle_max": 3.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 3,
+     "tuning": {
+      "BombCount": {
+       "Max": 1,
+       "Min": 1
       },
-      "weight": 4
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0,
+      "RocketImpCount": {
+       "Max": 3,
+       "Min": 3
+      },
+      "ThrewImpColumn": {
+       "Max": 6,
+       "Min": 5
+      },
+      "ThrewImpCount": {
+       "Max": 2,
+       "Min": 1
+      }
      }
-    ],
-    "AnimRateModifier": 1,
-    "BombCount": {
-     "Max": 1,
-     "Min": 1
     },
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 6000,
-    "MaxIdleTime": 3.5,
-    "MinIdleTime": 2.5,
-    "RocketImpCount": {
-     "Max": 3,
-     "Min": 3
-    },
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3,
-    "ThrewImpColumn": {
-     "Max": 6,
-     "Min": 5
-    },
-    "ThrewImpCount": {
-     "Max": 2,
-     "Min": 1
-    }
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2400,
-       "pointMin": 1200,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 1200,
+       "points_max": 2400,
+       "repeat": 2,
+       "weight": 20,
+       "zombies": [
         "kongfu_armor1",
         "kongfu_armor2",
         "kongfu_hammer",
@@ -127,92 +100,68 @@
         "kongfu_gong"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 4
       },
-      "weight": 4
-     },
-     {
-      "actionName": "imps",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "imps",
+       "repeat": 1,
+       "weight": 8
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 10,
+     "health": 8000,
+     "idle": 2,
+     "idle_max": 3,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2.5,
+     "tuning": {
+      "BombCount": {
+       "Max": 1,
+       "Min": 1
       },
-      "weight": 8
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3,
+      "RocketImpCount": {
+       "Max": 3,
+       "Min": 3
+      },
+      "ThrewImpColumn": {
+       "Max": 5,
+       "Min": 4
+      },
+      "ThrewImpCount": {
+       "Max": 4,
+       "Min": 4
+      }
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "BombCount": {
-     "Max": 1,
-     "Min": 1
     },
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 8000,
-    "MaxIdleTime": 3,
-    "MinIdleTime": 2,
-    "RocketImpCount": {
-     "Max": 3,
-     "Min": 3
-    },
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2.5,
-    "ThrewImpColumn": {
-     "Max": 5,
-     "Min": 4
-    },
-    "ThrewImpCount": {
-     "Max": 4,
-     "Min": 4
-    }
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.6,
-       "pointMax": 3000,
-       "pointMin": 1600,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.6,
+       "points": 1600,
+       "points_max": 3000,
+       "repeat": 2,
+       "weight": 25,
+       "zombies": [
         "kongfu_armor1",
         "kongfu_drink",
         "kongfu_chi",
@@ -220,70 +169,59 @@
         "kongfu_bronze_strong"
        ]
       },
-      "weight": 25
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 4
       },
-      "weight": 4
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 16
       },
-      "weight": 16
-     },
-     {
-      "actionName": "imps",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "imps",
+       "repeat": 1,
+       "weight": 8
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 10,
+     "health": 10000,
+     "idle": 1.75,
+     "idle_max": 2.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2,
+     "tuning": {
+      "BombCount": {
+       "Max": 1,
+       "Min": 1
       },
-      "weight": 8
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6,
+      "RocketImpCount": {
+       "Max": 3,
+       "Min": 3
+      },
+      "ThrewImpColumn": {
+       "Max": 5,
+       "Min": 4
+      },
+      "ThrewImpCount": {
+       "Max": 5,
+       "Min": 4
+      }
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "BombCount": {
-     "Max": 1,
-     "Min": 1
-    },
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "HitPoints": 10000,
-    "MaxIdleTime": 2.5,
-    "MinIdleTime": 1.75,
-    "RocketImpCount": {
-     "Max": 3,
-     "Min": 3
-    },
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2,
-    "ThrewImpColumn": {
-     "Max": 5,
-     "Min": 4
-    },
-    "ThrewImpCount": {
-     "Max": 5,
-     "Min": 4
     }
-   }
-  ]
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5,
+  "SummonColumn": 6
  }
 }

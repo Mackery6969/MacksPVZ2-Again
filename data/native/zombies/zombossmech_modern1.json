@@ -2,131 +2,100 @@
  "id": "zombossmech_modern1",
  "extends": "zomboss",
  "sort": "Zomboss",
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "IdleColumn": 6,
-  "MissileType": "zomboss_missile_future",
-  "ZombossMechLevel": 0,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.6,
-       "pointMax": 2800,
-       "pointMin": 2000,
-       "zombieList": [
+ "components": [
+  {
+   "idle_column": 6,
+   "mech_level": 0,
+   "missile": "zomboss_missile_future",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.6,
+       "points": 2000,
+       "points_max": 2800,
+       "repeat": 2,
+       "weight": 14,
+       "zombies": [
         "tutorial_armor1",
         "tutorial_armor2",
         "modern_balloon",
         "modern_newspaper"
        ]
       },
-      "weight": 14
-     },
-     {
-      "actionName": "walk",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "walk",
+       "repeat": 1,
+       "weight": 3
       },
-      "weight": 3
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 4
       },
-      "weight": 4
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 4
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 4
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 5,
+     "health": 10000,
+     "idle": 0.5,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 10000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.5,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 2,
-      "repeatMin": 3,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 3,
+       "repeat_max": 2,
+       "weight": 3
       },
-      "weight": 3
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.6,
-       "pointMax": 5500,
-       "pointMin": 3000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.6,
+       "points": 3000,
+       "points_max": 5500,
+       "repeat": 2,
+       "weight": 12,
+       "zombies": [
         "tutorial_armor2",
         "modern_newspaper",
         "modern_superfanimp",
         "modern_balloon"
        ]
       },
-      "weight": 12
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 5500,
-       "pointMin": 3000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 3000,
+       "points_max": 5500,
+       "repeat": 2,
+       "weight": 8,
+       "zombies": [
         "newspaper_veteran",
         "tutorial_armor4",
         "modern_allstar"
        ]
       },
-      "weight": 8
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.6,
-       "pointMax": 5500,
-       "pointMin": 3000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.6,
+       "points": 3000,
+       "points_max": 5500,
+       "repeat": 2,
+       "weight": 12,
+       "zombies": [
         "lostcity_jane",
         "eighties_glitter",
         "iceage_armor3",
@@ -135,65 +104,47 @@
         "pirate_gargantuar"
        ]
       },
-      "weight": 12
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 12
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 12
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 5,
+     "health": 20000,
+     "idle": 0.5,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 1.5,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 20000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.5,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 2,
-      "repeatMin": 3,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 3,
+       "repeat_max": 2,
+       "weight": 3
       },
-      "weight": 3
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.6,
-       "pointMax": 5000,
-       "pointMin": 3500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.6,
+       "points": 3500,
+       "points_max": 5000,
+       "repeat": 2,
+       "weight": 16,
+       "zombies": [
         "tutorial_armor2",
         "tutorial_armor4",
         "modern_newspaper",
@@ -201,33 +152,27 @@
         "modern_superfanimp"
        ]
       },
-      "weight": 16
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.6,
-       "pointMax": 4000,
-       "pointMin": 3000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.6,
+       "points": 3000,
+       "points_max": 4000,
+       "repeat": 2,
+       "weight": 12,
+       "zombies": [
         "modern_allstar",
         "newspaper_veteran",
         "tutorial_gargantuar"
        ]
       },
-      "weight": 12
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.6,
-       "pointMax": 5000,
-       "pointMin": 3000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.6,
+       "points": 3000,
+       "points_max": 5000,
+       "repeat": 2,
+       "weight": 16,
+       "zombies": [
         "lostcity_crystalskull",
         "dark_wizard",
         "future_protector",
@@ -236,43 +181,36 @@
         "pirate_captain"
        ]
       },
-      "weight": 16
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 12
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 12
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 5,
+     "health": 18000,
+     "idle": 0.1,
+     "idle_max": 0.3,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 1,
+     "tuning": {
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "HitPoints": 18000,
-    "MaxIdleTime": 0.3,
-    "MinIdleTime": 0.1,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5
  }
 }

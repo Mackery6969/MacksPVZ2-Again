@@ -10,38 +10,26 @@
   {
    "rect": "GargantuarHitRect",
    "type": "hit_rect"
-  }
- ],
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "MissileType": "kongfu_boss_chi_rack",
-  "RoarStunDuration": 1000,
-  "SmashProjectileType": "kongfu_boss_chi_chi",
-  "SummonColumn": 6,
-  "ZombossMechLevel": 0,
-  "ZombossStages": [
-   {
-    "AbsorbDuration": 5,
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+  },
+  {
+   "mech_level": 0,
+   "missile": "kongfu_boss_chi_rack",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 3000,
-       "pointMin": 1000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 1000,
+       "points_max": 3000,
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 20,
+       "zombies": [
         "abbot",
         "abbot_armor1",
         "abbot_armor2",
@@ -49,70 +37,51 @@
         "abbot_imp"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 10
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 10
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 9000,
+     "idle": 1.5,
+     "idle_max": 2.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 3,
+     "tuning": {
+      "AbsorbDuration": 5,
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0,
+      "RoarStunDuration": 7.5,
+      "RushDPS": 400,
+      "RushDuration": 5,
+      "RushSPS": 2,
+      "ShieldLifeSpan": 10
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 9000,
-    "MaxIdleTime": 2.5,
-    "MinIdleTime": 1.5,
-    "RoarStunDuration": 7.5,
-    "RushDPS": 400,
-    "RushDuration": 5,
-    "RushSPS": 2,
-    "ShieldLifeSpan": 10,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3
-   },
-   {
-    "AbsorbDuration": 5,
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 4000,
-       "pointMin": 2400,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 2400,
+       "points_max": 4000,
+       "repeat": 2,
+       "weight": 20,
+       "zombies": [
         "abbot_armor1",
         "abbot_armor2",
         "kongfu_gong",
@@ -120,93 +89,63 @@
         "abbot_torch"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "rush2",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush2",
+       "repeat": 1,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "roar",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 6
+      {
+       "action": "roar",
+       "repeat": 1,
+       "weight": 6
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 10,
+     "health": 12000,
+     "idle": 1,
+     "idle_max": 2,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2.5,
+     "tuning": {
+      "AbsorbDuration": 5,
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3,
+      "RoarStunDuration": 7.5,
+      "RushDPS": 400,
+      "RushDuration": 5,
+      "RushSPS": 2,
+      "ShieldLifeSpan": 20
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 12000,
-    "MaxIdleTime": 2,
-    "MinIdleTime": 1,
-    "RoarStunDuration": 7.5,
-    "RushDPS": 400,
-    "RushDuration": 5,
-    "RushSPS": 2,
-    "ShieldLifeSpan": 20,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2.5
-   },
-   {
-    "AbbotChiType": "abbot_chi",
-    "AbsorbDuration": 5,
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 4000,
-       "pointMin": 2000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 2000,
+       "points_max": 4000,
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 30,
+       "zombies": [
         "abbot_armor1",
         "abbot_3section_staff",
         "abbot_armor2",
@@ -214,70 +153,56 @@
         "abbot_torch"
        ]
       },
-      "weight": 30
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "rush2",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush2",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 12
       },
-      "weight": 12
-     },
-     {
-      "actionName": "roar",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 6
+      {
+       "action": "roar",
+       "repeat": 1,
+       "weight": 6
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 10,
+     "health": 15000,
+     "idle": 1,
+     "idle_max": 1.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2,
+     "tuning": {
+      "AbbotChiType": "abbot_chi",
+      "AbsorbDuration": 5,
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6,
+      "RoarStunDuration": 7.5,
+      "RushDPS": 400,
+      "RushDuration": 7.5,
+      "RushSPS": 2,
+      "ShieldLifeSpan": 30
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "HitPoints": 15000,
-    "MaxIdleTime": 1.5,
-    "MinIdleTime": 1,
-    "RoarStunDuration": 7.5,
-    "RushDPS": 400,
-    "RushDuration": 7.5,
-    "RushSPS": 2,
-    "ShieldLifeSpan": 30,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5,
+  "RoarStunDuration": 1000,
+  "SmashProjectileType": "kongfu_boss_chi_chi",
+  "SummonColumn": 6
  }
 }

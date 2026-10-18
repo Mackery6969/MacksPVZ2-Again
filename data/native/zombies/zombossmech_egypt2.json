@@ -2,159 +2,118 @@
  "id": "zombossmech_egypt2",
  "extends": "zomboss",
  "sort": "Zomboss",
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "MissileType": "zomboss_missile_egypt2",
-  "ZombossMechLevel": 1,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2700,
-       "pointMin": 1900,
-       "zombieList": [
+ "components": [
+  {
+   "mech_level": 1,
+   "missile": "zomboss_missile_egypt2",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "points": 1900,
+       "points_max": 2700,
+       "repeat": 2,
+       "weight": 12,
+       "zombies": [
         "mummy_armor1",
         "mummy_armor2",
         "mummy_armor4",
         "tomb_raiser"
        ]
       },
-      "weight": 12
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 3
       },
-      "weight": 3
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 9
       },
-      "weight": 9
-     },
-     {
-      "actionName": "walk",
-      "repeatMax": 3,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 12
+      {
+       "action": "walk",
+       "repeat": 2,
+       "repeat_max": 3,
+       "weight": 12
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 5,
+     "health": 8000,
+     "idle": 0.3,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 2,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 8000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.3,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 3,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 2,
+       "repeat_max": 3,
+       "weight": 12
       },
-      "weight": 12
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2350,
-       "pointMin": 1750,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 1750,
+       "points_max": 2350,
+       "repeat": 2,
+       "weight": 14,
+       "zombies": [
         "mummy_armor2",
         "explorer_veteran",
         "explorer"
        ]
-      },
-      "weight": 14
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 5,
+     "health": 16000,
+     "idle": 0.3,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 1.5,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 16000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.3,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 3,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 2,
+       "repeat_max": 3,
+       "weight": 12
       },
-      "weight": 12
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 3000,
-       "pointMin": 2000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 2000,
+       "points_max": 3000,
+       "repeat": 2,
+       "weight": 18,
+       "zombies": [
         "mummy_armor1",
         "mummy_armor2",
         "mummy_armor4",
@@ -163,43 +122,37 @@
         "egypt_gargantuar"
        ]
       },
-      "weight": 18
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 7
       },
-      "weight": 7
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 5
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 5
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 10,
+     "health": 15000,
+     "idle": 0.5,
+     "idle_max": 1,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 4,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 15000,
-    "MaxIdleTime": 1,
-    "MinIdleTime": 0.5,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 4
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5
  }
 }

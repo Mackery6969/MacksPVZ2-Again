@@ -62,6 +62,8 @@ func _run() -> void:
 	_test_zombie_archetypes()
 	await _test_zombie_behaviours()
 	await _test_zombie_resistances()
+	await _test_zomboss()
+	await _test_plant_stun()
 	_test_zombie_sun_costs()
 	await _test_level_save_state()
 	_test_simplified_level_schema()
@@ -1480,7 +1482,7 @@ func _test_zombie_behaviour_coverage() -> void:
 	check("every declared zombie behaviour is implemented",
 			unimplemented.is_empty(), str(unimplemented))
 	check("a good share of the roster does something",
-			with_behaviour >= 200, "%d of %d" % [with_behaviour, Data.zombies.size()])
+			with_behaviour >= 240, "%d of %d" % [with_behaviour, Data.zombies.size()])
 	print("        (%d of %d zombies have a working behaviour: %s)"
 			% [with_behaviour, Data.zombies.size(), str(kinds)])
 	end_section()
@@ -1635,6 +1637,136 @@ func _test_zombie_resistances() -> void:
 	board.set_terrain(4, walker.col, &"water")
 	check_eq("an ordinary zombie is unaffected by it",
 			walker.current_speed(), walker.speed)
+	board.queue_free()
+	end_section()
+
+
+
+## Zomboss is the one zombie whose whole fight is in the data: staged health
+## pools and a weighted action list per stage. This checks the stages are read
+## and that exhausting one advances rather than kills.
+func _test_zomboss() -> void:
+	section("zomboss")
+	var def: ZombieDef = Data.zombie(&"zombossmech_egypt")
+	check("a boss loaded", def != null)
+	var spec: ComponentSpec = def.component_spec(&"zomboss")
+	check("it has a zomboss component", spec != null)
+	if spec == null:
+		end_section()
+		return
+	var stages: Array = spec.config.get(&"stages", [])
+	check_eq("with three stages", stages.size(), 3)
+	var first: Dictionary = stages[0]
+	check_eq("the first stage's health", float(first.get("health", 0.0)), 4000.0)
+	var actions: Array = first.get("actions", [])
+	check_eq("and four actions", actions.size(), 4)
+	var names: Array = []
+	for a: Dictionary in actions:
+		names.append(a.get("action"))
+	check("summon is one of them", names.has("summon"), str(names))
+	# A point budget on a non-summon action is PopCap's default, not meaning.
+	for a: Dictionary in actions:
+		if a.get("action") != "summon":
+			check("'%s' carries no point budget" % a.get("action"),
+					not a.has("points"))
+			break
+
+	var board := _make_board()
+	var boss: Zombie = board.spawn_zombie(&"zombossmech_egypt", 2)
+	check("the boss spawned", boss != null)
+	var zomboss: EntityComponent = boss.component(&"zomboss")
+	check("its component is live", zomboss != null)
+	check_eq("health comes from the stage, not toughness", boss.max_health, 4000.0)
+	check("it moves itself", boss.movement_claimed)
+	check("and does not bite", boss.attack_claimed)
+
+	# It must stay put rather than walking into the house.
+	var start_x: float = boss.position.x
+	await _wait_game_seconds(0.4)
+	check("it holds its ground instead of walking in",
+			absf(boss.position.x - start_x) < board.cell_size.x * 3.0,
+			"moved %f" % (boss.position.x - start_x))
+
+	# Exhausting a stage advances instead of killing.
+	boss.take_damage(99999.0, null)
+	check("stage one did not kill it", not boss.is_dead)
+	check_eq("it advanced", zomboss.stage_index, 1)
+	check_eq("to the next pool", boss.max_health, 8000.0)
+	boss.take_damage(99999.0, null)
+	check_eq("and again", zomboss.stage_index, 2)
+	check("still alive", not boss.is_dead)
+	boss.take_damage(99999.0, null)
+	check("the last stage kills it", boss.is_dead)
+	board.queue_free()
+
+	# Every boss in the data is flatly immune to a plant's stun, so the
+	# stagger its stage describes has to be earned another way: by hurting it
+	# hard and fast. Once reeling it takes the stage's damage multiplier.
+	var board2 := _make_board()
+	var b2: Zombie = board2.spawn_zombie(&"zombossmech_egypt", 2)
+	var boss2: EntityComponent = b2.component(&"zomboss")
+	check_eq("a plant cannot stun a boss", b2.def.stun_scale, 0.0)
+	b2.apply_stun(5.0)
+	check("so stunning it does nothing", not b2.is_stunned())
+	check("a chip of damage does not stagger it", not boss2.is_staggered())
+	b2.take_damage(10.0, null)
+	check("still steady", not boss2.is_staggered())
+	# 8% of a 4000 pool is 320, so this burst earns a stagger.
+	b2.take_damage(400.0, null)
+	check("a burst staggers it", boss2.is_staggered())
+	var hp: float = b2.health
+	b2.take_damage(100.0, null)
+	check("and it takes the stage multiplier while reeling",
+			b2.health < hp - 100.0, "lost %f for 100" % (hp - b2.health))
+	board2.queue_free()
+
+	# The boss summons from its own list, and its summons do not summon.
+	var board3 := _make_board()
+	var b3: Zombie = board3.spawn_zombie(&"zombossmech_egypt", 2)
+	var before := board3.zombie_count()
+	var summon: EntityComponent = b3.component(&"zomboss")
+	summon._action = {"action": "summon", "zombies": ["mummy"],
+			"points": 600, "points_max": 600}
+	summon._summon()
+	check("it called zombies onto the lawn", board3.zombie_count() > before,
+			"%d -> %d" % [before, board3.zombie_count()])
+	check("within the point budget", board3.zombie_count() - before <= 6,
+			"%d summoned" % (board3.zombie_count() - before))
+	board3.queue_free()
+	end_section()
+
+
+## A roar stuns every plant, and a plant has nothing to stop walking - so a
+## stun has to reach its components instead. It does that through the same
+## scaling a buff uses, which is why no component had to change.
+func _test_plant_stun() -> void:
+	section("plant stun")
+	var board := _make_board()
+	var pea: Plant = board.place_plant(&"peashooter", 2, 1)
+	check("a peashooter placed", pea != null)
+	check("it starts unsuppressed", not pea.is_stunned())
+	check_eq("at full pace", pea.suppression, 1.0)
+	pea.apply_stun(2.0)
+	check("stunned", pea.is_stunned())
+	check("and tagged", pea.has_tag(&"suppressed"))
+	check("its pace collapsed", pea.suppression < 0.2,
+			"suppression %f" % pea.suppression)
+
+	# Suppression reaches a component's timers without the component knowing.
+	var shooter: EntityComponent = pea.component(&"shooter")
+	check("the shooter exists", shooter != null)
+	if shooter != null:
+		check("so its interval stretched", shooter.scaled(1.0) > 5.0,
+				"scaled(1.0) = %f" % shooter.scaled(1.0))
+
+	# A boss roar hits every plant on the board, not just one lane.
+	var far: Plant = board.place_plant(&"sunflower", 0, 5)
+	var boss: Zombie = board.spawn_zombie(&"kongfu_boss_chi", 3)
+	var roar: EntityComponent = boss.component(&"zomboss")
+	check("the kung-fu boss roars", roar != null)
+	if roar != null and far != null:
+		roar._roar()
+		check("a plant in another lane was stunned", far.is_stunned())
 	board.queue_free()
 	end_section()
 

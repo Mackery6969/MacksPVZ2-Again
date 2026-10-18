@@ -370,6 +370,16 @@ func plant_at(row: int, col: int) -> Plant:
 	return p if is_instance_valid(p) and not p.is_dead else null
 
 
+## Every living plant in one row, left to right.
+func plants_in_row(row: int) -> Array:
+	var out: Array = []
+	for c in cols:
+		var p: Plant = plant_at(row, c)
+		if p != null and not p.is_dead:
+			out.append(p)
+	return out
+
+
 func is_row_plantable(row: int) -> bool:
 	return plantable_rows.is_empty() or plantable_rows.has(row)
 
@@ -658,7 +668,8 @@ func spawn_projectile(id: StringName, row: int, from: Vector2, source: Node) -> 
 	pr.board = self
 	pr.source = source
 	pr.damage = float(Data.projectile_damage(id))
-	pr.position = from + Vector2(24, -12)
+	pr.direction = -1 if source is Zombie else 1
+	pr.position = from + Vector2(24 * pr.direction, -12)
 	_projectiles.add_child(pr)
 	return pr
 

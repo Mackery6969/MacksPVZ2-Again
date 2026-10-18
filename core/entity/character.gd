@@ -29,6 +29,11 @@ var _runtime_tags: Dictionary = {}   ## tags added or removed after spawn
 var attack_rate: float = 1.0
 var resistance: float = 1.0
 var _buff_left: float = 0.0
+## The opposite of a buff: everything this entity does is divided by it, so a
+## small value is a near-standstill. A plant has nothing to stop walking, so
+## this is what a stun means for one.
+var suppression: float = 1.0
+var _suppress_left: float = 0.0
 
 
 ## Build this entity from a definition. Called once, right after instancing.
@@ -76,6 +81,33 @@ func is_buffed() -> bool:
 	return _buff_left > 0.0
 
 
+## Slows everything this entity does for `seconds`. Components divide their
+## timers by `attack_rate * suppression` through `scaled()`, so this reaches
+## every one of them without any component knowing it can be suppressed.
+## Re-applying keeps the stronger factor and the longer time.
+func apply_suppression(factor: float, seconds: float) -> void:
+	suppression = minf(suppression if _suppress_left > 0.0 else 1.0,
+			clampf(factor, 0.01, 1.0))
+	_suppress_left = maxf(_suppress_left, seconds)
+	set_runtime_tag(&"suppressed", true)
+	queue_redraw()
+
+
+func is_suppressed() -> bool:
+	return _suppress_left > 0.0
+
+
+func _tick_suppression(delta: float) -> void:
+	if _suppress_left <= 0.0:
+		return
+	_suppress_left -= delta
+	if _suppress_left > 0.0:
+		return
+	suppression = 1.0
+	set_runtime_tag(&"suppressed", false)
+	queue_redraw()
+
+
 func _tick_buff(delta: float) -> void:
 	if _buff_left <= 0.0:
 		return
@@ -93,6 +125,7 @@ func _tick_buff(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	_tick_buff(delta)
+	_tick_suppression(delta)
 
 
 # --- tags ----------------------------------------------------------------
@@ -155,6 +188,14 @@ func heal(amount: float) -> void:
 func die() -> void:
 	if is_dead:
 		return
+	# Last chance for a component to refuse: a staged boss moves to its next
+	# stage here rather than dying, and nothing else has to know it has
+	# stages.
+	for comp in _components:
+		if comp.prevent_death():
+			health = maxf(health, 1.0)
+			queue_redraw()
+			return
 	is_dead = true
 	died.emit(self)
 	_on_death()

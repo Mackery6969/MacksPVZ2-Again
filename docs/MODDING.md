@@ -140,6 +140,13 @@ behaviours:
 | `enrage` | Gets faster and hits harder once its armor is gone |
 | `lifespan` | Dies of its own accord after a while |
 | `armor` | A pool destroyed before the body takes a hit |
+| `zomboss` | A staged boss fight: per-stage health and weighted actions |
+
+A component returning `true` from `claims_movement()` moves the zombie itself,
+so a boss holds its own column instead of walking in a lane at a time. One
+returning `true` from `prevent_death()` can refuse a death outright, which is
+how a boss advances a stage instead of dying - useful for a plant with a second
+wind too.
 
 A component returning `true` from `claims_attack()` takes the zombie's attack
 over: the zombie still stops at whatever blocks it, but deals no bite damage
@@ -151,6 +158,49 @@ zombie initializes, so the spawned one's own components see it during setup -
 `escorting` for an escort's members, `summoned` for a summoner's. That is what
 stops an abbot, whose summon list contains abbots, from turning one wave into
 every wave.
+
+### Bosses
+
+Zomboss is the one zombie whose entire fight is written down rather than coded,
+and the `zomboss` component reads it as-is. A boss is a list of **stages**, each
+with its own health pool and a weighted list of actions:
+
+```json
+{ "type": "zomboss", "missile": "my_missile", "idle_column": 6,
+  "stages": [
+   { "health": 4000, "idle": 0.5, "idle_max": 1.0,
+     "stun_time": 4, "stun_damage_scale": 1.5,
+     "stagger": 1, "stagger_time": 0.4, "chill_from_freeze": 10,
+     "actions": [
+      { "action": "summon", "weight": 12, "repeat": 2,
+        "zombies": ["mummy", "tomb_raiser"], "points": 300, "points_max": 1600 },
+      { "action": "shoot", "weight": 9, "repeat": 1, "repeat_max": 2 },
+      { "action": "rush",  "weight": 3, "repeat": 1 }
+     ],
+     "tuning": { "RushDPS": 400, "RoarStunDuration": 7.5 } } ] }
+```
+
+Exhausting a stage's health **does not kill the boss** - it advances to the
+next stage, through `prevent_death()`, so nothing outside the component knows
+a boss has stages. The last stage kills it.
+
+The eight action names are `summon`, `shoot`, `rush`, `rush2`, `walk`, `jump`,
+`imps` and `roar`. A `weight` of 0 retires an action in a later stage. A
+`summon` spends its point budget on its `zombies` list priced by `wave_cost`,
+so a bigger budget buys either more zombies or tougher ones. An action name
+the component does not know idles instead of erroring, so a world whose
+special move is not implemented yet still fights with the rest of its list.
+
+`tuning` is whatever the world's own actions need (`RushDPS`,
+`RoarStunDuration`, `ThunderCount`, `TurnsIntoShipInThisStage`) passed through
+untouched. Inventing a schema for twenty one-off fields would only hide them.
+
+**A boss cannot be stunned by a plant** - every one in the source data says so.
+What its stage describes instead is a **stagger**, earned by hurting it hard
+and fast: burst past 8% of the stage's pool in one window and it reels for
+`stun_time`, shoved back `stagger` lanes and taking `stun_damage_scale` extra
+damage the whole time. That is what makes burst damage the counter to a boss
+rather than steady chip.
 
 ### Resistance
 
@@ -221,6 +271,13 @@ which is how Mints boost a whole family.
 Zombies take `apply_stun(seconds)`, `apply_slow(factor, seconds)` and
 `apply_freeze(seconds)`. Re-applying keeps the stronger effect and the longer
 duration rather than compounding, so two slows do not stop a zombie dead.
+
+A plant has no movement to stop, so `Plant.apply_stun(seconds)` suppresses
+instead: `Character.apply_suppression(factor, seconds)` is the inverse of a
+buff, and `scaled()` divides by it as well as by `attack_rate`. A stunned plant
+therefore crawls through every one of its behaviours without a single component
+knowing it can be stunned - which is how Zomboss's roar reaches all fifteen at
+once.
 
 ## Adding a plant (schema)
 

@@ -2,102 +2,77 @@
  "id": "zombossmech_dark",
  "extends": "zomboss",
  "sort": "Zomboss",
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "IdleColumn": 6,
-  "MissileType": "zomboss_missile_dark",
-  "ZombossMechLevel": 0,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+ "components": [
+  {
+   "idle_column": 6,
+   "mech_level": 0,
+   "missile": "zomboss_missile_dark",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 1,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2200,
-       "pointMin": 600,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 600,
+       "points_max": 2200,
+       "repeat": 2,
+       "weight": 20,
+       "zombies": [
         "dark",
         "dark_armor2",
         "dark_juggler",
         "dark_wizard"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 8
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 8
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 7000,
+     "idle": 1.5,
+     "idle_max": 2.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 3,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0,
+      "DragonImpCount": 1,
+      "DragonImpCountAdditional": 1,
+      "FireballCount": 2,
+      "FireballCountAdditional": 1
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "DragonImpCount": 1,
-    "DragonImpCountAdditional": 1,
-    "FireballCount": 2,
-    "FireballCountAdditional": 1,
-    "HitPoints": 7000,
-    "MaxIdleTime": 2.5,
-    "MinIdleTime": 1.5,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 1,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "plantfoodchance": 0.7,
-       "pointMax": 3700,
-       "pointMin": 2600,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.7,
+       "points": 2600,
+       "points_max": 3700,
+       "repeat": 2,
+       "weight": 20,
+       "zombies": [
         "dark",
         "dark_armor1",
         "dark_armor2",
@@ -105,68 +80,50 @@
         "dark_gargantuar"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 7
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 7
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 10,
+     "health": 9000,
+     "idle": 1,
+     "idle_max": 2,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2.5,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3,
+      "DragonImpCount": 1,
+      "DragonImpCountAdditional": 2,
+      "FireballCount": 2,
+      "FireballCountAdditional": 3
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "DragonImpCount": 1,
-    "DragonImpCountAdditional": 2,
-    "FireballCount": 2,
-    "FireballCountAdditional": 3,
-    "HitPoints": 9000,
-    "MaxIdleTime": 2,
-    "MinIdleTime": 1,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "walk",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "walk",
+       "repeat": 1,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 4400,
-       "pointMin": 3200,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 3200,
+       "points_max": 4400,
+       "repeat": 2,
+       "weight": 25,
+       "zombies": [
         "dark_wizard",
         "dark_armor1",
         "dark_juggler",
@@ -175,47 +132,40 @@
         "dark_wizard"
        ]
       },
-      "weight": 25
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 24
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "weight": 24
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 10,
+     "health": 11000,
+     "idle": 0.75,
+     "idle_max": 1.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2,
+     "tuning": {
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6,
+      "DragonImpCount": 3,
+      "DragonImpCountAdditional": 3,
+      "FireballCount": 6,
+      "FireballCountAdditional": 6
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "DragonImpCount": 3,
-    "DragonImpCountAdditional": 3,
-    "FireballCount": 6,
-    "FireballCountAdditional": 6,
-    "HitPoints": 11000,
-    "MaxIdleTime": 1.5,
-    "MinIdleTime": 0.75,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5
  }
 }

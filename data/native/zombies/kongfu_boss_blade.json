@@ -15,35 +15,25 @@
    "damage": 3600,
    "distance": 150,
    "type": "smasher"
-  }
- ],
- "extra": {
-  "ChiType": "kongfu_boss_blade_chi",
-  "FoeEatDamageReflectPct": 0.5,
-  "SummonColumn": 6,
-  "ZombossMechLevel": 0,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+  },
+  {
+   "mech_level": 0,
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 8
       },
-      "weight": 8
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 600,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 600,
+       "points_max": 2000,
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 20,
+       "zombies": [
         "monk",
         "monk_armor1",
         "monk_armor2",
@@ -52,69 +42,50 @@
         "monk_drink"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "imps",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "imps",
+       "repeat": 1,
+       "weight": 4
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 9000,
+     "idle": 1.5,
+     "idle_max": 2.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 3,
+     "tuning": {
+      "BoomerangCount": {
+       "Max": 1,
+       "Min": 1
       },
-      "weight": 4
+      "BoomerangMovingTime": 4,
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0
      }
-    ],
-    "AnimRateModifier": 1,
-    "BoomerangCount": {
-     "Max": 1,
-     "Min": 1
     },
-    "BoomerangMovingTime": 4,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 9000,
-    "MaxIdleTime": 2.5,
-    "MinIdleTime": 1.5,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2400,
-       "pointMin": 1200,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 1200,
+       "points_max": 2400,
+       "repeat": 2,
+       "weight": 20,
+       "zombies": [
         "monk_armor1",
         "monk_armor2",
         "monk_armor3",
@@ -124,81 +95,58 @@
         "kongfu_bomb"
        ]
       },
-      "weight": 20
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "imps",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "imps",
+       "repeat": 1,
+       "weight": 8
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 10,
+     "health": 12000,
+     "idle": 1,
+     "idle_max": 2,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2.5,
+     "tuning": {
+      "BoomerangCount": {
+       "Max": 1,
+       "Min": 1
       },
-      "weight": 8
+      "BoomerangMovingTime": 4,
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "BoomerangCount": {
-     "Max": 1,
-     "Min": 1
     },
-    "BoomerangMovingTime": 4,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 12000,
-    "MaxIdleTime": 2,
-    "MinIdleTime": 1,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "jump",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    {
+     "actions": [
+      {
+       "action": "jump",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "plantfoodchance": 0.6,
-       "pointMax": 3000,
-       "pointMin": 1600,
-       "zombieList": [
+      {
+       "action": "summon",
+       "plantfood_chance": 0.6,
+       "points": 1600,
+       "points_max": 3000,
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 30,
+       "zombies": [
         "monk_armor1",
         "monk_blade",
         "kongfu_chi",
@@ -206,59 +154,48 @@
         "kongfu_bronze_hook"
        ]
       },
-      "weight": 30
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 12
       },
-      "weight": 12
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 12
       },
-      "weight": 12
-     },
-     {
-      "actionName": "imps",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "imps",
+       "repeat": 1,
+       "weight": 8
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 10,
+     "health": 15000,
+     "idle": 1,
+     "idle_max": 1.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2,
+     "tuning": {
+      "BoomerangCount": {
+       "Max": 1,
+       "Min": 3
       },
-      "weight": 8
+      "BoomerangMovingTime": 3,
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "BoomerangCount": {
-     "Max": 1,
-     "Min": 3
-    },
-    "BoomerangMovingTime": 3,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "HitPoints": 15000,
-    "MaxIdleTime": 1.5,
-    "MinIdleTime": 1,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "ChiType": "kongfu_boss_blade_chi",
+  "FoeEatDamageReflectPct": 0.5,
+  "SummonColumn": 6
  }
 }

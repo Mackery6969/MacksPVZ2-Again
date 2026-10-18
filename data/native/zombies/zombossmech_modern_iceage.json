@@ -2,6 +2,117 @@
  "id": "zombossmech_modern_iceage",
  "extends": "zombossmech_iceage",
  "sort": "Zomboss",
+ "components": [
+  {
+   "mech_level": 0,
+   "missile": "zomboss_missile_iceage",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "repeat": 1,
+       "weight": 5
+      },
+      {
+       "action": "rush",
+       "repeat": 2,
+       "repeat_max": 1,
+       "weight": 6
+      },
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "repeat_max": 1,
+       "weight": 10
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 5000,
+     "idle": 1.5,
+     "idle_max": 3.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2.5,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0
+     }
+    },
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "repeat": 1,
+       "weight": 5
+      },
+      {
+       "action": "rush",
+       "repeat": 2,
+       "repeat_max": 1,
+       "weight": 6
+      },
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "repeat_max": 1,
+       "weight": 10
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 10,
+     "health": 4000,
+     "idle": 1.5,
+     "idle_max": 3,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 3,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 4
+     }
+    },
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "repeat": 1,
+       "weight": 5
+      },
+      {
+       "action": "rush",
+       "repeat": 2,
+       "repeat_max": 1,
+       "weight": 6
+      },
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "repeat_max": 1,
+       "weight": 8
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 10,
+     "health": 4000,
+     "idle": 0.75,
+     "idle_max": 1.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 1.5,
+     "tuning": {
+      "DamageIndexFull": 5,
+      "DamageIndexHalf": 6
+     }
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
  "extra": {
   "FoeEatDamageReflectPct": 0.5,
   "GlacierBlockZombieList": [
@@ -42,154 +153,6 @@
     "iceage_hunter",
     "iceage_dodo"
    ]
-  ],
-  "MissileType": "zomboss_missile_iceage",
-  "ZombossMechLevel": 0,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 3000,
-       "pointMin": 1100,
-       "zombieList": []
-      },
-      "weight": 5
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 6
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 10
-     }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 5000,
-    "MaxIdleTime": 3.5,
-    "MinIdleTime": 1.5,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 3000,
-       "pointMin": 1100,
-       "zombieList": []
-      },
-      "weight": 5
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 6
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 10
-     }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 4,
-    "HitPoints": 4000,
-    "MaxIdleTime": 3,
-    "MinIdleTime": 1.5,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 3000,
-       "pointMin": 1100,
-       "zombieList": []
-      },
-      "weight": 5
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 6
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 8
-     }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 5,
-    "DamageIndexHalf": 6,
-    "HitPoints": 4000,
-    "MaxIdleTime": 1.5,
-    "MinIdleTime": 0.75,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1.5
-   }
   ]
  }
 }

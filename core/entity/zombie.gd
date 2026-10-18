@@ -40,6 +40,11 @@ var target: Character = null
 ## Set when a component claims the attack, so this zombie stops to fight but
 ## does not bite - see EntityComponent.claims_attack.
 var attack_claimed: bool = false
+## Set when a component moves this zombie instead of the lane walk.
+var movement_claimed: bool = false
+## When positive, freezing chills for exactly this long instead of holding the
+## zombie still. A boss sets it per stage.
+var chill_override: float = 0.0
 
 var _eat_accumulator: float = 0.0
 ## Status effects, as remaining seconds. A slow also stores its factor so the
@@ -65,7 +70,8 @@ func _on_initialized() -> void:
 	for c in components():
 		if c.claims_attack():
 			attack_claimed = true
-			break
+		if c.claims_movement():
+			movement_claimed = true
 	queue_redraw()
 
 
@@ -151,6 +157,9 @@ func apply_slow(factor: float, seconds: float) -> void:
 ## or a Hot Date in a block, it just cools them. The chill lasts the full freeze
 ## duration there rather than the usual double, since nothing thaws.
 func apply_freeze(seconds: float) -> void:
+	if chill_override > 0.0:
+		apply_slow(0.5, chill_override)
+		return
 	if has_tag(&"chill_only"):
 		apply_slow(0.5, seconds * 2.0)
 		return
@@ -190,9 +199,11 @@ func _process(delta: float) -> void:
 		return
 	if is_instance_valid(target) and not target.is_dead:
 		_attack(delta)
-	else:
+	elif not movement_claimed:
 		target = null
 		_walk(delta)
+	else:
+		target = null
 
 
 func _walk(delta: float) -> void:

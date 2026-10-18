@@ -2,169 +2,135 @@
  "id": "zombossmech_pirate2",
  "extends": "zomboss",
  "sort": "Zomboss",
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "ZombossMechLevel": 1,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 3,
-      "repeatMin": 3,
-      "summonProps": {
-       "pointMax": 4000,
-       "pointMin": 2500,
-       "zombieList": [
+ "components": [
+  {
+   "mech_level": 1,
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "points": 2500,
+       "points_max": 4000,
+       "repeat": 3,
+       "weight": 10,
+       "zombies": [
         "pirate_armor1",
         "pirate_armor2",
         "pirate_gargantuar",
         "pirate_captain"
        ]
       },
-      "weight": 10
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "weight": 30
       },
-      "weight": 30
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 8
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 8
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 5,
+     "health": 1000,
+     "idle": 0.3,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 2,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 1000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.3,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 3,
-      "repeatMin": 3,
-      "summonProps": {
-       "pointMax": 5400,
-       "pointMin": 5000,
-       "zombieList": [
+    },
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "points": 5000,
+       "points_max": 5400,
+       "repeat": 3,
+       "weight": 10,
+       "zombies": [
         "pirate_gargantuar",
         "barrelroller",
         "pirate_armor4",
         "pirate_captain"
        ]
       },
-      "weight": 10
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "weight": 12
       },
-      "weight": 12
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 12
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 12
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 5,
+     "health": 5000,
+     "idle": 0.3,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 1.5,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 5000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.3,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 3,
-      "repeatMin": 3,
-      "summonProps": {
-       "pointMax": 6000,
-       "pointMin": 6000,
-       "zombieList": [
+    },
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "points": 6000,
+       "points_max": 6000,
+       "repeat": 3,
+       "weight": 10,
+       "zombies": [
         "pirate_gargantuar",
         "barrelroller",
         "pirate_armor4",
         "pirate_captain"
        ]
       },
-      "weight": 10
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 3,
-      "repeatMin": 3,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 3,
+       "weight": 12
       },
-      "weight": 12
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 6
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 6
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 5,
+     "health": 11000,
+     "idle": 0.1,
+     "idle_max": 0.3,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 1,
+     "tuning": {
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "HitPoints": 11000,
-    "MaxIdleTime": 0.3,
-    "MinIdleTime": 0.1,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5
  }
 }

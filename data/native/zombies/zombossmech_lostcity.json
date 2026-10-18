@@ -10,240 +10,195 @@
   {
    "rect": "LostcityZombossMechHitRect",
    "type": "hit_rect"
-  }
- ],
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "IdleColumn": 6,
-  "MissileType": "zomboss_lostcity_sandbag",
-  "ZombossMechLevel": 0,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 1500,
-       "pointMin": 400,
-       "zombieList": [
+  },
+  {
+   "idle_column": 6,
+   "mech_level": 0,
+   "missile": "zomboss_lostcity_sandbag",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "points": 400,
+       "points_max": 1500,
+       "repeat": 1,
+       "weight": 10,
+       "zombies": [
         "lostcity",
         "lostcity_jane"
        ]
       },
-      "weight": 10
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 800,
-       "pointMin": 400,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 400,
+       "points_max": 800,
+       "repeat": 1,
+       "weight": 6,
+       "zombies": [
         "lostcity",
         "lostcity_excavator"
        ]
       },
-      "weight": 6
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 10
       },
-      "weight": 10
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 12
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 10,
+     "health": 6000,
+     "idle": 2,
+     "idle_max": 2.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 2.5,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 2,
+      "ParachuteColumn": {
+       "Max": 5,
+       "Min": 4
       },
-      "weight": 12
+      "ParachuteCount": {
+       "Max": 3,
+       "Min": 3
+      },
+      "ParachuteType": "lostcity_lostpilot"
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 2,
-    "HitPoints": 6000,
-    "MaxIdleTime": 2.5,
-    "MinIdleTime": 2,
-    "ParachuteColumn": {
-     "Max": 5,
-     "Min": 4
     },
-    "ParachuteCount": {
-     "Max": 3,
-     "Min": 3
-    },
-    "ParachuteType": "lostcity_lostpilot",
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1200,
-       "zombieList": [
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "points": 1200,
+       "points_max": 2000,
+       "repeat": 1,
+       "weight": 12,
+       "zombies": [
         "lostcity",
         "lostcity_armor1",
         "lostcity_impporter"
        ]
       },
-      "weight": 12
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 1500,
-       "pointMin": 700,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 700,
+       "points_max": 1500,
+       "repeat": 1,
+       "weight": 6,
+       "zombies": [
         "lostcity",
         "lostcity_bug",
         "lostcity_bug_armor1"
        ]
       },
-      "weight": 6
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 20
       },
-      "weight": 20
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 12
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 10,
+     "health": 10000,
+     "idle": 1,
+     "idle_max": 2,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 3,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 4,
+      "ParachuteColumn": {
+       "Max": 4,
+       "Min": 2
       },
-      "weight": 12
+      "ParachuteCount": {
+       "Max": 3,
+       "Min": 3
+      },
+      "ParachuteType": "lostcity_lostpilot"
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 4,
-    "HitPoints": 10000,
-    "MaxIdleTime": 2,
-    "MinIdleTime": 1,
-    "ParachuteColumn": {
-     "Max": 4,
-     "Min": 2
     },
-    "ParachuteCount": {
-     "Max": 3,
-     "Min": 3
-    },
-    "ParachuteType": "lostcity_lostpilot",
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2500,
-       "pointMin": 1500,
-       "zombieList": [
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "points": 1500,
+       "points_max": 2500,
+       "repeat": 1,
+       "weight": 9,
+       "zombies": [
         "lostcity",
         "lostcity_armor1",
         "lostcity_armor2",
         "lostcity_bug"
        ]
       },
-      "weight": 9
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 1000,
+       "points_max": 2000,
+       "repeat": 1,
+       "weight": 5,
+       "zombies": [
         "lostcity_armor2",
         "lostcity_crystalskull"
        ]
       },
-      "weight": 5
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 7
       },
-      "weight": 7
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 14
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 10,
+     "health": 10000,
+     "idle": 1,
+     "idle_max": 1.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 1.5,
+     "tuning": {
+      "DamageIndexFull": 5,
+      "DamageIndexHalf": 6,
+      "ParachuteColumn": {
+       "Max": 3,
+       "Min": 2
       },
-      "weight": 14
+      "ParachuteCount": {
+       "Max": 3,
+       "Min": 3
+      },
+      "ParachuteType": "lostcity_lostpilot"
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 10,
-    "DamageIndexFull": 5,
-    "DamageIndexHalf": 6,
-    "HitPoints": 10000,
-    "MaxIdleTime": 1.5,
-    "MinIdleTime": 1,
-    "ParachuteColumn": {
-     "Max": 3,
-     "Min": 2
-    },
-    "ParachuteCount": {
-     "Max": 3,
-     "Min": 3
-    },
-    "ParachuteType": "lostcity_lostpilot",
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1.5
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5
  }
 }

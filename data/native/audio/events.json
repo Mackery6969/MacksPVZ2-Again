@@ -82,6 +82,22 @@
    "fmod": "event:/SFX/Zombies/Enrage"
   },
   {
+   "id": "zombie.boss.stage",
+   "fmod": "event:/SFX/Zombies/Boss/Stage"
+  },
+  {
+   "id": "zombie.boss.shoot",
+   "fmod": "event:/SFX/Zombies/Boss/Shoot"
+  },
+  {
+   "id": "zombie.boss.rush",
+   "fmod": "event:/SFX/Zombies/Boss/Rush"
+  },
+  {
+   "id": "zombie.boss.roar",
+   "fmod": "event:/SFX/Zombies/Boss/Roar"
+  },
+  {
    "id": "mower.trigger",
    "fmod": "event:/SFX/Board/Mower"
   },

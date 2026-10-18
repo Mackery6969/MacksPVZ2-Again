@@ -2,164 +2,126 @@
  "id": "zombossmech_future2",
  "extends": "zomboss",
  "sort": "Zomboss",
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "MissileType": "zomboss_missile_future",
-  "ZombossMechLevel": 1,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "shoot",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+ "components": [
+  {
+   "mech_level": 1,
+   "missile": "zomboss_missile_future",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "walk",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "walk",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 2
       },
-      "weight": 2
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 5500,
-       "pointMin": 3500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 3500,
+       "points_max": 5500,
+       "repeat": 2,
+       "weight": 12,
+       "zombies": [
         "future_armor2",
         "future_armor4",
         "future_jetpack_veteran",
         "future_protector"
        ]
-      },
-      "weight": 12
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 5,
+     "health": 16000,
+     "idle": 0.5,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 2,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 0
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 0,
-    "HitPoints": 16000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.5,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "rush",
-      "repeatMax": 1,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "rush",
+       "repeat": 1,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 5500,
-       "pointMin": 3500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 3500,
+       "points_max": 5500,
+       "repeat": 2,
+       "weight": 16,
+       "zombies": [
         "football_mech",
         "future_jetpack_veteran",
         "future_gargantuar"
        ]
       },
-      "weight": 16
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 6000,
-       "pointMin": 3500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 3500,
+       "points_max": 6000,
+       "repeat": 2,
+       "weight": 16,
+       "zombies": [
         "future_armor2",
         "future_armor4",
         "future_jetpack_veteran",
         "future_protector"
        ]
-      },
-      "weight": 16
+      }
+     ],
+     "anim_rate": 1.1,
+     "chill_from_freeze": 5,
+     "health": 26000,
+     "idle": 0.3,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 1.5,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 3
      }
-    ],
-    "AnimRateModifier": 1.1,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 3,
-    "HitPoints": 26000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.3,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1.5
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 6
       },
-      "weight": 6
-     },
-     {
-      "actionName": "walk",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "walk",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 3
       },
-      "weight": 3
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 6500,
-       "pointMin": 3500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 3500,
+       "points_max": 6500,
+       "repeat": 2,
+       "weight": 16,
+       "zombies": [
         "future_armor1",
         "future_armor2",
         "future_armor4",
@@ -167,47 +129,45 @@
         "future_jetpack_veteran"
        ]
       },
-      "weight": 16
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 4
       },
-      "weight": 4
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 6000,
-       "pointMin": 4000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 4000,
+       "points_max": 6000,
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 16,
+       "zombies": [
         "football_mech",
         "disco_mech",
         "future_gargantuar"
        ]
-      },
-      "weight": 16
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 5,
+     "health": 32000,
+     "idle": 0.1,
+     "idle_max": 0.3,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 1,
+     "tuning": {
+      "DamageIndexFull": 6,
+      "DamageIndexHalf": 6
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 5,
-    "DamageIndexFull": 6,
-    "DamageIndexHalf": 6,
-    "HitPoints": 32000,
-    "MaxIdleTime": 0.3,
-    "MinIdleTime": 0.1,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5
  }
 }

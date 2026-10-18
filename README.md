@@ -95,11 +95,13 @@ player-triggered abilities, house health in place of mowers), shared terrain
 rules covering Beach water and Sky air, campaign progression (clear a level to
 advance, fail to retry),
 per-level save slots with autosave and resume, I-Zombie placement costs,
-15 plant behaviours covering 157 of 214 plants, 7 zombie behaviours
-(smashing, imp throwing, riders, escorts, summoning, enrage, lifespan)
-covering 214 of 473 zombies, archetypes that carry shared stats and whole
-components so a world's gargantuar is a four-line delta, zombie status effects
-(stun/slow/freeze), stun immunity and chill resistance, buffs,
+15 plant behaviours covering 157 of 214 plants, 8 zombie behaviours
+(smashing, imp throwing, riders, escorts, summoning, enrage, lifespan and
+staged Zomboss fights read straight from the data) covering 249 of 473
+zombies, archetypes that carry shared stats and whole components so a world's
+gargantuar is a four-line delta, zombie status effects
+(stun/slow/freeze), stun immunity and chill resistance, plant stun by
+suppression, bidirectional projectiles, buffs,
 grid and planting with per-lane restrictions,
 seed packet costs and recharge,
 lawn mowers, plant food (carriers, pickups, per-component boosts), conveyor

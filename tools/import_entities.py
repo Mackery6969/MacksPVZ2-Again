@@ -293,6 +293,12 @@ def split_zombie(name, entry, prop_lookup):
                       "HealthPercentThrowImp0", "HealthPercentThrowImp1",
                       "HealthPercentThrowImp2"))
 
+    boss = zomboss_component(merged)
+    if boss is not None:
+        components.append(boss)
+        known.update(("ZombossStages", "MissileType", "IdleColumn",
+                      "ZombossMechLevel"))
+
     # Two unrelated things summon. An abbot gives one shout and a group walks
     # on - the field is literally ZombieTypesToSummonBecomingFlag, a one-off as
     # it turns into the wave's flag zombie. A gong or a bronze statue keeps
@@ -832,6 +838,86 @@ def write_objects(data_dir, out_root):
     print(f"wrote {len(manifest)} object files "
           f"({len(PLANTS_THAT_ARE_OBJECTS)} reclassified from plants, "
           f"{len(EXTRA_TERRAIN)} terrain types defined here)")
+
+
+# Zomboss is the one zombie whose whole fight is written down. ZombossStages
+# is a list of stages, each with its own health pool and a weighted list of
+# actions it picks from; the fields below rename them without interpreting
+# them, so a mod can author a boss by writing the same shape.
+#
+# Everything a stage says that is not in this table - DamageIndexFull, a
+# world's ThunderCount or TurnsIntoShipInThisStage - goes into `tuning`
+# verbatim, because those belong to one world's action and inventing a schema
+# for twenty one-off fields would only hide them.
+ZOMBOSS_STAGE = {
+    "HitPoints": "health",
+    "MinIdleTime": "idle",
+    "MaxIdleTime": "idle_max",
+    "StunTime": "stun_time",
+    "StunDamageScale": "stun_damage_scale",
+    "StunStaggerBackMovement": "stagger",
+    "StunStaggerBackTime": "stagger_time",
+    "ChilledDurationFromFrozen": "chill_from_freeze",
+    "AnimRateModifier": "anim_rate",
+}
+
+ZOMBOSS_SUMMON = {
+    "zombieList": "zombies",
+    "pointMin": "points",
+    "pointMax": "points_max",
+    "columnOffset": "column_offset",
+    "plantfoodchance": "plantfood_chance",
+    "dinoType": "dino",
+}
+
+
+def zomboss_component(merged):
+    """-> a `zomboss` component spec, or None when this is not a boss."""
+    stages_src = merged.get("ZombossStages")
+    if not stages_src:
+        return None
+    comp = collections.OrderedDict(type="zomboss")
+    if merged.get("MissileType") is not None:
+        comp["missile"] = strip_rtid(merged["MissileType"])
+    if merged.get("IdleColumn") is not None:
+        comp["idle_column"] = merged["IdleColumn"]
+    if merged.get("ZombossMechLevel") is not None:
+        comp["mech_level"] = merged["ZombossMechLevel"]
+
+    stages = []
+    for src in stages_src:
+        stage = collections.OrderedDict()
+        for key, slot in ZOMBOSS_STAGE.items():
+            if src.get(key) is not None:
+                flatten_range(stage, slot, src[key])
+        actions = []
+        for a in src.get("Actions", []):
+            act = collections.OrderedDict(action=a.get("actionName"))
+            act["weight"] = a.get("weight", 1)
+            act["repeat"] = a.get("repeatMin", 1)
+            if a.get("repeatMax") != a.get("repeatMin"):
+                act["repeat_max"] = a.get("repeatMax")
+            # PopCap writes a default summonProps onto every action, so a
+            # point budget on a `rush` means nothing. Only an action with a
+            # zombie list actually summons.
+            props = a.get("summonProps") or {}
+            if props.get("zombieList"):
+                for key, slot in ZOMBOSS_SUMMON.items():
+                    if props.get(key) in (None, []):
+                        continue
+                    if key == "zombieList":
+                        act[slot] = [strip_rtid(z) for z in props[key]]
+                    else:
+                        flatten_range(act, slot, strip_rtid(props[key]))
+            actions.append(act)
+        stage["actions"] = actions
+        tuning = {k: v for k, v in src.items()
+                  if k != "Actions" and k not in ZOMBOSS_STAGE}
+        if tuning:
+            stage["tuning"] = tuning
+        stages.append(stage)
+    comp["stages"] = stages
+    return comp
 
 
 def majority(built, members, extract):

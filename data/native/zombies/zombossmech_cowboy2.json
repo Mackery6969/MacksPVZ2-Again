@@ -2,168 +2,143 @@
  "id": "zombossmech_cowboy2",
  "extends": "zomboss",
  "sort": "Zomboss",
- "extra": {
-  "FoeEatDamageReflectPct": 0.5,
-  "MissileType": "zomboss_missile_cowboy",
-  "ZombossMechLevel": 1,
-  "ZombossStages": [
-   {
-    "Actions": [
-     {
-      "actionName": "rush",
-      "repeatMax": 3,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+ "components": [
+  {
+   "mech_level": 1,
+   "missile": "zomboss_missile_cowboy",
+   "stages": [
+    {
+     "actions": [
+      {
+       "action": "rush",
+       "repeat": 2,
+       "repeat_max": 3,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 3,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2500,
-       "pointMin": 2000,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 2000,
+       "points_max": 2500,
+       "repeat": 2,
+       "repeat_max": 3,
+       "weight": 18,
+       "zombies": [
         "cowboy_armor4",
         "cowboy_armor2",
         "prospector"
        ]
       },
-      "weight": 18
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 12
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 12
+      }
+     ],
+     "anim_rate": 1,
+     "chill_from_freeze": 7,
+     "health": 8000,
+     "idle": 0.3,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 2,
+     "stun_time": 3,
+     "tuning": {
+      "DamageIndexFull": 0,
+      "DamageIndexHalf": 2
      }
-    ],
-    "AnimRateModifier": 1,
-    "ChilledDurationFromFrozen": 7,
-    "DamageIndexFull": 0,
-    "DamageIndexHalf": 2,
-    "HitPoints": 8000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.3,
-    "StunDamageScale": 2,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 3
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "summon",
-      "repeatMax": 3,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 3500,
-       "pointMin": 3000,
-       "zombieList": [
+    },
+    {
+     "actions": [
+      {
+       "action": "summon",
+       "points": 3000,
+       "points_max": 3500,
+       "repeat": 2,
+       "repeat_max": 3,
+       "weight": 18,
+       "zombies": [
         "west_bull_veteran",
         "cowboy_armor4",
         "cowboy_armor2",
         "chicken_farmer"
        ]
       },
-      "weight": 18
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+      {
+       "action": "rush",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "shoot",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 10
+      {
+       "action": "shoot",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 10
+      }
+     ],
+     "anim_rate": 1.25,
+     "chill_from_freeze": 7,
+     "health": 12000,
+     "idle": 0.5,
+     "idle_max": 1,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.5,
+     "stun_time": 2,
+     "tuning": {
+      "DamageIndexFull": 3,
+      "DamageIndexHalf": 4
      }
-    ],
-    "AnimRateModifier": 1.25,
-    "ChilledDurationFromFrozen": 7,
-    "DamageIndexFull": 3,
-    "DamageIndexHalf": 4,
-    "HitPoints": 12000,
-    "MaxIdleTime": 1,
-    "MinIdleTime": 0.5,
-    "StunDamageScale": 1.5,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 2
-   },
-   {
-    "Actions": [
-     {
-      "actionName": "shoot",
-      "repeatMax": 3,
-      "repeatMin": 2,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
+    },
+    {
+     "actions": [
+      {
+       "action": "shoot",
+       "repeat": 2,
+       "repeat_max": 3,
+       "weight": 5
       },
-      "weight": 5
-     },
-     {
-      "actionName": "summon",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 4500,
-       "pointMin": 3500,
-       "zombieList": [
+      {
+       "action": "summon",
+       "points": 3500,
+       "points_max": 4500,
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 18,
+       "zombies": [
         "cowboy_gargantuar",
         "chicken_farmer",
         "cowboy_armor2"
        ]
       },
-      "weight": 18
-     },
-     {
-      "actionName": "rush",
-      "repeatMax": 2,
-      "repeatMin": 1,
-      "summonProps": {
-       "pointMax": 2000,
-       "pointMin": 1000,
-       "zombieList": []
-      },
-      "weight": 10
+      {
+       "action": "rush",
+       "repeat": 1,
+       "repeat_max": 2,
+       "weight": 10
+      }
+     ],
+     "anim_rate": 1.5,
+     "chill_from_freeze": 7,
+     "health": 10000,
+     "idle": 0.2,
+     "idle_max": 0.5,
+     "stagger": 1,
+     "stagger_time": 0.4,
+     "stun_damage_scale": 1.25,
+     "stun_time": 1,
+     "tuning": {
+      "DamageIndexFull": 5,
+      "DamageIndexHalf": 6
      }
-    ],
-    "AnimRateModifier": 1.5,
-    "ChilledDurationFromFrozen": 7,
-    "DamageIndexFull": 5,
-    "DamageIndexHalf": 6,
-    "HitPoints": 10000,
-    "MaxIdleTime": 0.5,
-    "MinIdleTime": 0.2,
-    "StunDamageScale": 1.25,
-    "StunStaggerBackMovement": 1,
-    "StunStaggerBackTime": 0.4,
-    "StunTime": 1
-   }
-  ]
+    }
+   ],
+   "type": "zomboss"
+  }
+ ],
+ "extra": {
+  "FoeEatDamageReflectPct": 0.5
  }
 }

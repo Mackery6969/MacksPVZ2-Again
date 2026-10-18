@@ -49,10 +49,13 @@ func cfg_range(key: StringName, fallback: float = 0.0) -> float:
 	return low if is_equal_approx(low, high) else randf_range(low, high)
 
 
-## Scales a duration by the host's attack rate.
+## Scales a duration by the host's attack rate, and by its suppression - a
+## buff speeds this up, a stun slows it to a crawl, and the component itself
+## needs to know about neither.
 func scaled(seconds: float) -> float:
-	var rate: float = host.attack_rate if host != null else 1.0
-	return seconds / maxf(rate, 0.01)
+	if host == null:
+		return seconds
+	return seconds / maxf(host.attack_rate * host.suppression, 0.01)
 
 
 ## Whether this component takes over the host's attack. A zombie whose attack
@@ -61,4 +64,18 @@ func scaled(seconds: float) -> float:
 ## gargantuar smashes rather than eats without the zombie knowing what a
 ## gargantuar is.
 func claims_attack() -> bool:
+	return false
+
+
+## Whether this component moves the host itself. A boss hovers at its own
+## column and charges on its own schedule, so it must not also be walking
+## toward the house a lane at a time.
+func claims_movement() -> bool:
+	return false
+
+
+## Return true to refuse the host's death. Called from `Character.die` before
+## anything is torn down, so a component can convert a death into something
+## else - a boss advancing a stage, a plant with a second wind.
+func prevent_death() -> bool:
 	return false
