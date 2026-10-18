@@ -28,6 +28,7 @@ var archetypes: Dictionary = {}   ## StringName -> Dictionary (raw)
 var levels: Dictionary = {}       ## StringName -> Dictionary (raw)
 var campaigns: Dictionary = {}    ## StringName -> CampaignDef
 var lawns: Dictionary = {}        ## StringName -> Dictionary (raw)
+var speakers: Dictionary = {}     ## StringName -> Dictionary (raw)
 
 var _mod_order: Array[StringName] = [&"base"]
 var _errors: Array[String] = []
@@ -39,7 +40,7 @@ func _ready() -> void:
 
 func load_all() -> void:
 	for pool in [zombies, plants, projectiles, armors, graves, objects,
-			archetypes, levels, campaigns, lawns]:
+			archetypes, levels, campaigns, lawns, speakers]:
 		pool.clear()
 	_errors.clear()
 	_mod_order = [&"base"]
@@ -77,6 +78,7 @@ func _load_source(root: String, mod: StringName) -> void:
 	_load_dir(root.path_join("objects"), objects, mod)
 	_load_dir(root.path_join("levels"), levels, mod)
 	_load_dir(root.path_join("lawns"), lawns, mod)
+	_load_dir(root.path_join("speakers"), speakers, mod)
 	_load_campaigns(root.path_join("campaigns"), mod)
 
 
@@ -298,6 +300,13 @@ func board_object(id: StringName) -> ObjectDef:
 
 func level(id: StringName) -> Dictionary:
 	return levels.get(id, {})
+
+
+## Who is talking. A level names a speaker id; the speaker supplies the name,
+## portrait and which dialogue box to use. Nothing is tied to Zomboss, so a
+## pack can give a world its own character while reusing the boss box.
+func speaker(id: StringName) -> Dictionary:
+	return speakers.get(id, {})
 
 
 ## A stage's lawn settings: music track, mower, zombie roster.

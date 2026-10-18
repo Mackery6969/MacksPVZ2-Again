@@ -8,6 +8,10 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "tags": [
+  "aquatic",
+  "provides:aquatic"
+ ],
  "extra": {
   "CannotBeSheepenedByWizard": true
  }

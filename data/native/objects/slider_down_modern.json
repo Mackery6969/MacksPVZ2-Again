@@ -1,6 +1,12 @@
 {
  "id": "slider_down_modern",
  "category": "tile",
+ "components": [
+  {
+   "type": "slide_tile",
+   "direction": "down"
+  }
+ ],
  "extra": {
   "Rect": "RTID(SliderTileRect@RectangleProps)"
  }

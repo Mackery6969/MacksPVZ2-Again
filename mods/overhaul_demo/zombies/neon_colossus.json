@@ -1,0 +1,8 @@
+{
+ "id": "neon_colossus",
+ "extends": "gargantuar",
+ "stats": {"toughness": 3000, "speed": 0.2, "eat_dps": 120, "wave_cost": 1400},
+ "sort": "Gargantuar",
+ "tags": {"add": ["synthetic"]},
+ "components": [{"type": "pulse_aura", "radius": 2.0, "interval": 2.0, "damage": 60}]
+}

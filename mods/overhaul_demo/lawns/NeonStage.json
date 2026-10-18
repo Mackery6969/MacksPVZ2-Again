@@ -1,0 +1,12 @@
+{
+ "id": "NeonStage",
+ "music": "Neon",
+ "mower": "mower_modern",
+ "night": true,
+ "zombie_roster": {
+  "basic": ["neon_drone"],
+  "flag": ["neon_drone"],
+  "armor1": ["neon_warden"],
+  "gargantuar": ["neon_colossus"]
+ }
+}

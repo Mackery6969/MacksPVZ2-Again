@@ -1,6 +1,9 @@
 {
  "id": "lava",
  "category": "liquid",
+ "stats": {
+  "blocks_planting": true
+ },
  "extra": {
   "TileLiquidBasedOn": "lavaguava"
  }

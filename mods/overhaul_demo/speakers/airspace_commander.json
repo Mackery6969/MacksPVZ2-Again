@@ -1,0 +1,7 @@
+{
+ "//": "A custom character using the boss dialogue box without being Zomboss.",
+ "id": "airspace_commander",
+ "name": "Commander Vex",
+ "portrait": "commander_vex",
+ "dialogue_box": "boss"
+}

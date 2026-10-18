@@ -35,6 +35,8 @@ var _seed_bar: HBoxContainer
 
 var _mode_label: Label
 var _plant_food_label: Label
+var _objective_label: Label
+var _ability_label: Label
 var _conveyor_level: bool = false
 var _fast_forward: bool = false
 
@@ -48,10 +50,13 @@ func _ready() -> void:
 	_build_hud()
 	board.sun_changed.connect(_on_sun_changed)
 	board.plant_food_changed.connect(_on_plant_food_changed)
+	board.lawn_ability_changed.connect(_on_lawn_ability_changed)
 	board.level_lost.connect(_on_lost)
 	runner.seedbank_ready.connect(_on_seedbank_ready)
 	runner.wave_started.connect(_on_wave_started)
 	runner.level_complete.connect(_on_won)
+	runner.level_failed.connect(_on_objective_failed)
+	runner.objectives_changed.connect(_on_objectives_changed)
 
 	print("[boot] ", Data.summary())
 	print("[boot] ", Components.summary())
@@ -90,10 +95,15 @@ func load_level(level_id: StringName) -> void:
 	_wave_label.text = ""
 	_refresh_mode_label()
 	_level_label.text = _level_title(level)
+	_refresh_ability_label()
 
 
 func _level_title(level: Dictionary) -> String:
+	# The world's own name, which a pack can rename without touching levels.
+	var world := runner.world_name()
 	var title := str(level.get("comment", level.get("name", _current_level)))
+	if world != "":
+		title = "%s - %s" % [world, title]
 	if _campaign != null:
 		var i := _campaign.index_of(_current_level)
 		if i >= 0:
@@ -123,6 +133,10 @@ func _build_hud() -> void:
 	top.add_child(_level_label)
 	_mode_label = _make_label("")
 	top.add_child(_mode_label)
+	_objective_label = _make_label("")
+	root.add_child(_objective_label)
+	_ability_label = _make_label("")
+	root.add_child(_ability_label)
 	_status = _make_label("")
 	top.add_child(_status)
 
@@ -148,7 +162,7 @@ func _on_seedbank_ready(seeds: Array) -> void:
 	if _conveyor_level:
 		seed_bank.setup_conveyor(runner.level.get("seedbank", {}))
 	else:
-		seed_bank.setup(seeds, runner.has_feature("SeedPacketHalfTimeModule"))
+		seed_bank.setup(seeds, runner.seed_recharge_scale() < 1.0)
 
 	_rebuild_seed_buttons()
 
@@ -216,6 +230,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		return
 
+	if _action_pressed(event, &"Lawn Ability"):
+		if not board.activate_lawn_ability(0):
+			Audio.play(&"lawn.ability.refuse")
+		_refresh_ability_label()
+		get_viewport().set_input_as_handled()
+		return
 	if _action_pressed(event, &"Plant Food"):
 		_toggle_plant_food()
 		get_viewport().set_input_as_handled()
@@ -354,6 +374,37 @@ func _refresh_seed_buttons() -> void:
 			b.modulate = Color(0.75, 0.75, 0.75)
 		else:
 			b.modulate = Color.WHITE
+
+
+func _on_objectives_changed(_objectives: Array) -> void:
+	_objective_label.text = "   ".join(runner.objective_lines())
+
+
+func _on_lawn_ability_changed(_component: LawnComponent) -> void:
+	_refresh_ability_label()
+
+
+## Shows the world's own behaviours, abilities first with their charge.
+func _refresh_ability_label() -> void:
+	var bits: Array[String] = []
+	for c in board.lawn_components:
+		var text := c.describe()
+		if text == "":
+			continue
+		if c.is_ability:
+			bits.append("[G] %s" % text if c.can_activate() else text)
+		else:
+			bits.append(text)
+	_ability_label.text = "   ".join(bits)
+
+
+## A broken objective loses the level, and names which rule broke.
+func _on_objective_failed(objective: Objective) -> void:
+	if _transitioning:
+		return
+	var text := objective.describe()
+	_on_lost()
+	_status.text = "Objective failed: %s" % (text if text != "" else objective.name)
 
 
 func _on_wave_started(index: int, total: int) -> void:

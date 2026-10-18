@@ -1,6 +1,9 @@
 {
  "id": "potholepuddle",
  "category": "tile",
+ "stats": {
+  "requires_tag": "aquatic"
+ },
  "extra": {
   "Rect": "RTID(TileDefaultRect@RectangleProps)"
  }

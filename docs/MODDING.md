@@ -308,14 +308,124 @@ changes. Conveyor levels have more slots and use the `Slot N (Convayor)`
 actions from slot 5 upward. `Previous Slot` and `Next Slot` cycle the
 selection, skipping packets that have not recharged.
 
-## Level features
+## Level options
 
-A level's `features` list names optional modules. The one wired up so far is
-`FastSunDropper`, which halves the gap between sky sun and is what the early
-tutorial levels use to keep the player supplied, and
-`SeedPacketHalfTimeModule`, which halves seed recharge times. Unrecognised
-features are ignored rather than fatal, so a level using a module that is not
-built yet still plays.
+PopCap ships level options as a bag of module-name strings
+(`FastSunDropper`, `TutorialMowers`, `ZombiesDeadWinCon`). Matching on those at
+runtime is how a schema ends up a copy of someone else's, so the importer
+translates them into explicit fields:
+
+| Field | Was |
+|---|---|
+| `"mowers": true` | any `*Mowers` feature |
+| `"sun": {"interval": 5.0}` | `FastSunDropper` / `DefaultSunDropper` |
+| `"seed_recharge": 0.5` | `SeedPacketHalfTimeModule` |
+| `"objectives": [...]` | `ZombiesDeadWinCon`, star challenges |
+| `"scripts": [...]` | narrative and tutorial hooks, kept as-is |
+| `"wave_pacing"` | `wave_settings`, minus the count that duplicated `waves` |
+
+A level has one `name` rather than a comment, a name and a description.
+
+## Worlds
+
+A world is a lawn file. It names its music track, its mower, its zombie
+roster - and its own mechanics:
+
+```json
+{
+ "id": "AerialStage",
+ "display_name": "Assault Airspace",
+ "music": "Sky",
+ "components": [
+  {"type": "auto_turret", "interval": 2.0, "damage": 8},
+  {"type": "cannon_ability", "damage": 900, "cooldown": 25},
+  {"type": "house_health", "max_health": 500, "use_zombie_weight": true},
+  {"type": "terrain_layout", "columns": [{"terrain": "sky_gap", "from": 7, "to": 8}]}
+ ]
+}
+```
+
+`display_name` renames a world without touching the levels that reference its
+stage id - which is how Aerial Fortress becomes Assault Airspace.
+
+### Lawn components
+
+Behaviour that belongs to the board rather than to any plant or zombie lives
+here, shipped as `lawn_components/<type>.gd`. Built-ins:
+
+| Type | What it does |
+|---|---|
+| `auto_turret` | the base fires on its own, no input needed |
+| `cannon_ability` | a player-triggered world ability with a cooldown |
+| `house_health` | the house has hit points **instead of** lawn mowers |
+| `terrain_layout` | paints the world's terrain onto the grid |
+
+A component with `is_ability` set is triggered by the player (bound to
+`Lawn Ability`) and shows its charge in the HUD.
+
+`house_health` is worth calling out: a lawn component can intercept a zombie
+reaching the house via `handle_zombie_at_house()`, consuming it before mowers
+or a loss are considered. That is how Sky replaces the lose condition rather
+than decorating it - the world owns the rule, not the board.
+
+## Terrain
+
+Cells can demand something before a plant goes in them. Big Wave Beach water
+and Sky's open air are the same rule with different tags, so there is one
+mechanism rather than two systems:
+
+| Field on an object | Meaning |
+|---|---|
+| `blocks_planting` | nothing can be planted here (lava, deep water, craters) |
+| `requires_tag` | a plant must carry this tag (`aquatic`, `airborne`) |
+| `provides_tag` | placing this satisfies a cell's requirement (lily pad) |
+
+A lily pad is `aquatic` and `provides:aquatic`, so it can go in water and makes
+the cell viable for a land plant afterwards. Losing it takes the provision with
+it. Pool tiles, lava and the endangered tile all carry these rules.
+
+Slide tiles are not terrain - they are plantable, they just carry the plant
+away - so they use a `slide_tile` component instead.
+
+## Dialogue
+
+Who speaks is data. A level names a speaker; the speaker supplies the name,
+portrait and which box to use:
+
+```json
+"dialogue": {"speaker": "airspace_commander", "lines": ["..."]}
+```
+
+```json
+{"id": "airspace_commander", "name": "Commander Vex",
+ "portrait": "commander_vex", "dialogue_box": "boss"}
+```
+
+Nothing is tied to Zomboss, so a world can have its own character while reusing
+the boss dialogue box.
+
+## Objectives
+
+A level's win and lose rules are objectives - named, configured from data, and
+replaceable like components. A level listing none gets `survive_waves`, so
+existing levels keep working.
+
+```json
+"objectives": [
+ {"type": "survive_waves"},
+ {"type": "no_plant_loss", "allowed": 2},
+ {"type": "kill_count", "count": 20, "tags": ["metal"]}
+]
+```
+
+Built-ins: `survive_waves`, `protect_plants`, `no_plant_loss`, `sun_produced`,
+`kill_count`.
+
+A pack adds its own as `objectives/<type>.gd`, overriding `is_met()`,
+`is_failed()` and whichever hooks it needs (`on_zombie_died`,
+`on_plant_died`, `on_sun_collected`, `on_zombie_reached_house`,
+`on_wave_started`, `on_all_waves_spawned`). An objective can key off a tag the
+pack itself invented - core never needs to know about it.
 
 ## Conveyor levels
 

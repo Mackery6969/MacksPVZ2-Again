@@ -1,0 +1,7 @@
+{
+ "//": "A new world brings its own music. The id follows music.lawn.<track>, so the lawn's Music field is all that ties them together.",
+ "events": [
+  {"id": "music.lawn.neon", "fmod": "event:/Music/Neon", "music": true},
+  {"id": "overhaul.pulse", "fmod": "event:/SFX/Overhaul/Pulse"}
+ ]
+}

@@ -1,0 +1,8 @@
+{
+ "id": "water",
+ "//": "Only aquatic plants go here, or anything on a lily pad.",
+ "category": "liquid",
+ "stats": {
+  "requires_tag": "aquatic"
+ }
+}

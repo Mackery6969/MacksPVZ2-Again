@@ -11,6 +11,13 @@ signal level_lost
 signal level_won
 signal mower_triggered(row: int)
 signal plant_food_changed(total: int)
+## Raised so level objectives can observe what happens without polling.
+signal zombie_died(zombie: Zombie)
+signal plant_died(plant: Plant)
+signal sun_collected(amount: int)
+signal zombie_reached_house(zombie: Zombie)
+## A lawn ability became available or was spent.
+signal lawn_ability_changed(component: LawnComponent)
 
 const DEFAULT_ROWS := 5
 const DEFAULT_COLS := 9
@@ -60,6 +67,15 @@ var shovel_active: bool = false
 ## When true a click feeds a plant instead of placing a seed.
 var plant_food_active: bool = false
 
+## Terrain per cell, Vector2i(col, row) -> object id. A cell with no entry is
+## ordinary ground. This is the shared mechanism behind Big Wave Beach water
+## and Sky's open air: both are cells that need something before a plant can
+## go there, so both are terrain rather than two bespoke systems.
+var terrain: Dictionary = {}
+## Tags currently satisfied per cell, from whatever has been placed there -
+## a lily pad on water, a platform over a gap.
+var _cell_provides: Dictionary = {}
+
 ## Lanes the player may plant in, 0-based. Empty means every lane is open.
 ## Tutorial 1 uses this to confine the player to a single lane.
 var plantable_rows: Array[int] = []
@@ -71,6 +87,9 @@ var _suns: Node2D
 var _entities: Node2D
 var _mowers_node: Node2D
 var _mowers: Dictionary = {}   ## int row -> Mower
+var _lawn_node: Node
+## The current world's own behaviours, from its lawn data.
+var lawn_components: Array[LawnComponent] = []
 
 
 func _ready() -> void:
@@ -86,6 +105,9 @@ func _ready() -> void:
 	_mowers_node = Node2D.new()
 	_mowers_node.name = "Mowers"
 	add_child(_mowers_node)
+	_lawn_node = Node.new()
+	_lawn_node.name = "LawnComponents"
+	add_child(_lawn_node)
 	sun = starting_sun
 	for r in rows:
 		_zombies_by_row[r] = []
@@ -97,17 +119,57 @@ func reset() -> void:
 	for group in [_entities, _projectiles, _suns, _mowers_node]:
 		for child in group.get_children():
 			child.queue_free()
+	for c in lawn_components:
+		c.queue_free()
+	lawn_components.clear()
 	_mowers.clear()
 	_plants.clear()
 	for r in _zombies_by_row:
 		_zombies_by_row[r].clear()
 	plantable_rows.clear()
+	terrain.clear()
+	_cell_provides.clear()
 	selected_seed = {}
 	sun = starting_sun
 	plant_food = 0
 	sun_changed.emit(sun)
 	plant_food_changed.emit(plant_food)
 	queue_redraw()
+
+
+## Builds the world's own behaviours from its lawn data. Replaces whatever the
+## previous level installed, so switching worlds switches mechanics.
+func setup_lawn(lawn: Dictionary, runner: Node) -> void:
+	for c in lawn_components:
+		c.queue_free()
+	lawn_components.clear()
+	for spec in (lawn.get("components", []) as Array):
+		if not (spec is Dictionary):
+			continue
+		var comp := Components.create_lawn_component(spec, self, runner)
+		if comp == null:
+			continue
+		_lawn_node.add_child(comp)
+		lawn_components.append(comp)
+		comp.state_changed.connect(func(c): lawn_ability_changed.emit(c))
+		comp.setup()
+
+
+## The world abilities the player can trigger, in declaration order.
+func lawn_abilities() -> Array[LawnComponent]:
+	var out: Array[LawnComponent] = []
+	for c in lawn_components:
+		if c.is_ability:
+			out.append(c)
+	return out
+
+
+## Fires the nth available world ability. Returns false if it could not fire.
+func activate_lawn_ability(index: int = 0) -> bool:
+	var abilities := lawn_abilities()
+	if index < 0 or index >= abilities.size():
+		return false
+	return abilities[index].activate()
 
 
 ## Parks a fresh mower in every lane. Called when a level with mowers starts.
@@ -184,6 +246,59 @@ func is_row_plantable(row: int) -> bool:
 	return plantable_rows.is_empty() or plantable_rows.has(row)
 
 
+## Paints a cell's terrain. Worlds do this through a lawn component.
+func set_terrain(row: int, col: int, object_id: StringName) -> void:
+	var cell := Vector2i(col, row)
+	if object_id == &"":
+		terrain.erase(cell)
+	else:
+		terrain[cell] = object_id
+	queue_redraw()
+
+
+func terrain_at(row: int, col: int) -> StringName:
+	return terrain.get(Vector2i(col, row), &"")
+
+
+## The terrain definition for a cell, or null for ordinary ground.
+func terrain_def(row: int, col: int) -> ObjectDef:
+	var id := terrain_at(row, col)
+	return Data.board_object(id) if id != &"" else null
+
+
+## What a cell currently satisfies, from whatever has been placed on it.
+func cell_provides(row: int, col: int) -> StringName:
+	return _cell_provides.get(Vector2i(col, row), &"")
+
+
+## Why a plant cannot go in a cell, or "" when it can. Returning a reason
+## rather than a bool lets the HUD explain the refusal.
+func placement_refusal(kind: StringName, id: StringName, row: int, col: int) -> String:
+	if not in_bounds(row, col):
+		return "out of bounds"
+	if not is_row_plantable(row):
+		return "lane is closed"
+	if kind != &"zombie" and plant_at(row, col) != null:
+		return "cell is occupied"
+	if kind == &"zombie":
+		return ""
+
+	var ground := terrain_def(row, col)
+	if ground == null:
+		return ""
+	if ground.blocks_planting:
+		return "nothing can be planted on %s" % ground.id
+	if ground.requires_tag != &"":
+		# Either the plant itself copes with this ground, or something already
+		# placed in the cell makes it viable.
+		var def := Data.plant(id)
+		var plant_ok: bool = def != null and def.has_tag(ground.requires_tag)
+		var cell_ok: bool = cell_provides(row, col) == ground.requires_tag
+		if not (plant_ok or cell_ok):
+			return "%s needs %s" % [ground.id, ground.requires_tag]
+	return ""
+
+
 func can_place(row: int, col: int) -> bool:
 	return in_bounds(row, col) and is_row_plantable(row) and plant_at(row, col) == null
 
@@ -196,7 +311,7 @@ func place_plant(id: StringName, row: int, col: int) -> Plant:
 ## Places whatever a seed packet holds. Plants occupy their cell; zombies are
 ## dropped into the lane and walk from there, so they do not block it.
 func place_entity(kind: StringName, id: StringName, row: int, col: int) -> Character:
-	if not can_place_entity(kind, row, col):
+	if not can_place_entity(kind, id, row, col):
 		return null
 	if kind == &"zombie":
 		var z := spawn_zombie(id, row)
@@ -205,16 +320,23 @@ func place_entity(kind: StringName, id: StringName, row: int, col: int) -> Chara
 		return z
 	var p := _place_plant_at(id, row, col)
 	if p != null:
+		# A lily pad or platform makes its cell viable for the next plant.
+		var def := Data.plant(id)
+		if def != null:
+			for tag in def.tag_list():
+				if String(tag).begins_with("provides:"):
+					_cell_provides[Vector2i(col, row)] = \
+							StringName(String(tag).substr(9))
+		p.died.connect(func(who): _on_placed_plant_died(who, row, col))
 		Audio.play(&"plant.place", p.position)
 	return p
 
 
-## True when `kind` may be placed in this cell.
-func can_place_entity(kind: StringName, row: int, col: int) -> bool:
-	if not in_bounds(row, col) or not is_row_plantable(row):
-		return false
-	# A lane holds any number of zombies, but only one plant per cell.
-	return true if kind == &"zombie" else plant_at(row, col) == null
+## True when `kind` may be placed in this cell. Zombies ignore terrain and
+## share a lane; plants need the ground to suit them.
+func can_place_entity(kind: StringName, id: StringName,
+		row: int, col: int) -> bool:
+	return placement_refusal(kind, id, row, col) == ""
 
 
 ## Placement cost for a seed, read from whichever definition owns it.
@@ -242,6 +364,32 @@ func _place_plant_at(id: StringName, row: int, col: int) -> Plant:
 
 func remove_plant(row: int, col: int) -> void:
 	_plants.erase(Vector2i(col, row))
+
+
+## Losing a carrier takes its cell's provision with it, so the water is
+## dangerous again once the lily pad is eaten.
+func _on_placed_plant_died(who: Character, row: int, col: int) -> void:
+	_cell_provides.erase(Vector2i(col, row))
+	plant_died.emit(who)
+
+
+## Relocates a plant between cells, keeping the board's index in step. Used by
+## slide tiles and anything else that carries a plant around.
+func move_plant(from_row: int, from_col: int, to_row: int, to_col: int) -> bool:
+	var p := plant_at(from_row, from_col)
+	if p == null or plant_at(to_row, to_col) != null or not in_bounds(to_row, to_col):
+		return false
+	_plants.erase(Vector2i(from_col, from_row))
+	_plants[Vector2i(to_col, to_row)] = p
+	p.row = to_row
+	p.col = to_col
+	p.position = grid_to_world(to_row, to_col)
+	# A carrier's provision travels with it.
+	var provided: StringName = _cell_provides.get(Vector2i(from_col, from_row), &"")
+	if provided != &"":
+		_cell_provides.erase(Vector2i(from_col, from_row))
+		_cell_provides[Vector2i(to_col, to_row)] = provided
+	return true
 
 
 ## Digs up the plant in a cell, freeing the square. Returns false if empty.
@@ -286,6 +434,14 @@ func spawn_zombie(id: StringName, row: int, x_offset: float = 0.0) -> Zombie:
 ## A zombie on the threshold is caught by the lane's mower if one is left;
 ## otherwise the level is lost.
 func _on_zombie_reached_house(who: Zombie) -> void:
+	zombie_reached_house.emit(who)
+
+	# The world gets first refusal: a lawn with its own threshold rule - house
+	# health instead of mowers, say - consumes the zombie here.
+	for c in lawn_components:
+		if c.handle_zombie_at_house(who):
+			return
+
 	var m := mower_in_row(who.row)
 	if m != null and m.trigger():
 		mower_triggered.emit(who.row)
@@ -296,8 +452,10 @@ func _on_zombie_reached_house(who: Zombie) -> void:
 
 ## A zombie marked as carrying plant food drops it where it fell.
 func _on_carrier_died(who: Character) -> void:
-	if who is Zombie and who.has_tag(&"carrying_plantfood"):
-		drop_plant_food(who.position)
+	if who is Zombie:
+		zombie_died.emit(who)
+		if who.has_tag(&"carrying_plantfood"):
+			drop_plant_food(who.position)
 
 
 func _on_zombie_gone(who: Node) -> void:
@@ -379,6 +537,7 @@ func _add_sun_token(at: Vector2, rest_y: float) -> SunToken:
 
 func _on_sun_collected(token: Collectable) -> void:
 	add_sun(SunToken.VALUE)
+	sun_collected.emit(SunToken.VALUE)
 	Audio.play(&"sun.collect", token.position)
 
 
@@ -462,7 +621,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	var slot := int(selected_seed.get("slot", -1))
 	var row := world_to_row(at.y)
 	var col := world_to_col(at.x)
-	if not can_place_entity(kind, row, col):
+	if not can_place_entity(kind, id, row, col):
 		return
 	# A packet still recharging cannot be used, however much sun is banked.
 	if seed_bank != null and not seed_bank.is_recharged(slot):
@@ -488,6 +647,15 @@ func _draw() -> void:
 			var rect := Rect2(origin + Vector2(c * cell_size.x, r * cell_size.y), cell_size)
 			var light := (r + c) % 2 == 0
 			draw_rect(rect, lawn_light if light else lawn_dark, true)
+			# Terrain reads differently from plain ground at a glance.
+			var ground := terrain_def(r, c)
+			if ground != null:
+				var tint := Color("2d6f9e", 0.55)
+				if ground.blocks_planting:
+					tint = Color(0, 0, 0, 0.55)
+				draw_rect(rect, tint, true)
+				if cell_provides(r, c) != &"":
+					draw_rect(rect, Color("6ad46a", 0.3), true)
 			if locked:
 				draw_rect(rect, locked_lane_tint, true)
 	# House edge and the line zombies must not cross.

@@ -29,6 +29,8 @@ extends Node
 ##       plants/*.json
 ##       levels/*.json
 ##       components/*.gd     new behaviours, or overrides of built-in ones
+##       objectives/*.gd     new win/lose rules, or overrides
+##       lawn_components/*.gd  world-level behaviours and abilities
 ##       init.gd             optional hook, run after all data has loaded
 ##
 ## Registered as an autoload singleton named `Mods`, loaded before `Data`.
@@ -54,6 +56,8 @@ func _ready() -> void:
 	# Components must exist before Data reads entities that reference them.
 	for m in _apply_order():
 		_register_components(m)
+		_register_objectives(m)
+		_register_lawn_components(m)
 	mods_registered.emit(_priority)
 	if not _errors.is_empty():
 		for e in _errors:
@@ -216,8 +220,22 @@ func _read_manifests() -> Array[Dictionary]:
 
 
 func _register_components(manifest: Dictionary) -> void:
-	var comp_dir: String = String(manifest["root"]).path_join("components")
-	var dir := DirAccess.open(comp_dir)
+	_register_scripts(manifest, "components", Components.register)
+
+
+func _register_objectives(manifest: Dictionary) -> void:
+	_register_scripts(manifest, "objectives", Components.register_objective)
+
+
+func _register_lawn_components(manifest: Dictionary) -> void:
+	_register_scripts(manifest, "lawn_components", Components.register_lawn)
+
+
+## Registers every .gd in a pack's `subdir` under its file name.
+func _register_scripts(manifest: Dictionary, subdir: String,
+		register_fn: Callable) -> void:
+	var script_dir: String = String(manifest["root"]).path_join(subdir)
+	var dir := DirAccess.open(script_dir)
 	if dir == null:
 		return
 	var mod_id := StringName(manifest["id"])
@@ -225,11 +243,11 @@ func _register_components(manifest: Dictionary) -> void:
 	var fname := dir.get_next()
 	while fname != "":
 		if not dir.current_is_dir() and fname.ends_with(".gd"):
-			var script = load(comp_dir.path_join(fname))
+			var script = load(script_dir.path_join(fname))
 			if script is GDScript:
-				Components.register(StringName(fname.get_basename()), script, mod_id)
+				register_fn.call(StringName(fname.get_basename()), script, mod_id)
 			else:
-				_errors.append("%s/%s is not a GDScript" % [mod_id, fname])
+				_errors.append("%s/%s/%s is not a GDScript" % [mod_id, subdir, fname])
 		fname = dir.get_next()
 	dir.list_dir_end()
 

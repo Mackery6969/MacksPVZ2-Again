@@ -222,6 +222,15 @@ def split_plant(name, entry, prop_lookup):
     if components:
         out["components"] = components
 
+    tags = []
+    if name in AQUATIC_PLANTS:
+        tags.append("aquatic")
+    if name in CARRIER_PLANTS:
+        # "provides:<tag>" is what the board reads to mark a cell satisfied.
+        tags.append("provides:" + CARRIER_PLANTS[name])
+    if tags:
+        out["tags"] = tags
+
     if merged.get("MintBoostedProps"):
         mb = merged["MintBoostedProps"]
         out["mint_boost"] = {"resistance": mb.get("ResistanceMult"),
@@ -317,6 +326,59 @@ PLANTS_THAT_ARE_OBJECTS = {
     "zombiepotion_speed",
     "zombiepotion_toughness",
 }
+
+# Terrain the game needs but PVZGE does not ship as tiles. Big Wave Beach
+# water and Sky's open air are board properties there (BoardGridMapProps),
+# not entries in the tile list, so they are defined here instead - as data,
+# with the same rules, which is what lets one mechanism serve both.
+EXTRA_TERRAIN = {
+    "water": {
+        "category": "liquid",
+        "stats": {"requires_tag": "aquatic"},
+        "comment": "Only aquatic plants go here, or anything on a lily pad.",
+    },
+    "deep_water": {
+        "category": "liquid",
+        "stats": {"blocks_planting": True},
+        "comment": "Nothing can be planted in deep water.",
+    },
+    "sky_gap": {
+        "category": "tile",
+        "stats": {"requires_tag": "airborne"},
+        "comment": "Sky's open air - needs a plant that can sit on nothing, "
+                   "or a platform placed first.",
+    },
+    "sky_void": {
+        "category": "tile",
+        "stats": {"blocks_planting": True},
+        "comment": "Open air with no platform possible.",
+    },
+}
+
+# Terrain rules for tiles PVZGE ships without them. The rules are the same
+# shape for every case, which is the point: pool tiles and Sky's open air are
+# both "needs a tag", lava and craters are both "nothing here".
+TERRAIN_RULES = {
+    # Standing water, including the side-quest pothole pools.
+    "potholepool": {"requires_tag": "aquatic"},
+    "potholepuddle": {"requires_tag": "aquatic"},
+    # Lava and molten pools destroy anything placed in them.
+    "lava": {"blocks_planting": True},
+    "lava_mint": {"blocks_planting": True},
+    "lavaguava": {"blocks_planting": True},
+    "moltenpool": {"blocks_planting": True},
+    "moltenpool_mint": {"blocks_planting": True},
+    # The endangered tile holds the plant a level asks you to protect, so it
+    # is occupied rather than open.
+    "endangered": {"blocks_planting": True},
+}
+
+# Plants that cope with water, and the ones that make a cell viable for
+# others. A lily pad provides what water requires, which is the whole of the
+# rule - no special case for lily pads anywhere in the board code.
+AQUATIC_PLANTS = {"lilypad", "tanglekelp", "guacodile", "bowlingbulb",
+                  "rotobaga", "banana_launcher"}
+CARRIER_PLANTS = {"lilypad": "aquatic", "skyplatform": "airborne"}
 
 GRAVE_STATS = {
     "Toughness": "toughness",
@@ -459,6 +521,12 @@ def write_objects(data_dir, out_root):
         for src, dst in OBJECT_STATS.items():
             if merged.get(src) is not None:
                 stats[dst] = merged[src]
+        # Sliders carry a plant along the lane, which is behaviour rather than
+        # a placement rule, so they get a component instead of terrain flags.
+        if name.startswith("slider_"):
+            direction = "up" if "_up" in name else "down"
+            out["components"] = [{"type": "slide_tile", "direction": direction}]
+        stats.update(TERRAIN_RULES.get(name, {}))
         if stats:
             out["stats"] = stats
         rest = {k: v for k, v in merged.items() if k not in OBJECT_STATS}
@@ -480,6 +548,18 @@ def write_objects(data_dir, out_root):
         emit(name, merged, "liquid" if cls == "TileLiquidType" else "tile",
              "TileBasedOn")
 
+    for name, spec in sorted(EXTRA_TERRAIN.items()):
+        out = collections.OrderedDict()
+        out["id"] = name
+        if spec.get("comment"):
+            out["//"] = spec["comment"]
+        out["category"] = spec["category"]
+        out["stats"] = spec["stats"]
+        open(os.path.join(out_dir, f"{name}.json"), "w", encoding="utf-8").write(
+            json.dumps(out, ensure_ascii=False, indent=1))
+        manifest[name] = {"file": f"objects/{name}.json",
+                          "category": spec["category"]}
+
     for name in sorted(PLANTS_THAT_ARE_OBJECTS):
         entry = plant_props.get(name)
         if entry is None:
@@ -490,7 +570,8 @@ def write_objects(data_dir, out_root):
 
     json.dump(manifest, open(os.path.join(out_root, "objects.manifest.json"), "w"), indent=1)
     print(f"wrote {len(manifest)} object files "
-          f"({len(PLANTS_THAT_ARE_OBJECTS)} reclassified from plants)")
+          f"({len(PLANTS_THAT_ARE_OBJECTS)} reclassified from plants, "
+          f"{len(EXTRA_TERRAIN)} terrain types defined here)")
 
 
 def main():

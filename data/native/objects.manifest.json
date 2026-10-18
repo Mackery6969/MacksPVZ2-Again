@@ -227,6 +227,22 @@
   "file": "objects/thunder_trap.json",
   "category": "tile"
  },
+ "deep_water": {
+  "file": "objects/deep_water.json",
+  "category": "liquid"
+ },
+ "sky_gap": {
+  "file": "objects/sky_gap.json",
+  "category": "tile"
+ },
+ "sky_void": {
+  "file": "objects/sky_void.json",
+  "category": "tile"
+ },
+ "water": {
+  "file": "objects/water.json",
+  "category": "liquid"
+ },
  "zombiepotion_invisibility": {
   "file": "objects/zombiepotion_invisibility.json",
   "category": "potion"

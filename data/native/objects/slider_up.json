@@ -1,6 +1,12 @@
 {
  "id": "slider_up",
  "category": "tile",
+ "components": [
+  {
+   "type": "slide_tile",
+   "direction": "up"
+  }
+ ],
  "extra": {
   "Rect": "RTID(SliderTileRect@RectangleProps)"
  }

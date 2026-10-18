@@ -1,0 +1,6 @@
+{
+ "id": "dampener",
+ "family": "Defence",
+ "stats": {"sun_cost": 125, "toughness": 800, "cooldown": 12, "cooldown_from": 0.5},
+ "components": [{"type": "dampener_field", "radius": 2.0, "slow": 0.45}]
+}

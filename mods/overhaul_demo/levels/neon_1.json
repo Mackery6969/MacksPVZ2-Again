@@ -1,0 +1,77 @@
+{
+ "id": "neon_1",
+ "name": "Neon 1 - Overhaul Demo",
+ "number": 1,
+ "stage": "NeonStage",
+ "seedbank": {
+  "mode": "chooser",
+  "selection": "preset",
+  "preset": [
+   "peashooter",
+   "sunflower",
+   "dampener"
+  ]
+ },
+ "objectives": [
+  {
+   "type": "survive_waves"
+  },
+  {
+   "type": "no_synthetic_escape",
+   "tag": "synthetic"
+  },
+  {
+   "type": "no_plant_loss",
+   "allowed": 2
+  }
+ ],
+ "waves": [
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "neon_drone",
+     "row": 3
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "neon_drone",
+     "row": 2
+    },
+    {
+     "type": "neon_warden",
+     "row": 4
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "plantfood": 1,
+   "zombies": [
+    {
+     "type": "neon_colossus",
+     "row": 3
+    },
+    {
+     "type": "neon_drone",
+     "row": 1
+    },
+    {
+     "type": "neon_drone",
+     "row": 5
+    }
+   ]
+  }
+ ],
+ "mowers": true,
+ "sun": {
+  "interval": 5.0
+ },
+ "wave_pacing": {
+  "flag_interval": 3
+ }
+}

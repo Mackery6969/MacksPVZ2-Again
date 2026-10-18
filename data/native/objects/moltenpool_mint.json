@@ -1,6 +1,9 @@
 {
  "id": "moltenpool_mint",
  "category": "liquid",
+ "stats": {
+  "blocks_planting": true
+ },
  "extra": {
   "TileLiquidBasedOn": "moltenpool"
  }

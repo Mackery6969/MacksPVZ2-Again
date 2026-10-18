@@ -9,6 +9,11 @@ const TIME_SCALE := 25.0
 
 var _failures: Array[String] = []
 var _checks := 0
+## Sections that announced themselves, and the ones that ran to completion.
+## A GDScript runtime error aborts the calling function without failing the
+## run, so a section that starts and never finishes has to be caught here.
+var _sections_started: Array[String] = []
+var _sections_finished: Array[String] = []
 
 
 func _ready() -> void:
@@ -45,12 +50,28 @@ func _run() -> void:
 	_test_shovel()
 	await _test_conveyor_belt()
 	_test_audio()
+	await _test_objectives()
+	await _test_overhaul_scale_mod()
+	_test_simplified_level_schema()
+	_test_terrain_rules()
+	await _test_lawn_components()
 	await _test_natural_win_condition()
 	await _test_campaign_progression()
 	_test_modding()
 
 
 # --- checks --------------------------------------------------------------
+
+## Marks a test section as begun. Pair every call with `end_section`.
+func section(name: String) -> void:
+	print("\n[%s]" % name)
+	_sections_started.append(name)
+
+
+func end_section() -> void:
+	if not _sections_started.is_empty():
+		_sections_finished.append(_sections_started[-1])
+
 
 func check(label: String, condition: bool, detail: String = "") -> void:
 	_checks += 1
@@ -465,7 +486,7 @@ func _test_zombie_seed_packets() -> void:
 				board.zombies_in_row(1).has(placed))
 	# A lane takes any number of zombies, unlike a plant cell.
 	check("zombies do not block their cell",
-			board.can_place_entity(&"zombie", 1, 4))
+			board.can_place_entity(&"zombie", &"tutorial", 1, 4))
 	runner.queue_free()
 	board.queue_free()
 
@@ -862,7 +883,7 @@ func _test_shovel() -> void:
 	check("cell is occupied", board.plant_at(2, 3) != null)
 	check("shovel digs it up", board.dig_up(2, 3))
 	check("cell is free again", board.plant_at(2, 3) == null)
-	check("can replant there", board.can_place_entity(&"plant", 2, 3))
+	check("can replant there", board.can_place_entity(&"plant", &"peashooter", 2, 3))
 	check("digging an empty cell does nothing", not board.dig_up(2, 3))
 	board.queue_free()
 
@@ -995,6 +1016,329 @@ func _test_audio() -> void:
 	print("        (%d distinct events raised by the game)" % raised.size())
 
 
+## Objectives are the level's win/lose rules. The default keeps old levels
+## working; the rest are selectable from data.
+func _test_objectives() -> void:
+	section("objectives")
+	for t in [&"survive_waves", &"protect_plants", &"no_plant_loss",
+			&"sun_produced", &"kill_count"]:
+		check("built-in objective '%s'" % t, Components.has_objective(t))
+	check_eq("built-ins are owned by base",
+			Components.objective_owner_of(&"survive_waves"), &"base")
+
+	# A level that lists none still gets the default goal.
+	var board := _make_board()
+	var runner := LevelRunner.new()
+	add_child(runner)
+	runner.start(Data.level(&"tutorial_1"), board)
+	check_eq("default objective applied", runner.objectives.size(), 1)
+	check_eq("and it is survive_waves", runner.objectives[0].name, "survive_waves")
+
+	# A level can ask for several; all must be met.
+	runner.start({
+		"id": "obj_test",
+		"seedbank": {"mode": "chooser", "preset": ["peashooter"]},
+		"objectives": [{"type": "kill_count", "count": 2},
+					   {"type": "no_plant_loss", "allowed": 0}],
+		"waves": [],
+	}, board)
+	check_eq("level objectives built", runner.objectives.size(), 2)
+	var kills: Objective = runner.objectives[0]
+	check("kill_count starts unmet", not kills.is_met())
+	check("it reports progress", kills.describe().contains("0 / 2"))
+
+	# Killing zombies drives it through the board's signals, not polling.
+	for i in 2:
+		var z := board.spawn_zombie(&"tutorial", i)
+		z.take_damage(99999.0)
+	await get_tree().process_frame
+	check("kill_count met after two kills", kills.is_met(), kills.describe())
+
+	# A broken objective fails the level.
+	var guard: Objective = runner.objectives[1]
+	var plant := board.place_plant(&"peashooter", 2, 1)
+	check("plant placed for the guard objective", plant != null)
+	plant.take_damage(99999.0)
+	await get_tree().process_frame
+	check("no_plant_loss failed", guard.is_failed(), guard.describe())
+	end_section()
+	runner.queue_free()
+	board.queue_free()
+
+
+## The bar an overhaul-scale mod has to clear: a new world with its own lawn,
+## roster and music; new entities on a new archetype; new gimmicks; a new
+## objective keyed off a tag the pack invented; and its own campaign.
+func _test_overhaul_scale_mod() -> void:
+	section("overhaul-scale mod")
+	check("overhaul_demo is enabled", Mods.is_enabled(&"overhaul_demo"))
+
+	# 1. a new world
+	var lawn := Data.lawn(&"NeonStage")
+	check("mod added a lawn", not lawn.is_empty())
+	check_eq("with its own music track", lawn.get("music"), "Neon")
+	var roster: Dictionary = lawn.get("zombie_roster", {})
+	check("and its own zombie roster", roster.has("basic"))
+	check("its music event exists", Audio.has_event(&"music.lawn.neon"))
+
+	# 2. a new archetype, and entities inheriting from it
+	var drone := Data.zombie(&"neon_drone")
+	check("mod added a zombie", drone != null)
+	check("on a mod-defined archetype", drone != null and drone.has_tag(&"synthetic"))
+	check("archetype tags inherited", drone != null and drone.has_tag(&"chompable"))
+	check("base-only tags absent", drone != null and not drone.has_tag(&"swallowable"))
+
+	# A mod zombie extending another mod zombie.
+	var warden := Data.zombie(&"neon_warden")
+	check_eq("mod zombie extends a mod zombie", warden.extends_id, &"neon_drone")
+	check("inherited the archetype through the chain", warden.has_tag(&"synthetic"))
+	check_eq("overrode a stat", warden.toughness, 400.0)
+	check_eq("kept an inherited stat", warden.speed, 0.3)
+	check("added its own tag", warden.has_tag(&"shielded"))
+
+	# 3. new gimmick components, registered and running
+	check("gimmick registered", Components.has_type(&"pulse_aura"))
+	check_eq("owned by the pack", Components.owner_of(&"pulse_aura"), &"overhaul_demo")
+
+	var board := _make_board()
+	var victim := board.place_plant(&"peashooter", 2, 2)
+	var pulser := board.spawn_zombie(&"neon_warden", 2)
+	pulser.position.x = victim.position.x + 20.0
+	check("gimmick attached to the zombie", pulser.component(&"pulse_aura") != null)
+	var hp_before: float = victim.health
+	await _wait_game_seconds(4.0)
+	# The aura can finish the plant off, which counts as damage either way.
+	var hp_after: float = victim.health if is_instance_valid(victim) else 0.0
+	check("gimmick damaged a plant without eating it", hp_after < hp_before,
+			"%.0f -> %.0f" % [hp_before, hp_after])
+
+	# The other gimmick slows zombies, and must not leave them slowed when it dies.
+	var slower := board.place_plant(&"dampener", 4, 3)
+	check("mod plant placed", slower != null)
+	var runner_zombie := board.spawn_zombie(&"neon_drone", 4)
+	runner_zombie.position.x = slower.position.x + 40.0
+	var base_speed: float = runner_zombie.speed
+	await _wait_game_seconds(0.5)
+	check("gimmick slowed the zombie", runner_zombie.speed < base_speed,
+			"%.3f -> %.3f" % [base_speed, runner_zombie.speed])
+	check("and tagged it", runner_zombie.has_tag(&"dampened"))
+	slower.take_damage(99999.0)
+	await _wait_game_seconds(0.5)
+	check("speed restored when the plant died",
+			is_equal_approx(runner_zombie.speed, base_speed),
+			"%.3f vs %.3f" % [runner_zombie.speed, base_speed])
+
+	# 4. a new objective type, keyed off the pack's own tag
+	check("mod objective registered", Components.has_objective(&"no_synthetic_escape"))
+	check_eq("owned by the pack",
+			Components.objective_owner_of(&"no_synthetic_escape"), &"overhaul_demo")
+
+	var level := Data.level(&"neon_1")
+	check("mod level exists", not level.is_empty())
+	var runner := LevelRunner.new()
+	add_child(runner)
+	runner.start(level, board)
+	check_eq("level uses three objectives", runner.objectives.size(), 3)
+
+	var custom: Objective = null
+	for o in runner.objectives:
+		if o.name == "no_synthetic_escape":
+			custom = o
+	check("the custom objective is live", custom != null)
+	end_section()
+	if custom != null:
+		check("it starts met", custom.is_met())
+		# A synthetic zombie reaching the house must break it.
+		var escapee := board.spawn_zombie(&"neon_drone", 2)
+		board.zombie_reached_house.emit(escapee)
+		check("broken when a synthetic gets through", custom.is_failed(),
+				custom.describe())
+
+	# 5. its own campaign
+	var campaign := Data.campaign(&"neon")
+	check("mod added a campaign", campaign != null)
+	if campaign != null:
+		check_eq("with its level", campaign.first_level(), &"neon_1")
+		check("base campaign untouched", Data.campaign(&"tutorial") != null)
+
+	runner.queue_free()
+	board.queue_free()
+
+
+## Levels carry explicit options now, not a bag of PopCap module-name strings
+## the runner has to pattern-match.
+func _test_simplified_level_schema() -> void:
+	section("level schema")
+	var level := Data.level(&"tutorial_1")
+	check("no feature string bag", not level.has("features"))
+	check("mowers is an explicit flag", level.get("mowers") == true)
+	check("sun rate is explicit", (level.get("sun", {}) as Dictionary).has("interval"))
+	check_eq("and readable", (level.get("sun", {}) as Dictionary).get("interval"), 5.0)
+	check("recharge is explicit", level.has("seed_recharge"))
+	check("one name field, not three", level.has("name") and not level.has("comment"))
+	check("narrative hooks kept separately", level.has("scripts"))
+	check("pacing renamed from wave_settings", level.has("wave_pacing"))
+	check("and drops the count that duplicated waves",
+			not (level.get("wave_pacing", {}) as Dictionary).has("count"))
+
+	# The runner reads the fields rather than matching strings.
+	var board := _make_board()
+	var runner := LevelRunner.new()
+	add_child(runner)
+	runner.start(level, board)
+	check("runner sees mowers", runner.has_mowers())
+	check_eq("runner reads the recharge scale", runner.seed_recharge_scale(), 0.5)
+	check("mowers actually installed", board.has_mower(2))
+
+	runner.start(Data.level(&"tutorial_2"), board)
+	check_eq("a different level, a different sun rate", runner._sun_cycle(), 10.0)
+	end_section()
+	runner.queue_free()
+	board.queue_free()
+
+
+## Big Wave Beach water and Sky's open air are the same rule: a cell that
+## wants something before a plant can go in it.
+func _test_terrain_rules() -> void:
+	section("terrain")
+	check("water terrain exists", Data.board_object(&"water") != null)
+	check("sky gap terrain exists", Data.board_object(&"sky_gap") != null)
+	check_eq("water asks for an aquatic plant",
+			Data.board_object(&"water").requires_tag, &"aquatic")
+	check("deep water refuses everything",
+			Data.board_object(&"deep_water").blocks_planting)
+	check("lilypad is aquatic", Data.plant(&"lilypad").has_tag(&"aquatic"))
+	check("and provides what water wants",
+			Data.plant(&"lilypad").has_tag(&"provides:aquatic"))
+
+	var board := _make_board()
+	# Ordinary ground takes anything.
+	check("plain ground accepts a peashooter",
+			board.can_place_entity(&"plant", &"peashooter", 2, 1))
+
+	board.set_terrain(2, 4, &"water")
+	check_eq("terrain recorded", board.terrain_at(2, 4), &"water")
+	check("water refuses a land plant",
+			not board.can_place_entity(&"plant", &"peashooter", 2, 4))
+	check("and says why", board.placement_refusal(&"plant", &"peashooter", 2, 4)
+			.contains("aquatic"))
+	check("water accepts an aquatic plant",
+			board.can_place_entity(&"plant", &"lilypad", 2, 4))
+
+	# A lily pad makes the cell viable for a land plant - the carrier rule.
+	check("lilypad placed on water", board.place_plant(&"lilypad", 2, 4) != null)
+	check_eq("cell now satisfies water", board.cell_provides(2, 4), &"aquatic")
+
+	# Sky uses the identical mechanism with a different tag.
+	board.set_terrain(3, 6, &"sky_gap")
+	check("sky gap refuses a land plant",
+			not board.can_place_entity(&"plant", &"peashooter", 3, 6))
+	check("for the same reason, a missing tag",
+			board.placement_refusal(&"plant", &"peashooter", 3, 6).contains("airborne"))
+	board.set_terrain(4, 6, &"deep_water")
+	check("blocking terrain refuses even the right plant",
+			not board.can_place_entity(&"plant", &"lilypad", 4, 6))
+
+	# Zombies walk over terrain regardless.
+	check("zombies ignore terrain", board.can_place_entity(&"zombie", &"tutorial", 2, 4))
+	end_section()
+	board.queue_free()
+
+
+## A world can bring its own mechanics: passive fire, a triggerable ability,
+## and its own lose condition in place of mowers.
+func _test_lawn_components() -> void:
+	section("lawn components")
+	for t in [&"auto_turret", &"cannon_ability", &"house_health", &"terrain_layout"]:
+		check("built-in lawn component '%s'" % t, Components.has_lawn_component(t))
+
+	var lawn := Data.lawn(&"AerialStage")
+	check("mod added the world", not lawn.is_empty())
+	check_eq("and renamed it", lawn.get("display_name"), "Assault Airspace")
+
+	var board := _make_board()
+	var runner := LevelRunner.new()
+	add_child(runner)
+	runner.start(Data.level(&"airspace_1"), board)
+
+	# A rename must not require touching the levels that reference the stage.
+	check_eq("the runner reports the new name", runner.world_name(), "Assault Airspace")
+	check_eq("base worlds keep their own name",
+			LevelRunner.new().world_name(), "")
+
+	check_eq("world installed its components", board.lawn_components.size(), 4)
+	check("no mowers on this world", not board.has_mower(2))
+	check("terrain painted by the world", board.terrain_at(2, 7) == &"sky_gap")
+
+	# The passive half: the base chips away without the player doing anything.
+	var z := board.spawn_zombie(&"neon_drone", 2)
+	var hp: float = z.health
+	await _wait_game_seconds(3.0)
+	check("base fire damaged a zombie on its own",
+			not is_instance_valid(z) or z.health < hp)
+
+	# The ability half: charged, triggerable, then on cooldown.
+	var abilities := board.lawn_abilities()
+	check_eq("one triggerable ability", abilities.size(), 1)
+	var cannon: LawnComponent = abilities[0]
+	check("starts charged", cannon.can_activate())
+	check("HUD text says so", cannon.describe().contains("ready"))
+
+	# The cannon hits a band around the nearest zombie, not a chosen one, so
+	# assert on the board's total health rather than one victim.
+	board.spawn_zombie(&"neon_warden", 3)
+	var before := _total_hostile_health(board)
+	check("ability fired", board.activate_lawn_ability(0))
+	await get_tree().process_frame
+	check("and damaged the board", _total_hostile_health(board) < before,
+			"%.0f -> %.0f" % [before, _total_hostile_health(board)])
+	check("now on cooldown", not cannon.can_activate())
+	check("cooldown is reported", cannon.cooldown_fraction() > 0.9)
+	check("a second trigger is refused", not board.activate_lawn_ability(0))
+
+	# The lose condition: house health instead of mowers.
+	var house: LawnComponent = null
+	for c in board.lawn_components:
+		if c.name == "house_health":
+			house = c
+	check("world brought its own threshold rule", house != null)
+	if house != null:
+		var full: float = house.health
+		var lost := [false]
+		board.level_lost.connect(func(): lost[0] = true)
+		var leaker := board.spawn_zombie(&"neon_drone", 1)
+		board._on_zombie_reached_house(leaker)
+		check("house took damage instead of losing", house.health < full)
+		check("and the level is not over", not lost[0])
+		check("the zombie was consumed", not is_instance_valid(leaker) or leaker.is_dead)
+
+		# Drain it and the level ends.
+		house.health = 1.0
+		var finisher := board.spawn_zombie(&"neon_drone", 1)
+		board._on_zombie_reached_house(finisher)
+		check("level lost once the house is gone", lost[0])
+
+	# Dialogue speakers are data, so a world can use the boss box without Zomboss.
+	var talk := runner.dialogue()
+	check("level has dialogue", not talk.is_empty())
+	check_eq("with a custom speaker", talk.get("speaker"), "Commander Vex")
+	check_eq("reusing the boss box", talk.get("box"), "boss")
+	check_eq("base speakers still there", Data.speaker(&"zomboss").get("name"),
+			"Dr. Zomboss")
+	end_section()
+	runner.queue_free()
+	board.queue_free()
+
+
+## Combined health of every hostile zombie, for area-effect assertions.
+func _total_hostile_health(board: Board) -> float:
+	var total := 0.0
+	for row in board.rows:
+		for z in board.hostile_zombies_in_row(row):
+			total += z.health
+	return total
+
+
 # --- helpers -------------------------------------------------------------
 
 func _make_board() -> Board:
@@ -1012,6 +1356,13 @@ func _wait_game_seconds(seconds: float) -> void:
 
 
 func _report() -> void:
+	# A section that began and never ended means its function died partway.
+	for name in _sections_started:
+		if not _sections_finished.has(name):
+			_failures.append("section '%s' did not run to completion "
+					% name + "(a runtime error aborted it)")
+			_checks += 1
+
 	print("\n" + "=".repeat(52))
 	if _failures.is_empty():
 		print("ALL %d CHECKS PASSED" % _checks)

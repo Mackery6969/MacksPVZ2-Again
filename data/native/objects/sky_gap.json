@@ -1,0 +1,8 @@
+{
+ "id": "sky_gap",
+ "//": "Sky's open air - needs a plant that can sit on nothing, or a platform placed first.",
+ "category": "tile",
+ "stats": {
+  "requires_tag": "airborne"
+ }
+}

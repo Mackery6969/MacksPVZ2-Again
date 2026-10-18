@@ -9,6 +9,10 @@ extends Node
 
 signal wave_started(index: int, total: int)
 signal level_complete
+## An objective was broken. Distinct from the board's own loss, so a HUD can
+## say which rule failed.
+signal level_failed(objective: Objective)
+signal objectives_changed(objectives: Array)
 ## Emits the seed bank contents as an Array of {kind, id} dictionaries.
 signal seedbank_ready(seeds: Array)
 
@@ -54,7 +58,10 @@ var _wave_spawned_health: float = 0.0
 var _finished_spawning: bool = false
 var _sun_timer: float = 0.0
 ## Last value pushed to the music `stage` parameter, so it is only set on change.
-var _music_stage: int = 0
+var _music_stage: int = -1
+
+## The level's win/lose rules. Every one must be met to win; any failure loses.
+var objectives: Array[Objective] = []
 
 
 func start(level_def: Dictionary, target_board: Board) -> void:
@@ -74,15 +81,17 @@ func start(level_def: Dictionary, target_board: Board) -> void:
 	board.plantable_rows = open_rows
 
 	# Any *Mowers feature gives the lane a mower; which one is cosmetic.
-	board.mowers_enabled = has_mower_feature()
+	board.mowers_enabled = has_mowers()
 	board.setup_mowers()
+	board.setup_lawn(lawn_data(), self)
 	board.queue_redraw()
 
-	var settings: Dictionary = level.get("wave_settings", {})
-	if settings.has("first_delay"):
-		_timer = float(settings["first_delay"])
+	var pacing: Dictionary = level.get("wave_pacing", {})
+	if pacing.has("first_delay"):
+		_timer = float(pacing["first_delay"])
 
-	_music_stage = 0
+	_build_objectives()
+	_music_stage = -1
 	Audio.play_music(music_event())
 	_update_music_stage()
 	seedbank_ready.emit(seedbank_seeds())
@@ -111,13 +120,20 @@ func seedbank_seeds() -> Array:
 	return out
 
 
-## Levels name their mowers by stage - TutorialMowers, FrontLawnMowers,
-## ModernMowers and so on - so the suffix is what matters, not the exact name.
-func has_mower_feature() -> bool:
-	for f in (level.get("features", []) as Array):
-		if String(f).ends_with("Mowers"):
-			return true
-	return false
+## Whether this level parks lawn mowers. An explicit field, rather than a
+## string match against someone else's module names.
+func has_mowers() -> bool:
+	return bool(level.get("mowers", false))
+
+
+## How much to scale seed recharge by; 1.0 unless the level shortens it.
+func seed_recharge_scale() -> float:
+	return float(level.get("seed_recharge", 1.0))
+
+
+## Narrative and tutorial hooks this level asks for, by name.
+func scripts() -> Array:
+	return level.get("scripts", [])
 
 
 ## Music for this level.
@@ -129,20 +145,55 @@ func music_event() -> StringName:
 	return id if Audio.has_event(id) else &"music.lawn.tutorial"
 
 
+## This level's stage data.
+func lawn_data() -> Dictionary:
+	return Data.lawn(StringName(level.get("stage", "")))
+
+
 ## The PVZGE track name for this level's stage, e.g. "Tutorial", "Egypt".
 func music_track() -> String:
-	var lawn := Data.lawn(StringName(level.get("stage", "")))
+	var lawn := lawn_data()
 	return lawn.get("music", "Tutorial") if not lawn.is_empty() else "Tutorial"
 
 
-## PvZ2 escalates its music in four stages as a level progresses. FMOD drives
+## The level's opening dialogue as {speaker_name, box, lines}, or empty.
+## Resolved through the speaker registry, so who talks is data.
+func dialogue() -> Dictionary:
+	var spec: Dictionary = level.get("dialogue", {})
+	if spec.is_empty():
+		return {}
+	var who := Data.speaker(StringName(spec.get("speaker", &"")))
+	return {
+		"speaker": who.get("name", String(spec.get("speaker", "?"))),
+		"portrait": who.get("portrait", ""),
+		"box": who.get("dialogue_box", "standard"),
+		"lines": spec.get("lines", []),
+	}
+
+
+## What this world is called. A pack renaming a world sets `display_name` on
+## the lawn, which is how Aerial Fortress becomes Assault Airspace without the
+## stage id - and every level referencing it - having to change.
+func world_name() -> String:
+	var lawn := lawn_data()
+	var shown: String = lawn.get("display_name", "")
+	if shown != "":
+		return shown
+	# Fall back to the stage id, minus the "Stage" suffix.
+	return String(level.get("stage", "")).trim_suffix("Stage")
+
+
+## PvZ2 escalates its music in four phases as a level progresses. FMOD drives
 ## that from a parameter rather than by swapping tracks, so the intro/loop
 ## structure survives the transition.
+##
+## Zero-based, because that is what the Studio project's parameter conditions
+## match on (0..3). The sound design owns that contract, not this code.
 func music_stage() -> int:
 	if waves.is_empty():
-		return 1
+		return 0
 	var progress := float(maxi(wave_index, 0)) / float(waves.size())
-	return clampi(int(progress * MUSIC_STAGES) + 1, 1, MUSIC_STAGES)
+	return clampi(int(progress * MUSIC_STAGES), 0, MUSIC_STAGES - 1)
 
 
 func _update_music_stage() -> void:
@@ -152,6 +203,59 @@ func _update_music_stage() -> void:
 		Audio.set_parameter(&"stage", float(stage))
 
 
+## Builds the level's objectives. A level that lists none gets the default
+## goal - outlast the waves - so existing levels keep working.
+func _build_objectives() -> void:
+	for o in objectives:
+		o.queue_free()
+	objectives.clear()
+
+	var specs: Array = level.get("objectives", [])
+	if specs.is_empty():
+		specs = [{"type": "survive_waves"}]
+	for spec in specs:
+		if not (spec is Dictionary):
+			continue
+		var obj := Components.create_objective(spec, self, board)
+		if obj == null:
+			continue
+		add_child(obj)
+		objectives.append(obj)
+		obj.progress_changed.connect(func(_o): objectives_changed.emit(objectives))
+		obj.setup()
+
+	_connect_board_events()
+	objectives_changed.emit(objectives)
+
+
+## Forwards board events to the objectives, so they never poll.
+func _connect_board_events() -> void:
+	for pair in [["zombie_died", "on_zombie_died"],
+			["plant_died", "on_plant_died"],
+			["sun_collected", "on_sun_collected"],
+			["zombie_reached_house", "on_zombie_reached_house"]]:
+		var sig: StringName = pair[0]
+		var hook: StringName = pair[1]
+		var fn := Callable(self, "_fanout").bind(hook)
+		if not board.is_connected(sig, fn):
+			board.connect(sig, fn)
+
+
+func _fanout(arg: Variant, hook: StringName) -> void:
+	for o in objectives:
+		o.call(hook, arg)
+
+
+## Progress lines for the HUD, one per objective that reports any.
+func objective_lines() -> Array[String]:
+	var out: Array[String] = []
+	for o in objectives:
+		var text := o.describe()
+		if text != "":
+			out.append(("[x] " if o.is_met() else ("[!] " if o.is_failed() else "")) + text)
+	return out
+
+
 ## True when this level's seeds arrive on a conveyor belt rather than from a
 ## fixed set of chooser slots.
 func is_conveyor() -> bool:
@@ -159,14 +263,10 @@ func is_conveyor() -> bool:
 			.get("mode", "chooser")) == "conveyor"
 
 
-## True when the current level lists `name` among its optional modules.
-func has_feature(name: String) -> bool:
-	return (level.get("features", []) as Array).has(name)
-
-
-## Sun rate for this level, from its feature list.
+## Sun rate for this level, from its own `sun` block.
 func _sun_cycle() -> float:
-	return fast_sun_interval if has_feature("FastSunDropper") else sun_interval
+	var sun: Dictionary = level.get("sun", {})
+	return float(sun.get("interval", sun_interval))
 
 
 ## Halts the level without clearing the board, so a result can be shown.
@@ -183,10 +283,23 @@ func _process(delta: float) -> void:
 		board.drop_sun_from_sky()
 		_sun_timer = _sun_cycle()
 
-	if _finished_spawning:
-		if board.zombie_count() == 0:
+	# Objectives own the outcome: all met wins, any broken loses.
+	for o in objectives:
+		if o.is_failed():
+			running = false
+			level_failed.emit(o)
+			return
+	if not objectives.is_empty():
+		var all_met := true
+		for o in objectives:
+			if not o.is_met():
+				all_met = false
+				break
+		if all_met:
 			running = false
 			level_complete.emit()
+			return
+	if _finished_spawning:
 		return
 
 	_timer -= delta
@@ -214,19 +327,23 @@ func _advance_wave() -> void:
 	wave_index += 1
 	if wave_index >= waves.size():
 		_finished_spawning = true
+		for o in objectives:
+			o.on_all_waves_spawned()
 		return
 
 	_wave_spawned_health = 0.0
 	_run_action(waves[wave_index])
 	wave_started.emit(wave_index + 1, waves.size())
 	_update_music_stage()
-	var settings_flag: int = int((level.get("wave_settings", {}) as Dictionary)
+	for o in objectives:
+		o.on_wave_started(wave_index + 1, waves.size())
+	var settings_flag: int = int((level.get("wave_pacing", {}) as Dictionary)
 			.get("flag_interval", 0))
 	var is_flag := settings_flag > 0 and (wave_index + 1) % settings_flag == 0
 	Audio.play(&"wave.huge" if is_flag else &"wave.start")
 
-	var settings: Dictionary = level.get("wave_settings", {})
-	_timer = float(settings.get("wave_gap", wave_gap))
+	var pacing: Dictionary = level.get("wave_pacing", {})
+	_timer = float(pacing.get("gap", wave_gap))
 
 
 func _run_action(action: Dictionary) -> void:

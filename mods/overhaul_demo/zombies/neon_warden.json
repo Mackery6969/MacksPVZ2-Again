@@ -1,0 +1,8 @@
+{
+ "id": "neon_warden",
+ "extends": "neon_drone",
+ "stats": {"toughness": 400, "wave_cost": 300},
+ "tags": {"add": ["shielded"]},
+ "components": [{"type": "armor", "armor": "modern_armor2"},
+                {"type": "pulse_aura", "radius": 1.5, "interval": 3.0, "damage": 25}]
+}

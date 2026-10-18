@@ -1,0 +1,6 @@
+{
+ "id": "neon",
+ "kind": "zombie_archetype",
+ "tags": ["chompable", "hypnotizable", "knockbackable", "sporeable",
+          "homing_targetable", "warpable", "zomboss_damageable", "synthetic"]
+}

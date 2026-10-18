@@ -1,0 +1,7 @@
+{
+ "id": "neon_drone",
+ "extends": "neon",
+ "stats": {"toughness": 220, "speed": 0.3, "eat_dps": 90, "wave_cost": 120, "weight": 900},
+ "sort": "Normal",
+ "components": [{"type": "hit_rect", "rect": "CommonHitRect"}]
+}

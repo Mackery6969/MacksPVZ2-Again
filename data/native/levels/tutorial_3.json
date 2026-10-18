@@ -1,7 +1,7 @@
 {
  "id": "tutorial_3",
- "comment": "Tutorial 3",
- "name": "[TUTORIAL_LEVEL_NAME]",
+ "name": "Tutorial 3",
+ "name_key": "[TUTORIAL_LEVEL_NAME]",
  "description": "[PLAYERS_HOUSE]",
  "number": 3,
  "stage": "TutorialStage",
@@ -57,21 +57,20 @@
    ]
   }
  ],
- "wave_settings": {
-  "count": 3,
+ "wave_pacing": {
   "flag_interval": 3,
   "points": 100,
   "point_increment": 10,
   "next_wave_health_min": 0.6,
   "next_wave_health_max": 0.75
  },
- "features": [
-  "DefaultZombieWinCondition",
-  "FastSunDropper",
-  "SeedPacketHalfTimeModule",
+ "sun": {
+  "interval": 5.0
+ },
+ "seed_recharge": 0.5,
+ "mowers": true,
+ "scripts": [
   "StandardIntro",
-  "TutorialMowers",
-  "TutorialPeashooterDeath",
-  "ZombiesDeadWinCon"
+  "TutorialPeashooterDeath"
  ]
 }

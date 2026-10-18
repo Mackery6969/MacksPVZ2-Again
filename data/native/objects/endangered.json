@@ -1,6 +1,9 @@
 {
  "id": "endangered",
  "category": "tile",
+ "stats": {
+  "blocks_planting": true
+ },
  "extra": {
   "Rect": "RTID(TileDefaultRect@RectangleProps)"
  }

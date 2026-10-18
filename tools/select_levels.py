@@ -46,7 +46,7 @@ def main():
         # Levels without a number are the level-of-the-day variants; skip them.
         if level.get("number") is None:
             continue
-        if match and match.lower() not in (level.get("comment") or "").lower():
+        if match and match.lower() not in (level.get("name") or "").lower():
             continue
         candidates.append(level)
 
@@ -61,7 +61,7 @@ def main():
         if prefix:
             name = f"{prefix}_{number}.json"
         else:
-            slug = slugify(level.get("comment"), f"level_{number}")
+            slug = slugify(level.get("name"), f"level_{number}")
             name = f"{slug}.json"
             if name in used:
                 # "Tutorial 1" is reused as a title by a later level.
@@ -76,6 +76,12 @@ def main():
         seeds = (level.get("seedbank") or {}).get("preset")
         rows = level.get("plantable_rows")
         extras = []
+        if level.get("mowers"):
+            extras.append("mowers")
+        if level.get("sun"):
+            extras.append("sun=%s" % level["sun"].get("interval"))
+        if level.get("seed_recharge"):
+            extras.append("recharge=%s" % level["seed_recharge"])
         if rows:
             extras.append(f"lanes={rows}")
         if level.get("tutorial_script"):

@@ -1,0 +1,55 @@
+{
+ "id": "airspace_1",
+ "name": "Airspace 1",
+ "number": 1,
+ "stage": "AerialStage",
+ "dialogue": {
+  "speaker": "airspace_commander",
+  "lines": [
+   "The base guns are live. Use the cannon when they cluster."
+  ]
+ },
+ "seedbank": {
+  "mode": "chooser",
+  "selection": "preset",
+  "preset": [
+   "peashooter",
+   "sunflower"
+  ]
+ },
+ "objectives": [
+  {
+   "type": "survive_waves"
+  }
+ ],
+ "waves": [
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "neon_drone",
+     "row": 3
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "neon_drone",
+     "row": 2
+    },
+    {
+     "type": "neon_warden",
+     "row": 4
+    }
+   ]
+  }
+ ],
+ "sun": {
+  "interval": 5.0
+ },
+ "wave_pacing": {
+  "flag_interval": 2
+ }
+}

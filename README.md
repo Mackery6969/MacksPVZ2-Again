@@ -21,6 +21,8 @@ zero zombie files.
 ```
 core/
   audio/        Audio - named events over a swappable backend (FMOD/Godot/silent)
+  lawn/         LawnComponent - world-level mechanics and abilities
+  objectives/   Objective - a level's win and lose rules, as data
   data/         DataRegistry - loads entities, resolves inheritance, layers mods
   entity/       Character -> Plant / Zombie  (the inheritance spine)
   components/   EntityComponent + ComponentRegistry  (the composition half)
@@ -81,7 +83,10 @@ under `extra`, so no import loses data. Coverage is currently ~89%.
 ## Status
 
 Working: data pipeline, mod system (data + script overrides), typed resource
-definitions, campaign progression (clear a level to advance, fail to retry),
+definitions, data-driven objectives, world-level mechanics (passive and
+player-triggered abilities, house health in place of mowers), shared terrain
+rules covering Beach water and Sky air, campaign progression (clear a level to
+advance, fail to retry),
 grid and planting with per-lane restrictions, seed packet costs and recharge,
 lawn mowers, plant food (carriers, pickups, per-component boosts), conveyor
 seed belts, shovel, fast forward, rebindable input actions, a named-event audio

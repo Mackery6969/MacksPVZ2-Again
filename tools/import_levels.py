@@ -167,7 +167,7 @@ def conv_waves(lvl, wave_mgr_props):
             waves.append({"kind": "multi", "actions": actions})
 
     settings = {}
-    for src, dst in [("WaveCount", "count"), ("FlagWaveInterval", "flag_interval"),
+    for src, dst in [("FlagWaveInterval", "flag_interval"),
                      ("WaveSpendingPoints", "points"),
                      ("WaveSpendingPointIncrement", "point_increment"),
                      ("SuppressFlagZombie", "suppress_flag"),
@@ -191,7 +191,7 @@ def attach_waves(lvl, out, d):
     waves, settings = conv_waves(lvl, wm)
     out["waves"] = waves
     if settings:
-        out.setdefault("wave_settings", {}).update(settings)
+        out.setdefault("wave_pacing", {}).update(settings)
 
 
 def conv_seedbank(obj):
@@ -224,6 +224,29 @@ def conv_seedbank(obj):
     if d.get("CardDecks"):
         sb["decks"] = [strip_rtid(x) for x in d["CardDecks"]]
     return sb
+
+
+## Star challenge -> objective entry. Unmapped kinds keep their parameters so
+## the information survives until an objective type exists for them.
+CHALLENGE_OBJECTIVES = {
+    "BeatTheLevel": "survive_waves",
+    "SunProduced": "sun_produced",
+    "ZombieDistance": "zombie_distance",
+    "SimultaneousPlants": "simultaneous_plants",
+}
+
+
+def challenge_to_objective(challenge):
+    kind = str(challenge.get("type", ""))
+    obj = {"type": CHALLENGE_OBJECTIVES.get(kind, "challenge:" + kind)}
+    for src, dst in [("count", "count"), ("amount", "amount"),
+                     ("distance", "distance"), ("max_plants", "max_plants"),
+                     ("sun_produced", "amount"), ("description", "description")]:
+        if challenge.get(src) is not None:
+            obj[dst] = challenge[src]
+    if challenge.get("params"):
+        obj["params"] = challenge["params"]
+    return obj
 
 
 def conv_preset_plant(p):
@@ -297,8 +320,10 @@ def handle_module(lvl, out, obj):
         if d.get("ChallengesAlwaysAvailable") or d.get("ChallengeAlwaysAvailable"):
             src = d.get("ChallengesAlwaysAvailable") or d.get("ChallengeAlwaysAvailable")
             ch += [conv_challenge(lvl, c) for c in (src if isinstance(src, list) else [src])]
-        if ch:
-            out["challenges"] = ch
+        # A star challenge IS an objective; keeping both would be two names for
+        # one idea.
+        for c in ch:
+            out.setdefault("objectives", []).append(challenge_to_objective(c))
         if d.get("Difficulties"):
             out["difficulties"] = d["Difficulties"]
 
@@ -373,6 +398,37 @@ def handle_module(lvl, out, obj):
     return True
 
 
+# PopCap ships level options as a bag of module name strings. Only a few mean
+# anything mechanically, and matching on strings at runtime is how a schema
+# ends up a 1:1 copy of someone else's. They are translated into explicit
+# fields here; the rest are kept as `scripts` so nothing is lost.
+SUN_INTERVALS = {"FastSunDropper": 5.0, "DefaultSunDropper": 10.0,
+                 "SlowSunDropper": 15.0}
+# Win conditions are objectives now, so these carry no information.
+REDUNDANT_FEATURES = {"ZombiesDeadWinCon", "DefaultZombieWinCondition"}
+
+
+def translate_features(features):
+    """-> (explicit option fields, leftover script hooks)."""
+    options = {}
+    scripts = []
+    for name in features:
+        if name in REDUNDANT_FEATURES:
+            continue
+        if name.endswith("Mowers"):
+            options["mowers"] = True
+            continue
+        if name in SUN_INTERVALS:
+            options["sun"] = {"interval": SUN_INTERVALS[name]}
+            continue
+        if name == "SeedPacketHalfTimeModule":
+            options["seed_recharge"] = 0.5
+            continue
+        # Narrative and tutorial hooks are behaviour, not options.
+        scripts.append(name)
+    return options, scripts
+
+
 def convert(payload, source):
     lvl = Level(payload, source)
     if not lvl.definition:
@@ -382,9 +438,12 @@ def convert(payload, source):
 
     out = collections.OrderedDict()
     out["id"] = os.path.basename(source).replace(".json", "")
-    if lvl.comment:
-        out["comment"] = lvl.comment
-    out["name"] = dd.get("Name")
+    # One name, not three. The comment is the human-readable one where there
+    # is one; the localisation key is kept as `name_key`.
+    name_key = dd.get("Name")
+    out["name"] = lvl.comment or name_key or out["id"]
+    if name_key and name_key != out["name"]:
+        out["name_key"] = name_key
     if dd.get("Description"):
         out["description"] = dd["Description"]
     if dd.get("WrittenBy"):
@@ -416,8 +475,10 @@ def convert(payload, source):
             unmodelled.append({"objclass": obj.get("objclass"),
                                "aliases": obj.get("aliases"),
                                "objdata": obj.get("objdata") or {}})
-    if features:
-        out["features"] = sorted(set(features))
+    options, scripts = translate_features(sorted(set(features)))
+    out.update(options)
+    if scripts:
+        out["scripts"] = scripts
 
     # Sweep any remaining top-level modules the Modules list did not name.
     for o in lvl.objects:

@@ -1,0 +1,8 @@
+{
+ "id": "sky_void",
+ "//": "Open air with no platform possible.",
+ "category": "tile",
+ "stats": {
+  "blocks_planting": true
+ }
+}

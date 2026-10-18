@@ -1,0 +1,9 @@
+{
+ "id": "neon",
+ "name": "Neon District",
+ "completion_message": "Neon District complete!",
+ "levels": [
+  "neon_1",
+  "airspace_1"
+ ]
+}

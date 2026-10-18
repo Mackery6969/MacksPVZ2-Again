@@ -113,6 +113,36 @@
    "id": "music.lose.tutorial",
    "fmod": "event:/Music/Lose/Playerhouse",
    "music": true
+  },
+  {
+   "id": "lawn.turret",
+   "fmod": "event:/SFX/Board/BaseTurret"
+  },
+  {
+   "id": "lawn.cannon",
+   "fmod": "event:/SFX/Board/BaseCannon"
+  },
+  {
+   "id": "lawn.ability.refuse",
+   "fmod": "event:/SFX/UI/Refuse"
+  },
+  {
+   "id": "lawn.house.hit",
+   "fmod": "event:/SFX/Board/BaseHit"
+  },
+  {
+   "id": "music.zengarden",
+   "fmod": "event:/Music/ZenGarden",
+   "music": true,
+   "//": "A shuffled playlist of 18 short pieces with a gap between them, not a loop. In Studio this wants a multi instrument set to shuffle, not a looping timeline."
+  },
+  {
+   "id": "ui.fastforward.on",
+   "fmod": "event:/SFX/UI/FastForwardOn"
+  },
+  {
+   "id": "ui.fastforward.off",
+   "fmod": "event:/SFX/UI/FastForwardOff"
   }
  ]
 }

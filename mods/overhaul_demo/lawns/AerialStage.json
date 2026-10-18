@@ -1,0 +1,46 @@
+{
+ "//": "A world renamed and re-mechanised the way Reflourished turns Aerial Fortress into Assault Airspace. Base Aerial Fortress has neither the cannon nor these exact numbers - the cannon is a mod addition, shown here to prove a pack can add a triggerable world ability. Mowers are replaced by house health, which is how Sky actually works, and the outer columns are open air, which uses the same terrain rule as Big Wave Beach water.",
+ "id": "AerialStage",
+ "display_name": "Assault Airspace",
+ "music": "Sky",
+ "mower": "mower_modern",
+ "night": false,
+ "zombie_roster": {
+  "basic": [
+   "neon_drone"
+  ],
+  "armor1": [
+   "neon_warden"
+  ]
+ },
+ "components": [
+  {
+   "type": "auto_turret",
+   "interval": 2.0,
+   "damage": 8,
+   "targets": 1
+  },
+  {
+   "type": "cannon_ability",
+   "damage": 900,
+   "cooldown": 25,
+   "radius": 1.5,
+   "ready_at_start": true
+  },
+  {
+   "type": "house_health",
+   "max_health": 500,
+   "use_zombie_weight": true
+  },
+  {
+   "type": "terrain_layout",
+   "columns": [
+    {
+     "terrain": "sky_gap",
+     "from": 7,
+     "to": 8
+    }
+   ]
+  }
+ ]
+}
