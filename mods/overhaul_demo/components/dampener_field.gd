@@ -42,3 +42,8 @@ func _restore(z) -> void:
 func _on_host_died(_who) -> void:
 	for z in _slowed.duplicate():
 		_restore(z)
+
+
+## Digging the plant up frees it without dying, so restore on removal too.
+func _exit_tree() -> void:
+	_on_host_died(host)
