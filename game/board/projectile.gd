@@ -55,7 +55,8 @@ func _check_hit(from_x: float, to_x: float) -> bool:
 			best = z
 	if best == null:
 		return false
-	best.take_damage(damage, source)
+	# The shooter may have been eaten or dug up while this was in flight.
+	best.take_damage(damage, source if is_instance_valid(source) else null)
 	queue_free()
 	return true
 
