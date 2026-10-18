@@ -10,7 +10,12 @@
  },
  "components": [
   {
-   "type": "explosive"
+   "type": "explosive",
+   "damage": 1800
+  },
+  {
+   "type": "mint_buff",
+   "duration": 16
   }
  ],
  "mint_boost": {
@@ -20,11 +25,9 @@
  },
  "extra": {
   "CannotBeSheepenedByWizard": true,
-  "ExplosionDamage": 1800,
   "ExplosionInterval": 0.25,
   "ExplosionTime": 3,
   "ImmuneToBoomBox": true,
-  "ImmuneToIceblock": true,
-  "Lifespan": 16
+  "ImmuneToIceblock": true
  }
 }

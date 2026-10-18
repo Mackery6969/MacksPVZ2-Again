@@ -8,11 +8,6 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 500
  },
- "components": [
-  {
-   "type": "blocker"
-  }
- ],
  "mint_boost": {
   "resistance": 3,
   "speed": 1,

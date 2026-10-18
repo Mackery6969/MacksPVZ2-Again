@@ -96,6 +96,30 @@ func slots_are_stable() -> bool:
 	return true
 
 
+## Charge per slot, so a resumed level does not hand back full packets.
+func snapshot() -> Array:
+	var out: Array = []
+	for p in packets:
+		out.append({"kind": String(p.kind), "id": String(p.id),
+				"charge": p.charge})
+	return out
+
+
+func apply_snapshot(state: Array) -> void:
+	# Matched by id rather than position, so a level whose seed list changed
+	# between save and load restores what it still has.
+	for entry in state:
+		if not (entry is Dictionary):
+			continue
+		var slot := slot_of(StringName(entry.get("kind", &"plant")),
+				StringName(entry.get("id", &"")))
+		var p := packet(slot)
+		if p != null:
+			p.charge = clampf(float(entry.get("charge", p.recharge)),
+					0.0, p.recharge)
+	changed.emit()
+
+
 func slot_of(kind: StringName, id: StringName) -> int:
 	for i in packets.size():
 		if packets[i].kind == kind and packets[i].id == id:

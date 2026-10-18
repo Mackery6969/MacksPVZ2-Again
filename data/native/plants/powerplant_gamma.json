@@ -8,6 +8,12 @@
   "cooldown_from": 0.8,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "tile_placer",
+   "tile": "powertile_gamma"
+  }
+ ],
  "extra": {
   "CannotBeSheepenedByWizard": true,
   "ImmuneToIceblock": true,
@@ -19,7 +25,6 @@
    2000,
    4000,
    8000
-  ],
-  "TileType": "powertile_gamma"
+  ]
  }
 }

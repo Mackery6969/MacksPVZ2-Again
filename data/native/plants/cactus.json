@@ -8,6 +8,15 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "cactus",
+   "interval": 1.35,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "cactus_pf"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
@@ -15,12 +24,8 @@
  },
  "extra": {
   "MintDamageFactor": 5,
-  "PeaType": "cactus",
-  "PeaTypePlantfood": "cactus_pf",
   "PierceCount": 3,
   "PierceCountAdditional": 1,
-  "ShootInterval": 1.35,
-  "ShootIntervalAdditional": 0.15,
   "StabDamage": 10,
   "StabDamagePlantfood": 20,
   "StabInterval": 0.5

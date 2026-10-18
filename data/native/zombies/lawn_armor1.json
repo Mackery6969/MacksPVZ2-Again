@@ -1,4 +1,7 @@
 {
  "id": "lawn_armor1",
- "extends": "normal"
+ "extends": "normal",
+ "stats": {
+  "sun_cost": 50
+ }
 }

@@ -8,6 +8,15 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 2500
  },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "snowdrop",
+   "interval": 2.025,
+   "interval_jitter": 0.225,
+   "projectile_plantfood": "snowdrop_freeze"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
@@ -15,13 +24,9 @@
  },
  "extra": {
   "ButterType": "snowdrop_freeze",
-  "CabbageType": "snowdrop",
-  "CabbageTypePlantfood": "snowdrop_freeze",
   "ChanceToButter": 0.3,
   "DetectsTNTSpark": true,
   "ImmuneToIceblock": true,
-  "MintChanceToButterFactor": 3,
-  "ThrowInterval": 2.025,
-  "ThrowIntervalAdditional": 0.225
+  "MintChanceToButterFactor": 3
  }
 }

@@ -8,6 +8,14 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "pea_flame_yellow",
+   "interval": 1.35,
+   "interval_jitter": 0.15
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
@@ -15,12 +23,9 @@
  },
  "extra": {
   "ImmuneToIceblock": true,
-  "PeaType": "pea_flame_yellow",
   "PlantfoodDamageInterval": 0.25,
   "PlantfoodDamagePerHit": 80,
   "PlantfoodDuration": 5,
-  "ShootInterval": 1.35,
-  "ShootIntervalAdditional": 0.15,
   "WarmingRadius": {
    "GridItemDamage": 200,
    "PulseCooldown": 6,

@@ -3,6 +3,12 @@
 A moddable reimplementation of PVZGE in Godot 4.7, built around data-driven
 content and composable behaviour rather than a 1:1 port of the original code.
 
+> **Unofficial fan work.** Not developed, authorised or endorsed by PopCap
+> Games or Electronic Arts. *Plants vs. Zombies* and all game assets belong to
+> Electronic Arts / PopCap Games; see `Music/COPYRIGHT.md`. PVZGE's own web
+> build is GPL-3.0, and its User Agreement prohibits separately distributing
+> game assets. Please support the official release.
+
 ## Why not a straight port
 
 PVZGE is a Cocos Creator build whose `Zombie.ts` is a 92KB god-class with 331
@@ -21,6 +27,7 @@ zero zombie files.
 ```
 core/
   audio/        Audio - named events over a swappable backend (FMOD/Godot/silent)
+  save/         Saves - per-level save slots and campaign progress
   lawn/         LawnComponent - world-level mechanics and abilities
   objectives/   Objective - a level's win and lose rules, as data
   data/         DataRegistry - loads entities, resolves inheritance, layers mods
@@ -87,7 +94,10 @@ definitions, data-driven objectives, world-level mechanics (passive and
 player-triggered abilities, house health in place of mowers), shared terrain
 rules covering Beach water and Sky air, campaign progression (clear a level to
 advance, fail to retry),
-grid and planting with per-lane restrictions, seed packet costs and recharge,
+per-level save slots with autosave and resume, I-Zombie placement costs,
+15 plant behaviours covering 157 of 214 plants, zombie status effects
+(stun/slow/freeze) and buffs, grid and planting with per-lane restrictions,
+seed packet costs and recharge,
 lawn mowers, plant food (carriers, pickups, per-component boosts), conveyor
 seed belts, shovel, fast forward, rebindable input actions, a named-event audio
 layer ready for FMOD, sun economy with

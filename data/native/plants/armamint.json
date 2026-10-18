@@ -10,7 +10,12 @@
  },
  "components": [
   {
-   "type": "lobber"
+   "type": "shooter",
+   "projectile": "armamint"
+  },
+  {
+   "type": "mint_buff",
+   "duration": 12
   }
  ],
  "mint_boost": {
@@ -22,9 +27,7 @@
   "CannotBeSheepenedByWizard": true,
   "ImmuneToBoomBox": true,
   "ImmuneToIceblock": true,
-  "Lifespan": 12,
   "ProjectileCount": 5,
-  "ProjectileInterval": 0.25,
-  "ProjectileType": "armamint"
+  "ProjectileInterval": 0.25
  }
 }

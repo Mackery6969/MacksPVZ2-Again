@@ -8,13 +8,6 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
- "components": [
-  {
-   "type": "shooter",
-   "interval": 1.75,
-   "interval_jitter": 0.25
-  }
- ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
@@ -26,6 +19,8 @@
   "DamageScale2": 0.2,
   "MintPlantfoodDPSMult": 5,
   "PFDPS": 200,
-  "PFDuration": 5
+  "PFDuration": 5,
+  "ShootInterval": 1.75,
+  "ShootIntervalAdditional": 0.25
  }
 }

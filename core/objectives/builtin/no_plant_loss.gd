@@ -19,6 +19,19 @@ func on_plant_died(_plant: Node) -> void:
 		fail()
 
 
+func save_state() -> Dictionary:
+	return {
+		"lost": _lost,
+		"failed": failed,
+	}
+
+
+func load_state(state: Dictionary) -> void:
+	_lost = int(state.get("lost", _lost))
+	failed = bool(state.get("failed", false))
+	notify_progress()
+
+
 func is_met() -> bool:
 	return _lost <= allowed
 

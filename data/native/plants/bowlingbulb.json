@@ -8,11 +8,6 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
- "components": [
-  {
-   "type": "shooter"
-  }
- ],
  "tags": [
   "aquatic"
  ],

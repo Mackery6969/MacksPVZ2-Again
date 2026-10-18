@@ -10,8 +10,11 @@
  },
  "components": [
   {
-   "type": "blocker",
-   "armor_toughness": 6000
+   "type": "shooter",
+   "projectile": "peanut",
+   "interval": 0.65,
+   "interval_jitter": 0.15,
+   "plantfood_count": 60
   }
  ],
  "mint_boost": {
@@ -20,11 +23,8 @@
   "plantfood": true
  },
  "extra": {
+  "ArmorToughness": 6000,
   "CallsMirrorNutsOnDamaged": true,
-  "PeaType": "peanut",
-  "PlantfoodPeaCount": 60,
-  "ShootInterval": 0.65,
-  "ShootIntervalAdditional": 0.15,
   "ShootIntervalSemi": 1.35,
   "ShootIntervalSemiAdditional": 0.15
  }

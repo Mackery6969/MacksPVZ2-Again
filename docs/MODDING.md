@@ -121,6 +121,31 @@ tags such as `metal` and `deep_water` sit alongside them.
 
 ## Adding a plant
 
+What a plant **does** comes from the fields it carries, not its `family`.
+PopCap's Family is a damage type - Shadow and Poison each contain both
+shooters and lobbers, Sharp contains shooters and melee - so matching on it
+mislabels plants. The importer reads the data instead, and `family` stays on
+as a tag you can query.
+
+Built-in behaviours: `shooter`, `lobber`, `sun_producer`, `timed_shooter`,
+`area_attacker`, `melee`, `instant_damage`, `explosive`, `freeze_burst`,
+`stunner`, `wind_burst`, `blocker`, `tile_placer`, `mint_buff`, `armor`.
+
+A plant can carry more than one - a Mint both attacks and buffs its family.
+
+### Buffs and status
+
+`Character.apply_buff(rate, resistance, seconds)` speeds an entity up and
+toughens it. Components time themselves through `cfg_jittered()` / `scaled()`,
+so a buff applies to anything without the component knowing a buff exists -
+which is how Mints boost a whole family.
+
+Zombies take `apply_stun(seconds)`, `apply_slow(factor, seconds)` and
+`apply_freeze(seconds)`. Re-applying keeps the stronger effect and the longer
+duration rather than compounding, so two slows do not stop a zombie dead.
+
+## Adding a plant (schema)
+
 ```json
 {
  "id": "splitpea_mk2",
@@ -452,6 +477,42 @@ kind `conveyor` with `add`/`remove` changes the pool mid-level.
 
 Sounds are named events, not file paths, so they survive a change of audio
 backend. See `docs/AUDIO.md`.
+
+## Save state
+
+Every level keeps its own slot, so several can be part-played at once - which
+the original game does and PVZGE does not. Autosave runs while a level is
+going; clearing or failing a level retires its slot.
+
+Each object describes itself rather than a saver reaching into it:
+`Board.snapshot()`, `LevelRunner.snapshot()`, `SeedBank.snapshot()`, and a
+`save_state()` / `load_state()` pair on every objective and lawn component.
+So anything new that needs remembering gets a `save_state`, and the save
+system needs no edit:
+
+```gdscript
+func save_state() -> Dictionary:
+    return {"charge": _charge}
+
+func load_state(state: Dictionary) -> void:
+    _charge = float(state.get("charge", cooldown))
+```
+
+Projectiles and uncollected sun are deliberately not saved - they are in
+flight, and restoring them mid-arc would be stranger than not.
+
+## I-Zombie costs
+
+A zombie's `sun_cost` is what it costs to place from a seed packet. PopCap's
+data has none - those costs are a PvZ1 mechanic - so it is derived from
+`wave_cost`, the only strength signal present, and snapped to 25s:
+
+```
+basic 50 · conehead 75 · buckethead 100 · gargantuar 225
+```
+
+State `sun_cost` in a zombie file to override it. A mod zombie that says
+nothing is still priced, because the derivation also runs at load.
 
 ## The init hook
 

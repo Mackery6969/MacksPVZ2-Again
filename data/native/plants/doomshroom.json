@@ -10,7 +10,7 @@
  },
  "components": [
   {
-   "type": "explosive",
+   "type": "instant_damage",
    "damage": 2700
   }
  ],

@@ -10,7 +10,7 @@
  },
  "components": [
   {
-   "type": "shooter"
+   "type": "area_attacker"
   }
  ],
  "mint_boost": {
@@ -27,11 +27,6 @@
   "DeathFireDuration": 5,
   "ImmuneToIceblock": true,
   "PlantfoodDuration": 5,
-  "WarmingRadius": {
-   "GridItemDamage": 200,
-   "PulseCooldown": 6,
-   "PulseInitialDelay": 0.5
-  },
   "WarmingRadiusPlantfood": {
    "GridItemDamage": 200,
    "PulseCooldown": 1.5,

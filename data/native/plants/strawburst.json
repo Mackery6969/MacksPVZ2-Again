@@ -8,11 +8,6 @@
   "cooldown_from": 1,
   "beghouled_cost": 3000
  },
- "components": [
-  {
-   "type": "explosive"
-  }
- ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,

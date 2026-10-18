@@ -10,7 +10,8 @@
  },
  "components": [
   {
-   "type": "blocker"
+   "type": "melee",
+   "interval": 1
   }
  ],
  "mint_boost": {
@@ -20,7 +21,6 @@
  },
  "extra": {
   "AttackDamage": 20,
-  "AttackInterval": 1,
   "HollyProjectileType": "hollyleaf",
   "HollyProjectileTypePlantfood": "hollyleaf_pf",
   "MaxProjectileCount": 3

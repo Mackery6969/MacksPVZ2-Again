@@ -205,6 +205,134 @@ func _on_mower_finished(row: int) -> void:
 	_mowers.erase(row)
 
 
+## Everything on the lawn, as plain data. The board knows how to describe
+## itself so a saver does not have to reach into its internals.
+##
+## Projectiles and uncollected sun are deliberately left out - they are in
+## flight, and resuming a level with them restored would be stranger than
+## resuming without them.
+func snapshot() -> Dictionary:
+	var plants: Array = []
+	for cell in _plants:
+		var p: Plant = _plants[cell]
+		if not is_instance_valid(p) or p.is_dead:
+			continue
+		plants.append({"id": String(p.entity_id()), "row": p.row, "col": p.col,
+				"health": p.health})
+
+	var zombies: Array = []
+	for row in _zombies_by_row:
+		for z in _zombies_by_row[row]:
+			if not is_instance_valid(z) or z.is_dead:
+				continue
+			zombies.append({"id": String(z.entity_id()), "row": z.row,
+					"x": z.position.x, "health": z.health,
+					"charmed": z.is_charmed(),
+					"carrying_plantfood": z.has_tag(&"carrying_plantfood")})
+
+	var ground: Array = []
+	for cell in terrain:
+		ground.append({"col": cell.x, "row": cell.y,
+				"terrain": String(terrain[cell])})
+	var provided: Array = []
+	for cell in _cell_provides:
+		provided.append({"col": cell.x, "row": cell.y,
+				"tag": String(_cell_provides[cell])})
+
+	var lawn: Dictionary = {}
+	for c in lawn_components:
+		var state := c.save_state()
+		if not state.is_empty():
+			lawn[c.name] = state
+
+	return {
+		"sun": sun, "plant_food": plant_food,
+		"plantable_rows": plantable_rows.duplicate(),
+		"mower_rows": _remaining_mower_rows(),
+		"plants": plants, "zombies": zombies,
+		"terrain": ground, "cell_provides": provided,
+		"lawn_components": lawn,
+	}
+
+
+func _remaining_mower_rows() -> Array:
+	var out: Array = []
+	for row in _mowers:
+		if has_mower(row):
+			out.append(row)
+	return out
+
+
+## Rebuilds the lawn from a snapshot. The caller is expected to have started
+## the level already, so lawn components and mowers exist; this corrects them.
+func apply_snapshot(state: Dictionary) -> void:
+	for group in [_entities, _projectiles, _suns]:
+		for child in group.get_children():
+			child.queue_free()
+	_plants.clear()
+	for row in _zombies_by_row:
+		_zombies_by_row[row].clear()
+	terrain.clear()
+	_cell_provides.clear()
+
+	var rows: Array[int] = []
+	for r in (state.get("plantable_rows", []) as Array):
+		rows.append(int(r))
+	plantable_rows = rows
+
+	for cell in (state.get("terrain", []) as Array):
+		terrain[Vector2i(int(cell.get("col", 0)), int(cell.get("row", 0)))] = \
+				StringName(cell.get("terrain", &""))
+
+	# Plants are placed directly rather than through place_entity, so terrain
+	# rules and costs do not re-apply to something already standing.
+	for entry in (state.get("plants", []) as Array):
+		var p := _place_plant_at(StringName(entry.get("id", &"")),
+				int(entry.get("row", 0)), int(entry.get("col", 0)))
+		if p == null:
+			continue
+		p.died.connect(func(who): _on_placed_plant_died(who, p.row, p.col))
+		p.health = minf(float(entry.get("health", p.health)), p.max_health)
+		p.queue_redraw()
+
+	for cell in (state.get("cell_provides", []) as Array):
+		_cell_provides[Vector2i(int(cell.get("col", 0)), int(cell.get("row", 0)))] = \
+				StringName(cell.get("tag", &""))
+
+	for entry in (state.get("zombies", []) as Array):
+		var z := spawn_zombie(StringName(entry.get("id", &"")),
+				int(entry.get("row", 0)))
+		if z == null:
+			continue
+		z.position.x = float(entry.get("x", z.position.x))
+		z.health = minf(float(entry.get("health", z.health)), z.max_health)
+		if bool(entry.get("charmed", false)):
+			z.charm()
+		if bool(entry.get("carrying_plantfood", false)):
+			z.set_runtime_tag(&"carrying_plantfood", true)
+		z.queue_redraw()
+
+	# Mowers that were already spent stay spent.
+	var kept: Array = state.get("mower_rows", [])
+	for row in _mowers.keys():
+		if not kept.has(row):
+			var m := mower_in_row(row)
+			if m != null:
+				m.queue_free()
+			_mowers.erase(row)
+
+	var lawn: Dictionary = state.get("lawn_components", {})
+	for c in lawn_components:
+		if lawn.has(c.name):
+			c.load_state(lawn[c.name])
+
+	sun = int(state.get("sun", starting_sun))
+	plant_food = int(state.get("plant_food", 0))
+	sun_changed.emit(sun)
+	plant_food_changed.emit(plant_food)
+	queue_redraw()
+
+
 # --- geometry ------------------------------------------------------------
 
 func grid_to_world(row: int, col: int) -> Vector2:

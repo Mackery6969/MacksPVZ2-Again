@@ -10,7 +10,8 @@
  },
  "components": [
   {
-   "type": "explosive"
+   "type": "explosive",
+   "damage": 600
   }
  ],
  "mint_boost": {
@@ -19,7 +20,6 @@
   "plantfood": false
  },
  "extra": {
-  "Explode0Damage": 600,
   "Explode0SeedlingCount": 0,
   "Explode1Damage": 1200,
   "Explode1SeedlingCount": 1,

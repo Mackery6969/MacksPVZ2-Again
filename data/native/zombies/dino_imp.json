@@ -6,7 +6,8 @@
   "speed": 0.3,
   "eat_dps": 200,
   "wave_cost": 100,
-  "weight": 1000
+  "weight": 1000,
+  "sun_cost": 50
  },
  "sort": "Normal",
  "tags": {

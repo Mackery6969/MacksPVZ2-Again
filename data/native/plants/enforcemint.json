@@ -10,7 +10,9 @@
  },
  "components": [
   {
-   "type": "melee"
+   "type": "mint_buff",
+   "duration": 18,
+   "damage_multiplier": 2
   }
  ],
  "mint_boost": {
@@ -20,10 +22,8 @@
  },
  "extra": {
   "CannotBeSheepenedByWizard": true,
-  "DamageMultiplier": 2,
   "ImmuneToBoomBox": true,
   "ImmuneToIceblock": true,
-  "Lifespan": 18,
   "ShrinkTime": 1.5,
   "SpeedScale": 0.75,
   "ZombiesToShrink": 10

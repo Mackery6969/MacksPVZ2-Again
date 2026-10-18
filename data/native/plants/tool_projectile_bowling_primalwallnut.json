@@ -8,9 +8,14 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "bowling_primal_wallnut"
+  }
+ ],
  "extra": {
   "ImmuneToIceblock": true,
-  "ProjectileType": "bowling_primal_wallnut",
   "SpeedX": 4,
   "StartingHeight": 0
  }

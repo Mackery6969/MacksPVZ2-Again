@@ -8,6 +8,14 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "freeze_burst",
+   "damage": 30,
+   "freeze_duration": 0,
+   "chill_duration": 10
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
@@ -16,11 +24,8 @@
  "extra": {
   "AttackInterval": 1.85,
   "AttackIntervalAdditional": 0.15,
-  "ChillDuration": 10,
   "ChillDurationPlantfood": 10,
-  "Damage": 30,
   "DamagePlantfood": 1200,
-  "FreezeDuration": 0,
   "FreezeDurationPlantfood": 10,
   "ImmuneToIceblock": true,
   "MintDamageFactor": 3

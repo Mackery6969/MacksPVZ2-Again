@@ -8,16 +8,21 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 3000
  },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "dragonfruit",
+   "interval": 7,
+   "projectile_plantfood": "dragonfruit_pf"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
   "plantfood": false
  },
  "extra": {
-  "CabbageType": "dragonfruit",
-  "CabbageTypePlantfood": "dragonfruit_pf",
   "PoisonDPS": 40,
-  "PoisonDuration": 3,
-  "ThrowInterval": 7
+  "PoisonDuration": 3
  }
 }

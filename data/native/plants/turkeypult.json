@@ -8,15 +8,18 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "turkey",
+   "interval": 2.85,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "turkey_big"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
- },
- "extra": {
-  "CabbageType": "turkey",
-  "CabbageTypePlantfood": "turkey_big",
-  "ThrowInterval": 2.85,
-  "ThrowIntervalAdditional": 0.15
  }
 }

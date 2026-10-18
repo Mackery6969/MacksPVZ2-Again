@@ -31,7 +31,6 @@
   "ProduceCountdownStart_AtNight": 5,
   "ProduceIntervalAdditional_AtNight": 1.5,
   "ProduceInterval_AtNight": 23.5,
-  "SunValue": 25,
   "SunValueList": [
    25,
    50,

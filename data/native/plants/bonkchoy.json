@@ -15,7 +15,8 @@
    "damage_heavy": 30,
    "interval": 0.3,
    "detect_width": 4,
-   "tomb_detect_width": 3
+   "tomb_detect_width": 3,
+   "damage_plantfood": 60
   }
  ],
  "mint_boost": {
@@ -24,7 +25,6 @@
   "plantfood": false
  },
  "extra": {
-  "DamagePlantfood": 60,
   "MintDamageFactor": 3,
   "PlantfoodHitCount": 25
  }

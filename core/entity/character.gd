@@ -23,6 +23,13 @@ var is_dead: bool = false
 var _components: Array[EntityComponent] = []
 var _runtime_tags: Dictionary = {}   ## tags added or removed after spawn
 
+## Buff multipliers something else has applied. Components read
+## `attack_rate` when timing themselves, so a buff speeds up whatever the
+## entity does without each component knowing who buffed it.
+var attack_rate: float = 1.0
+var resistance: float = 1.0
+var _buff_left: float = 0.0
+
 
 ## Build this entity from a definition. Called once, right after instancing.
 func initialize(entity_def: EntityDef, owning_board: Node) -> void:
@@ -47,6 +54,45 @@ func _spawn_components() -> void:
 ## Hook for subclasses; runs after components exist.
 func _on_initialized() -> void:
 	pass
+
+
+## Speeds this entity up and toughens it for a while. Re-applying keeps the
+## stronger multiplier and the longer remaining time.
+func apply_buff(rate: float, resist: float, seconds: float) -> void:
+	attack_rate = maxf(attack_rate, maxf(rate, 0.01))
+	if resist > resistance:
+		# Extra resistance raises current health along with the ceiling, so a
+		# buff is felt immediately rather than only on the next hit.
+		var ratio := resist / resistance
+		resistance = resist
+		max_health *= ratio
+		health *= ratio
+	_buff_left = maxf(_buff_left, seconds)
+	set_runtime_tag(&"buffed", true)
+	queue_redraw()
+
+
+func is_buffed() -> bool:
+	return _buff_left > 0.0
+
+
+func _tick_buff(delta: float) -> void:
+	if _buff_left <= 0.0:
+		return
+	_buff_left -= delta
+	if _buff_left > 0.0:
+		return
+	if resistance != 1.0:
+		max_health /= resistance
+		health = minf(health / resistance, max_health)
+	attack_rate = 1.0
+	resistance = 1.0
+	set_runtime_tag(&"buffed", false)
+	queue_redraw()
+
+
+func _process(delta: float) -> void:
+	_tick_buff(delta)
 
 
 # --- tags ----------------------------------------------------------------

@@ -10,7 +10,8 @@
  },
  "components": [
   {
-   "type": "melee"
+   "type": "shooter",
+   "projectile": "pea_snap"
   }
  ],
  "mint_boost": {
@@ -23,7 +24,6 @@
   "HeadDamage": 400,
   "MaxContainZombieCount": 1,
   "MintDamageFactor": 5,
-  "PeaType": "pea_snap",
   "PlantfoodSwallowCount": 4
  }
 }

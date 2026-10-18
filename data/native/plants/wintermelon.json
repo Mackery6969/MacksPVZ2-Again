@@ -8,17 +8,22 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 5000
  },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "winter_melon",
+   "interval": 2.7,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "winter_melon_pf"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
   "plantfood": false
  },
  "extra": {
-  "CabbageType": "winter_melon",
-  "CabbageTypePlantfood": "winter_melon_pf",
   "DetectsTNTSpark": true,
-  "ImmuneToIceblock": true,
-  "ThrowInterval": 2.7,
-  "ThrowIntervalAdditional": 0.15
+  "ImmuneToIceblock": true
  }
 }

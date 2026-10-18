@@ -8,6 +8,17 @@
   "cooldown_from": 0.3333,
   "beghouled_cost": 3500
  },
+ "components": [
+  {
+   "type": "timed_shooter",
+   "projectile": "caulipower",
+   "detect_interval": {
+    "Max": 2,
+    "Min": 1
+   },
+   "plantfood_count": 5
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 5,
@@ -22,12 +33,6 @@
    "Max": 10,
    "Min": 10
   },
-  "AttackProjectileType": "caulipower",
-  "DetectInterval": {
-   "Max": 2,
-   "Min": 1
-  },
-  "PlantfoodFlickCount": 5,
   "PlantfoodFlickDistance": 3,
   "WeightTargetGargantuarZombie": 5,
   "WeightTargetNormalZombie": 55,

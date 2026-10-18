@@ -8,17 +8,22 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "pepper",
+   "interval": 2.85,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "pepper_pf"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
   "plantfood": false
  },
  "extra": {
-  "CabbageType": "pepper",
-  "CabbageTypePlantfood": "pepper_pf",
   "ImmuneToIceblock": true,
-  "ThrowInterval": 2.85,
-  "ThrowIntervalAdditional": 0.15,
   "WarmingRadius": {
    "GridItemDamage": 300,
    "PulseCooldown": 3,

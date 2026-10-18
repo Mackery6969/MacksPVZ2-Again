@@ -8,14 +8,19 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "sporeshroom_spore",
+   "projectile_plantfood": "sporeshroom_spore_pf"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
  },
  "extra": {
-  "CabbageType": "sporeshroom_spore",
-  "CabbageTypePlantfood": "sporeshroom_spore_pf",
   "ShootInterval": 2.85,
   "ShootIntervalAdditional": 0.15
  }

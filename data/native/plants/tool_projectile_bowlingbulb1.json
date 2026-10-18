@@ -8,9 +8,14 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "bowling0"
+  }
+ ],
  "extra": {
   "ImmuneToIceblock": true,
-  "ProjectileType": "bowling0",
   "StartingHeight": 30
  }
 }

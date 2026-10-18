@@ -8,6 +8,11 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 3000
  },
+ "components": [
+  {
+   "type": "area_attacker"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
@@ -21,11 +26,6 @@
   "MintDamageFactor": 3,
   "PlantfoodFireCount": 9,
   "RechargeTime": 5,
-  "ShootDuration": 4.3,
-  "WarmingRadius": {
-   "GridItemDamage": 200,
-   "PulseCooldown": 6,
-   "PulseInitialDelay": 0.5
-  }
+  "ShootDuration": 4.3
  }
 }

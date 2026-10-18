@@ -8,9 +8,14 @@
   "cooldown_from": 0.666667,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "instant_damage",
+   "damage": 0
+  }
+ ],
  "extra": {
   "CannotBeSheepenedByWizard": true,
-  "Damage": 0,
   "Duration": 9,
   "ImmuneToBoomBox": true
  }

@@ -10,7 +10,8 @@
  },
  "components": [
   {
-   "type": "lobber"
+   "type": "instant_damage",
+   "damage": 20
   }
  ],
  "mint_boost": {
@@ -19,7 +20,6 @@
   "plantfood": false
  },
  "extra": {
-  "Damage": 20,
   "DamagePlantfood": 800,
   "IdleReloadClips": 3,
   "MaxClips": 7,

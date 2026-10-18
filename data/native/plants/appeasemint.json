@@ -12,6 +12,10 @@
   {
    "type": "shooter",
    "projectile": "pea_mega_mint"
+  },
+  {
+   "type": "mint_buff",
+   "duration": 12
   }
  ],
  "mint_boost": {
@@ -23,7 +27,6 @@
   "CannotBeSheepenedByWizard": true,
   "ImmuneToBoomBox": true,
   "ImmuneToIceblock": true,
-  "Lifespan": 12,
   "PeaCount": 6,
   "PeaInterval": 0.25
  }

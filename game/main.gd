@@ -7,6 +7,13 @@ extends Node2D
 ## to any level id jumps straight there, which is handy while testing.
 @export var start_level: StringName = &""
 
+@export_group("Saving")
+## Seconds between autosaves while a level is running. Every level keeps its
+## own slot, so several can be part-played at once.
+@export var autosave_interval: float = 10.0
+## Resume a part-played level instead of restarting it.
+@export var resume_saves: bool = true
+
 @export_group("Pacing")
 ## Seconds the result is shown before the next level begins.
 @export var level_transition_delay: float = 2.5
@@ -44,6 +51,7 @@ var _campaign: CampaignDef
 var _current_level: StringName = &""
 ## Guards against a result firing twice while a transition is already queued.
 var _transitioning: bool = false
+var _autosave_timer: float = 0.0
 
 
 func _ready() -> void:
@@ -62,6 +70,7 @@ func _ready() -> void:
 	print("[boot] ", Components.summary())
 	print("[boot] ", Mods.summary())
 	print("[boot] ", Audio.summary())
+	print("[boot] ", Saves.summary())
 
 	_campaign = Data.campaign(campaign_id)
 	var first := start_level
@@ -86,10 +95,18 @@ func load_level(level_id: StringName) -> void:
 
 	_current_level = level_id
 	_transitioning = false
+	_autosave_timer = autosave_interval
 	board.shovel_active = false
 	board.plant_food_active = false
 	board.reset()
 	runner.start(level, board)
+
+	# A part-played level resumes where it was left rather than restarting.
+	if resume_saves and Saves.has_save(level_id):
+		var save := Saves.load_save(level_id)
+		if Saves.restore(save, runner, board, seed_bank):
+			print("[save] resumed '%s' from %s"
+					% [level_id, save.get("saved_at", "an earlier session")])
 
 	_status.text = ""
 	_wave_label.text = ""
@@ -411,11 +428,23 @@ func _on_wave_started(index: int, total: int) -> void:
 	_wave_label.text = "Wave %d / %d" % [index, total]
 
 
+func _process(delta: float) -> void:
+	if not runner.running or _transitioning or autosave_interval <= 0.0:
+		return
+	_autosave_timer -= delta
+	if _autosave_timer > 0.0:
+		return
+	_autosave_timer = autosave_interval
+	Saves.save_level(runner, board, seed_bank)
+
+
 func _on_won() -> void:
 	if _transitioning:
 		return
 	_transitioning = true
 	runner.stop()
+	# Clearing a level ends its run, which retires its save slot.
+	Saves.mark_cleared(_current_level)
 	Audio.play(&"level.win")
 
 	if _campaign == null or _campaign.is_last(_current_level):
@@ -433,6 +462,8 @@ func _on_lost() -> void:
 		return
 	_transitioning = true
 	runner.stop()
+	# A failed run is not worth resuming; the retry starts the level over.
+	Saves.clear_save(_current_level)
 	Audio.stop_music()
 	Audio.play(&"level.lose")
 	_status.text = "The zombies ate your brains!"

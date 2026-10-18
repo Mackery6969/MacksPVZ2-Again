@@ -10,7 +10,9 @@
  },
  "components": [
   {
-   "type": "lobber"
+   "type": "shooter",
+   "projectile": "coconut",
+   "projectile_plantfood": "coconut_pf"
   }
  ],
  "mint_boost": {
@@ -21,8 +23,6 @@
  "extra": {
   "AlwaysShoots": false,
   "ImmuneToIceblock": true,
-  "PeaType": "coconut",
-  "PeaTypePlantfood": "coconut_pf",
   "RestTime": 15
  }
 }

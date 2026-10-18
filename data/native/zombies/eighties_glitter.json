@@ -6,7 +6,8 @@
   "speed": 0.19,
   "eat_dps": 100,
   "wave_cost": 300,
-  "weight": 1000
+  "weight": 1000,
+  "sun_cost": 75
  },
  "components": [
   {

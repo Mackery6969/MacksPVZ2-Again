@@ -8,6 +8,12 @@
   "cooldown_from": 0.001,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "instant_damage",
+   "damage": 12
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -15,7 +21,6 @@
  },
  "extra": {
   "CallsElectricCurrant": true,
-  "Damage": 12,
   "DamagePlantfood": 20,
   "DirectDamageInterval": 0.25,
   "ImmuneToBoomBox": true,

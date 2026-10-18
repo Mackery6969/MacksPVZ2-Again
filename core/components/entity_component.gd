@@ -31,8 +31,17 @@ func cfg(key: StringName, fallback: Variant = null) -> Variant:
 
 
 ## Config value with a random jitter applied, for the common
-## `interval` / `interval_jitter` pairing.
+## `interval` / `interval_jitter` pairing. Divided by the host's attack rate,
+## so anything that buffs the entity speeds this up without the component
+## needing to know a buff exists.
 func cfg_jittered(key: StringName, jitter_key: StringName, fallback: float = 0.0) -> float:
 	var base := float(config.get(key, fallback))
 	var jitter := float(config.get(jitter_key, 0.0))
-	return base + (randf() * 2.0 - 1.0) * jitter if jitter > 0.0 else base
+	var seconds: float = base + (randf() * 2.0 - 1.0) * jitter if jitter > 0.0 else base
+	return scaled(seconds)
+
+
+## Scales a duration by the host's attack rate.
+func scaled(seconds: float) -> float:
+	var rate: float = host.attack_rate if host != null else 1.0
+	return seconds / maxf(rate, 0.01)

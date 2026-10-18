@@ -57,6 +57,16 @@ func notify_progress() -> void:
 	progress_changed.emit(self)
 
 
+## What this objective needs remembered across a save. Objectives that track
+## progress override both of these; the rest need nothing.
+func save_state() -> Dictionary:
+	return {}
+
+
+func load_state(_state: Dictionary) -> void:
+	pass
+
+
 # --- optional hooks ------------------------------------------------------
 # The runner calls these when they happen, so an objective does not have to
 # poll the board every frame.

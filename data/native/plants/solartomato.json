@@ -10,7 +10,8 @@
  },
  "components": [
   {
-   "type": "sun_producer"
+   "type": "stunner",
+   "duration": 8
   }
  ],
  "mint_boost": {
@@ -22,7 +23,6 @@
   "CannotBeSheepenedByWizard": true,
   "ImmuneToIceblock": true,
   "MintProductionFactor": 2,
-  "StunDuration": 8,
   "SunValuePerZombie": 50
  }
 }

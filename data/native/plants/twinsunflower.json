@@ -24,7 +24,6 @@
  },
  "extra": {
   "MintProductionFactor": 2,
-  "PlantfoodTime": 3,
-  "SunValue": 100
+  "PlantfoodTime": 3
  }
 }

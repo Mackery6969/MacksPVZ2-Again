@@ -8,6 +8,14 @@
   "cooldown_from": 1,
   "beghouled_cost": 4000
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "darkmatter",
+   "interval": 2.7,
+   "interval_jitter": 0.15
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
@@ -16,13 +24,10 @@
  "extra": {
   "DarkMatterEffectDuration": 6,
   "MintDamageFactor": 3,
-  "PeaType": "darkmatter",
   "PeaTypeShadow": "darkmatter_shadow",
   "PlantFoodDPS": 400,
   "PlantFoodSplashDPS": 100,
   "PlantfoodDuration": 6,
-  "PlantfoodKnockbackSPS": 1.5,
-  "ShootInterval": 2.7,
-  "ShootIntervalAdditional": 0.15
+  "PlantfoodKnockbackSPS": 1.5
  }
 }

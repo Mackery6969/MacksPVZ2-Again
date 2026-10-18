@@ -5,7 +5,8 @@
   "toughness": 190,
   "speed": 0.22,
   "wave_cost": 100,
-  "weight": 1000
+  "weight": 1000,
+  "sun_cost": 50
  },
  "sort": "Normal",
  "tags": {

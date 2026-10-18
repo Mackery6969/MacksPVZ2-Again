@@ -8,8 +8,13 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 0
  },
+ "components": [
+  {
+   "type": "tile_placer",
+   "tile": "goldtile"
+  }
+ ],
  "extra": {
-  "SunCostIncrement": 25,
-  "TileType": "goldtile"
+  "SunCostIncrement": 25
  }
 }

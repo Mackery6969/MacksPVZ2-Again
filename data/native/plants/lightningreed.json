@@ -8,16 +8,21 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "melee",
+   "damage": 10,
+   "interval": 0.95
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
  },
  "extra": {
-  "AttackInterval": 0.95,
   "AttackIntervalAdditional": 0.1,
   "CallsElectricCurrant": true,
-  "Damage": 10,
   "ImmuneToLightningCharge": true,
   "MintDamageFactor": 5,
   "PlantfoodDPS": 200,

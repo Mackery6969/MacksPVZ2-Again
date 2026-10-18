@@ -10,7 +10,11 @@
  },
  "components": [
   {
-   "type": "explosive"
+   "type": "sun_producer",
+   "interval": 23.5,
+   "interval_jitter": 1.5,
+   "first_delay": 5,
+   "first_delay_jitter": 5
   }
  ],
  "mint_boost": {
@@ -23,10 +27,6 @@
   "ImmuneToIceblock": true,
   "MintDamageFactor": 3,
   "PlantfoodTime": 3,
-  "ProduceCountdownStart": 5,
-  "ProduceCountdownStartAdditional": 5,
-  "ProduceInterval": 23.5,
-  "ProduceIntervalAdditional": 1.5,
   "WarmingRadius": {
    "GridItemDamage": 200,
    "PulseCooldown": 6,

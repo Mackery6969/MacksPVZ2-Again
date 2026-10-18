@@ -1,4 +1,7 @@
 {
  "id": "lawn_flag_veteran",
- "extends": "normal"
+ "extends": "normal",
+ "stats": {
+  "sun_cost": 50
+ }
 }

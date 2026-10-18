@@ -8,6 +8,16 @@
   "cooldown_from": 1,
   "beghouled_cost": 2500
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "electricpea",
+   "interval": 2.7,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "electricpea_pf",
+   "plantfood_count": 5
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
@@ -16,11 +26,6 @@
  "extra": {
   "CallsElectricCurrant": true,
   "ImmuneToLightningCharge": true,
-  "PeaType": "electricpea",
-  "PeaTypePlantfood": "electricpea_pf",
-  "PlantfoodPeaCount": 5,
-  "RedAttackStunDuration": 0.25,
-  "ShootInterval": 2.7,
-  "ShootIntervalAdditional": 0.15
+  "RedAttackStunDuration": 0.25
  }
 }

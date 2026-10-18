@@ -8,6 +8,11 @@
   "cooldown_from": 1,
   "beghouled_cost": 1500
  },
+ "components": [
+  {
+   "type": "area_attacker"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -23,11 +28,6 @@
   "PlantFoodDurationSeconds": 6,
   "PlantfoodAttractWidth": 4,
   "TimeBetweenLaneChanges": 5,
-  "WarmingRadius": {
-   "GridItemDamage": 200,
-   "PulseCooldown": 6,
-   "PulseInitialDelay": 0.5
-  },
   "WarmingRadiusPlantfood": {
    "GridItemDamage": 100,
    "PulseCooldown": 1.5,

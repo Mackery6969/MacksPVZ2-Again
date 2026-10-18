@@ -48,6 +48,16 @@ func handle_zombie_at_house(zombie: Node) -> bool:
 	return true
 
 
+func save_state() -> Dictionary:
+	return {"health": health}
+
+
+func load_state(state: Dictionary) -> void:
+	health = clampf(float(state.get("health", max_health)), 0.0, max_health)
+	health_changed.emit(health, max_health)
+	notify_state()
+
+
 func health_fraction() -> float:
 	return clampf(health / max_health, 0.0, 1.0)
 

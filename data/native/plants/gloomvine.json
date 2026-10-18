@@ -8,16 +8,21 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "melee",
+   "damage": 45,
+   "interval": 2.7
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
  },
  "extra": {
-  "AttackInterval": 2.7,
   "AttackIntervalAdditional": 0.15,
   "DPSPlantfood": 1543,
-  "Damage": 45,
   "MintDamageFactor": 5
  }
 }

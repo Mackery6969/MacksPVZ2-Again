@@ -8,9 +8,14 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "bowling_explode_o_nut"
+  }
+ ],
  "extra": {
   "ImmuneToIceblock": true,
-  "ProjectileType": "bowling_explode_o_nut",
   "SpeedX": 4,
   "StartingHeight": 0
  }

@@ -9,7 +9,14 @@
  },
  "components": [
   {
-   "type": "lobber"
+   "type": "shooter",
+   "projectile": "pea_sling_0",
+   "interval": {
+    "Max": 5,
+    "Min": 4
+   },
+   "projectile_plantfood": "pea_sling_0_pf",
+   "count_per_shot": 5
   }
  ],
  "mint_boost": {
@@ -18,14 +25,7 @@
   "plantfood": false
  },
  "extra": {
-  "PeaCountPerShot": 5,
   "PeaCountPerShotPlantfood": 10,
-  "PeaType": "pea_sling_0",
-  "PeaTypePlantfood": "pea_sling_0_pf",
-  "PlantfoodShootTime": 4,
-  "ShootInterval": {
-   "Max": 5,
-   "Min": 4
-  }
+  "PlantfoodShootTime": 4
  }
 }

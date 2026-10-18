@@ -53,6 +53,24 @@ TRAIT_FLAGS = {
 }
 
 # Core numeric stats: PopCap name -> native name.
+# I-Zombie needs a placement cost per zombie, and PopCap's data has none -
+# those costs are a PvZ1 mechanic. WavePointCost already encodes how much a
+# zombie is "worth" when a wave spends its budget, so the cost is derived from
+# it and snapped to 25s to keep the economy readable. A zombie file can state
+# its own `sun_cost` to override this.
+SUN_COST_BASE = 50
+SUN_COST_PER_WAVE_POINT = 0.12
+SUN_COST_SNAP = 25
+SUN_COST_MAX = 500
+
+
+def derive_sun_cost(wave_cost):
+    """-> a placement cost for I-Zombie style levels."""
+    raw = SUN_COST_BASE + float(wave_cost or 0) * SUN_COST_PER_WAVE_POINT
+    snapped = int(round(raw / SUN_COST_SNAP) * SUN_COST_SNAP)
+    return max(SUN_COST_SNAP, min(snapped, SUN_COST_MAX))
+
+
 STATS = {
     "Toughness":     "toughness",
     "WalkSPS":       "speed",
@@ -80,6 +98,12 @@ def split_zombie(name, entry, prop_lookup):
     for src, dst in STATS.items():
         if merged.get(src) is not None:
             stats[dst] = merged[src]
+    # Only derive it when the data has not said otherwise.
+    if merged.get("SunCost") is not None:
+        stats["sun_cost"] = merged["SunCost"]
+    else:
+        # A zombie with no wave cost still must not be free to place.
+        stats["sun_cost"] = derive_sun_cost(stats.get("wave_cost", 0))
     if stats:
         out["stats"] = stats
 
@@ -149,32 +173,80 @@ def strip_rtid(v):
 # plants
 # --------------------------------------------------------------------------
 
-# PopCap's "Family" tells us what a plant fundamentally does, which maps
-# cleanly onto one behaviour component. Each entry lists the component type
-# and the source fields it draws its config from.
-FAMILY_COMPONENTS = {
-    "Peashooter": ("shooter", {"PeaType": "projectile", "ShootInterval": "interval",
-                               "ShootIntervalAdditional": "interval_jitter",
-                               "PeaTypePlantfood": "projectile_plantfood",
-                               "PlantfoodPeaCount": "plantfood_count"}),
-    # SunValue is deliberately NOT mapped: every sun is worth SunToken.VALUE,
-    # so the amount is not a per-plant knob. It falls through to `extra`,
-    # preserved but not advertised as live config.
-    "Sun":        ("sun_producer", {"ProduceInterval": "interval",
-                                    "ProduceIntervalAdditional": "interval_jitter",
-                                    "ProduceCountdownStart": "first_delay",
-                                    "ProduceCountdownStartAdditional": "first_delay_jitter"}),
-    "Lobber":     ("lobber", {"CabbageType": "projectile", "ThrowInterval": "interval",
-                              "ThrowIntervalAdditional": "interval_jitter",
-                              "CabbageTypePlantfood": "projectile_plantfood"}),
-    "Melee":      ("melee", {"Damage": "damage", "DamageHeavy": "damage_heavy",
-                             "AttackInterval": "interval",
-                             "ZombieDetectorWidth": "detect_width",
-                             "TombDetectorWidth": "tomb_detect_width"}),
-    "Explosive":  ("explosive", {"Damage": "damage", "ChargeTime": "charge_time",
-                                 "PlantfoodChildrenCount": "plantfood_children"}),
-    "Defence":    ("blocker", {"ArmorToughness": "armor_toughness"}),
-}
+# What a plant DOES is written in the fields it carries, not in its Family.
+# Family is a damage type - Shadow and Poison each contain both shooters and
+# lobbers, and Sharp contains shooters and melee - so matching on it mislabels
+# plants and leaves most of them with no behaviour at all. These signatures
+# read the data instead; Family stays on as a tag.
+#
+# Ordered: the first signature that matches wins, so the specific ones come
+# before the general ones.
+BEHAVIOUR_SIGNATURES = [
+    ("sun_producer", ("ProduceInterval", "SunValue"),
+     {"ProduceInterval": "interval", "ProduceIntervalAdditional": "interval_jitter",
+      "ProduceCountdownStart": "first_delay",
+      "ProduceCountdownStartAdditional": "first_delay_jitter"}),
+
+    ("shooter", ("PeaType", "BoltType", "ProjectileType"),
+     {"PeaType": "projectile", "BoltType": "projectile",
+      "ProjectileType": "projectile", "ShootInterval": "interval",
+      "ShootIntervalAdditional": "interval_jitter",
+      "PeaTypePlantfood": "projectile_plantfood",
+      "PlantfoodPeaCount": "plantfood_count",
+      "PeaCountPerShot": "count_per_shot"}),
+
+    ("lobber", ("CabbageType", "ThrowInterval"),
+     {"CabbageType": "projectile", "ThrowInterval": "interval",
+      "ThrowIntervalAdditional": "interval_jitter",
+      "CabbageTypePlantfood": "projectile_plantfood"}),
+
+    ("timed_shooter", ("AttackProjectileType",),
+     {"AttackProjectileType": "projectile", "DetectInterval": "detect_interval",
+      "PlantfoodFlickCount": "plantfood_count"}),
+
+    ("area_attacker", ("AttackDPS", "WarmingRadius"),
+     {"AttackDPS": "dps", "AttackDistanceMin": "min_distance",
+      "AttackDistanceMax": "max_distance", "AttackDuration": "duration",
+      "ChargingTime": "charge_time"}),
+
+    ("freeze_burst", ("FreezeDuration", "ChillDuration"),
+     {"Damage": "damage", "FreezeDuration": "freeze_duration",
+      "ChillDuration": "chill_duration"}),
+
+    ("wind_burst", ("BlowDuration",),
+     {"BlowDuration": "duration"}),
+
+    ("stunner", ("StunDuration",),
+     {"StunDuration": "duration", "RestTime": "rest_time"}),
+
+    ("tile_placer", ("TileType",),
+     {"TileType": "tile"}),
+
+    ("explosive", ("ChargeTime", "ChargingTime", "ExplosionDamage",
+                   "Explode0Damage"),
+     {"Damage": "damage", "ExplosionDamage": "damage",
+      "Explode0Damage": "damage", "ChargeTime": "charge_time",
+      "ChargingTime": "charge_time",
+      "PlantfoodChildrenCount": "plantfood_children"}),
+
+    ("melee", ("AttackInterval",),
+     {"Damage": "damage", "DamageHeavy": "damage_heavy",
+      "AttackInterval": "interval", "ZombieDetectorWidth": "detect_width",
+      "TombDetectorWidth": "tomb_detect_width", "AttackDistance": "detect_width",
+      "DamagePlantfood": "damage_plantfood"}),
+
+    ("blocker", ("ArmorToughness",),
+     {"ArmorToughness": "armor_toughness"}),
+
+    ("instant_damage", ("Damage",),
+     {"Damage": "damage", "PoisonDPS": "poison_dps",
+      "PoisonDuration": "poison_duration"}),
+
+    # Last: a plant with a Lifespan and none of the attack fields above is a
+    # Mint - it exists for a while and buffs its family rather than acting.
+    ("mint_buff", ("Lifespan",),
+     {"Lifespan": "duration", "DamageMultiplier": "damage_multiplier"}),
+]
 
 PLANT_STATS = {
     "SunCost":       "sun_cost",
@@ -211,14 +283,28 @@ def split_plant(name, entry, prop_lookup):
 
     used = set(PLANT_STATS) | {"Family", "MintBoostedProps"}
     components = []
-    if family in FAMILY_COMPONENTS:
-        ctype, fields = FAMILY_COMPONENTS[family]
+    for ctype, triggers, fields in BEHAVIOUR_SIGNATURES:
+        if not any(merged.get(t) is not None for t in triggers):
+            continue
         cfg = {"type": ctype}
         for src, dst in fields.items():
             if merged.get(src) is not None:
                 cfg[dst] = strip_rtid(merged[src])
                 used.add(src)
+        used.update(triggers)
         components.append(cfg)
+        break
+
+    # A Mint both acts and buffs - Bombard Mint explodes, Arma-mint lobs - so
+    # the buff is additive rather than an alternative to its attack.
+    if merged.get("Lifespan") is not None and not any(
+            c["type"] == "mint_buff" for c in components):
+        buff = {"type": "mint_buff", "duration": merged["Lifespan"]}
+        if merged.get("DamageMultiplier") is not None:
+            buff["damage_multiplier"] = merged["DamageMultiplier"]
+        components.append(buff)
+        used.update(("Lifespan", "DamageMultiplier"))
+
     if components:
         out["components"] = components
 

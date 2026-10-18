@@ -17,6 +17,19 @@ func on_sun_collected(value: int) -> void:
 	notify_progress()
 
 
+func save_state() -> Dictionary:
+	return {
+		"collected": _collected,
+		"failed": failed,
+	}
+
+
+func load_state(state: Dictionary) -> void:
+	_collected = int(state.get("collected", _collected))
+	failed = bool(state.get("failed", false))
+	notify_progress()
+
+
 func is_met() -> bool:
 	return _collected >= amount
 

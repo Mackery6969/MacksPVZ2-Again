@@ -1,6 +1,9 @@
 {
  "id": "chicken_ge",
  "extends": "normal",
+ "stats": {
+  "sun_cost": 50
+ },
  "extra": {
   "ZombieRedirection": [
    {

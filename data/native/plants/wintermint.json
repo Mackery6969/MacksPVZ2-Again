@@ -8,6 +8,12 @@
   "cooldown_from": 0,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "mint_buff",
+   "duration": 10
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -17,7 +23,6 @@
   "CannotBeSheepenedByWizard": true,
   "ImmuneToBoomBox": true,
   "ImmuneToIceblock": true,
-  "Lifespan": 10,
   "ZombieChillDuration": 10
  }
 }

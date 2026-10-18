@@ -53,6 +53,15 @@ func activate() -> bool:
 	return true
 
 
+func save_state() -> Dictionary:
+	return {"charge": _charge}
+
+
+func load_state(state: Dictionary) -> void:
+	_charge = clampf(float(state.get("charge", cooldown)), 0.0, cooldown)
+	notify_state()
+
+
 func cooldown_fraction() -> float:
 	return 1.0 - clampf(_charge / cooldown, 0.0, 1.0)
 

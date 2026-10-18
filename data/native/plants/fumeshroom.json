@@ -8,13 +8,18 @@
   "cooldown_from": 1,
   "beghouled_cost": 500
  },
+ "components": [
+  {
+   "type": "instant_damage",
+   "damage": 40
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
  },
  "extra": {
-  "Damage": 40,
   "DetectDistance": 4.5,
   "MintDamageFactor": 3,
   "PlantfoodDPS": 800,

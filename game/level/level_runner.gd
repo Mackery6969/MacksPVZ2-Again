@@ -246,6 +246,47 @@ func _fanout(arg: Variant, hook: StringName) -> void:
 		o.call(hook, arg)
 
 
+## Where the level has got to: wave progress, pacing timers and each
+## objective's own state.
+func snapshot() -> Dictionary:
+	var objective_state: Array = []
+	for o in objectives:
+		objective_state.append({"type": o.name, "state": o.save_state()})
+	return {
+		"level_id": String(level.get("id", &"")),
+		"wave_index": wave_index,
+		"finished_spawning": _finished_spawning,
+		"wave_timer": _timer,
+		"sun_timer": _sun_timer,
+		"wave_spawned_health": _wave_spawned_health,
+		"objectives": objective_state,
+	}
+
+
+## Resumes from a snapshot. `start()` must have run first, so the level's
+## waves, objectives and seed bank already exist; this moves them forward.
+func apply_snapshot(state: Dictionary) -> void:
+	wave_index = int(state.get("wave_index", -1))
+	_finished_spawning = bool(state.get("finished_spawning", false))
+	_timer = float(state.get("wave_timer", first_wave_delay))
+	_sun_timer = float(state.get("sun_timer", _sun_cycle()))
+	_wave_spawned_health = float(state.get("wave_spawned_health", 0.0))
+
+	# Objectives are matched by type, so a level whose goals changed between
+	# save and load restores whichever ones it still has.
+	for entry in (state.get("objectives", []) as Array):
+		if not (entry is Dictionary):
+			continue
+		for o in objectives:
+			if o.name == String(entry.get("type", "")):
+				o.load_state(entry.get("state", {}))
+				break
+
+	_music_stage = -1
+	_update_music_stage()
+	objectives_changed.emit(objectives)
+
+
 ## Progress lines for the HUD, one per objective that reports any.
 func objective_lines() -> Array[String]:
 	var out: Array[String] = []

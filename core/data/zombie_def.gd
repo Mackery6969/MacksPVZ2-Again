@@ -11,11 +11,23 @@ extends EntityDef
 @export var weight: int = 0
 ## Cost to place this zombie from a seed packet. Only used by level types
 ## where the player plays the zombie side, such as I-Zombie.
+##
+## Left at 0 it is derived from `wave_cost`, which is the only strength signal
+## PopCap's data carries. Deriving it here as well as in the importer means a
+## mod-authored zombie is priced without having to say so.
 @export var sun_cost: int = 0
 
 @export_group("Classification")
 ## PopCap's ZombieSort: Normal, Gargantuar, Zomboss, ...
 @export var sort: StringName = &"Normal"
+
+
+## Snapped to 25s so the economy reads cleanly. Mirrors
+## `derive_sun_cost` in tools/import_entities.py.
+func placement_cost() -> int:
+	if sun_cost > 0:
+		return sun_cost
+	return maxi(25, mini(int(round((50.0 + wave_cost * 0.12) / 25.0)) * 25, 500))
 
 
 func stat(name: StringName, fallback: Variant = 0.0) -> Variant:
@@ -25,7 +37,7 @@ func stat(name: StringName, fallback: Variant = 0.0) -> Variant:
 		&"eat_dps": return eat_dps
 		&"wave_cost": return wave_cost
 		&"weight": return weight
-		&"sun_cost": return sun_cost
+		&"sun_cost": return placement_cost()
 	return custom_stats.get(name, fallback)
 
 

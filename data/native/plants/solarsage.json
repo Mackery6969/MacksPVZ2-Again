@@ -8,11 +8,6 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 500
  },
- "components": [
-  {
-   "type": "sun_producer"
-  }
- ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,

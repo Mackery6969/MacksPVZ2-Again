@@ -8,6 +8,11 @@
   "cooldown_from": 0.4,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "area_attacker"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
@@ -21,11 +26,6 @@
   },
   "TornadoType": "inferno_tornado",
   "TornadoTypePlantfood": "inferno_tornado_pf",
-  "WarmingRadius": {
-   "GridItemDamage": 200,
-   "PulseCooldown": 6,
-   "PulseInitialDelay": 0.5
-  },
   "WarmingRadiusPlantfood": {
    "GridItemDamage": 100,
    "PulseCooldown": 1.5,

@@ -10,7 +10,8 @@
  },
  "components": [
   {
-   "type": "blocker"
+   "type": "mint_buff",
+   "duration": 15
   }
  ],
  "mint_boost": {
@@ -22,7 +23,6 @@
   "CannotBeSheepenedByWizard": true,
   "ImmuneToBoomBox": true,
   "ImmuneToIceblock": true,
-  "KnockBackDistance": 1.4,
-  "Lifespan": 15
+  "KnockBackDistance": 1.4
  }
 }

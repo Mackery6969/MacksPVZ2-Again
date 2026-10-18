@@ -10,7 +10,9 @@
  },
  "components": [
   {
-   "type": "blocker"
+   "type": "shooter",
+   "projectile": "magnifying_grass",
+   "interval": 0.15
   }
  ],
  "mint_boost": {
@@ -24,8 +26,6 @@
   "DeathRayDamage": 550,
   "MaxShots": 4,
   "MintDamageFactor": 3,
-  "PeaType": "magnifying_grass",
-  "ShieldLifespan": 15,
-  "ShootInterval": 0.15
+  "ShieldLifespan": 15
  }
 }

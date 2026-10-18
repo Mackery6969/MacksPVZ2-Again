@@ -10,8 +10,8 @@
  },
  "components": [
   {
-   "type": "explosive",
-   "damage": 1800
+   "type": "shooter",
+   "projectile": "grapeshot"
   }
  ],
  "mint_boost": {
@@ -21,9 +21,9 @@
  },
  "extra": {
   "CannotBeSheepenedByWizard": true,
+  "Damage": 1800,
   "ImmuneToBoomBox": true,
   "ImmuneToIceblock": true,
-  "MintDamageFactor": 3,
-  "PeaType": "grapeshot"
+  "MintDamageFactor": 3
  }
 }

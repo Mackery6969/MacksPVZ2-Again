@@ -8,6 +8,15 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "sun_producer",
+   "interval": 23.5,
+   "interval_jitter": 1.5,
+   "first_delay": 5,
+   "first_delay_jitter": 5
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
@@ -17,10 +26,6 @@
   "FreezeTime": 5,
   "ImmuneToIceblock": true,
   "MintFreezeDurationFactor": 4,
-  "PlantfoodTime": 3,
-  "ProduceCountdownStart": 5,
-  "ProduceCountdownStartAdditional": 5,
-  "ProduceInterval": 23.5,
-  "ProduceIntervalAdditional": 1.5
+  "PlantfoodTime": 3
  }
 }

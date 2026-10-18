@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		return
 	_timer = interval
 
-	var rider := host.board.plant_at(host.row, host.col)
+	var rider: Plant = host.board.plant_at(host.row, host.col)
 	if rider == null or rider.is_dead:
 		return
 	var to_row: int = host.row + direction

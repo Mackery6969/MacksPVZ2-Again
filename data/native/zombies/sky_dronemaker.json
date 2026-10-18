@@ -6,7 +6,8 @@
   "speed": 0.185,
   "eat_dps": 100,
   "wave_cost": 1400,
-  "weight": 2500
+  "weight": 2500,
+  "sun_cost": 225
  },
  "tags": {
   "add": [

@@ -10,7 +10,10 @@
  },
  "components": [
   {
-   "type": "melee"
+   "type": "shooter",
+   "projectile": "guacodile",
+   "interval": 1.35,
+   "interval_jitter": 0.15
   }
  ],
  "tags": [
@@ -24,10 +27,7 @@
  "extra": {
   "ChildrenBiteDamage": 150,
   "KnockbackDistance": 2,
-  "PeaType": "guacodile",
   "PeaTypeChild": "guacodile_child",
-  "PlantfoodTime": 2,
-  "ShootInterval": 1.35,
-  "ShootIntervalAdditional": 0.15
+  "PlantfoodTime": 2
  }
 }

@@ -10,7 +10,7 @@
  },
  "components": [
   {
-   "type": "explosive"
+   "type": "area_attacker"
   }
  ],
  "mint_boost": {
@@ -30,11 +30,6 @@
    "seedling"
   ],
   "SeedlingType": "atombomb_seedling",
-  "WarmingRadius": {
-   "GridItemDamage": 200,
-   "PulseCooldown": 6,
-   "PulseInitialDelay": 0.5
-  },
   "WarmingRadiusPlantfood": {
    "GridItemDamage": 100,
    "PulseCooldown": 1.5,

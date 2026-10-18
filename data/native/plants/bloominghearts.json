@@ -8,16 +8,21 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "lobber",
+   "projectile": "blooming_heart",
+   "interval": 2.85,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "blooming_heart_pf"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
  },
  "extra": {
-  "CabbageType": "blooming_heart",
-  "CabbageTypePlantfood": "blooming_heart_pf",
-  "ImmuneToBoomBox": true,
-  "ThrowInterval": 2.85,
-  "ThrowIntervalAdditional": 0.15
+  "ImmuneToBoomBox": true
  }
 }

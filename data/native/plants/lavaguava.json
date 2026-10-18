@@ -8,6 +8,11 @@
   "cooldown_from": 0.667,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "area_attacker"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
@@ -21,11 +26,6 @@
   "MintLiquidType": "lava_mint",
   "PlantFoodDPS": 100,
   "PlantFoodDurationSeconds": 10,
-  "WarmingRadius": {
-   "GridItemDamage": 200,
-   "PulseCooldown": 6,
-   "PulseInitialDelay": 0.5
-  },
   "WarmingRadiusPlantfood": {
    "GridItemDamage": 100,
    "PulseCooldown": 1.5,

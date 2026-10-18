@@ -26,6 +26,19 @@ func on_zombie_died(zombie: Node) -> void:
 	notify_progress()
 
 
+func save_state() -> Dictionary:
+	return {
+		"killed": _killed,
+		"failed": failed,
+	}
+
+
+func load_state(state: Dictionary) -> void:
+	_killed = int(state.get("killed", _killed))
+	failed = bool(state.get("failed", false))
+	notify_progress()
+
+
 func is_met() -> bool:
 	return _killed >= count
 

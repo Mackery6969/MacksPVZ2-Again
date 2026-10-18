@@ -60,6 +60,16 @@ func notify_state() -> void:
 	state_changed.emit(self)
 
 
+## What this behaviour needs remembered across a save - a cooldown part spent,
+## a base part destroyed. Components with no state need neither.
+func save_state() -> Dictionary:
+	return {}
+
+
+func load_state(_state: Dictionary) -> void:
+	pass
+
+
 # --- threshold handling --------------------------------------------------
 
 ## A zombie has reached the house. Return true to consume it, which stops the

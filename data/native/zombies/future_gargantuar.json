@@ -6,7 +6,8 @@
   "speed": 0.16,
   "eat_dps": 100,
   "wave_cost": 2000,
-  "weight": 2500
+  "weight": 2500,
+  "sun_cost": 300
  },
  "sort": "Gargantuar",
  "tags": {

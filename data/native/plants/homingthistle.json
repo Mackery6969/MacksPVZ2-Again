@@ -8,16 +8,19 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "homing_thistle",
+   "interval": 1.35,
+   "interval_jitter": 0.15,
+   "projectile_plantfood": "homing_thistle_pf",
+   "plantfood_count": 20
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
- },
- "extra": {
-  "PeaType": "homing_thistle",
-  "PeaTypePlantfood": "homing_thistle_pf",
-  "PlantfoodPeaCount": 20,
-  "ShootInterval": 1.35,
-  "ShootIntervalAdditional": 0.15
  }
 }

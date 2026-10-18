@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Components="*res://core/components/component_registry.gd"
 Mods="*res://core/mod/mod_loader.gd"
 Data="*res://core/data/data_registry.gd"
+Saves="*res://core/save/save_manager.gd"
 Audio="*res://core/audio/audio_manager.gd"
 
 [display]

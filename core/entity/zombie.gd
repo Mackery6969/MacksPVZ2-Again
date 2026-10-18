@@ -25,6 +25,8 @@ enum Allegiance {
 @export var charmed_color: Color = Color("b98ac6")
 @export var head_color: Color = Color("d8cfa8")
 @export var health_bar_color: Color = Color("d46a6a")
+@export var frozen_color: Color = Color("8fc7e8")
+@export var slowed_color: Color = Color("7f9bb5")
 @export var armor_color: Color = Color("c98a3e")
 @export var armor_metal_color: Color = Color("aeb6bf")
 
@@ -37,6 +39,12 @@ enum Allegiance {
 var target: Character = null
 
 var _eat_accumulator: float = 0.0
+## Status effects, as remaining seconds. A slow also stores its factor so the
+## original speed can be restored exactly rather than approximately.
+var _stun_left: float = 0.0
+var _slow_left: float = 0.0
+var _slow_factor: float = 1.0
+var _base_speed: float = 0.0
 ## reached_house fires once; the board decides what happens next.
 var _announced_house: bool = false
 
@@ -44,6 +52,7 @@ var _announced_house: bool = false
 func _on_initialized() -> void:
 	speed = float(def.stat(&"speed", speed))
 	eat_dps = float(def.stat(&"eat_dps", eat_dps))
+	_base_speed = speed
 	queue_redraw()
 
 
@@ -75,8 +84,62 @@ func direction() -> int:
 
 # --- movement and attack -------------------------------------------------
 
+# --- status effects ------------------------------------------------------
+
+## Halts the zombie entirely for `seconds`. Freezing is a stun that also
+## chills, so both routes end up here.
+func apply_stun(seconds: float) -> void:
+	_stun_left = maxf(_stun_left, seconds)
+	set_runtime_tag(&"stunned", true)
+	queue_redraw()
+
+
+## Scales speed by `factor` (0.5 = half speed) for `seconds`. Re-applying takes
+## whichever is stronger and whichever lasts longer, so effects do not stack
+## into a standstill.
+func apply_slow(factor: float, seconds: float) -> void:
+	_slow_factor = minf(_slow_factor if _slow_left > 0.0 else 1.0,
+			clampf(factor, 0.05, 1.0))
+	_slow_left = maxf(_slow_left, seconds)
+	speed = _base_speed * _slow_factor
+	set_runtime_tag(&"slowed", true)
+	queue_redraw()
+
+
+## Chilled and held in place at once, the usual effect of an ice plant.
+func apply_freeze(seconds: float) -> void:
+	apply_stun(seconds)
+	apply_slow(0.5, seconds * 2.0)
+	set_runtime_tag(&"frozen", true)
+
+
+func is_stunned() -> bool:
+	return _stun_left > 0.0
+
+
+func _tick_status(delta: float) -> void:
+	if _stun_left > 0.0:
+		_stun_left -= delta
+		if _stun_left <= 0.0:
+			set_runtime_tag(&"stunned", false)
+			set_runtime_tag(&"frozen", false)
+			queue_redraw()
+	if _slow_left > 0.0:
+		_slow_left -= delta
+		if _slow_left <= 0.0:
+			_slow_factor = 1.0
+			speed = _base_speed
+			set_runtime_tag(&"slowed", false)
+			queue_redraw()
+
+
 func _process(delta: float) -> void:
+	super(delta)
 	if is_dead or board == null:
+		return
+	_tick_status(delta)
+	# A stunned zombie neither walks nor eats.
+	if is_stunned():
 		return
 	if is_instance_valid(target) and not target.is_dead:
 		_attack(delta)
@@ -168,6 +231,10 @@ func _draw() -> void:
 	var body := body_color
 	if is_charmed():
 		body = charmed_color
+	elif has_tag(&"frozen"):
+		body = frozen_color
+	elif has_tag(&"slowed"):
+		body = slowed_color
 	elif has_tag(&"metal"):
 		body = metal_color
 	draw_rect(rect, body, true)

@@ -8,6 +8,11 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 2500
  },
+ "components": [
+  {
+   "type": "area_attacker"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
@@ -22,11 +27,6 @@
   "MintLiquidType": "moltenpool_mint",
   "RestTime": 7,
   "SecondMeteorMissChance": 0.35,
-  "WarmingRadius": {
-   "GridItemDamage": 200,
-   "PulseCooldown": 6,
-   "PulseInitialDelay": 0.5
-  },
   "WarmingRadiusPlantfood": {
    "GridItemDamage": 200,
    "PulseCooldown": 1.5,

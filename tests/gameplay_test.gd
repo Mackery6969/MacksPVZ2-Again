@@ -25,6 +25,9 @@ func _ready() -> void:
 
 
 func _run() -> void:
+	# Saves live in user:// and outlast a run. Left in place, a level that
+	# resumes a previous run's state makes later checks meaningless.
+	_clear_all_saves()
 	_test_all_scripts_compile()
 	_test_data_loaded()
 	_test_inheritance_and_tags()
@@ -52,6 +55,11 @@ func _run() -> void:
 	_test_audio()
 	await _test_objectives()
 	await _test_overhaul_scale_mod()
+	_test_plant_behaviour_coverage()
+	await _test_new_plant_behaviours()
+	await _test_zombie_status_effects()
+	_test_zombie_sun_costs()
+	await _test_level_save_state()
 	_test_simplified_level_schema()
 	_test_terrain_rules()
 	await _test_lawn_components()
@@ -1337,6 +1345,277 @@ func _total_hostile_health(board: Board) -> float:
 		for z in board.hostile_zombies_in_row(row):
 			total += z.health
 	return total
+
+
+## Behaviour is derived from the fields a plant carries, not its Family, so
+## most of the roster should now do something. This guards against a change
+## that silently drops plants back to inert.
+func _test_plant_behaviour_coverage() -> void:
+	section("plant coverage")
+	var total := Data.plants.size()
+	var with_behaviour := 0
+	var unimplemented: Array[StringName] = []
+	for id in Data.plants:
+		var def: PlantDef = Data.plants[id]
+		if def.components.is_empty():
+			continue
+		var any := false
+		for spec in def.components:
+			if Components.has_type(spec.type):
+				any = true
+			elif not unimplemented.has(spec.type):
+				unimplemented.append(spec.type)
+		if any:
+			with_behaviour += 1
+	check("every declared behaviour is implemented", unimplemented.is_empty(),
+			str(unimplemented))
+	check("most plants do something", with_behaviour >= 150,
+			"%d of %d" % [with_behaviour, total])
+	print("        (%d of %d plants have a working behaviour)"
+			% [with_behaviour, total])
+
+	# Family is a tag now, not the thing that picks behaviour.
+	var shadow := Data.query(&"plant", [&"family:shadow"])
+	var kinds := {}
+	for def in shadow:
+		for spec in def.components:
+			kinds[spec.type] = true
+	check("one family spans several behaviours", kinds.size() > 1,
+			"shadow -> %s" % str(kinds.keys()))
+	end_section()
+
+
+func _test_new_plant_behaviours() -> void:
+	section("new plant behaviours")
+	var board := _make_board()
+
+	# freeze_burst: holds a zombie in place and is spent doing it.
+	var ice := board.place_plant(&"iceberglettuce", 2, 3)
+	if ice == null:
+		ice = board.place_plant(&"chillypepper", 2, 3)
+	check("a freeze plant placed", ice != null)
+	if ice != null:
+		check("it is a freeze_burst", ice.component(&"freeze_burst") != null)
+		var victim := board.spawn_zombie(&"tutorial", 2)
+		victim.position.x = ice.position.x + 30.0
+		await _wait_game_seconds(0.6)
+		# The plant kills itself doing this, so validity is checked first -
+		# reading a freed node is a crash, not an error.
+		check("zombie was frozen or chilled", not is_instance_valid(victim)
+				or victim.has_tag(&"frozen") or victim.has_tag(&"slowed"))
+		check("the plant is spent",
+				not is_instance_valid(ice) or ice.is_dead)
+
+	# instant_damage: goes off once, kills itself doing it.
+	var bomb := board.place_plant(&"jalapeno", 3, 3)
+	check("an instant plant placed", bomb != null)
+	if bomb != null:
+		var target := board.spawn_zombie(&"tutorial", 3)
+		target.position.x = bomb.position.x + 20.0
+		var hp: float = target.health
+		await _wait_game_seconds(1.5)
+		check("it damaged what was near it",
+				not is_instance_valid(target) or target.health < hp)
+		check("and was spent", not is_instance_valid(bomb) or bomb.is_dead)
+
+	# tile_placer: the lasting effect is the terrain, not the plant.
+	# tile_placer frees itself in setup, so only the terrain is checked.
+	board.place_plant(&"goldleaf", 4, 5)
+	await _wait_game_seconds(0.3)
+	check("it left terrain behind", board.terrain_at(4, 5) != &"")
+	board.queue_free()
+
+	# wind_burst only takes zombies the wind can carry.
+	var board2 := _make_board()
+	var light := board2.spawn_zombie(&"tutorial", 1)
+	var heavy := board2.spawn_zombie(&"beach_gargantuar", 2)
+	# PVZGE tags gargantuars carriable too, so weight is what separates them.
+	check("light zombie is carriable", light.has_tag(&"carriable"))
+	check("gargantuar is also tagged carriable", heavy.has_tag(&"carriable"))
+	check("but it is far heavier",
+			float(heavy.def.stat(&"weight")) > float(light.def.stat(&"weight")),
+			"%s vs %s" % [heavy.def.stat(&"weight"), light.def.stat(&"weight")])
+	var blover := board2.place_plant(&"blover", 0, 1)
+	check("blover placed", blover != null)
+	if blover != null:
+		await _wait_game_seconds(0.5)
+		check("the carriable zombie was blown away",
+				not is_instance_valid(light) or light.is_dead)
+		check("the gargantuar was too heavy to lift",
+				is_instance_valid(heavy) and not heavy.is_dead)
+	board2.queue_free()
+	end_section()
+
+
+func _test_zombie_status_effects() -> void:
+	section("zombie status")
+	var board := _make_board()
+	var z := board.spawn_zombie(&"tutorial", 2)
+	var base: float = z.speed
+	var start_x: float = z.position.x
+
+	z.apply_stun(1.0)
+	check("stunned zombie reports it", z.is_stunned())
+	check("and is tagged", z.has_tag(&"stunned"))
+	await _wait_game_seconds(0.3)
+	check("a stunned zombie does not move",
+			is_equal_approx(z.position.x, start_x),
+			"%.2f vs %.2f" % [z.position.x, start_x])
+
+	await _wait_game_seconds(1.2)
+	check("the stun wears off", not z.is_stunned())
+	await _wait_game_seconds(0.3)
+	check("and it moves again", z.position.x < start_x)
+
+	z.apply_slow(0.5, 1.0)
+	check_eq("slow halves the speed", z.speed, base * 0.5)
+	check("and is tagged", z.has_tag(&"slowed"))
+	# Re-applying must not stack into a standstill.
+	z.apply_slow(0.5, 1.0)
+	check_eq("re-applying does not compound", z.speed, base * 0.5)
+	await _wait_game_seconds(1.4)
+	check_eq("speed is restored exactly", z.speed, base)
+	check("and the tag cleared", not z.has_tag(&"slowed"))
+
+	# A buff speeds a plant's components up without them knowing about buffs.
+	var plant := board.place_plant(&"peashooter", 3, 1)
+	var shooter := plant.component(&"shooter")
+	check("plant has a shooter", shooter != null)
+	check_eq("unbuffed rate is 1", plant.attack_rate, 1.0)
+	var before := shooter.scaled(2.0)
+	plant.apply_buff(2.0, 1.0, 5.0)
+	check("plant reports buffed", plant.is_buffed())
+	check_eq("intervals halve under a 2x buff", shooter.scaled(2.0), before * 0.5)
+	board.queue_free()
+	end_section()
+
+
+## I-Zombie needs a cost per zombie. PopCap's data has none, so it is derived
+## from wave cost - and must at least order sensibly.
+func _test_zombie_sun_costs() -> void:
+	section("zombie sun costs")
+	# Including mod-authored zombies, which never state a cost.
+	var free: Array[StringName] = []
+	for id in Data.zombies:
+		if (Data.zombies[id] as ZombieDef).placement_cost() <= 0:
+			free.append(id)
+	check("no zombie is free to place", free.is_empty(),
+			"%d free: %s" % [free.size(), str(free.slice(0, 5))])
+
+	var basic := Data.zombie(&"tutorial")
+	var cone := Data.zombie(&"tutorial_armor1")
+	var bucket := Data.zombie(&"tutorial_armor2")
+	var garg := Data.zombie(&"tutorial_gargantuar")
+	check("basic is the cheapest of the four",
+			basic.placement_cost() <= cone.placement_cost())
+	check("armour costs more than none",
+			cone.placement_cost() < bucket.placement_cost(),
+			"%d vs %d" % [cone.placement_cost(), bucket.placement_cost()])
+	check("a gargantuar costs most",
+			garg.placement_cost() > bucket.placement_cost(),
+			"%d vs %d" % [garg.placement_cost(), bucket.placement_cost()])
+
+	# A mod zombie that states no cost is still priced.
+	var modded := Data.zombie(&"neon_colossus")
+	if modded != null:
+		check("a mod zombie is priced too", modded.placement_cost() > 0,
+				"%d" % modded.placement_cost())
+
+	# The board prices a zombie seed from the zombie, not the plant table.
+	var board := _make_board()
+	check_eq("board reads the zombie's cost",
+			board.seed_cost(&"zombie", &"tutorial"), basic.placement_cost())
+	board.queue_free()
+	end_section()
+
+
+## Every level keeps its own slot, so several can be part-played at once.
+func _test_level_save_state() -> void:
+	section("level save state")
+	Saves.clear_save(&"tutorial_2")
+	Saves.clear_save(&"tutorial_3")
+	check("no save to begin with", not Saves.has_save(&"tutorial_2"))
+
+	var board := _make_board()
+	var runner := LevelRunner.new()
+	runner.first_wave_delay = 0.0
+	add_child(runner)
+	var bank := SeedBank.new()
+	add_child(bank)
+	board.seed_bank = bank
+
+	runner.start(Data.level(&"tutorial_2"), board)
+	bank.setup(runner.seedbank_seeds())
+
+	# Build a state worth remembering.
+	board.place_plant(&"peashooter", 2, 1)
+	board.place_plant(&"sunflower", 3, 2)
+	board.add_sun(175)
+	board.add_plant_food(2)
+	bank.spend(0)
+	await _wait_game_seconds(1.0)
+	var zombies := board.zombie_count()
+
+	var sun: int = board.sun
+	var food: int = board.plant_food
+	var wave: int = runner.wave_index
+	var charge: float = bank.packet(0).charge
+
+	check("saved", Saves.save_level(runner, board, bank))
+	check("slot exists", Saves.has_save(&"tutorial_2"))
+
+	# Now wreck it, so a successful restore cannot be a coincidence.
+	board.reset()
+	runner.start(Data.level(&"tutorial_2"), board)
+	bank.setup(runner.seedbank_seeds())
+	check_eq("board really was cleared", board.plant_at(2, 1), null)
+	check("sun really was reset", board.sun != sun)
+
+	# And restore.
+	var data := Saves.load_save(&"tutorial_2")
+	check("save loads back", not data.is_empty())
+	check("restored", Saves.restore(data, runner, board, bank))
+
+	check_eq("sun came back", board.sun, sun)
+	check_eq("plant food came back", board.plant_food, food)
+	check("the peashooter is back", board.plant_at(2, 1) != null)
+	check("the sunflower is back", board.plant_at(3, 2) != null)
+	check_eq("wave progress came back", runner.wave_index, wave)
+	# Charge is a float, so compare approximately.
+	check("packet charge came back",
+			is_equal_approx(bank.packet(0).charge, charge),
+			"%f vs %f" % [bank.packet(0).charge, charge])
+	check_eq("the zombies came back", board.zombie_count(), zombies)
+
+	# Slots are per level.
+	runner.start(Data.level(&"tutorial_3"), board)
+	Saves.save_level(runner, board, bank)
+	check("a second level has its own slot", Saves.has_save(&"tutorial_3"))
+	check("the first is untouched", Saves.has_save(&"tutorial_2"))
+	check("both are listed", Saves.saved_levels().size() >= 2)
+
+	# Clearing a level retires its slot.
+	Saves.mark_cleared(&"tutorial_2")
+	check("clearing a level marks it", Saves.is_cleared(&"tutorial_2"))
+	check("and retires its save", not Saves.has_save(&"tutorial_2"))
+	check("without touching the other", Saves.has_save(&"tutorial_3"))
+
+	Saves.clear_save(&"tutorial_3")
+	runner.queue_free()
+	bank.queue_free()
+	board.queue_free()
+	end_section()
+
+
+## Wipes every save slot so the run starts from nothing.
+func _clear_all_saves() -> void:
+	var cleared := Saves.saved_levels()
+	for level_id in cleared:
+		Saves.clear_save(level_id)
+	Saves.reset_progress()
+	if not cleared.is_empty():
+		print("        (cleared %d save slot(s) from a previous run)"
+				% cleared.size())
 
 
 # --- helpers -------------------------------------------------------------

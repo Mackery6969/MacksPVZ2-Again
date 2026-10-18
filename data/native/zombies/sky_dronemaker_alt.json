@@ -1,6 +1,9 @@
 {
  "id": "sky_dronemaker_alt",
  "extends": "sky_dronemaker",
+ "stats": {
+  "sun_cost": 50
+ },
  "extra": {
   "TargetListBecomesBlackList": true,
   "ValidDroneTargets": [

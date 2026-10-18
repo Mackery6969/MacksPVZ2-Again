@@ -10,7 +10,9 @@
  },
  "components": [
   {
-   "type": "sun_producer"
+   "type": "shooter",
+   "projectile": "magnifying_grass",
+   "interval": 0.333
   }
  ],
  "mint_boost": {
@@ -19,13 +21,11 @@
   "plantfood": false
  },
  "extra": {
-  "PeaType": "magnifying_grass",
   "PlantfoodDPS": 200,
   "PlantfoodDuration": 3,
   "PlantfoodDurationExtendPerProducer": 0.15,
   "ShineVineShootInterval": 12,
   "ShineVineShootIntervalAdditional": 4,
-  "ShootInterval": 0.333,
   "ShootSunCost": 50,
   "SunProducerList": [
    "sunflower",

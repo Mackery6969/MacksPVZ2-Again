@@ -8,6 +8,12 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "stunner",
+   "duration": 12
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -18,7 +24,6 @@
   "DetectDistancePlantfood": 4,
   "MintPoisonDPS": 60,
   "StunDistance": 1.5,
-  "StunDuration": 12,
   "StunDurationPlantfood": 18
  }
 }
