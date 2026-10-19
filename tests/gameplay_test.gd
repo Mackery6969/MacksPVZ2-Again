@@ -1834,6 +1834,39 @@ func _test_art() -> void:
 	check("baking happens once per rig",
 			rig.animations(&"BasicZombie") == library)
 
+	# A rig says when it acts, and where from.
+	if pea != null and pea.art != null:
+		check("the peashooter has a muzzle socket",
+				pea.art.socket(&"muzzle") != null)
+		check("and its Shoot animation announces the shot",
+				pea.art.announces(&"Shoot", [&"Shoot"]))
+		var muzzle := pea.art.socket(&"muzzle")
+		if muzzle != null:
+			check("which is away from the plant's own origin",
+					muzzle.position.length() > 20.0,
+					"%.1f,%.1f" % [muzzle.position.x, muzzle.position.y])
+
+	# Losing a limb: the whole arm comes off, the stump underneath shows.
+	var hurt: Zombie = board.spawn_zombie(&"tutorial", 4)
+	if hurt.art != null:
+		var before := hurt.art.slot_names().size()
+		hurt.take_damage(hurt.max_health * 0.75, null)
+		await get_tree().process_frame
+		check("the arm came off", hurt.art.slot_names().size() < before,
+				"%d -> %d slots" % [before, hurt.art.slot_names().size()])
+
+	# The lawn reads front to back, and a zombie covers the plant it eats.
+	check("a front row draws over a back row",
+			board.lane_z(4, Board.LAYER_PLANT) > board.lane_z(0, Board.LAYER_ZOMBIE))
+	check("and within a row the zombie is in front",
+			board.lane_z(2, Board.LAYER_ZOMBIE) > board.lane_z(2, Board.LAYER_PLANT))
+	check("while sun sits above the lot",
+			Board.LAYER_COLLECTABLE > board.lane_z(board.rows, Board.LAYER_PROJECTILE))
+	var scattered: Zombie = board.spawn_zombie(&"tutorial", 1)
+	check("zombies stand off the lane's centre line",
+			absf(scattered.lane_offset) > 0.0,
+			"%.2f" % scattered.lane_offset)
+
 	# A shared bundle is parsed once however many entities use it.
 	var first := Art.set_for(&"zombies_BasicZOMBIE")
 	var second := Art.set_for(&"zombies_BasicZOMBIE")

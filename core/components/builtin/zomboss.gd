@@ -283,7 +283,8 @@ func _reposition(leap: bool) -> void:
 	if to == host.row:
 		return
 	host.row = to
-	host.position.y = host.board.grid_to_world(to, host.col).y
+	host.position.y = host.board.grid_to_world(to, host.col).y + host.lane_offset
+	host.z_index = host.board.lane_z(to, host.board.LAYER_ZOMBIE)
 	host.queue_redraw()
 
 

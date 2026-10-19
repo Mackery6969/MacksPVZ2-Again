@@ -439,6 +439,33 @@ entity decides how that looks. No component learns whether its host has art or
 what a rig calls anything, which is what lets a mod reskin a plant without
 touching behaviour.
 
+`sockets` maps a name to a bone - `{"muzzle": "mouthhole"}` - and each becomes
+a marker animated with everything else, so the game can ask where a rig's
+mouth is this instant. A peashooter's pea leaves from its muzzle rather than
+from the middle of the plant.
+
+**A rig says when it acts.** The peashooter's Shoot animation carries a
+`Shoot` event fifteen frames in, which is the frame the pea leaves its mouth.
+Those are baked as method tracks, so `Armature.event` fires them and the
+shooter spawns the pea then - not on the frame the animation started, which is
+what made the shot look detached from the plant. A rig with no such event
+fires immediately, so nothing waits forever.
+
+`limbs` is what comes off, and when:
+
+```json
+"limbs": [
+  {"name": "arm", "at_health": 0.5,
+   "detach": ["arm_here_HAND", "hand_here_HAND"], "show": ["arm_here_ARM"]},
+  {"name": "head", "on_death": true, "detach": ["head_HEAD", "jaw_HEAD"]}
+]
+```
+
+PopCap draws the stump as its own slot sitting hidden under the whole limb, so
+losing one is: stop drawing the whole, start drawing the stump, and hand what
+came off to the board to fall. **When** it happens is the game's call, which is
+why the thresholds are here and not in the rig.
+
 `hide_slots` names slots the rig draws but the game should not. PvZ rigs carry
 a detached-limb variant in its own slot - the basic zombie's `arm_here_ARM` is
 the broken stump, sitting on top of the intact arm - because the game decides
@@ -602,6 +629,24 @@ A component with `is_ability` set is triggered by the player (bound to
 reaching the house via `handle_zombie_at_house()`, consuming it before mowers
 or a loss are considered. That is how Sky replaces the lose condition rather
 than decorating it - the world owns the rule, not the board.
+
+## Drawing order
+
+The lawn reads front to back. A plant in row 4 covers a zombie in row 0, and
+within one row the zombie covers the plant it is eating - so the row picks the
+band and the kind picks the place in it:
+
+```gdscript
+z_index = row * Board.ROW_BAND + Board.LAYER_ZOMBIE
+```
+
+Layers are `LAYER_PLANT`, `LAYER_OBJECT`, `LAYER_MOWER`, `LAYER_ZOMBIE` and
+`LAYER_PROJECTILE`. Collectables sit on `LAYER_COLLECTABLE`, above the lot,
+because a sun behind a gargantuar is a sun nobody clicks. A zombie that
+changes lane changes band with it, which a boss does every time it walks.
+
+Zombies also spawn a little off their lane's centre line, so a wave is a crowd
+rather than a line of identical figures standing on one rail.
 
 ## Terrain
 

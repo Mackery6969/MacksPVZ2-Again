@@ -16,6 +16,10 @@ extends Node2D
 ## so entities cost nodes, not memory.
 
 signal animation_finished(name: StringName)
+## Fired when a baked animation reaches an event the rig declares - the
+## peashooter's Shoot animation says "Shoot" fifteen frames in, which is when
+## the pea actually leaves its mouth.
+signal event(name: StringName)
 
 ## How long to ease from one animation into the next. Without it a zombie
 ## switching from Walk to Death cuts straight to the death pose.
@@ -30,18 +34,29 @@ var fitted_x: float = 0.0
 
 var _player: AnimationPlayer = null
 var _slots: Dictionary = {}          ## slot name -> Sprite2D
+var _sockets: Dictionary = {}        ## socket alias -> Node2D
 var _names: Array = []
 
 
-func setup(source: ArmatureSet, armature_name: StringName) -> bool:
+func setup(source: ArmatureSet, armature_name: StringName,
+		sockets: Dictionary = {}) -> bool:
 	if source == null or not source.has_armature(armature_name):
 		return false
-	var rig := source.rig(armature_name)
+	var rig := source.rig(armature_name, sockets)
 	if rig == null:
 		return false
 
 	for slot in rig.slots:
 		var region: StringName = slot["region"]
+		# A socket has nothing to draw: it is a marker the game can read a
+		# position off, animated like everything else.
+		if region == &"":
+			var marker := Node2D.new()
+			marker.name = String(slot["name"])
+			add_child(marker)
+			_slots[slot["name"]] = marker
+			_sockets[slot["socket"]] = marker
+			continue
 		var sprite := Sprite2D.new()
 		sprite.name = String(slot["name"])
 		sprite.texture = source.region(region)
@@ -54,13 +69,17 @@ func setup(source: ArmatureSet, armature_name: StringName) -> bool:
 	# touches it - those get no track at all.
 	var rest := rig.slot_transforms(rig.world_at({}))
 	for i in rig.slots.size():
-		var sprite: Sprite2D = _slots[rig.slots[i]["name"]]
-		sprite.transform = rest[i]
+		var node: Node2D = _slots[rig.slots[i]["name"]]
+		node.transform = rest[i]
 
 	_player = AnimationPlayer.new()
 	_player.name = "Animations"
 	add_child(_player)
-	_player.add_animation_library(&"", source.animations(armature_name))
+	# Immediate, not deferred: a rig's event says the pea leaves on THIS
+	# frame, and a frame of latency is the difference between a shot that
+	# comes out of the plant's mouth and one that trails it.
+	_player.callback_mode_method = AnimationMixer.ANIMATION_CALLBACK_MODE_METHOD_IMMEDIATE
+	_player.add_animation_library(&"", source.animations(armature_name, sockets))
 	_player.animation_finished.connect(_on_finished)
 	_names = _player.get_animation_list()
 	return true
@@ -108,6 +127,34 @@ func play_first(candidates: Array, loop: bool = true) -> bool:
 	return false
 
 
+## Whether an animation announces any of these events, so a caller can tell
+## a rig that will say "now" from one that will not.
+func announces(name: StringName, events: Array) -> bool:
+	if _player == null or not _player.has_animation(name):
+		return false
+	var animation := _player.get_animation(name)
+	for track in animation.get_track_count():
+		if animation.track_get_type(track) != Animation.TYPE_METHOD:
+			continue
+		for key in animation.track_get_key_count(track):
+			var args: Array = animation.method_track_get_params(track, key)
+			if not args.is_empty() and events.has(StringName(args[0])):
+				return true
+	return false
+
+
+## Where a named socket is right now, in world space. Null when the rig has
+## no such socket, so a caller falls back to its own guess.
+func socket(alias: StringName) -> Node2D:
+	return _sockets.get(alias)
+
+
+## Called from a baked method track. Named with a leading underscore because
+## nothing outside the animation should call it; listen to `event` instead.
+func _fire_event(name: StringName) -> void:
+	event.emit(name)
+
+
 func _on_finished(name: StringName) -> void:
 	if looping and name == playing:
 		_player.play(name)
@@ -133,9 +180,28 @@ func set_facing(direction: int) -> void:
 ## zombie's `arm_here_ARM` is the broken stump, sitting on top of the intact
 ## arm - because the game decides when a limb comes off, not the rig.
 func hide_slot(name: StringName, hidden: bool = true) -> void:
-	var node: Sprite2D = _slots.get(name)
+	var node: Node2D = _slots.get(name)
 	if node != null:
 		node.visible = not hidden
+
+
+## Takes slots off the rig and hands them back as one free-standing node,
+## already at the world transform they had. That is how a limb comes off: the
+## zombie stops drawing its arm and the caller is given the arm to drop.
+func detach_slots(names: Array) -> Node2D:
+	var freed := Node2D.new()
+	freed.name = "Detached"
+	freed.transform = global_transform
+	for slot_name in names:
+		var node: Node2D = _slots.get(StringName(slot_name))
+		if node == null or not is_instance_valid(node):
+			continue
+		var where := node.transform
+		remove_child(node)
+		freed.add_child(node)
+		node.transform = where
+		_slots.erase(StringName(slot_name))
+	return freed
 
 
 func slot_names() -> Array:

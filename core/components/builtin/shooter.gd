@@ -7,7 +7,12 @@ extends EntityComponent
 var interval: float = 1.5
 var projectile_id: StringName = &"pea"
 
+## Event names a rig may use to say "the shot leaves now".
+const SHOOT_EVENTS: Array[StringName] = [&"Shoot", &"shoot", &"fire"]
+
 var _cooldown: float = 0.0
+var _pending: bool = false
+var _rig_announces: int = -1
 var _burst_remaining: int = 0
 var _burst_gap: float = 0.0
 var _burst_projectile: StringName = &"pea"
@@ -53,10 +58,57 @@ func _has_target() -> bool:
 	return false
 
 
+## Firing is the animation's call when the rig has one to make. The
+## peashooter's Shoot animation carries a "Shoot" event fifteen frames in,
+## which is the frame the pea leaves its mouth - spawning on the frame the
+## animation *started* is what made the shot look detached from the plant.
+## A rig without the event, or a plant without art, fires immediately.
 func _fire() -> void:
-	host.board.spawn_projectile(projectile_id, host.row, host.position, host)
-	host.play_art_once(&"attack")
+	if host.play_art_once(&"attack") and _await_event():
+		return
+	_launch()
+
+
+func _await_event() -> bool:
+	var art: Armature = host.art
+	if art == null or not art.has_animation(art.playing):
+		return false
+	if not art.event.is_connected(_on_art_event):
+		art.event.connect(_on_art_event)
+	_pending = true
+	return _has_shoot_event(art)
+
+
+## Whether the current animation will actually announce a shot. Checked once
+## per rig, because a plant that waits for an event that never comes never
+## fires at all.
+func _has_shoot_event(art: Armature) -> bool:
+	if _rig_announces == -1:
+		_rig_announces = 1 if art.announces(art.playing, SHOOT_EVENTS) else 0
+	return _rig_announces == 1
+
+
+func _on_art_event(name: StringName) -> void:
+	if not _pending or not SHOOT_EVENTS.has(name):
+		return
+	_pending = false
+	_launch()
+
+
+func _launch() -> void:
+	host.board.spawn_projectile(projectile_id, host.row, _muzzle(), host)
 	Audio.play(&"plant.shoot", host.position)
+
+
+## Where the shot leaves from. A rig that names a muzzle socket says exactly;
+## anything else falls back to the plant's own position.
+func _muzzle() -> Vector2:
+	var art: Armature = host.art
+	if art != null:
+		var point := art.socket(&"muzzle")
+		if point != null:
+			return point.global_position - host.global_position + host.position
+	return host.position
 
 
 ## Plant food: unload a burst of shots down the lane.

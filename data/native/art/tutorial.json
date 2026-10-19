@@ -5,6 +5,9 @@
   "armature": "Peashooter",
   "fit_height": 92,
   "foot_y": 26,
+  "sockets": {
+   "muzzle": "mouthhole"
+  },
   "animations": {
    "idle": "Idle",
    "attack": "Shoot",
@@ -54,9 +57,37 @@
   "bundle": "zombies_BasicZOMBIE",
   "armature": "BasicZombie",
   "fit_height": 126,
-  "foot_y": 18,
+  "foot_y": 38,
   "hide_slots": [
    "arm_here_ARM"
+  ],
+  "limbs": [
+   {
+    "name": "arm",
+    "at_health": 0.5,
+    "detach": [
+     "arm_here_HAND",
+     "armhand_here_HAND",
+     "hand_here_HAND",
+     "hand_here_back_HAND",
+     "hand_side_HAND"
+    ],
+    "show": [
+     "arm_here_ARM"
+    ],
+    "sound": "zombie.limb"
+   },
+   {
+    "name": "head",
+    "on_death": true,
+    "detach": [
+     "head_HEAD",
+     "jaw_HEAD",
+     "eyeR_HEAD",
+     "eyeL_HEAD"
+    ],
+    "sound": "zombie.head"
+   }
   ],
   "animations": {
    "idle": "Idle",
@@ -69,9 +100,37 @@
   "bundle": "zombies_BasicZOMBIE",
   "armature": "BasicZombie",
   "fit_height": 126,
-  "foot_y": 18,
+  "foot_y": 38,
   "hide_slots": [
    "arm_here_ARM"
+  ],
+  "limbs": [
+   {
+    "name": "arm",
+    "at_health": 0.5,
+    "detach": [
+     "arm_here_HAND",
+     "armhand_here_HAND",
+     "hand_here_HAND",
+     "hand_here_back_HAND",
+     "hand_side_HAND"
+    ],
+    "show": [
+     "arm_here_ARM"
+    ],
+    "sound": "zombie.limb"
+   },
+   {
+    "name": "head",
+    "on_death": true,
+    "detach": [
+     "head_HEAD",
+     "jaw_HEAD",
+     "eyeR_HEAD",
+     "eyeL_HEAD"
+    ],
+    "sound": "zombie.head"
+   }
   ],
   "animations": {
    "idle": "Idle",
@@ -84,9 +143,37 @@
   "bundle": "zombies_BasicZOMBIE",
   "armature": "BasicZombie",
   "fit_height": 126,
-  "foot_y": 18,
+  "foot_y": 38,
   "hide_slots": [
    "arm_here_ARM"
+  ],
+  "limbs": [
+   {
+    "name": "arm",
+    "at_health": 0.5,
+    "detach": [
+     "arm_here_HAND",
+     "armhand_here_HAND",
+     "hand_here_HAND",
+     "hand_here_back_HAND",
+     "hand_side_HAND"
+    ],
+    "show": [
+     "arm_here_ARM"
+    ],
+    "sound": "zombie.limb"
+   },
+   {
+    "name": "head",
+    "on_death": true,
+    "detach": [
+     "head_HEAD",
+     "jaw_HEAD",
+     "eyeR_HEAD",
+     "eyeL_HEAD"
+    ],
+    "sound": "zombie.head"
+   }
   ],
   "animations": {
    "idle": "Idle",

@@ -36,7 +36,9 @@
   "music.lose.tutorial": "LOSE_Tutorial",
   "music.zengarden": "zen00",
   "ui.fastforward.on": "2x",
-  "ui.fastforward.off": "2x_off"
+  "ui.fastforward.off": "2x_off",
+  "zombie.limb": "limbs_pop",
+  "zombie.head": "headPop"
  },
  "loop": [
   "music.lawn.tutorial"

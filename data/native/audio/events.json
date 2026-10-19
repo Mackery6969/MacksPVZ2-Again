@@ -98,6 +98,14 @@
    "fmod": "event:/SFX/Zombies/Boss/Roar"
   },
   {
+   "id": "zombie.limb",
+   "fmod": "event:/SFX/Zombies/Limb"
+  },
+  {
+   "id": "zombie.head",
+   "fmod": "event:/SFX/Zombies/HeadPop"
+  },
+  {
    "id": "mower.trigger",
    "fmod": "event:/SFX/Board/Mower"
   },

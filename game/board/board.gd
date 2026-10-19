@@ -19,6 +19,23 @@ signal zombie_reached_house(zombie: Zombie)
 ## A lawn ability became available or was spent.
 signal lawn_ability_changed(component: LawnComponent)
 
+## Drawing order. The lawn reads front-to-back: a plant in row 4 covers a
+## zombie in row 0, and within one row the zombie covers the plant it is
+## eating. So the row decides the band and the kind decides the place in it.
+## Collectables sit above the lot, because a sun behind a gargantuar is a sun
+## nobody clicks.
+const ROW_BAND := 10
+const LAYER_PLANT := 0
+const LAYER_OBJECT := 1
+const LAYER_MOWER := 2
+const LAYER_ZOMBIE := 3
+const LAYER_PROJECTILE := 4
+const LAYER_COLLECTABLE := 1000
+
+## How far a zombie may stand off its lane's centre line, as a share of the
+## row height.
+const LANE_SCATTER := 0.09
+
 const DEFAULT_ROWS := 5
 const DEFAULT_COLS := 9
 
@@ -185,6 +202,7 @@ func setup_mowers() -> void:
 		m.board = self
 		m.name = "Mower_%d" % r
 		m.position = Vector2(house_x() - mower_offset, grid_to_world(r, 0).y)
+		m.z_index = lane_z(r, LAYER_MOWER)
 		m.finished.connect(_on_mower_finished)
 		_mowers_node.add_child(m)
 		_mowers[r] = m
@@ -334,6 +352,11 @@ func apply_snapshot(state: Dictionary) -> void:
 
 
 # --- geometry ------------------------------------------------------------
+
+## Where something in `row` belongs in the draw order.
+func lane_z(row: int, layer: int) -> int:
+	return row * ROW_BAND + layer
+
 
 func grid_to_world(row: int, col: int) -> Vector2:
 	return origin + Vector2((col + 0.5) * cell_size.x, (row + 0.5) * cell_size.y)
@@ -495,6 +518,7 @@ func _place_plant_at(id: StringName, row: int, col: int) -> Plant:
 	p.col = col
 	p.position = grid_to_world(row, col)
 	p.name = "Plant_%s_%d_%d" % [id, row, col]
+	p.z_index = lane_z(row, LAYER_PLANT)
 	_entities.add_child(p)
 	p.initialize(def, self)
 	_plants[Vector2i(col, row)] = p
@@ -561,14 +585,18 @@ func spawn_zombie(id: StringName, row: int, x_offset: float = 0.0,
 	var z := Zombie.new()
 	z.row = clampi(row, 0, rows - 1)
 	z.col = cols - 1
+	# A little scatter within the lane, so a wave is a crowd rather than a
+	# line of identical figures standing on one rail.
+	z.lane_offset = randf_range(-1.0, 1.0) * cell_size.y * LANE_SCATTER
 	z.position = Vector2(spawn_x() + x_offset * cell_size.x,
-			grid_to_world(z.row, 0).y)
+			grid_to_world(z.row, 0).y + z.lane_offset)
 	z.name = "Zombie_%s" % id
 	_entities.add_child(z)
 	for mark in marks:
 		z.set_runtime_tag(StringName(mark), true)
 	z.initialize(def, self)
 
+	z.z_index = lane_z(z.row, LAYER_ZOMBIE)
 	_zombies_by_row[z.row].append(z)
 	z.died.connect(_on_carrier_died)
 	z.died.connect(_on_zombie_gone)
@@ -670,6 +698,7 @@ func spawn_projectile(id: StringName, row: int, from: Vector2, source: Node) -> 
 	pr.damage = float(Data.projectile_damage(id))
 	pr.direction = -1 if source is Zombie else 1
 	pr.position = from + Vector2(24 * pr.direction, -12)
+	pr.z_index = lane_z(row, LAYER_PROJECTILE)
 	_projectiles.add_child(pr)
 	pr.attach_art(id)
 	return pr
@@ -688,6 +717,7 @@ func drop_sun_from_sky() -> void:
 
 func _add_sun_token(at: Vector2, rest_y: float) -> SunToken:
 	var s := SunToken.new()
+	s.z_index = LAYER_COLLECTABLE
 	s.position = at
 	s.fall_to_y = rest_y
 	s.collect_target = to_global(sun_collect_target)
@@ -706,6 +736,7 @@ func _on_sun_collected(token: Collectable) -> void:
 ## Drops plant food where a carrier zombie died.
 func drop_plant_food(at: Vector2) -> PlantFoodToken:
 	var t := PlantFoodToken.new()
+	t.z_index = LAYER_COLLECTABLE
 	t.position = at + Vector2(0, -30)
 	t.fall_to_y = at.y + 10.0
 	t.collect_target = to_global(plant_food_collect_target)

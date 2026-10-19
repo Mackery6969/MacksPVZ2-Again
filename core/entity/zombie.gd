@@ -61,6 +61,10 @@ var _water_speed_scale: float = 1.0
 var _announced_house: bool = false
 ## The state the art is currently showing, so it is not restarted every frame.
 var _art_state: StringName = &""
+## Limbs already lost, by the name the art mapping gives them.
+var _lost: Dictionary = {}
+## How far off its lane's centre line this zombie stands, set at spawn.
+var lane_offset: float = 0.0
 
 
 func art_kind() -> StringName:
@@ -70,6 +74,16 @@ func art_kind() -> StringName:
 ## Zombie art is authored facing the house, which is where a hostile zombie is
 ## already walking - so it is a charmed one, heading the other way, that needs
 ## mirroring. Flipping both ways over made them walk backwards.
+## Keeps this zombie in its lane's drawing band. A boss changes rows, and a
+## zombie that kept row 0's band while standing in row 4 would be drawn behind
+## the plants it is walking past.
+func _sync_layer() -> void:
+	if board != null:
+		var want: int = board.lane_z(row, board.LAYER_ZOMBIE)
+		if z_index != want:
+			z_index = want
+
+
 func _face_art() -> void:
 	if art != null:
 		art.set_facing(-1 if is_charmed() else 1)
@@ -80,6 +94,7 @@ func _on_initialized() -> void:
 	eat_dps = float(def.stat(&"eat_dps", eat_dps))
 	_base_speed = speed
 	_stun_scale = float(def.stat(&"stun_scale", 1.0))
+	damaged.connect(func(_w, _a, _r): _drop_limbs(false))
 	_water_speed_scale = float(def.stat(&"water_speed_scale", 1.0))
 	for c in components():
 		if c.claims_attack():
@@ -188,6 +203,39 @@ func is_stunned() -> bool:
 	return _stun_left > 0.0
 
 
+## Drops the pieces a zombie has lost. PopCap draws the stump as its own slot
+## - the basic zombie's `arm_here_ARM` sits hidden under the intact arm - so
+## losing a limb is: stop drawing the whole one, start drawing the stump, and
+## hand what came off to the board to fall.
+##
+## When it happens is the game's call, which is why the thresholds live in the
+## art mapping rather than in the rig.
+func _drop_limbs(on_death: bool) -> void:
+	if art == null or def == null:
+		return
+	for entry in (Art.mapping(&"zombie", def.id).get("limbs", []) as Array):
+		var limb: Dictionary = entry
+		var name := StringName(limb.get("name", ""))
+		if name == &"" or _lost.has(name):
+			continue
+		if bool(limb.get("on_death", false)):
+			if not on_death:
+				continue
+		elif health_fraction() > float(limb.get("at_health", 0.0)):
+			continue
+		_lost[name] = true
+		for slot in (limb.get("show", []) as Array):
+			art.hide_slot(StringName(slot), false)
+		var piece := art.detach_slots(limb.get("detach", []))
+		if piece.get_child_count() == 0 or board == null:
+			piece.free()
+			continue
+		var dropped := DetachedLimb.drop(piece, -direction(), position.y + 24.0)
+		board.add_child(dropped)
+		dropped.z_index = board.lane_z(row, board.LAYER_ZOMBIE)
+		Audio.play(StringName(limb.get("sound", "zombie.limb")), position)
+
+
 func _tick_status(delta: float) -> void:
 	if _stun_left > 0.0:
 		_stun_left -= delta
@@ -226,6 +274,7 @@ func _process(delta: float) -> void:
 func _walk(delta: float) -> void:
 	position.x += direction() * current_speed() * board.cell_size.x * delta
 	col = board.world_to_col(position.x)
+	_sync_layer()
 
 	var ahead := _find_target()
 	if ahead != null:
@@ -309,6 +358,7 @@ func _show_state(state: StringName) -> void:
 
 func _on_death() -> void:
 	Audio.play(&"zombie.die", position)
+	_drop_limbs(true)
 	# The death animation outlives the zombie, so it is handed to the board
 	# to finish on its own rather than freed with the body.
 	if art != null and play_art(&"die", false):

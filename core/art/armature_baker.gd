@@ -32,10 +32,16 @@ var frame_rate: float = 30.0
 
 var _armature: Dictionary = {}
 var _set: ArmatureSet = null
+var _sockets: Dictionary = {}
 
 
-func _init(source: ArmatureSet, armature_name: StringName) -> void:
+## `sockets` maps a game-facing name to a bone - {"muzzle": "mouthhole"} -
+## and each becomes a marker node animated like any slot, so the game can ask
+## where a rig's mouth is at this instant without sampling anything itself.
+func _init(source: ArmatureSet, armature_name: StringName,
+		sockets: Dictionary = {}) -> void:
 	_set = source
+	_sockets = sockets
 	_armature = source.armature(armature_name)
 	frame_rate = float(_armature.get("frameRate", source.frame_rate))
 	if frame_rate <= 0.0:
@@ -117,6 +123,21 @@ func _read_slots() -> void:
 			"bone": int(bone_index.get(StringName(entry.get("parent", "")), -1)),
 			"xform": matrix_of(display.get("transform", {})),
 			"region": region,
+		})
+
+	# Sockets ride along as slots with nothing to draw.
+	for alias in _sockets:
+		var bone := int(bone_index.get(StringName(_sockets[alias]), -1))
+		if bone < 0:
+			push_warning("armature: no bone '%s' for socket '%s'"
+					% [_sockets[alias], alias])
+			continue
+		slots.append({
+			"name": StringName("socket_%s" % alias),
+			"bone": bone,
+			"xform": Transform2D.IDENTITY,
+			"region": &"",
+			"socket": StringName(alias),
 		})
 
 
@@ -244,21 +265,53 @@ func _bake_one(source: Dictionary) -> Animation:
 			for frame in sampled:
 				values.append(_component(frame[slot_index], property))
 			_add_track(animation, "%s:%s" % [name, property], values)
+	_add_events(animation, source)
 	return animation
+
+
+## A rig says when it does the thing: the peashooter's Shoot animation carries
+## a "Shoot" event fifteen frames in, which is when the pea actually leaves
+## its mouth. Baking those as method tracks lets Godot fire them, so the game
+## spawns the pea on the frame the art throws it rather than on the frame the
+## animation started.
+func _add_events(animation: Animation, source: Dictionary) -> void:
+	var at := 0.0
+	for frame in (source.get("frame", []) as Array):
+		if not (frame is Dictionary):
+			at += 0.0
+			continue
+		for event in (frame.get("events", []) as Array):
+			if not (event is Dictionary and event.has("name")):
+				continue
+			var track := animation.add_track(Animation.TYPE_METHOD)
+			animation.track_set_path(track, NodePath("."))
+			animation.track_insert_key(track, at / frame_rate, {
+				"method": &"_fire_event",
+				"args": [StringName(event["name"])],
+			})
+		at += float(frame.get("duration", 0))
 
 
 ## Writes one property's samples as a track, keeping only the keys that
 ## matter: a value that differs from its neighbour on either side. A held
 ## value keeps the key before it changes, so a hold stays a hold.
+##
+## A track whose value never changes still gets its single key. Dropping it
+## entirely leaves the sprite at its REST transform, which is not the same
+## thing - and the difference shows up as parts flickering as one animation
+## blends into another, each snapping back to rest for the blend.
 func _add_track(animation: Animation, path: String, values: Array) -> void:
-	var needed := false
+	var constant := true
 	for i in range(1, values.size()):
 		if not _same(values[i], values[0]):
-			needed = true
+			constant = false
 			break
-	if not needed:
-		return
 	var track := animation.add_track(Animation.TYPE_VALUE)
+	if constant:
+		animation.track_set_path(track, NodePath(path))
+		animation.track_set_interpolation_type(track, Animation.INTERPOLATION_LINEAR)
+		animation.track_insert_key(track, 0.0, values[0])
+		return
 	animation.track_set_path(track, NodePath(path))
 	animation.track_set_interpolation_type(track, Animation.INTERPOLATION_LINEAR)
 	for i in values.size():

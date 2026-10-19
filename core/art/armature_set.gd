@@ -49,19 +49,36 @@ func bounds(name: StringName) -> Rect2:
 
 
 ## The resolved rig: bones, slots and the rules for composing them.
-func rig(name: StringName) -> ArmatureBaker:
-	if not _rigs.has(name):
-		_rigs[name] = ArmatureBaker.new(self, name) if has_armature(name) else null
-	return _rigs[name]
+## The resolved rig, cached per armature AND socket set - a socket adds a
+## marker that has to be animated with everything else, so two callers wanting
+## different sockets genuinely need different bakes.
+func rig(name: StringName, sockets: Dictionary = {}) -> ArmatureBaker:
+	var key := _key(name, sockets)
+	if not _rigs.has(key):
+		_rigs[key] = ArmatureBaker.new(self, name, sockets) \
+				if has_armature(name) else null
+	return _rigs[key]
 
 
 ## This rig's animations as Godot resources, baked once and shared.
-func animations(name: StringName) -> AnimationLibrary:
-	if not _libraries.has(name):
-		var built := rig(name)
-		_libraries[name] = built.bake_animations() if built != null \
+func animations(name: StringName, sockets: Dictionary = {}) -> AnimationLibrary:
+	var key := _key(name, sockets)
+	if not _libraries.has(key):
+		var built := rig(name, sockets)
+		_libraries[key] = built.bake_animations() if built != null \
 				else AnimationLibrary.new()
-	return _libraries[name]
+	return _libraries[key]
+
+
+func _key(name: StringName, sockets: Dictionary) -> String:
+	if sockets.is_empty():
+		return String(name)
+	var parts := sockets.keys()
+	parts.sort()
+	var joined := PackedStringArray()
+	for p in parts:
+		joined.append("%s=%s" % [p, sockets[p]])
+	return "%s|%s" % [name, "/".join(joined)]
 
 
 func region(name: StringName) -> AtlasTexture:

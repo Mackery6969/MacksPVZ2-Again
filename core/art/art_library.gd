@@ -100,7 +100,7 @@ func make(kind: StringName, id: StringName) -> Armature:
 		return null
 	var armature_name := StringName(entry.get("armature", ""))
 	var node := Armature.new()
-	if not node.setup(source, armature_name):
+	if not node.setup(source, armature_name, entry.get("sockets", {})):
 		node.free()
 		return null
 	_fit(node, source.bounds(armature_name), entry)
