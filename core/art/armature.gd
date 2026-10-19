@@ -2,16 +2,18 @@ class_name Armature
 extends Node2D
 ## Plays one DragonBones armature.
 ##
-## Bone transforms are composed here rather than by parenting Node2Ds,
-## because the two do not agree. Godot multiplies a parent's scale into a
-## child's whole basis, so a rotated child under a non-uniformly scaled parent
-## comes out sheared - and the basic zombie's `pressure` bone is scaled 0.5 in
-## Y, which laid the whole zombie on its side. DragonBones applies a parent's
-## scale to the child's position and passes the scale down, never shearing.
+## Transforms are matrices, not position/rotation/scale, because DragonBones
+## uses two skew angles where a rotation would only need one. `skX` and `skY`
+## are equal for an ordinary rotation, and when they differ they describe a
+## mirror or a shear that no single rotation can express - the peashooter's
+## `stem` is skX 87.2 / skY -92.8, a vertical mirror, which read as a 87-degree
+## rotation turns the whole plant upside down. The matrix is built from both,
+## the X axis from skY and the Y axis from skX, and composed by multiplication
+## the way DragonBones concatenates.
 ##
-## Composing it ourselves also means a flat node tree: every sprite is a direct
-## child of this node, so a lane of zombies is a wide shallow scene rather than
-## a deep one.
+## Composing it here rather than by parenting Node2Ds also means a flat node
+## tree: every sprite is a direct child, so a lane of zombies is a wide shallow
+## scene rather than a deep one.
 ##
 ## The heavy data - skeleton, texture, atlas regions - belongs to a shared
 ## ArmatureSet, so many entities cost nodes, not memory.
@@ -34,18 +36,35 @@ var _set: ArmatureSet = null
 var _armature: Dictionary = {}
 
 ## Bones, parents before children, so one pass composes the whole skeleton.
-## Each: {name, parent (index, -1 for none), pos, rot, scale}
+## Each: {name, parent (index, -1 for none), pos, sk_x, sk_y, scale}
 var _bones: Array[Dictionary] = []
 var _bone_index: Dictionary = {}     ## name -> index into _bones
 ## Composed world transforms for this frame, parallel to _bones.
-var _world: Array[Dictionary] = []
-## Sprites, each: {node, bone (index), pos, rot, scale} in bone space.
+var _world: Array[Transform2D] = []
+## Sprites, each: {node, bone (index), xform} in bone space.
 var _slots: Array[Dictionary] = []
+var _slot_nodes: Dictionary = {}     ## slot name -> Sprite2D
 
 var _animations: Dictionary = {}
 var _tracks: Dictionary = {}         ## bone index -> flattened tracks
 var _duration: float = 0.0
 var _time: float = 0.0
+
+
+## Slots the rig draws but the game should not, until something turns them
+## on. PvZ rigs carry a detached-limb variant in its own slot - the basic
+## zombie's `arm_here_ARM` is the broken stump, sitting on top of the intact
+## arm - and the game is what decides when a limb comes off, not the rig.
+func hide_slot(name: StringName, hidden: bool = true) -> void:
+	var node: Sprite2D = _slot_nodes.get(name)
+	if node != null:
+		node.visible = not hidden
+
+
+func slot_names() -> Array:
+	var names := _slot_nodes.keys()
+	names.sort()
+	return names
 
 
 func setup(source: ArmatureSet, armature_name: StringName) -> bool:
@@ -150,6 +169,8 @@ func _build_bones() -> void:
 		var rest := _transform_of(entry.get("transform", {}))
 		rest["name"] = name
 		rest["parent"] = int(_bone_index.get(StringName(entry.get("parent", "")), -1))
+		rest["inherit_rotation"] = bool(entry.get("inheritRotation", true))
+		rest["inherit_scale"] = bool(entry.get("inheritScale", true))
 		_bone_index[name] = _bones.size()
 		_bones.append(rest)
 	_world.resize(_bones.size())
@@ -187,58 +208,79 @@ func _build_slots() -> void:
 		sprite.centered = true
 		sprite.offset = _set.region_offset(region)
 		add_child(sprite)
-		var place := _transform_of(display.get("transform", {}))
-		place["node"] = sprite
-		place["bone"] = bone
-		_slots.append(place)
+		_slot_nodes[name] = sprite
+		_slots.append({
+			"node": sprite,
+			"bone": bone,
+			"xform": _matrix_of(_transform_of(display.get("transform", {}))),
+		})
 
 
 ## DragonBones omits anything at its default, so every field has to be
-## defaulted rather than read. skX is the rotation; skY differs from it only
-## for sheared parts, which none of this art uses.
+## defaulted rather than read.
 func _transform_of(raw: Variant) -> Dictionary:
 	var t: Dictionary = raw if raw is Dictionary else {}
+	var sk_x := float(t.get("skX", 0.0))
 	return {
 		"pos": Vector2(float(t.get("x", 0.0)), float(t.get("y", 0.0))),
-		"rot": deg_to_rad(float(t.get("skX", 0.0))),
+		"sk_x": sk_x,
+		# skY defaults to skX, which is what makes the common case a rotation.
+		"sk_y": float(t.get("skY", sk_x)),
 		"scale": Vector2(float(t.get("scX", 1.0)), float(t.get("scY", 1.0))),
 	}
 
 
+## A bone can opt out of its parent's rotation or scale, and several do: the
+## basic zombie's head sets both false, so it keeps its own size and angle
+## however the body leans. Inheriting them anyway gives a head twice the size
+## of the body, lying across its face.
+##
+## Position is always inherited - that is what a skeleton is for.
+func _inherit(parent: Transform2D, local: Transform2D, bone: Dictionary) -> Transform2D:
+	var rot: bool = bone["inherit_rotation"]
+	var size: bool = bone["inherit_scale"]
+	var origin := parent * local.origin
+	if rot and size:
+		# The exact path, and the common one: it keeps a parent's skew, which
+		# decomposing to rotation and scale would throw away.
+		var full := parent * local
+		full.origin = origin
+		return full
+	var carrier := Transform2D(parent.get_rotation() if rot else 0.0, Vector2.ZERO)
+	if size:
+		carrier = carrier.scaled(parent.get_scale())
+	var out := carrier * local
+	out.origin = origin
+	return out
+
+
+## The matrix DragonBones builds from one transform. Two skew angles, not one
+## rotation: the X axis comes from skY and the Y axis from skX, so equal
+## angles give a rotation and unequal ones a mirror or a shear.
+func _matrix_of(t: Dictionary) -> Transform2D:
+	var sk_x := deg_to_rad(float(t["sk_x"]))
+	var sk_y := deg_to_rad(float(t["sk_y"]))
+	var size: Vector2 = t["scale"]
+	return Transform2D(
+			Vector2(cos(sk_y) * size.x, sin(sk_y) * size.x),
+			Vector2(-sin(sk_x) * size.y, cos(sk_x) * size.y),
+			t["pos"])
+
+
 # --- posing --------------------------------------------------------------
-
-## Applies a parent transform to a local one, DragonBones style: the parent's
-## scale moves the child but does not shear it.
-func _compose(parent: Dictionary, local: Dictionary) -> Dictionary:
-	var scaled := Vector2(local["pos"].x * parent["scale"].x,
-			local["pos"].y * parent["scale"].y)
-	return {
-		"pos": parent["pos"] + scaled.rotated(parent["rot"]),
-		"rot": parent["rot"] + local["rot"],
-		"scale": Vector2(parent["scale"].x * local["scale"].x,
-				parent["scale"].y * local["scale"].y),
-	}
-
-
-const IDENTITY := {"pos": Vector2.ZERO, "rot": 0.0, "scale": Vector2.ONE}
-
 
 func _pose() -> void:
 	for i in _bones.size():
 		var bone: Dictionary = _bones[i]
-		var local := bone
-		if _tracks.has(i):
-			local = _animated(i, bone)
+		var local := _matrix_of(_animated(i, bone) if _tracks.has(i) else bone)
 		var parent: int = bone["parent"]
-		_world[i] = _compose(_world[parent] if parent >= 0 else IDENTITY, local)
+		_world[i] = _inherit(_world[parent], local, bone) if parent >= 0 else local
 
 	for slot in _slots:
 		var bone: int = slot["bone"]
-		var world := _compose(_world[bone] if bone >= 0 else IDENTITY, slot)
+		var base: Transform2D = _world[bone] if bone >= 0 else Transform2D.IDENTITY
 		var node: Sprite2D = slot["node"]
-		node.position = world["pos"]
-		node.rotation = world["rot"]
-		node.scale = world["scale"]
+		node.transform = base * (slot["xform"] as Transform2D)
 
 
 ## The bone's transform for the current time: its rest pose with the
@@ -248,9 +290,12 @@ func _animated(index: int, rest: Dictionary) -> Dictionary:
 	var move := _sample(track["translate"], _time, Vector2.ZERO)
 	var spin := _sample(track["rotate"], _time, Vector2.ZERO)
 	var size := _sample(track["scale"], _time, Vector2.ONE)
+	# The rotation offset turns both skew angles together, which keeps a
+	# mirrored bone mirrored while it animates.
 	return {
 		"pos": rest["pos"] + move,
-		"rot": rest["rot"] + deg_to_rad(spin.x),
+		"sk_x": float(rest["sk_x"]) + spin.x,
+		"sk_y": float(rest["sk_y"]) + spin.x,
 		"scale": Vector2(rest["scale"].x * size.x, rest["scale"].y * size.y),
 	}
 

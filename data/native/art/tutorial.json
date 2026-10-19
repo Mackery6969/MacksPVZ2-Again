@@ -55,6 +55,9 @@
   "armature": "BasicZombie",
   "fit_height": 126,
   "foot_y": 18,
+  "hide_slots": [
+   "arm_here_ARM"
+  ],
   "animations": {
    "idle": "Idle",
    "walk": "Walk",
@@ -67,6 +70,9 @@
   "armature": "BasicZombie",
   "fit_height": 126,
   "foot_y": 18,
+  "hide_slots": [
+   "arm_here_ARM"
+  ],
   "animations": {
    "idle": "Idle",
    "walk": "Walk",
@@ -79,6 +85,9 @@
   "armature": "BasicZombie",
   "fit_height": 126,
   "foot_y": 18,
+  "hide_slots": [
+   "arm_here_ARM"
+  ],
   "animations": {
    "idle": "Idle",
    "walk": "Walk",

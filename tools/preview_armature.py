@@ -16,26 +16,69 @@ import json, math, os, sys
 from PIL import Image
 
 
-def transform_of(raw):
+def matrix_of(raw):
+    """-> (a, b, c, d, tx, ty), the matrix DragonBones builds from one
+    transform. Two skew angles, not one rotation: the X axis comes from skY
+    and the Y axis from skX, so equal angles give a rotation and unequal ones
+    a mirror or a shear - which is what the peashooter's stem is."""
     t = raw or {}
-    return (float(t.get("x", 0.0)), float(t.get("y", 0.0)),
-            math.radians(float(t.get("skX", 0.0))),
-            float(t.get("scX", 1.0)), float(t.get("scY", 1.0)))
+    sk_x = math.radians(float(t.get("skX", 0.0)))
+    sk_y = math.radians(float(t.get("skY", t.get("skX", 0.0))))
+    sx = float(t.get("scX", 1.0))
+    sy = float(t.get("scY", 1.0))
+    return (math.cos(sk_y) * sx, math.sin(sk_y) * sx,
+            -math.sin(sk_x) * sy, math.cos(sk_x) * sy,
+            float(t.get("x", 0.0)), float(t.get("y", 0.0)))
 
 
-def compose(parent, local):
-    """-> the child's world transform, parent applied to local.
+def mul(p, l):
+    """-> p applied to l, the way DragonBones concatenates."""
+    pa, pb, pc, pd, ptx, pty = p
+    la, lb, lc, ld, ltx, lty = l
+    return (la * pa + lb * pc, la * pb + lb * pd,
+            lc * pa + ld * pc, lc * pb + ld * pd,
+            ltx * pa + lty * pc + ptx, ltx * pb + lty * pd + pty)
 
-    The parent's scale moves the child but does not shear it. Godot's own
-    node parenting does shear it, which is why the runtime composes this
-    itself rather than hanging Node2Ds off each other.
+
+def inherit(parent, local, bone):
+    """-> the bone's world matrix, honouring inheritRotation/inheritScale.
+
+    Several bones opt out - the basic zombie's head sets both false - and
+    inheriting anyway gives a head twice the body's size across its face.
+    Position always inherits; that is what a skeleton is for.
     """
-    px, py, prot, psx, psy = parent
-    lx, ly, lrot, lsx, lsy = local
-    cos, sin = math.cos(prot), math.sin(prot)
-    x = px + (lx * psx) * cos - (ly * psy) * sin
-    y = py + (lx * psx) * sin + (ly * psy) * cos
-    return (x, y, prot + lrot, psx * lsx, psy * lsy)
+    rot = bone.get("inheritRotation", True)
+    size = bone.get("inheritScale", True)
+    full = mul(parent, local)
+    if rot and size:
+        return full
+    pa, pb, pc, pd, _, _ = parent
+    angle = math.atan2(pb, pa) if rot else 0.0
+    if size:
+        sx = math.hypot(pa, pb)
+        sy = math.hypot(pc, pd)
+        if pa * pd - pb * pc < 0:
+            sy = -sy
+    else:
+        sx = sy = 1.0
+    cos, sin = math.cos(angle), math.sin(angle)
+    carrier = (cos * sx, sin * sx, -sin * sy, cos * sy, 0.0, 0.0)
+    out = mul(carrier, local)
+    return out[:4] + (full[4], full[5])
+
+
+def decompose(m):
+    """-> (x, y, rotation, scale_x, scale_y) for drawing with PIL."""
+    a, b, c, d, tx, ty = m
+    rot = math.atan2(b, a)
+    sx = math.hypot(a, b)
+    sy = math.hypot(c, d)
+    if a * d - b * c < 0:
+        sy = -sy
+    return (tx, ty, rot, sx, sy)
+
+
+
 
 
 def timeline(frames, key_a, key_b, fallback, rate):
@@ -97,8 +140,10 @@ def main():
                 timeline(b.get("scaleFrame"), "x", "y", 1.0, rate))
 
     rest = {}
+    bones = {}
     for bone in armature.get("bone", []):
-        rest[bone["name"]] = (bone.get("parent"), transform_of(bone.get("transform")))
+        rest[bone["name"]] = (bone.get("parent"), bone.get("transform") or {})
+        bones[bone["name"]] = bone
 
     displays = {s["name"]: s for s in armature["skin"][0].get("slot", [])}
     strip = Image.new("RGBA", (420 * count, 520), (30, 32, 38, 255))
@@ -107,19 +152,27 @@ def main():
         time = (duration * step / count) if duration else 0.0
         world = {}
 
+        IDENT = (1.0, 0.0, 0.0, 1.0, 0.0, 0.0)
+
         def resolve(bone_name):
             if bone_name in world:
                 return world[bone_name]
-            parent, local = rest[bone_name]
-            lx, ly, lrot, lsx, lsy = local
+            parent, raw = rest[bone_name]
             if bone_name in tracks:
                 tr, ro, sc = tracks[bone_name]
                 dx, dy = sample(tr, time, (0.0, 0.0))
                 dr, _ = sample(ro, time, (0.0, 0.0))
                 mx, my = sample(sc, time, (1.0, 1.0))
-                local = (lx + dx, ly + dy, lrot + math.radians(dr), lsx * mx, lsy * my)
-            base = resolve(parent) if parent in rest else (0.0, 0.0, 0.0, 1.0, 1.0)
-            world[bone_name] = compose(base, local)
+                sk_x = float(raw.get("skX", 0.0))
+                raw = dict(raw)
+                raw["x"] = float(raw.get("x", 0.0)) + dx
+                raw["y"] = float(raw.get("y", 0.0)) + dy
+                raw["skX"] = sk_x + dr
+                raw["skY"] = float(raw.get("skY", sk_x)) + dr
+                raw["scX"] = float(raw.get("scX", 1.0)) * mx
+                raw["scY"] = float(raw.get("scY", 1.0)) * my
+            base = resolve(parent) if parent in rest else IDENT
+            world[bone_name] = inherit(base, matrix_of(raw), bones[bone_name])
             return world[bone_name]
 
         for bone_name in rest:
@@ -149,8 +202,9 @@ def render(armature, displays, regions, sheet, world, size=(420, 520),
         region = regions.get(display.get("path") or display.get("name"))
         if region is None:
             continue
-        bone = world.get(slot.get("parent"), (0.0, 0.0, 0.0, 1.0, 1.0))
-        x, y, rot, sx, sy = compose(bone, transform_of(display.get("transform")))
+        bone = world.get(slot.get("parent"), (1.0, 0.0, 0.0, 1.0, 0.0, 0.0))
+        x, y, rot, sx, sy = decompose(
+            mul(bone, matrix_of(display.get("transform"))))
 
         w, h = int(region["width"]), int(region["height"])
         fw = float(region.get("frameWidth", w))

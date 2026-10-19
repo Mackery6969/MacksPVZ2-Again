@@ -1799,7 +1799,12 @@ func _test_art() -> void:
 	check("a zombie spawned with art", z.art != null)
 	if z.art != null:
 		check_eq("walking on spawn", z.art.playing, &"Walk")
-		check("facing the house", z.art.scale.x < 0.0)
+		# The rig is drawn walking toward the house already, so a hostile
+		# zombie is NOT mirrored; a charmed one is.
+		check("a hostile zombie is not mirrored", z.art.facing == 1)
+		z.charm()
+		check("a charmed one is", z.art.facing == -1)
+		z.set_allegiance(Zombie.Allegiance.HOSTILE)
 		# Eating is a different animation, and it must not restart every frame.
 		z.target = pea
 		await _wait_game_seconds(0.2)

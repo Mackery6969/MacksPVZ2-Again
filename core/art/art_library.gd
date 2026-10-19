@@ -104,6 +104,8 @@ func make(kind: StringName, id: StringName) -> Armature:
 		node.free()
 		return null
 	_fit(node, source.bounds(armature_name), entry)
+	for slot in (entry.get("hide_slots", []) as Array):
+		node.hide_slot(StringName(slot))
 	return node
 
 

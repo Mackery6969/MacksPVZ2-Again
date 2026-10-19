@@ -416,8 +416,19 @@ skeleton, the texture and one `AtlasTexture` per region; a lane of zombies is
 many nodes over one copy of the art. The basic zombie and both its armors read
 the same bundle, which is the point of PopCap's shared rigs.
 
+`hide_slots` names slots the rig draws but the game should not. PvZ rigs carry
+a detached-limb variant in its own slot - the basic zombie's `arm_here_ARM` is
+the broken stump, sitting on top of the intact arm - because the game decides
+when a limb comes off, not the rig.
+
+Zombie art is drawn facing the house, which is where a hostile zombie is
+already walking, so only a charmed one is mirrored. `Armature.set_facing`
+owns that, because mirroring flips the fitted offset too.
+
 `tools/preview_armature.py` renders a rig to a PNG without launching the game,
-which is the quick way to check a new mapping's scale and pivot.
+and `--anim NAME --frames N` samples an animation rather than the setup pose.
+Use the animated form: a setup pose can look perfect while every animated
+frame is wrong, which is exactly how three rendering bugs got past review.
 
 ## Adding a level
 

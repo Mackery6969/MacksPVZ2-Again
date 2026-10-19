@@ -67,6 +67,14 @@ func art_kind() -> StringName:
 	return &"zombie"
 
 
+## Zombie art is authored facing the house, which is where a hostile zombie is
+## already walking - so it is a charmed one, heading the other way, that needs
+## mirroring. Flipping both ways over made them walk backwards.
+func _face_art() -> void:
+	if art != null:
+		art.set_facing(-1 if is_charmed() else 1)
+
+
 func _on_initialized() -> void:
 	speed = float(def.stat(&"speed", speed))
 	eat_dps = float(def.stat(&"eat_dps", eat_dps))
@@ -78,9 +86,7 @@ func _on_initialized() -> void:
 			attack_claimed = true
 		if c.claims_movement():
 			movement_claimed = true
-	# A zombie faces the house; the art is drawn walking the other way.
-	if art != null:
-		art.set_facing(direction())
+	_face_art()
 	_show_state(&"walk")
 	queue_redraw()
 
@@ -101,8 +107,7 @@ func set_allegiance(value: Allegiance) -> void:
 		return
 	allegiance = value
 	target = null            # whatever it was chasing is no longer its enemy
-	if art != null:
-		art.set_facing(direction())
+	_face_art()
 	set_runtime_tag(&"charmed", value == Allegiance.CHARMED)
 	allegiance_changed.emit(self, value)
 	queue_redraw()
