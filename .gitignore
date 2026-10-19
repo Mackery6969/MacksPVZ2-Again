@@ -8,3 +8,7 @@
 # Not committed for the same reason the audio is not - see art/README.md.
 /art/*
 !/art/README.md
+
+# Built FMOD banks: exported from the Music project, which carries the same
+# PopCap audio the repository does not ship. Build them from Studio instead.
+/audio/banks/*.bank

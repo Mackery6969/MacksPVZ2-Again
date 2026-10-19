@@ -9,7 +9,7 @@
   "plant.explode": "explode0",
   "plant.food": "plantFoodActivate",
   "sun.drop": "drop",
-  "sun.collect": "collect",
+  "sun.collect": "collect1",
   "plantfood.drop": "plantFoodDrop",
   "plantfood.collect": "plantFoodCollect",
   "zombie.spawn": "groan0",
@@ -43,5 +43,13 @@
  ],
  "//notes": {
   "music.zengarden": "zen00 is attached as a representative; the garden shuffles all of zen00..zen17, so build this as a shuffled multi instrument in Studio."
+ },
+ "//variations": {
+  "sun.collect": [
+   "collect1",
+   "collect2",
+   "collect3",
+   "collect4"
+  ]
  }
 }

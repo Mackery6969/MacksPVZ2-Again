@@ -445,7 +445,7 @@ func _on_won() -> void:
 	runner.stop()
 	# Clearing a level ends its run, which retires its save slot.
 	Saves.mark_cleared(_current_level)
-	Audio.play(&"level.win")
+	_play_ending(&"victory", &"level.win")
 
 	if _campaign == null or _campaign.is_last(_current_level):
 		_status.text = (_campaign.completion_message if _campaign != null
@@ -465,7 +465,7 @@ func _on_lost() -> void:
 	# A failed run is not worth resuming; the retry starts the level over.
 	Saves.clear_save(_current_level)
 	Audio.stop_music()
-	Audio.play(&"level.lose")
+	_play_ending(&"lose", &"level.lose")
 	_status.text = "The zombies ate your brains!"
 	_advance_after(retry_delay, _current_level)
 
@@ -476,3 +476,16 @@ func _advance_after(delay: float, level_id: StringName) -> void:
 	await get_tree().create_timer(delay).timeout
 	if is_inside_tree():
 		load_level(level_id)
+
+
+## Ends the level with its world's music, falling back to the plain cue.
+##
+## Winning and losing are scored, not sound-effected: PVZGE keeps VIC_, LOSE_
+## and LEAVE_ in its music enum beside the stage loops, so they are routed as
+## music here and a world can end its own way.
+func _play_ending(kind: StringName, fallback: StringName) -> void:
+	var cue: StringName = runner.music_cue(kind) if runner != null else &""
+	if cue != &"":
+		Audio.play_music(cue)
+	else:
+		Audio.play(fallback)

@@ -141,8 +141,23 @@ func scripts() -> Array:
 ## A level names a stage, the stage's lawn names a music track, and the audio
 ## catalog maps that track to an event. Adding a world is then data only.
 func music_event() -> StringName:
-	var id := StringName("music.lawn." + music_track().to_lower())
-	return id if Audio.has_event(id) else &"music.lawn.tutorial"
+	return music_cue(&"lawn")
+
+
+## A world's cue of one kind - lawn, lose, victory, leave - falling back to
+## Front Lawn's and then to nothing.
+##
+## Winning and losing are MUSIC in the source game, not sound effects: VIC_,
+## LOSE_ and LEAVE_ sit in PVZGE's music enum alongside the stage loops. They
+## are routed as music here for the same reason, so a world can score its own
+## ending.
+func music_cue(kind: StringName) -> StringName:
+	var track := music_track().to_lower()
+	for id in [StringName("music.%s.%s" % [kind, track]),
+			StringName("music.%s.tutorial" % kind)]:
+		if Audio.has_event(id):
+			return id
+	return &""
 
 
 ## This level's stage data.
