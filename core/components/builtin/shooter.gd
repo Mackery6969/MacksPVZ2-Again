@@ -55,6 +55,7 @@ func _has_target() -> bool:
 
 func _fire() -> void:
 	host.board.spawn_projectile(projectile_id, host.row, host.position, host)
+	host.play_art_once(&"attack")
 	Audio.play(&"plant.shoot", host.position)
 
 

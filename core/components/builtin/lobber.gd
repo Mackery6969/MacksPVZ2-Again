@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	if host.board.hostile_zombies_in_row(host.row).is_empty():
 		return
 	host.board.spawn_projectile(projectile_id, host.row, host.position, host)
+	host.play_art_once(&"attack")
 	Audio.play(&"plant.lob", host.position)
 	_cooldown = cfg_jittered(&"interval", &"interval_jitter", interval)
 

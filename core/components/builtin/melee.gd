@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 	for z in host.board.hostile_zombies_in_row(host.row):
 		if absf(z.position.x - host.position.x) <= reach:
 			z.take_damage(damage, host)
+			host.play_art_once(&"attack")
 			_cooldown = interval
 			return
 

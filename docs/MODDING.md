@@ -411,10 +411,33 @@ feet and almost none is centred on it - the peashooter's box runs from -50 to
 stays null and the entity keeps its placeholder drawing, so the game runs the
 same with or without any of it.
 
+**The animations are Godot's.** A rig is converted once, by `ArmatureBaker`,
+into `Animation` resources driven by an `AnimationPlayer` - so easing,
+blending, interpolation and timing are engine code, not ours. Nothing samples
+a timeline at runtime.
+
+Conversion is where DragonBones and Godot are reconciled, because three
+things do not map onto a Node2D bone tree:
+
+- A transform is built from **two** skew angles. Equal angles are a rotation;
+  unequal ones are a mirror or a shear, which Godot expresses as `skew`.
+- A bone can **refuse its parent's rotation or scale**, and several do - the
+  basic zombie's head refuses both. Godot's nodes have no equivalent, so the
+  chain is resolved at bake time and the sprites come out flat.
+- Frames carry their **own easing**, as a cubic bezier or an easing factor.
+  Sampling at the source frame rate bakes that in, so Godot's linear
+  interpolation between samples reproduces it.
+
 Everything heavy is shared. One `ArmatureSet` per bundle holds the parsed
-skeleton, the texture and one `AtlasTexture` per region; a lane of zombies is
-many nodes over one copy of the art. The basic zombie and both its armors read
-the same bundle, which is the point of PopCap's shared rigs.
+skeleton, the texture, one `AtlasTexture` per region and one baked
+`AnimationLibrary` per rig; a lane of zombies is many nodes over one copy of
+all of it. The basic zombie and both its armors read the same bundle, which is
+the point of PopCap's shared rigs.
+
+A component says what it **did** - `host.play_art_once(&"attack")` - and the
+entity decides how that looks. No component learns whether its host has art or
+what a rig calls anything, which is what lets a mod reskin a plant without
+touching behaviour.
 
 `hide_slots` names slots the rig draws but the game should not. PvZ rigs carry
 a detached-limb variant in its own slot - the basic zombie's `arm_here_ARM` is

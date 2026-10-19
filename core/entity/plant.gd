@@ -33,8 +33,16 @@ func art_kind() -> StringName:
 	return &"plant"
 
 
+## Damage states a rig may be drawn in, worst last. A wall-nut has four; most
+## plants have none and simply keep idling.
+const DAMAGE_STATES: Array[StringName] = [&"hurt1", &"hurt2", &"hurt3"]
+
+var _damage_state: StringName = &"idle"
+
+
 func _on_initialized() -> void:
 	play_art(&"idle")
+	damaged.connect(_on_damaged)
 	_color = fallback_color
 	for tag in FAMILY_COLORS:
 		if has_tag(tag):
@@ -47,6 +55,21 @@ func _on_initialized() -> void:
 ## crawls. Suppression is divided into every component's timers through
 ## `scaled()`, so no component has to know it can be stunned - which is how
 ## Zomboss's roar reaches all 15 behaviours at once.
+## Shows the wear. The bands are even across the health bar, so a plant drawn
+## in four states changes at three quarters, a half and a quarter.
+func _on_damaged(_who: Character, _amount: float, _remaining: float) -> void:
+	if art == null or is_dead:
+		return
+	var bands := DAMAGE_STATES.size() + 1
+	var step := int((1.0 - health_fraction()) * bands)
+	var want: StringName = &"idle" if step <= 0 else DAMAGE_STATES[
+			mini(step - 1, DAMAGE_STATES.size() - 1)]
+	if want == _damage_state:
+		return
+	if play_art(want):
+		_damage_state = want
+
+
 func apply_stun(seconds: float) -> void:
 	apply_suppression(STUN_FACTOR, seconds)
 	queue_redraw()

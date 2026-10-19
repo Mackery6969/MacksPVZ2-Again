@@ -10,6 +10,11 @@ var id: StringName = &""
 var texture: Texture2D = null
 var frame_rate: float = 30.0
 
+## armature name -> ArmatureBaker, and its baked AnimationLibrary. Both are
+## built on first use and shared by every entity using that rig.
+var _rigs: Dictionary = {}
+var _libraries: Dictionary = {}
+
 ## region name -> AtlasTexture, built once and handed out by reference.
 var _regions: Dictionary = {}
 ## region name -> the untrimmed-frame offset the display transform expects.
@@ -41,6 +46,22 @@ func bounds(name: StringName) -> Rect2:
 		return Rect2()
 	return Rect2(float(box.get("x", 0.0)), float(box.get("y", 0.0)),
 			float(box.get("width", 0.0)), float(box.get("height", 0.0)))
+
+
+## The resolved rig: bones, slots and the rules for composing them.
+func rig(name: StringName) -> ArmatureBaker:
+	if not _rigs.has(name):
+		_rigs[name] = ArmatureBaker.new(self, name) if has_armature(name) else null
+	return _rigs[name]
+
+
+## This rig's animations as Godot resources, baked once and shared.
+func animations(name: StringName) -> AnimationLibrary:
+	if not _libraries.has(name):
+		var built := rig(name)
+		_libraries[name] = built.bake_animations() if built != null \
+				else AnimationLibrary.new()
+	return _libraries[name]
 
 
 func region(name: StringName) -> AtlasTexture:

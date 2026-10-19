@@ -1810,6 +1810,30 @@ func _test_art() -> void:
 		await _wait_game_seconds(0.2)
 		check_eq("and eating once it reaches a plant", z.art.playing, &"Eat")
 
+	# Acting changes what a plant is doing, and it goes back to idling after.
+	# The component says what happened; it never names an animation.
+	if pea != null and pea.art != null and pea.art.has_animation(&"Shoot"):
+		var idle_name: StringName = pea.art.playing
+		board.spawn_zombie(&"tutorial", 2)
+		await _wait_game_seconds(2.0)
+		check("firing changed the animation or returned to idle",
+				pea.art.playing == &"Shoot" or pea.art.playing == idle_name,
+				String(pea.art.playing))
+
+	# Animations are Godot resources now, not a hand-rolled sampler.
+	var rig := Art.set_for(&"zombies_BasicZOMBIE")
+	var library := rig.animations(&"BasicZombie")
+	check("animations baked into a Godot library",
+			library.get_animation_list().size() > 0,
+			str(library.get_animation_list()))
+	var walk: Animation = library.get_animation(&"Walk")
+	check("with real tracks and keys", walk != null and walk.get_track_count() > 0)
+	if walk != null:
+		check("and a length from the source frame rate",
+				absf(walk.length - 3.0) < 0.1, "%f" % walk.length)
+	check("baking happens once per rig",
+			rig.animations(&"BasicZombie") == library)
+
 	# A shared bundle is parsed once however many entities use it.
 	var first := Art.set_for(&"zombies_BasicZOMBIE")
 	var second := Art.set_for(&"zombies_BasicZOMBIE")

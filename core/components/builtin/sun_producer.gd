@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	if _timer > 0.0:
 		return
 	host.board.drop_sun(host.position)
+	host.play_art_once(&"attack")
 	_timer = cfg_jittered(&"interval", &"interval_jitter", 24.0)
 
 

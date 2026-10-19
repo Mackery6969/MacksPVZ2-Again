@@ -87,6 +87,23 @@ func play_art(state: StringName, loop: bool = true) -> bool:
 	return art.play(name, loop) if name != &"" else false
 
 
+## Plays a one-shot and goes back to idling when it ends.
+##
+## This is what a component calls when it acts - a peashooter firing, a
+## sunflower producing - so the component says what happened and never has to
+## know what the entity should look like afterwards, or whether it has art.
+func play_art_once(state: StringName) -> bool:
+	if not play_art(state, false):
+		return false
+	if not art.animation_finished.is_connected(_on_art_finished):
+		art.animation_finished.connect(_on_art_finished)
+	return true
+
+
+func _on_art_finished(_name: StringName) -> void:
+	play_art(&"idle")
+
+
 ## Hook for subclasses; runs after components exist.
 func _on_initialized() -> void:
 	pass
