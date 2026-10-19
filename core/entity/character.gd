@@ -20,6 +20,10 @@ var health: float = 0.0
 var max_health: float = 0.0
 var is_dead: bool = false
 
+## The visual, when extracted art covers this entity. Null leaves the
+## placeholder drawing in place, so the game runs the same without any art.
+var art: Armature = null
+
 var _components: Array[EntityComponent] = []
 var _runtime_tags: Dictionary = {}   ## tags added or removed after spawn
 
@@ -43,6 +47,7 @@ func initialize(entity_def: EntityDef, owning_board: Node) -> void:
 	max_health = float(def.stat(&"toughness", 100.0))
 	health = max_health
 	_spawn_components()
+	_attach_art()
 	_on_initialized()
 
 
@@ -54,6 +59,32 @@ func _spawn_components() -> void:
 		add_child(comp)
 		_components.append(comp)
 		comp.setup()
+
+
+## Gives this entity its artwork if any was extracted for it. Subclasses say
+## which kind they are; anything without a mapping keeps its placeholder.
+func _attach_art() -> void:
+	if def == null or not Art.is_available():
+		return
+	var built := Art.make(art_kind(), def.id)
+	if built == null:
+		return
+	art = built
+	add_child(art)
+	queue_redraw()
+
+
+## The namespace this entity's art is keyed under: "plant", "zombie", ...
+func art_kind() -> StringName:
+	return &""
+
+
+## Plays the animation this entity's mapping gives for a state, if it has one.
+func play_art(state: StringName, loop: bool = true) -> bool:
+	if art == null or def == null:
+		return false
+	var name := Art.animation_for(art_kind(), def.id, state)
+	return art.play(name, loop) if name != &"" else false
 
 
 ## Hook for subclasses; runs after components exist.

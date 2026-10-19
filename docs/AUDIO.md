@@ -102,6 +102,26 @@ The event paths imply the folder structure - `event:/Plants/Place` means a
 `Plants` folder containing a `Place` event. Music events want a looping event;
 the rest are one-shots.
 
+## Event types, and what the game does not decide
+
+**Sound effects are action sheets; music is a timeline.** An effect has
+nothing to lay out in time - it fires, plays and stops - so a timeline it only
+ever scrubs from zero is overhead for nothing. Music wants the timeline, for
+markers, loop regions and transitions. `tools/fmod_action_sheets.py` rebuilds
+generated effects as action sheets and leaves music alone.
+
+**Variations are FMOD's job.** Several clips of one sound go into a single
+multi instrument with its playlist set to shuffle, so FMOD picks and the game
+never knows a sound has variations. There is no variation handling in the
+catalog and there should not be.
+
+**Volume and routing are the mixer's job.** The catalog's `music` flag means
+only that a cue is *exclusive* - starting it stops whatever held the same slot
+- which is a playback rule, not a level. It does not pick a bus. Buses, VCAs
+and snapshots in Studio decide how loud anything is, and they do it better
+than a flag here could. `bus` stays in the schema for the one case that needs
+it: a settings slider reaching a named bus directly.
+
 ## The event catalog
 
 Events live in `audio/events.json` beside a pack's other content:

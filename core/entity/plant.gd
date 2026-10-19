@@ -29,7 +29,12 @@ const STUN_FACTOR := 0.05
 var _color: Color = DEFAULT_COLOR
 
 
+func art_kind() -> StringName:
+	return &"plant"
+
+
 func _on_initialized() -> void:
+	play_art(&"idle")
 	_color = fallback_color
 	for tag in FAMILY_COLORS:
 		if has_tag(tag):
@@ -61,9 +66,12 @@ func _on_death() -> void:
 func _draw() -> void:
 	var size := body_size
 	var rect := Rect2(-size * 0.5, size)
-	var body: Color = stunned_color if is_stunned() else _color
-	draw_rect(rect, body, true)
-	draw_rect(rect, body.darkened(0.4), false, 2.0)
+	# With real art attached the placeholder body would sit on top of it;
+	# the health bar below still draws, because the art has none.
+	if art == null:
+		var body: Color = stunned_color if is_stunned() else _color
+		draw_rect(rect, body, true)
+		draw_rect(rect, body.darkened(0.4), false, 2.0)
 
 	if health < max_health:
 		var bar := Rect2(Vector2(-size.x * 0.5, -size.y * 0.5 - 8), Vector2(size.x, 4))

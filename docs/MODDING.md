@@ -378,6 +378,40 @@ Because this replaces the behaviour for *every* plant using that component,
 `example_override` ships disabled. Remove it from `disabled` in
 `load_order.json` to see it take over.
 
+## Art
+
+Entity art is a DragonBones armature, extracted with
+`tools/extract_prefabs.py` and mapped to entities by a JSON file in
+`data/native/art/`:
+
+```json
+{
+ "plant:peashooter": {
+  "bundle": "plants_PeashooterPLANT", "armature": "Peashooter",
+  "scale": 0.55, "offset_y": 18,
+  "animations": {"idle": "Idle", "attack": "Shoot", "die": "Death"}
+ }
+}
+```
+
+`bundle` is a directory under `art/`, `armature` one of the rigs inside it,
+and `animations` maps a game state to whatever that rig happens to call it -
+so `Zombie` asks for `attack` and never has to know the rig says `Eat`. A mod
+reskins an entity by shipping a file of the same shape and calling
+`Art.load_mappings(<its art dir>)`; its entries win.
+
+**Art is optional.** Where a mapping or a bundle is missing, `Character.art`
+stays null and the entity keeps its placeholder drawing, so the game runs the
+same with or without any of it.
+
+Everything heavy is shared. One `ArmatureSet` per bundle holds the parsed
+skeleton, the texture and one `AtlasTexture` per region; a lane of zombies is
+many nodes over one copy of the art. The basic zombie and both its armors read
+the same bundle, which is the point of PopCap's shared rigs.
+
+`tools/preview_armature.py` renders a rig to a PNG without launching the game,
+which is the quick way to check a new mapping's scale and pivot.
+
 ## Adding a level
 
 ```json

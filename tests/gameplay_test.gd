@@ -64,6 +64,7 @@ func _run() -> void:
 	await _test_zombie_resistances()
 	await _test_zomboss()
 	await _test_plant_stun()
+	await _test_art()
 	_test_zombie_sun_costs()
 	await _test_level_save_state()
 	_test_simplified_level_schema()
@@ -1767,6 +1768,50 @@ func _test_plant_stun() -> void:
 	if roar != null and far != null:
 		roar._roar()
 		check("a plant in another lane was stunned", far.is_stunned())
+	board.queue_free()
+	end_section()
+
+
+
+## Extracted art is optional - it is gitignored and regenerated - so this
+## checks it loads and drives when present, and that nothing breaks when not.
+func _test_art() -> void:
+	section("art")
+	if not Art.is_available():
+		check("no art extracted, placeholders stand in", true,
+				"run tools/extract_prefabs.py to exercise this")
+		end_section()
+		return
+
+	var board := _make_board()
+	var pea: Plant = board.place_plant(&"peashooter", 2, 1)
+	check("a peashooter placed", pea != null)
+	check("it got its artwork", pea != null and pea.art != null)
+	if pea != null and pea.art != null:
+		check("which has bones and sprites",
+				pea.art.get_child_count() > 0)
+		check("and the idle animation is running",
+				pea.art.playing != &"", String(pea.art.playing))
+		check("it knows its rig's animations",
+				pea.art.has_animation(&"Shoot"), str(pea.art.animation_names()))
+
+	var z: Zombie = board.spawn_zombie(&"tutorial", 2)
+	check("a zombie spawned with art", z.art != null)
+	if z.art != null:
+		check_eq("walking on spawn", z.art.playing, &"Walk")
+		check("facing the house", z.art.scale.x < 0.0)
+		# Eating is a different animation, and it must not restart every frame.
+		z.target = pea
+		await _wait_game_seconds(0.2)
+		check_eq("and eating once it reaches a plant", z.art.playing, &"Eat")
+
+	# A shared bundle is parsed once however many entities use it.
+	var first := Art.set_for(&"zombies_BasicZOMBIE")
+	var second := Art.set_for(&"zombies_BasicZOMBIE")
+	check("bundles are shared, not reloaded", first == second)
+	check("armors read the same rig as the zombie",
+			first != null and first.has_armature(&"Cone")
+			and first.has_armature(&"BasicZombie"))
 	board.queue_free()
 	end_section()
 

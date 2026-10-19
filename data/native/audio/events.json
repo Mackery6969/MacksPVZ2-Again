@@ -119,11 +119,15 @@
   },
   {
    "id": "level.win",
-   "fmod": "event:/SFX/Level/Win"
+   "fmod": "event:/SFX/Level/Win",
+   "music": true,
+   "//": "A world's own victory or lose cue is preferred; this is the fallback, and it is a sustained cue too - VIC_ and LOSE_ are in PVZGE's music enum, not its effects."
   },
   {
    "id": "level.lose",
-   "fmod": "event:/SFX/Level/Lose"
+   "fmod": "event:/SFX/Level/Lose",
+   "music": true,
+   "//": "A world's own victory or lose cue is preferred; this is the fallback, and it is a sustained cue too - VIC_ and LOSE_ are in PVZGE's music enum, not its effects."
   },
   {
    "id": "music.lawn.tutorial",

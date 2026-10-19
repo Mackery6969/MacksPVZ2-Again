@@ -59,6 +59,12 @@ var _stun_scale: float = 1.0
 var _water_speed_scale: float = 1.0
 ## reached_house fires once; the board decides what happens next.
 var _announced_house: bool = false
+## The state the art is currently showing, so it is not restarted every frame.
+var _art_state: StringName = &""
+
+
+func art_kind() -> StringName:
+	return &"zombie"
 
 
 func _on_initialized() -> void:
@@ -72,6 +78,10 @@ func _on_initialized() -> void:
 			attack_claimed = true
 		if c.claims_movement():
 			movement_claimed = true
+	# A zombie faces the house, and the art is drawn walking the other way.
+	if art != null:
+		art.scale.x *= -1.0
+	_show_state(&"walk")
 	queue_redraw()
 
 
@@ -196,8 +206,10 @@ func _process(delta: float) -> void:
 	if is_stunned():
 		return
 	if is_instance_valid(target) and not target.is_dead:
+		_show_state(&"attack")
 		_attack(delta)
 	elif not movement_claimed:
+		_show_state(&"walk")
 		target = null
 		_walk(delta)
 	else:
@@ -279,8 +291,28 @@ func _draw_armor(head: Vector2) -> void:
 	draw_polyline(points + PackedVector2Array([points[0]]), tint.darkened(0.45), 2.0)
 
 
+## Keeps the art in step with what the zombie is doing. Animations are named
+## per entity in its art mapping, so this says "attack", not "Eat".
+func _show_state(state: StringName) -> void:
+	if art == null or _art_state == state:
+		return
+	if play_art(state):
+		_art_state = state
+
+
 func _on_death() -> void:
 	Audio.play(&"zombie.die", position)
+	# The death animation outlives the zombie, so it is handed to the board
+	# to finish on its own rather than freed with the body.
+	if art != null and play_art(&"die", false):
+		var corpse := art
+		art = null
+		remove_child(corpse)
+		if board != null:
+			corpse.position = position + corpse.position
+			board.add_child(corpse)
+			corpse.animation_finished.connect(
+					func(_name: StringName) -> void: corpse.queue_free())
 	super()
 
 
@@ -296,11 +328,14 @@ func _draw() -> void:
 		body = slowed_color
 	elif has_tag(&"metal"):
 		body = metal_color
-	draw_rect(rect, body, true)
-	draw_rect(rect, body.darkened(0.45), false, 2.0)
-	# Head offset shows which way it is facing.
+	if art == null:
+		draw_rect(rect, body, true)
+		draw_rect(rect, body.darkened(0.45), false, 2.0)
+	# Head offset shows which way it is facing. The armor still draws over
+	# real art, since the tutorial cone and bucket are separate rigs.
 	var head := Vector2(6 * direction(), -size.y * 0.75 - 10)
-	draw_circle(head, 11.0, head_color)
+	if art == null:
+		draw_circle(head, 11.0, head_color)
 	_draw_armor(head)
 
 	if health < max_health:
