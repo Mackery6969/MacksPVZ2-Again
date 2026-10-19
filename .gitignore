@@ -3,3 +3,8 @@
 /android/
 
 **/__pycache__/
+
+# Extracted PopCap art: regenerate with tools/extract_prefabs.py.
+# Not committed for the same reason the audio is not - see art/README.md.
+/art/*
+!/art/README.md

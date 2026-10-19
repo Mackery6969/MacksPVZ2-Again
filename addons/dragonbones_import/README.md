@@ -20,13 +20,34 @@ it can be picked up cleanly.
 - Animation is used by **112 of the 654 source modules**, so essentially every
   visible entity depends on it.
 
-Extraction of skeletons works today; atlas pairing does not.
+Atlas pairing is solved - `tools/extract_prefabs.py` does it. Three things had
+to be worked out, none of them where you would hope:
 
-Extract them with:
+1. **An asset is named only in `res.config.json`.** That file names 2868
+   assets (`plants/SunflowerPLANT`, `zombies/BasicZOMBIE`); everything else is
+   a compressed UUID. It is the only entry point.
+2. **A pack holds several assets in one file**, positionally aligned with its
+   member list. Searching a whole pack finds a neighbour's skeleton, which is
+   how Potato Mine first came out as Crazy Dave and the basic zombie as a
+   gargantuar. Each asset's own slice has to be picked out.
+3. **The image is paired by size, not by reference.** The atlas names its PNG
+   (`PlantAnimate_tex.png`) but that name is nowhere on disk, and a pack's
+   dependency list is shared by everything in it. The atlas states its own
+   width and height, so the image is matched on that - and checked by whether
+   the atlas's regions actually contain visible pixels, which is
+   self-validating: a wrong image of the right size has empty rectangles.
+
+Searching has to be breadth-first. Depth-first dives through the first
+dependency and returns whatever skeleton it meets on the way down.
 
 ```sh
-python3 tools/extract_dragonbones.py <out_dir>
+python3 tools/extract_prefabs.py <import dir> <res.config.json> art \
+    plants/SunflowerPLANT zombies/BasicZOMBIE
 ```
+
+`tools/extract_dragonbones.py` predates this and groups by the skeleton's own
+name, which collapses every plant into one `PlantAnimate` directory - each
+plant has its own. Prefer `extract_prefabs.py`.
 
 ## Mapping to Godot
 
