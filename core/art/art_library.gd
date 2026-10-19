@@ -98,15 +98,38 @@ func make(kind: StringName, id: StringName) -> Armature:
 	var source := set_for(StringName(entry.get("bundle", "")))
 	if source == null:
 		return null
+	var armature_name := StringName(entry.get("armature", ""))
 	var node := Armature.new()
-	if not node.setup(source, StringName(entry.get("armature", ""))):
+	if not node.setup(source, armature_name):
 		node.free()
 		return null
-	var scale_value := float(entry.get("scale", 1.0))
-	node.scale = Vector2(scale_value, scale_value)
-	node.position = Vector2(float(entry.get("offset_x", 0.0)),
-			float(entry.get("offset_y", 0.0)))
+	_fit(node, source.bounds(armature_name), entry)
 	return node
+
+
+## Sizes and places the art against its own bounding box.
+##
+## `fit_height` is how tall it should end up in pixels and `foot_y` where its
+## feet sit relative to the entity, which is what a lawn cell actually cares
+## about. Both are derived rather than hand-tuned, because a rig's origin is
+## at its feet and its art is rarely centred on that - the peashooter's box
+## runs from -50 to +85 in X, so centring it needs its own number.
+##
+## An explicit `scale`, `offset_x` or `offset_y` still wins, for art that
+## wants placing by hand.
+func _fit(node: Armature, box: Rect2, entry: Dictionary) -> void:
+	var scale_value := float(entry.get("scale", 0.0))
+	if scale_value <= 0.0 and box.size.y > 0.0:
+		scale_value = float(entry.get("fit_height", 96.0)) / box.size.y
+	if scale_value <= 0.0:
+		scale_value = 1.0
+	node.scale = Vector2(scale_value, scale_value)
+
+	var centred := -(box.position.x + box.size.x * 0.5) * scale_value
+	var footed := -(box.position.y + box.size.y) * scale_value \
+			+ float(entry.get("foot_y", 0.0))
+	node.fitted_x = float(entry.get("offset_x", centred))
+	node.position = Vector2(node.fitted_x, float(entry.get("offset_y", footed)))
 
 
 ## The animation an entity should play for a state, as its mapping names it.

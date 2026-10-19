@@ -32,6 +32,17 @@ func armature(name: StringName) -> Dictionary:
 	return _armatures.get(name, {})
 
 
+## The rig's own bounding box, which every export states. Fitting art to a
+## lawn cell from this beats hand-tuned offsets: the origin sits at the feet
+## and the art is rarely centred on it, so the numbers differ per rig.
+func bounds(name: StringName) -> Rect2:
+	var box: Dictionary = armature(name).get("aabb", {})
+	if box.is_empty():
+		return Rect2()
+	return Rect2(float(box.get("x", 0.0)), float(box.get("y", 0.0)),
+			float(box.get("width", 0.0)), float(box.get("height", 0.0)))
+
+
 func region(name: StringName) -> AtlasTexture:
 	return _regions.get(name)
 

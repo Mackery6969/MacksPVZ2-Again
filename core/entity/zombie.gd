@@ -78,9 +78,9 @@ func _on_initialized() -> void:
 			attack_claimed = true
 		if c.claims_movement():
 			movement_claimed = true
-	# A zombie faces the house, and the art is drawn walking the other way.
+	# A zombie faces the house; the art is drawn walking the other way.
 	if art != null:
-		art.scale.x *= -1.0
+		art.set_facing(direction())
 	_show_state(&"walk")
 	queue_redraw()
 
@@ -101,6 +101,8 @@ func set_allegiance(value: Allegiance) -> void:
 		return
 	allegiance = value
 	target = null            # whatever it was chasing is no longer its enemy
+	if art != null:
+		art.set_facing(direction())
 	set_runtime_tag(&"charmed", value == Allegiance.CHARMED)
 	allegiance_changed.emit(self, value)
 	queue_redraw()

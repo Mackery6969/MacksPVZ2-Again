@@ -25,11 +25,26 @@ extends Node2D
 var row: int = 0
 var source: Node = null
 var board: Node = null
+## Artwork, when some is mapped for this projectile; null keeps the drawn dot.
+var art: Armature = null
 
 ## Tags a target must have for this shot to affect it. Mods use these to make
 ## a projectile selective without touching zombie data.
 @export var required_tags: Array[StringName] = []
 @export var excluded_tags: Array[StringName] = []
+
+
+## Gives this shot its artwork. Called by the board once the id is known,
+## since a projectile has no definition of its own to read it from.
+func attach_art(id: StringName) -> void:
+	var built := Art.make(&"projectile", id)
+	if built == null:
+		return
+	art = built
+	art.set_facing(direction)
+	add_child(art)
+	art.play(Art.animation_for(&"projectile", id, &"idle"))
+	queue_redraw()
 
 
 func _process(delta: float) -> void:
@@ -78,5 +93,7 @@ func _candidates() -> Array:
 
 
 func _draw() -> void:
+	if art != null:
+		return
 	draw_circle(Vector2.ZERO, draw_radius, color)
 	draw_circle(Vector2(-2, -2), draw_radius * 0.38, color.lightened(0.4))

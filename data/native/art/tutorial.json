@@ -1,42 +1,98 @@
 {
- "//": "Entity art for Front Lawn. Keyed <kind>:<id>; `bundle` is a directory under art/, `armature` one of the rigs inside it, and `animations` maps a game state to whatever that rig calls it. A mod reskins an entity by shipping a file like this in its own art/ directory.",
-
+ "//": "Entity art for Front Lawn. Keyed <kind>:<id>; `bundle` is a directory under art/, `armature` one of the rigs inside it, and `animations` maps a game state to whatever that rig calls it. Size and placement come from the rig's own bounding box: `fit_height` is how tall it should end up and `foot_y` where its feet sit relative to the entity. A mod reskins an entity by shipping a file like this in its own art/ directory.",
  "plant:peashooter": {
-  "bundle": "plants_PeashooterPLANT", "armature": "Peashooter",
-  "scale": 0.55, "offset_y": 18,
-  "animations": {"idle": "Idle", "attack": "Shoot", "die": "Death", "plantfood": "Food"}
+  "bundle": "plants_PeashooterPLANT",
+  "armature": "Peashooter",
+  "fit_height": 92,
+  "foot_y": 26,
+  "animations": {
+   "idle": "Idle",
+   "attack": "Shoot",
+   "die": "Death",
+   "plantfood": "Food"
+  }
  },
  "plant:sunflower": {
-  "bundle": "plants_SunflowerPLANT", "armature": "Sunflower",
-  "scale": 0.55, "offset_y": 18,
-  "animations": {"idle": "Idle", "attack": "Produce", "die": "Death", "plantfood": "Food"}
+  "bundle": "plants_SunflowerPLANT",
+  "armature": "Sunflower",
+  "fit_height": 92,
+  "foot_y": 26,
+  "animations": {
+   "idle": "Idle",
+   "attack": "Produce",
+   "die": "Death",
+   "plantfood": "Food"
+  }
  },
  "plant:wallnut": {
-  "bundle": "plants_WallnutPLANT", "armature": "Wall-nut",
-  "scale": 0.55, "offset_y": 18,
-  "animations": {"idle": "Idle1", "hurt1": "Idle2", "hurt2": "Idle3", "hurt3": "Idle4",
-                 "die": "Death4"}
+  "bundle": "plants_WallnutPLANT",
+  "armature": "Wall-nut",
+  "fit_height": 92,
+  "foot_y": 26,
+  "animations": {
+   "idle": "Idle1",
+   "hurt1": "Idle2",
+   "hurt2": "Idle3",
+   "hurt3": "Idle4",
+   "die": "Death4"
+  }
  },
  "plant:potatomine": {
-  "bundle": "plants_PotatoMinePLANT", "armature": "PotatoMine",
-  "scale": 0.55, "offset_y": 18,
-  "animations": {"idle": "Idle", "asleep": "Idle_Baby", "arm": "Grow",
-                 "attack": "Charging", "plantfood": "Food"}
+  "bundle": "plants_PotatoMinePLANT",
+  "armature": "PotatoMine",
+  "fit_height": 92,
+  "foot_y": 26,
+  "animations": {
+   "idle": "Idle",
+   "asleep": "Idle_Baby",
+   "arm": "Grow",
+   "attack": "Charging",
+   "plantfood": "Food"
+  }
  },
-
  "zombie:tutorial": {
-  "bundle": "zombies_BasicZOMBIE", "armature": "BasicZombie",
-  "scale": 0.55, "offset_y": 26,
-  "animations": {"idle": "Idle", "walk": "Walk", "attack": "Eat", "die": "Death"}
+  "bundle": "zombies_BasicZOMBIE",
+  "armature": "BasicZombie",
+  "fit_height": 126,
+  "foot_y": 18,
+  "animations": {
+   "idle": "Idle",
+   "walk": "Walk",
+   "attack": "Eat",
+   "die": "Death"
+  }
  },
  "zombie:tutorial_armor1": {
-  "bundle": "zombies_BasicZOMBIE", "armature": "BasicZombie",
-  "scale": 0.55, "offset_y": 26,
-  "animations": {"idle": "Idle", "walk": "Walk", "attack": "Eat", "die": "Death"}
+  "bundle": "zombies_BasicZOMBIE",
+  "armature": "BasicZombie",
+  "fit_height": 126,
+  "foot_y": 18,
+  "animations": {
+   "idle": "Idle",
+   "walk": "Walk",
+   "attack": "Eat",
+   "die": "Death"
+  }
  },
  "zombie:tutorial_armor2": {
-  "bundle": "zombies_BasicZOMBIE", "armature": "BasicZombie",
-  "scale": 0.55, "offset_y": 26,
-  "animations": {"idle": "Idle", "walk": "Walk", "attack": "Eat", "die": "Death"}
+  "bundle": "zombies_BasicZOMBIE",
+  "armature": "BasicZombie",
+  "fit_height": 126,
+  "foot_y": 18,
+  "animations": {
+   "idle": "Idle",
+   "walk": "Walk",
+   "attack": "Eat",
+   "die": "Death"
+  }
+ },
+ "projectile:pea": {
+  "bundle": "projectiles_Pea0PRJ",
+  "armature": "pea0",
+  "fit_height": 28,
+  "foot_y": 14,
+  "animations": {
+   "idle": "Idle"
+  }
  }
 }

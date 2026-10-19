@@ -12,16 +12,16 @@
   "ChanceToReverse": 0,
   "//ZombieRedirection": [
    {
-    "Type": "tutorial_armor1",
-    "Weight": 1
+	"Type": "tutorial_armor1",
+	"Weight": 1
    },
    {
-    "Type": "tutorial_armor2",
-    "Weight": 1
+	"Type": "tutorial_armor2",
+	"Weight": 1
    },
    {
-    "Type": "tutorial_armor4",
-    "Weight": 1
+	"Type": "tutorial_armor4",
+	"Weight": 1
    }
   ]
  }

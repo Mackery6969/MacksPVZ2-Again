@@ -388,7 +388,7 @@ Entity art is a DragonBones armature, extracted with
 {
  "plant:peashooter": {
   "bundle": "plants_PeashooterPLANT", "armature": "Peashooter",
-  "scale": 0.55, "offset_y": 18,
+  "fit_height": 92, "foot_y": 26,
   "animations": {"idle": "Idle", "attack": "Shoot", "die": "Death"}
  }
 }
@@ -399,6 +399,13 @@ and `animations` maps a game state to whatever that rig happens to call it -
 so `Zombie` asks for `attack` and never has to know the rig says `Eat`. A mod
 reskins an entity by shipping a file of the same shape and calling
 `Art.load_mappings(<its art dir>)`; its entries win.
+
+Size and position come from the rig's own bounding box, not from hand-tuned
+numbers: `fit_height` is how tall the art should end up in pixels, `foot_y`
+where its feet sit relative to the entity. Every rig puts its origin at the
+feet and almost none is centred on it - the peashooter's box runs from -50 to
++85 in X - so centring has to be computed per rig. `scale`, `offset_x` and
+`offset_y` still override if you want to place something by hand.
 
 **Art is optional.** Where a mapping or a bundle is missing, `Character.art`
 stays null and the entity keeps its placeholder drawing, so the game runs the
@@ -420,7 +427,7 @@ which is the quick way to check a new mapping's scale and pivot.
  "name": "Sprinter Showdown",
  "stage": "TutorialStage",
  "seedbank": { "mode": "chooser", "selection": "preset",
-               "preset": ["peashooter", "sunflower"] },
+			   "preset": ["peashooter", "sunflower"] },
  "waves": [
   { "kind": "spawn", "zombies": [ { "type": "tutorial", "row": 3 } ] },
   { "kind": "spawn", "zombies": [ { "type": "sprinter", "row": 2 } ] }
@@ -457,7 +464,7 @@ existing one by reusing its id to splice levels in:
  "id": "tutorial",
  "name": "Player's House",
  "levels": ["tutorial_1", "my_pack_interlude", "tutorial_2",
-            "tutorial_3", "tutorial_4"]
+			"tutorial_3", "tutorial_4"]
 }
 ```
 

@@ -671,6 +671,7 @@ func spawn_projectile(id: StringName, row: int, from: Vector2, source: Node) -> 
 	pr.direction = -1 if source is Zombie else 1
 	pr.position = from + Vector2(24 * pr.direction, -12)
 	_projectiles.add_child(pr)
+	pr.attach_art(id)
 	return pr
 
 
