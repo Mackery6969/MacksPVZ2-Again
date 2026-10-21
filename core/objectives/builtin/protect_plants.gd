@@ -30,6 +30,33 @@ func on_plant_died(plant: Node) -> void:
 			fail()
 
 
+## Restoring a save rebuilds the lawn, so the plants watched at setup are gone;
+## remember the cells of the survivors and pick up their replacements.
+func save_state() -> Dictionary:
+	var cells: Array = []
+	for p in _watched:
+		if is_instance_valid(p) and not p.is_dead:
+			cells.append({"row": p.row, "col": p.col})
+	return {
+		"plants": cells,
+		"lost": _lost,
+		"failed": failed,
+	}
+
+
+func load_state(state: Dictionary) -> void:
+	_watched.clear()
+	for cell in (state.get("plants", cfg(&"plants", [])) as Array):
+		if not (cell is Dictionary):
+			continue
+		var plant = board.plant_at(int(cell.get("row", 0)), int(cell.get("col", 0)))
+		if plant != null:
+			_watched.append(plant)
+	_lost = int(state.get("lost", _lost))
+	failed = bool(state.get("failed", false))
+	notify_progress()
+
+
 func alive() -> int:
 	var n := 0
 	for p in _watched:

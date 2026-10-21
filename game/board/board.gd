@@ -331,7 +331,10 @@ func apply_snapshot(state: Dictionary) -> void:
 		z.queue_redraw()
 
 	# Mowers that were already spent stay spent.
-	var kept: Array = state.get("mower_rows", [])
+	# JSON numbers come back as floats, and Array.has(2) misses 2.0.
+	var kept: Array[int] = []
+	for r in (state.get("mower_rows", []) as Array):
+		kept.append(int(r))
 	for row in _mowers.keys():
 		if not kept.has(row):
 			var m := mower_in_row(row)
