@@ -140,8 +140,6 @@ func _load_campaign_file(path: String, fname: String, mod: StringName) -> void:
 			_errors.append("%s: not a JSON object" % path)
 			return
 		campaign = CampaignDef.from_dict(parsed)
-		if campaign.id == &"":
-			campaign.id = StringName(fname.get_basename())
 	elif fname.ends_with(".tres") or fname.ends_with(".res"):
 		var res = load(path)
 		if not res is CampaignDef:
@@ -150,6 +148,8 @@ func _load_campaign_file(path: String, fname: String, mod: StringName) -> void:
 		campaign = res
 	if campaign == null:
 		return
+	if campaign.id == &"":
+		campaign.id = StringName(fname.get_basename())
 	campaign.source_mod = mod
 	campaign.source_path = path
 	campaigns[campaign.id] = campaign
