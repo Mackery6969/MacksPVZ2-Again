@@ -31,7 +31,9 @@ func _process(_delta: float) -> void:
 				continue
 			if max_weight > 0.0 and float(z.def.stat(&"weight", 0.0)) > max_weight:
 				continue      # too heavy for the wind to take
-			z.take_damage(z.health + 1.0, host)
+			# Blown away, not hurt: damage would be soaked by armor first, so a
+			# cone or bucket would keep a light zombie on the lawn.
+			z.die()
 			blown += 1
 	if blown > 0:
 		Audio.play(&"plant.explode", host.position)
