@@ -20,7 +20,12 @@ func _process(_delta: float) -> void:
 	if host.is_dead:
 		return
 	var reach: float = radius * host.board.cell_size.x
-	for z in host.board.hostile_zombies_in_row(host.row):
+	var hostile: Array = host.board.hostile_zombies_in_row(host.row)
+	# A zombie that was charmed or freed is no longer listed, so release it.
+	for z in _slowed.duplicate():
+		if not hostile.has(z):
+			_restore(z)
+	for z in hostile:
 		var near: bool = absf(z.position.x - host.position.x) <= reach
 		var already: bool = _slowed.has(z)
 		if near and not already:
