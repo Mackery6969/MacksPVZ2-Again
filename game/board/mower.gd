@@ -64,7 +64,9 @@ func _mow(from_x: float, to_x: float) -> void:
 	var hi := maxf(from_x, to_x) + reach
 	for z in board.hostile_zombies_in_row(row):
 		if z.position.x >= lo and z.position.x <= hi:
-			z.take_damage(z.health + 1.0, self)
+			# Killed outright, not damaged: armor would soak the hit and
+			# leave a cone or bucket standing behind the mower.
+			z.die()
 
 
 func _draw() -> void:
