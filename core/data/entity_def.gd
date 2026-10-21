@@ -146,7 +146,8 @@ func inherit_from(parent: EntityDef) -> void:
 	set_tags(parent.tags)
 	components.clear()
 	for c in parent.components:
-		components.append(c.duplicate_spec())
+		if c != null:
+			components.append(c.duplicate_spec())
 	custom_stats = parent.custom_stats.duplicate(true)
 	parent._copy_stats_to(self)
 
@@ -160,7 +161,7 @@ func merge_under(parent: EntityDef) -> void:
 	for t in parent.tags:
 		add_tag(t)
 	for c in parent.components:
-		if component_spec(c.type) == null:
+		if c != null and component_spec(c.type) == null:
 			components.append(c.duplicate_spec())
 	for key in parent.custom_stats:
 		if not custom_stats.has(key):
