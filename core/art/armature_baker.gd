@@ -313,7 +313,11 @@ func _add_track(animation: Animation, path: String, values: Array) -> void:
 		animation.track_insert_key(track, 0.0, values[0])
 		return
 	animation.track_set_path(track, NodePath(path))
-	animation.track_set_interpolation_type(track, Animation.INTERPOLATION_LINEAR)
+	# Rotation wraps at +-PI, and a mirrored part sits right on that seam;
+	# plain linear interpolation would spin it the long way round.
+	animation.track_set_interpolation_type(track,
+			Animation.INTERPOLATION_LINEAR_ANGLE if path.ends_with(":rotation")
+			else Animation.INTERPOLATION_LINEAR)
 	for i in values.size():
 		var keep := i == 0 or i == values.size() - 1
 		if not keep:
