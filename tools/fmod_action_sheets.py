@@ -27,7 +27,8 @@ event the catalog marks `"music": true` keeps its timeline.
 import json, os, sys, uuid
 import xml.etree.ElementTree as ET
 
-CATALOG = "data/native/audio/events.json"
+CATALOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..",
+                       "data", "native", "audio", "events.json")
 NS = "Studio.02.03.00"
 
 
