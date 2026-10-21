@@ -49,7 +49,7 @@ func _run() -> void:
 	await _test_sun_expires()
 	await _test_mowers()
 	await _test_plant_food()
-	_test_input_actions()
+	await _test_input_actions()
 	_test_shovel()
 	await _test_conveyor_belt()
 	_test_audio()
