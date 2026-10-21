@@ -162,8 +162,10 @@ def main():
         # would land on top of one.
         base = info["name"]
         fname = "%s.mp3" % base
+        # Compared case-folded: Studio runs on Windows/macOS, where "Foo.mp3"
+        # and "foo.mp3" are the same file.
         n = 1
-        while "%s/%s" % (dest_dir, fname) in taken:
+        while ("%s/%s" % (dest_dir, fname)).lower() in taken:
             n += 1
             fname = "%s__%d.mp3" % (base, n)
         # Names and music paths come from the build; refuse any that would
@@ -173,7 +175,7 @@ def main():
                 not target.startswith(os.path.abspath(root) + os.sep):
             print("  !! skipping unsafe name %r" % base, file=sys.stderr)
             continue
-        taken.add("%s/%s" % (dest_dir, fname))
+        taken.add(("%s/%s" % (dest_dir, fname)).lower())
         planned[dest_dir].append((src, fname))
 
     total = sum(len(v) for v in planned.values())
