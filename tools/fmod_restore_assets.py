@@ -133,6 +133,13 @@ def main():
         if not (aid and ap):
             continue
         dest = os.path.join(root, "Assets", ap.group(1))
+        # assetPath comes from the metadata; refuse any that would land
+        # outside Assets/ (absolute paths, "../" components).
+        assets = os.path.abspath(os.path.join(root, "Assets"))
+        if not os.path.abspath(dest).startswith(assets + os.sep):
+            print("  !! skipping unsafe asset path %r" % ap.group(1))
+            unresolved += 1
+            continue
         if os.path.exists(dest):
             already += 1
             continue
