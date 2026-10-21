@@ -19,7 +19,8 @@ func setup() -> void:
 
 
 func _process(delta: float) -> void:
-	if host.is_dead:
+	# A charmed zombie fights for the player, so it must not hurt their plants.
+	if host.is_dead or host.is_charmed():
 		return
 	_timer -= delta
 	if _timer > 0.0:
