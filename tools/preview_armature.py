@@ -215,6 +215,10 @@ def render(armature, displays, regions, sheet, world, size=(420, 520),
                             int(region["x"]) + w, int(region["y"]) + h))
         if abs(sx - 1.0) > 0.01 or abs(sy - 1.0) > 0.01:
             piece = piece.resize((max(1, int(w * abs(sx))), max(1, int(h * abs(sy)))))
+        # decompose() puts a mirror into a negative sy; the resize above only
+        # uses its magnitude, so the flip has to be applied here.
+        if sy < 0:
+            piece = piece.transpose(Image.FLIP_TOP_BOTTOM)
         if rot:
             piece = piece.rotate(-math.degrees(rot), expand=True,
                                  resample=Image.BICUBIC)
