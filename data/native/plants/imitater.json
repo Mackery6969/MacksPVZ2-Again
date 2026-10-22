@@ -8,6 +8,12 @@
   "cooldown_from": 0,
   "beghouled_cost": 0
  },
+ "components": [
+  {
+   "type": "imitate",
+   "delay": 1.0
+  }
+ ],
  "extra": {
   "CannotBeSheepenedByWizard": true,
   "ImmuneToIceblock": true

@@ -8,9 +8,18 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "carrier",
+   "plantfood_toughness": 900
+  }
+ ],
+ "tags": [
+  "airborne",
+  "provides:airborne"
+ ],
  "extra": {
   "CannotBeSheepenedByWizard": true,
-  "MoveToPosTime": 2.5,
-  "ToughnessPlantfooded": 900
+  "MoveToPosTime": 2.5
  }
 }

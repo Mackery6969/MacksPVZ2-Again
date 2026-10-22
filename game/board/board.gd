@@ -100,6 +100,10 @@ var _cell_provides: Dictionary = {}
 var plantable_rows: Array[int] = []
 
 var _plants: Dictionary = {}          ## Vector2i -> Plant
+## Plants that carry another plant on top of them - a lily pad on water, a
+## flower pot in the sky - sit in their own layer under the cell's plant.
+## Zombies eat the plant on top first, then the carrier.
+var _carriers: Dictionary = {}        ## Vector2i -> Plant
 ## What last died in each cell, so an intensive carrot knows what to bring
 ## back. Digging a plant up is not a death and leaves no record.
 var _dead_plants: Dictionary = {}     ## Vector2i -> StringName
@@ -149,6 +153,7 @@ func reset() -> void:
 	lawn_components.clear()
 	_mowers.clear()
 	_plants.clear()
+	_carriers.clear()
 	_dead_plants.clear()
 	_objects.clear()
 	for r in _zombies_by_row:
@@ -241,9 +246,11 @@ func _on_mower_finished(row: int) -> void:
 ## resuming without them.
 func snapshot() -> Dictionary:
 	var plants: Array = []
-	for cell in _plants:
+	# Carriers first, so a lily pad is back on the water before what stood on
+	# it is restored.
+	var standing: Array = _carriers.values() + _plants.values()
+	for p in standing:
 		# Untyped: a typed assignment of a freed plant is a script error.
-		var p = _plants[cell]
 		if not is_instance_valid(p) or p.is_dead:
 			continue
 		plants.append({"id": String(p.entity_id()), "row": p.row, "col": p.col,
@@ -308,6 +315,7 @@ func apply_snapshot(state: Dictionary) -> void:
 		for child in group.get_children():
 			child.queue_free()
 	_plants.clear()
+	_carriers.clear()
 	_objects.clear()
 	for row in _zombies_by_row:
 		_zombies_by_row[row].clear()
@@ -430,18 +438,42 @@ func pvzge_px(px: float) -> float:
 
 # --- plants --------------------------------------------------------------
 
+## The plant a zombie meets in a cell: the one on top, or the carrier when
+## nothing stands on it.
 func plant_at(row: int, col: int) -> Plant:
+	var p := occupant_at(row, col)
+	return p if p != null else carrier_at(row, col)
+
+
+## The cell's own plant, ignoring any carrier under it. This is what decides
+## whether another plant can go in.
+func occupant_at(row: int, col: int) -> Plant:
 	var p = _plants.get(Vector2i(col, row))
 	return p if is_instance_valid(p) and not p.is_dead else null
+
+
+func carrier_at(row: int, col: int) -> Plant:
+	var p = _carriers.get(Vector2i(col, row))
+	return p if is_instance_valid(p) and not p.is_dead else null
+
+
+## Whether a plant definition is a carrier: it provides something to its cell.
+static func is_carrier_def(def: EntityDef) -> bool:
+	if def == null:
+		return false
+	for tag in def.tag_list():
+		if String(tag).begins_with("provides:"):
+			return true
+	return false
 
 
 ## Every living plant in one row, left to right.
 func plants_in_row(row: int) -> Array:
 	var out: Array = []
 	for c in cols:
-		var p: Plant = plant_at(row, c)
-		if p != null and not p.is_dead:
-			out.append(p)
+		for p in [occupant_at(row, c), carrier_at(row, c)]:
+			if p != null and not p.is_dead:
+				out.append(p)
 	return out
 
 
@@ -481,12 +513,26 @@ func placement_refusal(kind: StringName, id: StringName, row: int, col: int) -> 
 		return "out of bounds"
 	if not is_row_plantable(row):
 		return "lane is closed"
-	if kind != &"zombie" and plant_at(row, col) != null:
-		return "cell is occupied"
 	if kind == &"zombie":
 		return ""
-
+	var plant_def := Data.plant(id)
 	var item := object_at(row, col)
+	var need := grave_need(plant_def)
+	if need != &"":
+		# Planted on a gravestone or block, not beside one: it needs the item
+		# under it, and only minds a plant already there if that plant is
+		# free to be eaten - a frozen one is what a hot potato is for.
+		if not (item is Grave) or not bool(item.def.stat(need, false)):
+			return "%s must go on something it can %s" % [id, need]
+		var there := occupant_at(row, col)
+		if there != null and not there.is_encased():
+			return "cell is occupied"
+		return ""
+	if occupant_at(row, col) != null:
+		return "cell is occupied"
+	if is_carrier_def(plant_def) and carrier_at(row, col) != null:
+		return "cell is occupied"
+
 	if item is Grave and not bool(item.def.extra.get("AllowPlantsInSquare", false)):
 		return "%s is in the way" % item.def.id
 	# A puddle or tile placed as an object carries the same rules as painted
@@ -509,6 +555,18 @@ func placement_refusal(kind: StringName, id: StringName, row: int, col: int) -> 
 	return ""
 
 
+## The GraveDef flag a plant must be planted onto, from its
+## `on_grave:<flag>` tag - grave buster on `gravebuster_plantable` stones, hot
+## potato on `hot_potato_meltable` ice. &"" for an ordinary plant.
+static func grave_need(def: EntityDef) -> StringName:
+	if def == null:
+		return &""
+	for tag in def.tag_list():
+		if String(tag).begins_with("on_grave:"):
+			return StringName(String(tag).substr(9))
+	return &""
+
+
 ## A lily pad or platform makes its cell viable for the next plant.
 func _claim_provides(id: StringName, row: int, col: int) -> void:
 	var def := Data.plant(id)
@@ -520,7 +578,7 @@ func _claim_provides(id: StringName, row: int, col: int) -> void:
 
 
 func can_place(row: int, col: int) -> bool:
-	return in_bounds(row, col) and is_row_plantable(row) and plant_at(row, col) == null
+	return in_bounds(row, col) and is_row_plantable(row) and occupant_at(row, col) == null
 
 
 ## Places a plant. Convenience wrapper over `place_entity`.
@@ -530,7 +588,9 @@ func place_plant(id: StringName, row: int, col: int) -> Plant:
 
 ## Places whatever a seed packet holds. Plants occupy their cell; zombies are
 ## dropped into the lane and walk from there, so they do not block it.
-func place_entity(kind: StringName, id: StringName, row: int, col: int) -> Character:
+## `imitates` is for an imitater packet: the plant it will turn into.
+func place_entity(kind: StringName, id: StringName, row: int, col: int,
+		imitates: StringName = &"") -> Character:
 	if not can_place_entity(kind, id, row, col):
 		return null
 	if kind == &"zombie":
@@ -538,7 +598,7 @@ func place_entity(kind: StringName, id: StringName, row: int, col: int) -> Chara
 		if z != null:
 			z.position.x = grid_to_world(row, col).x
 		return z
-	var p := _place_plant_at(id, row, col)
+	var p := _place_plant_at(id, row, col, imitates)
 	if p != null:
 		_claim_provides(id, row, col)
 		# Read the cell at death time: move_plant may have carried it elsewhere.
@@ -560,7 +620,8 @@ func seed_cost(kind: StringName, id: StringName) -> int:
 	return int(def.stat(&"sun_cost", 100)) if def else 0
 
 
-func _place_plant_at(id: StringName, row: int, col: int) -> Plant:
+func _place_plant_at(id: StringName, row: int, col: int,
+		imitates: StringName = &"") -> Plant:
 	var def := Data.plant(id)
 	if def == null:
 		push_warning("Board: unknown plant '%s'" % id)
@@ -571,21 +632,37 @@ func _place_plant_at(id: StringName, row: int, col: int) -> Plant:
 	p.col = col
 	p.position = grid_to_world(row, col)
 	p.name = "Plant_%s_%d_%d" % [id, row, col]
-	p.z_index = lane_z(row, LAYER_PLANT)
+	var cell := Vector2i(col, row)
+	var carrier := is_carrier_def(def)
+	# A carrier sits just under the band its passenger draws in.
+	p.z_index = lane_z(row, LAYER_PLANT) - (1 if carrier else 0)
+	p.imitates = imitates
 	_entities.add_child(p)
 	p.initialize(def, self)
-	_plants[Vector2i(col, row)] = p
+	if carrier:
+		_carriers[cell] = p
+	elif occupant_at(row, col) == null:
+		_plants[cell] = p
+	# Otherwise it is working on whatever is already here - a hot potato on a
+	# frozen plant - and is not the cell's plant.
 	return p
 
 
-func remove_plant(row: int, col: int) -> void:
-	_plants.erase(Vector2i(col, row))
+## Forgets a plant. `who` says which one when a carrier and its passenger
+## share the cell; without it the plant on top goes.
+func remove_plant(row: int, col: int, who: Node = null) -> void:
+	var cell := Vector2i(col, row)
+	if who != null and _carriers.get(cell) == who:
+		_carriers.erase(cell)
+	elif who == null or _plants.get(cell) == who:
+		_plants.erase(cell)
 
 
 ## Losing a carrier takes its cell's provision with it, so the water is
 ## dangerous again once the lily pad is eaten.
 func _on_placed_plant_died(who: Character, row: int, col: int) -> void:
-	_cell_provides.erase(Vector2i(col, row))
+	if is_carrier_def(who.def):
+		_cell_provides.erase(Vector2i(col, row))
 	_dead_plants[Vector2i(col, row)] = who.entity_id()
 	plant_died.emit(who)
 
@@ -599,20 +676,77 @@ func forget_dead_plant(row: int, col: int) -> void:
 	_dead_plants.erase(Vector2i(col, row))
 
 
+## Sets what a cell remembers as its last death. &"" forgets.
+func remember_dead_plant(row: int, col: int, id: StringName) -> void:
+	if id == &"":
+		forget_dead_plant(row, col)
+	else:
+		_dead_plants[Vector2i(col, row)] = id
+
+
+## Brings `id` back in a cell at a share of its health, as an intensive carrot
+## does. Clears the cell's memory either way, so the carrot's own death is not
+## what the next carrot finds.
+func revive_plant(id: StringName, row: int, col: int, health_fraction: float) -> Plant:
+	forget_dead_plant(row, col)
+	if id == &"":
+		return null
+	var back := place_preset_plant(id, row, col)
+	if back == null:
+		return null
+	Audio.play(&"plant.revive", back.position)
+	back.health = back.max_health * clampf(health_fraction, 0.01, 1.0)
+	back.queue_redraw()
+	return back
+
+
+## Whether an umbrella covers a cell, for anything that drops out of the sky.
+func is_sheltered(row: int, col: int) -> bool:
+	for p in _all_plants():
+		var u = p.component(&"umbrella")
+		if u != null and u.covers(row, col):
+			return true
+	return false
+
+
+## Whether any light on the lawn reaches a cell.
+func is_lit(row: int, col: int) -> bool:
+	for p in _all_plants():
+		var light = p.component(&"light_source")
+		if light != null and light.lights(row, col):
+			return true
+	return false
+
+
+func _all_plants() -> Array:
+	var out: Array = []
+	for r in rows:
+		out.append_array(plants_in_row(r))
+	return out
+
+
 ## Relocates a plant between cells, keeping the board's index in step. Used by
 ## slide tiles and anything else that carries a plant around.
 func move_plant(from_row: int, from_col: int, to_row: int, to_col: int) -> bool:
-	var p := plant_at(from_row, from_col)
-	if p == null or plant_at(to_row, to_col) != null or not in_bounds(to_row, to_col):
+	# The plant on top moves, leaving its carrier; a bare carrier moves itself.
+	var layer := _plants
+	var p := occupant_at(from_row, from_col)
+	if p == null:
+		layer = _carriers
+		p = carrier_at(from_row, from_col)
+	if p == null or not in_bounds(to_row, to_col):
 		return false
-	_plants.erase(Vector2i(from_col, from_row))
-	_plants[Vector2i(to_col, to_row)] = p
+	var there = layer.get(Vector2i(to_col, to_row))
+	if is_instance_valid(there) and not there.is_dead:
+		return false
+	layer.erase(Vector2i(from_col, from_row))
+	layer[Vector2i(to_col, to_row)] = p
 	p.row = to_row
 	p.col = to_col
 	p.position = grid_to_world(to_row, to_col)
 	# A carrier's provision travels with it.
 	var provided: StringName = _cell_provides.get(Vector2i(from_col, from_row), &"")
-	if provided != &"":
+	if provided != &"" and layer == _carriers:
 		_cell_provides.erase(Vector2i(from_col, from_row))
 		_cell_provides[Vector2i(to_col, to_row)] = provided
 	return true
@@ -620,12 +754,14 @@ func move_plant(from_row: int, from_col: int, to_row: int, to_col: int) -> bool:
 
 ## Digs up the plant in a cell, freeing the square. Returns false if empty.
 func dig_up(row: int, col: int) -> bool:
+	# The plant on top comes up first; the carrier under it on a second dig.
 	var p := plant_at(row, col)
 	if p == null:
 		return false
-	remove_plant(row, col)
+	remove_plant(row, col, p)
 	# A dug-up carrier takes its provision with it, as when it is eaten.
-	_cell_provides.erase(Vector2i(col, row))
+	if is_carrier_def(p.def):
+		_cell_provides.erase(Vector2i(col, row))
 	Audio.play(&"plant.dig", p.position)
 	p.queue_free()
 	return true
@@ -701,7 +837,9 @@ func plant_targets_in_row(row: int) -> Array:
 ## lock and no terrain check, though the cell must be free. A lily pad still
 ## makes its water plantable.
 func place_preset_plant(id: StringName, row: int, col: int) -> Plant:
-	if not in_bounds(row, col) or plant_at(row, col) != null:
+	if not in_bounds(row, col):
+		return null
+	if (carrier_at(row, col) if is_carrier_def(Data.plant(id)) else occupant_at(row, col)) != null:
 		return null
 	var p := _place_plant_at(id, row, col)
 	if p == null:
@@ -825,6 +963,10 @@ func _on_carrier_died(who: Character) -> void:
 		zombie_died.emit(who)
 		if who.has_tag(&"carrying_plantfood"):
 			drop_plant_food(who.position)
+		# A plantern's gift: every zombie it lit carries sun to drop.
+		if who.has_tag(&"carrying_sun"):
+			for i in ceili(int(who.get_meta(&"carried_sun", 0)) / float(SunToken.VALUE)):
+				drop_sun(who.position + Vector2(i * 16.0, 0))
 
 
 func _on_zombie_gone(who: Node) -> void:
@@ -1069,7 +1211,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	var cost := seed_bank.cost_of(slot) if seed_bank != null else seed_cost(kind, id)
 	if not spend_sun(cost):
 		return
-	if place_entity(kind, id, row, col) != null:
+	if place_entity(kind, id, row, col,
+			StringName(selected_seed.get("imitates", &""))) != null:
 		if seed_bank != null:
 			seed_bank.consume(slot)
 		selected_seed = {}

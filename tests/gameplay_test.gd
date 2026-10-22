@@ -58,6 +58,7 @@ func _run() -> void:
 	_test_plant_behaviour_coverage()
 	await _test_new_plant_behaviours()
 	await _test_reactive_plants()
+	await _test_lawn_support_plants()
 	await _test_zombie_status_effects()
 	_test_zombie_behaviour_coverage()
 	_test_zombie_archetypes()
@@ -1637,6 +1638,119 @@ func _test_reactive_plants() -> void:
 	await _wait_game_seconds(31.0)
 	check("and turned it into sun", _sun_tokens(board9) > toad_sun)
 	board9.queue_free()
+	end_section()
+
+
+## Plants that change what the lawn allows: carriers, plants that go onto
+## gravestones, and plants that copy or bring back other plants.
+func _test_lawn_support_plants() -> void:
+	section("lawn support plants")
+	var board := _make_board()
+
+	# A lily pad carries a land plant on water; zombies eat the top one first.
+	board.set_terrain(1, 4, &"water")
+	var pad := board.place_plant(&"lilypad", 1, 4)
+	check("lily pad floats", pad != null)
+	check("a land plant can stand on it",
+			board.can_place_entity(&"plant", &"peashooter", 1, 4))
+	var rider := board.place_plant(&"peashooter", 1, 4)
+	check("and does", rider != null)
+	check_eq("the cell's plant is the rider", board.plant_at(1, 4), rider)
+	check_eq("with the pad under it", board.carrier_at(1, 4), pad)
+	check("a second pad is refused", not board.can_place_entity(&"plant", &"lilypad", 1, 4))
+	check("both are on the lane", board.plants_in_row(1).size() == 2)
+	rider.die()
+	await get_tree().process_frame
+	check_eq("with the rider gone the pad is what zombies meet",
+			board.plant_at(1, 4), pad)
+	check("and the water is still covered", board.cell_provides(1, 4) == &"aquatic")
+	check("so another land plant can go on", board.can_place_entity(&"plant", &"wallnut", 1, 4))
+	pad.die()
+	await get_tree().process_frame
+	check("losing the pad uncovers the water",
+			not board.can_place_entity(&"plant", &"peashooter", 1, 4))
+
+	# A flower pot does the same in the sky.
+	board.set_terrain(2, 5, &"sky_gap")
+	check("a flower pot can go over a gap",
+			board.place_plant(&"floawerPot", 2, 5) != null)
+	check("and carries a land plant", board.place_plant(&"peashooter", 2, 5) != null)
+
+	# Grave buster only goes onto a stone, and eats it.
+	check("grave buster needs a grave",
+			not board.can_place_entity(&"plant", &"gravebuster", 3, 6))
+	board.place_object(&"gravestone", 3, 6)
+	check("a grave refuses ordinary plants",
+			not board.can_place_entity(&"plant", &"peashooter", 3, 6))
+	check("but takes a grave buster", board.can_place_entity(&"plant", &"gravebuster", 3, 6))
+	var buster := board.place_plant(&"gravebuster", 3, 6)
+	await _wait_game_seconds(5.0)
+	check("the grave is gone", board.object_at(3, 6) == null)
+	check("and so is the buster", not is_instance_valid(buster) or buster.is_dead)
+	board.queue_free()
+
+	# Hot potato melts a frozen plant free.
+	var board2 := _make_board()
+	var frozen := board2.place_plant(&"peashooter", 2, 2)
+	board2.encase_in_block(frozen, &"planttarget_iceblock")
+	check("the plant is frozen", frozen.is_encased())
+	check("hot potato can go onto the ice",
+			board2.can_place_entity(&"plant", &"hotpotato", 2, 2))
+	board2.place_plant(&"hotpotato", 2, 2)
+	check_eq("without taking the frozen plant's place", board2.plant_at(2, 2), frozen)
+	await _wait_game_seconds(3.5)
+	check("the block melted", board2.object_at(2, 2) == null)
+	check("and the plant is free", not frozen.is_encased())
+
+	# Intensive carrot brings back the last plant to die in its cell.
+	var lost := board2.place_plant(&"wallnut", 0, 3)
+	lost.die()
+	await get_tree().process_frame
+	check_eq("the cell remembers what died", board2.last_dead_plant(0, 3), &"wallnut")
+	board2.place_plant(&"intensivecarrot", 0, 3)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var back := board2.plant_at(0, 3)
+	check("the carrot brought it back", back != null and back.entity_id() == &"wallnut")
+	if back != null:
+		check("at half health", back.health < back.max_health)
+
+	# Imitater becomes another plant.
+	var copy := board2.place_entity(&"plant", &"imitater", 4, 1, &"sunflower")
+	check("imitater planted", copy != null)
+	await _wait_game_seconds(1.5)
+	var grown := board2.plant_at(4, 1)
+	check("and turned into its plant", grown != null and grown.entity_id() == &"sunflower")
+	var random_copy := board2.place_plant(&"imitater", 4, 3)
+	await _wait_game_seconds(1.5)
+	var random_grown := board2.plant_at(4, 3)
+	check("an imitater with no packet picks a plant", random_grown != null
+			and random_grown.entity_id() != &"imitater")
+	check("the imitater's own death is not remembered",
+			board2.last_dead_plant(4, 1) != &"imitater")
+	board2.queue_free()
+
+	# Umbrella leaf bounces a thrown imp; lights light the lawn.
+	var board3 := _make_board()
+	board3.place_plant(&"umbrellaleaf", 2, 2)
+	check("an umbrella shelters its 3x3", board3.is_sheltered(1, 3)
+			and not board3.is_sheltered(2, 5))
+	board3.place_plant(&"plantern", 0, 6)
+	check("a plantern lights the squares round it", board3.is_lit(1, 7)
+			and not board3.is_lit(3, 7))
+	var giant := board3.spawn_zombie_at(&"tutorial_gargantuar", 2, board3.grid_to_world(2, 5).x)
+	giant.speed = 0.0
+	var imp_thrower = giant.component(&"imp_thrower")
+	check("the gargantuar throws imps", imp_thrower != null)
+	if imp_thrower != null:
+		imp_thrower._throw()
+		var landed: Array = board3.hostile_zombies_in_row(2).filter(
+				func(z): return z != giant)
+		check("its imp was bounced back up the lane", landed.size() == 1
+				and landed[0].position.x >= board3.spawn_x() - 1.0)
+	check("resistant radish stands as a wall",
+			board3.place_plant(&"turnip", 4, 4).has_tag(&"blocker"))
+	board3.queue_free()
 	end_section()
 
 

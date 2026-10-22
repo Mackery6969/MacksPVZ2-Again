@@ -231,6 +231,14 @@
    "fmod": "event:/SFX/Plants/Lightning"
   },
   {
+   "id": "plant.melt",
+   "fmod": "event:/SFX/Plants/Melt"
+  },
+  {
+   "id": "plant.revive",
+   "fmod": "event:/SFX/Plants/Revive"
+  },
+  {
    "id": "ui.chooseseeds.open",
    "fmod": "event:/SFX/UI/ChooseYourSeeds/Open"
   },

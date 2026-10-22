@@ -524,6 +524,17 @@ PLANT_BEHAVIOURS = {
                           {"targets": 1, "plantfood_targets": 3}),
     "goldbloom": ("sun_burst", {"ProduceValue0": "sun"}, {}),
     "powerlily": ("plantfood_maker", {"ProduceCount": "count"}, {}),
+    "lilypad": ("carrier", {}, {}),
+    "floawerPot": ("carrier", {"ToughnessPlantfooded": "plantfood_toughness"}, {}),
+    "gravebuster": ("grave_buster", {"BustTime": "bust_time"}, {}),
+    "hotpotato": ("melter", {}, {"melt_time": 2.5}),
+    "imitater": ("imitate", {}, {"delay": 1.0}),
+    "intensivecarrot": ("revive", {"HealthReturns": "health_fraction"}, {}),
+    "umbrellaleaf": ("umbrella", {}, {"radius": 1}),
+    "plantern": ("light_source", {}, {"radius": 1, "plantfood_sun": 25}),
+    "bulbkekengi": ("light_source", {"PlantfoodDuration": "plantfood_duration"},
+                    {"radius": 2, "plantfood_radius": 3}),
+    "turnip": ("blocker", {}, {}),
 }
 
 # Fields a behaviour reads that a plain field map cannot express, kept so
@@ -625,6 +636,11 @@ def split_plant(name, entry, prop_lookup):
     tags = []
     if name in AQUATIC_PLANTS:
         tags.append("aquatic")
+    if name in AIRBORNE_PLANTS:
+        tags.append("airborne")
+    if name in GRAVE_PLANTS:
+        # "on_grave:<flag>" plants go onto a grave carrying that flag.
+        tags.append("on_grave:" + GRAVE_PLANTS[name])
     if name in CARRIER_PLANTS:
         # "provides:<tag>" is what the board reads to mark a cell satisfied.
         tags.append("provides:" + CARRIER_PLANTS[name])
@@ -778,7 +794,11 @@ TERRAIN_RULES = {
 # rule - no special case for lily pads anywhere in the board code.
 AQUATIC_PLANTS = {"lilypad", "tanglekelp", "guacodile", "bowlingbulb",
                   "rotobaga", "banana_launcher"}
-CARRIER_PLANTS = {"lilypad": "aquatic", "skyplatform": "airborne"}
+CARRIER_PLANTS = {"lilypad": "aquatic", "skyplatform": "airborne",
+                  "floawerPot": "airborne"}
+AIRBORNE_PLANTS = {"floawerPot"}
+GRAVE_PLANTS = {"gravebuster": "gravebuster_plantable",
+                "hotpotato": "hot_potato_meltable"}
 
 GRAVE_STATS = {
     "Toughness": "toughness",
