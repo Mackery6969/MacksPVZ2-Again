@@ -108,7 +108,7 @@ def png_size(path):
     return int.from_bytes(head[16:20], "big"), int.from_bytes(head[20:24], "big")
 
 
-def pick_texture(atlas, uuids, native_dir, media_dir, listing):
+def pick_texture(atlas, uuids, native_dir, listing):
     """-> the uuid of the image this atlas cuts up, or None.
 
     The dependency list is shared by everything in a pack, so a size match
@@ -193,7 +193,7 @@ def main():
             print("   !! %-30s no atlas alongside it in %s" % (spec, fname))
             failed += 1
             continue
-        texture = pick_texture(atlas, uuids, native_dir, media_dir, listing)
+        texture = pick_texture(atlas, uuids, native_dir, listing)
         dest = os.path.join(out_root, slug)
         os.makedirs(dest, exist_ok=True)
         json.dump(skeleton, open(os.path.join(dest, "skeleton.json"), "w", encoding="utf-8"),
