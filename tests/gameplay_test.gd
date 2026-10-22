@@ -943,12 +943,18 @@ func _test_armed_mine_is_not_food() -> void:
 	check("arming mine is tagged arming", mine.has_tag(&"arming"))
 	var zombie := board.spawn_zombie(&"tutorial", 2)
 	check("zombie would eat an arming mine", zombie._can_eat(mine))
+	if mine.art != null:
+		check_eq("a fresh mine sprouts unarmed", mine.art.playing, &"Spawn_Baby")
+		await _wait_game_seconds(1.5)
+		check_eq("then rests underground", mine.art.playing, &"Idle_Baby")
 
 	# Once armed it detonates on contact instead of being chewed.
 	await _wait_game_seconds(float(Data.plant(&"potatomine").stat(&"charge_time", 14.0)) + 2.0)
 	check("mine finished arming", not mine.has_tag(&"arming"))
 	check("armed mine is uneatable", mine.has_tag(&"uneatable"))
 	check("zombie ignores an armed mine as food", not zombie._can_eat(mine))
+	if mine.art != null:
+		check_eq("an armed mine idles armed", mine.art.playing, &"Idle")
 	board.queue_free()
 
 
@@ -2657,13 +2663,13 @@ func _test_plant_stun() -> void:
 
 
 
-## Extracted art is optional - it is gitignored and regenerated - so this
+## Extracted art is optional - it lives in the private `art` submodule - so this
 ## checks it loads and drives when present, and that nothing breaks when not.
 func _test_art() -> void:
 	section("art")
 	if not Art.is_available():
 		check("no art extracted, placeholders stand in", true,
-				"run tools/extract_prefabs.py to exercise this")
+				"check out the art submodule to exercise this")
 		end_section()
 		return
 

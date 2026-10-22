@@ -15,6 +15,8 @@ func setup() -> void:
 	charge_time = float(cfg(&"charge_time", 14.0))
 	_timer = charge_time
 	host.set_runtime_tag(&"arming", true)
+	# Until it arms it rests underground, as PVZGE's Idle_Baby.
+	host.idle_state = &"asleep"
 	# While still arming it is just a plant, and zombies will eat it.
 
 
@@ -29,6 +31,7 @@ func _process(delta: float) -> void:
 			# Once armed it detonates on contact rather than being eaten, so
 			# zombies walk over it instead of stopping to chew.
 			host.set_runtime_tag(&"uneatable", true)
+			_pop_up()
 			host.queue_redraw()
 		return
 
@@ -43,8 +46,16 @@ func _process(delta: float) -> void:
 func on_plantfood() -> bool:
 	_armed = true
 	host.set_runtime_tag(&"arming", false)
+	host.idle_state = &"idle"
 	_detonate()
 	return true
+
+
+## Pops out of the ground and idles armed from then on.
+func _pop_up() -> void:
+	host.idle_state = &"idle"
+	if not host.play_art_once(&"arm"):
+		host.play_art(&"idle")
 
 
 func _detonate() -> void:

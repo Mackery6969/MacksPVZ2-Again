@@ -6,10 +6,11 @@ loads every `.bank` in this directory at startup.
 The master bank **and** its `.strings` bank are both required - without the
 strings bank, event paths cannot be resolved and every lookup fails silently.
 
-They are built automatically by the Music repo's **Build FMOD banks** workflow:
-a self-hosted runner copies them here when its `BANK_INSTALL_DIR` points at
-this directory, and every run uploads them as the `fmod-banks-Desktop`
-artifact. See `Music/docs/BUILD_RUNNER.md`.
+The banks here are committed automatically. When the Music repo's master
+changes the Studio project, its **Build FMOD banks** workflow builds them on a
+self-hosted runner, and this repo's **Update FMOD banks** workflow commits
+them here (through Git LFS) together with the matching `Music` submodule
+commit. Pull to get them. See `Music/docs/BUILD_RUNNER.md`.
 
 ## Exporting from FMOD Studio under Proton
 

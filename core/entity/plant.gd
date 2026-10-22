@@ -43,7 +43,9 @@ var _damage_state: StringName = &"idle"
 
 
 func _on_initialized() -> void:
-	if play_art(&"idle"):
+	# A rig with a planting animation (a potato mine's sprout) plays it first
+	# and idles after; the rest start idling at a random point.
+	if not play_art_once(&"spawn") and play_art(&"idle"):
 		art.seek_fraction(randf())
 	damaged.connect(_on_damaged)
 	_color = fallback_color
