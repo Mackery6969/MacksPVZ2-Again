@@ -503,6 +503,41 @@ player to the middle lane, and locked lanes are dimmed on the board. Use
 `"mode": "conveyor"` with a `plants` list for a conveyor level. A wave that
 needs several things at once uses `{"kind": "multi", "actions": [...]}`.
 
+### What is on the lawn at the start
+
+A level can set the lawn up before the first wave. Cells here are 0-based
+(`row` 0 is the top lane, `col` 0 the house column), matching PopCap's
+GridX/GridY, unlike wave rows.
+
+```json
+"initial": {
+ "grid_items": [ { "type": "slider_up", "row": 4, "col": 2 } ],
+ "plants": [ { "type": "wallnut", "row": 1, "col": 3 },
+			 { "type": "peashooter", "row": 0, "col": 0, "condition": "icecubed" } ],
+ "zombies": [ { "type": "iceage_imp", "row": 3, "col": 6, "condition": "icecubed" } ]
+},
+"gravestones": { "count": 3, "col_start": 4, "col_end": 7,
+				 "types": ["gravestone_dark"], "forced": [ { "row": 0, "col": 8 } ] }
+```
+
+A grid item is any grave or board object id; a plant id there is planted
+instead, which is how PVZGE lays lily pads. `"condition": "icecubed"` freezes
+a plant or zombie inside an ice block (`zombietarget_iceblock` /
+`planttarget_iceblock`); it does nothing until the block breaks. Plants named
+by a `protect_plants` objective are planted for it. Gravestones without a
+type use the world's own (`gravestones` in the lawn data).
+
+A wave can raise more mid-level:
+
+```json
+{ "kind": "gravestones", "pool": [ { "type": "gravestone_dark", "count": 2 } ],
+  "positions": [ { "row": 1, "col": 3 }, { "row": 4, "col": 8 } ] }
+```
+
+Plants standing where a stone rises are knocked out unless the action sets
+`"displace_plants": false`. Gravestones block planting, plants' shots break
+them, and `SunValue` / `plantfood_count` on a grave pay out when it breaks.
+
 ## Campaigns
 
 A campaign is an ordered list of levels. Clearing one loads the next; failing

@@ -69,6 +69,8 @@ func _run() -> void:
 	await _test_level_save_state()
 	_test_simplified_level_schema()
 	_test_terrain_rules()
+	await _test_grid_items()
+	await _test_level_set_up()
 	await _test_lawn_components()
 	await _test_natural_win_condition()
 	await _test_campaign_progression()
@@ -2050,6 +2052,146 @@ func _clear_all_saves() -> void:
 
 
 # --- helpers -------------------------------------------------------------
+
+## Gravestones, tiles and ice blocks standing in cells.
+func _test_grid_items() -> void:
+	section("grid items")
+	var board := _make_board()
+
+	var grave = board.place_object(&"gravestone_egypt", 2, 6)
+	check("a gravestone is placed", grave is Grave)
+	check("it is found in its cell", board.object_at(2, 6) == grave)
+	check("one item per cell", board.place_object(&"gravestone", 2, 6) == null)
+	check("a gravestone blocks planting",
+			board.placement_refusal(&"plant", &"peashooter", 2, 6) != "")
+	check("zombies may still drop there",
+			board.can_place_entity(&"zombie", &"tutorial", 2, 6))
+
+	var puddle = board.place_object(&"potholepuddle", 1, 4)
+	check("a tile is placed as a grid object",
+			puddle is GridObject and not (puddle is Grave))
+	check("a puddle placed as an object carries its terrain rule",
+			board.placement_refusal(&"plant", &"peashooter", 1, 4) != "")
+	check("a plant-named grid item is planted instead",
+			board.place_object(&"lilypad", 0, 3) is Plant)
+
+	# A peashooter facing a gravestone fires at it until it breaks.
+	var shooter := board.place_plant(&"peashooter", 2, 1)
+	var full: float = grave.health
+	await _wait_game_seconds(6.0)
+	check("peas hit the gravestone", not is_instance_valid(grave) or grave.health < full,
+			"%s of %s" % [grave.health if is_instance_valid(grave) else 0.0, full])
+	if is_instance_valid(grave):
+		grave.take_damage(99999.0)
+	await get_tree().process_frame
+	check("a broken gravestone leaves its cell", board.object_at(2, 6) == null)
+	check("and the cell is plantable again",
+			board.placement_refusal(&"plant", &"peashooter", 2, 6) == "")
+	board.dig_up(shooter.row, shooter.col)
+
+	# A gravestone that pays out sun when broken.
+	var paying = board.place_object(&"gravestoneSunOnDestruction", 4, 5)
+	var suns_before := _sun_tokens(board)
+	paying.take_damage(99999.0)
+	await get_tree().process_frame
+	check("a sun gravestone drops sun", _sun_tokens(board) > suns_before)
+
+	# A zombie frozen in ice holds still until the block is broken.
+	var frozen := board.spawn_zombie_at(&"iceage_imp", 3, board.grid_to_world(3, 5).x)
+	frozen.col = 5
+	check("the zombie is encased", board.encase_in_block(frozen, &"zombietarget_iceblock"))
+	var held_x := frozen.position.x
+	await _wait_game_seconds(2.0)
+	check_eq("an encased zombie does not walk", frozen.position.x, held_x)
+	board.object_at(3, 5).take_damage(99999.0)
+	await _wait_game_seconds(2.0)
+	check("breaking the block frees it",
+			not frozen.is_encased() and frozen.position.x < held_x)
+
+	# A frozen plant does nothing, and is neither food nor a pea target.
+	var iced := board.place_preset_plant(&"peashooter", 0, 1)
+	board.encase_in_block(iced, &"planttarget_iceblock")
+	check("a plant can be encased", iced.is_encased())
+	check("its block is not a target for plants",
+			not board.plant_targets_in_row(0).has(board.object_at(0, 1)))
+
+	# Saving keeps the items, their health and who is frozen.
+	var snap := board.snapshot()
+	board.apply_snapshot(snap)
+	await get_tree().process_frame
+	check("objects survive a save", board.object_at(1, 4) != null)
+	check("an encased plant stays encased",
+			board.plant_at(0, 1) != null and board.plant_at(0, 1).is_encased())
+	board.queue_free()
+	end_section()
+
+
+func _sun_tokens(board: Board) -> int:
+	var n := 0
+	for child in board.find_children("*", "SunToken", true, false):
+		if not child.is_queued_for_deletion():
+			n += 1
+	return n
+
+
+## A level's own start-up content: pre-placed plants, items and zombies, the
+## plants a protect-the-plant goal guards, gravestones, and a gravestone wave.
+func _test_level_set_up() -> void:
+	section("level set-up")
+	var board := _make_board()
+	var runner := LevelRunner.new()
+	runner.first_wave_delay = 0.5
+	add_child(runner)
+	var level := {
+		"id": "set_up_test", "stage": "EgyptStage",
+		"seedbank": {"mode": "chooser", "preset": ["peashooter"]},
+		"initial": {
+			"grid_items": [{"type": "slider_up", "row": 4, "col": 2}],
+			"plants": [
+				{"type": "wallnut", "row": 1, "col": 3},
+				{"type": "peashooter", "row": 0, "col": 0, "condition": "icecubed"},
+			],
+			"zombies": [{"type": "iceage_imp", "row": 3, "col": 6,
+					"condition": "icecubed"}],
+		},
+		"objectives": [{"type": "survive_waves"},
+				{"type": "protect_plants", "must_protect": 1,
+				"plants": [{"type": "sunflower", "row": 2, "col": 0}]}],
+		"gravestones": {"count": 3, "col_start": 4, "col_end": 7,
+				"forced": [{"row": 0, "col": 8}]},
+		"waves": [{"kind": "gravestones",
+				"pool": [{"type": "gravestone_dark", "count": 2}],
+				"positions": [{"row": 1, "col": 3}, {"row": 4, "col": 8}]}],
+	}
+	runner.start(level, board)
+
+	check("a slider tile is laid", board.object_at(4, 2) != null)
+	check("a plant starts on the lawn", board.plant_at(1, 3) != null)
+	check("a frozen plant starts in ice",
+			board.plant_at(0, 0) != null and board.plant_at(0, 0).is_encased())
+	check("a frozen zombie starts in ice", board.object_at(3, 6) != null
+			and board.zombie_count() == 1)
+	check("the protected plant is planted for its objective",
+			board.plant_at(2, 0) != null)
+	var forced = board.object_at(0, 8)
+	check("a forced gravestone uses the world's own kind",
+			forced is Grave and forced.entity_id() == &"gravestone_egypt")
+	var scattered := 0
+	for r in board.rows:
+		for c in range(4, 8):
+			var o = board.object_at(r, c)
+			if o is Grave and String(o.entity_id()).begins_with("gravestone"):
+				scattered += 1
+	check_eq("the counted gravestones land in their columns", scattered, 3)
+
+	await _wait_game_seconds(1.5)
+	check("a gravestone wave knocks out the plant in its way",
+			board.object_at(1, 3) is Grave and board.plant_at(1, 3) == null)
+	check("and raises the rest", board.object_at(4, 8) is Grave)
+	runner.queue_free()
+	board.queue_free()
+	end_section()
+
 
 func _make_board() -> Board:
 	var b := Board.new()

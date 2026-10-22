@@ -257,8 +257,8 @@ func _process(delta: float) -> void:
 	if is_dead or board == null:
 		return
 	_tick_status(delta)
-	# A stunned zombie neither walks nor eats.
-	if is_stunned():
+	# A stunned or encased zombie neither walks nor eats.
+	if is_stunned() or is_encased():
 		return
 	if is_instance_valid(target) and not target.is_dead:
 		_show_state(&"attack")
@@ -315,7 +315,8 @@ func _find_target() -> Character:
 ## A zombie only eats plants it is allowed to; a mod can block this by
 ## granting the plant a tag this zombie excludes.
 func _can_eat(plant: Plant) -> bool:
-	return not plant.has_tag(&"uneatable")
+	# The ice around a frozen plant is not food.
+	return not plant.has_tag(&"uneatable") and not plant.is_encased()
 
 
 func _attack(delta: float) -> void:

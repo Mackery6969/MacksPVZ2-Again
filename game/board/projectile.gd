@@ -85,11 +85,12 @@ func _check_hit(from_x: float, to_x: float) -> bool:
 	return true
 
 
-## What this shot can hit: its own side is never a target.
+## What this shot can hit: its own side is never a target. A plant's shot
+## also breaks gravestones and ice blocks in its way.
 func _candidates() -> Array:
 	if direction < 0:
 		return board.plants_in_row(row)
-	return board.hostile_zombies_in_row(row)
+	return board.plant_targets_in_row(row)
 
 
 func _draw() -> void:

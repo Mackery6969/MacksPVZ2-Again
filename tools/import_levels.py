@@ -43,6 +43,42 @@ def placement(p, extra_keys=()):
     return out
 
 
+## Every spelling PopCap uses for "what goes in this cell".
+TYPE_KEYS = ("TypeName", "PlantType", "Type")
+
+
+def cell_entry(p):
+    """A pre-placed thing -> {type,row,col,...}, 0-based like GridX/GridY.
+
+    Unlike `placement`, the type always lands under `type` whichever key the
+    source used, and the optional flags keep their meaning."""
+    out = placement(p)
+    for k in TYPE_KEYS:
+        if p.get(k):
+            out["type"] = strip_rtid(p[k])
+            break
+    if p.get("Condition"):
+        out["condition"] = p["Condition"]
+    if p.get("Plantfood"):
+        out["plantfood"] = True
+    if p.get("Level") is not None and p["Level"] != -1:
+        out["level"] = p["Level"]
+    return out
+
+
+def matrix_cells(matrices):
+    """InitialGridItemMatrixes -> cell entries. Each matrix is one row string
+    per lane, with a non-zero character marking a cell that gets the item."""
+    out = []
+    for m in matrices or []:
+        kind = strip_rtid(m.get("TypeName") or m.get("Type") or "")
+        for row, line in enumerate(m.get("GridMatrix") or []):
+            for col, ch in enumerate(str(line)):
+                if ch not in "0 ":
+                    out.append({"type": kind, "row": row, "col": col})
+    return out
+
+
 class Level:
     """Index of one PopCap level file, with RTID resolution over its aliases."""
 
@@ -130,8 +166,17 @@ def conv_wave_action(lvl, obj):
         return act
 
     if cls == "SpawnGravestonesWaveActionProps":
-        return {"kind": "gravestones", "count": d.get("GravestoneCount"),
-                "col_start": d.get("SpawnColumnStart"), "col_end": d.get("SpawnColumnEnd")}
+        # A pool of {type,count} filled into shuffled candidate cells. A pool
+        # entry with no type takes one of the world's own gravestones.
+        act = {"kind": "gravestones"}
+        act["pool"] = [{"type": strip_rtid(g.get("Type")) if g.get("Type") else None,
+                        "count": g.get("Count", 1)}
+                       for g in (d.get("GravestonePool") or []) if g]
+        act["positions"] = [{"col": p.get("mX"), "row": p.get("mY")}
+                            for p in (d.get("SpawnPositionsPool") or []) if p]
+        if d.get("DisplacePlants") is False:
+            act["displace_plants"] = False
+        return act
 
     if cls == "WaveSchedulerProps":
         act = {"kind": "schedule"}
@@ -328,42 +373,52 @@ def handle_module(lvl, out, obj):
             out["difficulties"] = d["Difficulties"]
 
     elif cls == "GravestoneProperties":
+        # PopCap's columns here are 1-based and inclusive; rows are already
+        # 0-based. Both come out 0-based to match every other cell.
         g = {}
-        for src, dst in [("GravestoneCount", "count"), ("SpawnColumnStart", "col_start"),
-                         ("SpawnColumnEnd", "col_end")]:
-            if d.get(src) is not None:
-                g[dst] = d[src]
+        if d.get("GravestoneCount") is not None:
+            g["count"] = d["GravestoneCount"]
+        if d.get("SpawnColumnStart") is not None:
+            g["col_start"] = d["SpawnColumnStart"] - 1
+        if d.get("SpawnColumnEnd") is not None:
+            g["col_end"] = d["SpawnColumnEnd"] - 1
+        if d.get("SpawnRowStart") is not None:
+            g["row_start"] = d["SpawnRowStart"]
+        if d.get("SpawnRowEnd") is not None:
+            g["row_end"] = d["SpawnRowEnd"]
+        types = d.get("Types") or ([d["Type"]] if d.get("Type") else [])
+        if types:
+            g["types"] = [strip_rtid(t) for t in types]
         if d.get("ForceSpawnData"):
-            g["forced"] = [placement(p, ("TypeName",)) for p in d["ForceSpawnData"]]
+            g["forced"] = [cell_entry(p) for p in d["ForceSpawnData"]]
         out["gravestones"] = g
 
     elif cls == "InitialGridItemProperties":
         init = out.setdefault("initial", {})
-        if d.get("InitialGridItemPlacements"):
-            init["grid_items"] = [placement(p, ("TypeName",))
-                                  for p in d["InitialGridItemPlacements"]]
-        if d.get("InitialGridItemMatrixes"):
-            init["grid_item_matrix"] = d["InitialGridItemMatrixes"]
+        items = [cell_entry(p) for p in (d.get("InitialGridItemPlacements") or [])]
+        items += matrix_cells(d.get("InitialGridItemMatrixes"))
+        if items:
+            init.setdefault("grid_items", []).extend(items)
 
     elif cls == "InitialPlantProperties":
         init = out.setdefault("initial", {})
         if d.get("InitialPlantPlacements"):
-            init["plants"] = [placement(p, ("PlantType", "Level"))
-                              for p in d["InitialPlantPlacements"]]
+            init.setdefault("plants", []).extend(
+                cell_entry(p) for p in d["InitialPlantPlacements"])
         if d.get("IsInitialIntensiveCarrotPlacements"):
             init["intensive_carrots"] = True
 
     elif cls == "InitialZombieProperties":
         init = out.setdefault("initial", {})
         if d.get("InitialZombiePlacements"):
-            init["zombies"] = [placement(p, ("TypeName", "Type"))
-                               for p in d["InitialZombiePlacements"]]
+            init.setdefault("zombies", []).extend(
+                cell_entry(p) for p in d["InitialZombiePlacements"])
 
     elif cls == "ProtectThePlantChallengeProperties":
-        obj_out = {"kind": "protect_plants",
+        obj_out = {"type": "protect_plants",
                    "must_protect": d.get("MustProtectCount")}
         if d.get("Plants"):
-            obj_out["plants"] = [placement(p, ("PlantType", "Level")) for p in d["Plants"]]
+            obj_out["plants"] = [cell_entry(p) for p in d["Plants"]]
         out.setdefault("objectives", []).append(obj_out)
 
     elif cls.startswith("TutorialLevel") and cls.endswith("Properties"):
@@ -491,6 +546,12 @@ def convert(payload, source):
     extra = unmodelled + leftovers
     if extra:
         out["extra"] = extra
+    # Every PvZ2 level is won by outlasting its waves; star challenges and
+    # protect-the-plant goals are conditions on top of that, not instead of
+    # it. Listing objectives replaces the runner's default, so say so here.
+    objs = out.get("objectives")
+    if objs and not any(o.get("type") == "survive_waves" for o in objs):
+        objs.insert(0, {"type": "survive_waves"})
     return out
 
 

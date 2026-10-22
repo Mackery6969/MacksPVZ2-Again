@@ -18,6 +18,8 @@ signal sun_collected(amount: int)
 signal zombie_reached_house(zombie: Zombie)
 ## A lawn ability became available or was spent.
 signal lawn_ability_changed(component: LawnComponent)
+## A gravestone (or ice block, or weapon rack) was broken by a plant.
+signal grave_destroyed(grave: Grave)
 
 ## Drawing order. The lawn reads front-to-back: a plant in row 4 covers a
 ## zombie in row 0, and within one row the zombie covers the plant it is
@@ -98,6 +100,9 @@ var _cell_provides: Dictionary = {}
 var plantable_rows: Array[int] = []
 
 var _plants: Dictionary = {}          ## Vector2i -> Plant
+## Grid items standing in a cell: gravestones, slider and trap tiles, puddles,
+## ice blocks. One per cell. Vector2i -> GridObject (Grave is one too).
+var _objects: Dictionary = {}
 var _zombies_by_row: Dictionary = {}  ## int -> Array[Zombie]
 var _projectiles: Node2D
 var _suns: Node2D
@@ -141,6 +146,7 @@ func reset() -> void:
 	lawn_components.clear()
 	_mowers.clear()
 	_plants.clear()
+	_objects.clear()
 	for r in _zombies_by_row:
 		_zombies_by_row[r].clear()
 	plantable_rows.clear()
@@ -232,11 +238,12 @@ func _on_mower_finished(row: int) -> void:
 func snapshot() -> Dictionary:
 	var plants: Array = []
 	for cell in _plants:
-		var p: Plant = _plants[cell]
+		# Untyped: a typed assignment of a freed plant is a script error.
+		var p = _plants[cell]
 		if not is_instance_valid(p) or p.is_dead:
 			continue
 		plants.append({"id": String(p.entity_id()), "row": p.row, "col": p.col,
-				"health": p.health})
+				"health": p.health, "encased": p.is_encased()})
 
 	var zombies: Array = []
 	for row in _zombies_by_row:
@@ -246,7 +253,16 @@ func snapshot() -> Dictionary:
 			zombies.append({"id": String(z.entity_id()), "row": z.row,
 					"x": z.position.x, "health": z.health,
 					"charmed": z.is_charmed(),
+					"encased": z.is_encased(),
 					"carrying_plantfood": z.has_tag(&"carrying_plantfood")})
+
+	var objects: Array = []
+	for cell in _objects:
+		var o = _objects[cell]
+		if not is_instance_valid(o) or o.is_dead:
+			continue
+		objects.append({"id": String(o.entity_id()), "row": o.row, "col": o.col,
+				"health": o.health})
 
 	var ground: Array = []
 	for cell in terrain:
@@ -267,7 +283,7 @@ func snapshot() -> Dictionary:
 		"sun": sun, "plant_food": plant_food,
 		"plantable_rows": plantable_rows.duplicate(),
 		"mower_rows": _remaining_mower_rows(),
-		"plants": plants, "zombies": zombies,
+		"plants": plants, "zombies": zombies, "objects": objects,
 		"terrain": ground, "cell_provides": provided,
 		"lawn_components": lawn,
 	}
@@ -288,6 +304,7 @@ func apply_snapshot(state: Dictionary) -> void:
 		for child in group.get_children():
 			child.queue_free()
 	_plants.clear()
+	_objects.clear()
 	for row in _zombies_by_row:
 		_zombies_by_row[row].clear()
 	terrain.clear()
@@ -302,6 +319,13 @@ func apply_snapshot(state: Dictionary) -> void:
 		terrain[Vector2i(int(cell.get("col", 0)), int(cell.get("row", 0)))] = \
 				StringName(cell.get("terrain", &""))
 
+	for entry in (state.get("objects", []) as Array):
+		var o := place_object(StringName(entry.get("id", &"")),
+				int(entry.get("row", 0)), int(entry.get("col", 0)))
+		if o != null:
+			o.health = minf(float(entry.get("health", o.health)), o.max_health)
+			o.queue_redraw()
+
 	# Plants are placed directly rather than through place_entity, so terrain
 	# rules and costs do not re-apply to something already standing.
 	for entry in (state.get("plants", []) as Array):
@@ -311,6 +335,8 @@ func apply_snapshot(state: Dictionary) -> void:
 			continue
 		p.died.connect(func(who): _on_placed_plant_died(who, p.row, p.col))
 		p.health = minf(float(entry.get("health", p.health)), p.max_health)
+		if bool(entry.get("encased", false)):
+			_rejoin_block(p, p.row, p.col)
 		p.queue_redraw()
 
 	for cell in (state.get("cell_provides", []) as Array):
@@ -328,6 +354,9 @@ func apply_snapshot(state: Dictionary) -> void:
 			z.charm()
 		if bool(entry.get("carrying_plantfood", false)):
 			z.set_runtime_tag(&"carrying_plantfood", true)
+		if bool(entry.get("encased", false)):
+			z.col = world_to_col(z.position.x)
+			_rejoin_block(z, z.row, z.col)
 		z.queue_redraw()
 
 	# Mowers that were already spent stay spent.
@@ -447,7 +476,14 @@ func placement_refusal(kind: StringName, id: StringName, row: int, col: int) -> 
 	if kind == &"zombie":
 		return ""
 
+	var item := object_at(row, col)
+	if item is Grave and not bool(item.def.extra.get("AllowPlantsInSquare", false)):
+		return "%s is in the way" % item.def.id
+	# A puddle or tile placed as an object carries the same rules as painted
+	# terrain; painted terrain wins where both exist.
 	var ground := terrain_def(row, col)
+	if ground == null and item != null and not (item is Grave) and item.def is ObjectDef:
+		ground = item.def
 	if ground == null:
 		return ""
 	if ground.blocks_planting:
@@ -461,6 +497,16 @@ func placement_refusal(kind: StringName, id: StringName, row: int, col: int) -> 
 		if not (plant_ok or cell_ok):
 			return "%s needs %s" % [ground.id, ground.requires_tag]
 	return ""
+
+
+## A lily pad or platform makes its cell viable for the next plant.
+func _claim_provides(id: StringName, row: int, col: int) -> void:
+	var def := Data.plant(id)
+	if def == null:
+		return
+	for tag in def.tag_list():
+		if String(tag).begins_with("provides:"):
+			_cell_provides[Vector2i(col, row)] = StringName(String(tag).substr(9))
 
 
 func can_place(row: int, col: int) -> bool:
@@ -484,13 +530,7 @@ func place_entity(kind: StringName, id: StringName, row: int, col: int) -> Chara
 		return z
 	var p := _place_plant_at(id, row, col)
 	if p != null:
-		# A lily pad or platform makes its cell viable for the next plant.
-		var def := Data.plant(id)
-		if def != null:
-			for tag in def.tag_list():
-				if String(tag).begins_with("provides:"):
-					_cell_provides[Vector2i(col, row)] = \
-							StringName(String(tag).substr(9))
+		_claim_provides(id, row, col)
 		# Read the cell at death time: move_plant may have carried it elsewhere.
 		p.died.connect(func(who): _on_placed_plant_died(who, who.row, who.col))
 		Audio.play(&"plant.place", p.position)
@@ -569,6 +609,124 @@ func dig_up(row: int, col: int) -> bool:
 	Audio.play(&"plant.dig", p.position)
 	p.queue_free()
 	return true
+
+
+# --- grid objects --------------------------------------------------------
+
+## Puts a grid item in a cell: a gravestone, a weapon rack, a slider or trap
+## tile, a puddle. PVZGE also lists a few plants as grid items (lily pads on a
+## Beach lawn), and those are planted instead. Returns what was placed, or
+## null when the id is unknown or the cell already holds an item.
+func place_object(id: StringName, row: int, col: int) -> Node2D:
+	if not in_bounds(row, col):
+		return null
+	var def: EntityDef = Data.grave(id)
+	if def == null:
+		def = Data.board_object(id)
+	if def == null:
+		if Data.plant(id) != null:
+			return place_preset_plant(id, row, col)
+		push_warning("Board: unknown grid item '%s'" % id)
+		return null
+	if object_at(row, col) != null:
+		return null
+
+	var o: GridObject = Grave.new() if def is GraveDef else GridObject.new()
+	o.row = row
+	o.col = col
+	o.position = grid_to_world(row, col)
+	o.name = "Object_%s_%d_%d" % [id, row, col]
+	o.z_index = lane_z(row, LAYER_OBJECT)
+	_entities.add_child(o)
+	o.initialize(def, self)
+	_objects[Vector2i(col, row)] = o
+	if o is Grave:
+		o.destroyed_by.connect(_on_grave_destroyed)
+	return o
+
+
+func object_at(row: int, col: int) -> GridObject:
+	var o = _objects.get(Vector2i(col, row))
+	return o if is_instance_valid(o) and not o.is_dead else null
+
+
+## Forgets the item in a cell. Called by the item itself as it dies.
+func remove_object(row: int, col: int) -> void:
+	_objects.erase(Vector2i(col, row))
+
+
+## Living gravestones in one row, nearest the house first.
+func graves_in_row(row: int) -> Array:
+	var out: Array = []
+	for c in cols:
+		var o := object_at(row, c)
+		if o is Grave:
+			out.append(o)
+	return out
+
+
+## Everything a plant's attack can hit in a row. Graves come first so a block
+## of ice is struck before the zombie standing inside it. A block holding one
+## of the player's own plants is not a target.
+func plant_targets_in_row(row: int) -> Array:
+	var out: Array = []
+	for g in graves_in_row(row):
+		if not g.has_tag(&"holds_plant"):
+			out.append(g)
+	out.append_array(hostile_zombies_in_row(row))
+	return out
+
+
+## Plants something the level put there, not the player: no cost, no lane
+## lock and no terrain check, though the cell must be free. A lily pad still
+## makes its water plantable.
+func place_preset_plant(id: StringName, row: int, col: int) -> Plant:
+	if not in_bounds(row, col) or plant_at(row, col) != null:
+		return null
+	var p := _place_plant_at(id, row, col)
+	if p == null:
+		return null
+	_claim_provides(id, row, col)
+	p.died.connect(func(who): _on_placed_plant_died(who, who.row, who.col))
+	return p
+
+
+## Shuts `who` inside a block of ice standing in its cell. Breaking the block
+## frees it; until then it does nothing.
+func encase_in_block(who: Character, block_id: StringName) -> bool:
+	var block := place_object(block_id, who.row, who.col)
+	if not (block is Grave):
+		return false
+	_bind_block(who, block)
+	return true
+
+
+func _rejoin_block(who: Character, row: int, col: int) -> void:
+	var block := object_at(row, col)
+	if block is Grave:
+		_bind_block(who, block)
+
+
+func _bind_block(who: Character, block: Grave) -> void:
+	who.encase()
+	if who is Plant:
+		block.set_runtime_tag(&"holds_plant", true)
+	block.died.connect(func(_b):
+		if is_instance_valid(who) and not who.is_dead:
+			who.release())
+
+
+## A broken grave pays out what its data says: sun, plant food, or both.
+func _on_grave_destroyed(grave: Node) -> void:
+	var g := grave as Grave
+	if g == null:
+		return
+	var sun_value := int(g.def.extra.get("SunValue", 0))
+	for i in ceili(sun_value / float(SunToken.VALUE)):
+		drop_sun(g.position + Vector2(randf_range(-12, 12), 0))
+	for i in int(g.def.stat(&"plantfood_count", 0)):
+		drop_plant_food(g.position)
+	grave_destroyed.emit(g)
 
 
 # --- zombies -------------------------------------------------------------
