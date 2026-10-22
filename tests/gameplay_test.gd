@@ -2863,6 +2863,12 @@ func _test_scenery_art() -> void:
 	check("which says which lanes are sodded", board.scenery.shows_open_rows())
 	check_eq("one sodded lane picks the one-row lawn",
 			board.scenery.sod_animation, &"row1")
+	var far: Node2D = board.scenery.get_node_or_null(^"UpperThere")
+	check("the far fence and mailbox draw under the zombies",
+			far != null and far.z_index < board.lane_z(0, Board.LAYER_PLANT) - 1)
+	var near: Node2D = board.scenery.get_node_or_null(^"Upper")
+	check("the near hedge draws over them",
+			near != null and near.z_index > board.lane_z(board.rows - 1, Board.LAYER_PROJECTILE))
 	var mower := board.mower_in_row(0)
 	check("the mowers get their world's art", mower != null and mower.art != null)
 
