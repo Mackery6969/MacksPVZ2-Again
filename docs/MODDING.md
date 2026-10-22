@@ -517,7 +517,7 @@ These rigs are placed by hand - `scale` and `offset_x`/`offset_y` rather than
 
 Rigs that are not a named prefab (the sun, the HUD pieces, particles) come
 out by their DragonBones name with `tools/extract_rigs.py`; see
-`art/README.md`.
+`docs/ART.md`.
 
 ## Adding a level
 
