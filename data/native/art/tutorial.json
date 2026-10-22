@@ -18,6 +18,9 @@
  "plant:sunflower": {
   "bundle": "plants_SunflowerPLANT",
   "armature": "Sunflower",
+  "//": "produce_point is the SunflowerPLANT prefab's SunProducePoint, in rig units with y up; sun_direction is where PVZGE throws the sun: sideways away from the stem's shade, up by the point's height.",
+  "produce_point": [-5.9, 109.8],
+  "sun_direction": [-11.8, 109.8],
   "fit_height": 92,
   "foot_y": 26,
   "animations": {

@@ -69,6 +69,26 @@ func load_mappings(dir_path: String) -> int:
 	return added
 
 
+## One line for the boot log: how much art there is, and which mapped art is
+## missing its extracted bundle. A missing bundle is why something still
+## shows its placeholder, so the log names the bundles to extract.
+func summary() -> String:
+	var missing := {}
+	for key in _map:
+		var entry: Variant = _map[key]
+		if not (entry is Dictionary) or not (entry as Dictionary).has("bundle"):
+			continue
+		var bundle := StringName(entry["bundle"])
+		if not _textures.has(bundle):
+			missing[bundle] = true
+	var line := "art: %d bundles, %d mappings" % [_textures.size(), _map.size()]
+	if not missing.is_empty():
+		var names := missing.keys()
+		names.sort()
+		line += "  missing (see art/README.md): %s" % ", ".join(names)
+	return line
+
+
 func mapping(kind: StringName, id: StringName) -> Dictionary:
 	return _map.get(StringName("%s:%s" % [kind, id]), {})
 
