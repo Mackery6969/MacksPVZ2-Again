@@ -1,6 +1,13 @@
 {
  "id": "goopuddle_eternal",
  "category": "liquid",
+ "components": [
+  {
+   "type": "tile_liquid",
+   "damage": 10,
+   "interval": 0.5
+  }
+ ],
  "extra": {
   "TileLiquidBasedOn": "cranjelly"
  }

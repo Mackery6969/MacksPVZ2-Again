@@ -1,0 +1,30 @@
+{
+ "id": "dangerroom_lostcity",
+ "world": "lostcity",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "lostcity_bug",
+   "weight": 1
+  },
+  {
+   "type": "lostcity_excavator",
+   "weight": 1
+  },
+  {
+   "type": "lostcity_bug",
+   "weight": 1
+  },
+  {
+   "type": "lostcity_crystalskull",
+   "weight": 1
+  }
+ ]
+}

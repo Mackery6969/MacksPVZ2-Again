@@ -231,6 +231,10 @@
   "file": "objects/deep_water.json",
   "category": "liquid"
  },
+ "mold": {
+  "file": "objects/mold.json",
+  "category": "tile"
+ },
  "sky_gap": {
   "file": "objects/sky_gap.json",
   "category": "tile"
@@ -242,6 +246,10 @@
  "water": {
   "file": "objects/water.json",
   "category": "liquid"
+ },
+ "zombie_portal": {
+  "file": "objects/zombie_portal.json",
+  "category": "other"
  },
  "zombiepotion_invisibility": {
   "file": "objects/zombiepotion_invisibility.json",

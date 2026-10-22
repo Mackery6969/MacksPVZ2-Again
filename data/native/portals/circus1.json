@@ -1,0 +1,30 @@
+{
+ "id": "circus1",
+ "world": "modern",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "carnie_stiltwalker",
+   "weight": 1
+  },
+  {
+   "type": "carnie_armor1",
+   "weight": 1
+  },
+  {
+   "type": "carnie_armor2",
+   "weight": 1
+  },
+  {
+   "type": "carnie",
+   "weight": 1
+  }
+ ]
+}

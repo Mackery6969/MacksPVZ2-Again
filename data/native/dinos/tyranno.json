@@ -1,0 +1,9 @@
+{
+ "id": "tyranno",
+ "//": "Roars once at the zombies in its lane, then leaves. In PVZGE a wild T. rex only bites when a plant has charmed it, and charming dinosaurs is not modelled, so its roar is all it does.",
+ "behaviour": "roar",
+ "idle_column": 6,
+ "roars": 1,
+ "roar_delay": 3,
+ "max_time": 40
+}

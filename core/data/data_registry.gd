@@ -29,6 +29,8 @@ var levels: Dictionary = {}       ## StringName -> Dictionary (raw)
 var campaigns: Dictionary = {}    ## StringName -> CampaignDef
 var lawns: Dictionary = {}        ## StringName -> Dictionary (raw)
 var speakers: Dictionary = {}     ## StringName -> Dictionary (raw)
+var dinos: Dictionary = {}        ## StringName -> Dictionary (raw)
+var portals: Dictionary = {}      ## StringName -> Dictionary (raw)
 
 var _mod_order: Array[StringName] = [&"base"]
 var _errors: Array[String] = []
@@ -40,7 +42,7 @@ func _ready() -> void:
 
 func load_all() -> void:
 	for pool in [zombies, plants, projectiles, armors, graves, objects,
-			archetypes, levels, campaigns, lawns, speakers]:
+			archetypes, levels, campaigns, lawns, speakers, dinos, portals]:
 		pool.clear()
 	_errors.clear()
 	_mod_order = [&"base"]
@@ -79,6 +81,8 @@ func _load_source(root: String, mod: StringName) -> void:
 	_load_dir(root.path_join("levels"), levels, mod)
 	_load_dir(root.path_join("lawns"), lawns, mod)
 	_load_dir(root.path_join("speakers"), speakers, mod)
+	_load_dir(root.path_join("dinos"), dinos, mod)
+	_load_dir(root.path_join("portals"), portals, mod)
 	_load_campaigns(root.path_join("campaigns"), mod)
 
 
@@ -350,6 +354,17 @@ func speaker(id: StringName) -> Dictionary:
 ## A stage's lawn settings: music track, mower, zombie roster.
 func lawn(id: StringName) -> Dictionary:
 	return lawns.get(id, {})
+
+
+## A dinosaur a wave can call in: which behaviour it has and its numbers.
+func dino(id: StringName) -> Dictionary:
+	return dinos.get(id, {})
+
+
+## A shared portal: which zombies come through it and how often. Levels may
+## also define their own inline.
+func portal(id: StringName) -> Dictionary:
+	return portals.get(id, {})
 
 
 func campaign(id: StringName) -> CampaignDef:

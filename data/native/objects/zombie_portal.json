@@ -1,0 +1,13 @@
+{
+ "id": "zombie_portal",
+ "//": "A time rift. The wave that opens it says which zombies come through.",
+ "category": "other",
+ "stats": {
+  "blocks_planting": true
+ },
+ "components": [
+  {
+   "type": "portal"
+  }
+ ]
+}
