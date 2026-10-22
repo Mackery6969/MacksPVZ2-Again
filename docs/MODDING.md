@@ -912,6 +912,44 @@ func load_state(state: Dictionary) -> void:
 Projectiles and uncollected sun are deliberately not saved - they are in
 flight, and restoring them mid-arc would be stranger than not.
 
+## Rewards and unlocks
+
+Winning a level drops a prize where its last zombie fell. The first win drops
+the level's own `reward`; every later win, and any level without one, drops
+a coin bag of five silver coins (50 coins). The prize is granted the moment
+it drops, so leaving before picking it up loses nothing; the level ends once
+the player sweeps over it.
+
+```json
+"reward": {"type": "unlock_plant", "param": "cabbagepult"},
+"replay_reward": {"type": "collectable", "param": "endlevelreward"},
+"unlocks_features": ["almanac"]
+```
+
+| `type` | `param` / `amount` | Effect |
+|---|---|---|
+| `unlock_plant` | plant id | the plant becomes choosable, marked NEW in the chooser |
+| `upgrade` | upgrade id | kept in the `upgrades` collection |
+| `worldtrophy` | trophy id | kept in `trophies`; `worldkey` adds a world key instead |
+| `note` | note id | kept in `notes` |
+| `coins` | `amount` | a coin bag worth that much |
+| `gems` | `amount` | gems, straight into the wallet |
+
+Anything else (PVZGE's `pinata`, `giftbox`, `collectable`) drops a coin bag,
+as PVZGE does. `replay_reward` is imported and kept but not used yet: PVZGE
+itself always drops coins on a replay. `unlocks_features` is recorded on the
+first win (`Saves.has_feature`) for the screens that will need it.
+
+The seed chooser only offers plants the player owns: the `base_unlocked`
+list in `seed_chooser.json` (PVZGE's starting four), plants won from levels,
+and any plant a pack adds. A level's include list still shows unowned plants,
+refused, unless its seed bank sets `unlock_all`. The **Unlock every plant**
+setting opens everything for testing.
+
+Progress lives in `Saves`: `unlock_plant`, `is_plant_unlocked`,
+`add_currency` / `currency` (`coins`, `gems`, `worldkeys`, or a pack's own),
+and `grant_item` / `has_item` for named collections.
+
 ## I-Zombie costs
 
 A zombie's `sun_cost` is what it costs to place from a seed packet. PopCap's

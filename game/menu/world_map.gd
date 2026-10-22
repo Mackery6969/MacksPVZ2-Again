@@ -32,6 +32,7 @@ var _selected: StringName = &""
 
 var _title: Label
 var _progress: Label
+var _coins: Label
 var _prev: Button
 var _next: Button
 var _map: ColorRect
@@ -126,6 +127,11 @@ func _build() -> void:
 	_progress.custom_minimum_size.x = 150
 	_progress.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	bar.add_child(_progress)
+	_coins = MenuUI.label("")
+	_coins.custom_minimum_size.x = 120
+	_coins.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_coins.add_theme_color_override("font_color", Color("f2c53d"))
+	bar.add_child(_coins)
 
 	_map = ColorRect.new()
 	_map.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -173,6 +179,8 @@ func _build() -> void:
 
 
 func _show_world() -> void:
+	var coins := Saves.currency(&"coins")
+	_coins.text = "Coins: %d" % coins if coins > 0 else ""
 	for b in _nodes.values():
 		b.queue_free()
 	_nodes.clear()
@@ -328,6 +336,10 @@ func _select(level_id: StringName) -> void:
 	var waves := (level.get("waves", []) as Array).size()
 	if waves > 0:
 		status.append("%d waves" % waves)
+	# Like PvZ2's level popup, the prize still to be won.
+	var prize := LevelReward.for_level(level, not Saves.is_cleared(level_id))
+	if prize.is_award():
+		status.append("Reward: %s" % prize.item_name())
 	_card_status.text = "  -  ".join(status)
 	_play.disabled = level.is_empty()
 	_play.text = "Resume" if saved else "Play"

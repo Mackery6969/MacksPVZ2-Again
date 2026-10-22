@@ -4,6 +4,17 @@
  "name_key": "[TUTORIAL_LEVEL_NAME]",
  "description": "[PLAYERS_HOUSE]",
  "number": 4,
+ "reward": {
+  "type": "worldtrophy",
+  "param": "sauce"
+ },
+ "replay_reward": {
+  "type": "collectable",
+  "param": "taco"
+ },
+ "unlocks_features": [
+  "coins"
+ ],
  "stage": "TutorialStage",
  "tutorial_script": "tutorial_4",
  "seedbank": {

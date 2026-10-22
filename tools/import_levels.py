@@ -701,6 +701,18 @@ def translate_features(features):
     return options, scripts
 
 
+def conv_reward(kind, param):
+    """FirstRewardType/Param -> {type, param}: the prize dropped the first time
+    a level is won (unlock_plant, upgrade, worldtrophy, note, pinata...).
+    "none" is PopCap's way of saying there is no prize, so it is dropped."""
+    if not kind or kind == "none":
+        return None
+    out = {"type": kind}
+    if param and param != "none":
+        out["param"] = param
+    return out
+
+
 def convert(payload, source):
     lvl = Level(payload, source)
     if not lvl.definition:
@@ -734,6 +746,16 @@ def convert(payload, source):
                      ("DraperPromo", "promo_plant")]:
         if dd.get(src) is not None:
             out[dst] = dd[src]
+
+    reward = conv_reward(dd.get("FirstRewardType"), dd.get("FirstRewardParam"))
+    if reward:
+        out["reward"] = reward
+    replay = conv_reward(dd.get("ReplayRewardType"), dd.get("ReplayRewardParam"))
+    if replay:
+        out["replay_reward"] = replay
+    if dd.get("GameFeaturesToUnlock"):
+        out["unlocks_features"] = [f.removeprefix("feature_")
+                                   for f in dd["GameFeaturesToUnlock"]]
 
     features, unmodelled = [], []
     for ref in (dd.get("Modules") or []):

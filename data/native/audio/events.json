@@ -46,6 +46,22 @@
    "fmod": "event:/SFX/Collect/PlantFood"
   },
   {
+   "id": "coin.collect",
+   "fmod": "event:/SFX/Collect/Coin"
+  },
+  {
+   "id": "reward.drop",
+   "fmod": "event:/SFX/Collect/PrizeDrop"
+  },
+  {
+   "id": "reward.land",
+   "fmod": "event:/SFX/Collect/PrizeLand"
+  },
+  {
+   "id": "reward.collect",
+   "fmod": "event:/SFX/Collect/Prize"
+  },
+  {
    "id": "zombie.spawn",
    "fmod": "event:/SFX/Zombies/Spawn"
   },

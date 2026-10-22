@@ -8,6 +8,10 @@ extends RefCounted
 ## number of slots is the level's override or the base count, capped by how
 ## many plants are actually choosable.
 ##
+## Only plants the player owns can be picked (see `Saves.is_plant_unlocked`).
+## The default list leaves the rest out; a level's include list still shows
+## them, refused, unless the level sets `unlock_all` as PVZGE's UnlockAll does.
+##
 ## Kept apart from the chooser screen so the rules can be checked headless and
 ## reused by anything else that needs them (a deck editor, a randomiser).
 
@@ -29,6 +33,7 @@ var challenging_locked: bool = false
 var _excluded: Dictionary = {}
 var _ban_sun_producers: bool = false
 var _has_water: bool = false
+var _unlock_all: bool = false
 
 
 ## True when `level` asks the player to choose plants before it starts.
@@ -61,9 +66,14 @@ func _read(level: Dictionary, board: Board) -> void:
 	_has_water = level_has_water(level, board)
 
 	var include: Array = sb.get("include", [])
-	var source: Array = include if not include.is_empty() else default_order()
-	for id in source:
-		_offer(StringName(id))
+	if not include.is_empty():
+		_unlock_all = _truthy(sb.get("unlock_all", false))
+		for id in include:
+			_offer(StringName(id))
+	else:
+		for id in default_order():
+			if Saves.is_plant_unlocked(id):
+				_offer(id)
 	for entry in (sb.get("preset", []) as Array):
 		var id := _entry_id(entry)
 		if id == &"" or Data.plant(id) == null:
@@ -135,6 +145,8 @@ func refusal(id: StringName) -> String:
 		return "unknown plant"
 	if locked.has(id):
 		return ""
+	if not _unlock_all and not Saves.is_plant_unlocked(id):
+		return "not unlocked yet"
 	if _excluded.has(id):
 		return "not allowed in this level"
 	if _ban_sun_producers and def.has_tag(&"sun_producer"):

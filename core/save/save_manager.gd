@@ -1,5 +1,6 @@
 extends Node
-## Per-level save states and campaign progress.
+## Per-level save states and campaign progress: cleared levels, unlocked
+## plants, currency and the trophies, upgrades and notes rewards hand out.
 ##
 ## PvZ2 lets you leave a level and come back to it mid-run; PVZGE does not.
 ## Each level gets its own slot, so several can be part-played at once.
@@ -14,6 +15,9 @@ extends Node
 signal level_saved(level_id: StringName)
 signal level_loaded(level_id: StringName)
 signal progress_changed
+## A currency (coins, gems, world keys) moved to `total`.
+signal currency_changed(kind: StringName, total: int)
+signal plant_unlocked(plant_id: StringName)
 
 const SAVE_DIR := "user://saves"
 const PROGRESS_FILE := "user://saves/progress.json"
@@ -154,6 +158,126 @@ func remember_seed_choice(seeds: Array) -> void:
 	_save_progress()
 
 
+# --- plants ---------------------------------------------------------------
+
+## Whether the player may pick `plant_id` in a seed chooser.
+##
+## A plant is theirs when it is on the base list every player starts with
+## (PVZGE's BASEUNLOCKLIST, `base_unlocked` in seed_chooser.json), when a
+## reward has given it to them, or when a pack added it - a pack's plant has no
+## level in the base campaign to win it from. The `unlock_all_plants` setting
+## opens everything, for testing.
+func is_plant_unlocked(plant_id: StringName) -> bool:
+	if Settings.get_value(&"unlock_all_plants"):
+		return true
+	if (_progress.get("plants", {}) as Dictionary).has(String(plant_id)):
+		return true
+	if base_unlocked_plants().has(plant_id):
+		return true
+	var def := Data.plant(plant_id)
+	return def != null and def.source_mod != &"base"
+
+
+func base_unlocked_plants() -> Array[StringName]:
+	var out: Array[StringName] = []
+	for id in (Data.seed_chooser_config().get("base_unlocked", []) as Array):
+		out.append(StringName(id))
+	return out
+
+
+## Gives the player `plant_id`. It counts as new until a chooser has shown it,
+## as PVZGE's obtained_toBeUnlocked does. Returns false if they had it already.
+func unlock_plant(plant_id: StringName) -> bool:
+	var plants: Dictionary = _progress.get("plants", {})
+	if plants.has(String(plant_id)):
+		return false
+	plants[String(plant_id)] = {"new": true}
+	_progress["plants"] = plants
+	_save_progress()
+	plant_unlocked.emit(plant_id)
+	progress_changed.emit()
+	return true
+
+
+## Plants a reward gave the player, in the order they were won.
+func unlocked_plants() -> Array[StringName]:
+	var out: Array[StringName] = []
+	for id in (_progress.get("plants", {}) as Dictionary):
+		out.append(StringName(id))
+	return out
+
+
+func is_plant_new(plant_id: StringName) -> bool:
+	var entry: Variant = (_progress.get("plants", {}) as Dictionary).get(String(plant_id))
+	return entry is Dictionary and bool(entry.get("new", false))
+
+
+## Clears the new mark once the player has seen these plants.
+func mark_plants_seen(plant_ids: Array) -> void:
+	var plants: Dictionary = _progress.get("plants", {})
+	var changed := false
+	for id in plant_ids:
+		var entry: Variant = plants.get(String(id))
+		if entry is Dictionary and entry.get("new", false):
+			entry["new"] = false
+			changed = true
+	if changed:
+		_save_progress()
+
+
+# --- currency -------------------------------------------------------------
+
+## How much of `kind` the player holds: &"coins", &"gems", &"worldkeys", or
+## any currency a pack invents.
+func currency(kind: StringName) -> int:
+	return int((_progress.get("currency", {}) as Dictionary).get(String(kind), 0))
+
+
+## Adds `amount` (negative to spend) and returns the new total, never below 0.
+func add_currency(kind: StringName, amount: int) -> int:
+	var wallet: Dictionary = _progress.get("currency", {})
+	var total := maxi(int(wallet.get(String(kind), 0)) + amount, 0)
+	wallet[String(kind)] = total
+	_progress["currency"] = wallet
+	_save_progress()
+	currency_changed.emit(kind, total)
+	return total
+
+
+# --- collections ----------------------------------------------------------
+
+## Records `item_id` in a named collection - &"trophies", &"upgrades",
+## &"notes" - so later screens (almanac, upgrades, the world map) can ask what
+## the player owns. Returns false if it was already there.
+func grant_item(collection: StringName, item_id: StringName) -> bool:
+	var items: Array = _progress.get(String(collection), [])
+	if items.has(String(item_id)):
+		return false
+	items.append(String(item_id))
+	_progress[String(collection)] = items
+	_save_progress()
+	progress_changed.emit()
+	return true
+
+
+func has_item(collection: StringName, item_id: StringName) -> bool:
+	return (_progress.get(String(collection), []) as Array).has(String(item_id))
+
+
+func items(collection: StringName) -> Array:
+	return (_progress.get(String(collection), []) as Array).duplicate()
+
+
+## Game features a level opens up when it is first won (PVZGE's
+## GameFeaturesToUnlock: shovel, coins, almanac, zen garden...).
+func unlock_feature(feature: StringName) -> void:
+	grant_item(&"features", feature)
+
+
+func has_feature(feature: StringName) -> bool:
+	return has_item(&"features", feature)
+
+
 func reset_progress() -> void:
 	_progress = {}
 	for level_id in saved_levels():
@@ -182,5 +306,5 @@ func _save_progress() -> void:
 
 
 func summary() -> String:
-	return "saves: %d level(s) in progress, %d cleared" % [
-			saved_levels().size(), cleared_count()]
+	return "saves: %d level(s) in progress, %d cleared, %d coins" % [
+			saved_levels().size(), cleared_count(), currency(&"coins")]

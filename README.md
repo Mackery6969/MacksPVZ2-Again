@@ -27,7 +27,8 @@ zero zombie files.
 ```
 core/
   audio/        Audio - named events over a swappable backend (FMOD/Godot/silent)
-  save/         Saves - per-level save slots and campaign progress
+  save/         Saves - per-level save slots, campaign progress, unlocks, coins
+  rewards/      LevelReward - what winning a level hands out
   settings/     Settings - volumes, display and gameplay options
   lawn/         LawnComponent - world-level mechanics and abilities
   objectives/   Objective - a level's win and lose rules, as data
