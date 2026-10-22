@@ -1,0 +1,735 @@
+{
+ "//": "Scenery and HUD art, keyed <kind>:<id> like tutorial.json. `lawn:<stage>` names the stage's lawn rigs: `back` draws under everything, `front` over the characters (PVZGE's LawnUpper and LawnThere layers), placed where the original placed its lawn relative to the grid. `open_rows` picks the tutorial lawn's sod animation by how many lanes are open. `mower:<id>`, `collectable:<id>`, `effect:<id>` and `hud:<id>` are single rigs with an explicit scale and offset, sized from the original's own scale times the port's cell-to-square ratio. A mod reskins any of them by shipping an entry with the same key.",
+ "lawn:AbbotStage": {
+  "bundle": "lawns_KongfuLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:ArenaStage": {
+  "bundle": "lawns_ArenaLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:BeachStage": {
+  "bundle": "lawns_BeachLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": []
+ },
+ "lawn:BeachTutorialStage": {
+  "bundle": "lawns_FrontyardBeachLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "UpperThere"
+  ]
+ },
+ "lawn:BirthdayStage": {
+  "bundle": "lawns_FrontyardBirthdayLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:CircusStage": {
+  "bundle": "lawns_FrontyardCircusLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": []
+ },
+ "lawn:DarkStage": {
+  "bundle": "lawns_DarkLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "LawnUpper",
+   "LawnUpperThere"
+  ]
+ },
+ "lawn:DarkTutorialStage": {
+  "bundle": "lawns_FrontyardDarkLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:DinoStage": {
+  "bundle": "lawns_DinoLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "There"
+  ]
+ },
+ "lawn:DinoTutorialStage": {
+  "bundle": "lawns_FrontyardDinoLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperThere",
+   "UpperHere"
+  ]
+ },
+ "lawn:EgyptNightStage": {
+  "bundle": "lawns_EgyptNightLAWN",
+  "back": [
+   "Lawn_Night"
+  ],
+  "front": [
+   "Upper_Night",
+   "UpperThere_Night"
+  ]
+ },
+ "lawn:EgyptStage": {
+  "bundle": "lawns_EgyptLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "UpperThere"
+  ]
+ },
+ "lawn:EightiesStage": {
+  "bundle": "lawns_EightiesLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperThere",
+   "UpperHere"
+  ]
+ },
+ "lawn:EightiesTutorialStage": {
+  "bundle": "lawns_FrontyardEightiesLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperThere",
+   "UpperHere"
+  ]
+ },
+ "lawn:FallsStage": {
+  "bundle": "lawns_FrontyardFallsLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:FarmStage": {
+  "bundle": "lawns_FrontyardFarmLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:FeastivusNightStage": {
+  "bundle": "lawns_FrontyardXmasNightLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:FeastivusStage": {
+  "bundle": "lawns_FrontyardXmasLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:FrontLawnStage": {
+  "bundle": "lawns_TutorialLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "UpperThere"
+  ],
+  "open_rows": {
+   "0": "row0",
+   "1": "row1",
+   "3": "row3",
+   "5": "row5"
+  }
+ },
+ "lawn:FutureNightStage": {
+  "bundle": "lawns_FutureNightLAWN",
+  "back": [
+   "LawnNight"
+  ],
+  "front": [
+   "UpperNight",
+   "UpperThereNight"
+  ]
+ },
+ "lawn:FutureStage": {
+  "bundle": "lawns_FutureLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "UpperThere"
+  ]
+ },
+ "lawn:FutureTutorialStage": {
+  "bundle": "lawns_FrontyardFutureLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:HalloweenStage": {
+  "bundle": "lawns_FrontyardHalloweenLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "There",
+   "Here"
+  ]
+ },
+ "lawn:HeroesStage": {
+  "bundle": "lawns_FrontyardHeroesLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "There",
+   "Here"
+  ]
+ },
+ "lawn:IceageStage": {
+  "bundle": "lawns_IceageLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:IceageTutorialStage": {
+  "bundle": "lawns_FrontyardIceageLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:IceageVeteranStage": {
+  "bundle": "lawns_IceageUltLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:KongfuBossStage": {
+  "bundle": "lawns_KongfuVeteranLAWN",
+  "back": [
+   "LawnBoss"
+  ],
+  "front": [
+   "Here",
+   "ThereBoss"
+  ]
+ },
+ "lawn:KongfuStage": {
+  "bundle": "lawns_KongfuLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:LostCityNightStage": {
+  "bundle": "lawns_LostCityNightLAWN",
+  "back": [
+   "LawnNight"
+  ],
+  "front": [
+   "UpperNight"
+  ]
+ },
+ "lawn:LostCityStage": {
+  "bundle": "lawns_LostCityLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper"
+  ]
+ },
+ "lawn:LostCityTutorialStage": {
+  "bundle": "lawns_FrontyardLostCityLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:LostCityVolcanoStage": {
+  "bundle": "lawns_LostCityVolcanoLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper"
+  ]
+ },
+ "lawn:LunarStage": {
+  "bundle": "lawns_FrontyardLunarLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:ModernNightStage": {
+  "bundle": "lawns_FrontyardNightLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:ModernStage": {
+  "bundle": "lawns_ModernLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "UpperThere"
+  ]
+ },
+ "lawn:MonkStage": {
+  "bundle": "lawns_KongfuLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:PaddysStage": {
+  "bundle": "lawns_FrontyardPaddysLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:PersuitStage": {
+  "bundle": "lawns_PersuitLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": []
+ },
+ "lawn:PirateStage": {
+  "bundle": "lawns_PirateLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "UpperThere"
+  ]
+ },
+ "lawn:SkyShiplessNightStage": {
+  "bundle": "lawns_SkyShiplessNightLAWN",
+  "back": [
+   "Clouds",
+   "land_moving",
+   "Lawn"
+  ],
+  "front": [
+   "fanHere",
+   "fanThere"
+  ]
+ },
+ "lawn:SkyShiplessStage": {
+  "bundle": "lawns_SkyShiplessLAWN",
+  "back": [
+   "Clouds",
+   "land_moving",
+   "Lawn"
+  ],
+  "front": [
+   "fanHere",
+   "fanThere"
+  ]
+ },
+ "lawn:SkyStage": {
+  "bundle": "lawns_SkyLAWN",
+  "back": [
+   "Clouds",
+   "land_moving",
+   "Lawn"
+  ],
+  "front": [
+   "fanHere",
+   "fanThere"
+  ]
+ },
+ "lawn:SportzballStage": {
+  "bundle": "lawns_FrontyardSportzBallLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:SpringStage": {
+  "bundle": "lawns_FrontyardSpringLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:SummerNightsStage": {
+  "bundle": "lawns_FrontyardSummerNightLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Here",
+   "There"
+  ]
+ },
+ "lawn:TutorialStage": {
+  "bundle": "lawns_TutorialLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "UpperThere"
+  ],
+  "open_rows": {
+   "0": "row0",
+   "1": "row1",
+   "3": "row3",
+   "5": "row5"
+  }
+ },
+ "lawn:ValentinesStage": {
+  "bundle": "lawns_FrontyardValentinesLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "UpperHere",
+   "UpperThere"
+  ]
+ },
+ "lawn:WestStage": {
+  "bundle": "lawns_CowboyLAWN",
+  "back": [
+   "Lawn"
+  ],
+  "front": [
+   "Upper",
+   "UpperThere"
+  ]
+ },
+ "mower:mower_modern": {
+  "bundle": "projectiles_ModernMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_egypt": {
+  "bundle": "projectiles_EgyptMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_pirate": {
+  "bundle": "projectiles_PirateMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_cowboy": {
+  "bundle": "projectiles_CowboyMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_kongfu": {
+  "bundle": "projectiles_KongfuMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_future": {
+  "bundle": "projectiles_FutureMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_dark": {
+  "bundle": "projectiles_DarkMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_beach": {
+  "bundle": "projectiles_BeachMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_iceage": {
+  "bundle": "projectiles_IceageMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_lostcity": {
+  "bundle": "projectiles_LostcityMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_eighties": {
+  "bundle": "projectiles_EightiesMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "mower:mower_dino": {
+  "bundle": "projectiles_DinoMowerPRJ",
+  "armature": "Mower",
+  "scale": 0.512,
+  "offset_x": 12.6,
+  "offset_y": 24.5,
+  "animations": {
+   "idle": "Idle",
+   "trigger": "Trans",
+   "attack": "Attack"
+  }
+ },
+ "collectable:sun": {
+  "bundle": "rigs_SunAnimate",
+  "armature": "Sun",
+  "scale": 0.3,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "idle": "Normal"
+  }
+ },
+ "collectable:plantfood": {
+  "bundle": "rigs_Particles",
+  "armature": "plantfood",
+  "scale": 0.307,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "idle": "Idle"
+  }
+ },
+ "effect:plant_dirt": {
+  "bundle": "rigs_Particles",
+  "armature": "dirt",
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "place": "Plant",
+   "dig": "Remove"
+  }
+ },
+ "hud:sun_counter": {
+  "bundle": "rigs_SunSlot",
+  "armature": "SunIcon",
+  "scale": 0.4,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "idle": "sun",
+   "rising": "sunRising"
+  }
+ },
+ "hud:shovel": {
+  "bundle": "rigs_Shovel",
+  "armature": "shovelButtonNormal",
+  "scale": 0.5,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "idle": "Idle",
+   "pointed": "Pointed",
+   "chosen": "Chosen"
+  }
+ },
+ "hud:shovel_cursor": {
+  "bundle": "rigs_Shovel",
+  "armature": "shovelInHand",
+  "scale": 0.42,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "idle": "ShovelInHand"
+  }
+ },
+ "hud:plant_food_slot": {
+  "bundle": "rigs_PlantFoodSlot",
+  "armature": "plantfoodInSlot",
+  "scale": 0.4,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "empty": "Empty",
+   "collecting": "Collecting",
+   "filled": "Filled"
+  }
+ },
+ "hud:plant_food_button": {
+  "bundle": "rigs_PlantFoodSlot",
+  "armature": "Icon",
+  "scale": 0.4,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "idle": "Idle",
+   "chosen": "Pushed"
+  }
+ },
+ "hud:seed_packet": {
+  "bundle": "rigs_SeedPacker_Card",
+  "background": "bk_modernday",
+  "portraits": {}
+ }
+}

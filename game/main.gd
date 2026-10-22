@@ -31,17 +31,19 @@ extends Node2D
 
 var seed_bank: SeedBank
 
-var _seed_buttons: Array[Button] = []
+var _seed_buttons: Array[SeedPacketView] = []
 ## {kind, id} per slot, parallel to _seed_buttons.
 var _seeds: Array[Dictionary] = []
 var _status: Label
-var _sun_label: Label
+var _sun_counter: SunCounter
+var _shovel_button: ShovelButton
+var _plant_food_bar: PlantFoodBar
+var _banner: LevelBanner
 var _wave_label: Label
 var _level_label: Label
 var _seed_bar: HBoxContainer
 
 var _mode_label: Label
-var _plant_food_label: Label
 var _objective_label: Label
 var _ability_label: Label
 var _conveyor_level: bool = false
@@ -110,6 +112,8 @@ func load_level(level_id: StringName) -> void:
 
 	_status.text = ""
 	_wave_label.text = ""
+	_sun_counter.set_total(board.sun, true)
+	_banner.ready_set_plant()
 	_refresh_mode_label()
 	_level_label.text = _level_title(level)
 	_refresh_ability_label()
@@ -140,10 +144,15 @@ func _build_hud() -> void:
 	top.add_theme_constant_override("separation", 24)
 	root.add_child(top)
 
-	_sun_label = _make_label("Sun: 50")
-	top.add_child(_sun_label)
-	_plant_food_label = _make_label("Food: 0")
-	top.add_child(_plant_food_label)
+	_sun_counter = SunCounter.new(hud_font_size + 6)
+	top.add_child(_sun_counter)
+	_plant_food_bar = PlantFoodBar.new(board.max_plant_food, hud_font_size)
+	_plant_food_bar.pressed.connect(_toggle_plant_food)
+	top.add_child(_plant_food_bar)
+	_shovel_button = ShovelButton.new()
+	_shovel_button.board = board
+	_shovel_button.pressed.connect(_toggle_shovel)
+	top.add_child(_shovel_button)
 	_wave_label = _make_label("")
 	top.add_child(_wave_label)
 	_level_label = _make_label("")
@@ -160,6 +169,13 @@ func _build_hud() -> void:
 	_seed_bar = HBoxContainer.new()
 	_seed_bar.add_theme_constant_override("separation", 8)
 	root.add_child(_seed_bar)
+
+	# Its own layer above the HUD, so the words cross the whole screen.
+	var banners := CanvasLayer.new()
+	banners.layer = layer.layer + 1
+	add_child(banners)
+	_banner = LevelBanner.new()
+	banners.add_child(_banner)
 
 
 func _make_label(text: String) -> Label:
@@ -214,12 +230,10 @@ func _rebuild_seed_buttons() -> void:
 
 	for slot in seed_bank.size():
 		var packet := seed_bank.packet(slot)
-		var b := Button.new()
+		var b := SeedPacketView.new()
 		# Show the hotkey on the packet so the binding is discoverable.
-		var key := "%d  " % (slot + 1)
-		b.text = "%s%s\n%d" % [key, String(packet.id).capitalize(), packet.cost]
+		b.setup(packet.kind, packet.id, packet.cost, "%d  " % (slot + 1))
 		b.custom_minimum_size = seed_button_size
-		b.focus_mode = Control.FOCUS_NONE
 		b.pressed.connect(_select_seed.bind(slot))
 		_seed_bar.add_child(b)
 		_seed_buttons.append(b)
@@ -324,7 +338,7 @@ func _toggle_plant_food() -> void:
 
 
 func _on_plant_food_changed(total: int) -> void:
-	_plant_food_label.text = "Food: %d" % total
+	_plant_food_bar.set_count(total)
 	if total <= 0:
 		board.plant_food_active = false
 	_refresh_mode_label()
@@ -345,6 +359,7 @@ func _refresh_mode_label() -> void:
 	if _fast_forward:
 		bits.append("x%.1f" % fast_forward_scale)
 	_mode_label.text = "  ".join(bits)
+	_refresh_tools()
 
 
 ## Selects a seed slot, or clears the selection when `slot` is out of range.
@@ -366,7 +381,7 @@ func _select_seed(slot: int) -> void:
 
 
 func _on_sun_changed(total: int) -> void:
-	_sun_label.text = "Sun: %d" % total
+	_sun_counter.set_total(total)
 	_refresh_seed_buttons()
 
 
@@ -377,20 +392,17 @@ func _refresh_seed_buttons() -> void:
 		var b := _seed_buttons[i]
 		if packet == null:
 			continue
-		var charged := packet.is_recharged()
-		var affordable := board.sun >= packet.cost
-		b.disabled = not (charged and affordable)
+		# The packet shades itself in proportion to the recharge left, so it
+		# visibly fills up.
+		b.show_state(1.0 if packet.is_recharged() else packet.fraction(),
+				board.sun >= packet.cost, board.selected_seed.get("slot", -1) == i)
+	_refresh_tools()
 
-		if board.selected_seed.get("slot", -1) == i:
-			b.modulate = Color(0.7, 1.0, 0.7)
-		elif not charged:
-			# Darkened in proportion to how much recharge is left, so the
-			# packet visibly fills up.
-			b.modulate = Color.WHITE.darkened(0.55 * (1.0 - packet.fraction()))
-		elif not affordable:
-			b.modulate = Color(0.75, 0.75, 0.75)
-		else:
-			b.modulate = Color.WHITE
+
+## The shovel and plant food buttons show whether they are in hand.
+func _refresh_tools() -> void:
+	_shovel_button.set_active(board.shovel_active)
+	_plant_food_bar.set_active(board.plant_food_active)
 
 
 func _on_objectives_changed(_objectives: Array) -> void:
@@ -426,6 +438,18 @@ func _on_objective_failed(objective: Objective) -> void:
 
 func _on_wave_started(index: int, total: int) -> void:
 	_wave_label.text = "Wave %d / %d" % [index, total]
+	# PVZGE warns on every flag wave and once more on the last one.
+	if index == total and total > 1:
+		_banner.final_wave()
+	elif _is_flag_wave(index):
+		_banner.huge_wave()
+
+
+## Whether wave `index` (1-based) carries a flag, by the level's own pacing.
+func _is_flag_wave(index: int) -> bool:
+	var every := int((runner.level.get("wave_pacing", {}) as Dictionary)
+			.get("flag_interval", 0))
+	return every > 0 and index % every == 0
 
 
 func _process(delta: float) -> void:
