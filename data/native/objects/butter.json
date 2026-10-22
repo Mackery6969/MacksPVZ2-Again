@@ -1,6 +1,13 @@
 {
  "id": "butter",
  "category": "liquid",
+ "components": [
+  {
+   "type": "tile_liquid",
+   "lifespan": 30,
+   "butter": 8
+  }
+ ],
  "extra": {
   "TileLiquidBasedOn": "butter"
  }

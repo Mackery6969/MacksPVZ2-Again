@@ -1,6 +1,14 @@
 {
  "id": "cranjelly",
  "category": "liquid",
+ "components": [
+  {
+   "type": "tile_liquid",
+   "lifespan": 30,
+   "damage": 10,
+   "interval": 0.5
+  }
+ ],
  "extra": {
   "TileLiquidBasedOn": "cranjelly"
  }

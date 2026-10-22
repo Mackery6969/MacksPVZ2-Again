@@ -1,0 +1,30 @@
+{
+ "id": "modern",
+ "world": "modern",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "modern_allstar",
+   "weight": 0.8
+  },
+  {
+   "type": "modern_newspaper",
+   "weight": 1
+  },
+  {
+   "type": "tutorial_armor4",
+   "weight": 0.9
+  },
+  {
+   "type": "modern_balloon",
+   "weight": 1
+  }
+ ]
+}

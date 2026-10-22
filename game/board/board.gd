@@ -20,6 +20,10 @@ signal zombie_reached_house(zombie: Zombie)
 signal lawn_ability_changed(component: LawnComponent)
 ## A gravestone (or ice block, or weapon rack) was broken by a plant.
 signal grave_destroyed(grave: Grave)
+## Sun paid out for something, so a spending limit can be tracked.
+signal sun_spent(amount: int)
+## A plant went into the ground, by the player or by the level.
+signal plant_placed(plant: Plant)
 
 ## Drawing order. The lawn reads front-to-back: a plant in row 4 covers a
 ## zombie in row 0, and within one row the zombie covers the plant it is
@@ -95,6 +99,22 @@ var terrain: Dictionary = {}
 ## a lily pad on water, a platform over a gap.
 var _cell_provides: Dictionary = {}
 
+## Rail per cell, Vector2i(col, row) -> rail object id. Kept apart from
+## terrain because a rail can run through water: Big Wave Beach has both.
+var _rails: Dictionary = {}
+## The first flooded column while a tide is in, or -1 with no tide. Cells the
+## tide painted are remembered so a receding tide only dries what it wet.
+var tide_from: int = -1
+var _tide_cells: Dictionary = {}
+## Frost per cell. Two frost-wind blasts on the same plant freeze it solid.
+var _chill: Dictionary = {}
+## A rail cart the player has picked up and is about to move.
+var _held_cart: GridObject = null
+## Extra placement rules, each `func(kind, id, row, col) -> String` returning
+## a refusal or "". Level objectives such as a plant cap or a mold colony add
+## themselves here, so the board does not need to know about them.
+var placement_checks: Array[Callable] = []
+
 ## Lanes the player may plant in, 0-based. Empty means every lane is open.
 ## Tutorial 1 uses this to confine the player to a single lane.
 var plantable_rows: Array[int] = []
@@ -157,6 +177,12 @@ func reset() -> void:
 	plantable_rows.clear()
 	terrain.clear()
 	_cell_provides.clear()
+	_rails.clear()
+	_tide_cells.clear()
+	_chill.clear()
+	tide_from = -1
+	_held_cart = null
+	placement_checks.clear()
 	selected_seed = {}
 	sun = starting_sun
 	plant_food = 0
@@ -291,6 +317,9 @@ func snapshot() -> Dictionary:
 	for cell in terrain:
 		ground.append({"col": cell.x, "row": cell.y,
 				"terrain": String(terrain[cell])})
+	var rails: Array = []
+	for cell in _rails:
+		rails.append({"col": cell.x, "row": cell.y, "rail": String(_rails[cell])})
 	var provided: Array = []
 	for cell in _cell_provides:
 		provided.append({"col": cell.x, "row": cell.y,
@@ -308,6 +337,7 @@ func snapshot() -> Dictionary:
 		"mower_rows": _remaining_mower_rows(),
 		"plants": plants, "zombies": zombies, "objects": objects,
 		"terrain": ground, "cell_provides": provided,
+		"rails": rails, "tide_from": tide_from,
 		"lawn_components": lawn,
 	}
 
@@ -332,6 +362,9 @@ func apply_snapshot(state: Dictionary) -> void:
 		_zombies_by_row[row].clear()
 	terrain.clear()
 	_cell_provides.clear()
+	_rails.clear()
+	_chill.clear()
+	_held_cart = null
 
 	var rows: Array[int] = []
 	for r in (state.get("plantable_rows", []) as Array):
@@ -341,6 +374,19 @@ func apply_snapshot(state: Dictionary) -> void:
 	for cell in (state.get("terrain", []) as Array):
 		terrain[Vector2i(int(cell.get("col", 0)), int(cell.get("row", 0)))] = \
 				StringName(cell.get("terrain", &""))
+
+	for cell in (state.get("rails", []) as Array):
+		_rails[Vector2i(int(cell.get("col", 0)), int(cell.get("row", 0)))] = \
+				StringName(cell.get("rail", &"rail"))
+	# The tide's painted cells are already in the terrain just restored; only
+	# which of them it owns needs rebuilding.
+	_tide_cells.clear()
+	tide_from = int(state.get("tide_from", -1))
+	if tide_from >= 0:
+		for c in range(tide_from, cols):
+			for r in rows:
+				if terrain_at(r, c) == &"water":
+					_tide_cells[Vector2i(c, r)] = true
 
 	for entry in (state.get("objects", []) as Array):
 		var o := place_object(StringName(entry.get("id", &"")),
@@ -458,6 +504,15 @@ func plants_in_row(row: int) -> Array:
 	return out
 
 
+func plant_count() -> int:
+	var n := 0
+	for cell in _plants:
+		var p = _plants[cell]
+		if is_instance_valid(p) and not p.is_dead:
+			n += 1
+	return n
+
+
 func is_row_plantable(row: int) -> bool:
 	return plantable_rows.is_empty() or plantable_rows.has(row)
 
@@ -503,8 +558,15 @@ func placement_refusal(kind: StringName, id: StringName, row: int, col: int) -> 
 		return "cell is occupied"
 	if kind == &"zombie":
 		return ""
+	for check in placement_checks:
+		var why: String = check.call(kind, id, row, col)
+		if why != "":
+			return why
 
 	var item := object_at(row, col)
+	# A rail is only plantable where a cart stands on it.
+	if is_rail(row, col) and not is_railcart(item):
+		return "plants go on the cart, not the rail"
 	if item is Grave and not bool(item.def.extra.get("AllowPlantsInSquare", false)):
 		return "%s is in the way" % item.def.id
 	# A puddle or tile placed as an object carries the same rules as painted
@@ -565,6 +627,7 @@ func place_entity(kind: StringName, id: StringName, row: int, col: int) -> Chara
 		if not is_water(row, col):
 			Effect.spawn(_projectiles, &"plant_dirt", &"place", p.position,
 					lane_z(row, LAYER_PROJECTILE))
+		plant_placed.emit(p)
 	return p
 
 
@@ -722,6 +785,7 @@ func place_preset_plant(id: StringName, row: int, col: int) -> Plant:
 		return null
 	_claim_provides(id, row, col)
 	p.died.connect(func(who): _on_placed_plant_died(who, who.row, who.col))
+	plant_placed.emit(p)
 	return p
 
 
@@ -761,6 +825,191 @@ func _on_grave_destroyed(grave: Node) -> void:
 	for i in int(g.def.stat(&"plantfood_count", 0)):
 		drop_plant_food(g.position)
 	grave_destroyed.emit(g)
+
+
+# --- rails ---------------------------------------------------------------
+
+## Lays rail through a cell. Plants can then only go there on a cart.
+func add_rail(row: int, col: int, rail_id: StringName = &"rail") -> void:
+	if in_bounds(row, col):
+		_rails[Vector2i(col, row)] = rail_id
+		queue_redraw()
+
+
+func is_rail(row: int, col: int) -> bool:
+	return _rails.has(Vector2i(col, row))
+
+
+func is_railcart(o: Variant) -> bool:
+	return o is GridObject and is_instance_valid(o) and not o.is_dead \
+			and o.def != null and o.def.extra.has("RailType")
+
+
+func railcart_at(row: int, col: int) -> GridObject:
+	var o := object_at(row, col)
+	return o if is_railcart(o) else null
+
+
+## Rolls the cart at (row, col) along its rail to `to_row`, carrying whatever
+## is planted on it. Carts cannot pass each other or leave their rail, so
+## every cell on the way must be rail with no other cart.
+func move_railcart(row: int, col: int, to_row: int) -> bool:
+	var cart := railcart_at(row, col)
+	if cart == null or to_row == row or not is_rail(to_row, col):
+		return false
+	var step := 1 if to_row > row else -1
+	var r := row + step
+	while true:
+		if not is_rail(r, col) or object_at(r, col) != null or plant_at(r, col) != null:
+			return false
+		if r == to_row:
+			break
+		r += step
+	_objects.erase(Vector2i(col, row))
+	_objects[Vector2i(col, to_row)] = cart
+	cart.row = to_row
+	cart.position = grid_to_world(to_row, col)
+	cart.z_index = lane_z(to_row, LAYER_OBJECT)
+	cart.name = "Object_%s_%d_%d" % [cart.entity_id(), to_row, col]
+	if plant_at(row, col) != null:
+		move_plant(row, col, to_row, col)
+		var rider := plant_at(to_row, col)
+		rider.z_index = lane_z(to_row, LAYER_PLANT)
+	queue_redraw()
+	return true
+
+
+## The first click on a cart picks it up; the next click on its rail sets it
+## down there. Clicking anything else lets go.
+func _handle_cart_click(row: int, col: int) -> bool:
+	if _held_cart != null and is_instance_valid(_held_cart):
+		var held := _held_cart
+		_held_cart = null
+		queue_redraw()
+		if col == held.col and move_railcart(held.row, held.col, row):
+			return true
+		if held == railcart_at(row, col):
+			return true
+	var cart := railcart_at(row, col)
+	if cart == null:
+		return false
+	_held_cart = cart
+	queue_redraw()
+	return true
+
+
+# --- tide ----------------------------------------------------------------
+
+## Moves the shoreline so that columns `from_col` and right are water. A
+## column past the lawn's edge is a dry lawn. Plants that cannot stand in
+## water drown as it reaches them, unless something carries them.
+func set_tide(from_col: int) -> void:
+	tide_from = clampi(from_col, 0, cols)
+	for cell in _tide_cells.keys():
+		if cell.x < tide_from:
+			if terrain_at(cell.y, cell.x) == &"water":
+				set_terrain(cell.y, cell.x, &"")
+			_tide_cells.erase(cell)
+	for c in range(tide_from, cols):
+		for r in rows:
+			var cell := Vector2i(c, r)
+			if _tide_cells.has(cell) or terrain_at(r, c) != &"":
+				continue
+			set_terrain(r, c, &"water")
+			_tide_cells[cell] = true
+			_drown_if_stranded(r, c)
+	queue_redraw()
+
+
+## A plant now standing on ground it could not have been planted on is lost,
+## the way PVZGE drowns a plant the tide reaches.
+func _drown_if_stranded(row: int, col: int) -> void:
+	var p := plant_at(row, col)
+	if p == null:
+		return
+	var ground := terrain_def(row, col)
+	if ground == null or ground.requires_tag == &"":
+		return
+	if p.has_tag(ground.requires_tag) or cell_provides(row, col) == ground.requires_tag:
+		return
+	if is_railcart(object_at(row, col)) and bool(object_at(row, col).def.extra.get("AboveTide", false)):
+		return
+	p.die()
+
+
+# --- frost ---------------------------------------------------------------
+
+## Adds frost to a cell. A plant that builds up more than `freeze_at` is
+## frozen in a block of ice, as two frost-wind blasts do in Frostbite Caves.
+func chill_cell(row: int, col: int, amount: float, freeze_at: float = 2.0,
+		block_id: StringName = &"planttarget_iceblock") -> void:
+	var p := plant_at(row, col)
+	var cell := Vector2i(col, row)
+	if p == null or p.is_encased():
+		_chill.erase(cell)
+		return
+	var level: float = _chill.get(cell, 0.0) + amount
+	if level > freeze_at:
+		_chill.erase(cell)
+		encase_in_block(p, block_id)
+		return
+	_chill[cell] = level
+	p.set_runtime_tag(&"chilled", true)
+
+
+func chill_at(row: int, col: int) -> float:
+	return _chill.get(Vector2i(col, row), 0.0)
+
+
+# --- power tiles ---------------------------------------------------------
+
+## The power-tile group a cell belongs to ("alpha", "beta"...), or "".
+func power_tile_group(row: int, col: int) -> String:
+	var item := object_at(row, col)
+	for id in [String(item.entity_id()) if item != null else "",
+			String(terrain_at(row, col))]:
+		if id.begins_with("powertile_"):
+			return id.trim_prefix("powertile_")
+	return ""
+
+
+## Plant food given to a plant on a power tile reaches every plant on the
+## other tiles of its group, each after its tile's propagation delay.
+func _propagate_power(row: int, col: int) -> void:
+	var group := power_tile_group(row, col)
+	if group == "":
+		return
+	for cell in _objects.keys():
+		if cell == Vector2i(col, row):
+			continue
+		var tile := object_at(cell.y, cell.x)
+		if tile == null or power_tile_group(cell.y, cell.x) != group:
+			continue
+		var delay := float(tile.get_meta(&"propagation_delay",
+				tile.def.extra.get("DefaultPropagationDelay", 2.0)))
+		get_tree().create_timer(delay, false).timeout.connect(
+				_power_tile_fire.bind(cell.y, cell.x))
+
+
+func _power_tile_fire(row: int, col: int) -> void:
+	var p := plant_at(row, col)
+	if p != null and not p.is_encased():
+		p.apply_plant_food()
+
+
+# --- dinosaurs -----------------------------------------------------------
+
+## Calls a dinosaur into a lane. Its behaviour comes from data/native/dinos.
+func spawn_dino(id: StringName, row: int) -> Dino:
+	var spec := Data.dino(id)
+	if spec.is_empty() or row < 0 or row >= rows:
+		push_warning("Board: unknown dinosaur '%s'" % id)
+		return null
+	var d := Dino.new()
+	d.name = "Dino_%s_%d" % [id, row]
+	_entities.add_child(d)
+	d.setup(spec, self, row)
+	return d
 
 
 # --- zombies -------------------------------------------------------------
@@ -812,6 +1061,44 @@ func spawn_zombie_at(id: StringName, row: int, x: float,
 	z.position.x = clampf(x, house_x(), spawn_x())
 	z.col = world_to_col(z.position.x)
 	return z
+
+
+## Picks a zombie up and puts it down elsewhere: a dinosaur's kick, a storm.
+## Whatever it was eating is let go. Zombies that steer themselves - a boss -
+## and ones frozen in a block are left where they are; returns false then.
+func move_zombie(z: Zombie, row: int, x: float) -> bool:
+	if z == null or z.is_dead or z.movement_claimed or z.is_encased():
+		return false
+	row = clampi(row, 0, rows - 1)
+	if row != z.row:
+		_zombies_by_row[z.row].erase(z)
+		_zombies_by_row[row].append(z)
+		z.row = row
+		z.position.y = grid_to_world(row, 0).y + z.lane_offset
+	z.position.x = clampf(x, house_x(), spawn_x())
+	z.col = world_to_col(z.position.x)
+	z.target = null
+	z.z_index = lane_z(row, LAYER_ZOMBIE)
+	z.queue_redraw()
+	return true
+
+
+## The lane among `candidates` with the fewest hostile zombies, ties broken
+## at random. Storms and the low tide spread their arrivals this way.
+func quietest_row(candidates: Array) -> int:
+	var best: Array[int] = []
+	var fewest := INF
+	for r in candidates:
+		var row := int(r)
+		if row < 0 or row >= rows:
+			continue
+		var n := hostile_zombies_in_row(row).size()
+		if n < fewest:
+			fewest = n
+			best = [row]
+		elif n == fewest:
+			best.append(row)
+	return best.pick_random() if not best.is_empty() else randi() % rows
 
 
 ## A zombie on the threshold is caught by the lane's mower if one is left;
@@ -968,6 +1255,7 @@ func feed_plant(row: int, col: int) -> bool:
 		return false
 	spend_plant_food()
 	Audio.play(&"plant.food", p.position)
+	_propagate_power(row, col)
 	return true
 
 
@@ -981,6 +1269,8 @@ func spend_sun(amount: int) -> bool:
 		return false
 	sun -= amount
 	sun_changed.emit(sun)
+	if amount > 0:
+		sun_spent.emit(amount)
 	return true
 
 
@@ -1003,6 +1293,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 		return
 	if selected_seed.is_empty():
+		if _handle_cart_click(world_to_row(at.y), world_to_col(at.x)):
+			get_viewport().set_input_as_handled()
 		return
 	var kind := StringName(selected_seed.get("kind", &"plant"))
 	var id := StringName(selected_seed.get("id", &""))
@@ -1048,8 +1340,16 @@ func _draw() -> void:
 				draw_rect(rect, tint, true)
 				if cell_provides(r, c) != &"":
 					draw_rect(rect, Color("6ad46a", 0.3), true)
+			if is_rail(r, c):
+				var mid := rect.position.x + rect.size.x * 0.5
+				for dx in [-12.0, 12.0]:
+					draw_line(Vector2(mid + dx, rect.position.y),
+							Vector2(mid + dx, rect.end.y), Color("5b4636"), 3.0)
 			if locked and not (art and scenery.shows_open_rows()):
 				draw_rect(rect, locked_lane_tint, true)
+	if _held_cart != null and is_instance_valid(_held_cart):
+		draw_rect(Rect2(_held_cart.position - cell_size * 0.5, cell_size),
+				Color("f2c744"), false, 3.0)
 	if art:
 		return
 	# House edge and the line zombies must not cross.

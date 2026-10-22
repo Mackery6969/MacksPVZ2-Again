@@ -57,6 +57,16 @@ func notify_progress() -> void:
 	progress_changed.emit(self)
 
 
+## True once the last wave is out and the lawn is clear - the moment a goal
+## that had to be achieved during the level can no longer be.
+func level_over() -> bool:
+	if runner == null or board == null:
+		return false
+	var done: bool = runner.all_waves_spawned() if runner.has_method("all_waves_spawned") \
+			else false
+	return done and board.zombie_count() == 0
+
+
 ## What this objective needs remembered across a save. Objectives that track
 ## progress override both of these; the rest need nothing.
 func save_state() -> Dictionary:

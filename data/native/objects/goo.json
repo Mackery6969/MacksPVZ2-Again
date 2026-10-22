@@ -1,6 +1,14 @@
 {
  "id": "goo",
  "category": "liquid",
+ "components": [
+  {
+   "type": "tile_liquid",
+   "lifespan": 5,
+   "poison_dps": 50,
+   "slow": 0.5
+  }
+ ],
  "extra": {
   "TileLiquidBasedOn": "goo"
  }

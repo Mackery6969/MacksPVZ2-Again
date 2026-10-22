@@ -73,6 +73,10 @@ func _run() -> void:
 	await _test_grid_items()
 	await _test_level_set_up()
 	await _test_lawn_components()
+	await _test_level_features()
+	await _test_wave_events()
+	await _test_working_tiles()
+	await _test_star_challenges()
 	await _test_natural_win_condition()
 	await _test_campaign_progression()
 	_test_settings()
@@ -2513,6 +2517,314 @@ func _test_grid_items() -> void:
 	board.queue_free()
 	end_section()
 
+
+
+## Starts a bare level on a fresh board, with waves held off so the test
+## drives everything itself.
+func _start_feature_level(extra: Dictionary) -> Array:
+	var board := _make_board()
+	var runner := LevelRunner.new()
+	runner.first_wave_delay = 9999.0
+	add_child(runner)
+	var level := {"id": "feature_test", "stage": "",
+			"seedbank": {"mode": "chooser", "preset": ["peashooter"]}, "waves": []}
+	level.merge(extra, true)
+	runner.start(level, board)
+	return [board, runner]
+
+
+func _finish_feature_level(pair: Array) -> void:
+	pair[1].queue_free()
+	pair[0].queue_free()
+
+
+## Tides, rail carts and power tiles, as a level sets them up.
+func _test_level_features() -> void:
+	section("level features")
+
+	# The tide floods from the right. A plant the water reaches drowns unless
+	# it can stand in water; when the tide goes out the ground is dry again.
+	var pair := _start_feature_level({"tide": {"water_from": 7}})
+	var board: Board = pair[0]
+	var runner: LevelRunner = pair[1]
+	check_eq("the tide floods its columns", board.terrain_at(2, 7), &"water")
+	check_eq("and leaves the rest dry", board.terrain_at(2, 6), &"")
+	check("a land plant cannot go in the water",
+			board.placement_refusal(&"plant", &"peashooter", 2, 8) != "")
+	var dry := board.place_plant(&"peashooter", 1, 5)
+	var pad := board.place_plant(&"lilypad", 3, 5)
+	runner._run_action({"kind": "tide", "water_from": 4})
+	await get_tree().process_frame
+	check("a rising tide drowns a land plant", not is_instance_valid(dry) or dry.is_dead)
+	check("but not an aquatic one", is_instance_valid(pad) and not pad.is_dead)
+	runner._run_action({"kind": "tide", "water_from": 9})
+	check_eq("a falling tide dries the lawn", board.terrain_at(2, 7), &"")
+	_finish_feature_level(pair)
+
+	# Rails: plants only go on carts, and carts roll along their rail.
+	pair = _start_feature_level({"railcarts": {
+		"rails": [{"col": 4, "row_start": 0, "row_end": 4}],
+		"carts": [{"col": 4, "row": 1}, {"col": 4, "row": 4}]}})
+	board = pair[0]
+	check("rail is laid", board.is_rail(2, 4))
+	check("a cart stands on it", board.railcart_at(1, 4) != null)
+	check("bare rail cannot be planted",
+			board.placement_refusal(&"plant", &"peashooter", 2, 4) != "")
+	check("a cart can", board.placement_refusal(&"plant", &"peashooter", 1, 4) == "")
+	var rider := board.place_plant(&"peashooter", 1, 4)
+	check("a cart rolls along its rail", board.move_railcart(1, 4, 3))
+	check("and takes its plant with it", board.plant_at(3, 4) == rider and rider.row == 3)
+	check("the cell it left is bare rail again", board.railcart_at(1, 4) == null)
+	check("carts cannot pass each other", not board.move_railcart(3, 4, 4))
+	check("or leave the rail", not board.move_railcart(3, 4, 5))
+	# The same moves from the mouse: pick the cart up, then put it down.
+	check("clicking a cart picks it up", board._handle_cart_click(3, 4))
+	board._handle_cart_click(0, 4)
+	check("clicking its rail sets it down there", board.plant_at(0, 4) == rider)
+	var snap := board.snapshot()
+	board.apply_snapshot(snap)
+	check("rails survive a save", board.is_rail(2, 4) and board.railcart_at(0, 4) != null)
+	_finish_feature_level(pair)
+
+	# Power tiles: plant food on one reaches the others of its group.
+	pair = _start_feature_level({"power_tiles": [
+		{"group": "alpha", "row": 0, "col": 2, "delay": 0.2},
+		{"group": "alpha", "row": 4, "col": 6, "delay": 0.2},
+		{"group": "beta", "row": 2, "col": 2, "delay": 0.2}]})
+	board = pair[0]
+	check_eq("tiles know their group", board.power_tile_group(4, 6), "alpha")
+	board.place_plant(&"sunflower", 0, 2)
+	board.place_plant(&"sunflower", 4, 6)
+	board.place_plant(&"sunflower", 2, 2)
+	board.add_plant_food(1)
+	var before := _sun_tokens(board)
+	board.feed_plant(0, 2)
+	var fed_one := _sun_tokens(board) - before
+	await _wait_game_seconds(1.0)
+	var fed_all := _sun_tokens(board) - before
+	check("feeding one powered plant feeds its group", fed_all >= fed_one * 2,
+			"%d suns from one, %d in all" % [fed_one, fed_all])
+	check("but not another group", fed_all < fed_one * 3)
+	_finish_feature_level(pair)
+	end_section()
+
+
+func _zombies_on(board: Board) -> Array:
+	var out: Array = []
+	for r in board.rows:
+		out.append_array(board.hostile_zombies_in_row(r))
+	return out
+
+
+## Storms, raiding parties, low tide, frost wind, portals and dinosaurs.
+func _test_wave_events() -> void:
+	section("wave events")
+	var pair := _start_feature_level({})
+	var board: Board = pair[0]
+	var runner: LevelRunner = pair[1]
+
+	runner._run_action({"kind": "storm", "zombies": ["tutorial", "tutorial"],
+		"col_start": 5, "col_end": 7, "row_start": 0, "row_end": 4,
+		"group_size": 1, "group_interval": 0.2})
+	check_eq("a storm holds its zombies back at first", _zombies_on(board).size(), 0)
+	await _wait_game_seconds(0.6)
+	var stormed := _zombies_on(board)
+	check_eq("then blows them in", stormed.size(), 2)
+	check("already partway up the lawn",
+			stormed.all(func(z): return z.col >= 4 and z.col <= 7))
+	check("spread over the quietest lanes", stormed.size() == 2 and stormed[0].row != stormed[1].row)
+	for z in stormed:
+		z.queue_free()
+	await get_tree().process_frame
+
+	runner._run_action({"kind": "raiding_party", "type": "tutorial", "count": 3,
+		"group_size": 2, "group_interval": 0.1})
+	runner._run_action({"kind": "low_tide", "type": "tutorial", "count": 2,
+		"group_size": 2, "group_interval": 0.1, "delay": 0.1,
+		"col_start": 4, "col_end": 6})
+	await _wait_game_seconds(0.8)
+	check_eq("a raiding party and a low tide bring their zombies",
+			_zombies_on(board).size(), 5)
+	check("waiting events keep the level going", runner.features.pending() == 0)
+	for z in _zombies_on(board):
+		z.queue_free()
+	await get_tree().process_frame
+
+	# Frost wind: one blast chills, the second freezes.
+	var plant := board.place_plant(&"peashooter", 2, 3)
+	runner._run_action({"kind": "frost_wind", "winds": [{"row": 2, "direction": "right"}]})
+	await _wait_game_seconds(2.0)
+	check("one gust chills a plant", board.chill_at(2, 3) > 0.0 and not plant.is_encased())
+	runner._run_action({"kind": "frost_wind", "winds": [{"row": 2, "direction": "left"}]})
+	await _wait_game_seconds(2.0)
+	check("a second freezes it solid", plant.is_encased())
+
+	# A portal lets its zombies through one at a time, then closes.
+	var spare := board.place_plant(&"peashooter", 1, 6)
+	runner._run_action({"kind": "portal", "row": 1, "col": 6, "portal": {
+		"first": {"min": 0.1, "max": 0.1}, "interval": {"min": 0.2, "max": 0.2},
+		"zombies": [{"type": "tutorial", "weight": 1}, {"type": "tutorial_armor1", "weight": 1}]}})
+	check("a portal opens on its cell", board.object_at(1, 6) != null)
+	check("pushing out the plant there", board.plant_at(1, 6) == null)
+	check("an open portal holds the level open", runner.features.pending() > 0)
+	await _wait_game_seconds(2.0)
+	var arrivals := board.hostile_zombies_in_row(1)
+	check_eq("each of its zombies comes through once", arrivals.size(), 2)
+	check("and the portal closes", board.object_at(1, 6) == null)
+	runner._run_action({"kind": "portal", "row": 3, "col": 7, "portal": "egypt"})
+	var shared := board.object_at(3, 7)
+	check("a shared portal type is found by name",
+			shared != null and shared.component(&"portal").remaining() > 0)
+	for z in _zombies_on(board):
+		z.queue_free()
+	if shared != null:
+		shared.die()
+	await get_tree().process_frame
+
+	# Dinosaurs throw zombies toward the house.
+	var kicked := board.spawn_zombie_at(&"tutorial", 0, board.grid_to_world(0, 7).x)
+	var start_x := kicked.position.x
+	var raptor := board.spawn_dino(&"raptor", 0)
+	check("a raptor is called in", raptor is Dino)
+	await _wait_game_seconds(4.0)
+	check("it kicks a zombie forward", kicked.position.x < start_x - board.cell_size.x * 2.0,
+			"%.0f -> %.0f" % [start_x, kicked.position.x])
+
+	var carried := board.spawn_zombie_at(&"tutorial", 4, board.grid_to_world(4, 7).x)
+	board.spawn_dino(&"ptero", 4)
+	await _wait_game_seconds(5.5)
+	check("a pterodactyl carries one to the front", carried.col <= 1, "col %d" % carried.col)
+
+	var flung := board.spawn_zombie_at(&"tutorial", 2, board.grid_to_world(2, 7).x)
+	board.spawn_dino(&"ankylo", 2)
+	await _wait_game_seconds(3.0)
+	check("an ankylosaurus flings one forward", flung.col <= 3, "col %d" % flung.col)
+
+	var tossed := board.spawn_zombie_at(&"tutorial", 3, board.grid_to_world(3, 7).x)
+	board.spawn_dino(&"stego", 3)
+	await _wait_game_seconds(3.0)
+	check("a stegosaurus tosses one up the lawn", tossed.col <= 4 and not tossed.is_encased(),
+			"col %d" % tossed.col)
+
+	runner._run_action({"kind": "dino", "dino": "tyranno", "row": 1, "delay": 0.2})
+	await _wait_game_seconds(0.5)
+	check("a dino wave can arrive late", board.find_children("*", "Dino", true, false).any(
+			func(d): return d.behaviour == &"roar"))
+	_finish_feature_level(pair)
+	end_section()
+
+
+## Puddles and potions, which act on the zombies that walk into them.
+func _test_working_tiles() -> void:
+	section("working tiles")
+	var board := _make_board()
+
+	var jelly := board.place_object(&"goopuddle_eternal", 1, 5)
+	check("a goo puddle has a behaviour", jelly.component(&"tile_liquid") != null)
+	var z := board.spawn_zombie_at(&"tutorial", 1, board.grid_to_world(1, 5).x)
+	z.movement_claimed = true
+	var full := z.health
+	await _wait_game_seconds(1.5)
+	check("it hurts a zombie standing in it", z.health < full)
+	z.queue_free()
+
+	board.place_object(&"butter", 2, 5)
+	var buttered := board.spawn_zombie_at(&"tutorial", 2, board.grid_to_world(2, 5).x)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("butter stops a zombie", buttered.is_stunned())
+	check("and is used up", board.object_at(2, 5) == null)
+	buttered.queue_free()
+
+	var potion := board.place_object(&"zombiepotion_speed", 3, 5)
+	check("a potion is an object", potion != null and potion.category() == ObjectDef.Category.POTION)
+	var drinker := board.spawn_zombie_at(&"tutorial", 3, board.grid_to_world(3, 5).x)
+	var pace := drinker.speed
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("a zombie drinks a potion it walks into", board.object_at(3, 5) == null)
+	check("a speed potion speeds it up", drinker.speed > pace)
+	board.place_object(&"zombiepotion_toughness", 4, 5)
+	var brute := board.spawn_zombie_at(&"tutorial", 4, board.grid_to_world(4, 5).x)
+	var hp := brute.max_health
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("a toughness potion toughens it", brute.max_health > hp and board.object_at(4, 5) == null)
+
+	# A level with potions sets some out and tops them up over time.
+	board.queue_free()
+	var pair := _start_feature_level({"potions": {"initial": 3, "max": 4,
+			"interval": {"min": 0.2, "max": 0.2}, "types": ["zombiepotion_speed"]}})
+	check_eq("a potion level starts with its potions", pair[1].features._potion_count(), 3)
+	await _wait_game_seconds(1.0)
+	check_eq("and refills them up to its cap", pair[1].features._potion_count(), 4)
+	_finish_feature_level(pair)
+	end_section()
+
+
+## Star challenges, converted to objectives.
+func _test_star_challenges() -> void:
+	section("star challenges")
+	for t in [&"zombie_distance", &"sun_used", &"simultaneous_plants", &"kill_in_time",
+			&"sun_holdout", &"save_mowers", &"no_plant_zone"]:
+		check("objective '%s' exists" % t, Components.has_objective(t))
+
+	var pair := _start_feature_level({"objectives": [
+		{"type": "survive_waves"},
+		{"type": "zombie_distance", "distance": 4},
+		{"type": "sun_used", "max": 150},
+		{"type": "simultaneous_plants", "max": 2},
+		{"type": "no_plant_zone", "cells": [{"row": 0, "col": 0}, {"row": 1, "col": 0}]},
+		{"type": "save_mowers"},
+		{"type": "kill_in_time", "count": 2, "seconds": 5},
+		{"type": "sun_holdout", "seconds": 1}]})
+	var board: Board = pair[0]
+	var runner: LevelRunner = pair[1]
+	var by := {}
+	for o in runner.objectives:
+		by[o.name] = o
+	check_eq("every challenge becomes an objective", runner.objectives.size(), 8)
+
+	check("mold makes its cells unplantable",
+			board.placement_refusal(&"plant", &"peashooter", 0, 0) != "")
+	board.place_plant(&"peashooter", 2, 2)
+	board.place_plant(&"peashooter", 3, 2)
+	check("a plant cap refuses one plant too many",
+			board.placement_refusal(&"plant", &"peashooter", 4, 2) != "")
+
+	await _wait_game_seconds(1.2)
+	check("holding out without spending sun is met", by["sun_holdout"].is_met())
+	board.add_sun(500)
+	board.spend_sun(100)
+	check("spending within the limit is fine", not by["sun_used"].is_failed())
+	board.spend_sun(100)
+	check("spending past it fails", by["sun_used"].is_failed())
+
+	for i in 2:
+		board.spawn_zombie_at(&"tutorial", i, board.grid_to_world(i, 8).x).die()
+	check("quick kills meet the kill challenge", by["kill_in_time"].is_met())
+
+	var walker := board.spawn_zombie_at(&"tutorial", 4, board.grid_to_world(4, 4).x)
+	await get_tree().process_frame
+	check("a zombie short of the flowers is fine", not by["zombie_distance"].is_failed())
+	board.move_zombie(walker, 4, board.grid_to_world(4, 2).x)
+	await get_tree().process_frame
+	check("one past them fails", by["zombie_distance"].is_failed())
+
+	board.mower_triggered.emit(0)
+	check("losing a mower fails save-the-mowers", by["save_mowers"].is_failed())
+	_finish_feature_level(pair)
+
+	# A kill challenge never met is failed once the level is otherwise won.
+	pair = _start_feature_level({"objectives": [{"type": "survive_waves"},
+			{"type": "kill_in_time", "count": 5, "seconds": 1}]})
+	runner = pair[1]
+	runner.first_wave_delay = 0.0
+	runner._timer = 0.0
+	await _wait_game_seconds(0.5)
+	check("an unmet challenge fails at the end", runner.objectives[1].is_failed())
+	_finish_feature_level(pair)
+	end_section()
 
 func _sun_tokens(board: Board) -> int:
 	var n := 0

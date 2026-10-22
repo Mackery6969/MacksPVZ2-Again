@@ -1,6 +1,14 @@
 {
  "id": "lavaguava",
  "category": "liquid",
+ "components": [
+  {
+   "type": "tile_liquid",
+   "lifespan": 30,
+   "dps": 100,
+   "slow": 0.5
+  }
+ ],
  "stats": {
   "blocks_planting": true
  },

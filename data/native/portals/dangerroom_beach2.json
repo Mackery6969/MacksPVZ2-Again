@@ -1,0 +1,30 @@
+{
+ "id": "dangerroom_beach2",
+ "world": "beach",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "beach_snorkel",
+   "weight": 1
+  },
+  {
+   "type": "beach_surfer_veteran",
+   "weight": 1
+  },
+  {
+   "type": "beach_surfer",
+   "weight": 1
+  },
+  {
+   "type": "beach_octopus",
+   "weight": 1
+  }
+ ]
+}

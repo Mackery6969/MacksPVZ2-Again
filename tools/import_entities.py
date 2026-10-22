@@ -619,6 +619,21 @@ EXTRA_TERRAIN = {
         "stats": {"blocks_planting": True},
         "comment": "Open air with no platform possible.",
     },
+    # A mold colony, from a star challenge: ground nothing can be planted in.
+    "mold": {
+        "category": "tile",
+        "stats": {"blocks_planting": True},
+        "comment": "Mold from a star challenge - nothing grows here.",
+    },
+    # PVZGE's portals are their own kind of board character. Here a portal is
+    # an object with a spawner on it; which zombies it lets through comes from
+    # the wave that opens it.
+    "zombie_portal": {
+        "category": "other",
+        "stats": {"blocks_planting": True},
+        "components": [{"type": "portal"}],
+        "comment": "A time rift. The wave that opens it says which zombies come through.",
+    },
 }
 
 # Terrain rules for tiles PVZGE ships without them. The rules are the same
@@ -645,6 +660,39 @@ TERRAIN_RULES = {
 AQUATIC_PLANTS = {"lilypad", "tanglekelp", "guacodile", "bowlingbulb",
                   "rotobaga", "banana_launcher"}
 CARRIER_PLANTS = {"lilypad": "aquatic", "skyplatform": "airborne"}
+
+# What a liquid does to zombies standing in it, from PVZGE's
+# TileLiquidProperties (a shared sheet the prop dumps do not include). Each
+# liquid names the property entry it reads, so several share one: goo and the
+# poison tile, all three saps. Seconds and damage are PVZGE's own numbers.
+LIQUID_PROPS = {
+    "sapfling": {"lifespan": 30, "slow": 0.5},
+    "goo": {"lifespan": 5, "poison_dps": 50, "slow": 0.5},
+    "cranjelly": {"lifespan": 30, "damage": 10, "interval": 0.5},
+    "cranjelly_eternal": {"damage": 10, "interval": 0.5},
+    "butter": {"lifespan": 30, "butter": 8},
+    "moltenpool": {"lifespan": 30, "dps": 50},
+    "moltenpool_mint": {"lifespan": 30, "dps": 250},
+    "lavaguava": {"lifespan": 30, "dps": 100, "slow": 0.5},
+    "lavaguava_mint": {"lifespan": 30, "dps": 500, "slow": 0.5},
+}
+LIQUID_SOURCES = {
+    "sapfling": "sapfling", "plantfoodsap": "sapfling", "sap": "sapfling",
+    "goo": "goo", "poison_tile": "goo",
+    "cranjelly": "cranjelly", "goopuddle": "cranjelly",
+    "goopuddle_eternal": "cranjelly_eternal",
+    "butter": "butter",
+    "moltenpool": "moltenpool", "moltenpool_mint": "moltenpool_mint",
+    "lavaguava": "lavaguava", "lava": "lavaguava", "lava_mint": "lavaguava_mint",
+}
+
+# Zombie potions strengthen whichever zombie walks into them. The numbers are
+# PVZGE's per-level scales; a zombie can drink up to three of a kind.
+POTION_EFFECTS = {
+    "zombiepotion_speed": {"effect": "speed", "speed_scale": 1.5},
+    "zombiepotion_toughness": {"effect": "toughness", "damage_taken_scale": 0.85},
+    "zombiepotion_invisibility": {"effect": "invisibility"},
+}
 
 GRAVE_STATS = {
     "Toughness": "toughness",
@@ -792,6 +840,12 @@ def write_objects(data_dir, out_root):
         if name.startswith("slider_"):
             direction = "up" if "_up" in name else "down"
             out["components"] = [{"type": "slide_tile", "direction": direction}]
+        elif name in LIQUID_SOURCES:
+            out["components"] = [{"type": "tile_liquid",
+                                  **LIQUID_PROPS[LIQUID_SOURCES[name]]}]
+        elif name in POTION_EFFECTS:
+            out["components"] = [{"type": "zombie_potion", "max_level": 3,
+                                  **POTION_EFFECTS[name]}]
         stats.update(TERRAIN_RULES.get(name, {}))
         if stats:
             out["stats"] = stats
@@ -821,6 +875,8 @@ def write_objects(data_dir, out_root):
             out["//"] = spec["comment"]
         out["category"] = spec["category"]
         out["stats"] = spec["stats"]
+        if spec.get("components"):
+            out["components"] = spec["components"]
         open(os.path.join(out_dir, f"{name}.json"), "w", encoding="utf-8").write(
             json.dumps(out, ensure_ascii=False, indent=1))
         manifest[name] = {"file": f"objects/{name}.json",
