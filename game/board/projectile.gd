@@ -64,7 +64,30 @@ func attach_art(id: StringName) -> void:
 	art.set_facing(direction)
 	add_child(art)
 	art.play(Art.animation_for(&"projectile", id, &"idle"))
+	_hit_effect = StringName(Art.mapping(&"projectile", id).get("hit_effect", ""))
 	queue_redraw()
+
+
+## The splat a shot leaves where it lands, as its art mapping names it.
+var _hit_effect: StringName = &""
+const HIT_STATES: Array[StringName] = [&"hit", &"hit1", &"hit2"]
+
+
+## PVZGE pops one of the splat's variants at random (Play, Play1, Play2), so
+## a stream of peas does not burst identically every time.
+func _splat() -> void:
+	if _hit_effect == &"" or get_parent() == null:
+		return
+	var states: Array[StringName] = []
+	for state in HIT_STATES:
+		if Art.animation_for(&"effect", _hit_effect, state) != &"":
+			states.append(state)
+	if states.is_empty():
+		return
+	var fx := Effect.spawn(get_parent(), _hit_effect, states.pick_random(),
+			position, z_index + 1)
+	if fx != null:
+		fx.art.set_facing(direction)
 
 
 func _ready() -> void:
@@ -123,6 +146,7 @@ func _check_hit(from_x: float, to_x: float) -> bool:
 			and best.has_tag(&"knockbackable"):
 		best.knock_back(knockback_distance)
 	_hit.append(best)
+	_splat()
 	if bounces:
 		_bounce()
 	if _hit.size() < pierce:

@@ -2673,7 +2673,7 @@ func _test_art() -> void:
 		var stride := z.art.ground_speed(&"Walk")
 		check("the walk plays at the pace the zombie moves",
 				stride > 0.0 and is_equal_approx(z.art.speed_scale(),
-						z.current_speed() * board.cell_size.x / stride),
+						z.current_speed() * z._entering_scale() * board.cell_size.x / stride),
 				"%.3f" % z.art.speed_scale())
 		z.apply_stun(0.5)
 		await get_tree().process_frame
@@ -2686,6 +2686,27 @@ func _test_art() -> void:
 		z.target = pea
 		await _wait_game_seconds(0.2)
 		check_eq("and eating once it reaches a plant", z.art.playing, &"Eat")
+
+	# Drawn as PVZGE draws them: one scale for every character, so the art's
+	# own proportions decide who is bigger, and feet on the lane's floor.
+	var sunny: Plant = board.place_plant(&"sunflower", 3, 1)
+	if pea != null and pea.art != null and sunny != null and sunny.art != null:
+		check("a peashooter and a sunflower share one scale",
+				is_equal_approx(pea.art.scale.y, sunny.art.scale.y))
+		check("and stand on the lane's floor, below the cell's centre",
+				pea.art.position.y > 0.0 and is_equal_approx(pea.art.position.y, sunny.art.position.y))
+		if z.art != null:
+			check("zombies are drawn at the plants' scale",
+					is_equal_approx(absf(z.art.scale.y), pea.art.scale.y))
+	check("zombies come on from past the screen's right edge",
+			board.spawn_x() >= board.lawn_right_x() + board.cell_size.x * 2.5)
+	var cone: Zombie = board.spawn_zombie(&"tutorial_armor1", 0)
+	if cone.art != null and cone.art.socket(&"armor") != null:
+		check("a cone zombie wears its cone's rig", cone.has_armor_art())
+		cone.component(&"armor").strip()
+		await get_tree().process_frame
+		check("which comes off with the armor", not cone.has_armor_art())
+	check("a zombie off the lawn hurries on", cone._entering_scale() > 1.0)
 
 	# Acting changes what a plant is doing, and it goes back to idling after.
 	# The component says what happened; it never names an animation.
@@ -3240,7 +3261,8 @@ func _test_wave_events() -> void:
 	var start_x := kicked.position.x
 	var raptor := board.spawn_dino(&"raptor", 0)
 	check("a raptor is called in", raptor is Dino)
-	await _wait_game_seconds(4.0)
+	# It walks on from off-screen, where zombies come from too.
+	await _wait_game_seconds(5.5)
 	check("it kicks a zombie forward", kicked.position.x < start_x - board.cell_size.x * 2.0,
 			"%.0f -> %.0f" % [start_x, kicked.position.x])
 
