@@ -8,7 +8,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_kongfu"
  },
  "lawn:ArenaStage": {
   "bundle": "lawns_ArenaLAWN",
@@ -18,14 +19,16 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_dark"
  },
  "lawn:BeachStage": {
   "bundle": "lawns_BeachLAWN",
   "back": [
    "Lawn"
   ],
-  "front": []
+  "front": [],
+  "mower": "mower_beach"
  },
  "lawn:BeachTutorialStage": {
   "bundle": "lawns_FrontyardBeachLAWN",
@@ -35,7 +38,8 @@
   "front": [
    "Upper",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_beach"
  },
  "lawn:BirthdayStage": {
   "bundle": "lawns_FrontyardBirthdayLAWN",
@@ -45,14 +49,16 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:CircusStage": {
   "bundle": "lawns_FrontyardCircusLAWN",
   "back": [
    "Lawn"
   ],
-  "front": []
+  "front": [],
+  "mower": "mower_modern"
  },
  "lawn:DarkStage": {
   "bundle": "lawns_DarkLAWN",
@@ -62,7 +68,8 @@
   "front": [
    "LawnUpper",
    "LawnUpperThere"
-  ]
+  ],
+  "mower": "mower_dark"
  },
  "lawn:DarkTutorialStage": {
   "bundle": "lawns_FrontyardDarkLAWN",
@@ -72,7 +79,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_dark"
  },
  "lawn:DinoStage": {
   "bundle": "lawns_DinoLAWN",
@@ -82,7 +90,8 @@
   "front": [
    "Upper",
    "There"
-  ]
+  ],
+  "mower": "mower_dino"
  },
  "lawn:DinoTutorialStage": {
   "bundle": "lawns_FrontyardDinoLAWN",
@@ -92,7 +101,8 @@
   "front": [
    "UpperThere",
    "UpperHere"
-  ]
+  ],
+  "mower": "mower_dino"
  },
  "lawn:EgyptNightStage": {
   "bundle": "lawns_EgyptNightLAWN",
@@ -102,7 +112,8 @@
   "front": [
    "Upper_Night",
    "UpperThere_Night"
-  ]
+  ],
+  "mower": "mower_egypt"
  },
  "lawn:EgyptStage": {
   "bundle": "lawns_EgyptLAWN",
@@ -112,7 +123,8 @@
   "front": [
    "Upper",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_egypt"
  },
  "lawn:EightiesStage": {
   "bundle": "lawns_EightiesLAWN",
@@ -122,7 +134,8 @@
   "front": [
    "UpperThere",
    "UpperHere"
-  ]
+  ],
+  "mower": "mower_eighties"
  },
  "lawn:EightiesTutorialStage": {
   "bundle": "lawns_FrontyardEightiesLAWN",
@@ -132,7 +145,8 @@
   "front": [
    "UpperThere",
    "UpperHere"
-  ]
+  ],
+  "mower": "mower_eighties"
  },
  "lawn:FallsStage": {
   "bundle": "lawns_FrontyardFallsLAWN",
@@ -142,7 +156,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_cowboy"
  },
  "lawn:FarmStage": {
   "bundle": "lawns_FrontyardFarmLAWN",
@@ -152,7 +167,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_cowboy"
  },
  "lawn:FeastivusNightStage": {
   "bundle": "lawns_FrontyardXmasNightLAWN",
@@ -162,7 +178,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:FeastivusStage": {
   "bundle": "lawns_FrontyardXmasLAWN",
@@ -172,7 +189,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:FrontLawnStage": {
   "bundle": "lawns_TutorialLAWN",
@@ -188,7 +206,8 @@
    "1": "row1",
    "3": "row3",
    "5": "row5"
-  }
+  },
+  "mower": "mower_modern"
  },
  "lawn:FutureNightStage": {
   "bundle": "lawns_FutureNightLAWN",
@@ -198,7 +217,8 @@
   "front": [
    "UpperNight",
    "UpperThereNight"
-  ]
+  ],
+  "mower": "mower_future"
  },
  "lawn:FutureStage": {
   "bundle": "lawns_FutureLAWN",
@@ -208,7 +228,8 @@
   "front": [
    "Upper",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_future"
  },
  "lawn:FutureTutorialStage": {
   "bundle": "lawns_FrontyardFutureLAWN",
@@ -218,7 +239,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_future"
  },
  "lawn:HalloweenStage": {
   "bundle": "lawns_FrontyardHalloweenLAWN",
@@ -228,7 +250,8 @@
   "front": [
    "There",
    "Here"
-  ]
+  ],
+  "mower": "mower_dark"
  },
  "lawn:HeroesStage": {
   "bundle": "lawns_FrontyardHeroesLAWN",
@@ -238,7 +261,8 @@
   "front": [
    "There",
    "Here"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:IceageStage": {
   "bundle": "lawns_IceageLAWN",
@@ -248,7 +272,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_iceage"
  },
  "lawn:IceageTutorialStage": {
   "bundle": "lawns_FrontyardIceageLAWN",
@@ -258,7 +283,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_iceage"
  },
  "lawn:IceageVeteranStage": {
   "bundle": "lawns_IceageUltLAWN",
@@ -268,7 +294,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_iceage"
  },
  "lawn:KongfuBossStage": {
   "bundle": "lawns_KongfuVeteranLAWN",
@@ -278,7 +305,8 @@
   "front": [
    "Here",
    "ThereBoss"
-  ]
+  ],
+  "mower": "mower_kongfu"
  },
  "lawn:KongfuStage": {
   "bundle": "lawns_KongfuLAWN",
@@ -288,7 +316,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_kongfu"
  },
  "lawn:LostCityNightStage": {
   "bundle": "lawns_LostCityNightLAWN",
@@ -297,7 +326,8 @@
   ],
   "front": [
    "UpperNight"
-  ]
+  ],
+  "mower": "mower_lostcity"
  },
  "lawn:LostCityStage": {
   "bundle": "lawns_LostCityLAWN",
@@ -306,7 +336,8 @@
   ],
   "front": [
    "Upper"
-  ]
+  ],
+  "mower": "mower_lostcity"
  },
  "lawn:LostCityTutorialStage": {
   "bundle": "lawns_FrontyardLostCityLAWN",
@@ -316,7 +347,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_lostcity"
  },
  "lawn:LostCityVolcanoStage": {
   "bundle": "lawns_LostCityVolcanoLAWN",
@@ -335,7 +367,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_lostcity"
  },
  "lawn:ModernNightStage": {
   "bundle": "lawns_FrontyardNightLAWN",
@@ -345,7 +378,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:ModernStage": {
   "bundle": "lawns_ModernLAWN",
@@ -355,7 +389,8 @@
   "front": [
    "Upper",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:MonkStage": {
   "bundle": "lawns_KongfuLAWN",
@@ -365,7 +400,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_kongfu"
  },
  "lawn:PaddysStage": {
   "bundle": "lawns_FrontyardPaddysLAWN",
@@ -375,14 +411,16 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_lostcity"
  },
  "lawn:PersuitStage": {
   "bundle": "lawns_PersuitLAWN",
   "back": [
    "Lawn"
   ],
-  "front": []
+  "front": [],
+  "mower": "mower_modern"
  },
  "lawn:PirateStage": {
   "bundle": "lawns_PirateLAWN",
@@ -392,7 +430,8 @@
   "front": [
    "Upper",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_pirate"
  },
  "lawn:SkyShiplessNightStage": {
   "bundle": "lawns_SkyShiplessNightLAWN",
@@ -428,7 +467,8 @@
   "front": [
    "fanHere",
    "fanThere"
-  ]
+  ],
+  "mower": "mower_future"
  },
  "lawn:SportzballStage": {
   "bundle": "lawns_FrontyardSportzBallLAWN",
@@ -438,7 +478,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:SpringStage": {
   "bundle": "lawns_FrontyardSpringLAWN",
@@ -448,7 +489,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:SummerNightsStage": {
   "bundle": "lawns_FrontyardSummerNightLAWN",
@@ -458,7 +500,8 @@
   "front": [
    "Here",
    "There"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:TutorialStage": {
   "bundle": "lawns_TutorialLAWN",
@@ -474,7 +517,8 @@
    "1": "row1",
    "3": "row3",
    "5": "row5"
-  }
+  },
+  "mower": "mower_modern"
  },
  "lawn:ValentinesStage": {
   "bundle": "lawns_FrontyardValentinesLAWN",
@@ -484,7 +528,8 @@
   "front": [
    "UpperHere",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_modern"
  },
  "lawn:WestStage": {
   "bundle": "lawns_CowboyLAWN",
@@ -494,7 +539,8 @@
   "front": [
    "Upper",
    "UpperThere"
-  ]
+  ],
+  "mower": "mower_cowboy"
  },
  "mower:mower_modern": {
   "bundle": "projectiles_ModernMowerPRJ",
@@ -707,13 +753,16 @@
  "hud:plant_food_slot": {
   "bundle": "rigs_PlantFoodSlot",
   "armature": "plantfoodInSlot",
-  "scale": 0.4,
+  "scale": 0.7,
   "offset_x": 0,
   "offset_y": 0,
   "animations": {
    "empty": "Empty",
    "collecting": "Collecting",
    "filled": "Filled"
+  },
+  "after": {
+   "collecting": "filled"
   }
  },
  "hud:plant_food_button": {

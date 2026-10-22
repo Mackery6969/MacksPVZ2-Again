@@ -140,12 +140,16 @@ func _build_hud() -> void:
 	root.position = Vector2(20, 16)
 	layer.add_child(root)
 
+	# The tools along the top, PVZGE-style: sun, packets, plant food, shovel.
 	var top := HBoxContainer.new()
-	top.add_theme_constant_override("separation", 24)
+	top.add_theme_constant_override("separation", 16)
 	root.add_child(top)
 
 	_sun_counter = SunCounter.new(hud_font_size + 6)
 	top.add_child(_sun_counter)
+	_seed_bar = HBoxContainer.new()
+	_seed_bar.add_theme_constant_override("separation", 8)
+	top.add_child(_seed_bar)
 	_plant_food_bar = PlantFoodBar.new(board.max_plant_food, hud_font_size)
 	_plant_food_bar.pressed.connect(_toggle_plant_food)
 	top.add_child(_plant_food_bar)
@@ -153,22 +157,22 @@ func _build_hud() -> void:
 	_shovel_button.board = board
 	_shovel_button.pressed.connect(_toggle_shovel)
 	top.add_child(_shovel_button)
+
+	var info := HBoxContainer.new()
+	info.add_theme_constant_override("separation", 24)
+	root.add_child(info)
 	_wave_label = _make_label("")
-	top.add_child(_wave_label)
+	info.add_child(_wave_label)
 	_level_label = _make_label("")
-	top.add_child(_level_label)
+	info.add_child(_level_label)
 	_mode_label = _make_label("")
-	top.add_child(_mode_label)
+	info.add_child(_mode_label)
+	_status = _make_label("")
+	info.add_child(_status)
 	_objective_label = _make_label("")
 	root.add_child(_objective_label)
 	_ability_label = _make_label("")
 	root.add_child(_ability_label)
-	_status = _make_label("")
-	top.add_child(_status)
-
-	_seed_bar = HBoxContainer.new()
-	_seed_bar.add_theme_constant_override("separation", 8)
-	root.add_child(_seed_bar)
 
 	# Its own layer above the HUD, so the words cross the whole screen.
 	var banners := CanvasLayer.new()

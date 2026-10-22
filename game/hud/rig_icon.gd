@@ -2,7 +2,8 @@ class_name RigIcon
 extends Control
 ## A HUD rig inside a Control, so containers can lay it out like any widget.
 ## The rig hangs at the control's centre and plays the states its
-## `hud:<id>` mapping names. With no art, `has_art()` is false and the owner
+## `hud:<id>` mapping names; `after` in the mapping chains a one-shot state
+## into the next. With no art, `has_art()` is false and the owner
 ## shows its plain fallback instead.
 
 var id: StringName = &""
@@ -21,6 +22,7 @@ func _ready() -> void:
 	if art == null:
 		return
 	add_child(art)
+	art.animation_finished.connect(_on_finished)
 	_centre()
 	resized.connect(_centre)
 	play(&"idle")
@@ -42,6 +44,14 @@ func play(next: StringName, loop: bool = true) -> bool:
 		return true
 	state = next
 	return art.play(anim, loop, true)
+
+
+## A one-shot state can name what follows it, as DragonBones frame actions
+## do: PlantFoodSlot's Collecting ends by going to Filled.
+func _on_finished(_name: StringName) -> void:
+	var after: Dictionary = Art.mapping(&"hud", id).get("after", {})
+	if after.has(String(state)):
+		play(StringName(after[String(state)]))
 
 
 func _centre() -> void:

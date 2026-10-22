@@ -28,6 +28,8 @@ const BACK_Z := -100
 const FRONT_Z := 900
 
 var stage: StringName = &""
+## The sod animation picked for the open lanes, or empty for a lawn without.
+var sod_animation: StringName = &""
 var _back: Array[Armature] = []
 var _front: Array[Armature] = []
 var _entry: Dictionary = {}
@@ -92,7 +94,8 @@ func set_open_rows(count: int) -> void:
 			best = String(by_count[key])
 	if best == "":
 		best = String(by_count.values().back())
-	_back[0].play(StringName(best))
+	sod_animation = StringName(best)
+	_back[0].play(sod_animation)
 
 
 func clear() -> void:
@@ -103,6 +106,7 @@ func clear() -> void:
 	_front.clear()
 	_entry = {}
 	stage = &""
+	sod_animation = &""
 
 
 func _place(armature_name: StringName, at: Vector2, size: Vector2, z: int) -> Armature:

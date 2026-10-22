@@ -192,7 +192,9 @@ func _show_scenery(lawn: Dictionary, runner: Node) -> void:
 	var open := plantable_rows.size() if not plantable_rows.is_empty() else rows
 	if not scenery.show_stage(stage, self, open):
 		scenery.show_stage(StringName(lawn.get("id", "")), self, open)
-	var mower_id := StringName(lawn.get("mower", ""))
+	# The level's lawn data names its mower; the art entry knows it for stages
+	# the data does not cover, such as the tutorial's.
+	var mower_id := StringName(lawn.get("mower", Art.mapping(&"lawn", scenery.stage).get("mower", "")))
 	for m in _mowers.values():
 		if is_instance_valid(m):
 			m.attach_art(mower_id)

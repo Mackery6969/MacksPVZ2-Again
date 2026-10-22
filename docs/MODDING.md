@@ -480,6 +480,45 @@ and `--anim NAME --frames N` samples an animation rather than the setup pose.
 Use the animated form: a setup pose can look perfect while every animated
 frame is wrong, which is exactly how three rendering bugs got past review.
 
+### Lawns, mowers and the HUD
+
+The rest of what is drawn uses the same mapping files, under other kinds -
+see `data/native/art/scenery.json`:
+
+```json
+{
+ "lawn:TutorialStage": {
+  "bundle": "lawns_TutorialLAWN", "back": ["Lawn"], "front": ["Upper", "UpperThere"],
+  "open_rows": {"1": "row1", "3": "row3", "5": "row5"}, "mower": "mower_modern"
+ },
+ "mower:mower_modern": {
+  "bundle": "projectiles_ModernMowerPRJ", "armature": "Mower", "scale": 0.512,
+  "animations": {"idle": "Idle", "trigger": "Trans", "attack": "Attack"}
+ },
+ "collectable:sun": { "bundle": "rigs_SunAnimate", "armature": "Sun", "scale": 0.3,
+  "animations": {"idle": "Normal"} }
+}
+```
+
+A `lawn:<stage>` entry is keyed by the level's `stage`. Its `back` rigs draw
+under everything and its `front` rigs over the characters, both placed where
+PVZGE placed its lawn relative to the first cell, so the art's lanes line up
+with the board's. `open_rows` picks the sod animation by how many lanes are
+open, for the tutorial lawn's dirt rows. `mower:<id>` plays `trigger` in place
+until the rig says `switchingFalse`, then `attack` while it drives.
+`collectable:sun` and `collectable:plantfood` dress the pickups,
+`effect:plant_dirt` is the puff when a plant goes in or comes out, and the
+`hud:` entries are the sun counter, shovel, plant food slots and seed packet.
+`hud:` states can chain with `"after": {"collecting": "filled"}`, the way a
+DragonBones frame action does.
+
+These rigs are placed by hand - `scale` and `offset_x`/`offset_y` rather than
+`fit_height` - because their size comes from the original's own layout.
+
+Rigs that are not a named prefab (the sun, the HUD pieces, particles) come
+out by their DragonBones name with `tools/extract_rigs.py`; see
+`art/README.md`.
+
 ## Adding a level
 
 ```json

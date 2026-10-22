@@ -25,7 +25,10 @@ func _init(slots: int = 3, font_size: int = 18) -> void:
 	_icon.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_button.add_child(_icon)
 	for i in slots:
-		var slot := RigIcon.new(&"plant_food_slot", Vector2(30, 52))
+		var slot := RigIcon.new(&"plant_food_slot", Vector2(40, 52))
+		# The well a charge sits in; PVZGE draws it under the slot rig.
+		slot.draw.connect(func():
+			slot.draw_circle(slot.size * 0.5, 17.0, Color(0, 0, 0, 0.35)))
 		add_child(slot)
 		_slots.append(slot)
 	_label = Label.new()
