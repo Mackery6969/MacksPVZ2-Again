@@ -8,16 +8,20 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "boomerang",
+   "pierce": 3,
+   "interval": 2.7,
+   "interval_jitter": 0.15,
+   "plantfood_count": 16,
+   "returns": true
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
- },
- "extra": {
-  "BoomerangType": "boomerang",
-  "PierceCount": 3,
-  "PlantfoodBoomerangCount": 16,
-  "ShootInterval": 2.7,
-  "ShootIntervalAdditional": 0.15
  }
 }

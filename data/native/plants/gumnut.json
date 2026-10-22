@@ -8,15 +8,22 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "gummer",
+   "gum_health": 4000,
+   "health_mult": 3,
+   "reach": 1.0,
+   "radius": 1.0
+  }
+ ],
  "mint_boost": {
   "resistance": 3,
   "speed": 1,
   "plantfood": true
  },
  "extra": {
-  "BaseGumHealth": 4000,
   "PlantfoodGumProjectileCount": 5,
-  "PlantfoodGumProjectileType": "gumnut",
-  "ZombieGumHealthMult": 3
+  "PlantfoodGumProjectileType": "gumnut"
  }
 }

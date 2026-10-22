@@ -8,6 +8,13 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "light_source",
+   "radius": 1,
+   "plantfood_sun": 25
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,

@@ -8,6 +8,13 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "tap_smash",
+   "reach": 2.0,
+   "min_health": 50
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,

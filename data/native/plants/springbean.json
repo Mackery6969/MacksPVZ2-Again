@@ -8,14 +8,19 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "spring",
+   "distance": 1,
+   "rest": 10
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 5,
   "plantfood": false
  },
  "extra": {
-  "KnockbackDistance": 1,
-  "MintKnockBackDistanceFactor": 5,
-  "RestTime": 10
+  "MintKnockBackDistanceFactor": 5
  }
 }

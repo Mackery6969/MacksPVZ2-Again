@@ -8,15 +8,21 @@
   "cooldown_from": 0.3333,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "shrinker",
+   "damage_multiplier": 2,
+   "speed_scale": 0.75,
+   "delay": 1.5,
+   "bite_scale": 0.5
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
   "plantfood": false
  },
  "extra": {
-  "DamageMultiplier": 2,
-  "MintDamageFactor": 3,
-  "ShrinkTime": 1.5,
-  "SpeedScale": 0.75
+  "MintDamageFactor": 3
  }
 }

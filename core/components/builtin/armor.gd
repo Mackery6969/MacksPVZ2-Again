@@ -60,3 +60,16 @@ func absorb_damage(amount: float) -> float:
 		host.set_runtime_tag(&"armored", false)
 	host.queue_redraw()
 	return amount - absorbed
+
+
+## Pulls the armor off whole - a magnet-shroom taking a bucket. Returns false
+## when there was nothing left to take.
+func strip() -> bool:
+	if not is_intact():
+		return false
+	durability = 0.0
+	_broken = true
+	host.set_runtime_tag(&"metal", false)
+	host.set_runtime_tag(&"armored", false)
+	host.queue_redraw()
+	return true

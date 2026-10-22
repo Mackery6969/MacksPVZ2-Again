@@ -8,18 +8,22 @@
   "cooldown_from": 1,
   "beghouled_cost": 500
  },
+ "components": [
+  {
+   "type": "shooter",
+   "projectile": "scaredyshroom_spore",
+   "projectile_plantfood": "scaredyshroom_spore2",
+   "interval": 1.35,
+   "interval_jitter": 0.15,
+   "plantfood_count": 40,
+   "knockback_chance": 0.2,
+   "knockback_distance": 0.2,
+   "scared_radius": 1.5
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
- },
- "extra": {
-  "KnockbackChance": 0.2,
-  "KnockbackDistance": 0.2,
-  "PlantfoodSporeCount": 40,
-  "ShootInterval": 1.35,
-  "ShootIntervalAdditional": 0.15,
-  "SporeType": "scaredyshroom_spore",
-  "SporeTypePlantfood": "scaredyshroom_spore2"
  }
 }

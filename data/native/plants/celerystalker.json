@@ -8,15 +8,22 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "ambusher",
+   "damage": 25,
+   "retract_delay": 3,
+   "plantfood_children": 3,
+   "reach": 1.5,
+   "interval": 0.5
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
   "plantfood": false
  },
  "extra": {
-  "DamagePerHit": 25,
-  "MintDamageFactor": 2,
-  "PlantfoodChildrenCount": 3,
-  "RetractionDelay": 3
+  "MintDamageFactor": 2
  }
 }

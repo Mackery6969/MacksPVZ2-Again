@@ -8,20 +8,26 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 1500
  },
+ "components": [
+  {
+   "type": "chomper",
+   "chew_time": 17,
+   "fail_damage": 100,
+   "capacity": 2,
+   "plantfood_swallows": 4,
+   "reach": 2.0
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 4,
   "plantfood": false
  },
  "extra": {
-  "ChewTimePerZombie": 17,
-  "ChompFailDamage": 100,
-  "MaxContainZombieCount": 2,
   "MintDamageFactor": 3,
   "PlantfoodPullDuration": 3,
   "PlantfoodPullSPS": 3,
   "PlantfoodPushDuration": 3,
-  "PlantfoodPushSPS": 3,
-  "PlantfoodSwallowCount": 4
+  "PlantfoodPushSPS": 3
  }
 }

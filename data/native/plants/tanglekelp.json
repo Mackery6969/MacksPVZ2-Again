@@ -8,6 +8,16 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "dragger",
+   "uses": 1,
+   "fail_damage": 400,
+   "plantfood_count": 5,
+   "reach": 0.5,
+   "plantfood_terrain": "water"
+  }
+ ],
  "tags": [
   "aquatic"
  ],
@@ -18,10 +28,7 @@
  },
  "extra": {
   "CannotBeDetectedByCatapult": true,
-  "DamageWhenDragFailed": 400,
   "ImmuneToIceblock": true,
-  "MaxDraggedZombieCount": 1,
-  "MaxDraggedZombieCountPlantfood": 5,
   "MintDamageFactor": 3,
   "MintIgnoringDragCount": true
  }

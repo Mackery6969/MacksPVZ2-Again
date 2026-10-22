@@ -8,6 +8,14 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "eaten_trigger",
+   "duration": 10,
+   "effect": "stun_gas",
+   "gas_delay": 2.0
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -15,7 +23,6 @@
  },
  "extra": {
   "CannotBeHealedByAloe": true,
-  "ChiliStunDuration": 10,
   "MintPoisonDPS": 60,
   "MintStunDurationFactor": 2,
   "PlantfoodChildrenCount": 3
