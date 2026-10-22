@@ -27,6 +27,10 @@ signal seedbank_ready(seeds: Array)
 
 ## PvZ2's music escalates through four stages across a level.
 const MUSIC_STAGES := 4
+## The Studio parameter the lawn music follows: 0 is Choose Your Seeds, 1-3
+## are the first three phases, and anything past them is the final phase.
+## It is a preset parameter, local to each music event, not a global one.
+const MUSIC_PARAMETER := &"state"
 
 @export_group("Spawning")
 ## Cells of guaranteed separation between zombies entering the same lane.
@@ -94,6 +98,7 @@ func start(level_def: Dictionary, target_board: Board) -> void:
 	_music_stage = -1
 	Audio.play_music(music_event())
 	_update_music_stage()
+	Audio.play(&"level.ready")
 	seedbank_ready.emit(seedbank_seeds())
 
 
@@ -202,8 +207,9 @@ func world_name() -> String:
 ## that from a parameter rather than by swapping tracks, so the intro/loop
 ## structure survives the transition.
 ##
-## Zero-based, because that is what the Studio project's parameter conditions
-## match on (0..3). The sound design owns that contract, not this code.
+## Zero-based here; `_update_music_stage` turns it into the Studio value,
+## which starts at 1 because 0 belongs to the seed chooser. The sound design
+## owns that contract, not this code.
 func music_stage() -> int:
 	if waves.is_empty():
 		return 0
@@ -215,7 +221,7 @@ func _update_music_stage() -> void:
 	var stage := music_stage()
 	if stage != _music_stage:
 		_music_stage = stage
-		Audio.set_parameter(&"stage", float(stage))
+		Audio.set_parameter(MUSIC_PARAMETER, float(stage + 1))
 
 
 ## Builds the level's objectives. A level that lists none gets the default
@@ -396,10 +402,22 @@ func _advance_wave() -> void:
 	var settings_flag: int = int((level.get("wave_pacing", {}) as Dictionary)
 			.get("flag_interval", 0))
 	var is_flag := settings_flag > 0 and (wave_index + 1) % settings_flag == 0
-	Audio.play(&"wave.huge" if is_flag else &"wave.start")
+	Audio.play(wave_sound(wave_index, waves.size(), is_flag))
 
 	var pacing: Dictionary = level.get("wave_pacing", {})
 	_timer = float(pacing.get("gap", wave_gap))
+
+
+## The cue a wave starts with, as PVZGE plays them: the awooga as the first
+## zombies come, the final-wave sting for the last, a huge wave for a flag.
+static func wave_sound(index: int, count: int, is_flag: bool) -> StringName:
+	if index == count - 1 and count > 1:
+		return &"wave.final"
+	if is_flag:
+		return &"wave.huge"
+	if index == 0:
+		return &"wave.first"
+	return &"wave.start"
 
 
 func _run_action(action: Dictionary) -> void:
