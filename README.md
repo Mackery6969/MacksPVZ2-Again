@@ -75,6 +75,7 @@ godot --headless tests/gameplay_test.tscn   # test suite
 Re-run these against the PVZGE Docker image to refresh content:
 
 ```sh
+python3 tools/extract_desktop.py pvzge.exe <dir>  # or unpack a newer desktop build
 python3 tools/extract_pvzge.py data/pvzge        # prop sheets out of the image
 python3 tools/extract_levels.py <dir>            # all 1258 levels, raw
 python3 tools/import_levels.py <raw> <native>    # PopCap format -> native
