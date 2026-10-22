@@ -1,0 +1,92 @@
+{
+ "id": "chooser_demo",
+ "name": "Example Pack - Seed Chooser Demo",
+ "description": "Pick your own plants before the level starts. Sun producers are banned, the level hands you a Wall-nut you cannot put back, and two decks fill the hand in one click.",
+ "author": "example_pack",
+ "number": 2,
+ "stage": "TutorialStage",
+ "seedbank": {
+  "mode": "chooser",
+  "selection": "chooser",
+  "preset": [
+   "wallnut"
+  ],
+  "exclude_sun_producers": true,
+  "exclude": [
+   "cherry_bomb"
+  ],
+  "slots": 4,
+  "decks": {
+   "recommended": [
+    {
+     "name": "Front Lawn",
+     "plants": [
+      "peashooter",
+      "cabbagepult",
+      "wallnut",
+      "potatomine"
+     ]
+    }
+   ],
+   "challenging": [
+    {
+     "name": "Lone Peashooter",
+     "plants": [
+      "peashooter",
+      "wallnut"
+     ]
+    }
+   ]
+  }
+ },
+ "mowers": true,
+ "sun": {
+  "interval": 6
+ },
+ "waves": [
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial",
+     "row": 2
+    },
+    {
+     "type": "tutorial",
+     "row": 4
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    }
+   ]
+  },
+  {
+   "kind": "spawn",
+   "zombies": [
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    },
+    {
+     "type": "tutorial"
+    }
+   ]
+  }
+ ]
+}

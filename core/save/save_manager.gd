@@ -143,6 +143,17 @@ func cleared_count() -> int:
 	return (_progress.get("cleared", []) as Array).size()
 
 
+## The plants the player last took into a chooser level, so the next chooser
+## starts from them as PVZGE's does.
+func last_seed_choice() -> Array:
+	return _progress.get("last_seed_choice", [])
+
+
+func remember_seed_choice(seeds: Array) -> void:
+	_progress["last_seed_choice"] = seeds.map(func(s): return String(s))
+	_save_progress()
+
+
 func reset_progress() -> void:
 	_progress = {}
 	for level_id in saved_levels():

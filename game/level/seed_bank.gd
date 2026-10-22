@@ -107,12 +107,15 @@ func snapshot() -> Array:
 
 func apply_snapshot(state: Array) -> void:
 	# Matched by id rather than position, so a level whose seed list changed
-	# between save and load restores what it still has.
+	# between save and load restores what it still has. A plant held twice -
+	# an Imitater's copy - matches its slots in order.
+	var used: Dictionary = {}
 	for entry in state:
 		if not (entry is Dictionary):
 			continue
 		var slot := slot_of(StringName(entry.get("kind", &"plant")),
-				StringName(entry.get("id", &"")))
+				StringName(entry.get("id", &"")), used)
+		used[slot] = true
 		var p := packet(slot)
 		if p != null:
 			p.charge = clampf(float(entry.get("charge", p.recharge)),
@@ -120,8 +123,9 @@ func apply_snapshot(state: Array) -> void:
 	changed.emit()
 
 
-func slot_of(kind: StringName, id: StringName) -> int:
+## The first slot holding `kind`/`id`, passing over any slot in `skip`.
+func slot_of(kind: StringName, id: StringName, skip: Dictionary = {}) -> int:
 	for i in packets.size():
-		if packets[i].kind == kind and packets[i].id == id:
+		if packets[i].kind == kind and packets[i].id == id and not skip.has(i):
 			return i
 	return -1

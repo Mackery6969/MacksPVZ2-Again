@@ -267,8 +267,32 @@ def conv_seedbank(obj):
         if d.get(src) is not None:
             sb[dst] = [strip_rtid(x) for x in d[src]] if isinstance(d[src], list) else d[src]
     if d.get("CardDecks"):
-        sb["decks"] = [strip_rtid(x) for x in d["CardDecks"]]
+        sb["decks"] = conv_card_decks(d["CardDecks"])
     return sb
+
+
+def conv_card_decks(decks):
+    """CardDecks -> ready-made loadouts the seed chooser can offer.
+
+    Recommended decks are suggestions; challenging ones are harder picks that
+    PVZGE rewards with gems. `ChallengingLocked` hides the recommended ones and
+    stops the player straying from a challenging deck."""
+    out = {}
+    for src, dst in [("Recommended", "recommended"), ("Challenging", "challenging")]:
+        kept = []
+        for deck in decks.get(src) or []:
+            plants = [strip_rtid(p) for p in (deck.get("Plants") or [])]
+            if not plants:
+                continue
+            name = deck.get("Name")
+            if isinstance(name, dict):
+                name = name.get("en") or next(iter(name.values()), "")
+            kept.append({"name": name or "", "plants": plants})
+        if kept:
+            out[dst] = kept
+    if decks.get("ChallengingLocked"):
+        out["challenging_locked"] = True
+    return out
 
 
 ## Star challenge -> objective entry. Unmapped kinds keep their parameters so

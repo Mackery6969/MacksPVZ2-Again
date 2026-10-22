@@ -17,6 +17,9 @@
    "first_delay_jitter": 5
   }
  ],
+ "tags": [
+  "sun_producer"
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,

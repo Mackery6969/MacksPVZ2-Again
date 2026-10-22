@@ -14,6 +14,10 @@
    "duration": 10
   }
  ],
+ "tags": [
+  "sun_producer",
+  "imitate_disallowed"
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,

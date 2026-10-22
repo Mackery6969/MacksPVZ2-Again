@@ -494,6 +494,12 @@ def split_plant(name, entry, prop_lookup):
     if name in CARRIER_PLANTS:
         # "provides:<tag>" is what the board reads to mark a cell satisfied.
         tags.append("provides:" + CARRIER_PLANTS[name])
+    if name in WATER_ONLY_PLANTS:
+        tags.append("water_only")
+    if name in SUN_PRODUCER_PLANTS:
+        tags.append("sun_producer")
+    if name in IMITATE_DISALLOWED_PLANTS:
+        tags.append("imitate_disallowed")
     if tags:
         out["tags"] = tags
 
@@ -645,6 +651,22 @@ TERRAIN_RULES = {
 AQUATIC_PLANTS = {"lilypad", "tanglekelp", "guacodile", "bowlingbulb",
                   "rotobaga", "banana_launcher"}
 CARRIER_PLANTS = {"lilypad": "aquatic", "skyplatform": "airborne"}
+# Aquatic plants that cannot go on land either (PVZGE's "aquatic" and "lilypad"
+# tags; the rest above are amphibious). The seed chooser only offers them on a
+# lawn with water.
+WATER_ONLY_PLANTS = {"lilypad", "tanglekelp"}
+# PVZGE's "sunProducer" plant tag. Levels that ban sun producers from the seed
+# chooser read it, whether or not the plant makes sun through a component.
+SUN_PRODUCER_PLANTS = {"sunflower", "sunshroom", "twinsunflower", "solartomato",
+                       "marigold_yellow", "sunbean", "goldleaf", "toadstool",
+                       "primalsunflower", "moonbean", "goldbloom", "solarsage",
+                       "shinevine", "enlightenmint"}
+# PVZGE's "imitateDisallowed": plants the Imitater cannot copy (the mints).
+IMITATE_DISALLOWED_PLANTS = {"reinforcemint", "enlightenmint", "wintermint",
+                             "spearmint", "appeasemint", "enforcemint",
+                             "peppermint", "bombardmint", "concealmint",
+                             "ailmint", "enchantmint", "filamint",
+                             "containmint", "armamint"}
 
 GRAVE_STATS = {
     "Toughness": "toughness",

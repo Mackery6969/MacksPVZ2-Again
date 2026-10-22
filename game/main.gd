@@ -47,6 +47,9 @@ var _ability_label: Label
 var _conveyor_level: bool = false
 var _fast_forward: bool = false
 
+## The pre-level seed picker, built the first time a level needs it.
+var _chooser: SeedChooser
+
 var _campaign: CampaignDef
 var _current_level: StringName = &""
 ## Guards against a result firing twice while a transition is already queued.
@@ -99,14 +102,19 @@ func load_level(level_id: StringName) -> void:
 	board.shovel_active = false
 	board.plant_food_active = false
 	board.reset()
+	_close_chooser()
 	runner.start(level, board)
 
 	# A part-played level resumes where it was left rather than restarting.
-	if resume_saves and Saves.has_save(level_id):
-		var save := Saves.load_save(level_id)
-		if Saves.restore(save, runner, board, seed_bank):
-			print("[save] resumed '%s' from %s"
-					% [level_id, save.get("saved_at", "an earlier session")])
+	var save := Saves.load_save(level_id) if resume_saves else {}
+	if not save.is_empty() and runner.needs_seed_choice():
+		# The hand was picked when the level was first played; keep it.
+		_use_chosen_seeds(_saved_seed_ids(save))
+	if Saves.restore(save, runner, board, seed_bank):
+		print("[save] resumed '%s' from %s"
+				% [level_id, save.get("saved_at", "an earlier session")])
+	elif runner.needs_seed_choice():
+		_open_chooser()
 
 	_status.text = ""
 	_wave_label.text = ""
@@ -182,6 +190,53 @@ func _on_seedbank_ready(seeds: Array) -> void:
 		seed_bank.setup(seeds, runner.seed_recharge_scale() < 1.0)
 
 	_rebuild_seed_buttons()
+
+
+## Shows the seed chooser and holds the lawn still until the player is done,
+## so nothing on it moves while they pick.
+func _open_chooser() -> void:
+	if _chooser == null:
+		var layer := CanvasLayer.new()
+		layer.layer = 10
+		add_child(layer)
+		_chooser = SeedChooser.new()
+		layer.add_child(_chooser)
+		_chooser.confirmed.connect(_on_seeds_chosen)
+	board.process_mode = Node.PROCESS_MODE_DISABLED
+	_chooser.open(SeedChooserRules.from_level(runner.level, board),
+			Saves.last_seed_choice())
+
+
+func _close_chooser() -> void:
+	if _chooser != null:
+		_chooser.hide()
+	board.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+func _on_seeds_chosen(hand: Array[StringName]) -> void:
+	Saves.remember_seed_choice(hand)
+	_close_chooser()
+	_use_chosen_seeds(_chooser.rules.seeds_for(hand))
+	Audio.play(&"ui.chooseseeds.close")
+
+
+## Fills the bank with the player's picks and starts the level.
+func _use_chosen_seeds(ids: Array) -> void:
+	var seeds: Array = []
+	for id in ids:
+		seeds.append({"kind": &"plant", "id": StringName(id)})
+	seed_bank.setup(seeds, runner.seed_recharge_scale() < 1.0)
+	_rebuild_seed_buttons()
+	runner.begin()
+
+
+## The plants a save's seed bank held, in slot order.
+func _saved_seed_ids(save: Dictionary) -> Array:
+	var out: Array = []
+	for entry in (save.get("seed_bank", []) as Array):
+		if entry is Dictionary:
+			out.append(StringName(entry.get("id", "")))
+	return out
 
 
 ## Swaps in the bank this level needs. A conveyor belt and a chooser behave
