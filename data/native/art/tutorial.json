@@ -54,6 +54,7 @@
   "offset_y": 9.7,
   "animations": {
    "idle": "Idle",
+   "spawn": "Spawn_Baby",
    "asleep": "Idle_Baby",
    "arm": "Grow",
    "attack": "Charging",
