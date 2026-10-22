@@ -1198,6 +1198,142 @@ func _test_audio() -> void:
 	check("every raised event is in the catalog", missing.is_empty(), str(missing))
 	print("        (%d distinct events raised by the game)" % raised.size())
 
+	# Wave cues are picked by a function, so the scan above cannot see them.
+	var cues := [LevelRunner.wave_sound(0, 5, false), LevelRunner.wave_sound(2, 5, false),
+			LevelRunner.wave_sound(2, 5, true), LevelRunner.wave_sound(4, 5, true)]
+	check_eq("wave cues follow PVZGE", cues,
+			[&"wave.first", &"wave.start", &"wave.huge", &"wave.final"])
+	for id in cues:
+		check("wave cue '%s' exists" % id, Audio.has_event(id))
+
+	_test_audio_streams()
+	_test_fmod_backend()
+
+
+## The Godot fallback's clips come from the generated streams.json.
+func _test_audio_streams() -> void:
+	var groans := Audio.catalog.get_event(&"zombie.spawn")
+	check("generated streams fill the catalog", groans.streams.size() > 1,
+			str(groans.streams))
+	check("streams point into the Music submodule",
+			groans.streams[0].begins_with("res://Music/Assets/"))
+	check("a lawn's music loops", Audio.catalog.get_event(&"music.lawn.tutorial").loop)
+	check("a victory cue does not", not Audio.catalog.get_event(&"music.victory.egypt").loop)
+	# A pack that replaces an event replaced its sound: the base clip must not
+	# come back under it.
+	check("a replaced event keeps none of the base streams",
+			Audio.catalog.get_event(&"plant.shoot").streams.is_empty())
+	for world in ["beach", "cowboy", "dark", "dino", "egypt", "eighties", "future",
+			"iceage", "kongfu", "lostcity", "modern", "pirate", "sky", "tutorial"]:
+		check("world '%s' has lawn music" % world,
+				Audio.has_event(StringName("music.lawn." + world)))
+
+	var godot: AudioBackend = load("res://core/audio/backends/godot_backend.gd").new()
+	godot.setup(Audio.catalog)
+	if DirAccess.dir_exists_absolute("res://Music/Assets"):
+		check("godot backend can play a groan", godot.can_play(groans))
+	check("godot backend cannot play what has no clips",
+			not godot.can_play(AudioEvent.from_dict({"id": "x.none"})))
+	godot.shutdown()
+
+
+## Drives the FMOD backend against a stand-in for FmodServer, so the calls it
+## makes are checked without FMOD installed.
+func _test_fmod_backend() -> void:
+	var server := FakeFmodServer.new()
+	var fmod: AudioBackend = load("res://core/audio/backends/fmod_backend.gd").new()
+	fmod.attach(server)
+	var shoot := AudioEvent.from_dict({"id": "t.shoot", "fmod": "event:/SFX/Plants/Shoot"})
+	var lawn := AudioEvent.from_dict({"id": "t.lawn", "fmod": "event:/Music/InGame/Egypt",
+			"music": true})
+	var lose := AudioEvent.from_dict({"id": "t.lose", "fmod": "event:/Music/InGame/Lose/Egypt",
+			"music": true})
+
+	fmod.play(shoot, Vector2(10, 20))
+	check_eq("an effect is a one-shot, position or not", server.one_shots,
+			["event:/SFX/Plants/Shoot"])
+
+	fmod.set_parameter(&"state", 1.0)
+	fmod.play_music(lawn)
+	check_eq("music is a held instance", server.instances.size(), 1)
+	var music: FakeFmodEvent = server.instances[0]
+	check("and it is started", music.started)
+	check_eq("with parameters set before it started", music.parameters.get("state"), 1.0)
+	fmod.play_music(lawn)
+	check_eq("the same cue again does not restart it", server.instances.size(), 1)
+	fmod.set_parameter(&"state", 3.0)
+	check_eq("a parameter reaches the playing music", music.parameters.get("state"), 3.0)
+	check_eq("and is set globally too", server.globals.get("state"), 3.0)
+
+	fmod.play_music(lose)
+	check("a new cue stops the old one", music.stopped and music.released)
+	fmod.stop_music()
+	check("stop_music stops what is playing", server.instances[1].stopped)
+
+	fmod.set_bus_volume(&"Music", 0.5)
+	check_eq("a bus is reached by path", server.buses.get("bus:/Music").volume, 0.5)
+	fmod.shutdown()
+
+
+class FakeFmodServer extends RefCounted:
+	var one_shots: Array = []
+	var instances: Array = []
+	var globals: Dictionary = {}
+	var buses: Dictionary = {}
+
+	func load_bank(_path: String, _flags: int) -> Object:
+		return null
+
+	func play_one_shot(path: String) -> void:
+		one_shots.append(path)
+
+	func create_event_instance(path: String) -> Object:
+		var e := FakeFmodEvent.new()
+		e.path = path
+		instances.append(e)
+		return e
+
+	func set_global_parameter_by_name(name: String, value: float) -> void:
+		globals[name] = value
+
+	func check_bus_path(_path: String) -> bool:
+		return true
+
+	func get_bus(path: String) -> Object:
+		if not buses.has(path):
+			buses[path] = FakeFmodBus.new()
+		return buses[path]
+
+	func update() -> void:
+		pass
+
+
+class FakeFmodEvent extends RefCounted:
+	var path: String
+	var started := false
+	var stopped := false
+	var released := false
+	var parameters: Dictionary = {}
+
+	func is_valid() -> bool:
+		return not released
+
+	func start() -> void:
+		started = true
+
+	func stop(_mode: int) -> void:
+		stopped = true
+
+	func release() -> void:
+		released = true
+
+	func set_parameter_by_name(name: String, value: float) -> void:
+		parameters[name] = value
+
+
+class FakeFmodBus extends RefCounted:
+	var volume: float = 1.0
+
 
 ## Objectives are the level's win/lose rules. The default keeps old levels
 ## working; the rest are selectable from data.
@@ -1970,6 +2106,20 @@ func _test_art() -> void:
 		# The rig is drawn walking toward the house already, so a hostile
 		# zombie is NOT mirrored; a charmed one is.
 		check("a hostile zombie is not mirrored", z.art.facing == 1)
+		# A hand hidden at rest stays hidden until an animation shows it.
+		var spare: Node2D = z.art.get_node_or_null(^"hand_side_HAND")
+		check("the spare eating hand starts invisible",
+				spare != null and spare.modulate.a < 0.01)
+		await get_tree().process_frame
+		var stride := z.art.ground_speed(&"Walk")
+		check("the walk plays at the pace the zombie moves",
+				stride > 0.0 and is_equal_approx(z.art.speed_scale(),
+						z.current_speed() * board.cell_size.x / stride),
+				"%.3f" % z.art.speed_scale())
+		z.apply_stun(0.5)
+		await get_tree().process_frame
+		check_eq("and stops dead when stunned", z.art.speed_scale(), 0.0)
+		await _wait_game_seconds(0.6)
 		z.charm()
 		check("a charmed one is", z.art.facing == -1)
 		z.set_allegiance(Zombie.Allegiance.HOSTILE)
@@ -1981,7 +2131,7 @@ func _test_art() -> void:
 	# Acting changes what a plant is doing, and it goes back to idling after.
 	# The component says what happened; it never names an animation.
 	if pea != null and pea.art != null and pea.art.has_animation(&"Shoot"):
-		var idle_name: StringName = pea.art.playing
+		var idle_name: StringName = Art.animation_for(&"plant", &"peashooter", &"idle")
 		board.spawn_zombie(&"tutorial", 2)
 		await _wait_game_seconds(2.0)
 		check("firing changed the animation or returned to idle",
@@ -2001,6 +2151,32 @@ func _test_art() -> void:
 				absf(walk.length - 3.0) < 0.1, "%f" % walk.length)
 	check("baking happens once per rig",
 			rig.animations(&"BasicZombie") == library)
+
+	# The rig's limbs are posed by IK, and its slots animate as well as move.
+	var baker := rig.rig(&"BasicZombie")
+	check_eq("the zombie's legs and arms are IK chains", baker.iks.size(), 4)
+	if walk != null:
+		check("a walk says how fast it was drawn to travel",
+				float(walk.get_meta(&"ground_speed", 0.0)) > 10.0)
+		check("and keys which foot picture shows",
+				walk.find_track(NodePath("foot_there/0:visible"), Animation.TYPE_VALUE) >= 0)
+	var eat: Animation = library.get_animation(&"Eat")
+	if walk != null and eat != null:
+		# Every animation keys every moving part, so none inherits the pose
+		# the last one left behind - eating arms carried into the walk.
+		check("walk keys the same parts eating moves",
+				walk.find_track(NodePath("hand_here_HAND:position"), Animation.TYPE_VALUE) >= 0
+				and eat.find_track(NodePath("hand_here_HAND:position"), Animation.TYPE_VALUE) >= 0)
+		check("and fades the eating hands in and out",
+				eat.find_track(NodePath("hand_side_HAND:modulate"), Animation.TYPE_VALUE) >= 0)
+	var turns := baker._rotation_timeline([
+		{"duration": 5, "rotate": 170.0}, {"duration": 0, "rotate": -170.0}])
+	check_eq("a key past the seam turns the short way",
+			float(turns[1]["value"]), 190.0)
+	var spun := baker._rotation_timeline([
+		{"duration": 5, "rotate": 0.0, "clockwise": 1}, {"duration": 0, "rotate": -10.0}])
+	check_eq("unless the rig says to go round the long way",
+			float(spun[1]["value"]), 350.0)
 
 	# A rig says when it acts, and where from.
 	if pea != null and pea.art != null:

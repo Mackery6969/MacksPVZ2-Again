@@ -23,6 +23,10 @@ var is_dead: bool = false
 ## The visual, when extracted art covers this entity. Null leaves the
 ## placeholder drawing in place, so the game runs the same without any art.
 var art: Armature = null
+## How fast this entity's art runs relative to its rig. Each entity draws its
+## own, a little either side of 1, as PVZGE does, so a row of sunflowers or a
+## crowd of zombies does not bob in lockstep.
+var art_rate: float = 1.0
 
 var _components: Array[EntityComponent] = []
 var _runtime_tags: Dictionary = {}   ## tags added or removed after spawn
@@ -70,6 +74,7 @@ func _attach_art() -> void:
 	if built == null:
 		return
 	art = built
+	art_rate = randf_range(0.9, 1.1)
 	add_child(art)
 	queue_redraw()
 
@@ -102,6 +107,13 @@ func play_art_once(state: StringName) -> bool:
 
 func _on_art_finished(_name: StringName) -> void:
 	play_art(&"idle")
+
+
+## How fast the art should play right now. Whatever slows or speeds the
+## entity's behaviour slows or speeds its animation with it, so a stunned
+## plant visibly crawls and a buffed one visibly hurries.
+func art_speed() -> float:
+	return art_rate * attack_rate * suppression
 
 
 ## Hook for subclasses; runs after components exist.
@@ -197,6 +209,8 @@ func _tick_buff(delta: float) -> void:
 func _process(delta: float) -> void:
 	_tick_buff(delta)
 	_tick_suppression(delta)
+	if art != null:
+		art.set_speed_scale(art_speed())
 
 
 # --- tags ----------------------------------------------------------------

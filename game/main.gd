@@ -391,6 +391,7 @@ func _step_slot(step: int) -> void:
 func _toggle_shovel() -> void:
 	board.shovel_active = not board.shovel_active
 	if board.shovel_active:
+		Audio.play(&"ui.shovel")
 		board.plant_food_active = false
 		board.selected_seed = {}
 	_refresh_seed_buttons()
@@ -421,6 +422,7 @@ func _on_plant_food_changed(total: int) -> void:
 func _toggle_fast_forward() -> void:
 	_fast_forward = not _fast_forward
 	Engine.time_scale = fast_forward_scale if _fast_forward else 1.0
+	Audio.play(&"ui.fastforward.on" if _fast_forward else &"ui.fastforward.off")
 	_refresh_mode_label()
 
 
@@ -442,13 +444,13 @@ func _select_seed(slot: int) -> void:
 	if slot >= 0 and slot < _seeds.size() and not seed_bank.is_recharged(slot):
 		Audio.play(&"ui.seed.refuse")
 		return
-	if slot >= 0:
-		Audio.play(&"ui.seed.select")
 	if slot < 0 or slot >= _seeds.size():
 		board.selected_seed = {}
 	elif board.selected_seed == _seeds[slot]:
+		Audio.play(&"ui.seed.cancel")
 		board.selected_seed = {}     # re-pressing the same slot deselects
 	else:
+		Audio.play(&"ui.seed.select")
 		board.selected_seed = _seeds[slot].duplicate()
 	_refresh_seed_buttons()
 
