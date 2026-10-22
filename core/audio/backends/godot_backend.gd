@@ -6,9 +6,11 @@ extends AudioBackend
 ## to change when the real backend arrives.
 ##
 ## The clips come from the Music submodule (`res://Music/Assets/...`), listed
-## per event in the pack's generated `audio/streams.json`. Without the
-## submodule checked out - or with its LFS files still pointers - nothing
-## loads and the game is silent, exactly as before.
+## per event in the pack's generated `audio/streams.json`. Music carries a
+## `.gdignore`, so Godot never imports them: each file is read from disk and
+## decoded here instead. Without the submodule checked out - or with its LFS
+## files still pointers - nothing loads and the game is silent, exactly as
+## before. An exported build has no Music folder, so it is silent too.
 ##
 ## What it cannot do is anything FMOD's timeline does: a lawn's music plays its
 ## first phase's loop and never escalates.
@@ -66,10 +68,8 @@ func _stream_for(event: AudioEvent) -> AudioStream:
 func _build(event: AudioEvent) -> AudioStream:
 	var clips: Array[AudioStream] = []
 	for path in event.streams:
-		if not ResourceLoader.exists(path):
-			continue
-		var clip = load(path)
-		if clip is AudioStream:
+		var clip := _read_clip(path)
+		if clip != null:
 			clips.append(_looped(clip) if event.loop else clip)
 	if clips.is_empty():
 		return null
@@ -83,8 +83,26 @@ func _build(event: AudioEvent) -> AudioStream:
 	return pick
 
 
-## A looping copy, leaving the imported resource as it was for anything else
-## that plays the same file once.
+## One clip decoded straight from its file, or null if it is missing, still
+## an LFS pointer, or not a format Godot can read at runtime.
+static func _read_clip(path: String) -> AudioStream:
+	if not FileAccess.file_exists(path):
+		return null
+	var bytes := FileAccess.get_file_as_bytes(path)
+	if bytes.size() < 200 and bytes.get_string_from_ascii().begins_with("version https://git-lfs"):
+		return null
+	match path.get_extension().to_lower():
+		"mp3":
+			return AudioStreamMP3.load_from_buffer(bytes)
+		"ogg":
+			return AudioStreamOggVorbis.load_from_buffer(bytes)
+		"wav":
+			return AudioStreamWAV.load_from_buffer(bytes)
+	return null
+
+
+## A looping copy. Clips are decoded per event, so this one is not shared, but
+## copying keeps it safe if that ever changes.
 func _looped(clip: AudioStream) -> AudioStream:
 	if not ("loop" in clip):
 		return clip
@@ -97,7 +115,7 @@ func can_play(event: AudioEvent) -> bool:
 	if _streams.get(event.id) != null:
 		return true
 	for path in event.streams:
-		if ResourceLoader.exists(path):
+		if FileAccess.file_exists(path):
 			return true
 	return false
 
