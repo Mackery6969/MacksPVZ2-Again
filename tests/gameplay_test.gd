@@ -75,6 +75,9 @@ func _run() -> void:
 	await _test_lawn_components()
 	await _test_natural_win_condition()
 	await _test_campaign_progression()
+	_test_settings()
+	_test_world_unlocks()
+	await _test_menu_flow()
 	_test_modding()
 
 
@@ -682,6 +685,169 @@ func _test_campaign_progression() -> void:
 	main.queue_free()
 
 
+func _test_settings() -> void:
+	section("settings")
+	var before := {}
+	for key in Settings.DEFAULTS:
+		before[key] = Settings.get_value(key)
+
+	Settings.set_value(&"music_volume", 0.25)
+	check_eq("a value is stored", Settings.get_value(&"music_volume"), 0.25)
+	Settings.set_value(&"fullscreen", 1.0)
+	check_eq("a slider value cannot retype a toggle",
+			typeof(Settings.get_value(&"fullscreen")), TYPE_BOOL)
+	Settings.set_value(&"no_such_option", 3)
+	check("unknown options are refused", Settings.get_value(&"no_such_option") == null)
+
+	Settings.load_settings()
+	check_eq("values survive a reload", Settings.get_value(&"music_volume"), 0.25)
+	Settings.reset_to_defaults()
+	check_eq("defaults restore", Settings.get_value(&"music_volume"),
+			Settings.DEFAULTS[&"music_volume"])
+
+	# The settings file belongs to whoever runs the tests; put it back.
+	for key in before:
+		Settings.set_value(key, before[key])
+	end_section()
+
+
+func _test_world_unlocks() -> void:
+	section("world unlocks")
+	var c := CampaignDef.from_dict({"id": "w", "levels": ["a", "b", "c"],
+			"order": 3, "unlock_after": "tutorial", "map_color": "#102030",
+			"description": "d"})
+	check_eq("order is read", c.order, 3)
+	check_eq("unlock_after is read", c.unlock_after, &"tutorial")
+	check_eq("map colour is read", c.map_color, Color.html("#102030"))
+
+	var done := {}
+	var cleared := func(id: StringName) -> bool: return done.has(id)
+	check("the first level is always open", c.is_level_unlocked(&"a", cleared))
+	check("the second waits for the first", not c.is_level_unlocked(&"b", cleared))
+	check_eq("next to play is the first", c.next_unplayed(cleared), &"a")
+	done[&"a"] = true
+	check("clearing opens the next", c.is_level_unlocked(&"b", cleared))
+	check("but not the one after", not c.is_level_unlocked(&"c", cleared))
+	check_eq("next to play moves on", c.next_unplayed(cleared), &"b")
+	check("not complete yet", not c.is_complete(cleared))
+	done[&"b"] = true
+	done[&"c"] = true
+	check("complete once all are cleared", c.is_complete(cleared))
+	check("unknown levels are never open", not c.is_level_unlocked(&"z", cleared))
+
+	var worlds := Data.world_campaigns()
+	check("the tutorial is on the map", worlds.any(
+			func(w: CampaignDef) -> bool: return w.id == &"tutorial"))
+	for i in range(1, worlds.size()):
+		check("worlds are in map order", worlds[i - 1].order <= worlds[i].order)
+
+	Saves.reset_progress()
+	var tutorial := Data.campaign(&"tutorial")
+	check("the tutorial world starts open", WorldMap.is_world_open(tutorial))
+	var neon := Data.campaign(&"neon")
+	if neon != null:
+		check("a gated world starts locked", not WorldMap.is_world_open(neon))
+		for level_id in tutorial.levels:
+			Saves.mark_cleared(level_id)
+		check("finishing its gate opens it", WorldMap.is_world_open(neon))
+		Saves.reset_progress()
+	end_section()
+
+
+## Drives the real shell: title -> map -> level -> pause -> map.
+func _test_menu_flow() -> void:
+	section("menu flow")
+	_clear_all_saves()
+	for action in ["Pause"]:
+		check("action '%s' exists" % action, InputMap.has_action(action))
+
+	var app: App = load("res://game/app.tscn").instantiate()
+	add_child(app)
+	await get_tree().process_frame
+	check("the app opens on the title", app.screen is MainMenu)
+	check("no Continue without a save",
+			app.screen.find_child("Continue", true, false) == null)
+
+	app.show_world_map()
+	await get_tree().process_frame
+	var map := app.screen as WorldMap
+	check("the map is shown", map != null)
+	if map == null:
+		app.queue_free()
+		end_section()
+		return
+	check_eq("it opens on the tutorial", map.current_world().id, &"tutorial")
+	check_eq("the first level is selected", map.selected_level(), &"tutorial_1")
+	check("level 1 is open", not map.level_button(&"tutorial_1").disabled)
+	check("level 2 is locked", map.level_button(&"tutorial_2").disabled)
+
+	# Clearing a level opens the next one on the map.
+	Saves.mark_cleared(&"tutorial_1")
+	app.show_world_map(&"tutorial")
+	await get_tree().process_frame
+	map = app.screen
+	check("clearing level 1 opens level 2", not map.level_button(&"tutorial_2").disabled)
+	check_eq("and selects it", map.selected_level(), &"tutorial_2")
+	check_eq("the cleared level is marked",
+			map.level_button(&"tutorial_1").get_meta(&"state"), &"cleared")
+
+	map._on_play()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var level = app.screen
+	check("choosing a level plays it", level != null and level.has_signal("exit_requested"))
+	check_eq("the chosen level runs", level._current_level, &"tutorial_2")
+	check("the level returns to the map", level.return_to_map)
+
+	# Escape drops a held seed before it pauses.
+	level.board.selected_seed = {"kind": &"plant", "id": &"peashooter", "slot": 0}
+	var esc := InputEventAction.new()
+	esc.action = &"Pause"
+	esc.pressed = true
+	level._unhandled_input(esc)
+	check("escape drops the held seed", level.board.selected_seed.is_empty())
+	check("without pausing", not get_tree().paused)
+	level._unhandled_input(esc)
+	check("escape with empty hands pauses", get_tree().paused)
+	check("the pause menu is open", level.pause_menu.is_open())
+	level.pause_menu.close()
+	check("resume unpauses", not get_tree().paused)
+
+	# Leaving mid-level saves it, and the map and title offer to resume.
+	level.pause_menu.open()
+	level.pause_menu._on_exit(&"map")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check("leaving unpauses", not get_tree().paused)
+	check("leaving returns to the map", app.screen is WorldMap)
+	check("leaving saves the run", Saves.has_save(&"tutorial_2"))
+	map = app.screen
+	check_eq("the map marks it in progress",
+			map.level_button(&"tutorial_2").get_meta(&"state"), &"saved")
+	check_eq("and offers to resume", map._play.text, "Resume")
+	check_eq("the title offers to continue it", MainMenu.latest_save(), &"tutorial_2")
+
+	# Winning goes back to the map with the next level open.
+	map._on_play()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	level = app.screen
+	level.level_transition_delay = 0.05
+	level._on_won()
+	check("no pausing during the result", not level.can_pause())
+	await _wait_game_seconds(0.4)
+	check("a win goes back to the map", app.screen is WorldMap)
+	check("the won level is cleared", Saves.is_cleared(&"tutorial_2"))
+	check("and its save retired", not Saves.has_save(&"tutorial_2"))
+	map = app.screen
+	check("level 3 is now open", not map.level_button(&"tutorial_3").disabled)
+
+	app.queue_free()
+	await get_tree().process_frame
+	_clear_all_saves()
+	end_section()
+
+
 func _test_seed_cooldowns() -> void:
 	print("\n[seed cooldowns]")
 	var bank := SeedBank.new()
@@ -1032,6 +1198,142 @@ func _test_audio() -> void:
 			missing.append(id)
 	check("every raised event is in the catalog", missing.is_empty(), str(missing))
 	print("        (%d distinct events raised by the game)" % raised.size())
+
+	# Wave cues are picked by a function, so the scan above cannot see them.
+	var cues := [LevelRunner.wave_sound(0, 5, false), LevelRunner.wave_sound(2, 5, false),
+			LevelRunner.wave_sound(2, 5, true), LevelRunner.wave_sound(4, 5, true)]
+	check_eq("wave cues follow PVZGE", cues,
+			[&"wave.first", &"wave.start", &"wave.huge", &"wave.final"])
+	for id in cues:
+		check("wave cue '%s' exists" % id, Audio.has_event(id))
+
+	_test_audio_streams()
+	_test_fmod_backend()
+
+
+## The Godot fallback's clips come from the generated streams.json.
+func _test_audio_streams() -> void:
+	var groans := Audio.catalog.get_event(&"zombie.spawn")
+	check("generated streams fill the catalog", groans.streams.size() > 1,
+			str(groans.streams))
+	check("streams point into the Music submodule",
+			groans.streams[0].begins_with("res://Music/Assets/"))
+	check("a lawn's music loops", Audio.catalog.get_event(&"music.lawn.tutorial").loop)
+	check("a victory cue does not", not Audio.catalog.get_event(&"music.victory.egypt").loop)
+	# A pack that replaces an event replaced its sound: the base clip must not
+	# come back under it.
+	check("a replaced event keeps none of the base streams",
+			Audio.catalog.get_event(&"plant.shoot").streams.is_empty())
+	for world in ["beach", "cowboy", "dark", "dino", "egypt", "eighties", "future",
+			"iceage", "kongfu", "lostcity", "modern", "pirate", "sky", "tutorial"]:
+		check("world '%s' has lawn music" % world,
+				Audio.has_event(StringName("music.lawn." + world)))
+
+	var godot: AudioBackend = load("res://core/audio/backends/godot_backend.gd").new()
+	godot.setup(Audio.catalog)
+	if DirAccess.dir_exists_absolute("res://Music/Assets"):
+		check("godot backend can play a groan", godot.can_play(groans))
+	check("godot backend cannot play what has no clips",
+			not godot.can_play(AudioEvent.from_dict({"id": "x.none"})))
+	godot.shutdown()
+
+
+## Drives the FMOD backend against a stand-in for FmodServer, so the calls it
+## makes are checked without FMOD installed.
+func _test_fmod_backend() -> void:
+	var server := FakeFmodServer.new()
+	var fmod: AudioBackend = load("res://core/audio/backends/fmod_backend.gd").new()
+	fmod.attach(server)
+	var shoot := AudioEvent.from_dict({"id": "t.shoot", "fmod": "event:/SFX/Plants/Shoot"})
+	var lawn := AudioEvent.from_dict({"id": "t.lawn", "fmod": "event:/Music/InGame/Egypt",
+			"music": true})
+	var lose := AudioEvent.from_dict({"id": "t.lose", "fmod": "event:/Music/InGame/Lose/Egypt",
+			"music": true})
+
+	fmod.play(shoot, Vector2(10, 20))
+	check_eq("an effect is a one-shot, position or not", server.one_shots,
+			["event:/SFX/Plants/Shoot"])
+
+	fmod.set_parameter(&"state", 1.0)
+	fmod.play_music(lawn)
+	check_eq("music is a held instance", server.instances.size(), 1)
+	var music: FakeFmodEvent = server.instances[0]
+	check("and it is started", music.started)
+	check_eq("with parameters set before it started", music.parameters.get("state"), 1.0)
+	fmod.play_music(lawn)
+	check_eq("the same cue again does not restart it", server.instances.size(), 1)
+	fmod.set_parameter(&"state", 3.0)
+	check_eq("a parameter reaches the playing music", music.parameters.get("state"), 3.0)
+	check_eq("and is set globally too", server.globals.get("state"), 3.0)
+
+	fmod.play_music(lose)
+	check("a new cue stops the old one", music.stopped and music.released)
+	fmod.stop_music()
+	check("stop_music stops what is playing", server.instances[1].stopped)
+
+	fmod.set_bus_volume(&"Music", 0.5)
+	check_eq("a bus is reached by path", server.buses.get("bus:/Music").volume, 0.5)
+	fmod.shutdown()
+
+
+class FakeFmodServer extends RefCounted:
+	var one_shots: Array = []
+	var instances: Array = []
+	var globals: Dictionary = {}
+	var buses: Dictionary = {}
+
+	func load_bank(_path: String, _flags: int) -> Object:
+		return null
+
+	func play_one_shot(path: String) -> void:
+		one_shots.append(path)
+
+	func create_event_instance(path: String) -> Object:
+		var e := FakeFmodEvent.new()
+		e.path = path
+		instances.append(e)
+		return e
+
+	func set_global_parameter_by_name(name: String, value: float) -> void:
+		globals[name] = value
+
+	func check_bus_path(_path: String) -> bool:
+		return true
+
+	func get_bus(path: String) -> Object:
+		if not buses.has(path):
+			buses[path] = FakeFmodBus.new()
+		return buses[path]
+
+	func update() -> void:
+		pass
+
+
+class FakeFmodEvent extends RefCounted:
+	var path: String
+	var started := false
+	var stopped := false
+	var released := false
+	var parameters: Dictionary = {}
+
+	func is_valid() -> bool:
+		return not released
+
+	func start() -> void:
+		started = true
+
+	func stop(_mode: int) -> void:
+		stopped = true
+
+	func release() -> void:
+		released = true
+
+	func set_parameter_by_name(name: String, value: float) -> void:
+		parameters[name] = value
+
+
+class FakeFmodBus extends RefCounted:
+	var volume: float = 1.0
 
 
 ## Objectives are the level's win/lose rules. The default keeps old levels
@@ -1805,6 +2107,20 @@ func _test_art() -> void:
 		# The rig is drawn walking toward the house already, so a hostile
 		# zombie is NOT mirrored; a charmed one is.
 		check("a hostile zombie is not mirrored", z.art.facing == 1)
+		# A hand hidden at rest stays hidden until an animation shows it.
+		var spare: Node2D = z.art.get_node_or_null(^"hand_side_HAND")
+		check("the spare eating hand starts invisible",
+				spare != null and spare.modulate.a < 0.01)
+		await get_tree().process_frame
+		var stride := z.art.ground_speed(&"Walk")
+		check("the walk plays at the pace the zombie moves",
+				stride > 0.0 and is_equal_approx(z.art.speed_scale(),
+						z.current_speed() * board.cell_size.x / stride),
+				"%.3f" % z.art.speed_scale())
+		z.apply_stun(0.5)
+		await get_tree().process_frame
+		check_eq("and stops dead when stunned", z.art.speed_scale(), 0.0)
+		await _wait_game_seconds(0.6)
 		z.charm()
 		check("a charmed one is", z.art.facing == -1)
 		z.set_allegiance(Zombie.Allegiance.HOSTILE)
@@ -1816,7 +2132,7 @@ func _test_art() -> void:
 	# Acting changes what a plant is doing, and it goes back to idling after.
 	# The component says what happened; it never names an animation.
 	if pea != null and pea.art != null and pea.art.has_animation(&"Shoot"):
-		var idle_name: StringName = pea.art.playing
+		var idle_name: StringName = Art.animation_for(&"plant", &"peashooter", &"idle")
 		board.spawn_zombie(&"tutorial", 2)
 		await _wait_game_seconds(2.0)
 		check("firing changed the animation or returned to idle",
@@ -1836,6 +2152,32 @@ func _test_art() -> void:
 				absf(walk.length - 3.0) < 0.1, "%f" % walk.length)
 	check("baking happens once per rig",
 			rig.animations(&"BasicZombie") == library)
+
+	# The rig's limbs are posed by IK, and its slots animate as well as move.
+	var baker := rig.rig(&"BasicZombie")
+	check_eq("the zombie's legs and arms are IK chains", baker.iks.size(), 4)
+	if walk != null:
+		check("a walk says how fast it was drawn to travel",
+				float(walk.get_meta(&"ground_speed", 0.0)) > 10.0)
+		check("and keys which foot picture shows",
+				walk.find_track(NodePath("foot_there/0:visible"), Animation.TYPE_VALUE) >= 0)
+	var eat: Animation = library.get_animation(&"Eat")
+	if walk != null and eat != null:
+		# Every animation keys every moving part, so none inherits the pose
+		# the last one left behind - eating arms carried into the walk.
+		check("walk keys the same parts eating moves",
+				walk.find_track(NodePath("hand_here_HAND:position"), Animation.TYPE_VALUE) >= 0
+				and eat.find_track(NodePath("hand_here_HAND:position"), Animation.TYPE_VALUE) >= 0)
+		check("and fades the eating hands in and out",
+				eat.find_track(NodePath("hand_side_HAND:modulate"), Animation.TYPE_VALUE) >= 0)
+	var turns := baker._rotation_timeline([
+		{"duration": 5, "rotate": 170.0}, {"duration": 0, "rotate": -170.0}])
+	check_eq("a key past the seam turns the short way",
+			float(turns[1]["value"]), 190.0)
+	var spun := baker._rotation_timeline([
+		{"duration": 5, "rotate": 0.0, "clockwise": 1}, {"duration": 0, "rotate": -10.0}])
+	check_eq("unless the rig says to go round the long way",
+			float(spun[1]["value"]), 350.0)
 
 	# A rig says when it acts, and where from.
 	if pea != null and pea.art != null:

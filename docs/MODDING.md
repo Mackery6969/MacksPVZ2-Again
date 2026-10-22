@@ -579,8 +579,9 @@ them, and `SunValue` / `plantfood_count` on a grave pay out when it breaks.
 
 ## Campaigns
 
-A campaign is an ordered list of levels. Clearing one loads the next; failing
-one repeats it. Finishing the last shows the completion message.
+A campaign is an ordered list of levels, and each campaign is one world on
+the world map. Levels open one at a time as the one before is cleared; winning
+returns to the map, failing repeats the level.
 
 ```json
 {
@@ -603,9 +604,31 @@ existing one by reusing its id to splice levels in:
 }
 ```
 
-A level does not have to belong to a campaign. Setting `start_level` on the
-main scene jumps straight to one, which is useful while building it; if that
-level is in a campaign, progression continues from there.
+These optional fields place the world on the map:
+
+| field | meaning |
+|---|---|
+| `order` | position among worlds, lowest first (default 0) |
+| `unlock_after` | campaign id that must be finished first; empty means open from the start. Naming a campaign whose mod is off leaves the world open |
+| `description` | line shown under the world's name |
+| `map_color` | page tint, as `"#rrggbb"`, until the map has art |
+| `hidden` | keep it off the map (reachable only by id) |
+
+```json
+{
+ "id": "neon",
+ "name": "Neon District",
+ "order": 10,
+ "unlock_after": "tutorial",
+ "map_color": "#6a3a8c",
+ "levels": ["neon_1", "airspace_1"]
+}
+```
+
+A level does not have to belong to a campaign. Opening `game/main.tscn` on its
+own (F6) and setting `start_level` jumps straight to one, which is useful while
+building it; run that way, clearing a level plays straight on to the next
+instead of going back to the map.
 
 ## Plant food
 
