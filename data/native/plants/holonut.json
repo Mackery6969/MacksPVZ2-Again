@@ -8,6 +8,13 @@
   "cooldown_from": 0.667,
   "beghouled_cost": 1500
  },
+ "components": [
+  {
+   "type": "regrower",
+   "regen_delay": 15,
+   "revive_delay": 15
+  }
+ ],
  "mint_boost": {
   "resistance": 4,
   "speed": 3,
@@ -15,8 +22,6 @@
  },
  "extra": {
   "CallsElectricCurrant": true,
-  "CallsMirrorNutsOnDamaged": true,
-  "DelayBeforeRecoverFromDeath": 15,
-  "DelayBeforeRegenFromDamage": 15
+  "CallsMirrorNutsOnDamaged": true
  }
 }

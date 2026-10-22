@@ -60,6 +60,7 @@ func _run() -> void:
 	await _test_reactive_plants()
 	await _test_lawn_support_plants()
 	await _test_shooting_plants()
+	await _test_defence_plants()
 	await _test_zombie_status_effects()
 	_test_zombie_behaviour_coverage()
 	_test_zombie_archetypes()
@@ -1875,6 +1876,137 @@ func _test_shooting_plants() -> void:
 	await _wait_game_seconds(1.5)
 	check("the bulb hit the zombie", pin.health < pin.max_health)
 	board5.queue_free()
+	end_section()
+
+
+func _test_defence_plants() -> void:
+	section("defence plants")
+	var board := _make_board()
+
+	# Aloe heals the plant in front of it.
+	board.place_plant(&"aloe", 0, 1)
+	var patient := board.place_plant(&"wallnut", 0, 2)
+	patient.take_damage(300.0)
+	await _wait_game_seconds(1.2)
+	check("aloe healed the wall-nut in front of it", patient.max_health - patient.health < 300.0)
+
+	# Peach heals the 3x3 on a timer.
+	var peach := board.place_plant(&"peach", 2, 4)
+	peach.component(&"healer")._timer = 0.0
+	var hurt := board.place_plant(&"wallnut", 3, 5)
+	hurt.take_damage(200.0)
+	await _wait_game_seconds(0.2)
+	check("peach healed its neighbour", is_equal_approx(hurt.max_health - hurt.health, 50.0),
+			"missing %.0f" % (hurt.max_health - hurt.health))
+
+	# Lychee hits back every 100 health it loses.
+	var lychee := board.place_plant(&"lychee", 4, 3)
+	var biter := board.spawn_zombie_at(&"tutorial", 4, lychee.position.x + 20.0)
+	biter.speed = 0.0
+	lychee.take_damage(250.0, biter)
+	check_eq("lychee struck back twice", biter.max_health - biter.health, 40.0)
+	board.queue_free()
+
+	# Infi-nut lies flat when eaten down and grows back.
+	var board2 := _make_board()
+	var infi := board2.place_plant(&"holonut", 0, 3)
+	infi.take_damage(infi.max_health + 10.0)
+	check("infi-nut survives being eaten down", not infi.is_dead)
+	check("but lies flat, uneatable", infi.has_tag(&"uneatable"))
+	infi.component(&"regrower")._downed_left = 0.1
+	await _wait_game_seconds(0.3)
+	check("and springs back at full health", not infi.has_tag(&"uneatable")
+			and is_equal_approx(infi.health, infi.max_health))
+
+	# Murkadamia's jelly soaks and reflects while shadow powered.
+	var murk := board2.place_plant(&"murkadamia", 1, 3)
+	var eater := board2.spawn_zombie_at(&"tutorial", 1, murk.position.x + 20.0)
+	eater.speed = 0.0
+	eater.max_health = 2000.0
+	eater.health = 2000.0
+	murk.add_timed_tag(&"shadow_powered", 10.0)
+	murk.take_damage(400.0, eater)
+	check("murkadamia's jelly took the bite", is_equal_approx(murk.health, murk.max_health))
+	check_eq("and threw a quarter back", eater.max_health - eater.health, 100.0)
+
+	# Sweet potato lures a zombie in the next lane into its own.
+	var potato := board2.place_plant(&"sweetpotato", 3, 4)
+	var lured := board2.spawn_zombie_at(&"tutorial", 4, potato.position.x + 80.0)
+	lured.speed = 0.0
+	await _wait_game_seconds(0.2)
+	check_eq("sweet potato pulled the zombie into its lane", lured.row, 3)
+	board2.queue_free()
+
+	# Gumnut glues the zombie that walks up to it.
+	var board3 := _make_board()
+	var gum := board3.place_plant(&"gumnut", 0, 3)
+	var chewer := board3.spawn_zombie_at(&"tutorial", 0, gum.position.x + 50.0)
+	chewer.speed = 0.0
+	await _wait_game_seconds(0.2)
+	check("gumnut is spent", not is_instance_valid(gum) or gum.is_dead)
+	check("and the zombie is gummed", chewer.has_tag(&"gummed"))
+	var stuck_x := chewer.position.x
+	chewer.speed = 0.5
+	await _wait_game_seconds(1.0)
+	check("a gummed zombie stays put", is_equal_approx(chewer.position.x, stuck_x))
+
+	# Chard guard throws a zombie back down the lane.
+	var chard := board3.place_plant(&"chardguard", 1, 2)
+	var thrown := board3.spawn_zombie_at(&"tutorial", 1, chard.position.x + 40.0)
+	thrown.speed = 0.0
+	var thrown_x := thrown.position.x
+	await _wait_game_seconds(0.2)
+	check("chard guard threw the zombie back", thrown.position.x > thrown_x + 100.0)
+	check_eq("and used a fling", chard.component(&"bouncer").uses, 2)
+
+	# Vamporcini drains its neighbours and grows on it.
+	var vamp := board3.place_plant(&"vamporcini", 3, 4)
+	var drained := board3.spawn_zombie_at(&"tutorial", 3, vamp.position.x + 60.0)
+	drained.speed = 0.0
+	drained.max_health = 2000.0
+	drained.health = 2000.0
+	var vamp_max := vamp.max_health
+	await _wait_game_seconds(1.0)
+	check("vamporcini drained the zombie", drained.health < 2000.0)
+	check("and grew tougher", vamp.max_health > vamp_max)
+	board3.queue_free()
+
+	# Buttercup butters whatever eats it.
+	var board4 := _make_board()
+	var cup := board4.place_plant(&"buttercup", 0, 3)
+	var muncher := board4.spawn_zombie_at(&"tutorial", 0, cup.position.x)
+	muncher.max_health = 2000.0
+	muncher.health = 2000.0
+	await _wait_game_seconds(0.5)
+	check("buttercup stunned its eater", muncher.is_stunned())
+	check("and stung it", muncher.health <= 1900.0)
+
+	# Noctarine's cloud stings and fades.
+	var cloud := board4.place_plant(&"noctarine", 2, 4)
+	var stung := board4.spawn_zombie_at(&"tutorial", 3, cloud.position.x + 40.0)
+	stung.speed = 0.0
+	await _wait_game_seconds(0.3)
+	check("noctarine's cloud stung the next lane", stung.health < stung.max_health)
+	cloud.component(&"gas_cloud")._age = 100.0
+	await _wait_game_seconds(0.1)
+	check("and fades", not is_instance_valid(cloud) or cloud.is_dead)
+
+	# Zoybean pod grows charmed zombies.
+	var pod := board4.place_plant(&"zoybeanpod", 4, 1)
+	pod.component(&"zoy_grower")._timer = 0.0
+	await _wait_game_seconds(0.1)
+	check("zoybean pod grew a zombie on our side",
+			not board4.charmed_zombies_in_row(4).is_empty())
+
+	# Magnet-shroom pulls a bucket off.
+	var magnet := board4.place_plant(&"magnetshroom", 1, 3)
+	var bucket := board4.spawn_zombie_at(&"tutorial_armor2", 1, magnet.position.x + 120.0)
+	bucket.speed = 0.0
+	check("the bucket is metal", bucket.has_tag(&"metal"))
+	await _wait_game_seconds(0.2)
+	check("magnet-shroom took it", not bucket.has_tag(&"metal"))
+	check("and is resting", magnet.component(&"magnet")._rest_left > 0.0)
+	board4.queue_free()
 	end_section()
 
 

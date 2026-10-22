@@ -239,6 +239,18 @@
    "fmod": "event:/SFX/Plants/Revive"
   },
   {
+   "id": "plant.magnet",
+   "fmod": "event:/SFX/Plants/MagnetShroom"
+  },
+  {
+   "id": "plant.gum",
+   "fmod": "event:/SFX/Plants/Gumnut"
+  },
+  {
+   "id": "plant.butter",
+   "fmod": "event:/SFX/Plants/Buttercup"
+  },
+  {
    "id": "ui.chooseseeds.open",
    "fmod": "event:/SFX/UI/ChooseYourSeeds/Open"
   },

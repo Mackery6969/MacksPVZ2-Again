@@ -442,6 +442,12 @@ def _per_frame_to_squares(v):
     return round(v * 60 / PVZGE_SQUARE_PX, 3)
 
 
+def _weighted_ids(entries):
+    """PopCap's [{Type, Weight}] summon tables -> [{id, weight}]."""
+    return [{"id": strip_rtid(e["Type"]), "weight": e.get("Weight", 1)}
+            for e in entries]
+
+
 PLANT_BEHAVIOURS = {
     "squash": ("squash",
                {"SmashDamage": "damage", "SmashTime": "uses",
@@ -580,11 +586,67 @@ PLANT_BEHAVIOURS = {
     "bowlingbulb": ("bowler",
                     {"AmmoRefreshTime": "reload", "BowlingPlantfood": "projectile_plantfood"},
                     {"pierce": 3}),
+    "aloe": ("healer",
+             {"HealHPS": "hps", "HealingInterval": "interval",
+              "SelfQuringHealth": "self_heal", "HealHPSPlantfood": "plantfood_hps",
+              "PlantfoodLastingTime": "plantfood_duration"},
+             {"area": "ahead"}),
+    "peach": ("healer",
+              {"HealInterval": "interval", "HealthPerHeal": "amount",
+               "HealthPlantfoodHeal": "plantfood_heal"},
+              {"area": "around"}),
+    "lychee": ("retaliator",
+               {"DamagePerHit": "damage", "HealthBetweenHits": "health_between",
+                "DamagePerHitPlantfood": "plantfood_damage",
+                "HealthBetweenHitsPlantfood": "plantfood_health_between",
+                "PlantfoodDamageReceiveMult": "plantfood_damage_taken"},
+               {"radius": 1.5}),
+    "holonut": ("regrower",
+                {"DelayBeforeRegenFromDamage": "regen_delay",
+                 "DelayBeforeRecoverFromDeath": "revive_delay"}, {}),
+    "murkadamia": ("jelly_shield",
+                   {"JellyToughness": "toughness", "JellyInitialPct": "initial",
+                    "FoeEatDamageReflectPct": "reflect", "JellyCooldown": "cooldown",
+                    "JellyRecoveryHPS": "regen_hps"}, {}),
+    "sweetpotato": ("attractor",
+                    {"TimeBetweenLaneChanges": "interval", "NormalAttractWidth": "width",
+                     "PlantfoodAttractWidth": "plantfood_width",
+                     "PlantFoodDurationSeconds": "plantfood_duration"}, {}),
+    "gumnut": ("gummer",
+               {"BaseGumHealth": "gum_health", "ZombieGumHealthMult": "health_mult"},
+               {"reach": 1.0, "radius": 1.0}),
+    "chardguard": ("bouncer",
+                   {"BounceDistance": "distance", "MaxBounceTime": "uses"},
+                   {"reach": 1.7}),
+    "vamporcini": ("drainer",
+                   {"DPS": "dps", "AttackDuration": "duration",
+                    "MaxToughness": "max_toughness", "DPSPlantfood": "plantfood_dps",
+                    "AttackDurationPlantfood": "plantfood_duration"},
+                   {"radius": 1.5}),
+    "buttercup": ("butterer",
+                  {"ButterDamage": "damage", "ButterDuration": "duration",
+                   "ButterThrowInterval": "interval",
+                   "ButterDamagePlantfood": "plantfood_damage"}, {}),
+    "noctarine": ("gas_cloud",
+                  {"NormalAttackDamage": "damage", "NormalAttackInterval": "interval",
+                   "NormalLifespan": "lifespan", "ShadowAttackDamage": "powered_damage",
+                   "ShadowAttackInterval": "powered_interval",
+                   "ShadowLifespan": "powered_lifespan"},
+                  {"radius": 1.5, "powered_slow": 0.5}),
+    "zoybeanpod": ("zoy_grower",
+                   {"GrowthInterval": ("interval", lambda v: v["Min"]),
+                    "SummonType": ("summons", lambda v: _weighted_ids(v)),
+                    "SummonTypePlantfood": ("plantfood_summons",
+                                            lambda v: _weighted_ids(v))}, {}),
+    "magnetshroom": ("magnet",
+                     {"RestTime": "rest", "PlantfoodThrowDamage": "plantfood_damage"},
+                     {"reach": 3.5, "rows": 1}),
 }
 
 # Fields a behaviour reads that a plain field map cannot express, kept so
 # they are not left in `extra` once consumed.
 PLANT_BEHAVIOUR_EXTRAS = {
+    "zoybeanpod": {"GrowthInterval": ("interval_max", lambda v: v["Max"])},
     "solarsage": {"EnlightenProduceInterval": ("produce_interval_max",
                                                lambda v: v["Max"])},
 }
