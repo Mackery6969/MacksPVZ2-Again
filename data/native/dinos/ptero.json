@@ -1,0 +1,12 @@
+{
+ "id": "ptero",
+ "//": "Perches at the right edge, then swoops to carry a zombie toward the house. From PVZGE's DinosaurProperties.",
+ "behaviour": "carry",
+ "idle_column": 8.5,
+ "grab_from_column": 5,
+ "flights": 3,
+ "carry": 1,
+ "drop_column": 0,
+ "flight_interval": 5,
+ "max_time": 40
+}

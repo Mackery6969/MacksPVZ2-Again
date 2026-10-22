@@ -10,6 +10,12 @@ const VALUE := 50
 @export var glow_color: Color = Color("ffee8a")
 
 
+func art_id() -> StringName:
+	return &"sun"
+
+
 func _draw() -> void:
+	if art != null:
+		return
 	draw_circle(Vector2.ZERO, radius, core_color)
 	draw_circle(Vector2.ZERO, radius * 0.62, glow_color)

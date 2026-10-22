@@ -1,0 +1,26 @@
+{
+ "id": "egypt_2",
+ "world": "egypt",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "explorer",
+   "weight": 1
+  },
+  {
+   "type": "explorer",
+   "weight": 1
+  },
+  {
+   "type": "explorer",
+   "weight": 1
+  }
+ ]
+}

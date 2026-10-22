@@ -29,6 +29,8 @@ var levels: Dictionary = {}       ## StringName -> Dictionary (raw)
 var campaigns: Dictionary = {}    ## StringName -> CampaignDef
 var lawns: Dictionary = {}        ## StringName -> Dictionary (raw)
 var speakers: Dictionary = {}     ## StringName -> Dictionary (raw)
+var dinos: Dictionary = {}        ## StringName -> Dictionary (raw)
+var portals: Dictionary = {}      ## StringName -> Dictionary (raw)
 
 var _mod_order: Array[StringName] = [&"base"]
 var _errors: Array[String] = []
@@ -40,7 +42,7 @@ func _ready() -> void:
 
 func load_all() -> void:
 	for pool in [zombies, plants, projectiles, armors, graves, objects,
-			archetypes, levels, campaigns, lawns, speakers]:
+			archetypes, levels, campaigns, lawns, speakers, dinos, portals]:
 		pool.clear()
 	_errors.clear()
 	_mod_order = [&"base"]
@@ -79,6 +81,8 @@ func _load_source(root: String, mod: StringName) -> void:
 	_load_dir(root.path_join("levels"), levels, mod)
 	_load_dir(root.path_join("lawns"), lawns, mod)
 	_load_dir(root.path_join("speakers"), speakers, mod)
+	_load_dir(root.path_join("dinos"), dinos, mod)
+	_load_dir(root.path_join("portals"), portals, mod)
 	_load_campaigns(root.path_join("campaigns"), mod)
 
 
@@ -352,8 +356,32 @@ func lawn(id: StringName) -> Dictionary:
 	return lawns.get(id, {})
 
 
+## A dinosaur a wave can call in: which behaviour it has and its numbers.
+func dino(id: StringName) -> Dictionary:
+	return dinos.get(id, {})
+
+
+## A shared portal: which zombies come through it and how often. Levels may
+## also define their own inline.
+func portal(id: StringName) -> Dictionary:
+	return portals.get(id, {})
+
+
 func campaign(id: StringName) -> CampaignDef:
 	return campaigns.get(id)
+
+
+## Campaigns shown on the world map, in map order.
+func world_campaigns() -> Array[CampaignDef]:
+	var out: Array[CampaignDef] = []
+	for cid in campaigns:
+		var c: CampaignDef = campaigns[cid]
+		if not c.hidden and not c.levels.is_empty():
+			out.append(c)
+	out.sort_custom(func(a: CampaignDef, b: CampaignDef) -> bool:
+		return a.order < b.order if a.order != b.order \
+				else String(a.id) < String(b.id))
+	return out
 
 
 ## The campaign a level belongs to, or null if it is standalone.

@@ -1,0 +1,30 @@
+{
+ "id": "egypt",
+ "world": "egypt",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "ra",
+   "weight": 1
+  },
+  {
+   "type": "tomb_raiser",
+   "weight": 1
+  },
+  {
+   "type": "tomb_raiser",
+   "weight": 1
+  },
+  {
+   "type": "pharaoh",
+   "weight": 1
+  }
+ ]
+}

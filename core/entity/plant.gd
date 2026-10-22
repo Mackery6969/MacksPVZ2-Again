@@ -43,7 +43,8 @@ var _damage_state: StringName = &"idle"
 
 
 func _on_initialized() -> void:
-	play_art(&"idle")
+	if play_art(&"idle"):
+		art.seek_fraction(randf())
 	damaged.connect(_on_damaged)
 	_color = fallback_color
 	for tag in FAMILY_COLORS:
