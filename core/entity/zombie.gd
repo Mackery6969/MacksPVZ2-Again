@@ -47,6 +47,10 @@ var movement_claimed: bool = false
 var chill_override: float = 0.0
 
 var _eat_accumulator: float = 0.0
+## Counts down to the next chew sound while eating. PVZGE spaces its chews
+## out the same way, so a row of zombies on one plant is not a drum roll.
+var _chew_timer: float = 0.0
+const CHEW_INTERVAL := 0.6
 ## Status effects, as remaining seconds. A slow also stores its factor so the
 ## original speed can be restored exactly rather than approximately.
 var _stun_left: float = 0.0
@@ -280,6 +284,7 @@ func _walk(delta: float) -> void:
 	if ahead != null:
 		target = ahead
 		_eat_accumulator = 0.0
+		_chew_timer = 0.0
 
 	if is_charmed():
 		# A charmed zombie that walks off the lawn has done its job.
@@ -322,6 +327,10 @@ func _can_eat(plant: Plant) -> bool:
 func _attack(delta: float) -> void:
 	if attack_claimed:
 		return
+	_chew_timer -= delta
+	if _chew_timer <= 0.0:
+		_chew_timer = CHEW_INTERVAL
+		Audio.play(&"zombie.eat", position)
 	_eat_accumulator += eat_dps * delta
 	var whole := floorf(_eat_accumulator)
 	if whole >= 1.0:

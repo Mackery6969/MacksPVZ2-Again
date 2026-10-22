@@ -8,8 +8,14 @@ extends Resource
 @export var id: StringName = &""
 ## FMOD Studio event path, e.g. "event:/Plants/Place".
 @export var fmod_path: String = ""
-## Godot fallback stream, used while FMOD is not installed.
-@export var stream_path: String = ""
+## Godot fallback streams, used while FMOD is not installed. One is played
+## as is; several are picked from at random, the way FMOD's multi instrument
+## picks a variation. Usually filled from the pack's generated
+## `audio/streams.json` rather than written by hand.
+@export var streams: PackedStringArray = []
+## Whether the Godot fallback loops this event. FMOD ignores it: there, the
+## event's own loop region decides.
+@export var loop: bool = false
 ## Whether this cue is exclusive: starting it stops whatever was playing in
 ## the same slot, which is what separates a stage loop from a sound effect.
 ## It says nothing about how loud anything is - routing and level belong to
@@ -29,7 +35,9 @@ static func from_dict(d: Dictionary) -> AudioEvent:
 	var e := AudioEvent.new()
 	e.id = StringName(d.get("id", &""))
 	e.fmod_path = String(d.get("fmod", ""))
-	e.stream_path = String(d.get("stream", ""))
+	var stream = d.get("stream", [])
+	e.streams = PackedStringArray([stream] if stream is String else stream)
+	e.loop = bool(d.get("loop", false))
 	e.is_music = bool(d.get("music", false))
 	e.volume = float(d.get("volume", 1.0))
 	e.bus = StringName(d.get("bus", &""))
@@ -37,4 +45,4 @@ static func from_dict(d: Dictionary) -> AudioEvent:
 
 
 func _to_string() -> String:
-	return "AudioEvent(%s -> %s)" % [id, fmod_path if fmod_path else stream_path]
+	return "AudioEvent(%s -> %s)" % [id, fmod_path if fmod_path else ", ".join(streams)]

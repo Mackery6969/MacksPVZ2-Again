@@ -1032,6 +1032,142 @@ func _test_audio() -> void:
 	check("every raised event is in the catalog", missing.is_empty(), str(missing))
 	print("        (%d distinct events raised by the game)" % raised.size())
 
+	# Wave cues are picked by a function, so the scan above cannot see them.
+	var cues := [LevelRunner.wave_sound(0, 5, false), LevelRunner.wave_sound(2, 5, false),
+			LevelRunner.wave_sound(2, 5, true), LevelRunner.wave_sound(4, 5, true)]
+	check_eq("wave cues follow PVZGE", cues,
+			[&"wave.first", &"wave.start", &"wave.huge", &"wave.final"])
+	for id in cues:
+		check("wave cue '%s' exists" % id, Audio.has_event(id))
+
+	_test_audio_streams()
+	_test_fmod_backend()
+
+
+## The Godot fallback's clips come from the generated streams.json.
+func _test_audio_streams() -> void:
+	var groans := Audio.catalog.get_event(&"zombie.spawn")
+	check("generated streams fill the catalog", groans.streams.size() > 1,
+			str(groans.streams))
+	check("streams point into the Music submodule",
+			groans.streams[0].begins_with("res://Music/Assets/"))
+	check("a lawn's music loops", Audio.catalog.get_event(&"music.lawn.tutorial").loop)
+	check("a victory cue does not", not Audio.catalog.get_event(&"music.victory.egypt").loop)
+	# A pack that replaces an event replaced its sound: the base clip must not
+	# come back under it.
+	check("a replaced event keeps none of the base streams",
+			Audio.catalog.get_event(&"plant.shoot").streams.is_empty())
+	for world in ["beach", "cowboy", "dark", "dino", "egypt", "eighties", "future",
+			"iceage", "kongfu", "lostcity", "modern", "pirate", "sky", "tutorial"]:
+		check("world '%s' has lawn music" % world,
+				Audio.has_event(StringName("music.lawn." + world)))
+
+	var godot: AudioBackend = load("res://core/audio/backends/godot_backend.gd").new()
+	godot.setup(Audio.catalog)
+	if DirAccess.dir_exists_absolute("res://Music/Assets"):
+		check("godot backend can play a groan", godot.can_play(groans))
+	check("godot backend cannot play what has no clips",
+			not godot.can_play(AudioEvent.from_dict({"id": "x.none"})))
+	godot.shutdown()
+
+
+## Drives the FMOD backend against a stand-in for FmodServer, so the calls it
+## makes are checked without FMOD installed.
+func _test_fmod_backend() -> void:
+	var server := FakeFmodServer.new()
+	var fmod: AudioBackend = load("res://core/audio/backends/fmod_backend.gd").new()
+	fmod.attach(server)
+	var shoot := AudioEvent.from_dict({"id": "t.shoot", "fmod": "event:/SFX/Plants/Shoot"})
+	var lawn := AudioEvent.from_dict({"id": "t.lawn", "fmod": "event:/Music/InGame/Egypt",
+			"music": true})
+	var lose := AudioEvent.from_dict({"id": "t.lose", "fmod": "event:/Music/InGame/Lose/Egypt",
+			"music": true})
+
+	fmod.play(shoot, Vector2(10, 20))
+	check_eq("an effect is a one-shot, position or not", server.one_shots,
+			["event:/SFX/Plants/Shoot"])
+
+	fmod.set_parameter(&"state", 1.0)
+	fmod.play_music(lawn)
+	check_eq("music is a held instance", server.instances.size(), 1)
+	var music: FakeFmodEvent = server.instances[0]
+	check("and it is started", music.started)
+	check_eq("with parameters set before it started", music.parameters.get("state"), 1.0)
+	fmod.play_music(lawn)
+	check_eq("the same cue again does not restart it", server.instances.size(), 1)
+	fmod.set_parameter(&"state", 3.0)
+	check_eq("a parameter reaches the playing music", music.parameters.get("state"), 3.0)
+	check_eq("and is set globally too", server.globals.get("state"), 3.0)
+
+	fmod.play_music(lose)
+	check("a new cue stops the old one", music.stopped and music.released)
+	fmod.stop_music()
+	check("stop_music stops what is playing", server.instances[1].stopped)
+
+	fmod.set_bus_volume(&"Music", 0.5)
+	check_eq("a bus is reached by path", server.buses.get("bus:/Music").volume, 0.5)
+	fmod.shutdown()
+
+
+class FakeFmodServer extends RefCounted:
+	var one_shots: Array = []
+	var instances: Array = []
+	var globals: Dictionary = {}
+	var buses: Dictionary = {}
+
+	func load_bank(_path: String, _flags: int) -> Object:
+		return null
+
+	func play_one_shot(path: String) -> void:
+		one_shots.append(path)
+
+	func create_event_instance(path: String) -> Object:
+		var e := FakeFmodEvent.new()
+		e.path = path
+		instances.append(e)
+		return e
+
+	func set_global_parameter_by_name(name: String, value: float) -> void:
+		globals[name] = value
+
+	func check_bus_path(_path: String) -> bool:
+		return true
+
+	func get_bus(path: String) -> Object:
+		if not buses.has(path):
+			buses[path] = FakeFmodBus.new()
+		return buses[path]
+
+	func update() -> void:
+		pass
+
+
+class FakeFmodEvent extends RefCounted:
+	var path: String
+	var started := false
+	var stopped := false
+	var released := false
+	var parameters: Dictionary = {}
+
+	func is_valid() -> bool:
+		return not released
+
+	func start() -> void:
+		started = true
+
+	func stop(_mode: int) -> void:
+		stopped = true
+
+	func release() -> void:
+		released = true
+
+	func set_parameter_by_name(name: String, value: float) -> void:
+		parameters[name] = value
+
+
+class FakeFmodBus extends RefCounted:
+	var volume: float = 1.0
+
 
 ## Objectives are the level's win/lose rules. The default keeps old levels
 ## working; the rest are selectable from data.
