@@ -51,6 +51,9 @@ MUSIC_MAP = os.path.join(ROOT, "data", "native", "audio", "music_map.json")
 CATALOG = os.path.join(ROOT, "data", "native", "audio", "events.json")
 STREAM_ROOT = "res://Music/Assets/"
 STATE_PARAMETER = "state"
+# Top-level event folder -> the bus its events feed. The game's settings
+# screen sets volume on these by name, so they are part of the contract.
+BUSES = {"Music": "Music", "SFX": "SFX"}
 
 # Properties Studio writes into an event only once someone has tuned it.
 HAND_TUNED = {"volume", "pitch", "startOffset", "maxVoices", "voiceStealing",
@@ -95,6 +98,12 @@ class Project:
         master = open(os.path.join(meta, "Master.xml"), encoding="utf-8").read()
         self.model = re.search(r'serializationModel="([^"]+)"', master).group(1)
         self.master_bus = re.search(r'class="MixerMaster" id="(\{[^}]+\})"', master).group(1)
+
+        self.groups = {}         # bus name -> MixerGroup id
+        for f in glob.glob(os.path.join(meta, "Group", "*.xml")):
+            for o in ET.parse(f).getroot().iter("object"):
+                if o.get("class") == "MixerGroup":
+                    self.groups[_prop(o, "name")] = o.get("id")
 
         self.folders = {}        # id -> (name, parent)
         self.master_folder = None
@@ -219,7 +228,7 @@ def rel(o, name, *dests):
     return r
 
 
-def mixer_bits(doc, master_bus):
+def mixer_bits(doc, output):
     """The routing every event has: input -> master bus, and its own master."""
     mixer, emm, minput = guid(), guid(), guid()
     doc.obj("EventMixer", mixer).append(_r("masterBus", emm))
@@ -227,7 +236,7 @@ def mixer_bits(doc, master_bus):
     chain_in, pan_in = _chain(doc), guid()
     rel(mi, "effectChain", chain_in)
     rel(mi, "panner", pan_in)
-    rel(mi, "output", master_bus)
+    rel(mi, "output", output)
     doc.obj("MixerBusPanner", pan_in)
     m = doc.obj("EventMixerMaster", emm)
     chain_m, pan_m = _chain(doc), guid()
@@ -257,11 +266,16 @@ def event_head(doc, eid, name, folder):
     return e
 
 
-def action_sheet_event(proj, eid, name, folder, bank, clips):
+def bus_for(proj, path):
+    """The mixer bus an event at `path` feeds: Music or SFX, by top folder."""
+    return proj.groups.get(BUSES.get(path.split("/")[0]), proj.master_bus)
+
+
+def action_sheet_event(proj, path, eid, name, folder, bank, clips):
     """A one-shot: action sheet -> multi instrument -> the clip(s)."""
     doc = Doc(proj.model)
     e = event_head(doc, eid, name, folder)
-    mixer, emm, minput = mixer_bits(doc, proj.master_bus)
+    mixer, emm, minput = mixer_bits(doc, bus_for(proj, path))
     track, props, marker, timeline, sheet, outer = (guid() for _ in range(6))
     for r, d in (("mixer", mixer), ("masterTrack", track), ("mixerInput", minput),
                  ("automatableProperties", props), ("markerTracks", marker),
@@ -290,12 +304,12 @@ def action_sheet_event(proj, eid, name, folder, bank, clips):
     return doc
 
 
-def timeline_event(proj, eid, name, folder, bank, segments):
+def timeline_event(proj, path, eid, name, folder, bank, segments):
     """A timeline laid out from `segments`, each
     {clip, start, loop: bool, region: (pos, len, name, state|None) | None}."""
     doc = Doc(proj.model)
     e = event_head(doc, eid, name, folder)
-    mixer, emm, minput = mixer_bits(doc, proj.master_bus)
+    mixer, emm, minput = mixer_bits(doc, bus_for(proj, path))
     track, props, timeline, group, mgroup = (guid() for _ in range(5))
     loops_track, magnets_track = guid(), guid()
     for r, d in (("mixer", mixer), ("masterTrack", track), ("mixerInput", minput),
@@ -452,6 +466,12 @@ def existing_state(path):
     return ev.get("id"), _rel(ev, "folder"), _rel(ev, "banks"), tuned
 
 
+def _clips_of(path):
+    """The AudioFile ids an event's sounds play."""
+    root = ET.parse(path).getroot()
+    return {_rel(o, "audioFile") for o in root if o.get("class") == "SingleSound"}
+
+
 def assign_bank(path, bank):
     text = open(path, encoding="utf-8").read()
     if '<relationship name="banks">' in text:
@@ -463,6 +483,53 @@ def assign_bank(path, bank):
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(text)
     return True
+
+
+def ensure_buses(proj, dry):
+    """Creates the Music and SFX buses under the master bus if missing."""
+    made = []
+    for name in sorted(set(BUSES.values())):
+        if name in proj.groups:
+            continue
+        gid, chain, fader, pan = guid(), guid(), guid(), guid()
+        proj.groups[name] = gid
+        made.append(name)
+        if dry:
+            continue
+        doc = Doc(proj.model)
+        g = doc.obj("MixerGroup", gid, name=name)
+        rel(g, "effectChain", chain)
+        rel(g, "panner", pan)
+        rel(g, "output", proj.master_bus)
+        rel(doc.obj("MixerBusEffectChain", chain), "effects", fader)
+        doc.obj("MixerBusPanner", pan)
+        doc.obj("MixerBusFader", fader)
+        os.makedirs(os.path.join(proj.meta, "Group"), exist_ok=True)
+        doc.write(os.path.join(proj.meta, "Group", "%s.xml" % gid))
+    for name in made:
+        print("   bus      %s" % name)
+    return made
+
+
+def route_events(proj, dry):
+    """Points every event that feeds the master bus directly at its bus.
+    An event already routed somewhere else was routed on purpose; it stays."""
+    moved = 0
+    for path, f in sorted(proj.events.items()):
+        bus = bus_for(proj, path)
+        if bus == proj.master_bus:
+            continue
+        text = open(f, encoding="utf-8").read()
+        m = re.search(r'(<object class="MixerInput" id="\{[^}]+\}">.*?<relationship name="output">'
+                      r'\s*<destination>)(\{[^}]+\})', text, re.S)
+        if not m or m.group(2) != proj.master_bus:
+            continue
+        moved += 1
+        if not dry:
+            text = text[:m.start(2)] + bus + text[m.end(2):]
+            with open(f, "w", encoding="utf-8", newline="\n") as fh:
+                fh.write(text)
+    print("%s %d events onto the Music and SFX buses" % ("would route" if dry else "routed", moved))
 
 
 def apply(proj, work, dry):
@@ -496,6 +563,9 @@ def apply(proj, work, dry):
                 continue
             bank = old_bank or bank
             target = existing
+            if kind == "sfx" and _clips_of(existing) == {proj.audio[c][0] for c in payload}:
+                kept += 1
+                continue        # already exactly this; rebuilding only churns ids
         else:
             *dirs, _ = path.split("/")
             eid = guid()
@@ -504,14 +574,14 @@ def apply(proj, work, dry):
         name = path.split("/")[-1]
 
         if kind in ("sfx", "music_oneshot"):
-            doc = action_sheet_event(proj, eid, name, folder, bank, payload)
+            doc = action_sheet_event(proj, path, eid, name, folder, bank, payload)
             what = "%d clip%s" % (len(payload), "" if len(payload) == 1 else "s")
         elif kind == "music_loop":
             seg = [{"clip": payload[0], "start": 0.0, "loop": True}]
-            doc = timeline_event(proj, eid, name, folder, bank, seg)
+            doc = timeline_event(proj, path, eid, name, folder, bank, seg)
             what = "loop"
         else:
-            doc = timeline_event(proj, eid, name, folder, bank, payload)
+            doc = timeline_event(proj, path, eid, name, folder, bank, payload)
             what = "%d phases" % sum(1 for s in payload if s.get("loop"))
         print("   %-8s %-40s %s" % ("replace" if existing else "new", path, what))
         if not dry:
@@ -606,7 +676,10 @@ def main():
         print("!! %s" % e.args[0], file=sys.stderr)
         return 1
     print("project: %d events, %d clips" % (len(proj.events), len(proj.audio)))
-    apply(proj, work, "--dry-run" in sys.argv)
+    dry = "--dry-run" in sys.argv
+    ensure_buses(proj, dry)
+    apply(proj, work, dry)
+    route_events(proj, dry)
 
     missing = {k: v for k, v in catalog_ids(music_map).items()}
     have = {e["id"] for e in json.load(open(CATALOG, encoding="utf-8"))["events"]}
