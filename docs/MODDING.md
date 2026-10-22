@@ -480,6 +480,45 @@ and `--anim NAME --frames N` samples an animation rather than the setup pose.
 Use the animated form: a setup pose can look perfect while every animated
 frame is wrong, which is exactly how three rendering bugs got past review.
 
+### Lawns, mowers and the HUD
+
+The rest of what is drawn uses the same mapping files, under other kinds -
+see `data/native/art/scenery.json`:
+
+```json
+{
+ "lawn:TutorialStage": {
+  "bundle": "lawns_TutorialLAWN", "back": ["Lawn"], "front": ["Upper", "UpperThere"],
+  "open_rows": {"1": "row1", "3": "row3", "5": "row5"}, "mower": "mower_modern"
+ },
+ "mower:mower_modern": {
+  "bundle": "projectiles_ModernMowerPRJ", "armature": "Mower", "scale": 0.512,
+  "animations": {"idle": "Idle", "trigger": "Trans", "attack": "Attack"}
+ },
+ "collectable:sun": { "bundle": "rigs_SunAnimate", "armature": "Sun", "scale": 0.3,
+  "animations": {"idle": "Normal"} }
+}
+```
+
+A `lawn:<stage>` entry is keyed by the level's `stage`. Its `back` rigs draw
+under everything and its `front` rigs over the characters, both placed where
+PVZGE placed its lawn relative to the first cell, so the art's lanes line up
+with the board's. `open_rows` picks the sod animation by how many lanes are
+open, for the tutorial lawn's dirt rows. `mower:<id>` plays `trigger` in place
+until the rig says `switchingFalse`, then `attack` while it drives.
+`collectable:sun` and `collectable:plantfood` dress the pickups,
+`effect:plant_dirt` is the puff when a plant goes in or comes out, and the
+`hud:` entries are the sun counter, shovel, plant food slots and seed packet.
+`hud:` states can chain with `"after": {"collecting": "filled"}`, the way a
+DragonBones frame action does.
+
+These rigs are placed by hand - `scale` and `offset_x`/`offset_y` rather than
+`fit_height` - because their size comes from the original's own layout.
+
+Rigs that are not a named prefab (the sun, the HUD pieces, particles) come
+out by their DragonBones name with `tools/extract_rigs.py`; see
+`art/README.md`.
+
 ## Adding a level
 
 ```json
@@ -584,8 +623,9 @@ A `portal` names a shared portal from `data/native/portals` or gives its own
 
 ## Campaigns
 
-A campaign is an ordered list of levels. Clearing one loads the next; failing
-one repeats it. Finishing the last shows the completion message.
+A campaign is an ordered list of levels, and each campaign is one world on
+the world map. Levels open one at a time as the one before is cleared; winning
+returns to the map, failing repeats the level.
 
 ```json
 {
@@ -608,9 +648,31 @@ existing one by reusing its id to splice levels in:
 }
 ```
 
-A level does not have to belong to a campaign. Setting `start_level` on the
-main scene jumps straight to one, which is useful while building it; if that
-level is in a campaign, progression continues from there.
+These optional fields place the world on the map:
+
+| field | meaning |
+|---|---|
+| `order` | position among worlds, lowest first (default 0) |
+| `unlock_after` | campaign id that must be finished first; empty means open from the start. Naming a campaign whose mod is off leaves the world open |
+| `description` | line shown under the world's name |
+| `map_color` | page tint, as `"#rrggbb"`, until the map has art |
+| `hidden` | keep it off the map (reachable only by id) |
+
+```json
+{
+ "id": "neon",
+ "name": "Neon District",
+ "order": 10,
+ "unlock_after": "tutorial",
+ "map_color": "#6a3a8c",
+ "levels": ["neon_1", "airspace_1"]
+}
+```
+
+A level does not have to belong to a campaign. Opening `game/main.tscn` on its
+own (F6) and setting `start_level` jumps straight to one, which is useful while
+building it; run that way, clearing a level plays straight on to the next
+instead of going back to the map.
 
 ## Plant food
 

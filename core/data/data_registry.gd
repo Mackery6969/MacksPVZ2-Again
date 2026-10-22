@@ -371,6 +371,19 @@ func campaign(id: StringName) -> CampaignDef:
 	return campaigns.get(id)
 
 
+## Campaigns shown on the world map, in map order.
+func world_campaigns() -> Array[CampaignDef]:
+	var out: Array[CampaignDef] = []
+	for cid in campaigns:
+		var c: CampaignDef = campaigns[cid]
+		if not c.hidden and not c.levels.is_empty():
+			out.append(c)
+	out.sort_custom(func(a: CampaignDef, b: CampaignDef) -> bool:
+		return a.order < b.order if a.order != b.order \
+				else String(a.id) < String(b.id))
+	return out
+
+
 ## The campaign a level belongs to, or null if it is standalone.
 func campaign_for_level(level_id: StringName) -> CampaignDef:
 	for cid in campaigns:
