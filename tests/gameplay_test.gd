@@ -1242,6 +1242,13 @@ func _test_audio_streams() -> void:
 	godot.setup(Audio.catalog)
 	if DirAccess.dir_exists_absolute("res://Music/Assets"):
 		check("godot backend can play a groan", godot.can_play(groans))
+	# Music is .gdignored, so the clips are decoded from disk, not imported.
+	var groan_path: String = groans.streams[0]
+	var groan_bytes := FileAccess.get_file_as_bytes(groan_path)
+	if groan_bytes.size() > 200:
+		check("godot backend decodes a groan from disk", godot._stream_for(groans) != null)
+	elif FileAccess.file_exists(groan_path):
+		check("an LFS pointer decodes to nothing", godot._stream_for(groans) == null)
 	check("godot backend cannot play what has no clips",
 			not godot.can_play(AudioEvent.from_dict({"id": "x.none"})))
 	godot.shutdown()
