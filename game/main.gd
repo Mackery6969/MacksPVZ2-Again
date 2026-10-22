@@ -84,6 +84,7 @@ func _ready() -> void:
 	board.sun_changed.connect(_on_sun_changed)
 	board.plant_food_changed.connect(_on_plant_food_changed)
 	board.lawn_ability_changed.connect(_on_lawn_ability_changed)
+	board.shovel_used.connect(_refresh_mode_label)
 	board.level_lost.connect(_on_lost)
 	board.zombie_died.connect(_on_zombie_died)
 	runner.seedbank_ready.connect(_on_seedbank_ready)
@@ -96,6 +97,7 @@ func _ready() -> void:
 	print("[boot] ", Components.summary())
 	print("[boot] ", Mods.summary())
 	print("[boot] ", Audio.summary())
+	print("[boot] ", Art.summary())
 	print("[boot] ", Saves.summary())
 
 	_campaign = Data.campaign(campaign_id)

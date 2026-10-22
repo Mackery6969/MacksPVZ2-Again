@@ -30,8 +30,20 @@ signal collected(source: Collectable)
 ## Where a collected item flies to, in global coordinates. Set by the board.
 var collect_target := Vector2.ZERO
 var fall_to_y: float = 0.0
+## Pull on a tossed item, in pixels per second squared.
+var gravity: float = 0.0
+## Horizontal drift of a tossed item, and its upward speed, in pixels per
+## second.
+var toss_velocity := Vector2.ZERO
+## How far a tossed item is off the ground. It is drawn this far above
+## `fall_to_y` and lands when this reaches zero.
+var height: float = 0.0
+## Where a tossed item stays between, so a toss near the edge cannot carry it
+## off the lawn.
+var x_limits := Vector2(-INF, INF)
 
 var _falling: bool = true
+var _tossed: bool = false
 var _collected: bool = false
 ## The item's rig, when its art was extracted. Subclasses draw a placeholder
 ## only while this is null.
@@ -59,7 +71,9 @@ func _process(delta: float) -> void:
 	if _collected:
 		return
 
-	if _falling:
+	if _tossed:
+		_fly(delta)
+	elif _falling:
 		position.y = minf(position.y + fall_speed * delta, fall_to_y)
 		if is_equal_approx(position.y, fall_to_y):
 			_falling = false
@@ -75,6 +89,31 @@ func _process(delta: float) -> void:
 	# cursor is still picked up.
 	if contains_point(get_global_mouse_position()):
 		collect()
+
+
+## Throws the item up and out from `height` pixels above the ground at
+## `ground_y`, the way PVZGE's droppings move: a height above the ground that
+## gravity pulls down, and a drift that stops when it lands. `velocity.y` is
+## upward speed.
+func toss(ground_y: float, start_height: float, velocity: Vector2, pull: float) -> void:
+	fall_to_y = ground_y
+	height = maxf(start_height, 0.0)
+	toss_velocity = velocity
+	gravity = pull
+	_tossed = true
+	_falling = true
+	position.y = fall_to_y - height
+
+
+func _fly(delta: float) -> void:
+	position.x = clampf(position.x + toss_velocity.x * delta, x_limits.x, x_limits.y)
+	height += toss_velocity.y * delta
+	toss_velocity.y -= gravity * delta
+	if height <= 0.0 and toss_velocity.y < 0.0:
+		height = 0.0
+		_tossed = false
+		_falling = false
+	position.y = fall_to_y - height
 
 
 ## Starts the fly-to-counter animation. Idempotent, so hover polling cannot

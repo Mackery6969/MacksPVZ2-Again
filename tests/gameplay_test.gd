@@ -1083,6 +1083,15 @@ func _test_shovel() -> void:
 	check("cell is free again", board.plant_at(2, 3) == null)
 	check("can replant there", board.can_place_entity(&"plant", &"peashooter", 2, 3))
 	check("digging an empty cell does nothing", not board.dig_up(2, 3))
+
+	# Digging with the shovel puts it back down, as in PVZGE.
+	board.place_plant(&"peashooter", 2, 3)
+	board.shovel_active = true
+	board.click(board.grid_to_world(2, 4))
+	check("a click on an empty cell keeps the shovel", board.shovel_active)
+	board.click(board.grid_to_world(2, 3))
+	check("the shovel digs the plant up", board.plant_at(2, 3) == null)
+	check("and goes back once it has", not board.shovel_active)
 	board.queue_free()
 
 
@@ -2685,7 +2694,7 @@ func _test_art() -> void:
 		var stride := z.art.ground_speed(&"Walk")
 		check("the walk plays at the pace the zombie moves",
 				stride > 0.0 and is_equal_approx(z.art.speed_scale(),
-						z.current_speed() * board.cell_size.x / stride),
+						z.current_speed() * z._entering_scale() * board.cell_size.x / stride),
 				"%.3f" % z.art.speed_scale())
 		z.apply_stun(0.5)
 		await get_tree().process_frame
@@ -2698,6 +2707,27 @@ func _test_art() -> void:
 		z.target = pea
 		await _wait_game_seconds(0.2)
 		check_eq("and eating once it reaches a plant", z.art.playing, &"Eat")
+
+	# Drawn as PVZGE draws them: one scale for every character, so the art's
+	# own proportions decide who is bigger, and feet on the lane's floor.
+	var sunny: Plant = board.place_plant(&"sunflower", 3, 1)
+	if pea != null and pea.art != null and sunny != null and sunny.art != null:
+		check("a peashooter and a sunflower share one scale",
+				is_equal_approx(pea.art.scale.y, sunny.art.scale.y))
+		check("and stand on the lane's floor, below the cell's centre",
+				pea.art.position.y > 0.0 and is_equal_approx(pea.art.position.y, sunny.art.position.y))
+		if z.art != null:
+			check("zombies are drawn at the plants' scale",
+					is_equal_approx(absf(z.art.scale.y), pea.art.scale.y))
+	check("zombies come on from past the screen's right edge",
+			board.spawn_x() >= board.lawn_right_x() + board.cell_size.x * 2.5)
+	var cone: Zombie = board.spawn_zombie(&"tutorial_armor1", 0)
+	if cone.art != null and cone.art.socket(&"armor") != null:
+		check("a cone zombie wears its cone's rig", cone.has_armor_art())
+		cone.component(&"armor").strip()
+		await get_tree().process_frame
+		check("which comes off with the armor", not cone.has_armor_art())
+	check("a zombie off the lawn hurries on", cone._entering_scale() > 1.0)
 
 	# Acting changes what a plant is doing, and it goes back to idling after.
 	# The component says what happened; it never names an animation.
@@ -2834,6 +2864,38 @@ func _test_scenery_art() -> void:
 	var sun := SunToken.new()
 	board.add_child(sun)
 	check("sun has its art", sun.art != null)
+
+	# A sunflower's sun leaves its head on the Produce event and lands at
+	# its feet, as PVZGE's SunProducePoint does.
+	var sf := board.place_plant(&"sunflower", 2, 2)
+	check("a sunflower has its art", sf != null and sf.art != null)
+	if sf != null and sf.art != null:
+		var suns := board.get_node("Suns")
+		var before := suns.get_child_count()
+		var producer: EntityComponent = null
+		for c in sf._components:
+			if c.get_script().resource_path.ends_with("sun_producer.gd"):
+				producer = c
+		check("the sunflower has a sun producer", producer != null)
+		if producer != null:
+			producer.set(&"_timer", 0.0)
+			await get_tree().process_frame
+			check("no sun before the Produce event", suns.get_child_count() == before)
+			# The event is 23 frames in; the flight takes under a second.
+			await _wait_game_seconds(2.2)
+			var popped: SunToken = null
+			for t in suns.get_children():
+				if t is SunToken and t != sun:
+					popped = t
+			check("then one appears", popped != null)
+			if popped != null:
+				var feet: float = sf.position.y + sf.art.position.y
+				check("it lands at the sunflower's feet",
+						is_equal_approx(popped.position.y, feet),
+						"%.1f vs %.1f" % [popped.position.y, feet])
+				check("near the sunflower",
+						absf(popped.position.x - sf.position.x) < board.cell_size.x,
+						"%.1f vs %.1f" % [popped.position.x, sf.position.x])
 	board.queue_free()
 	end_section()
 
@@ -3252,7 +3314,8 @@ func _test_wave_events() -> void:
 	var start_x := kicked.position.x
 	var raptor := board.spawn_dino(&"raptor", 0)
 	check("a raptor is called in", raptor is Dino)
-	await _wait_game_seconds(4.0)
+	# It walks on from off-screen, where zombies come from too.
+	await _wait_game_seconds(5.5)
 	check("it kicks a zombie forward", kicked.position.x < start_x - board.cell_size.x * 2.0,
 			"%.0f -> %.0f" % [start_x, kicked.position.x])
 

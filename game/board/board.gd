@@ -26,6 +26,8 @@ signal grave_destroyed(grave: Grave)
 signal sun_spent(amount: int)
 ## A plant went into the ground, by the player or by the level.
 signal plant_placed(plant: Plant)
+## The player dug up a plant with the shovel, which puts the shovel down.
+signal shovel_used
 
 ## Drawing order. The lawn reads front-to-back: a plant in row 4 covers a
 ## zombie in row 0, and within one row the zombie covers the plant it is
@@ -39,6 +41,12 @@ const LAYER_MOWER := 2
 const LAYER_ZOMBIE := 3
 const LAYER_PROJECTILE := 4
 const LAYER_COLLECTABLE := 1000
+
+## How PVZGE moves a dropping, turned into per-second terms. It steps 60 times
+## a second, moving half its velocity each step and losing 0.55 of its upward
+## speed to gravity, so speeds scale by 30 and the pull by 30 * 33.
+const DROP_SPEED := 30.0
+const DROP_GRAVITY := 990.0
 
 ## How far a zombie may stand off its lane's centre line, as a share of the
 ## row height.
@@ -498,8 +506,27 @@ func house_x() -> float:
 	return origin.x - cell_size.x * 0.5
 
 
+## Where zombies come on: PVZGE's `zombieSpawnX`, the centre of column 11.5
+## on its nine-column lawn - two and a half squares past the last one. On a
+## screen wider than PVZGE's that would still be in view, so the line also
+## sits past the visible right edge, and zombies walk on rather than appear.
 func spawn_x() -> float:
-	return origin.x + (cols + 0.6) * cell_size.x
+	var pvzge := origin.x + (cols + 3.0) * cell_size.x
+	return maxf(pvzge, _screen_right() + cell_size.x * 0.6)
+
+
+## The right edge of the last column. Zombies hurry until they reach it.
+func lawn_right_x() -> float:
+	return origin.x + cols * cell_size.x
+
+
+## The visible right edge in board coordinates, or -INF off-screen.
+func _screen_right() -> float:
+	if not is_inside_tree():
+		return -INF
+	var view := get_viewport_rect()
+	return (get_global_transform_with_canvas().affine_inverse()
+			* Vector2(view.position.x + view.size.x, 0.0)).x
 
 
 func despawn_x() -> float:
@@ -1439,10 +1466,32 @@ func spawn_sweeper(row: int, speed: float, dps: float, source: Node) -> LaneSwee
 	return s
 
 
-## Drops a sun just above `at`, which settles slightly below it. Every sun is
-## worth SunToken.VALUE, so there is no amount to pass.
+## Drops a sun from `at`: it hops up, drifts a little either way and settles
+## slightly below where it started. Every sun is worth SunToken.VALUE, so
+## there is no amount to pass.
 func drop_sun(at: Vector2) -> void:
-	_add_sun_token(at + Vector2(0, -30), at.y + 20.0)
+	var ground := at.y + 20.0
+	var s := _add_sun_token(at, ground)
+	# PVZGE's produceSun: a random sideways drift of up to 3 and an upward
+	# speed of 10, from a little above the ground.
+	var unit := _original_unit()
+	s.toss(ground, 50.0, Vector2(randf_range(-3.0, 3.0) * DROP_SPEED * unit.x,
+			10.0 * DROP_SPEED * unit.y), DROP_GRAVITY * unit.y)
+
+
+## Pops a sun out of a plant, as a sunflower does: it leaves `from` heading
+## along `direction` and lands on the ground at `ground_y`, the plant's feet.
+func pop_sun(from: Vector2, ground_y: float, direction: Vector2) -> void:
+	var s := _add_sun_token(from, ground_y)
+	var unit := _original_unit()
+	var v := direction.normalized() * randf_range(7.0, 13.0) * DROP_SPEED
+	s.toss(ground_y, ground_y - from.y, Vector2(v.x * unit.x, v.y * unit.y),
+			DROP_GRAVITY * unit.y)
+
+
+## One of PVZGE's world units, in board pixels, on each axis.
+func _original_unit() -> Vector2:
+	return cell_size / LawnScenery.SQUARE_SIZE
 
 
 func drop_sun_from_sky() -> void:
@@ -1456,6 +1505,8 @@ func _add_sun_token(at: Vector2, rest_y: float) -> SunToken:
 	s.position = at
 	s.fall_to_y = rest_y
 	s.collect_target = to_global(sun_collect_target)
+	s.x_limits = Vector2(origin.x + cell_size.x * 0.25, origin.x + cell_size.x * (cols - 0.25))
+	s.position.x = clampf(s.position.x, s.x_limits.x, s.x_limits.y)
 	s.collected.connect(func(c): _on_sun_collected(c))
 	_suns.add_child(s)
 	Audio.play(&"sun.drop", at)
@@ -1627,8 +1678,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.pressed
 			and event.button_index == MOUSE_BUTTON_LEFT):
 		return
-	var at := get_local_mouse_position()
+	click(get_local_mouse_position())
 
+
+## What a left click at `at`, in board coordinates, does with whatever is in
+## hand: place it, dig, feed, aim, or tap a plant.
+func click(at: Vector2) -> void:
 	# Sun is picked up by hovering, so a click only ever places, digs or feeds.
 	if plant_food_active:
 		if feed_plant(world_to_row(at.y), world_to_col(at.x)):
@@ -1644,7 +1699,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	if shovel_active:
+		# One dig per pick-up, as in PVZGE: the shovel goes back after use.
 		if dig_up(world_to_row(at.y), world_to_col(at.x)):
+			shovel_active = false
+			shovel_used.emit()
 			get_viewport().set_input_as_handled()
 		return
 	if selected_seed.is_empty():
