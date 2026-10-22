@@ -502,8 +502,27 @@ func house_x() -> float:
 	return origin.x - cell_size.x * 0.5
 
 
+## Where zombies come on: PVZGE's `zombieSpawnX`, the centre of column 11.5
+## on its nine-column lawn - two and a half squares past the last one. On a
+## screen wider than PVZGE's that would still be in view, so the line also
+## sits past the visible right edge, and zombies walk on rather than appear.
 func spawn_x() -> float:
-	return origin.x + (cols + 0.6) * cell_size.x
+	var pvzge := origin.x + (cols + 3.0) * cell_size.x
+	return maxf(pvzge, _screen_right() + cell_size.x * 0.6)
+
+
+## The right edge of the last column. Zombies hurry until they reach it.
+func lawn_right_x() -> float:
+	return origin.x + cols * cell_size.x
+
+
+## The visible right edge in board coordinates, or -INF off-screen.
+func _screen_right() -> float:
+	if not is_inside_tree():
+		return -INF
+	var view := get_viewport_rect()
+	return (get_global_transform_with_canvas().affine_inverse()
+			* Vector2(view.position.x + view.size.x, 0.0)).x
 
 
 func despawn_x() -> float:

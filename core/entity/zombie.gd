@@ -117,7 +117,72 @@ func _on_initialized() -> void:
 	_show_state(&"walk")
 	if art != null:
 		art.seek_fraction(randf())
+	_attach_armor_art()
 	queue_redraw()
+
+
+# --- armor art -----------------------------------------------------------
+
+## armor component -> the rig worn for it, while it is worn.
+var _armor_art: Dictionary = {}
+
+
+## Puts each armor's own rig on the zombie's head. PVZGE hangs a cone or a
+## bucket off the rig's `armorSOCKET` bone, so the socket marker is the
+## parent: the armor then bobs, leans and turns with the head for free.
+func _attach_armor_art() -> void:
+	if art == null:
+		return
+	var socket := art.socket(&"armor")
+	if socket == null:
+		return
+	for comp in components():
+		if not comp.has_method("is_intact"):
+			continue
+		var rig := Art.make(&"armor", StringName(comp.cfg(&"armor", &"")))
+		if rig == null:
+			continue
+		socket.add_child(rig)
+		_armor_art[comp] = rig
+	_sync_armor_art()
+
+
+## Shows each armor's wear - the rig has three states, fresh, dented and
+## nearly gone - and knocks it off once it breaks or is pulled away.
+func _sync_armor_art() -> void:
+	for comp in _armor_art.keys():
+		var rig: Armature = _armor_art[comp]
+		if not is_instance_valid(rig):
+			_armor_art.erase(comp)
+			continue
+		if not comp.is_intact():
+			_armor_art.erase(comp)
+			_drop_armor(rig)
+			continue
+		var wear: float = comp.fraction()
+		var state: StringName = &"intact" if wear > 2.0 / 3.0 \
+				else (&"worn" if wear > 1.0 / 3.0 else &"broken")
+		var name := Art.animation_for(&"armor", StringName(comp.cfg(&"armor", &"")), state)
+		if name != &"" and rig.playing != name:
+			rig.play(name)
+
+
+func _drop_armor(rig: Armature) -> void:
+	if board == null:
+		rig.queue_free()
+		return
+	var piece := Node2D.new()
+	piece.transform = rig.get_global_transform()
+	rig.get_parent().remove_child(rig)
+	rig.transform = Transform2D.IDENTITY
+	piece.add_child(rig)
+	var dropped := DetachedLimb.drop(piece, -direction(), position.y + 24.0)
+	board.add_child(dropped)
+	dropped.z_index = board.lane_z(row, board.LAYER_ZOMBIE)
+
+
+func has_armor_art() -> bool:
+	return not _armor_art.is_empty()
 
 
 # --- allegiance ----------------------------------------------------------
@@ -151,6 +216,22 @@ func current_speed() -> float:
 		if terrain == &"water" or terrain == &"deep_water":
 			return speed * _water_speed_scale
 	return speed
+
+
+## PVZGE zombies walk on at triple pace (`walkSpeedScaleEnteringLawn`, 2,
+## times 1.5) until their body reaches the lawn, so spawning well off-screen
+## does not mean a long wait for the first one.
+const ENTERING_SPEED := 3.0
+var _entered_lawn: bool = false
+
+
+func _entering_scale() -> float:
+	if _entered_lawn or is_charmed() or board == null:
+		return 1.0
+	if position.x - board.cell_size.x * 0.5 <= board.lawn_right_x():
+		_entered_lawn = true
+		return 1.0
+	return ENTERING_SPEED
 
 
 ## Permanently scales how fast this zombie moves and how hard it bites.
@@ -311,6 +392,8 @@ func _process(delta: float) -> void:
 	_tick_status(delta)
 	if is_dead:
 		return
+	if not _armor_art.is_empty():
+		_sync_armor_art()
 	# A stunned or encased zombie neither walks nor eats.
 	if is_stunned() or is_encased():
 		return
@@ -326,7 +409,8 @@ func _process(delta: float) -> void:
 
 
 func _walk(delta: float) -> void:
-	position.x += direction() * current_speed() * board.cell_size.x * delta
+	position.x += direction() * current_speed() * _entering_scale() \
+			* board.cell_size.x * delta
 	col = board.world_to_col(position.x)
 	_sync_layer()
 
@@ -394,7 +478,7 @@ func _attack(delta: float) -> void:
 ## shrinks as the armor is chewed through and disappears when it breaks.
 func _draw_armor(head: Vector2) -> void:
 	var armor := component(&"armor")
-	if armor == null or not armor.is_intact():
+	if armor == null or not armor.is_intact() or _armor_art.has(armor):
 		return
 	var wear: float = 0.35 + 0.65 * armor.fraction()
 	var half := 12.0
@@ -432,7 +516,7 @@ func art_speed() -> float:
 	var stride := art.ground_speed(art.playing)
 	if stride <= 0.0:
 		return art_rate * slowed
-	return current_speed() * board.cell_size.x / stride
+	return current_speed() * _entering_scale() * board.cell_size.x / stride
 
 
 func _on_death() -> void:
@@ -470,8 +554,8 @@ func _draw() -> void:
 	if art == null:
 		draw_rect(rect, body, true)
 		draw_rect(rect, body.darkened(0.45), false, 2.0)
-	# Head offset shows which way it is facing. The armor still draws over
-	# real art, since the tutorial cone and bucket are separate rigs.
+	# Head offset shows which way it is facing. The placeholder armor only
+	# draws for armor without a rig of its own.
 	var head := Vector2(6 * direction(), -size.y * 0.75 - 10)
 	if art == null:
 		draw_circle(head, 11.0, head_color)

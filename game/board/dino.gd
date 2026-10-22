@@ -118,7 +118,10 @@ func _kick(delta: float) -> void:
 		if _cooldowns[z] <= 0.0 or not is_instance_valid(z):
 			_cooldowns.erase(z)
 	# Pace between the walk edge and the right end of the lane.
-	position.x += _heading * float(spec.get("speed", 0.65)) * board.cell_size.x * delta
+	# Like a zombie, it hurries on from off-screen until it reaches the lawn.
+	var hurry := Zombie.ENTERING_SPEED if position.x > board.lawn_right_x() else 1.0
+	position.x += _heading * float(spec.get("speed", 0.65)) * hurry \
+			* board.cell_size.x * delta
 	var left_edge := _column_x(float(spec.get("walk_edge_column", 4)))
 	if position.x <= left_edge:
 		_heading = 1

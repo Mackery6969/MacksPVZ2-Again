@@ -1,10 +1,11 @@
 {
- "//": "Entity art for Front Lawn. Keyed <kind>:<id>; `bundle` is a directory under art/, `armature` one of the rigs inside it, and `animations` maps a game state to whatever that rig calls it. Size and placement come from the rig's own bounding box: `fit_height` is how tall it should end up and `foot_y` where its feet sit relative to the entity. A mod reskins an entity by shipping a file like this in its own art/ directory.",
+ "//": "Entity art for Front Lawn. Keyed <kind>:<id>; `bundle` is a directory under art/, `armature` one of the rigs inside it, and `animations` maps a game state to whatever that rig calls it. Plants, zombies and projectiles are drawn the way PVZGE draws them: every character at its CharacterScale (0.42) times the port's cell-to-square ratio, which is the 0.512 the lawn and mowers use, with the rig's origin - its feet - on the lane's floor, 8 PVZGE units below the square's centre (9.7 here). Sizes therefore come from the art itself, so a peashooter and a sunflower stand as tall as each other as they did in the original. `sockets` names bones the game reads positions off (`armor` is where a cone or bucket sits). `armor:<id>` rigs hang off that socket at the zombie rig's own scale. A mod reskins an entity by shipping a file like this in its own art/ directory.",
  "plant:peashooter": {
   "bundle": "plants_PeashooterPLANT",
   "armature": "Peashooter",
-  "fit_height": 92,
-  "foot_y": 26,
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 9.7,
   "sockets": {
    "muzzle": "mouthhole"
   },
@@ -18,11 +19,12 @@
  "plant:sunflower": {
   "bundle": "plants_SunflowerPLANT",
   "armature": "Sunflower",
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 9.7,
   "//": "produce_point is the SunflowerPLANT prefab's SunProducePoint, in rig units with y up; sun_direction is where PVZGE throws the sun: sideways away from the stem's shade, up by the point's height.",
   "produce_point": [-5.9, 109.8],
   "sun_direction": [-11.8, 109.8],
-  "fit_height": 92,
-  "foot_y": 26,
   "animations": {
    "idle": "Idle",
    "attack": "Produce",
@@ -33,8 +35,9 @@
  "plant:wallnut": {
   "bundle": "plants_WallnutPLANT",
   "armature": "Wall-nut",
-  "fit_height": 92,
-  "foot_y": 26,
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 9.7,
   "animations": {
    "idle": "Idle1",
    "hurt1": "Idle2",
@@ -46,8 +49,9 @@
  "plant:potatomine": {
   "bundle": "plants_PotatoMinePLANT",
   "armature": "PotatoMine",
-  "fit_height": 92,
-  "foot_y": 26,
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 9.7,
   "animations": {
    "idle": "Idle",
    "asleep": "Idle_Baby",
@@ -59,8 +63,9 @@
  "zombie:tutorial": {
   "bundle": "zombies_BasicZOMBIE",
   "armature": "BasicZombie",
-  "fit_height": 126,
-  "foot_y": 38,
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 9.7,
   "hide_slots": [
    "arm_here_ARM"
   ],
@@ -97,13 +102,17 @@
    "walk": "Walk",
    "attack": "Eat",
    "die": "Death"
+  },
+  "sockets": {
+   "armor": "armorSOCKET"
   }
  },
  "zombie:tutorial_armor1": {
   "bundle": "zombies_BasicZOMBIE",
   "armature": "BasicZombie",
-  "fit_height": 126,
-  "foot_y": 38,
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 9.7,
   "hide_slots": [
    "arm_here_ARM"
   ],
@@ -140,13 +149,17 @@
    "walk": "Walk",
    "attack": "Eat",
    "die": "Death"
+  },
+  "sockets": {
+   "armor": "armorSOCKET"
   }
  },
  "zombie:tutorial_armor2": {
   "bundle": "zombies_BasicZOMBIE",
   "armature": "BasicZombie",
-  "fit_height": 126,
-  "foot_y": 38,
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 9.7,
   "hide_slots": [
    "arm_here_ARM"
   ],
@@ -183,15 +196,68 @@
    "walk": "Walk",
    "attack": "Eat",
    "die": "Death"
+  },
+  "sockets": {
+   "armor": "armorSOCKET"
   }
  },
  "projectile:pea": {
   "bundle": "projectiles_Pea0PRJ",
   "armature": "pea0",
-  "fit_height": 28,
-  "foot_y": 14,
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 0,
   "animations": {
    "idle": "Idle"
+  },
+  "hit_effect": "pea_hit"
+ },
+ "effect:pea_hit": {
+  "bundle": "projectiles_Pea0PRJ",
+  "armature": "par0",
+  "scale": 0.512,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "hit": "Play",
+   "hit1": "Play1",
+   "hit2": "Play2"
+  }
+ },
+ "armor:modern_armor1": {
+  "bundle": "zombies_BasicZOMBIE",
+  "armature": "Cone",
+  "scale": 1.0,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "intact": "Broken0",
+   "worn": "Broken1",
+   "broken": "Broken2"
+  }
+ },
+ "armor:modern_armor2": {
+  "bundle": "zombies_BasicZOMBIE",
+  "armature": "Bucket",
+  "scale": 1.0,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "intact": "Broken0",
+   "worn": "Broken1",
+   "broken": "Broken2"
+  }
+ },
+ "armor:modern_armor4": {
+  "bundle": "zombies_BasicZOMBIE",
+  "armature": "Bricks",
+  "scale": 1.0,
+  "offset_x": 0,
+  "offset_y": 0,
+  "animations": {
+   "intact": "Broken0",
+   "worn": "Broken1",
+   "broken": "Broken2"
   }
  }
 }
