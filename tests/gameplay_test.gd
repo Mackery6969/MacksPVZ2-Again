@@ -2663,13 +2663,13 @@ func _test_plant_stun() -> void:
 
 
 
-## Extracted art is optional - it is gitignored and regenerated - so this
+## Extracted art is optional - it lives in the private `art` submodule - so this
 ## checks it loads and drives when present, and that nothing breaks when not.
 func _test_art() -> void:
 	section("art")
 	if not Art.is_available():
 		check("no art extracted, placeholders stand in", true,
-				"run tools/extract_prefabs.py to exercise this")
+				"check out the art submodule to exercise this")
 		end_section()
 		return
 

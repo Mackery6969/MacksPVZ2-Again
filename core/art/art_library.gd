@@ -85,7 +85,7 @@ func summary() -> String:
 	if not missing.is_empty():
 		var names := missing.keys()
 		names.sort()
-		line += "  missing (see art/README.md): %s" % ", ".join(names)
+		line += "  missing (see docs/ART.md): %s" % ", ".join(names)
 	return line
 
 
