@@ -8,15 +8,20 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "split_shooter",
+   "interval": 1.35,
+   "interval_jitter": 0.15,
+   "plantfood_count": 60,
+   "plantfood_count_rear": 90,
+   "projectile": "pea",
+   "rear_count": 2
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
- },
- "extra": {
-  "PlantfoodPeaCount": 60,
-  "PlantfoodPeaCountBack": 90,
-  "ShootInterval": 1.35,
-  "ShootIntervalAdditional": 0.15
  }
 }

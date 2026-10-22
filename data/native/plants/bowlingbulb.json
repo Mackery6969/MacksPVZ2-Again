@@ -8,6 +8,19 @@
   "cooldown_from": 1,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "bowler",
+   "reload": 4,
+   "projectile_plantfood": "bowling_pf",
+   "projectiles": [
+    "bowling0",
+    "bowling1",
+    "bowling2"
+   ],
+   "pierce": 3
+  }
+ ],
  "tags": [
   "aquatic"
  ],
@@ -17,11 +30,6 @@
   "plantfood": false
  },
  "extra": {
-  "AmmoRefreshTime": 4,
-  "Bowling0": "bowling0",
-  "Bowling1": "bowling1",
-  "Bowling2": "bowling2",
-  "BowlingPlantfood": "bowling_pf",
   "LoadOrder": "012",
   "RollOrder": "012",
   "StartingHeight": 0

@@ -8,6 +8,19 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "gas_cloud",
+   "damage": 20,
+   "interval": 0.5,
+   "lifespan": 20,
+   "powered_damage": 30,
+   "powered_interval": 0.5,
+   "powered_lifespan": 25,
+   "radius": 1.5,
+   "powered_slow": 0.5
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -17,12 +30,6 @@
   "CannotBeSheepenedByWizard": true,
   "ImmuneToBoomBox": true,
   "ImmuneToIceblock": true,
-  "MintDamageFactor": 3,
-  "NormalAttackDamage": 20,
-  "NormalAttackInterval": 0.5,
-  "NormalLifespan": 20,
-  "ShadowAttackDamage": 30,
-  "ShadowAttackInterval": 0.5,
-  "ShadowLifespan": 25
+  "MintDamageFactor": 3
  }
 }

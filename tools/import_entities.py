@@ -428,6 +428,265 @@ BEHAVIOUR_SIGNATURES = [
      {"Lifespan": "duration", "DamageMultiplier": "damage_multiplier"}),
 ]
 
+# Plants whose behaviour has no field signature to read: what a Chomper does
+# is in Chomper.ts, not in any field it carries, and half its fields are
+# shared with plants that do something else entirely. These are keyed by
+# plant, and say which component the plant gets and how its fields map onto
+# it. A source field may map to (native_name, convert) when the units differ;
+# `const` fills in what PVZGE hardcodes rather than stores.
+PVZGE_SQUARE_PX = 68
+
+
+def _per_frame_to_squares(v):
+    """PVZGE velocities are pixels per 60fps frame."""
+    return round(v * 60 / PVZGE_SQUARE_PX, 3)
+
+
+def _weighted_ids(entries):
+    """PopCap's [{Type, Weight}] summon tables -> [{id, weight}]."""
+    return [{"id": strip_rtid(e["Type"]), "weight": e.get("Weight", 1)}
+            for e in entries]
+
+
+PLANT_BEHAVIOURS = {
+    "squash": ("squash",
+               {"SmashDamage": "damage", "SmashTime": "uses",
+                "PlantfoodSmashTime": ("plantfood_smashes", lambda v: v + 1)},
+               {"detect_width": 1.5, "smash_width": 1.0}),
+    "chomper": ("chomper",
+                {"ChewTimePerZombie": "chew_time", "ChompFailDamage": "fail_damage",
+                 "MaxContainZombieCount": "capacity",
+                 "PlantfoodSwallowCount": "plantfood_swallows"},
+                {"reach": 2.0}),
+    "toadstool": ("chomper",
+                  {"TongueDistance": "reach", "MaxZombieChewCount": "capacity",
+                   "ChewTime": "chew_time", "TongueSlapDamage": "fail_damage",
+                   "SunProducePerZombie": "sun_per_zombie",
+                   "MaxZombieChewCountPF": "plantfood_swallows",
+                   "TongueDistancePf": "plantfood_reach"},
+                  {}),
+    "tanglekelp": ("dragger",
+                   {"MaxDraggedZombieCount": "uses",
+                    "DamageWhenDragFailed": "fail_damage",
+                    "MaxDraggedZombieCountPlantfood": "plantfood_count"},
+                   {"reach": 0.5, "plantfood_terrain": "water"}),
+    "grimrose": ("dragger",
+                 {"MaxKills": "uses", "KillCountPerAttack": "per_grab",
+                  "SlapDamage": "fail_damage",
+                  "KillCountPlantfood": "plantfood_count"},
+                 {"reach": 9.5, "delay": 1.0}),
+    "hypnoshroom": ("eaten_trigger", {}, {"effect": "charm"}),
+    "chilibean": ("eaten_trigger", {"ChiliStunDuration": "duration"},
+                  {"effect": "stun_gas", "gas_delay": 2.0}),
+    "shadowshroom": ("eaten_trigger",
+                     {"PoisonDPS": "dps", "PoisonDuration": "duration"},
+                     {"effect": "poison"}),
+    "sunbean": ("eaten_trigger", {"SunPerHitpoint": "sun_per_hitpoint"},
+                {"effect": "sun_infect"}),
+    "moonbean": ("eaten_trigger",
+                 {"ZombieDamage": "zombie_damage",
+                  "ZombieBombExplosionRadius": "zombie_radius",
+                  "PlantDamage": "plant_damage",
+                  "PlantBombExplosionRadius": "plant_radius"},
+                 {"effect": "sun_bomb"}),
+    "cranjelly": ("lane_sweep", {"DPS": "dps",
+                                 "Velocity": ("speed", _per_frame_to_squares)}, {}),
+    "ghostpepper": ("haunter",
+                    {"GhostDamage": "damage", "GhostDamageCooldownTime": "interval",
+                     "Lifetime": "lifetime", "ExplodeDamage": "explode_damage",
+                     "PlantfoodDuration": "plantfood_duration",
+                     "PlantfoodDamageMult": "plantfood_multiplier"},
+                    {"reach": 2.0}),
+    "celerystalker": ("ambusher",
+                      {"DamagePerHit": "damage", "RetractionDelay": "retract_delay",
+                       "PlantfoodChildrenCount": "plantfood_children"},
+                      {"reach": 1.5, "interval": 0.5}),
+    "shrinkingviolet": ("shrinker",
+                        {"DamageMultiplier": "damage_multiplier",
+                         "SpeedScale": "speed_scale", "ShrinkTime": "delay"},
+                        {"bite_scale": 0.5}),
+    "stallia": ("perfumer",
+                {"PerfumeDuration": "duration",
+                 "PerfumeDurationPlantfood": "plantfood_duration"},
+                {"slow": 0.5}),
+    "springbean": ("spring", {"KnockbackDistance": "distance", "RestTime": "rest"}, {}),
+    "hurrikale": ("lane_wind", {"PushDuration": "duration"},
+                  {"push_speed": 2.0, "chill": 8.0}),
+    "thymewarp": ("time_warp", {"WarpTime": "warp_time"}, {}),
+    "solarsage": ("enlightener",
+                  {"MaxAttackTime": "uses", "EnlightenSunValue": "sun_value",
+                   "EnlightenWalkSPS": "walk_speed",
+                   "EnlightenProduceInterval": ("produce_interval", lambda v: v["Min"]),
+                   "EnlightenChanceToInfect": "infect_chance",
+                   "PlantfoodEnlightenCount": "plantfood_count"},
+                  {}),
+    "electricblueberry": ("lightning",
+                          {"NormalLightningBoltDamage": "damage",
+                           "AttackCooldownBetween": "interval",
+                           "AttackCooldownStart": "first_delay",
+                           "WeightTargetNormalZombie": "weight_normal",
+                           "WeightTargetGargantuarZombie": "weight_gargantuar",
+                           "WeightTargetOtherZombie": "weight_other"},
+                          {"targets": 1, "plantfood_targets": 3}),
+    "goldbloom": ("sun_burst", {"ProduceValue0": "sun"}, {}),
+    "powerlily": ("plantfood_maker", {"ProduceCount": "count"}, {}),
+    "lilypad": ("carrier", {}, {}),
+    "floawerPot": ("carrier", {"ToughnessPlantfooded": "plantfood_toughness"}, {}),
+    "gravebuster": ("grave_buster", {"BustTime": "bust_time"}, {}),
+    "hotpotato": ("melter", {}, {"melt_time": 2.5}),
+    "imitater": ("imitate", {}, {"delay": 1.0}),
+    "intensivecarrot": ("revive", {"HealthReturns": "health_fraction"}, {}),
+    "umbrellaleaf": ("umbrella", {}, {"radius": 1}),
+    "plantern": ("light_source", {}, {"radius": 1, "plantfood_sun": 25}),
+    "bulbkekengi": ("light_source", {"PlantfoodDuration": "plantfood_duration"},
+                    {"radius": 2, "plantfood_radius": 3}),
+    "turnip": ("blocker", {}, {}),
+    "splitpea": ("split_shooter",
+                 {"ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter",
+                  "PlantfoodPeaCount": "plantfood_count",
+                  "PlantfoodPeaCountBack": "plantfood_count_rear"},
+                 {"projectile": "pea", "rear_count": 2}),
+    "bloomerang": ("shooter",
+                   {"BoomerangType": "projectile", "PierceCount": "pierce",
+                    "ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter",
+                    "PlantfoodBoomerangCount": "plantfood_count"},
+                   {"returns": True}),
+    "scaredyshroom": ("shooter",
+                      {"SporeType": "projectile", "SporeTypePlantfood": "projectile_plantfood",
+                       "ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter",
+                       "PlantfoodSporeCount": "plantfood_count",
+                       "KnockbackChance": "knockback_chance",
+                       "KnockbackDistance": "knockback_distance"},
+                      {"scared_radius": 1.5}),
+    "redstinger": ("zoned_shooter",
+                   {"ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter",
+                    "PFDPS": "plantfood_dps", "PFDuration": "plantfood_duration",
+                    "DamageScale0": ("damage_taken", lambda v: None)},
+                   {"projectiles": ["redstinger", "redstinger_weak", ""]}),
+    "gloomshroom": ("area_pulse",
+                    {"ShootInterval": "interval", "DPS": "dps",
+                     "DamageDuration": "duration", "PoisonDPS": "poison_dps",
+                     "DPSPlantfood": "plantfood_dps"},
+                    {"radius": 1.5, "plantfood_duration": 3.0}),
+    "nightshade": ("leaf_thrower",
+                   {"MaxProjectiles": "ammo", "LeafRespawnCooldown": "regrow",
+                    "DetectDistanceNormal": "reach", "DetectDistanceShadow": "powered_reach",
+                    "ShadowPoweredDamageScale": "powered_damage_scale",
+                    "ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter"},
+                   {"projectile": "nightshade", "projectile_plantfood": "nightshade_pf"}),
+    "banana": ("launcher", {"BananaType": "projectile", "RestTime": "rest"}, {}),
+    "missiletoe": ("launcher", {"BananaType": "projectile", "RestTime": "rest"}, {}),
+    "bamboozle": ("launcher", {"BambooshotType": "projectile",
+                               "MaxProjectileCount": "ammo"},
+                  {"rest": 1.0, "flight": 0.45}),
+    "strawburst": ("berry_lobber",
+                   {"GrowTime0": ("grow_times", lambda v: None)},
+                   {}),
+    "phatbeet_rhythm": ("tap_smash", {}, {"reach": 2.0, "min_health": 50}),
+    "bowlingbulb": ("bowler",
+                    {"AmmoRefreshTime": "reload", "BowlingPlantfood": "projectile_plantfood"},
+                    {"pierce": 3}),
+    "aloe": ("healer",
+             {"HealHPS": "hps", "HealingInterval": "interval",
+              "SelfQuringHealth": "self_heal", "HealHPSPlantfood": "plantfood_hps",
+              "PlantfoodLastingTime": "plantfood_duration"},
+             {"area": "ahead"}),
+    "peach": ("healer",
+              {"HealInterval": "interval", "HealthPerHeal": "amount",
+               "HealthPlantfoodHeal": "plantfood_heal"},
+              {"area": "around"}),
+    "lychee": ("retaliator",
+               {"DamagePerHit": "damage", "HealthBetweenHits": "health_between",
+                "DamagePerHitPlantfood": "plantfood_damage",
+                "HealthBetweenHitsPlantfood": "plantfood_health_between",
+                "PlantfoodDamageReceiveMult": "plantfood_damage_taken"},
+               {"radius": 1.5}),
+    "holonut": ("regrower",
+                {"DelayBeforeRegenFromDamage": "regen_delay",
+                 "DelayBeforeRecoverFromDeath": "revive_delay"}, {}),
+    "murkadamia": ("jelly_shield",
+                   {"JellyToughness": "toughness", "JellyInitialPct": "initial",
+                    "FoeEatDamageReflectPct": "reflect", "JellyCooldown": "cooldown",
+                    "JellyRecoveryHPS": "regen_hps"}, {}),
+    "sweetpotato": ("attractor",
+                    {"TimeBetweenLaneChanges": "interval", "NormalAttractWidth": "width",
+                     "PlantfoodAttractWidth": "plantfood_width",
+                     "PlantFoodDurationSeconds": "plantfood_duration"}, {}),
+    "gumnut": ("gummer",
+               {"BaseGumHealth": "gum_health", "ZombieGumHealthMult": "health_mult"},
+               {"reach": 1.0, "radius": 1.0}),
+    "chardguard": ("bouncer",
+                   {"BounceDistance": "distance", "MaxBounceTime": "uses"},
+                   {"reach": 1.7}),
+    "vamporcini": ("drainer",
+                   {"DPS": "dps", "AttackDuration": "duration",
+                    "MaxToughness": "max_toughness", "DPSPlantfood": "plantfood_dps",
+                    "AttackDurationPlantfood": "plantfood_duration"},
+                   {"radius": 1.5}),
+    "buttercup": ("butterer",
+                  {"ButterDamage": "damage", "ButterDuration": "duration",
+                   "ButterThrowInterval": "interval",
+                   "ButterDamagePlantfood": "plantfood_damage"}, {}),
+    "noctarine": ("gas_cloud",
+                  {"NormalAttackDamage": "damage", "NormalAttackInterval": "interval",
+                   "NormalLifespan": "lifespan", "ShadowAttackDamage": "powered_damage",
+                   "ShadowAttackInterval": "powered_interval",
+                   "ShadowLifespan": "powered_lifespan"},
+                  {"radius": 1.5, "powered_slow": 0.5}),
+    "zoybeanpod": ("zoy_grower",
+                   {"GrowthInterval": ("interval", lambda v: v["Min"]),
+                    "SummonType": ("summons", lambda v: _weighted_ids(v)),
+                    "SummonTypePlantfood": ("plantfood_summons",
+                                            lambda v: _weighted_ids(v))}, {}),
+    "magnetshroom": ("magnet",
+                     {"RestTime": "rest", "PlantfoodThrowDamage": "plantfood_damage"},
+                     {"reach": 3.5, "rows": 1}),
+}
+
+# Fields a behaviour reads that a plain field map cannot express, kept so
+# they are not left in `extra` once consumed.
+PLANT_BEHAVIOUR_EXTRAS = {
+    "zoybeanpod": {"GrowthInterval": ("interval_max", lambda v: v["Max"])},
+    "solarsage": {"EnlightenProduceInterval": ("produce_interval_max",
+                                               lambda v: v["Max"])},
+}
+
+# Behaviours that gather several numbered fields into one list.
+PLANT_BEHAVIOUR_LISTS = {
+    "redstinger": {"damage_taken": ["DamageScale0", "DamageScale1", "DamageScale2"]},
+    "strawburst": {"grow_times": ["GrowTime0", "GrowTime1", "GrowTime2"],
+                   "projectiles": ["CabbageType0", "CabbageType1", "CabbageType2"]},
+    "bowlingbulb": {"projectiles": ["Bowling0", "Bowling1", "Bowling2"]},
+}
+
+
+def plant_behaviour(name, merged):
+    """-> (component spec, consumed field names) for a keyed plant, or None."""
+    if name not in PLANT_BEHAVIOURS:
+        return None
+    ctype, fields, const = PLANT_BEHAVIOURS[name]
+    cfg = {"type": ctype}
+    used = set()
+    for table in (fields, PLANT_BEHAVIOUR_EXTRAS.get(name, {})):
+        for src, dst in table.items():
+            if merged.get(src) is None:
+                continue
+            if isinstance(dst, tuple):
+                dst, convert = dst
+                cfg[dst] = convert(merged[src])
+            else:
+                cfg[dst] = strip_rtid(merged[src])
+            used.add(src)
+    for dst, srcs in PLANT_BEHAVIOUR_LISTS.get(name, {}).items():
+        if all(merged.get(src) is not None for src in srcs):
+            cfg[dst] = [strip_rtid(merged[src]) for src in srcs]
+            used.update(srcs)
+    cfg = {k: v for k, v in cfg.items() if v is not None}
+    for k, v in const.items():
+        cfg.setdefault(k, v)
+    return cfg, used
+
+
 PLANT_STATS = {
     "SunCost":       "sun_cost",
     "Toughness":     "toughness",
@@ -463,7 +722,13 @@ def split_plant(name, entry, prop_lookup):
 
     used = set(PLANT_STATS) | {"Family", "MintBoostedProps"}
     components = []
+    keyed = plant_behaviour(name, merged)
+    if keyed:
+        components.append(keyed[0])
+        used.update(keyed[1])
     for ctype, triggers, fields in BEHAVIOUR_SIGNATURES:
+        if keyed:
+            break
         if not any(merged.get(t) is not None for t in triggers):
             continue
         cfg = {"type": ctype}
@@ -491,6 +756,11 @@ def split_plant(name, entry, prop_lookup):
     tags = []
     if name in AQUATIC_PLANTS:
         tags.append("aquatic")
+    if name in AIRBORNE_PLANTS:
+        tags.append("airborne")
+    if name in GRAVE_PLANTS:
+        # "on_grave:<flag>" plants go onto a grave carrying that flag.
+        tags.append("on_grave:" + GRAVE_PLANTS[name])
     if name in CARRIER_PLANTS:
         # "provides:<tag>" is what the board reads to mark a cell satisfied.
         tags.append("provides:" + CARRIER_PLANTS[name])
@@ -665,7 +935,11 @@ TERRAIN_RULES = {
 # rule - no special case for lily pads anywhere in the board code.
 AQUATIC_PLANTS = {"lilypad", "tanglekelp", "guacodile", "bowlingbulb",
                   "rotobaga", "banana_launcher"}
-CARRIER_PLANTS = {"lilypad": "aquatic", "skyplatform": "airborne"}
+CARRIER_PLANTS = {"lilypad": "aquatic", "skyplatform": "airborne",
+                  "floawerPot": "airborne"}
+AIRBORNE_PLANTS = {"floawerPot"}
+GRAVE_PLANTS = {"gravebuster": "gravebuster_plantable",
+                "hotpotato": "hot_potato_meltable"}
 # Aquatic plants that cannot go on land either (PVZGE's "aquatic" and "lilypad"
 # tags; the rest above are amphibious). The seed chooser only offers them on a
 # lawn with water.

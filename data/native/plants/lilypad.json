@@ -8,6 +8,11 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "carrier"
+  }
+ ],
  "tags": [
   "aquatic",
   "provides:aquatic",

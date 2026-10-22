@@ -12,7 +12,9 @@ var _cooldown: float = 0.0
 
 func setup() -> void:
 	damage = float(cfg(&"damage", 15.0))
-	interval = float(cfg(&"interval", 0.3))
+	# Witch hazel states its interval as a PopCap {Min, Max} range.
+	var raw: Variant = cfg(&"interval", 0.3)
+	interval = float(raw.get("Min", 0.3)) if raw is Dictionary else float(raw)
 	detect_width = float(cfg(&"detect_width", 1.0))
 	_cooldown = randf() * interval
 

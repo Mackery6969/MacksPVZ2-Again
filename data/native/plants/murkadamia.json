@@ -8,6 +8,16 @@
   "cooldown_from": 0.77,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "jelly_shield",
+   "toughness": 2500,
+   "initial": 0.6,
+   "reflect": 0.25,
+   "cooldown": 5,
+   "regen_hps": 100
+  }
+ ],
  "mint_boost": {
   "resistance": 3,
   "speed": 4,
@@ -15,11 +25,6 @@
  },
  "extra": {
   "CallsMirrorNutsOnDamaged": true,
-  "FoeEatDamageReflectPct": 0.25,
-  "JellyCooldown": 5,
-  "JellyInitialPct": 0.6,
-  "JellyRecoveryHPS": 100,
-  "JellyToughness": 2500,
   "MintDamageFactor": 8,
   "ShieldToughness": 2000
  }

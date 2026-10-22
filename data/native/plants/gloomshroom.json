@@ -8,17 +8,24 @@
   "cooldown_from": 1,
   "beghouled_cost": 3000
  },
+ "components": [
+  {
+   "type": "area_pulse",
+   "interval": 1.5,
+   "dps": 100,
+   "duration": 0.5,
+   "poison_dps": 60,
+   "plantfood_dps": 1543,
+   "radius": 1.5,
+   "plantfood_duration": 3.0
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 2,
   "plantfood": false
  },
  "extra": {
-  "DPS": 100,
-  "DPSPlantfood": 1543,
-  "DamageDuration": 0.5,
-  "MintDamageFactor": 3,
-  "PoisonDPS": 60,
-  "ShootInterval": 1.5
+  "MintDamageFactor": 3
  }
 }

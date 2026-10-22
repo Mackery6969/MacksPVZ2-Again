@@ -8,19 +8,26 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "leaf_thrower",
+   "ammo": 3,
+   "regrow": 5,
+   "reach": 1.5,
+   "powered_reach": 9,
+   "powered_damage_scale": 0.5,
+   "interval": 2.7,
+   "interval_jitter": 0,
+   "projectile": "nightshade",
+   "projectile_plantfood": "nightshade_pf"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
   "plantfood": false
  },
  "extra": {
-  "DetectDistanceNormal": 1.5,
-  "DetectDistanceShadow": 9,
-  "LeafRespawnCooldown": 5,
-  "MaxProjectiles": 3,
-  "PlantfoodTime": 3,
-  "ShadowPoweredDamageScale": 0.5,
-  "ShootInterval": 2.7,
-  "ShootIntervalAdditional": 0
+  "PlantfoodTime": 3
  }
 }

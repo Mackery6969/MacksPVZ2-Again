@@ -8,14 +8,21 @@
   "cooldown_from": 0.667,
   "beghouled_cost": 1500
  },
+ "components": [
+  {
+   "type": "magnet",
+   "rest": 10,
+   "plantfood_damage": 300,
+   "reach": 3.5,
+   "rows": 1
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 5,
   "plantfood": false
  },
  "extra": {
-  "PlantfoodAbsorbDuration": 1.5,
-  "PlantfoodThrowDamage": 300,
-  "RestTime": 10
+  "PlantfoodAbsorbDuration": 1.5
  }
 }

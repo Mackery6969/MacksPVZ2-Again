@@ -8,6 +8,18 @@
   "cooldown_from": 1,
   "beghouled_cost": 1500
  },
+ "components": [
+  {
+   "type": "chomper",
+   "reach": 3.5,
+   "capacity": 1,
+   "chew_time": 30,
+   "fail_damage": 50,
+   "sun_per_zombie": 50,
+   "plantfood_swallows": 4,
+   "plantfood_reach": 4
+  }
+ ],
  "tags": [
   "sun_producer"
  ],
@@ -17,16 +29,9 @@
   "plantfood": false
  },
  "extra": {
-  "ChewTime": 30,
   "ChewTimePF": 3,
-  "MaxZombieChewCount": 1,
-  "MaxZombieChewCountPF": 4,
   "MintProductionFactor": 2,
-  "SunProducePerZombie": 50,
   "SunProducePerZombiePF": 50,
-  "TongueDistance": 3.5,
-  "TongueDistancePf": 4,
-  "TongueSlapDamage": 50,
   "TongueSlapDamagePF": 100,
   "WaitTimePF": 6
  }

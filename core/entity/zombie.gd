@@ -69,6 +69,14 @@ var _art_state: StringName = &""
 var _lost: Dictionary = {}
 ## How far off its lane's centre line this zombie stands, set at spawn.
 var lane_offset: float = 0.0
+## Damage over time, as damage per second and seconds left. Kept apart from
+## the slow so a poisoned zombie still walks at full pace.
+var _poison_dps: float = 0.0
+var _poison_left: float = 0.0
+var _poison_accumulator: float = 0.0
+## A peaceful zombie walks but never stops to fight: a solar-sage convert
+## wandering off the lawn, or a zombie being dragged somewhere.
+var peaceful: bool = false
 
 
 func art_kind() -> StringName:
@@ -209,6 +217,32 @@ func is_stunned() -> bool:
 	return _stun_left > 0.0
 
 
+## Pushes this zombie back the way it came by `cells`, never past the spawn
+## line. Whatever it was chewing on is let go.
+func knock_back(cells: float) -> void:
+	if board == null or cells == 0.0:
+		return
+	position.x -= direction() * cells * board.cell_size.x
+	position.x = clampf(position.x, board.house_x(), board.spawn_x())
+	col = board.world_to_col(position.x)
+	target = null
+	queue_redraw()
+
+
+## Poisons this zombie: `dps` damage every second for `seconds`. Re-applying
+## keeps the stronger dose and the longer time, the same rule as a slow.
+func apply_poison(dps: float, seconds: float) -> void:
+	if dps <= 0.0 or seconds <= 0.0:
+		return
+	_poison_dps = maxf(_poison_dps if _poison_left > 0.0 else 0.0, dps)
+	_poison_left = maxf(_poison_left, seconds)
+	set_runtime_tag(&"poisoned", true)
+
+
+func is_poisoned() -> bool:
+	return _poison_left > 0.0
+
+
 ## Drops the pieces a zombie has lost. PopCap draws the stump as its own slot
 ## - the basic zombie's `arm_here_ARM` sits hidden under the intact arm - so
 ## losing a limb is: stop drawing the whole one, start drawing the stump, and
@@ -243,6 +277,18 @@ func _drop_limbs(on_death: bool) -> void:
 
 
 func _tick_status(delta: float) -> void:
+	if _poison_left > 0.0:
+		_poison_left -= delta
+		_poison_accumulator += _poison_dps * delta
+		var whole := floorf(_poison_accumulator)
+		if whole >= 1.0:
+			_poison_accumulator -= whole
+			take_damage(whole)
+		if _poison_left <= 0.0:
+			_poison_dps = 0.0
+			set_runtime_tag(&"poisoned", false)
+		if is_dead:
+			return
 	if _stun_left > 0.0:
 		_stun_left -= delta
 		if _stun_left <= 0.0:
@@ -263,6 +309,8 @@ func _process(delta: float) -> void:
 	if is_dead or board == null:
 		return
 	_tick_status(delta)
+	if is_dead:
+		return
 	# A stunned or encased zombie neither walks nor eats.
 	if is_stunned() or is_encased():
 		return
@@ -304,6 +352,8 @@ func _walk(delta: float) -> void:
 
 ## What this zombie should attack next, if anything is in reach.
 func _find_target() -> Character:
+	if peaceful:
+		return null
 	if is_charmed():
 		# Charmed zombies fight the nearest hostile zombie in the lane.
 		for z in board.hostile_zombies_in_row(row):

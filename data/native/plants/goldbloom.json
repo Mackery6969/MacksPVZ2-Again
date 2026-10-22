@@ -8,6 +8,12 @@
   "cooldown_from": 0.0005,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "sun_burst",
+   "sun": 100
+  }
+ ],
  "tags": [
   "sun_producer"
  ],
@@ -21,7 +27,6 @@
   "ImmuneToBoomBox": true,
   "ImmuneToIceblock": true,
   "MintProductionFactor": 3,
-  "ProduceValue0": 100,
   "ProduceValue1": 125,
   "ProduceValue2": 150
  }
