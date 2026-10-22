@@ -156,6 +156,29 @@ func _tick_suppression(delta: float) -> void:
 	queue_redraw()
 
 
+## Frozen in a block: none of this entity's behaviour runs until `release`.
+## Kept separate from suppression, which only slows things down - an encased
+## peashooter must not fire at all, and an encased imp must not walk.
+func encase() -> void:
+	set_runtime_tag(&"encased", true)
+	for comp in _components:
+		comp.process_mode = Node.PROCESS_MODE_DISABLED
+	queue_redraw()
+
+
+func release() -> void:
+	if not is_encased():
+		return
+	set_runtime_tag(&"encased", false)
+	for comp in _components:
+		comp.process_mode = Node.PROCESS_MODE_INHERIT
+	queue_redraw()
+
+
+func is_encased() -> bool:
+	return has_tag(&"encased")
+
+
 func _tick_buff(delta: float) -> void:
 	if _buff_left <= 0.0:
 		return

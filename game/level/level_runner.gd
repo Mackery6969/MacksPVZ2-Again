@@ -6,6 +6,10 @@ extends Node
 ## list where each entry is either a spawn action or a `multi` bundle of
 ## actions. Wave pacing follows `wave_settings`, and the level is won once the
 ## last wave is cleared.
+##
+## Before the first wave the lawn is set up from the level: `initial` plants,
+## grid items and zombies, the plants a protect-the-plant objective guards,
+## and `gravestones`. Cells there are 0-based, as PopCap's GridX/GridY are.
 
 signal wave_started(index: int, total: int)
 signal level_complete
@@ -36,6 +40,14 @@ const MUSIC_STAGES := 4
 ## rather than applied independently, so jitter can only widen a gap - never
 ## narrow one below `spawn_spacing`.
 @export var spawn_jitter: float = 0.5
+
+@export_group("Grid items")
+## Used when a level asks for gravestones but neither it nor its world names
+## which kind.
+@export var fallback_gravestone: StringName = &"gravestone"
+## What a level's "icecubed" zombies and plants are frozen inside.
+@export var zombie_ice_block: StringName = &"zombietarget_iceblock"
+@export var plant_ice_block: StringName = &"planttarget_iceblock"
 
 @export_group("Sun")
 ## Seconds between sun falling from the sky.
@@ -90,6 +102,8 @@ func start(level_def: Dictionary, target_board: Board) -> void:
 	if pacing.has("first_delay"):
 		_timer = float(pacing["first_delay"])
 
+	# Before objectives, so a protect-the-plant goal finds what it guards.
+	_place_initial()
 	_build_objectives()
 	_music_stage = -1
 	Audio.play_music(music_event())
@@ -423,10 +437,130 @@ func _run_action(action: Dictionary) -> void:
 			for sub in (action.get("actions", []) as Array):
 				if sub is Dictionary:
 					_run_action(sub)
+		"gravestones":
+			_raise_gravestones(action)
 		_:
 			# Unmodelled action kinds are skipped rather than fatal, so a level
 			# using a feature we have not built yet still plays.
 			pass
+
+
+# --- lawn set-up ----------------------------------------------------------
+
+## Everything the level has standing on the lawn before the first wave.
+func _place_initial() -> void:
+	var init: Dictionary = level.get("initial", {})
+	# Items first: a lily pad or puddle decides what the plants can stand on.
+	for e in (init.get("grid_items", []) as Array):
+		if e is Dictionary:
+			board.place_object(_cell_type(e), int(e.get("row", 0)), int(e.get("col", 0)))
+
+	var plants: Array = (init.get("plants", []) as Array).duplicate()
+	for spec in (level.get("objectives", []) as Array):
+		if spec is Dictionary and String(spec.get("type", "")) == "protect_plants":
+			plants.append_array(spec.get("plants", []))
+	for e in plants:
+		if not (e is Dictionary):
+			continue
+		var p := board.place_preset_plant(_cell_type(e),
+				int(e.get("row", 0)), int(e.get("col", 0)))
+		if p == null:
+			continue
+		if String(e.get("condition", "")) == "icecubed":
+			board.encase_in_block(p, plant_ice_block)
+		elif bool(e.get("plantfood", false)):
+			p.apply_plant_food()
+
+	for e in (init.get("zombies", []) as Array):
+		if not (e is Dictionary):
+			continue
+		var row := int(e.get("row", 0))
+		var col := int(e.get("col", board.cols - 1))
+		var z := board.spawn_zombie_at(_cell_type(e), row, board.grid_to_world(row, col).x)
+		if z != null and String(e.get("condition", "")) == "icecubed":
+			z.col = col
+			board.encase_in_block(z, zombie_ice_block)
+
+	_place_starting_gravestones(level.get("gravestones", {}))
+
+
+## A placement names its contents as `type`; older conversions used the
+## source's own key.
+func _cell_type(entry: Dictionary) -> StringName:
+	for key in ["type", "typename", "planttype"]:
+		if entry.get(key):
+			return StringName(entry[key])
+	return &""
+
+
+## Gravestones present from the start: every `forced` cell, plus `count` more
+## scattered over the allowed columns and rows.
+func _place_starting_gravestones(g: Dictionary) -> void:
+	if g.is_empty():
+		return
+	var types: Array = g.get("types", [])
+	for e in (g.get("forced", []) as Array):
+		if e is Dictionary:
+			var kind := _cell_type(e)
+			board.place_object(kind if kind != &"" else _pick_gravestone(types),
+					int(e.get("row", 0)), int(e.get("col", 0)))
+
+	var count := int(g.get("count", 0))
+	if count <= 0:
+		return
+	var cells: Array[Vector2i] = []
+	for r in range(int(g.get("row_start", 0)), int(g.get("row_end", board.rows - 1)) + 1):
+		for c in range(int(g.get("col_start", 0)), int(g.get("col_end", board.cols - 1)) + 1):
+			if board.in_bounds(r, c):
+				cells.append(Vector2i(c, r))
+	cells.shuffle()
+	for cell in cells:
+		if count <= 0:
+			break
+		if board.plant_at(cell.y, cell.x) != null:
+			continue
+		if board.place_object(_pick_gravestone(types), cell.y, cell.x) != null:
+			count -= 1
+
+
+## A wave that raises gravestones mid-level. Each pool entry places `count`
+## of its kind into the shuffled candidate positions. Plants standing where a
+## stone rises are knocked out of the ground unless `displace_plants` is false,
+## in which case those cells are passed over.
+func _raise_gravestones(action: Dictionary) -> void:
+	var displace := bool(action.get("displace_plants", true))
+	var positions: Array = (action.get("positions", []) as Array).duplicate()
+	positions.shuffle()
+	var next := 0
+	for entry in (action.get("pool", []) as Array):
+		if not (entry is Dictionary):
+			continue
+		var kind := StringName(entry["type"]) if entry.get("type") else _pick_gravestone([])
+		var left := int(entry.get("count", 1))
+		while left > 0 and next < positions.size():
+			var pos: Dictionary = positions[next]
+			next += 1
+			# A position with no column or row is anywhere on the lawn.
+			var col := int(pos["col"]) if pos.get("col") != null else randi() % board.cols
+			var row := int(pos["row"]) if pos.get("row") != null else randi() % board.rows
+			if not board.in_bounds(row, col) or board.object_at(row, col) != null:
+				continue
+			if board.plant_at(row, col) != null:
+				if not displace:
+					continue
+				board.dig_up(row, col)
+			if board.place_object(kind, row, col) != null:
+				left -= 1
+
+
+## One of the given kinds, else one of the world's own gravestones.
+func _pick_gravestone(types: Array) -> StringName:
+	if not types.is_empty():
+		return StringName(types.pick_random())
+	var world: Array = lawn_data().get("gravestones", [])
+	if not world.is_empty():
+		return StringName(world.pick_random())
+	return fallback_gravestone
 
 
 ## Marks some of a wave's zombies as carrying plant food, which they drop when
