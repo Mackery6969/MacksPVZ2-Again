@@ -5,7 +5,7 @@ content and composable behaviour rather than a 1:1 port of the original code.
 
 > **Unofficial fan work.** Not developed, authorised or endorsed by PopCap
 > Games or Electronic Arts. *Plants vs. Zombies* and all game assets belong to
-> Electronic Arts / PopCap Games; see `Music/COPYRIGHT.md`. PVZGE's own web
+> Electronic Arts / PopCap Games; see `Music/COPYRIGHT.md` and `art/COPYRIGHT.md`. PVZGE's own web
 > build is GPL-3.0, and its User Agreement prohibits separately distributing
 > game assets. Please support the official release.
 
@@ -131,4 +131,5 @@ Audio is wired but silent: the game raises named events and a backend decides
 what they mean, so installing FMOD is a one-file switch. See `docs/AUDIO.md`
 for versions and setup.
 
-See `docs/MODDING.md` for the mod format and `docs/AUDIO.md` for audio.
+See `docs/MODDING.md` for the mod format, `docs/AUDIO.md` for audio and
+`docs/ART.md` for the art submodule.
