@@ -75,6 +75,7 @@ The Studio project in this workspace reports `Studio.02.03.00`, so the pair is:
 4. Export your banks from FMOD Studio to `res://audio/banks/`. The master bank
    and its `.strings` bank are both required before any event resolves.
    See "Running Studio under Proton" below if Studio is running through Wine.
+   Or let the Music repo build them: see "Automated bank builds" below.
 5. Restart. `fmod_backend.gd` looks for the `FmodServer` singleton and takes
    over automatically; the boot log should now read `backend=fmod`.
 6. For an exported build, add `*.bank` to the export's non-resource filter, or
@@ -117,6 +118,15 @@ The Studio project itself lives at:
 
 That is inside a Proton prefix, which Steam can reset. Worth keeping the
 project under version control somewhere outside the prefix.
+
+### Automated bank builds
+
+The Music repo builds its banks itself: every push to its `master` that
+touches the Studio project runs `fmodstudiocl` on a self-hosted Windows runner
+with FMOD Studio installed. The runner can copy the banks straight into this
+checkout's `audio/banks/` (its `BANK_INSTALL_DIR` variable) and uploads them as
+the `fmod-banks-Desktop` workflow artifact, so another machine can download
+and unzip them here. Setup is in the Music repo's `docs/BUILD_RUNNER.md`.
 
 ## Building the Studio project
 
