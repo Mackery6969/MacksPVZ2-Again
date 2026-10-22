@@ -1078,6 +1078,15 @@ func _test_shovel() -> void:
 	check("cell is free again", board.plant_at(2, 3) == null)
 	check("can replant there", board.can_place_entity(&"plant", &"peashooter", 2, 3))
 	check("digging an empty cell does nothing", not board.dig_up(2, 3))
+
+	# Digging with the shovel puts it back down, as in PVZGE.
+	board.place_plant(&"peashooter", 2, 3)
+	board.shovel_active = true
+	board.click(board.grid_to_world(2, 4))
+	check("a click on an empty cell keeps the shovel", board.shovel_active)
+	board.click(board.grid_to_world(2, 3))
+	check("the shovel digs the plant up", board.plant_at(2, 3) == null)
+	check("and goes back once it has", not board.shovel_active)
 	board.queue_free()
 
 
@@ -1242,6 +1251,13 @@ func _test_audio_streams() -> void:
 	godot.setup(Audio.catalog)
 	if DirAccess.dir_exists_absolute("res://Music/Assets"):
 		check("godot backend can play a groan", godot.can_play(groans))
+	# Music is .gdignored, so the clips are decoded from disk, not imported.
+	var groan_path: String = groans.streams[0]
+	var groan_bytes := FileAccess.get_file_as_bytes(groan_path)
+	if groan_bytes.size() > 200:
+		check("godot backend decodes a groan from disk", godot._stream_for(groans) != null)
+	elif FileAccess.file_exists(groan_path):
+		check("an LFS pointer decodes to nothing", godot._stream_for(groans) == null)
 	check("godot backend cannot play what has no clips",
 			not godot.can_play(AudioEvent.from_dict({"id": "x.none"})))
 	godot.shutdown()
@@ -2843,6 +2859,38 @@ func _test_scenery_art() -> void:
 	var sun := SunToken.new()
 	board.add_child(sun)
 	check("sun has its art", sun.art != null)
+
+	# A sunflower's sun leaves its head on the Produce event and lands at
+	# its feet, as PVZGE's SunProducePoint does.
+	var sf := board.place_plant(&"sunflower", 2, 2)
+	check("a sunflower has its art", sf != null and sf.art != null)
+	if sf != null and sf.art != null:
+		var suns := board.get_node("Suns")
+		var before := suns.get_child_count()
+		var producer: EntityComponent = null
+		for c in sf._components:
+			if c.get_script().resource_path.ends_with("sun_producer.gd"):
+				producer = c
+		check("the sunflower has a sun producer", producer != null)
+		if producer != null:
+			producer.set(&"_timer", 0.0)
+			await get_tree().process_frame
+			check("no sun before the Produce event", suns.get_child_count() == before)
+			# The event is 23 frames in; the flight takes under a second.
+			await _wait_game_seconds(2.2)
+			var popped: SunToken = null
+			for t in suns.get_children():
+				if t is SunToken and t != sun:
+					popped = t
+			check("then one appears", popped != null)
+			if popped != null:
+				var feet: float = sf.position.y + sf.art.position.y
+				check("it lands at the sunflower's feet",
+						is_equal_approx(popped.position.y, feet),
+						"%.1f vs %.1f" % [popped.position.y, feet])
+				check("near the sunflower",
+						absf(popped.position.x - sf.position.x) < board.cell_size.x,
+						"%.1f vs %.1f" % [popped.position.x, sf.position.x])
 	board.queue_free()
 	end_section()
 
