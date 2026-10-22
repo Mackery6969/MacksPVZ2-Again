@@ -1940,6 +1940,20 @@ func _test_art() -> void:
 		# The rig is drawn walking toward the house already, so a hostile
 		# zombie is NOT mirrored; a charmed one is.
 		check("a hostile zombie is not mirrored", z.art.facing == 1)
+		# A hand hidden at rest stays hidden until an animation shows it.
+		var spare: Node2D = z.art.get_node_or_null(^"hand_side_HAND")
+		check("the spare eating hand starts invisible",
+				spare != null and spare.modulate.a < 0.01)
+		await get_tree().process_frame
+		var stride := z.art.ground_speed(&"Walk")
+		check("the walk plays at the pace the zombie moves",
+				stride > 0.0 and is_equal_approx(z.art.speed_scale(),
+						z.current_speed() * board.cell_size.x / stride),
+				"%.3f" % z.art.speed_scale())
+		z.apply_stun(0.5)
+		await get_tree().process_frame
+		check_eq("and stops dead when stunned", z.art.speed_scale(), 0.0)
+		await _wait_game_seconds(0.6)
 		z.charm()
 		check("a charmed one is", z.art.facing == -1)
 		z.set_allegiance(Zombie.Allegiance.HOSTILE)
@@ -1951,7 +1965,7 @@ func _test_art() -> void:
 	# Acting changes what a plant is doing, and it goes back to idling after.
 	# The component says what happened; it never names an animation.
 	if pea != null and pea.art != null and pea.art.has_animation(&"Shoot"):
-		var idle_name: StringName = pea.art.playing
+		var idle_name: StringName = Art.animation_for(&"plant", &"peashooter", &"idle")
 		board.spawn_zombie(&"tutorial", 2)
 		await _wait_game_seconds(2.0)
 		check("firing changed the animation or returned to idle",
@@ -1971,6 +1985,32 @@ func _test_art() -> void:
 				absf(walk.length - 3.0) < 0.1, "%f" % walk.length)
 	check("baking happens once per rig",
 			rig.animations(&"BasicZombie") == library)
+
+	# The rig's limbs are posed by IK, and its slots animate as well as move.
+	var baker := rig.rig(&"BasicZombie")
+	check_eq("the zombie's legs and arms are IK chains", baker.iks.size(), 4)
+	if walk != null:
+		check("a walk says how fast it was drawn to travel",
+				float(walk.get_meta(&"ground_speed", 0.0)) > 10.0)
+		check("and keys which foot picture shows",
+				walk.find_track(NodePath("foot_there/0:visible"), Animation.TYPE_VALUE) >= 0)
+	var eat: Animation = library.get_animation(&"Eat")
+	if walk != null and eat != null:
+		# Every animation keys every moving part, so none inherits the pose
+		# the last one left behind - eating arms carried into the walk.
+		check("walk keys the same parts eating moves",
+				walk.find_track(NodePath("hand_here_HAND:position"), Animation.TYPE_VALUE) >= 0
+				and eat.find_track(NodePath("hand_here_HAND:position"), Animation.TYPE_VALUE) >= 0)
+		check("and fades the eating hands in and out",
+				eat.find_track(NodePath("hand_side_HAND:modulate"), Animation.TYPE_VALUE) >= 0)
+	var turns := baker._rotation_timeline([
+		{"duration": 5, "rotate": 170.0}, {"duration": 0, "rotate": -170.0}])
+	check_eq("a key past the seam turns the short way",
+			float(turns[1]["value"]), 190.0)
+	var spun := baker._rotation_timeline([
+		{"duration": 5, "rotate": 0.0, "clockwise": 1}, {"duration": 0, "rotate": -10.0}])
+	check_eq("unless the rig says to go round the long way",
+			float(spun[1]["value"]), 350.0)
 
 	# A rig says when it acts, and where from.
 	if pea != null and pea.art != null:
