@@ -28,6 +28,26 @@ var board: Node = null
 ## Artwork, when some is mapped for this projectile; null keeps the drawn dot.
 var art: Armature = null
 
+## Targets it passes through before it is spent. A pea stops at the first;
+## a bloomerang's boomerang goes through three.
+var pierce: int = 1
+## Which side fired it, and so what it may hit. Not read off `direction`: a
+## split pea fires backwards and a boomerang comes home, and neither turns on
+## its own side.
+var from_zombie: bool = false
+## A boomerang turns round at the far end, or once it has pierced its fill,
+## and flies back over the lane hitting everything again.
+var returns: bool = false
+## A bowling bulb glances off what it hits into a neighbouring lane.
+var bounces: bool = false
+## Chance per hit of pushing the target back, and how far (squares).
+var knockback_chance: float = 0.0
+var knockback_distance: float = 0.0
+
+var _hit: Array = []
+var _returning: bool = false
+var _home_x: float = 0.0
+
 ## Tags a target must have for this shot to affect it. Mods use these to make
 ## a projectile selective without touching zombie data.
 @export var required_tags: Array[StringName] = []
@@ -47,6 +67,10 @@ func attach_art(id: StringName) -> void:
 	queue_redraw()
 
 
+func _ready() -> void:
+	_home_x = position.x
+
+
 func _process(delta: float) -> void:
 	var from_x := position.x
 	position.x += direction * speed * delta
@@ -54,8 +78,22 @@ func _process(delta: float) -> void:
 		return
 	if board == null:
 		return
-	if position.x > board.despawn_x() or position.x < board.house_x() - board.cell_size.x:
+	if _returning and (position.x - _home_x) * direction >= 0.0:
 		queue_free()
+		return
+	if position.x > board.despawn_x() or position.x < board.house_x() - board.cell_size.x:
+		if returns and not _returning:
+			_turn_back()
+		else:
+			queue_free()
+
+
+func _turn_back() -> void:
+	_returning = true
+	_hit.clear()
+	direction = -direction
+	if art != null:
+		art.set_facing(direction)
 
 
 ## Hits the nearest valid target whose centre lies in the swept span.
@@ -69,7 +107,7 @@ func _check_hit(from_x: float, to_x: float) -> bool:
 	var best: Node = null
 	var best_x := INF * direction
 	for t in _candidates():
-		if t.is_dead or t.position.x < lo or t.position.x > hi:
+		if t.is_dead or t.position.x < lo or t.position.x > hi or _hit.has(t):
 			continue
 		if not t.matches(required_tags, excluded_tags):
 			continue
@@ -81,14 +119,40 @@ func _check_hit(from_x: float, to_x: float) -> bool:
 		return false
 	# The shooter may have been eaten or dug up while this was in flight.
 	best.take_damage(damage, source if is_instance_valid(source) else null)
+	if knockback_chance > 0.0 and best is Zombie and randf() < knockback_chance \
+			and best.has_tag(&"knockbackable"):
+		best.knock_back(knockback_distance)
+	_hit.append(best)
+	if bounces:
+		_bounce()
+	if _hit.size() < pierce:
+		return false
+	if returns and not _returning:
+		_turn_back()
+		return false
 	queue_free()
 	return true
+
+
+## Glances into a neighbouring lane, picked at random where there is a
+## choice, keeping on down the lawn.
+func _bounce() -> void:
+	var options: Array[int] = []
+	for r in [row - 1, row + 1]:
+		if r >= 0 and r < board.rows:
+			options.append(r)
+	if options.is_empty():
+		return
+	var to: int = options[randi() % options.size()]
+	position.y += (to - row) * board.cell_size.y
+	row = to
+	z_index = board.lane_z(row, board.LAYER_PROJECTILE)
 
 
 ## What this shot can hit: its own side is never a target. A plant's shot
 ## also breaks gravestones and ice blocks in its way.
 func _candidates() -> Array:
-	if direction < 0:
+	if from_zombie:
 		return board.plants_in_row(row)
 	return board.plant_targets_in_row(row)
 

@@ -30,6 +30,7 @@ var art: Armature = null
 
 var _components: Array[EntityComponent] = []
 var _runtime_tags: Dictionary = {}   ## tags added or removed after spawn
+var _timed_tags: Dictionary = {}     ## tag -> seconds left
 
 ## Buff multipliers something else has applied. Components read
 ## `attack_rate` when timing themselves, so a buff speeds up whatever the
@@ -201,6 +202,24 @@ func _tick_buff(delta: float) -> void:
 func _process(delta: float) -> void:
 	_tick_buff(delta)
 	_tick_suppression(delta)
+	_tick_timed_tags(delta)
+
+
+## Grants a tag for a while - shadow power from a gloom-shroom, say. Topping it
+## up keeps the longer time.
+func add_timed_tag(tag: StringName, seconds: float) -> void:
+	_timed_tags[tag] = maxf(_timed_tags.get(tag, 0.0), seconds)
+	set_runtime_tag(tag, true)
+
+
+func _tick_timed_tags(delta: float) -> void:
+	if _timed_tags.is_empty():
+		return
+	for tag in _timed_tags.keys():
+		_timed_tags[tag] -= delta
+		if _timed_tags[tag] <= 0.0:
+			_timed_tags.erase(tag)
+			set_runtime_tag(tag, false)
 
 
 # --- tags ----------------------------------------------------------------

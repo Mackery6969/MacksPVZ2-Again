@@ -78,6 +78,9 @@ var plant_food: int = 0
 ## Zombies are placeable too, for level types where the player plays the
 ## zombie side.
 var selected_seed: Dictionary = {}
+## A tap-to-fire plant the player has armed - a banana launcher waiting to be
+## told where to throw. The next click on the lawn picks the spot.
+var aiming: EntityComponent = null
 ## Optional. When set, a packet must have recharged before it can be placed,
 ## and placing starts its recharge.
 var seed_bank: SeedBank = null
@@ -1048,18 +1051,52 @@ func zombie_count() -> int:
 
 # --- projectiles and sun -------------------------------------------------
 
-func spawn_projectile(id: StringName, row: int, from: Vector2, source: Node) -> Projectile:
+## `direction` 0 picks the side's own way (a plant's shot goes right); a
+## split pea's rear head passes -1 to fire back toward the house.
+func spawn_projectile(id: StringName, row: int, from: Vector2, source: Node,
+		direction: int = 0) -> Projectile:
 	var pr := Projectile.new()
 	pr.row = row
 	pr.board = self
 	pr.source = source
 	pr.damage = float(Data.projectile_damage(id))
-	pr.direction = -1 if source is Zombie else 1
+	pr.from_zombie = source is Zombie
+	pr.direction = direction if direction != 0 else (-1 if pr.from_zombie else 1)
 	pr.position = from + Vector2(24 * pr.direction, -12)
 	pr.z_index = lane_z(row, LAYER_PROJECTILE)
 	_projectiles.add_child(pr)
 	pr.attach_art(id)
 	return pr
+
+
+## A projectile landing on a square: its SplashDamage entries say how far it
+## spreads ({Damage, Range: {w, h}, FreezeDuration, ChillDuration}). One with
+## no splash just hits that square. Gravestones in the blast break too.
+func splash_at(row: int, x: float, projectile_id: StringName, source: Node,
+		damage_scale: float = 1.0) -> int:
+	var def := Data.projectile(projectile_id)
+	var entries: Array = def.extra.get("SplashDamage", []) if def != null else []
+	if entries.is_empty():
+		entries = [{"Damage": Data.projectile_damage(projectile_id), "Range": {"w": 1, "h": 1}}]
+	var hit := 0
+	for entry in entries:
+		var area: Dictionary = entry.get("Range", {"w": 1, "h": 1})
+		var half_rows := int((int(area.get("h", 1)) - 1) / 2)
+		var half_w: float = float(area.get("w", 1)) * 0.5 * cell_size.x
+		var damage := float(entry.get("Damage", 0.0)) * damage_scale
+		for r in range(maxi(0, row - half_rows), mini(rows, row + half_rows + 1)):
+			for t in plant_targets_in_row(r):
+				if absf(t.position.x - x) > half_w:
+					continue
+				if damage > 0.0:
+					t.take_damage(damage, source if is_instance_valid(source) else null)
+					hit += 1
+				if t is Zombie:
+					if float(entry.get("FreezeDuration", 0.0)) > 0.0:
+						t.apply_freeze(float(entry["FreezeDuration"]))
+					elif float(entry.get("ChillDuration", 0.0)) > 0.0:
+						t.apply_slow(0.5, float(entry["ChillDuration"]))
+	return hit
 
 
 ## Sends a sweeper down a lane from the house end. See LaneSweeper.
@@ -1178,6 +1215,32 @@ func spend_sun(amount: int) -> bool:
 
 # --- input ---------------------------------------------------------------
 
+## Taps a plant that does something when tapped: a strawburst fires, a banana
+## launcher arms and waits for `aim_at`. Returns true if anything responded.
+func tap_plant(row: int, col: int) -> bool:
+	var p := plant_at(row, col)
+	if p == null or p.is_dead:
+		return false
+	for comp in p.components():
+		if comp.has_method("on_tapped") and comp.on_tapped():
+			if comp.has_method("fire_at"):
+				aiming = comp
+			return true
+	return false
+
+
+## Fires the armed plant at a square. A click off the lawn, or on the plant
+## itself, puts it down again.
+func aim_at(row: int, col: int) -> bool:
+	var armed := aiming
+	aiming = null
+	if not is_instance_valid(armed) or armed.host.is_dead:
+		return false
+	if not in_bounds(row, col) or (row == armed.host.row and col == armed.host.col):
+		return false
+	return armed.fire_at(row, col)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton and event.pressed
 			and event.button_index == MOUSE_BUTTON_LEFT):
@@ -1189,6 +1252,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if feed_plant(world_to_row(at.y), world_to_col(at.x)):
 			plant_food_active = false
 			get_viewport().set_input_as_handled()
+		return
+	if aiming != null:
+		aim_at(world_to_row(at.y), world_to_col(at.x))
+		get_viewport().set_input_as_handled()
+		return
+	if selected_seed.is_empty() and not shovel_active \
+			and tap_plant(world_to_row(at.y), world_to_col(at.x)):
+		get_viewport().set_input_as_handled()
 		return
 	if shovel_active:
 		if dig_up(world_to_row(at.y), world_to_col(at.x)):

@@ -59,6 +59,7 @@ func _run() -> void:
 	await _test_new_plant_behaviours()
 	await _test_reactive_plants()
 	await _test_lawn_support_plants()
+	await _test_shooting_plants()
 	await _test_zombie_status_effects()
 	_test_zombie_behaviour_coverage()
 	_test_zombie_archetypes()
@@ -1751,6 +1752,129 @@ func _test_lawn_support_plants() -> void:
 	check("resistant radish stands as a wall",
 			board3.place_plant(&"turnip", 4, 4).has_tag(&"blocker"))
 	board3.queue_free()
+	end_section()
+
+
+## Shooters with a twist, and plants the player taps to fire.
+func _test_shooting_plants() -> void:
+	section("shooting plants")
+	var board := _make_board()
+
+	# Split pea fires both ways; its rear shots never hit its own side.
+	var split := board.place_plant(&"splitpea", 0, 4)
+	var behind := board.spawn_zombie_at(&"tutorial", 0, board.grid_to_world(0, 1).x)
+	behind.speed = 0.0
+	var behind_hp: float = behind.health
+	var neighbour := board.place_plant(&"wallnut", 0, 2)
+	await _wait_game_seconds(2.0)
+	check("split pea shot the zombie behind it", behind.health < behind_hp)
+	check("over the wall-nut without hurting it", is_equal_approx(neighbour.health,
+			neighbour.max_health))
+	check("split pea is still standing", is_instance_valid(split))
+
+	# Bloomerang's boomerang passes through and comes back.
+	board.place_plant(&"bloomerang", 1, 0)
+	var first := board.spawn_zombie_at(&"tutorial", 1, board.grid_to_world(1, 4).x)
+	var second := board.spawn_zombie_at(&"tutorial", 1, board.grid_to_world(1, 5).x)
+	first.speed = 0.0
+	second.speed = 0.0
+	await _wait_game_seconds(7.0)
+	check("the boomerang hit both zombies", first.health < first.max_health
+			and second.health < second.max_health)
+	check("each of them twice", first.max_health - first.health >= 40.0,
+			"took %.0f" % (first.max_health - first.health))
+
+	# Scaredy-shroom hides when a zombie is close.
+	var scaredy := board.place_plant(&"scaredyshroom", 2, 3)
+	board.spawn_zombie_at(&"tutorial", 2, scaredy.position.x + 40.0).speed = 0.0
+	await _wait_game_seconds(0.5)
+	check("scaredy-shroom hides from a close zombie", scaredy.has_tag(&"hiding"))
+	board.queue_free()
+
+	# Red stinger: strong near the house, a wall far from it.
+	var board2 := _make_board()
+	var near := board2.place_plant(&"redstinger", 0, 1)
+	var far := board2.place_plant(&"redstinger", 1, 7)
+	near.take_damage(30.0)
+	far.take_damage(30.0)
+	check("near the house it takes full damage",
+			is_equal_approx(near.max_health - near.health, 30.0))
+	check("far from it, a fifth", is_equal_approx(far.max_health - far.health, 6.0))
+	var target := board2.spawn_zombie_at(&"tutorial", 0, board2.grid_to_world(0, 6).x)
+	target.speed = 0.0
+	await _wait_game_seconds(2.5)
+	check("a near red stinger shoots", target.health < target.max_health)
+
+	# Gloom-shroom hurts the 3x3; powered, it powers its shadow neighbours.
+	var gloom := board2.place_plant(&"gloomshroom", 3, 4)
+	var gloomed := board2.spawn_zombie_at(&"tutorial", 4, gloom.position.x + 60.0)
+	gloomed.speed = 0.0
+	var leafy := board2.place_plant(&"nightshade", 3, 5)
+	gloom.add_timed_tag(&"shadow_powered", 10.0)
+	await _wait_game_seconds(2.0)
+	check("gloom-shroom hurt the zombie in the next lane",
+			gloomed.health < gloomed.max_health or gloomed.is_dead)
+	check("and passed its shadow power on", leafy.has_tag(&"shadow_powered"))
+	board2.queue_free()
+
+	# Nightshade slaps what comes near, and runs out of leaves.
+	var board3 := _make_board()
+	var shade := board3.place_plant(&"nightshade", 0, 2)
+	var slapped := board3.spawn_zombie_at(&"tutorial", 0, shade.position.x + 80.0)
+	slapped.speed = 0.0
+	slapped.max_health = 5000.0
+	slapped.health = 5000.0
+	await _wait_game_seconds(12.0)
+	check("nightshade slapped the zombie", slapped.health < 5000.0)
+	check_eq("and used up its leaves", shade.component(&"leaf_thrower")._ammo, 0)
+	board3.queue_free()
+
+	# Tap-to-fire: arm the launcher, pick a square.
+	var board4 := _make_board()
+	var banana := board4.place_plant(&"banana", 2, 0)
+	var victim := board4.spawn_zombie_at(&"tutorial", 3, board4.grid_to_world(3, 6).x)
+	victim.speed = 0.0
+	check("tapping the launcher arms it", board4.tap_plant(2, 0))
+	check("and it waits for a square", board4.aiming == banana.component(&"launcher"))
+	check("the banana is away", board4.aim_at(3, 6))
+	check("it cannot fire again straight away", not board4.tap_plant(2, 0))
+	await _wait_game_seconds(1.5)
+	check("the banana blew the zombie up", not is_instance_valid(victim) or victim.is_dead)
+
+	var toe := board4.place_plant(&"missiletoe", 1, 0)
+	var chilled := board4.spawn_zombie_at(&"tutorial_gargantuar", 1, board4.grid_to_world(1, 5).x)
+	board4.tap_plant(1, 0)
+	board4.aim_at(1, 5)
+	await _wait_game_seconds(1.5)
+	check("missile toe froze its target", is_instance_valid(chilled)
+			and (chilled.has_tag(&"frozen") or chilled.has_tag(&"slowed")))
+	check("missile toe is reloading", not toe.component(&"launcher").is_loaded())
+
+	var berry := board4.place_plant(&"strawburst", 4, 0)
+	var berried := board4.spawn_zombie_at(&"tutorial", 4, board4.grid_to_world(4, 7).x)
+	berried.speed = 0.0
+	check("a strawburst with no berry yet does nothing", not board4.tap_plant(4, 0))
+	await _wait_game_seconds(8.0)
+	check("after a while it has grown one", berry.component(&"berry_lobber").stage >= 0)
+	check("tapping it lobs the berry", board4.tap_plant(4, 0))
+	check("which hit the zombie", not is_instance_valid(berried)
+			or berried.health < berried.max_health or berried.is_dead)
+
+	board4.place_plant(&"phatbeet_rhythm", 0, 3)
+	var beaten := board4.spawn_zombie_at(&"tutorial", 0, board4.grid_to_world(0, 4).x)
+	beaten.speed = 0.0
+	check("tapping the phat beet smashes the zombie in front", board4.tap_plant(0, 3)
+			and beaten.is_dead)
+	board4.queue_free()
+
+	# Bowling bulb glances into the next lane.
+	var board5 := _make_board()
+	board5.place_plant(&"bowlingbulb", 2, 0)
+	var pin := board5.spawn_zombie_at(&"tutorial", 2, board5.grid_to_world(2, 4).x)
+	pin.speed = 0.0
+	await _wait_game_seconds(1.5)
+	check("the bulb hit the zombie", pin.health < pin.max_health)
+	board5.queue_free()
 	end_section()
 
 

@@ -535,6 +535,51 @@ PLANT_BEHAVIOURS = {
     "bulbkekengi": ("light_source", {"PlantfoodDuration": "plantfood_duration"},
                     {"radius": 2, "plantfood_radius": 3}),
     "turnip": ("blocker", {}, {}),
+    "splitpea": ("split_shooter",
+                 {"ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter",
+                  "PlantfoodPeaCount": "plantfood_count",
+                  "PlantfoodPeaCountBack": "plantfood_count_rear"},
+                 {"projectile": "pea", "rear_count": 2}),
+    "bloomerang": ("shooter",
+                   {"BoomerangType": "projectile", "PierceCount": "pierce",
+                    "ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter",
+                    "PlantfoodBoomerangCount": "plantfood_count"},
+                   {"returns": True}),
+    "scaredyshroom": ("shooter",
+                      {"SporeType": "projectile", "SporeTypePlantfood": "projectile_plantfood",
+                       "ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter",
+                       "PlantfoodSporeCount": "plantfood_count",
+                       "KnockbackChance": "knockback_chance",
+                       "KnockbackDistance": "knockback_distance"},
+                      {"scared_radius": 1.5}),
+    "redstinger": ("zoned_shooter",
+                   {"ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter",
+                    "PFDPS": "plantfood_dps", "PFDuration": "plantfood_duration",
+                    "DamageScale0": ("damage_taken", lambda v: None)},
+                   {"projectiles": ["redstinger", "redstinger_weak", ""]}),
+    "gloomshroom": ("area_pulse",
+                    {"ShootInterval": "interval", "DPS": "dps",
+                     "DamageDuration": "duration", "PoisonDPS": "poison_dps",
+                     "DPSPlantfood": "plantfood_dps"},
+                    {"radius": 1.5, "plantfood_duration": 3.0}),
+    "nightshade": ("leaf_thrower",
+                   {"MaxProjectiles": "ammo", "LeafRespawnCooldown": "regrow",
+                    "DetectDistanceNormal": "reach", "DetectDistanceShadow": "powered_reach",
+                    "ShadowPoweredDamageScale": "powered_damage_scale",
+                    "ShootInterval": "interval", "ShootIntervalAdditional": "interval_jitter"},
+                   {"projectile": "nightshade", "projectile_plantfood": "nightshade_pf"}),
+    "banana": ("launcher", {"BananaType": "projectile", "RestTime": "rest"}, {}),
+    "missiletoe": ("launcher", {"BananaType": "projectile", "RestTime": "rest"}, {}),
+    "bamboozle": ("launcher", {"BambooshotType": "projectile",
+                               "MaxProjectileCount": "ammo"},
+                  {"rest": 1.0, "flight": 0.45}),
+    "strawburst": ("berry_lobber",
+                   {"GrowTime0": ("grow_times", lambda v: None)},
+                   {}),
+    "phatbeet_rhythm": ("tap_smash", {}, {"reach": 2.0, "min_health": 50}),
+    "bowlingbulb": ("bowler",
+                    {"AmmoRefreshTime": "reload", "BowlingPlantfood": "projectile_plantfood"},
+                    {"pierce": 3}),
 }
 
 # Fields a behaviour reads that a plain field map cannot express, kept so
@@ -542,6 +587,14 @@ PLANT_BEHAVIOURS = {
 PLANT_BEHAVIOUR_EXTRAS = {
     "solarsage": {"EnlightenProduceInterval": ("produce_interval_max",
                                                lambda v: v["Max"])},
+}
+
+# Behaviours that gather several numbered fields into one list.
+PLANT_BEHAVIOUR_LISTS = {
+    "redstinger": {"damage_taken": ["DamageScale0", "DamageScale1", "DamageScale2"]},
+    "strawburst": {"grow_times": ["GrowTime0", "GrowTime1", "GrowTime2"],
+                   "projectiles": ["CabbageType0", "CabbageType1", "CabbageType2"]},
+    "bowlingbulb": {"projectiles": ["Bowling0", "Bowling1", "Bowling2"]},
 }
 
 
@@ -562,6 +615,11 @@ def plant_behaviour(name, merged):
             else:
                 cfg[dst] = strip_rtid(merged[src])
             used.add(src)
+    for dst, srcs in PLANT_BEHAVIOUR_LISTS.get(name, {}).items():
+        if all(merged.get(src) is not None for src in srcs):
+            cfg[dst] = [strip_rtid(merged[src]) for src in srcs]
+            used.update(srcs)
+    cfg = {k: v for k, v in cfg.items() if v is not None}
     for k, v in const.items():
         cfg.setdefault(k, v)
     return cfg, used
