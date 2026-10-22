@@ -1,0 +1,26 @@
+{
+ "id": "west",
+ "world": "west",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "prospector",
+   "weight": 1
+  },
+  {
+   "type": "poncho_plate",
+   "weight": 1
+  },
+  {
+   "type": "piano",
+   "weight": 1
+  }
+ ]
+}

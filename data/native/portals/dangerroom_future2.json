@@ -1,0 +1,30 @@
+{
+ "id": "dangerroom_future2",
+ "world": "future",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "future_jetpack_disco",
+   "weight": 1
+  },
+  {
+   "type": "future_protector",
+   "weight": 1
+  },
+  {
+   "type": "future_jetpack_veteran",
+   "weight": 1
+  },
+  {
+   "type": "mech_cone",
+   "weight": 1
+  }
+ ]
+}

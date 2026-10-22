@@ -21,6 +21,11 @@ func setup(_catalog: AudioCatalog) -> void:
 	pass
 
 
+## Whether `event` has something this backend can actually play.
+func can_play(_event: AudioEvent) -> bool:
+	return false
+
+
 ## Fires a one-shot event. `position` is in world space for positional audio;
 ## backends that do not support it ignore it.
 func play(_event: AudioEvent, _position: Variant = null) -> void:

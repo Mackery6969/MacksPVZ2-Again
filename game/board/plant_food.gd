@@ -9,7 +9,13 @@ const VALUE := 1
 @export var inner_color: Color = Color("9bf0b5")
 
 
+func art_id() -> StringName:
+	return &"plantfood"
+
+
 func _draw() -> void:
+	if art != null:
+		return
 	# A rounded lozenge, so it never reads as sun at a glance.
 	draw_circle(Vector2.ZERO, radius, outer_color)
 	draw_rect(Rect2(Vector2(-radius * 0.28, -radius * 0.75),

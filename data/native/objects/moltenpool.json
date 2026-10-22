@@ -1,6 +1,13 @@
 {
  "id": "moltenpool",
  "category": "liquid",
+ "components": [
+  {
+   "type": "tile_liquid",
+   "lifespan": 30,
+   "dps": 50
+  }
+ ],
  "stats": {
   "blocks_planting": true
  },

@@ -1,0 +1,18 @@
+{
+ "id": "chicken",
+ "world": "west",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "chicken_battlez",
+   "weight": 1
+  }
+ ]
+}

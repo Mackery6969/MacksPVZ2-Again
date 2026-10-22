@@ -1,0 +1,8 @@
+{
+ "id": "mold",
+ "//": "Mold from a star challenge - nothing grows here.",
+ "category": "tile",
+ "stats": {
+  "blocks_planting": true
+ }
+}

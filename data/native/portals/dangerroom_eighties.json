@@ -1,0 +1,30 @@
+{
+ "id": "dangerroom_eighties",
+ "world": "eighties",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "eighties_8bit_armor1",
+   "weight": 1
+  },
+  {
+   "type": "eighties_boombox",
+   "weight": 1
+  },
+  {
+   "type": "eighties_8bit_armor2",
+   "weight": 1
+  },
+  {
+   "type": "eighties_boombox",
+   "weight": 1
+  }
+ ]
+}

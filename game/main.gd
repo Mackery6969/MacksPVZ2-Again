@@ -1,5 +1,13 @@
 extends Node2D
-## Entry point: builds the board, wires the HUD, and runs a level.
+## The level screen: builds the board, wires the HUD, and runs a level.
+##
+## Normally opened by the App from the world map. Run on its own (F6 in the
+## editor) it plays its campaign straight through, as before.
+
+## The player asked to leave: `destination` is &"map" or &"menu".
+signal exit_requested(destination: StringName)
+
+const APP_SCENE := "res://game/app.tscn"
 
 ## Campaign to play. Clearing a level advances to the next one in its list.
 @export var campaign_id: StringName = &"tutorial"
@@ -19,6 +27,9 @@ extends Node2D
 @export var level_transition_delay: float = 2.5
 ## Seconds before a failed level restarts.
 @export var retry_delay: float = 3.0
+## Go back to the world map after a win instead of straight on to the next
+## level. The App turns this on; a level run on its own plays straight through.
+@export var return_to_map: bool = false
 
 @export_group("HUD")
 @export var hud_font_size: int = 18
@@ -30,18 +41,21 @@ extends Node2D
 @onready var runner: LevelRunner = $LevelRunner
 
 var seed_bank: SeedBank
+var pause_menu: PauseMenu
 
-var _seed_buttons: Array[Button] = []
+var _seed_buttons: Array[SeedPacketView] = []
 ## {kind, id} per slot, parallel to _seed_buttons.
 var _seeds: Array[Dictionary] = []
 var _status: Label
-var _sun_label: Label
+var _sun_counter: SunCounter
+var _shovel_button: ShovelButton
+var _plant_food_bar: PlantFoodBar
+var _banner: LevelBanner
 var _wave_label: Label
 var _level_label: Label
 var _seed_bar: HBoxContainer
 
 var _mode_label: Label
-var _plant_food_label: Label
 var _objective_label: Label
 var _ability_label: Label
 var _conveyor_level: bool = false
@@ -59,6 +73,7 @@ var _autosave_timer: float = 0.0
 
 func _ready() -> void:
 	_build_hud()
+	_build_pause_menu()
 	board.sun_changed.connect(_on_sun_changed)
 	board.plant_food_changed.connect(_on_plant_food_changed)
 	board.lawn_ability_changed.connect(_on_lawn_ability_changed)
@@ -118,6 +133,10 @@ func load_level(level_id: StringName) -> void:
 
 	_status.text = ""
 	_wave_label.text = ""
+	_sun_counter.set_total(board.sun, true)
+	# A chooser level says "Ready, Set, Plant!" once the player has picked.
+	if runner.running:
+		_banner.ready_set_plant()
 	_refresh_mode_label()
 	_level_label.text = _level_title(level)
 	_refresh_ability_label()
@@ -144,30 +163,46 @@ func _build_hud() -> void:
 	root.position = Vector2(20, 16)
 	layer.add_child(root)
 
+	# The tools along the top, PVZGE-style: sun, packets, plant food, shovel.
 	var top := HBoxContainer.new()
-	top.add_theme_constant_override("separation", 24)
+	top.add_theme_constant_override("separation", 16)
 	root.add_child(top)
 
-	_sun_label = _make_label("Sun: 50")
-	top.add_child(_sun_label)
-	_plant_food_label = _make_label("Food: 0")
-	top.add_child(_plant_food_label)
+	_sun_counter = SunCounter.new(hud_font_size + 6)
+	top.add_child(_sun_counter)
+	_seed_bar = HBoxContainer.new()
+	_seed_bar.add_theme_constant_override("separation", 8)
+	top.add_child(_seed_bar)
+	_plant_food_bar = PlantFoodBar.new(board.max_plant_food, hud_font_size)
+	_plant_food_bar.pressed.connect(_toggle_plant_food)
+	top.add_child(_plant_food_bar)
+	_shovel_button = ShovelButton.new()
+	_shovel_button.board = board
+	_shovel_button.pressed.connect(_toggle_shovel)
+	top.add_child(_shovel_button)
+
+	var info := HBoxContainer.new()
+	info.add_theme_constant_override("separation", 24)
+	root.add_child(info)
 	_wave_label = _make_label("")
-	top.add_child(_wave_label)
+	info.add_child(_wave_label)
 	_level_label = _make_label("")
-	top.add_child(_level_label)
+	info.add_child(_level_label)
 	_mode_label = _make_label("")
-	top.add_child(_mode_label)
+	info.add_child(_mode_label)
+	_status = _make_label("")
+	info.add_child(_status)
 	_objective_label = _make_label("")
 	root.add_child(_objective_label)
 	_ability_label = _make_label("")
 	root.add_child(_ability_label)
-	_status = _make_label("")
-	top.add_child(_status)
 
-	_seed_bar = HBoxContainer.new()
-	_seed_bar.add_theme_constant_override("separation", 8)
-	root.add_child(_seed_bar)
+	# Its own layer above the HUD, so the words cross the whole screen.
+	var banners := CanvasLayer.new()
+	banners.layer = layer.layer + 1
+	add_child(banners)
+	_banner = LevelBanner.new()
+	banners.add_child(_banner)
 
 
 func _make_label(text: String) -> Label:
@@ -197,7 +232,8 @@ func _on_seedbank_ready(seeds: Array) -> void:
 func _open_chooser() -> void:
 	if _chooser == null:
 		var layer := CanvasLayer.new()
-		layer.layer = 10
+		# Over the HUD and its banners, under the pause menu.
+		layer.layer = 5
 		add_child(layer)
 		_chooser = SeedChooser.new()
 		layer.add_child(_chooser)
@@ -218,6 +254,7 @@ func _on_seeds_chosen(hand: Array[StringName]) -> void:
 	_close_chooser()
 	_use_chosen_seeds(_chooser.rules.seeds_for(hand))
 	Audio.play(&"ui.chooseseeds.close")
+	_banner.ready_set_plant()
 
 
 ## Fills the bank with the player's picks and starts the level.
@@ -269,12 +306,10 @@ func _rebuild_seed_buttons() -> void:
 
 	for slot in seed_bank.size():
 		var packet := seed_bank.packet(slot)
-		var b := Button.new()
+		var b := SeedPacketView.new()
 		# Show the hotkey on the packet so the binding is discoverable.
-		var key := "%d  " % (slot + 1)
-		b.text = "%s%s\n%d" % [key, String(packet.id).capitalize(), packet.cost]
+		b.setup(packet.kind, packet.id, packet.cost, "%d  " % (slot + 1))
 		b.custom_minimum_size = seed_button_size
-		b.focus_mode = Control.FOCUS_NONE
 		b.pressed.connect(_select_seed.bind(slot))
 		_seed_bar.add_child(b)
 		_seed_buttons.append(b)
@@ -294,6 +329,75 @@ func _slot_action(slot: int) -> StringName:
 func _action_pressed(event: InputEvent, action: StringName) -> bool:
 	# Guarded: an unbound or missing action must not spam errors.
 	return InputMap.has_action(action) and event.is_action_pressed(action)
+
+
+func _build_pause_menu() -> void:
+	pause_menu = PauseMenu.new()
+	pause_menu.name = "PauseMenu"
+	add_child(pause_menu)
+	pause_menu.can_open = can_pause
+	pause_menu.restart_requested.connect(restart_level)
+	pause_menu.exit_requested.connect(leave_level)
+	fast_forward_scale = Settings.get_value(&"fast_forward_scale")
+	Settings.changed.connect(_on_setting_changed)
+
+
+func _on_setting_changed(key: StringName, value: Variant) -> void:
+	if key == &"fast_forward_scale":
+		fast_forward_scale = value
+		if _fast_forward:
+			Engine.time_scale = fast_forward_scale
+		_refresh_mode_label()
+
+
+## Pausing is only offered while the level is actually being played, not
+## during the result banner before the next level loads.
+func can_pause() -> bool:
+	return runner.running and not _transitioning
+
+
+func pause() -> void:
+	pause_menu.open()
+
+
+## Starts the current level over, dropping its part-played save.
+func restart_level() -> void:
+	get_tree().paused = false
+	Saves.clear_save(_current_level)
+	load_level(_current_level)
+
+
+## Leaves the level for the map or the title. A run in progress is saved
+## first, so the map offers to resume it.
+func leave_level(destination: StringName) -> void:
+	get_tree().paused = false
+	if runner.running and not _transitioning:
+		Saves.save_level(runner, board, seed_bank)
+	runner.stop()
+	_transitioning = true
+	Audio.stop_music()
+	if exit_requested.get_connections().is_empty():
+		# Launched without the App: bring it up on the requested screen.
+		App.start_screen = destination
+		var campaign := Data.campaign_for_level(_current_level)
+		App.start_campaign = campaign.id if campaign != null else &""
+		get_tree().change_scene_to_file(APP_SCENE)
+	else:
+		exit_requested.emit(destination)
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT \
+			and Settings.get_value(&"pause_on_focus_loss"):
+		pause()
+
+
+func _exit_tree() -> void:
+	# Fast forward and pause are global; neither may outlive the level.
+	if _fast_forward:
+		Engine.time_scale = 1.0
+	if pause_menu != null and pause_menu.is_open():
+		get_tree().paused = false
 
 
 ## Seed slots, shovel and fast forward all come from the project's InputMap,
@@ -335,10 +439,16 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 
-	if event is InputEventKey and event.pressed and not event.echo \
-			and event.keycode == KEY_ESCAPE:
-		_select_seed(-1)
-		board.shovel_active = false
+	# Escape first drops whatever is in hand; with nothing in hand it pauses.
+	if _action_pressed(event, &"Pause"):
+		if board.selected_seed.is_empty() and not board.shovel_active \
+				and not board.plant_food_active:
+			pause()
+		else:
+			_select_seed(-1)
+			board.shovel_active = false
+			board.plant_food_active = false
+			_refresh_mode_label()
 		get_viewport().set_input_as_handled()
 
 
@@ -358,6 +468,7 @@ func _step_slot(step: int) -> void:
 func _toggle_shovel() -> void:
 	board.shovel_active = not board.shovel_active
 	if board.shovel_active:
+		Audio.play(&"ui.shovel")
 		board.plant_food_active = false
 		board.selected_seed = {}
 	_refresh_seed_buttons()
@@ -379,7 +490,7 @@ func _toggle_plant_food() -> void:
 
 
 func _on_plant_food_changed(total: int) -> void:
-	_plant_food_label.text = "Food: %d" % total
+	_plant_food_bar.set_count(total)
 	if total <= 0:
 		board.plant_food_active = false
 	_refresh_mode_label()
@@ -388,6 +499,7 @@ func _on_plant_food_changed(total: int) -> void:
 func _toggle_fast_forward() -> void:
 	_fast_forward = not _fast_forward
 	Engine.time_scale = fast_forward_scale if _fast_forward else 1.0
+	Audio.play(&"ui.fastforward.on" if _fast_forward else &"ui.fastforward.off")
 	_refresh_mode_label()
 
 
@@ -400,6 +512,7 @@ func _refresh_mode_label() -> void:
 	if _fast_forward:
 		bits.append("x%.1f" % fast_forward_scale)
 	_mode_label.text = "  ".join(bits)
+	_refresh_tools()
 
 
 ## Selects a seed slot, or clears the selection when `slot` is out of range.
@@ -409,19 +522,19 @@ func _select_seed(slot: int) -> void:
 	if slot >= 0 and slot < _seeds.size() and not seed_bank.is_recharged(slot):
 		Audio.play(&"ui.seed.refuse")
 		return
-	if slot >= 0:
-		Audio.play(&"ui.seed.select")
 	if slot < 0 or slot >= _seeds.size():
 		board.selected_seed = {}
 	elif board.selected_seed == _seeds[slot]:
+		Audio.play(&"ui.seed.cancel")
 		board.selected_seed = {}     # re-pressing the same slot deselects
 	else:
+		Audio.play(&"ui.seed.select")
 		board.selected_seed = _seeds[slot].duplicate()
 	_refresh_seed_buttons()
 
 
 func _on_sun_changed(total: int) -> void:
-	_sun_label.text = "Sun: %d" % total
+	_sun_counter.set_total(total)
 	_refresh_seed_buttons()
 
 
@@ -432,20 +545,17 @@ func _refresh_seed_buttons() -> void:
 		var b := _seed_buttons[i]
 		if packet == null:
 			continue
-		var charged := packet.is_recharged()
-		var affordable := board.sun >= packet.cost
-		b.disabled = not (charged and affordable)
+		# The packet shades itself in proportion to the recharge left, so it
+		# visibly fills up.
+		b.show_state(1.0 if packet.is_recharged() else packet.fraction(),
+				board.sun >= packet.cost, board.selected_seed.get("slot", -1) == i)
+	_refresh_tools()
 
-		if board.selected_seed.get("slot", -1) == i:
-			b.modulate = Color(0.7, 1.0, 0.7)
-		elif not charged:
-			# Darkened in proportion to how much recharge is left, so the
-			# packet visibly fills up.
-			b.modulate = Color.WHITE.darkened(0.55 * (1.0 - packet.fraction()))
-		elif not affordable:
-			b.modulate = Color(0.75, 0.75, 0.75)
-		else:
-			b.modulate = Color.WHITE
+
+## The shovel and plant food buttons show whether they are in hand.
+func _refresh_tools() -> void:
+	_shovel_button.set_active(board.shovel_active)
+	_plant_food_bar.set_active(board.plant_food_active)
 
 
 func _on_objectives_changed(_objectives: Array) -> void:
@@ -481,6 +591,18 @@ func _on_objective_failed(objective: Objective) -> void:
 
 func _on_wave_started(index: int, total: int) -> void:
 	_wave_label.text = "Wave %d / %d" % [index, total]
+	# PVZGE warns on every flag wave and once more on the last one.
+	if index == total and total > 1:
+		_banner.final_wave()
+	elif _is_flag_wave(index):
+		_banner.huge_wave()
+
+
+## Whether wave `index` (1-based) carries a flag, by the level's own pacing.
+func _is_flag_wave(index: int) -> bool:
+	var every := int((runner.level.get("wave_pacing", {}) as Dictionary)
+			.get("flag_interval", 0))
+	return every > 0 and index % every == 0
 
 
 func _process(delta: float) -> void:
@@ -505,6 +627,12 @@ func _on_won() -> void:
 	if _campaign == null or _campaign.is_last(_current_level):
 		_status.text = (_campaign.completion_message if _campaign != null
 				else "Level complete!")
+		if return_to_map:
+			_leave_after(level_transition_delay)
+		return
+	if return_to_map:
+		_status.text = "Level complete!"
+		_leave_after(level_transition_delay)
 		return
 
 	var next := _campaign.next_after(_current_level)
@@ -531,6 +659,12 @@ func _advance_after(delay: float, level_id: StringName) -> void:
 	await get_tree().create_timer(delay).timeout
 	if is_inside_tree():
 		load_level(level_id)
+
+
+func _leave_after(delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+	if is_inside_tree():
+		leave_level(&"map")
 
 
 ## Ends the level with its world's music, falling back to the plain cue.

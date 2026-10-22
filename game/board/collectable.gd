@@ -33,6 +33,26 @@ var fall_to_y: float = 0.0
 
 var _falling: bool = true
 var _collected: bool = false
+## The item's rig, when its art was extracted. Subclasses draw a placeholder
+## only while this is null.
+var art: Armature = null
+
+
+## Which `collectable:<id>` art this item uses. Empty means none.
+func art_id() -> StringName:
+	return &""
+
+
+func _ready() -> void:
+	var id := art_id()
+	if id == &"":
+		return
+	art = Art.make(&"collectable", id)
+	if art == null:
+		return
+	add_child(art)
+	art.play(Art.animation_for(&"collectable", id, &"idle"))
+	queue_redraw()
 
 
 func _process(delta: float) -> void:

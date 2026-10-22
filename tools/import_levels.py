@@ -30,6 +30,24 @@ def strip_rtid(value):
     return ref[0] if ref else value
 
 
+def num(value, fallback=None):
+    """PopCap writes numbers as strings often enough ("GroupSize": "2") that
+    every numeric field is read through this."""
+    try:
+        f = float(value)
+    except (TypeError, ValueError):
+        return fallback
+    return int(f) if f == int(f) else f
+
+
+def span(value):
+    """A {Min, Max} range -> {min, max}; a bare number is both ends."""
+    if isinstance(value, dict):
+        return {"min": num(value.get("Min"), 0), "max": num(value.get("Max"), 0)}
+    n = num(value)
+    return None if n is None else {"min": n, "max": n}
+
+
 def placement(p, extra_keys=()):
     """PopCap GridX/GridY placement -> {col,row,...}."""
     out = {}
@@ -178,6 +196,68 @@ def conv_wave_action(lvl, obj):
             act["displace_plants"] = False
         return act
 
+    if cls == "StormZombieSpawnerProps":
+        # Zombies arrive inside a sand- or snowstorm, already on the lawn,
+        # rather than walking on from the right.
+        act = {"kind": "storm", "style": d.get("Type") or "sandstorm",
+               "zombies": [strip_rtid(z.get("Type")) for z in (d.get("Zombies") or [])
+                           if z and z.get("Type")]}
+        for src, dst, default in [("ColumnStart", "col_start", 4), ("ColumnEnd", "col_end", 8),
+                                  ("RowStart", "row_start", 0), ("RowEnd", "row_end", 4),
+                                  ("GroupSize", "group_size", 2),
+                                  ("TimeBetweenGroups", "group_interval", 2)]:
+            act[dst] = num(d.get(src), default)
+        return act
+
+    if cls == "RaidingPartyZombieSpawnerProps":
+        act = {"kind": "raiding_party",
+               "type": strip_rtid(d.get("ZombieType")) or "swashbuckler",
+               "count": num(d.get("SwashbucklerCount"), 1),
+               "group_size": num(d.get("GroupSize"), 5),
+               "group_interval": num(d.get("TimeBetweenGroups"), 1)}
+        return act
+
+    if cls == "BeachStageEventZombieSpawnerProps":
+        # Big Wave Beach's low tide: zombies rise out of the receding water.
+        act = {"kind": "low_tide", "type": strip_rtid(d.get("ZombieName")),
+               "count": num(d.get("ZombieCount"), 0),
+               "group_size": num(d.get("GroupSize"), 1),
+               "group_interval": num(d.get("TimeBetweenGroups"), 0.25),
+               "delay": num(d.get("TimeBeforeFullSpawn"), 0.1),
+               "col_start": num(d.get("ColumnStart"), 0),
+               "col_end": min(num(d.get("ColumnEnd"), 8), 8)}
+        return act
+
+    if cls == "TidalChangeWaveActionProps":
+        # ChangeAmount counts water columns from the right edge, so the
+        # shoreline - the first wet column - is 9 minus it.
+        change = d.get("TidalChange") or {}
+        amount = num(change.get("ChangeAmount"))
+        if amount is None:
+            return {"kind": "tide"}
+        return {"kind": "tide", "water_from": max(0, min(9, 9 - amount))}
+
+    if cls == "FrostWindWaveActionProps":
+        return {"kind": "frost_wind",
+                "blasts": num(d.get("BlastCount"), 1),
+                "winds": [{"row": num(w.get("Row")),
+                           "direction": w.get("Direction") or "right"}
+                          for w in (d.get("Winds") or [])
+                          if w and num(w.get("Row")) is not None]}
+
+    if cls == "SpawnModernPortalsWaveActionProps":
+        act = {"kind": "portal", "row": num(d.get("PortalRow")),
+               "col": num(d.get("PortalColumn"))}
+        act["portal"] = conv_portal(lvl, d.get("PortalType") or "modern")
+        if num(d.get("ZombiesToSpawn")) is not None:
+            act["limit"] = num(d.get("ZombiesToSpawn"))
+        return act
+
+    if cls == "DinoWaveActionProps":
+        return {"kind": "dino", "dino": strip_rtid(d.get("DinoType")) or "raptor",
+                "row": num(d.get("DinoRow"), 0),
+                "delay": num(d.get("DinoWaveDuration"), 0)}
+
     if cls == "WaveSchedulerProps":
         act = {"kind": "schedule"}
         for src, dst in [("TimeBeforeFirst", "delay"), ("TimeBetween", "interval"),
@@ -193,6 +273,62 @@ def conv_wave_action(lvl, obj):
         return act
 
     return {"kind": cls, "data": d}
+
+
+def conv_portal(lvl, ref):
+    """A portal type -> the name of a shared one, or its spec inlined when the
+    level defines its own (PortalType -> PortalProps, both local)."""
+    ptype = lvl.resolve(ref)
+    if ptype is None:
+        return strip_rtid(ref)
+    props = lvl.resolve((ptype.get("objdata") or {}).get("Properties"))
+    if props is None:
+        return strip_rtid((ptype.get("objdata") or {}).get("Properties")) or "modern"
+    return portal_spec(props.get("objdata") or {})
+
+
+def portal_spec(d):
+    """PortalProps -> {world, first, interval, zombies:[{type, weight}]}."""
+    out = {"world": d.get("World", "modern")}
+    if d.get("TimeBeforeFirst") is not None:
+        out["first"] = span(d["TimeBeforeFirst"])
+    if d.get("TimeBetween") is not None:
+        out["interval"] = span(d["TimeBetween"])
+    out["zombies"] = [{"type": z.get("ZombieTypeName"), "weight": num(z.get("Weight"), 1)}
+                      for z in (d.get("ZombieTypesToSpawn") or []) if z]
+    return out
+
+
+# BoardGridMaps is a shared sheet, not part of any level. The few maps the
+# star challenges point at are copied here, so a mold colony lands on the same
+# cells without the importer needing the sheet. "ColumnA_To_ColumnB" maps are
+# generated from their name.
+BOARD_GRID_MAPS = {
+    "Nothing": [],
+    "Future34": ["101010111", "110101111", "101010111", "110101111", "101010111"],
+    "Pirate27": ["011110000", "101110000", "011010000", "101110000", "011110000"],
+    "Dino38": ["000000000", "011111000", "000000000", "011111000", "000000000"],
+    "Cowboy31": ["010000110", "010000110", "010000110", "010000110", "010000110"],
+}
+
+
+def grid_map_cells(lvl, ref):
+    """A BoardGridMap reference -> [{row, col}] of its set cells."""
+    local = lvl.resolve(ref)
+    if local is not None:
+        rows = [[int(bool(v)) for v in r] for r in ((local.get("objdata") or {}).get("Values") or [])]
+    else:
+        name = strip_rtid(ref) or ""
+        m = re.match(r"^Column(\d+)(?:_To_Column(\d+))?$", name)
+        if m:
+            lo, hi = int(m.group(1)), int(m.group(2) or m.group(1))
+            rows = [[int(lo <= c <= hi) for c in range(9)] for _ in range(5)]
+        elif name in BOARD_GRID_MAPS:
+            rows = [[int(ch) for ch in line] for line in BOARD_GRID_MAPS[name]]
+        else:
+            return None
+    return [{"row": r, "col": c} for r, line in enumerate(rows)
+            for c, v in enumerate(line) if v]
 
 
 def conv_waves(lvl, wave_mgr_props):
@@ -295,27 +431,25 @@ def conv_card_decks(decks):
     return out
 
 
-## Star challenge -> objective entry. Unmapped kinds keep their parameters so
-## the information survives until an objective type exists for them.
+## Star challenge class -> (objective type, {source field: config key}).
+## A star challenge IS an objective, so each becomes one directly.
 CHALLENGE_OBJECTIVES = {
-    "BeatTheLevel": "survive_waves",
-    "SunProduced": "sun_produced",
-    "ZombieDistance": "zombie_distance",
-    "SimultaneousPlants": "simultaneous_plants",
+    "StarChallengeBeatTheLevelProps": ("survive_waves", {}),
+    "StarChallengeZombieDistanceProps": ("zombie_distance", {"TargetDistance": "distance"}),
+    "StarChallengeSunProducedProps": ("sun_produced", {"TargetSun": "amount"}),
+    "StarChallengeSunUsedProps": ("sun_used", {"MaximumSun": "max"}),
+    "StarChallengePlantsLostProps": ("no_plant_loss", {"MaximumPlantsLost": "allowed"}),
+    "StarChallengeSimultaneousPlantsProps": ("simultaneous_plants", {"MaximumPlants": "max"}),
+    "StarChallengeKillZombiesInTimeProps": ("kill_in_time", {"ZombiesToKill": "count",
+                                                             "Time": "seconds"}),
+    "StarChallengeSpendSunHoldoutProps": ("sun_holdout", {"HoldoutSeconds": "seconds"}),
 }
-
-
-def challenge_to_objective(challenge):
-    kind = str(challenge.get("type", ""))
-    obj = {"type": CHALLENGE_OBJECTIVES.get(kind, "challenge:" + kind)}
-    for src, dst in [("count", "count"), ("amount", "amount"),
-                     ("distance", "distance"), ("max_plants", "max_plants"),
-                     ("sun_produced", "amount"), ("description", "description")]:
-        if challenge.get(src) is not None:
-            obj[dst] = challenge[src]
-    if challenge.get("params"):
-        obj["params"] = challenge["params"]
-    return obj
+## Challenges that live in a shared module sheet rather than the level.
+EXTERNAL_CHALLENGES = {
+    "SaveMowers": {"type": "save_mowers"},
+    # Often named without being defined; it means the default goal anyway.
+    "BeatTheLevel": {"type": "survive_waves"},
+}
 
 
 def conv_preset_plant(p):
@@ -327,26 +461,53 @@ def conv_preset_plant(p):
     return strip_rtid(p)
 
 
-def conv_challenge(lvl, ref):
-    """Resolve a star-challenge RTID into a flat {type, ...} record."""
+def conv_challenge(lvl, out, ref):
+    """A star-challenge RTID -> an objective entry, or None when it is not
+    one we model. Unmodelled ones are kept under `unmodelled_challenges`."""
     obj = lvl.resolve(ref)
     if obj is None:
-        return {"type": (lvl.external(ref) or strip_rtid(ref))}
-    d = obj.get("objdata") or {}
+        alias = strip_rtid(ref) if isinstance(ref, str) else None
+        if alias in EXTERNAL_CHALLENGES:
+            return dict(EXTERNAL_CHALLENGES[alias])
+        out.setdefault("unmodelled_challenges", []).append(ref)
+        return None
     cls = obj.get("objclass", "")
-    out = {"type": cls.replace("StarChallenge", "").replace("Props", "")}
-    for src, dst in [("Description", "description"), ("DescriptiveName", "name"),
-                     ("Count", "count"), ("Amount", "amount"), ("Distance", "distance"),
-                     ("MaxPlants", "max_plants"), ("SunProduced", "sun_produced")]:
-        if d.get(src) is not None:
-            out[dst] = d[src]
-    known = {"Description", "DescriptiveName", "Count", "Amount", "Distance",
-             "MaxPlants", "SunProduced", "DescriptionsMultilanguage",
-             "DescriptionsMultiLanguage", "Descriptions"}
-    rest = {k: v for k, v in d.items() if k not in known}
-    if rest:
-        out["params"] = rest
-    return out
+    d = obj.get("objdata") or {}
+    if cls in CHALLENGE_OBJECTIVES:
+        kind, fields = CHALLENGE_OBJECTIVES[cls]
+        result = {"type": kind}
+        for src, dst in fields.items():
+            if num(d.get(src)) is not None:
+                result[dst] = num(d[src])
+        if d.get("Description"):
+            result["description"] = d["Description"]
+        return result
+    if cls == "MoldColonyChallengeProps":
+        # Mold makes cells unplantable for the whole level.
+        cells = []
+        if d.get("Locations"):
+            cells += grid_map_cells(lvl, d["Locations"]) or []
+        cells += [{"row": num(c.get("GridY")), "col": num(c.get("GridX"))}
+                  for c in (d.get("MoldedSquares") or []) if c]
+        for row, line in enumerate((d.get("MoldMatrix") or [])[:5]):
+            cells += [{"row": row, "col": col} for col, ch in enumerate(str(line)[:9])
+                      if ch not in "0 "]
+        return {"type": "no_plant_zone", "cells": cells}
+    # A module that is also listed as a challenge, such as protect-the-plant,
+    # is folded in by its own handler.
+    if handle_module(lvl, out, obj):
+        return None
+    out.setdefault("unmodelled_challenges", []).append({"objclass": cls, "objdata": d})
+    return None
+
+
+def challenge_refs(value):
+    """Challenges come as a list of lists (one per difficulty); flatten."""
+    if isinstance(value, list):
+        for v in value:
+            yield from challenge_refs(v)
+    elif isinstance(value, str):
+        yield value
 
 
 # --------------------------------------------------------------------------
@@ -385,14 +546,18 @@ def handle_module(lvl, out, obj):
             out["level_of_the_day_config"] = lod
 
     elif cls == "StarChallengeModuleProperties":
-        ch = [conv_challenge(lvl, c) for c in (d.get("Challenges") or [])]
-        if d.get("ChallengesAlwaysAvailable") or d.get("ChallengeAlwaysAvailable"):
-            src = d.get("ChallengesAlwaysAvailable") or d.get("ChallengeAlwaysAvailable")
-            ch += [conv_challenge(lvl, c) for c in (src if isinstance(src, list) else [src])]
-        # A star challenge IS an objective; keeping both would be two names for
-        # one idea.
-        for c in ch:
-            out.setdefault("objectives", []).append(challenge_to_objective(c))
+        refs = list(challenge_refs(d.get("Challenges")))
+        # ChallengesAlwaysAvailable is a flag; its misspelt twin sometimes
+        # carries a list of extra challenges instead.
+        refs += list(challenge_refs(d.get("ChallengeAlwaysAvailable")))
+        seen = set()
+        for ref in refs:
+            if ref in seen:
+                continue
+            seen.add(ref)
+            objective = conv_challenge(lvl, out, ref)
+            if objective is not None:
+                out.setdefault("objectives", []).append(objective)
         if d.get("Difficulties"):
             out["difficulties"] = d["Difficulties"]
 
@@ -439,8 +604,9 @@ def handle_module(lvl, out, obj):
                 cell_entry(p) for p in d["InitialZombiePlacements"])
 
     elif cls == "ProtectThePlantChallengeProperties":
-        obj_out = {"type": "protect_plants",
-                   "must_protect": d.get("MustProtectCount")}
+        obj_out = {"type": "protect_plants"}
+        if d.get("MustProtectCount") is not None:
+            obj_out["must_protect"] = d["MustProtectCount"]
         if d.get("Plants"):
             obj_out["plants"] = [cell_entry(p) for p in d["Plants"]]
         out.setdefault("objectives", []).append(obj_out)
@@ -457,6 +623,33 @@ def handle_module(lvl, out, obj):
             out["plantable_rows"] = [3]
         if d:
             out.setdefault("tutorial_params", {}).update(d)
+
+    elif cls == "TideProperties":
+        start = num(d.get("StartingWaveLocation"))
+        if start is not None:
+            out["tide"] = {"water_from": max(0, min(9, 9 - start))}
+
+    elif cls == "PowerTileProperties":
+        tiles = []
+        for t in (d.get("LinkedTiles") or []):
+            loc = (t or {}).get("Location") or {}
+            if num(loc.get("mX")) is None or num(loc.get("mY")) is None:
+                continue
+            tile = {"group": t.get("Group") or "alpha",
+                    "row": num(loc["mY"]), "col": num(loc["mX"])}
+            if num(t.get("PropagationDelay")) is not None:
+                tile["delay"] = num(t["PropagationDelay"])
+            tiles.append(tile)
+        if tiles:
+            out["power_tiles"] = tiles
+
+    elif cls == "ZombiePotionModuleProperties":
+        out["potions"] = {
+            "initial": num(d.get("InitialPotionCount"), 0),
+            "max": num(d.get("MaxPotionCount"), 0),
+            "interval": span(d.get("PotionSpawnTimer")) or {"min": 12, "max": 16},
+            "types": [strip_rtid(t) for t in (d.get("PotionTypes") or [])],
+        }
 
     elif cls == "RailcartProperties":
         rc = {}

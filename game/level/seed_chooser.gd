@@ -195,7 +195,7 @@ func _fill_grid() -> void:
 		var b := _packet_button(id)
 		var why := rules.refusal(id)
 		if why != "":
-			b.tooltip_text = why
+			b.tooltip_text = "%s: %s" % [_plant_name(id), why]
 		b.pressed.connect(pick.bind(id))
 		b.mouse_entered.connect(_describe.bind(id))
 		_grid.add_child(b)
@@ -228,7 +228,9 @@ func _refresh() -> void:
 			var id := chosen[i]
 			var b := _packet_button(id)
 			if id == SeedChooserRules.IMITATER and i > 0:
-				b.text = "%s\n(%s)" % [_plant_name(id), _plant_name(chosen[i - 1])]
+				b.tooltip_text = "Imitater, copying %s" % _plant_name(chosen[i - 1])
+				if not b.has_art():
+					b.text = "%s\n(%s)" % [_plant_name(id), _plant_name(chosen[i - 1])]
 			if rules.locked.has(id):
 				b.tooltip_text = "Chosen by the level"
 				b.modulate = Color(1.0, 0.95, 0.75)
@@ -256,13 +258,14 @@ func _describe(id: StringName) -> void:
 	_info.text = _plant_name(id) + ("  -  " + why if why != "" else "")
 
 
+## A packet drawn like the HUD's, falling back to name and cost without art.
 func _packet_button(id: StringName) -> Button:
-	var b := Button.new()
+	var b := SeedPacketView.new()
 	var def := Data.plant(id)
-	b.text = "%s\n%d" % [_plant_name(id), int(def.stat(&"sun_cost", 0)) if def else 0]
+	b.setup(&"plant", id, int(def.stat(&"sun_cost", 0)) if def else 0, "")
 	b.custom_minimum_size = packet_size
 	b.clip_text = true
-	b.focus_mode = Control.FOCUS_NONE
+	b.tooltip_text = _plant_name(id)
 	b.add_theme_font_size_override("font_size", font_size)
 	return b
 

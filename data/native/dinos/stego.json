@@ -1,0 +1,11 @@
+{
+ "id": "stego",
+ "//": "Zombies walking past its tail are scooped up and tossed into a random lane. From PVZGE's DinosaurProperties.",
+ "behaviour": "toss",
+ "idle_column": 6.5,
+ "tosses": 3,
+ "per_toss": 3,
+ "toss_ready_time": 1.5,
+ "throw_column": {"min": 3, "max": 4},
+ "max_time": 40
+}

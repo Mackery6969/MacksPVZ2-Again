@@ -484,8 +484,15 @@ def main():
         for slug in textures_needed[uuid]:
             index_out[slug].setdefault("textures", []).append(filename)
 
-    json.dump(index_out, open(os.path.join(out_root, "_index.json"), "w",
-                              encoding="utf-8"), indent=1, ensure_ascii=False)
+    # Merged rather than replaced, so extracting a few more prefabs - or the
+    # rigs from extract_rigs.py - keeps whatever was extracted before.
+    index_path = os.path.join(out_root, "_index.json")
+    merged = {}
+    if os.path.exists(index_path):
+        merged = json.load(open(index_path, encoding="utf-8"))
+    merged.update(index_out)
+    json.dump(merged, open(index_path, "w", encoding="utf-8"), indent=1,
+              ensure_ascii=False)
     done = sum(1 for v in index_out.values() if "skeleton" in v)
     print("matched %d assets, %d with a skeleton, %d textures -> %s"
           % (len(index_out), done, len(written), out_root))

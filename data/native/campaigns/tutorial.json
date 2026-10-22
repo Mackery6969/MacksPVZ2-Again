@@ -7,5 +7,8 @@
   "tutorial_2",
   "tutorial_3",
   "tutorial_4"
- ]
+ ],
+ "order": 0,
+ "description": "Defend your house from the first wave of zombies.",
+ "map_color": "#4f7a32"
 }

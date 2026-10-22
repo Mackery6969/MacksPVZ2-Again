@@ -20,6 +20,9 @@ signal animation_finished(name: StringName)
 ## peashooter's Shoot animation says "Shoot" fifteen frames in, which is when
 ## the pea actually leaves its mouth.
 signal event(name: StringName)
+## Fired when a baked animation reaches a sound the rig names - the basic
+## zombie's Death says "fall" as it hits the ground.
+signal sound(name: StringName)
 
 ## How long to ease from one animation into the next. Without it a zombie
 ## switching from Walk to Death cuts straight to the death pose.
@@ -46,31 +49,42 @@ func setup(source: ArmatureSet, armature_name: StringName,
 	if rig == null:
 		return false
 
-	for slot in rig.slots:
-		var region: StringName = slot["region"]
+	# The setup pose, which is also what a slot keeps when no animation ever
+	# touches it - those get no track at all.
+	var rest := rig.rest_transforms()
+	for i in rig.slots.size():
+		var slot: Dictionary = rig.slots[i]
+		# A slot is a node at its bone, holding one sprite per picture it can
+		# show. Animations move the slot, switch which sprite is visible and
+		# tint the slot, so a blink or a mouth opening is a visibility key and
+		# never a texture swap mid-blend.
+		var node := Node2D.new()
+		node.name = String(slot["name"])
+		node.transform = rest[i]
+		node.modulate = slot["color"]
+		add_child(node)
+		_slots[slot["name"]] = node
 		# A socket has nothing to draw: it is a marker the game can read a
 		# position off, animated like everything else.
-		if region == &"":
-			var marker := Node2D.new()
-			marker.name = String(slot["name"])
-			add_child(marker)
-			_slots[slot["name"]] = marker
-			_sockets[slot["socket"]] = marker
+		if slot.has("socket"):
+			_sockets[slot["socket"]] = node
 			continue
-		var sprite := Sprite2D.new()
-		sprite.name = String(slot["name"])
-		sprite.texture = source.region(region)
-		sprite.centered = true
-		sprite.offset = source.region_offset(region)
-		add_child(sprite)
-		_slots[slot["name"]] = sprite
-
-	# The setup pose, which is also what a slot keeps when an animation never
-	# touches it - those get no track at all.
-	var rest := rig.slot_transforms(rig.world_at({}))
-	for i in rig.slots.size():
-		var node: Node2D = _slots[rig.slots[i]["name"]]
-		node.transform = rest[i]
+		var displays: Array = slot["displays"]
+		for choice in displays.size():
+			var display: Dictionary = displays[choice]
+			if display.is_empty():
+				continue
+			var region: StringName = display["region"]
+			var sprite := Sprite2D.new()
+			sprite.name = str(choice)
+			sprite.texture = source.region(region)
+			sprite.centered = true
+			sprite.offset = source.region_offset(region)
+			sprite.transform = display["xform"]
+			sprite.visible = choice == int(slot["display"])
+			if slot["blend"] == "add":
+				sprite.material = _additive()
+			node.add_child(sprite)
 
 	_player = AnimationPlayer.new()
 	_player.name = "Animations"
@@ -85,10 +99,44 @@ func setup(source: ArmatureSet, armature_name: StringName,
 	return true
 
 
+## Glows and flashes are drawn additively. One material serves every one.
+static var _add_material: CanvasItemMaterial = null
+
+
+static func _additive() -> CanvasItemMaterial:
+	if _add_material == null:
+		_add_material = CanvasItemMaterial.new()
+		_add_material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	return _add_material
+
+
 ## Playback speed, so a buffed or slowed entity animates to match.
 func set_speed_scale(value: float) -> void:
 	if _player != null:
 		_player.speed_scale = maxf(value, 0.0)
+
+
+func speed_scale() -> float:
+	return _player.speed_scale if _player != null else 1.0
+
+
+## How fast an animation carries the rig forward, in screen pixels per second
+## at normal speed, or 0 for one that does not travel. A walk is drawn to
+## move at this pace; anything else makes the feet skate.
+func ground_speed(name: StringName) -> float:
+	if _player == null or not _player.has_animation(name):
+		return 0.0
+	var travel := float(_player.get_animation(name).get_meta(&"ground_speed", 0.0))
+	return travel * absf(scale.x)
+
+
+## Jumps somewhere into the current animation, so a row of identical plants
+## does not bob in lockstep.
+func seek_fraction(fraction: float) -> void:
+	if _player == null or playing == &"":
+		return
+	var length := _player.get_animation(playing).length
+	_player.seek(clampf(fraction, 0.0, 1.0) * length, true)
 
 
 func animation_names() -> Array:
@@ -155,6 +203,10 @@ func _fire_event(name: StringName) -> void:
 	event.emit(name)
 
 
+func _fire_sound(name: StringName) -> void:
+	sound.emit(name)
+
+
 func _on_finished(name: StringName) -> void:
 	if looping and name == playing:
 		_player.play(name)
@@ -197,10 +249,22 @@ func detach_slots(names: Array) -> Node2D:
 		if node == null or not is_instance_valid(node):
 			continue
 		var where := node.transform
+		var index := node.get_index()
 		remove_child(node)
 		freed.add_child(node)
 		node.transform = where
 		_slots.erase(StringName(slot_name))
+		# An empty stand-in keeps the name, so the rig's animations still
+		# find a node to key and do not complain about the missing limb.
+		var stand_in := Node2D.new()
+		stand_in.name = String(slot_name)
+		stand_in.visible = false
+		for picture in node.get_children():
+			var blank := Node2D.new()
+			blank.name = picture.name
+			stand_in.add_child(blank)
+		add_child(stand_in)
+		move_child(stand_in, index)
 	return freed
 
 

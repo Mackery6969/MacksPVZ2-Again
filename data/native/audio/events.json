@@ -172,11 +172,11 @@
   },
   {
    "id": "ui.fastforward.on",
-   "fmod": "event:/SFX/UI/FastForwardOn"
+   "fmod": "event:/SFX/UI/FastForward/On"
   },
   {
    "id": "ui.fastforward.off",
-   "fmod": "event:/SFX/UI/FastForwardOff"
+   "fmod": "event:/SFX/UI/FastForward/Off"
   },
   {
    "id": "plant.dig.water",
@@ -237,6 +237,432 @@
   {
    "id": "music.zomboss",
    "fmod": "event:/Music/InGame/Zomboss/Zomboss",
+   "music": true
+  },
+  {
+   "id": "wave.first",
+   "fmod": "event:/SFX/Board/Awooga",
+   "//": "The first wave: PVZGE's awooga."
+  },
+  {
+   "id": "wave.final",
+   "fmod": "event:/SFX/Board/FinalWave"
+  },
+  {
+   "id": "level.ready",
+   "fmod": "event:/SFX/Level/ReadySetPlant"
+  },
+  {
+   "id": "ui.seed.cancel",
+   "fmod": "event:/SFX/UI/SeedCancel",
+   "//": "Putting a selected seed packet back."
+  },
+  {
+   "id": "ui.shovel",
+   "fmod": "event:/SFX/UI/Shovel"
+  },
+  {
+   "id": "plant.place.water",
+   "fmod": "event:/SFX/Plants/PlantWater"
+  },
+  {
+   "id": "music.lawn.beach",
+   "fmod": "event:/Music/InGame/Beach",
+   "music": true
+  },
+  {
+   "id": "music.lawn.cowboy",
+   "fmod": "event:/Music/InGame/Cowboy",
+   "music": true
+  },
+  {
+   "id": "music.lawn.dark",
+   "fmod": "event:/Music/InGame/Dark",
+   "music": true
+  },
+  {
+   "id": "music.lawn.dino",
+   "fmod": "event:/Music/InGame/Dino",
+   "music": true
+  },
+  {
+   "id": "music.lawn.eighties",
+   "fmod": "event:/Music/InGame/Eighties",
+   "music": true
+  },
+  {
+   "id": "music.lawn.future",
+   "fmod": "event:/Music/InGame/Future",
+   "music": true
+  },
+  {
+   "id": "music.lawn.iceage",
+   "fmod": "event:/Music/InGame/Iceage",
+   "music": true
+  },
+  {
+   "id": "music.lawn.kongfu",
+   "fmod": "event:/Music/InGame/Kongfu",
+   "music": true
+  },
+  {
+   "id": "music.lawn.lostcity",
+   "fmod": "event:/Music/InGame/Lostcity",
+   "music": true
+  },
+  {
+   "id": "music.lawn.modern",
+   "fmod": "event:/Music/InGame/Modern",
+   "music": true
+  },
+  {
+   "id": "music.lawn.pirate",
+   "fmod": "event:/Music/InGame/Pirate",
+   "music": true
+  },
+  {
+   "id": "music.lawn.sky",
+   "fmod": "event:/Music/InGame/Sky",
+   "music": true
+  },
+  {
+   "id": "music.leave.beach",
+   "fmod": "event:/Music/InGame/Leave/Beach",
+   "music": true
+  },
+  {
+   "id": "music.leave.cowboy",
+   "fmod": "event:/Music/InGame/Leave/Cowboy",
+   "music": true
+  },
+  {
+   "id": "music.leave.dark",
+   "fmod": "event:/Music/InGame/Leave/Dark",
+   "music": true
+  },
+  {
+   "id": "music.leave.dino",
+   "fmod": "event:/Music/InGame/Leave/Dino",
+   "music": true
+  },
+  {
+   "id": "music.leave.eighties",
+   "fmod": "event:/Music/InGame/Leave/Eighties",
+   "music": true
+  },
+  {
+   "id": "music.leave.future",
+   "fmod": "event:/Music/InGame/Leave/Future",
+   "music": true
+  },
+  {
+   "id": "music.leave.iceage",
+   "fmod": "event:/Music/InGame/Leave/Iceage",
+   "music": true
+  },
+  {
+   "id": "music.leave.kongfu",
+   "fmod": "event:/Music/InGame/Leave/Kongfu",
+   "music": true
+  },
+  {
+   "id": "music.leave.lostcity",
+   "fmod": "event:/Music/InGame/Leave/Lostcity",
+   "music": true
+  },
+  {
+   "id": "music.leave.modern",
+   "fmod": "event:/Music/InGame/Leave/Modern",
+   "music": true
+  },
+  {
+   "id": "music.leave.pirate",
+   "fmod": "event:/Music/InGame/Leave/Pirate",
+   "music": true
+  },
+  {
+   "id": "music.leave.sky",
+   "fmod": "event:/Music/InGame/Leave/Sky",
+   "music": true
+  },
+  {
+   "id": "music.lose.beach",
+   "fmod": "event:/Music/InGame/Lose/Beach",
+   "music": true
+  },
+  {
+   "id": "music.lose.cowboy",
+   "fmod": "event:/Music/InGame/Lose/Cowboy",
+   "music": true
+  },
+  {
+   "id": "music.lose.dark",
+   "fmod": "event:/Music/InGame/Lose/Dark",
+   "music": true
+  },
+  {
+   "id": "music.lose.dino",
+   "fmod": "event:/Music/InGame/Lose/Dino",
+   "music": true
+  },
+  {
+   "id": "music.lose.eighties",
+   "fmod": "event:/Music/InGame/Lose/Eighties",
+   "music": true
+  },
+  {
+   "id": "music.lose.future",
+   "fmod": "event:/Music/InGame/Lose/Future",
+   "music": true
+  },
+  {
+   "id": "music.lose.iceage",
+   "fmod": "event:/Music/InGame/Lose/Iceage",
+   "music": true
+  },
+  {
+   "id": "music.lose.kongfu",
+   "fmod": "event:/Music/InGame/Lose/Kongfu",
+   "music": true
+  },
+  {
+   "id": "music.lose.lostcity",
+   "fmod": "event:/Music/InGame/Lose/Lostcity",
+   "music": true
+  },
+  {
+   "id": "music.lose.modern",
+   "fmod": "event:/Music/InGame/Lose/Modern",
+   "music": true
+  },
+  {
+   "id": "music.lose.pirate",
+   "fmod": "event:/Music/InGame/Lose/Pirate",
+   "music": true
+  },
+  {
+   "id": "music.lose.sky",
+   "fmod": "event:/Music/InGame/Lose/Sky",
+   "music": true
+  },
+  {
+   "id": "music.minigame.beach",
+   "fmod": "event:/Music/InGame/Minigame/Beach",
+   "music": true
+  },
+  {
+   "id": "music.minigame.cowboy",
+   "fmod": "event:/Music/InGame/Minigame/Cowboy",
+   "music": true
+  },
+  {
+   "id": "music.minigame.dark",
+   "fmod": "event:/Music/InGame/Minigame/Dark",
+   "music": true
+  },
+  {
+   "id": "music.minigame.dino",
+   "fmod": "event:/Music/InGame/Minigame/Dino",
+   "music": true
+  },
+  {
+   "id": "music.minigame.future",
+   "fmod": "event:/Music/InGame/Minigame/Future",
+   "music": true
+  },
+  {
+   "id": "music.minigame.iceage",
+   "fmod": "event:/Music/InGame/Minigame/Iceage",
+   "music": true
+  },
+  {
+   "id": "music.minigame.kongfu",
+   "fmod": "event:/Music/InGame/Minigame/Kongfu",
+   "music": true
+  },
+  {
+   "id": "music.minigame.lostcity",
+   "fmod": "event:/Music/InGame/Minigame/Lostcity",
+   "music": true
+  },
+  {
+   "id": "music.minigame.modern",
+   "fmod": "event:/Music/InGame/Minigame/Modern",
+   "music": true
+  },
+  {
+   "id": "music.minigame.pirate",
+   "fmod": "event:/Music/InGame/Minigame/Pirate",
+   "music": true
+  },
+  {
+   "id": "music.minigame.sky",
+   "fmod": "event:/Music/InGame/Minigame/Sky",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.beach",
+   "fmod": "event:/Music/InGame/UltimateBattle/Beach",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.cowboy",
+   "fmod": "event:/Music/InGame/UltimateBattle/Cowboy",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.dark",
+   "fmod": "event:/Music/InGame/UltimateBattle/Dark",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.dino",
+   "fmod": "event:/Music/InGame/UltimateBattle/Dino",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.future",
+   "fmod": "event:/Music/InGame/UltimateBattle/Future",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.iceage",
+   "fmod": "event:/Music/InGame/UltimateBattle/Iceage",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.kongfu",
+   "fmod": "event:/Music/InGame/UltimateBattle/Kongfu",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.lostcity",
+   "fmod": "event:/Music/InGame/UltimateBattle/Lostcity",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.modern",
+   "fmod": "event:/Music/InGame/UltimateBattle/Modern",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.pirate",
+   "fmod": "event:/Music/InGame/UltimateBattle/Pirate",
+   "music": true
+  },
+  {
+   "id": "music.ultimate.sky",
+   "fmod": "event:/Music/InGame/UltimateBattle/Sky",
+   "music": true
+  },
+  {
+   "id": "music.victory.beach",
+   "fmod": "event:/Music/InGame/Victory/Beach",
+   "music": true
+  },
+  {
+   "id": "music.victory.cowboy",
+   "fmod": "event:/Music/InGame/Victory/Cowboy",
+   "music": true
+  },
+  {
+   "id": "music.victory.dark",
+   "fmod": "event:/Music/InGame/Victory/Dark",
+   "music": true
+  },
+  {
+   "id": "music.victory.dino",
+   "fmod": "event:/Music/InGame/Victory/Dino",
+   "music": true
+  },
+  {
+   "id": "music.victory.eighties",
+   "fmod": "event:/Music/InGame/Victory/Eighties",
+   "music": true
+  },
+  {
+   "id": "music.victory.future",
+   "fmod": "event:/Music/InGame/Victory/Future",
+   "music": true
+  },
+  {
+   "id": "music.victory.iceage",
+   "fmod": "event:/Music/InGame/Victory/Iceage",
+   "music": true
+  },
+  {
+   "id": "music.victory.kongfu",
+   "fmod": "event:/Music/InGame/Victory/Kongfu",
+   "music": true
+  },
+  {
+   "id": "music.victory.lostcity",
+   "fmod": "event:/Music/InGame/Victory/Lostcity",
+   "music": true
+  },
+  {
+   "id": "music.victory.modern",
+   "fmod": "event:/Music/InGame/Victory/Modern",
+   "music": true
+  },
+  {
+   "id": "music.victory.pirate",
+   "fmod": "event:/Music/InGame/Victory/Pirate",
+   "music": true
+  },
+  {
+   "id": "music.victory.sky",
+   "fmod": "event:/Music/InGame/Victory/Sky",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.beach",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Beach",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.cowboy",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Cowboy",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.dark",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Dark",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.dino",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Dino",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.future",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Future",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.iceage",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Iceage",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.lostcity",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Lostcity",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.modern",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Modern",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.pirate",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Pirate",
+   "music": true
+  },
+  {
+   "id": "music.zomboss.intro.sky",
+   "fmod": "event:/Music/InGame/Zomboss/Intro/Sky",
    "music": true
   }
  ]

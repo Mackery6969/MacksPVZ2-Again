@@ -1,6 +1,14 @@
 {
  "id": "zombiepotion_toughness",
  "category": "potion",
+ "components": [
+  {
+   "type": "zombie_potion",
+   "max_level": 3,
+   "effect": "toughness",
+   "damage_taken_scale": 0.85
+  }
+ ],
  "stats": {
   "toughness": 1
  },

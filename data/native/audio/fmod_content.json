@@ -1,0 +1,26 @@
+{
+ "//": "Sound effects built by tools/fmod_build_content.py, as Studio event path -> clips from the PVZGE library in the Music project (Assets/PVZGE/...). Several clips make one shuffled multi instrument: variations are FMOD's job. 'replace' rebuilds an event that already exists, keeping its GUID, folder and bank. Clip choices come from PVZGE's own SoundRescourses component wherever it names one (awooga, finalWave, readySetPlant, cardChooseFailed -> buzzer, cardCancel -> seedPacketCancel, shovelActive -> shovelActivate, zombieGulp -> gulp); the three Base* events are this port's own abilities, so theirs are picks rather than recoveries.",
+ "sfx": {
+  "SFX/Board/Awooga": ["Other/_misc/A/awooga"],
+  "SFX/Board/FinalWave": ["Board/Wave/finalwave"],
+  "SFX/Level/ReadySetPlant": ["Other/_misc/R/readysetplant"],
+  "SFX/UI/SeedCancel": ["UI/seedPacketCancel"],
+  "SFX/UI/Shovel": ["UI/shovelActivate"],
+  "SFX/Plants/PlantWater": ["Other/plant/plant_water"],
+
+  "SFX/Board/BaseCannon": {"clips": ["Plants/Explode/explosion"], "replace": true},
+  "SFX/Board/BaseTurret": {"clips": ["Board/Vehicle/engine_shoot0", "Board/Vehicle/engine_shoot1"], "replace": true},
+  "SFX/Board/BaseHit": {"clips": ["Shared/Eat/chompBig0"], "replace": true},
+
+  "SFX/UI/Refuse": {"clips": ["UI/buzzer"], "replace": true},
+  "SFX/Plants/Eaten": {"clips": ["Shared/Eat/gulp"], "replace": true},
+  "SFX/Zombies/Chew": {"clips": ["Shared/Eat/chew0", "Shared/Eat/chew1", "Shared/Eat/chew2", "Shared/Eat/chew3"], "replace": true},
+  "SFX/Zombies/Die": {"clips": ["Zombies/Death/death0", "Zombies/Death/death1", "Zombies/Death/death2", "Zombies/Death/death3"], "replace": true},
+  "SFX/Zombies/Spawn": {"clips": ["Zombies/Groan/groan0", "Zombies/Groan/groan1", "Zombies/Groan/groan2", "Zombies/Groan/groan3", "Zombies/Groan/groan4", "Zombies/Groan/groan5", "Zombies/Groan/groan6", "Zombies/Groan/groan7", "Zombies/Groan/groan8", "Zombies/Groan/groan9", "Zombies/Groan/groan10", "Zombies/Groan/groan11"], "replace": true},
+  "SFX/Collect/Sun": {"clips": ["Collect/collect1", "Collect/collect2", "Collect/collect3", "Collect/collect4"], "replace": true}
+ },
+ "assign": [
+  "SFX/Zombies/HeadPop",
+  "SFX/Zombies/Limb"
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "id": "dangerroom_dino",
+ "world": "dino",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "dino_imp",
+   "weight": 1
+  },
+  {
+   "type": "dino_bully",
+   "weight": 1
+  },
+  {
+   "type": "dino_imp",
+   "weight": 1
+  },
+  {
+   "type": "dino_armor3",
+   "weight": 1
+  }
+ ]
+}

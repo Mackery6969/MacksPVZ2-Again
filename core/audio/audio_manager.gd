@@ -117,9 +117,7 @@ func _report_missing(id: StringName) -> void:
 func summary() -> String:
 	var playable := 0
 	for id in catalog.events:
-		var e: AudioEvent = catalog.events[id]
-		var addr := e.fmod_path if backend.backend_name() == "fmod" else e.stream_path
-		if addr != "":
+		if backend.can_play(catalog.events[id]):
 			playable += 1
 	return "audio: backend=%s events=%d playable=%d" % [
 			backend.backend_name(), catalog.size(), playable]

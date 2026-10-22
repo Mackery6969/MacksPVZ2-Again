@@ -5,5 +5,9 @@
  "levels": [
   "neon_1",
   "airspace_1"
- ]
+ ],
+ "order": 10,
+ "unlock_after": "tutorial",
+ "description": "A pack-made world, opened by finishing the Front Lawn.",
+ "map_color": "#6a3a8c"
 }

@@ -1,6 +1,13 @@
 {
  "id": "sap",
  "category": "liquid",
+ "components": [
+  {
+   "type": "tile_liquid",
+   "lifespan": 30,
+   "slow": 0.5
+  }
+ ],
  "extra": {
   "TileLiquidBasedOn": "sapfling"
  }
