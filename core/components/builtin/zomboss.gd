@@ -269,7 +269,7 @@ func _shoot() -> void:
 	var row: int = int(occupied[randi() % occupied.size()]) \
 			if not occupied.is_empty() else randi() % lanes
 	var from := Vector2(host.position.x, host.board.grid_to_world(row, 0).y)
-	host.board.spawn_projectile(missile, row, from, host)
+	host.board.spawn_projectile(missile, row, from + Vector2(-24.0, -12.0), host)
 	Audio.play(&"zombie.boss.shoot", host.position)
 
 

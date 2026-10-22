@@ -50,7 +50,7 @@ func _has_target(side: int) -> bool:
 
 
 func _fire(side: int, offset: float = 0.0) -> void:
-	var at: Vector2 = host.position - Vector2(side * offset, 0)
+	var at: Vector2 = host.launch_point(side) - Vector2(side * offset, 0)
 	host.board.spawn_projectile(StringName(cfg(&"projectile", &"pea")), host.row,
 			at, host, side)
 	host.play_art_once(&"attack")

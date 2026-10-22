@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		_burst_gap -= delta
 		if _burst_gap <= 0.0:
 			_shape(host.board.spawn_projectile(_burst_projectile, host.row,
-					host.position, host))
+					host.launch_point(), host))
 			_burst_remaining -= 1
 			_burst_gap = 0.04
 		return
@@ -113,7 +113,7 @@ func _on_art_event(name: StringName) -> void:
 
 
 func _launch() -> void:
-	_shape(host.board.spawn_projectile(projectile_id, host.row, _muzzle(), host))
+	_shape(host.board.spawn_projectile(projectile_id, host.row, host.launch_point(), host))
 	Audio.play(&"plant.shoot", host.position)
 
 
@@ -126,17 +126,6 @@ func _shape(shot: Projectile) -> void:
 	shot.bounces = bool(cfg(&"bounces", false))
 	shot.knockback_chance = float(cfg(&"knockback_chance", 0.0))
 	shot.knockback_distance = float(cfg(&"knockback_distance", 0.0))
-
-
-## Where the shot leaves from. A rig that names a muzzle socket says exactly;
-## anything else falls back to the plant's own position.
-func _muzzle() -> Vector2:
-	var art: Armature = host.art
-	if art != null:
-		var point := art.socket(&"muzzle")
-		if point != null:
-			return point.global_position - host.global_position + host.position
-	return host.position
 
 
 ## Plant food: unload a burst of shots down the lane.

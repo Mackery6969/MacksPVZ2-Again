@@ -2787,15 +2787,23 @@ func _test_art() -> void:
 
 	# A rig says when it acts, and where from.
 	if pea != null and pea.art != null:
-		check("the peashooter has a muzzle socket",
-				pea.art.socket(&"muzzle") != null)
 		check("and its Shoot animation announces the shot",
 				pea.art.announces(&"Shoot", [&"Shoot"]))
-		var muzzle := pea.art.socket(&"muzzle")
-		if muzzle != null:
-			check("which is away from the plant's own origin",
-					muzzle.position.length() > 20.0,
-					"%.1f,%.1f" % [muzzle.position.x, muzzle.position.y])
+		# PVZGE's PeaSpawnPoint: ahead of the stem and up at the mouth, which
+		# at the shared character scale is about 34 x 41 px off the feet.
+		var feet := pea.position + pea.art.position
+		var spout := pea.launch_point() - feet
+		check("the pea leaves from the peashooter's mouth",
+				absf(spout.x - 66.538 * pea.art.scale.x) < 0.5
+				and absf(spout.y + 79.306 * pea.art.scale.y) < 0.5,
+				"%.1f,%.1f" % [spout.x, spout.y])
+		var shot := board.spawn_projectile(&"pea", pea.row, pea.launch_point(), pea)
+		check_eq("and appears exactly there", shot.position, pea.launch_point())
+		shot.queue_free()
+	var bare: Plant = board.place_plant(&"sunflower", 0, 8)
+	if bare != null:
+		check_eq("a plant without a spawn point fires from just ahead of it",
+				bare.launch_point(), bare.position + Vector2(24, -12))
 
 	# Losing a limb: the whole arm comes off, the stump underneath shows.
 	var hurt: Zombie = board.spawn_zombie(&"tutorial", 4)

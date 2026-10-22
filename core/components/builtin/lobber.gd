@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	# A lobber ignores cover, so any zombie in the lane is a valid target.
 	if host.board.hostile_zombies_in_row(host.row).is_empty():
 		return
-	host.board.spawn_projectile(projectile_id, host.row, host.position, host)
+	host.board.spawn_projectile(projectile_id, host.row, host.launch_point(), host)
 	host.play_art_once(&"attack")
 	Audio.play(&"plant.lob", host.position)
 	_cooldown = cfg_jittered(&"interval", &"interval_jitter", interval)
@@ -35,5 +35,5 @@ func on_plantfood() -> bool:
 	var count := int(cfg(&"plantfood_count", 12))
 	var id := StringName(cfg(&"projectile_plantfood", projectile_id))
 	for i in count:
-		host.board.spawn_projectile(id, host.row, host.position, host)
+		host.board.spawn_projectile(id, host.row, host.launch_point(), host)
 	return count > 0

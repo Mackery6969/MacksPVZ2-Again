@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 
 
 func _throw(id: StringName, damage_scale: float = 1.0) -> void:
-	var shot: Projectile = host.board.spawn_projectile(id, host.row, host.position, host)
+	var shot: Projectile = host.board.spawn_projectile(id, host.row, host.launch_point(), host)
 	if shot != null:
 		shot.damage *= damage_scale
 	host.play_art_once(&"attack")

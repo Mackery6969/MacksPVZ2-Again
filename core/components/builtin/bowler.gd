@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 
 
 func _roll(id: StringName) -> void:
-	var ball: Projectile = host.board.spawn_projectile(id, host.row, host.position, host)
+	var ball: Projectile = host.board.spawn_projectile(id, host.row, host.launch_point(), host)
 	if ball != null:
 		ball.bounces = true
 		ball.pierce = int(cfg(&"pierce", 3))
@@ -51,7 +51,7 @@ func _roll(id: StringName) -> void:
 func on_plantfood() -> bool:
 	var ball: Projectile = host.board.spawn_projectile(
 			StringName(cfg(&"projectile_plantfood", &"bowling_pf")), host.row,
-			host.position, host)
+			host.launch_point(), host)
 	if ball != null:
 		ball.pierce = 999
 	return true

@@ -88,6 +88,23 @@ func _attach_art() -> void:
 	queue_redraw()
 
 
+## Where this entity's shots appear, on the board. A rig whose mapping gives a
+## `projectile_origin` - PVZGE's per-prefab spawn node (`PeaSpawnPoint`), in
+## rig units with y up - fires from exactly there, at any scale or facing.
+## Anything else fires from just ahead of its centre, as it always has: to the
+## right for a plant, to the left for a zombie unless `direction` says.
+func launch_point(direction: int = 0) -> Vector2:
+	if art != null and def != null:
+		var point: Array = Art.mapping(art_kind(), def.id).get("projectile_origin", [])
+		if point.size() >= 2:
+			# A mirrored rig has a negative x scale, which flips the point with it.
+			return position + art.position + Vector2(float(point[0]) * art.scale.x,
+					-float(point[1]) * art.scale.y)
+	if direction == 0:
+		direction = -1 if self is Zombie else 1
+	return position + Vector2(24.0 * direction, -12.0)
+
+
 ## The namespace this entity's art is keyed under: "plant", "zombie", ...
 func art_kind() -> StringName:
 	return &""
