@@ -74,6 +74,8 @@ var _music_stage: int = -1
 
 ## The level's win/lose rules. Every one must be met to win; any failure loses.
 var objectives: Array[Objective] = []
+## Tides, rails, power tiles, potions and the special wave events.
+var features: LevelFeatures = null
 
 
 func start(level_def: Dictionary, target_board: Board) -> void:
@@ -101,6 +103,15 @@ func start(level_def: Dictionary, target_board: Board) -> void:
 	var pacing: Dictionary = level.get("wave_pacing", {})
 	if pacing.has("first_delay"):
 		_timer = float(pacing["first_delay"])
+
+	if features == null:
+		features = LevelFeatures.new()
+		features.name = "Features"
+		add_child(features)
+		features.zombie_spawned.connect(func(z): _wave_spawned_health += z.max_health)
+	# Rails and tide before anything is planted, so plants land on carts and
+	# know whether they are standing in water.
+	features.start(level, board, lawn_data())
 
 	# Before objectives, so a protect-the-plant goal finds what it guards.
 	_place_initial()
@@ -238,6 +249,8 @@ func _build_objectives() -> void:
 	for o in objectives:
 		o.queue_free()
 	objectives.clear()
+	# Placement rules belong to the objectives that added them.
+	board.placement_checks.clear()
 
 	var specs: Array = level.get("objectives", [])
 	if specs.is_empty():
@@ -339,6 +352,12 @@ func _sun_cycle() -> float:
 	return float(sun.get("interval", sun_interval))
 
 
+## True once every wave has been sent and nothing a wave started - a storm
+## still blowing in, an open portal - is left to arrive.
+func all_waves_spawned() -> bool:
+	return _finished_spawning and (features == null or features.pending() == 0)
+
+
 ## Halts the level without clearing the board, so a result can be shown.
 func stop() -> void:
 	running = false
@@ -352,6 +371,7 @@ func _process(delta: float) -> void:
 	if _sun_timer <= 0.0:
 		board.drop_sun_from_sky()
 		_sun_timer = _sun_cycle()
+	features.tick(delta)
 
 	# Objectives own the outcome: all met wins, any broken loses.
 	for o in objectives:
@@ -442,7 +462,7 @@ func _run_action(action: Dictionary) -> void:
 		_:
 			# Unmodelled action kinds are skipped rather than fatal, so a level
 			# using a feature we have not built yet still plays.
-			pass
+			features.run(action)
 
 
 # --- lawn set-up ----------------------------------------------------------

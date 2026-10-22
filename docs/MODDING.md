@@ -538,6 +538,50 @@ Plants standing where a stone rises are knocked out unless the action sets
 `"displace_plants": false`. Gravestones block planting, plants' shots break
 them, and `SunValue` / `plantfood_count` on a grave pay out when it breaks.
 
+### World mechanics
+
+These level fields set up a world's own mechanics. Cells are 0-based.
+
+```json
+"tide": { "water_from": 6 },
+"railcarts": { "rails": [ { "col": 4, "row_start": 0, "row_end": 4 } ],
+               "carts": [ { "col": 4, "row": 1 } ], "type": "railcart_cowboy" },
+"power_tiles": [ { "group": "beta", "row": 1, "col": 1, "delay": 0.25 } ],
+"potions": { "initial": 4, "max": 30, "interval": { "min": 12, "max": 16 },
+             "types": [ "zombiepotion_speed", "zombiepotion_toughness" ] }
+```
+
+- **Tide**: columns from `water_from` rightward are water. A tide wave moves
+  the shoreline; plants the water reaches drown unless they can stand in it.
+- **Rail carts**: plants only go on carts, and a cart is clicked to pick it up
+  and clicked again on its rail to roll it there, carrying its plant. Carts
+  cannot pass each other. Without a `type`, the world's `railcart` is used.
+- **Power tiles**: plant food given to a plant on one tile reaches the plants on
+  every other tile of its group after that tile's `delay`.
+- **Potions**: set out at the start and topped up to `max`. The first zombie to
+  walk into one drinks it (faster, tougher or invisible, up to three of a kind).
+
+Puddles act on the zombies standing in them through the `tile_liquid`
+component: `goopuddle` hits for 10 every half second, `butter` stops the first
+zombie for 8 seconds and is used up, `goo` poisons, sap slows, lava burns.
+
+These wave actions start world events:
+
+| Kind | Fields | What happens |
+|---|---|---|
+| `storm` | `zombies`, `style`, `col_start`/`col_end`, `row_start`/`row_end`, `group_size`, `group_interval` | sand- or snowstorm drops zombies partway up the quietest lanes |
+| `raiding_party` | `type`, `count`, `group_size`, `group_interval` | swashbucklers swing in from the edge in groups |
+| `low_tide` | `type`, `count`, `col_start`/`col_end`, `delay`, `group_size`, `group_interval` | zombies rise from the sand the tide left |
+| `tide` | `water_from` | moves the shoreline |
+| `frost_wind` | `winds: [{row, direction}]`, `blasts` | chills every plant in the lane; a second chill freezes it in ice |
+| `portal` | `row`, `col`, `portal`, `limit` | opens a rift that lets its zombies through one at a time |
+| `dino` | `dino`, `row`, `delay` | calls a dinosaur into the lane |
+
+A `portal` names a shared portal from `data/native/portals` or gives its own
+`{zombies: [{type, weight}], first, interval}` inline. Dinosaurs live in
+`data/native/dinos`; each picks one of five behaviours (`kick`, `carry`,
+`toss`, `fling`, `roar`), so a pack can add one with data alone.
+
 ## Campaigns
 
 A campaign is an ordered list of levels. Clearing one loads the next; failing
@@ -734,7 +778,22 @@ existing levels keep working.
 ```
 
 Built-ins: `survive_waves`, `protect_plants`, `no_plant_loss`, `sun_produced`,
-`kill_count`.
+`kill_count`, and the star challenges:
+
+| Type | Config | Rule |
+|---|---|---|
+| `zombie_distance` | `distance` | a zombie past this many columns from the house loses |
+| `sun_used` | `max` | spending more sun than this loses |
+| `simultaneous_plants` | `max` | no more plants than this at once (the extra one is refused) |
+| `kill_in_time` | `count`, `seconds` | destroy this many within the window, at least once |
+| `sun_holdout` | `seconds` | go this long without spending sun, at least once |
+| `save_mowers` | | losing a lawn mower loses |
+| `no_plant_zone` | `cells` | a mold colony: those cells cannot be planted |
+
+`no_plant_loss` with `allowed` covers "lose no more than N plants". A goal
+that has to be achieved during the level fails once the last wave is cleared
+without it. An objective can also refuse a placement by adding a callable to
+`board.placement_checks`.
 
 A pack adds its own as `objectives/<type>.gd`, overriding `is_met()`,
 `is_failed()` and whichever hooks it needs (`on_zombie_died`,
