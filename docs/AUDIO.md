@@ -75,7 +75,7 @@ The Studio project in this workspace reports `Studio.02.03.00`, so the pair is:
 4. Export your banks from FMOD Studio to `res://audio/banks/`. The master bank
    and its `.strings` bank are both required before any event resolves.
    See "Running Studio under Proton" below if Studio is running through Wine.
-   Or let the Music repo build them: see "Automated bank builds" below.
+   They are normally built and committed for you: see "Automated bank builds" below.
 5. Restart. `fmod_backend.gd` looks for the `FmodServer` singleton and takes
    over automatically; the boot log should now read `backend=fmod`.
 6. For an exported build, add `*.bank` to the export's non-resource filter, or
@@ -121,12 +121,20 @@ project under version control somewhere outside the prefix.
 
 ### Automated bank builds
 
-The Music repo builds its banks itself: every push to its `master` that
-touches the Studio project runs `fmodstudiocl` on a self-hosted Windows runner
-with FMOD Studio installed. The runner can copy the banks straight into this
-checkout's `audio/banks/` (its `BANK_INSTALL_DIR` variable) and uploads them as
-the `fmod-banks-Desktop` workflow artifact, so another machine can download
-and unzip them here. Setup is in the Music repo's `docs/BUILD_RUNNER.md`.
+The banks in `audio/banks/` are built and committed automatically:
+
+1. A push to the Music repo's `master` that touches the Studio project runs
+   its **Build FMOD banks** workflow on a self-hosted Windows runner with FMOD
+   Studio installed (`fmodstudiocl -build`). The banks go up as the
+   `fmod-banks-Desktop` artifact.
+2. That workflow then starts this repo's **Update FMOD banks** workflow
+   (`.github/workflows/update-banks.yml`), which downloads the artifact,
+   points the `Music` submodule at the commit the banks were built from, and
+   pushes both straight to `master`. If nothing changed it commits nothing:
+   the same project always builds byte-identical banks.
+
+So after changing the Studio project, pull this repo to get its banks. Setup
+is in the Music repo's `docs/BUILD_RUNNER.md`.
 
 ## Building the Studio project
 

@@ -1,0 +1,79 @@
+name: Update FMOD banks
+
+# Started by the Music repo's "Build FMOD banks" workflow once it has built
+# the banks on master. Downloads that run's artifact into audio/banks/, points
+# the Music submodule at the commit the banks were built from, and pushes
+# straight to master. Setup: Music/docs/BUILD_RUNNER.md.
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Music repo workflow run that built the banks
+        required: true
+      music_sha:
+        description: Music commit the banks were built from
+        required: true
+
+permissions:
+  contents: write
+
+# Queue rather than cancel, so builds land in the order they were made.
+concurrency:
+  group: update-banks
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      RUN_ID: ${{ inputs.run_id }}
+      MUSIC_SHA: ${{ inputs.music_sha }}
+      # The existing banks are only overwritten, so never download them.
+      GIT_LFS_SKIP_SMUDGE: 1
+    steps:
+      - name: Check inputs
+        run: |
+          [[ "$RUN_ID" =~ ^[0-9]+$ ]] || { echo "::error::run_id must be a number"; exit 1; }
+          [[ "$MUSIC_SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::music_sha must be a full commit hash"; exit 1; }
+
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Clear the old banks
+        # A bank removed from the project must not linger and keep loading.
+        run: rm -f audio/banks/*.bank
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: fmod-banks-Desktop
+          path: audio/banks
+          repository: Mackery6969/MacksPVZ2-Again.Music
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ secrets.BANKS_TOKEN }}
+
+      - name: Commit and push
+        run: |
+          for bank in Master.bank Master.strings.bank; do
+            [ -f "audio/banks/$bank" ] || { echo "::error::$bank is missing from the artifact"; exit 1; }
+          done
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add -A audio/banks
+          git update-index --cacheinfo "160000,$MUSIC_SHA,Music"
+          if git diff --cached --quiet; then
+            echo "Banks and Music submodule are already up to date."
+            exit 0
+          fi
+          git diff --cached --stat
+          git commit -m "Update FMOD banks from Music ${MUSIC_SHA:0:7}" \
+            -m "Built by https://github.com/Mackery6969/MacksPVZ2-Again.Music/actions/runs/$RUN_ID"
+          # master may have moved while this ran; the banks never conflict
+          # with hand-made commits, so rebasing onto it is safe.
+          for attempt in 1 2 3; do
+            git push origin HEAD:master && exit 0
+            git pull --rebase origin master
+          done
+          exit 1
