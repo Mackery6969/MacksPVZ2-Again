@@ -103,6 +103,8 @@ func _on_initialized() -> void:
 			movement_claimed = true
 	_face_art()
 	_show_state(&"walk")
+	if art != null:
+		art.seek_fraction(randf())
 	queue_redraw()
 
 
@@ -356,9 +358,29 @@ func _show_state(state: StringName) -> void:
 		_art_state = state
 
 
+## A walk plays at whatever pace keeps the planted foot planted: the rig says
+## how far one cycle carries it, and the zombie's real speed says how far it
+## actually goes. Anything else skates - a slowed zombie used to moonwalk at
+## full animation speed. Everything but walking keeps the zombie's own rate,
+## slowed with it, and a stunned or frozen zombie holds still.
+func art_speed() -> float:
+	if is_stunned():
+		return 0.0
+	var slowed := _slow_factor if _slow_left > 0.0 else 1.0
+	if art == null or board == null or _art_state != &"walk" or movement_claimed:
+		return art_rate * slowed
+	var stride := art.ground_speed(art.playing)
+	if stride <= 0.0:
+		return art_rate * slowed
+	return current_speed() * board.cell_size.x / stride
+
+
 func _on_death() -> void:
 	Audio.play(&"zombie.die", position)
 	_drop_limbs(true)
+	if art != null:
+		# The death plays out on its own now, at the rig's own pace.
+		art.set_speed_scale(1.0)
 	# The death animation outlives the zombie, so it is handed to the board
 	# to finish on its own rather than freed with the body.
 	if art != null and play_art(&"die", false):
