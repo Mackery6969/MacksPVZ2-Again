@@ -19,6 +19,10 @@ var board: Node = null
 var health: float = 0.0
 var max_health: float = 0.0
 var is_dead: bool = false
+## Whatever dealt the most recent blow. A plant that answers being eaten - a
+## hypno-shroom turning its eater - reads this when it dies, so the zombie
+## never has to know which plants bite back.
+var last_damage_source: Node = null
 
 ## The visual, when extracted art covers this entity. Null leaves the
 ## placeholder drawing in place, so the game runs the same without any art.
@@ -233,9 +237,11 @@ func matches(required: Array, excluded: Array = []) -> bool:
 
 # --- health --------------------------------------------------------------
 
-func take_damage(amount: float, _source: Node = null) -> void:
+func take_damage(amount: float, source: Node = null) -> void:
 	if is_dead or amount <= 0.0:
 		return
+	if source != null:
+		last_damage_source = source
 	# Armor components absorb first and may reduce what reaches the body.
 	for comp in _components:
 		if comp.has_method("absorb_damage"):
@@ -295,6 +301,27 @@ func apply_plant_food() -> bool:
 	if used:
 		queue_redraw()
 	return used
+
+
+## Adds a behaviour after spawn. This is how one entity marks another - a sun
+## bean leaving its eater sun-infected, a shrinking violet shrinking a zombie -
+## without the target's definition having to list every way it can be marked.
+func attach_component(type: StringName, config: Dictionary = {}) -> EntityComponent:
+	var spec := ComponentSpec.new()
+	spec.type = type
+	spec.config = config.duplicate(true)
+	var comp := Components.create(spec, self)
+	if comp == null:
+		return null
+	add_child(comp)
+	_components.append(comp)
+	comp.setup()
+	return comp
+
+
+func detach_component(comp: EntityComponent) -> void:
+	_components.erase(comp)
+	comp.queue_free()
 
 
 func component(type: StringName) -> EntityComponent:

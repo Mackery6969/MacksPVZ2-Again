@@ -8,21 +8,24 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 500
  },
+ "components": [
+  {
+   "type": "enlightener",
+   "uses": 1,
+   "sun_value": 50,
+   "walk_speed": 0.3,
+   "produce_interval": 10,
+   "infect_chance": 0.2,
+   "plantfood_count": 3,
+   "produce_interval_max": 14
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
   "plantfood": true
  },
  "extra": {
-  "EnlightenChanceToInfect": 0.2,
-  "EnlightenProduceInterval": {
-   "Max": 14,
-   "Min": 10
-  },
-  "EnlightenSunValue": 50,
-  "EnlightenWalkSPS": 0.3,
-  "MaxAttackTime": 1,
-  "MintProductionFactor": 2,
-  "PlantfoodEnlightenCount": 3
+  "MintProductionFactor": 2
  }
 }

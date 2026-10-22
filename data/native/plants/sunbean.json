@@ -8,6 +8,13 @@
   "cooldown_from": 0.75,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "eaten_trigger",
+   "sun_per_hitpoint": 0.2,
+   "effect": "sun_infect"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -15,7 +22,6 @@
  },
  "extra": {
   "CannotBeHealedByAloe": true,
-  "MintProductionFactor": 3,
-  "SunPerHitpoint": 0.2
+  "MintProductionFactor": 3
  }
 }

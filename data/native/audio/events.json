@@ -183,6 +183,54 @@
    "fmod": "event:/SFX/Plants/DigWater"
   },
   {
+   "id": "plant.squash",
+   "fmod": "event:/SFX/Plants/Squash"
+  },
+  {
+   "id": "plant.chomp",
+   "fmod": "event:/SFX/Plants/Chomp"
+  },
+  {
+   "id": "plant.drag",
+   "fmod": "event:/SFX/Plants/Drag"
+  },
+  {
+   "id": "plant.hypno",
+   "fmod": "event:/SFX/Plants/Hypno"
+  },
+  {
+   "id": "plant.gas",
+   "fmod": "event:/SFX/Plants/Gas"
+  },
+  {
+   "id": "plant.shrink",
+   "fmod": "event:/SFX/Plants/Shrink"
+  },
+  {
+   "id": "plant.perfume",
+   "fmod": "event:/SFX/Plants/Perfume"
+  },
+  {
+   "id": "plant.spring",
+   "fmod": "event:/SFX/Plants/Spring"
+  },
+  {
+   "id": "plant.wind",
+   "fmod": "event:/SFX/Plants/Wind"
+  },
+  {
+   "id": "plant.warp",
+   "fmod": "event:/SFX/Plants/Warp"
+  },
+  {
+   "id": "plant.enlighten",
+   "fmod": "event:/SFX/Plants/Enlighten"
+  },
+  {
+   "id": "plant.lightning",
+   "fmod": "event:/SFX/Plants/Lightning"
+  },
+  {
    "id": "ui.chooseseeds.open",
    "fmod": "event:/SFX/UI/ChooseYourSeeds/Open"
   },

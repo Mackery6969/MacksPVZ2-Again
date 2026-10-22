@@ -57,6 +57,7 @@ func _run() -> void:
 	await _test_overhaul_scale_mod()
 	_test_plant_behaviour_coverage()
 	await _test_new_plant_behaviours()
+	await _test_reactive_plants()
 	await _test_zombie_status_effects()
 	_test_zombie_behaviour_coverage()
 	_test_zombie_archetypes()
@@ -1455,6 +1456,188 @@ func _test_new_plant_behaviours() -> void:
 	board2.queue_free()
 	end_section()
 
+
+
+## Plants that react to a zombie reaching them, eating them or just being on
+## the lawn - the squash, chomper and friends that used to stand idle.
+func _test_reactive_plants() -> void:
+	section("reactive plants")
+	var board := _make_board()
+
+	# Squash leaps on the first zombie in reach and is spent doing it.
+	var squash := board.place_plant(&"squash", 0, 2)
+	check("squash has a behaviour", squash.component(&"squash") != null)
+	var squashed := board.spawn_zombie_at(&"tutorial", 0, squash.position.x + 70.0)
+	await _wait_game_seconds(1.5)
+	check("squash flattened the zombie", not is_instance_valid(squashed) or squashed.is_dead)
+	check("and was spent", not is_instance_valid(squash) or squash.is_dead)
+
+	# Chomper swallows what it can and bites what it cannot.
+	var chomper := board.place_plant(&"chomper", 1, 2)
+	var meal := board.spawn_zombie_at(&"tutorial", 1, chomper.position.x + 60.0)
+	meal.speed = 0.0
+	await _wait_game_seconds(1.5)
+	check("chomper swallowed the zombie", not is_instance_valid(meal) or meal.is_dead)
+	check("and is chewing", chomper.has_tag(&"chewing"))
+	board.queue_free()
+
+	var board2 := _make_board()
+	var chomper2 := board2.place_plant(&"chomper", 1, 2)
+	var giant := board2.spawn_zombie_at(&"tutorial_gargantuar", 1, chomper2.position.x + 60.0)
+	giant.speed = 0.0
+	var giant_hp: float = giant.health
+	await _wait_game_seconds(1.5)
+	check("a gargantuar is bitten, not swallowed",
+			is_instance_valid(giant) and not giant.is_dead and giant.health < giant_hp)
+	board2.queue_free()
+
+	# Tangle kelp drags its zombie under; grimrose reaches down the lane.
+	var board3 := _make_board()
+	board3.set_terrain(2, 3, &"water")
+	var kelp := board3.place_plant(&"tanglekelp", 2, 3)
+	check("tangle kelp goes in water", kelp != null)
+	var swimmer := board3.spawn_zombie_at(&"tutorial", 2, kelp.position.x + 20.0)
+	var rose := board3.place_plant(&"grimrose", 3, 0)
+	var far := board3.spawn_zombie_at(&"tutorial", 3, board3.grid_to_world(3, 7).x)
+	await _wait_game_seconds(2.0)
+	check("kelp dragged the zombie under", not is_instance_valid(swimmer) or swimmer.is_dead)
+	check("and was spent", not is_instance_valid(kelp) or kelp.is_dead)
+	check("grimrose reached down the lane", not is_instance_valid(far) or far.is_dead)
+	check("and was spent", not is_instance_valid(rose) or rose.is_dead)
+	board3.queue_free()
+
+	# Plants that answer being eaten.
+	var board4 := _make_board()
+	var hypno := board4.place_plant(&"hypnoshroom", 0, 3)
+	var hypno_eater := board4.spawn_zombie_at(&"tutorial", 0, hypno.position.x + 5.0)
+	var shadow := board4.place_plant(&"shadowshroom", 1, 3)
+	var shadow_eater := board4.spawn_zombie_at(&"tutorial", 1, shadow.position.x + 5.0)
+	var bean := board4.place_plant(&"sunbean", 2, 3)
+	var bean_eater := board4.spawn_zombie_at(&"tutorial", 2, bean.position.x + 5.0)
+	var moon := board4.place_plant(&"moonbean", 3, 3)
+	board4.spawn_zombie_at(&"tutorial", 3, moon.position.x + 5.0)
+	await _wait_game_seconds(2.5)
+	check("hypno-shroom turned its eater", is_instance_valid(hypno_eater)
+			and hypno_eater.is_charmed())
+	check("shadow-shroom poisoned its eater", not is_instance_valid(shadow_eater)
+			or shadow_eater.is_poisoned() or shadow_eater.is_dead)
+	check("sun bean infected its eater", is_instance_valid(bean_eater)
+			and bean_eater.component(&"sun_infection") != null)
+	if is_instance_valid(bean_eater):
+		var before := _sun_tokens(board4)
+		bean_eater.max_health = 2000.0
+		bean_eater.health = 2000.0
+		bean_eater.take_damage(600.0)
+		check("an infected zombie sheds sun when hurt", _sun_tokens(board4) > before)
+	var bombs: Array = board4._suns.get_children().filter(func(n): return n is SunBomb)
+	check("moon bean left a sun bomb", bombs.size() == 1)
+	if bombs.size() == 1:
+		var bomb: SunBomb = bombs[0]
+		var victim := board4.spawn_zombie_at(&"tutorial", 3, bomb.position.x)
+		bomb.collect()
+		check("collecting the sun bomb sets it off", victim.is_dead)
+	board4.queue_free()
+
+	var board5 := _make_board()
+	var chili := board5.place_plant(&"chilibean", 2, 3)
+	var chili_eater := board5.spawn_zombie_at(&"tutorial", 2, chili.position.x + 5.0)
+	var queued := board5.spawn_zombie_at(&"tutorial", 2, chili.position.x + 150.0)
+	queued.speed = 0.0
+	await _wait_game_seconds(7.0)
+	check("chili bean's eater is gone", not is_instance_valid(chili_eater) or chili_eater.is_dead)
+	check("and its gas stunned the zombie behind", is_instance_valid(queued) and queued.is_stunned())
+	board5.queue_free()
+
+	# Lane clearers and one-shots.
+	var board6 := _make_board()
+	var lane_a := board6.spawn_zombie_at(&"tutorial", 0, board6.grid_to_world(0, 6).x)
+	board6.place_plant(&"cranjelly", 0, 1)
+	var pushed := board6.spawn_zombie_at(&"tutorial", 1, board6.grid_to_world(1, 4).x)
+	var pushed_x: float = pushed.position.x
+	board6.place_plant(&"hurrikale", 1, 1)
+	var warped := board6.spawn_zombie_at(&"tutorial", 2, board6.grid_to_world(2, 2).x)
+	warped.take_damage(100.0)
+	board6.place_plant(&"thymewarp", 4, 0)
+	await _wait_game_seconds(0.2)
+	check("thyme warp sent the zombie back", warped.position.x >= board6.spawn_x() - board6.cell_size.x * 0.5)
+	check("at full health", is_equal_approx(warped.health, warped.max_health))
+	var sun_before := _sun_tokens(board6)
+	board6.place_plant(&"goldbloom", 3, 0)
+	await _wait_game_seconds(0.2)
+	check("gold bloom burst out sun", _sun_tokens(board6) > sun_before)
+	var food_before: int = board6._suns.get_children().filter(
+			func(n): return n is PlantFoodToken).size()
+	board6.place_plant(&"powerlily", 3, 1)
+	await _wait_game_seconds(0.2)
+	check("power lily made plant food", board6._suns.get_children().filter(
+			func(n): return n is PlantFoodToken).size() > food_before)
+	await _wait_game_seconds(2.0)
+	check("cran-jelly crushed the lane", not is_instance_valid(lane_a) or lane_a.is_dead)
+	check("hurrikale blew its lane back", is_instance_valid(pushed)
+			and pushed.position.x > pushed_x + board6.cell_size.x)
+	board6.queue_free()
+
+	# Proximity plants.
+	var board7 := _make_board()
+	var spring := board7.place_plant(&"springbean", 0, 3)
+	var bounced := board7.spawn_zombie_at(&"tutorial", 0, spring.position.x + 10.0)
+	var bounced_x: float = bounced.position.x
+	var stallia := board7.place_plant(&"stallia", 1, 3)
+	var sniffed := board7.spawn_zombie_at(&"tutorial", 1, stallia.position.x + 5.0)
+	var violet := board7.place_plant(&"shrinkingviolet", 2, 3)
+	var shrunk := board7.spawn_zombie_at(&"tutorial", 2, violet.position.x + 5.0)
+	var sage := board7.place_plant(&"solarsage", 3, 3)
+	var convert := board7.spawn_zombie_at(&"tutorial", 3, sage.position.x + 5.0)
+	await _wait_game_seconds(2.0)
+	check("spring bean bounced its zombie back",
+			bounced.position.x > bounced_x + board7.cell_size.x * 0.5)
+	check("stallia's perfume slowed the zombie", sniffed.has_tag(&"slowed"))
+	check("and stallia was spent", not is_instance_valid(stallia) or stallia.is_dead)
+	check("shrinking violet shrank the zombie", shrunk.component(&"shrunk") != null)
+	var shrunk_hp: float = shrunk.health
+	shrunk.take_damage(10.0)
+	check("a shrunk zombie takes double damage",
+			is_equal_approx(shrunk_hp - shrunk.health, 20.0))
+	check("solar sage converted the zombie", convert.is_charmed() and convert.peaceful
+			and convert.component(&"sun_trail") != null)
+	board7.queue_free()
+
+	# Plants that bide their time.
+	var board8 := _make_board()
+	var stalker := board8.place_plant(&"celerystalker", 0, 4)
+	check("celery stalker starts hidden", stalker.has_tag(&"hidden"))
+	var passer := board8.spawn_zombie_at(&"tutorial", 0, stalker.position.x - 60.0)
+	passer.speed = 0.0
+	var pepper := board8.place_plant(&"ghostpepper", 1, 4)
+	var haunted := board8.spawn_zombie_at(&"tutorial", 1, pepper.position.x + 100.0)
+	haunted.speed = 0.0
+	var haunted_hp: float = haunted.health
+	var berry := board8.place_plant(&"electricblueberry", 2, 0)
+	var struck := board8.spawn_zombie_at(&"tutorial", 2, board8.grid_to_world(2, 7).x)
+	struck.speed = 0.0
+	await _wait_game_seconds(1.0)
+	check("celery stalker popped up behind the zombie", not stalker.has_tag(&"hidden"))
+	check("and hit it", passer.health < passer.max_health)
+	check("ghost pepper haunted the zombie", not is_instance_valid(haunted)
+			or haunted.health < haunted_hp)
+	await _wait_game_seconds(11.0)
+	check("ghost pepper burnt out", not is_instance_valid(pepper) or pepper.is_dead)
+	check("electric blueberry struck", not is_instance_valid(struck) or struck.is_dead)
+	check("and survived it", is_instance_valid(berry) and not berry.is_dead)
+	board8.queue_free()
+
+	# Toadstool swallows, then pays out the meal as sun.
+	var board9 := _make_board()
+	var toad := board9.place_plant(&"toadstool", 0, 1)
+	var snack := board9.spawn_zombie_at(&"tutorial", 0, toad.position.x + 200.0)
+	snack.speed = 0.0
+	await _wait_game_seconds(1.5)
+	check("toadstool's tongue reached the zombie", not is_instance_valid(snack) or snack.is_dead)
+	var toad_sun := _sun_tokens(board9)
+	await _wait_game_seconds(31.0)
+	check("and turned it into sun", _sun_tokens(board9) > toad_sun)
+	board9.queue_free()
+	end_section()
 
 
 ## Behaviour comes from the fields a zombie carries, the same inversion the

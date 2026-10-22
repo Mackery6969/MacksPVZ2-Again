@@ -100,6 +100,9 @@ var _cell_provides: Dictionary = {}
 var plantable_rows: Array[int] = []
 
 var _plants: Dictionary = {}          ## Vector2i -> Plant
+## What last died in each cell, so an intensive carrot knows what to bring
+## back. Digging a plant up is not a death and leaves no record.
+var _dead_plants: Dictionary = {}     ## Vector2i -> StringName
 ## Grid items standing in a cell: gravestones, slider and trap tiles, puddles,
 ## ice blocks. One per cell. Vector2i -> GridObject (Grave is one too).
 var _objects: Dictionary = {}
@@ -146,6 +149,7 @@ func reset() -> void:
 	lawn_components.clear()
 	_mowers.clear()
 	_plants.clear()
+	_dead_plants.clear()
 	_objects.clear()
 	for r in _zombies_by_row:
 		_zombies_by_row[r].clear()
@@ -418,6 +422,12 @@ func despawn_x() -> float:
 	return spawn_x() + cell_size.x
 
 
+## PVZGE measures in its own pixels, 68 to a square. Distances lifted from its
+## code go through here so they keep their size on a lawn of any scale.
+func pvzge_px(px: float) -> float:
+	return px * cell_size.x / 68.0
+
+
 # --- plants --------------------------------------------------------------
 
 func plant_at(row: int, col: int) -> Plant:
@@ -576,7 +586,17 @@ func remove_plant(row: int, col: int) -> void:
 ## dangerous again once the lily pad is eaten.
 func _on_placed_plant_died(who: Character, row: int, col: int) -> void:
 	_cell_provides.erase(Vector2i(col, row))
+	_dead_plants[Vector2i(col, row)] = who.entity_id()
 	plant_died.emit(who)
+
+
+## The plant that most recently died in a cell, or &"" if none has.
+func last_dead_plant(row: int, col: int) -> StringName:
+	return _dead_plants.get(Vector2i(col, row), &"")
+
+
+func forget_dead_plant(row: int, col: int) -> void:
+	_dead_plants.erase(Vector2i(col, row))
 
 
 ## Relocates a plant between cells, keeping the board's index in step. Used by
@@ -832,6 +852,41 @@ func hostile_zombies_in_row(row: int) -> Array:
 	return out
 
 
+## Hostile zombies within `rows_reach` lanes of `row` and `cells_reach`
+## squares either side of `x` - the "3x3 around me" most area plants mean.
+func hostile_zombies_near(row: int, x: float, rows_reach: int,
+		cells_reach: float) -> Array:
+	var out: Array = []
+	var reach := cells_reach * cell_size.x
+	for r in range(maxi(0, row - rows_reach), mini(rows, row + rows_reach + 1)):
+		for z in hostile_zombies_in_row(r):
+			if absf(z.position.x - x) <= reach:
+				out.append(z)
+	return out
+
+
+## Every hostile zombie on the lawn, nearest the house first.
+func all_hostile_zombies() -> Array:
+	var out: Array = []
+	for r in rows:
+		out.append_array(hostile_zombies_in_row(r))
+	out.sort_custom(func(a, b): return a.position.x < b.position.x)
+	return out
+
+
+## Walks a zombie into another lane, keeping the lane index in step. Used by
+## anything that pulls zombies sideways - a sweet potato's lure.
+func move_zombie_to_row(z: Zombie, row: int) -> void:
+	if not is_instance_valid(z) or row < 0 or row >= rows or z.row == row:
+		return
+	_zombies_by_row[z.row].erase(z)
+	z.row = row
+	_zombies_by_row[row].append(z)
+	z.position.y = grid_to_world(row, 0).y + z.lane_offset
+	z.z_index = lane_z(row, LAYER_ZOMBIE)
+	z.target = null
+
+
 func charmed_zombies_in_row(row: int) -> Array:
 	var out: Array = []
 	for z in zombies_in_row(row):
@@ -865,6 +920,21 @@ func spawn_projectile(id: StringName, row: int, from: Vector2, source: Node) -> 
 	return pr
 
 
+## Sends a sweeper down a lane from the house end. See LaneSweeper.
+func spawn_sweeper(row: int, speed: float, dps: float, source: Node) -> LaneSweeper:
+	var s := LaneSweeper.new()
+	s.board = self
+	s.source = source
+	s.row = row
+	s.speed = speed
+	s.dps = dps
+	s.half_width = cell_size.x * 0.5
+	s.position = Vector2(house_x(), grid_to_world(row, 0).y)
+	s.z_index = lane_z(row, LAYER_PROJECTILE)
+	_projectiles.add_child(s)
+	return s
+
+
 ## Drops a sun just above `at`, which settles slightly below it. Every sun is
 ## worth SunToken.VALUE, so there is no amount to pass.
 func drop_sun(at: Vector2) -> void:
@@ -892,6 +962,20 @@ func _on_sun_collected(token: Collectable) -> void:
 	add_sun(SunToken.VALUE)
 	sun_collected.emit(SunToken.VALUE)
 	Audio.play(&"sun.collect", token.position)
+
+
+## Leaves a sun bomb where a moon bean was eaten. `props` carries its
+## zombie_damage, zombie_radius, plant_damage and plant_radius (pixels).
+func drop_sun_bomb(at: Vector2, props: Dictionary = {}) -> SunBomb:
+	var b := SunBomb.new()
+	b.board = self
+	b.z_index = LAYER_COLLECTABLE
+	b.position = at + Vector2(0, -30)
+	b.fall_to_y = at.y
+	for key in props:
+		b.set(key, props[key])
+	_suns.add_child(b)
+	return b
 
 
 ## Drops plant food where a carrier zombie died.
