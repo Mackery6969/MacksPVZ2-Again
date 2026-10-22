@@ -4,6 +4,14 @@
  "name_key": "[TUTORIAL_LEVEL_NAME]",
  "description": "[PLAYERS_HOUSE]",
  "number": 1,
+ "reward": {
+  "type": "unlock_plant",
+  "param": "sunflower"
+ },
+ "replay_reward": {
+  "type": "collectable",
+  "param": "endlevelreward"
+ },
  "stage": "TutorialStage",
  "tutorial_script": "tutorial_1",
  "plantable_rows": [

@@ -4,6 +4,17 @@
  "name_key": "[TUTORIAL_LEVEL_NAME]",
  "description": "[PLAYERS_HOUSE]",
  "number": 3,
+ "reward": {
+  "type": "unlock_plant",
+  "param": "potatomine"
+ },
+ "replay_reward": {
+  "type": "collectable",
+  "param": "endlevelreward"
+ },
+ "unlocks_features": [
+  "shovel"
+ ],
  "stage": "TutorialStage",
  "tutorial_script": "tutorial_3",
  "seedbank": {

@@ -36,6 +36,7 @@ func _ready() -> void:
 	_add_toggle(stack, "Fullscreen", &"fullscreen")
 	_add_toggle(stack, "VSync", &"vsync")
 	_add_toggle(stack, "Pause when the window loses focus", &"pause_on_focus_loss")
+	_add_toggle(stack, "Unlock every plant (testing)", &"unlock_all_plants")
 
 	var row := HBoxContainer.new()
 	row.add_theme_constant_override("separation", 12)

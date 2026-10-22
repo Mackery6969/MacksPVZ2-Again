@@ -30,6 +30,8 @@ const DEFAULTS := {
 	&"vsync": true,
 	&"fast_forward_scale": 2.5,
 	&"pause_on_focus_loss": true,
+	## Every plant is choosable whether or not a reward has given it yet.
+	&"unlock_all_plants": false,
 }
 
 var _values: Dictionary = {}

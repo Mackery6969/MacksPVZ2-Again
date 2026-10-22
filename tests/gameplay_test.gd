@@ -84,6 +84,7 @@ func _run() -> void:
 	await _test_star_challenges()
 	await _test_natural_win_condition()
 	await _test_campaign_progression()
+	await _test_rewards()
 	_test_settings()
 	_test_world_unlocks()
 	await _test_menu_flow()
@@ -674,6 +675,8 @@ func _test_campaign_progression() -> void:
 	check_eq("starts at the first level", main._current_level, &"tutorial_1")
 
 	main._on_won()
+	check_eq("a win waits for its prize", main._current_level, &"tutorial_1")
+	await _collect_reward(main)
 	await _wait_game_seconds(0.4)
 	check_eq("clearing a level advances", main._current_level, &"tutorial_2")
 	check("board was cleared for the next level", main.board.zombie_count() == 0)
@@ -687,6 +690,7 @@ func _test_campaign_progression() -> void:
 	main.load_level(&"tutorial_4")
 	await get_tree().process_frame
 	main._on_won()
+	await _collect_reward(main)
 	await _wait_game_seconds(0.4)
 	check_eq("last level does not advance", main._current_level, &"tutorial_4")
 	check_eq("campaign completion is announced", main._status.text,
@@ -844,6 +848,7 @@ func _test_menu_flow() -> void:
 	level.level_transition_delay = 0.05
 	level._on_won()
 	check("no pausing during the result", not level.can_pause())
+	await _collect_reward(level)
 	await _wait_game_seconds(0.4)
 	check("a win goes back to the map", app.screen is WorldMap)
 	check("the won level is cleared", Saves.is_cleared(&"tutorial_2"))
@@ -3519,6 +3524,9 @@ func _test_level_set_up() -> void:
 
 func _test_seed_chooser() -> void:
 	section("seed chooser")
+	# These checks are about the chooser's rules, not about which plants the
+	# player has won; `_test_rewards` covers that.
+	Settings.set_value(&"unlock_all_plants", true)
 	var board := _make_board()
 
 	# Plain chooser: every plant on the default list, base slot count.
@@ -3593,6 +3601,7 @@ func _test_seed_chooser() -> void:
 	check("the chooser opens", chooser != null and chooser.visible)
 	if chooser == null:
 		main.queue_free()
+		Settings.set_value(&"unlock_all_plants", false)
 		end_section()
 		return
 	check("the level holds until the player is ready", not main.runner.running)
@@ -3665,7 +3674,132 @@ func _test_seed_chooser() -> void:
 	check("and can start straight away", chooser.can_start())
 	Saves.clear_save(&"chooser_demo")
 	main.queue_free()
+	Settings.set_value(&"unlock_all_plants", false)
 	end_section()
+
+
+func _test_rewards() -> void:
+	section("rewards")
+	_clear_all_saves()
+
+	# What a level drops: its own prize the first time, a coin bag after.
+	var first := LevelReward.for_level(Data.level(&"tutorial_1"), true)
+	check_eq("tutorial 1 gives a plant", first.type, &"unlock_plant")
+	check_eq("the Sunflower", first.param, &"sunflower")
+	check("which gets the award screen", first.is_award())
+	var replay := LevelReward.for_level(Data.level(&"tutorial_1"), false)
+	check_eq("a replay drops a coin bag", replay.type, LevelReward.COIN_BAG)
+	check_eq("of five silver coins", replay.amount, 50)
+	check("which pays out on the lawn", not replay.is_award())
+	check_eq("tutorial 4 gives a trophy",
+			LevelReward.for_level(Data.level(&"tutorial_4"), true).param, &"sauce")
+	check_eq("an unmodelled prize falls back to a coin bag",
+			LevelReward.from_value({"type": "pinata", "param": "spine_egypt"}).type,
+			LevelReward.COIN_BAG)
+	check_eq("so does PopCap's none",
+			LevelReward.from_value({"type": "none", "param": "none"}).type,
+			LevelReward.COIN_BAG)
+	check_eq("and a plant that does not exist",
+			LevelReward.from_value({"type": "unlock_plant", "param": "nope"}).type,
+			LevelReward.COIN_BAG)
+	check_eq("a coins prize is a bag of that much",
+			LevelReward.from_value({"type": "coins", "amount": 120}).amount, 120)
+
+	# Owning plants.
+	check("the base plants start unlocked", Saves.is_plant_unlocked(&"peashooter")
+			and Saves.is_plant_unlocked(&"potatomine"))
+	check("others have to be won", not Saves.is_plant_unlocked(&"cabbagepult"))
+	check("a pack's own plant starts unlocked", Saves.is_plant_unlocked(&"splitpea_mk2"))
+	check("unlocking a plant", Saves.unlock_plant(&"cabbagepult")
+			and Saves.is_plant_unlocked(&"cabbagepult"))
+	check("is only news once", not Saves.unlock_plant(&"cabbagepult"))
+	check("it is new until seen", Saves.is_plant_new(&"cabbagepult"))
+	Saves.mark_plants_seen([&"cabbagepult"])
+	check("then it is not", not Saves.is_plant_new(&"cabbagepult"))
+	Settings.set_value(&"unlock_all_plants", true)
+	check("the testing switch opens everything", Saves.is_plant_unlocked(&"bonkchoy"))
+	Settings.set_value(&"unlock_all_plants", false)
+
+	# The chooser only offers what the player owns.
+	var board := _make_board()
+	var plain := {"seedbank": {"mode": "chooser", "selection": "chooser"}}
+	var rules := SeedChooserRules.from_level(plain, board)
+	check("a won plant is offered", rules.can_pick(&"cabbagepult"))
+	check("an unwon one is not", not rules.candidates.has(&"bonkchoy"))
+	var listed := {"seedbank": {"mode": "chooser", "selection": "chooser",
+			"include": ["peashooter", "bonkchoy"]}}
+	rules = SeedChooserRules.from_level(listed, board)
+	check("an include list still shows it", rules.candidates.has(&"bonkchoy"))
+	check_eq("refused", rules.refusal(&"bonkchoy"), "not unlocked yet")
+	listed["seedbank"]["unlock_all"] = true
+	rules = SeedChooserRules.from_level(listed, board)
+	check("unless the level unlocks all", rules.can_pick(&"bonkchoy"))
+	var preset := {"seedbank": {"mode": "chooser", "selection": "chooser",
+			"preset": ["bonkchoy"]}}
+	rules = SeedChooserRules.from_level(preset, board)
+	check("a level's preset plant goes in regardless", rules.can_pick(&"bonkchoy"))
+	board.queue_free()
+
+	# In the game: the prize drops, is granted at once, and is shown off.
+	var demo: Dictionary = Data.level(&"tutorial_1").duplicate(true)
+	demo["id"] = "reward_demo"
+	demo["reward"] = {"type": "unlock_plant", "param": "bonkchoy"}
+	demo["unlocks_features"] = ["almanac"]
+	Data.levels[&"reward_demo"] = demo
+	var main = load("res://game/main.tscn").instantiate()
+	main.level_transition_delay = 0.05
+	add_child(main)
+	await get_tree().process_frame
+	main.load_level(&"reward_demo")
+	await get_tree().process_frame
+	main._on_won()
+	var drop: RewardDrop = main._reward_drop
+	check("a won level drops its prize", drop != null and is_instance_valid(drop))
+	check("granted as it drops", Saves.is_plant_unlocked(&"bonkchoy"))
+	check("the level's features open", Saves.has_feature(&"almanac"))
+	check("and the level is cleared", Saves.is_cleared(&"reward_demo"))
+	check("the prize leaps to the lawn", drop != null and drop.is_leaping())
+	await _wait_game_seconds(drop.leap_time + 0.2 if drop != null else 0.1)
+	check("and waits there", is_instance_valid(drop) and not drop.is_collected())
+	check("the level holds until it is picked up",
+			main._current_level == &"reward_demo" and not main._award.visible)
+	if is_instance_valid(drop):
+		drop.collect()
+	await _wait_game_seconds(drop.present_time + 0.3)
+	check("a new plant gets the award screen", main._award.visible)
+	check_eq("saying so", main._award._title.text, "You got a new plant!")
+	main._award._on_continue()
+	check("continuing dismisses it", not main._award.visible)
+
+	# Winning again pays a coin bag into the wallet.
+	var before := Saves.currency(&"coins")
+	main.load_level(&"reward_demo")
+	await get_tree().process_frame
+	main._on_won()
+	drop = main._reward_drop
+	check_eq("a replay drops a coin bag", drop.reward.type, LevelReward.COIN_BAG)
+	check("the coin counter shows", main._coin_counter.visible)
+	drop.collect()
+	await _wait_game_seconds(3.0)
+	check_eq("its coins are banked", Saves.currency(&"coins") - before, 50)
+	check("without an award screen", not main._award.visible)
+	main.queue_free()
+	Data.levels.erase(&"reward_demo")
+	_clear_all_saves()
+	end_section()
+
+
+## Picks up a won level's prize and clicks past its award screen, the way a
+## player ends a level.
+func _collect_reward(main) -> void:
+	await get_tree().process_frame
+	var drop: RewardDrop = main._reward_drop
+	if drop == null or not is_instance_valid(drop):
+		return
+	drop.collect()
+	await _wait_game_seconds(drop.present_time + 0.3)
+	if main._award.visible:
+		main._award._on_continue()
 
 
 func _make_board() -> Board:

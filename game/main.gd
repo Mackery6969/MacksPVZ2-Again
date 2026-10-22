@@ -48,6 +48,13 @@ var _seed_buttons: Array[SeedPacketView] = []
 var _seeds: Array[Dictionary] = []
 var _status: Label
 var _sun_counter: SunCounter
+var _coin_counter: CoinCounter
+## Shown after a prize other than coins is picked up.
+var _award: AwardScreen
+## The won level's prize, waiting on the lawn to be collected.
+var _reward_drop: RewardDrop
+## Where the last zombie fell: the prize drops there, as in PVZGE.
+var _last_zombie_at: Variant = null
 var _shovel_button: ShovelButton
 var _plant_food_bar: PlantFoodBar
 var _banner: LevelBanner
@@ -79,6 +86,7 @@ func _ready() -> void:
 	board.lawn_ability_changed.connect(_on_lawn_ability_changed)
 	board.shovel_used.connect(_refresh_mode_label)
 	board.level_lost.connect(_on_lost)
+	board.zombie_died.connect(_on_zombie_died)
 	runner.seedbank_ready.connect(_on_seedbank_ready)
 	runner.wave_started.connect(_on_wave_started)
 	runner.level_complete.connect(_on_won)
@@ -116,6 +124,10 @@ func load_level(level_id: StringName) -> void:
 	_current_level = level_id
 	_transitioning = false
 	_autosave_timer = autosave_interval
+	_last_zombie_at = null
+	_reward_drop = null
+	if _award != null:
+		_award.hide()
 	board.shovel_active = false
 	board.plant_food_active = false
 	board.reset()
@@ -182,6 +194,8 @@ func _build_hud() -> void:
 	_shovel_button.board = board
 	_shovel_button.pressed.connect(_toggle_shovel)
 	top.add_child(_shovel_button)
+	_coin_counter = CoinCounter.new(hud_font_size + 2)
+	top.add_child(_coin_counter)
 
 	var info := HBoxContainer.new()
 	info.add_theme_constant_override("separation", 24)
@@ -205,6 +219,14 @@ func _build_hud() -> void:
 	add_child(banners)
 	_banner = LevelBanner.new()
 	banners.add_child(_banner)
+
+	# Over the chooser's layer, under the pause menu.
+	var awards := CanvasLayer.new()
+	awards.layer = 6
+	add_child(awards)
+	_award = AwardScreen.new()
+	awards.add_child(_award)
+	_award.continued.connect(_finish_level.bind(0.0))
 
 
 func _make_label(text: String) -> Label:
@@ -622,24 +644,60 @@ func _on_won() -> void:
 		return
 	_transitioning = true
 	runner.stop()
+	# The first win earns the level's own prize; every later one a coin bag.
+	var first_win := not Saves.is_cleared(_current_level)
 	# Clearing a level ends its run, which retires its save slot.
 	Saves.mark_cleared(_current_level)
+	if first_win:
+		for feature in (runner.level.get("unlocks_features", []) as Array):
+			Saves.unlock_feature(StringName(feature))
+	var reward := LevelReward.for_level(runner.level, first_win)
+	# Granted as it drops, so leaving before picking it up cannot lose it.
+	reward.grant()
 	_play_ending(&"victory", &"level.win")
+	_status.text = "Level complete!"
+	_drop_reward(reward)
 
-	if _campaign == null or _campaign.is_last(_current_level):
+
+## Drops the prize where the last zombie fell; the level ends once the player
+## has picked it up.
+func _drop_reward(reward: LevelReward) -> void:
+	var canvas := board.get_viewport().get_canvas_transform().affine_inverse()
+	if reward.type == LevelReward.COIN_BAG:
+		_coin_counter.show()
+	board.coin_collect_target = board.to_local(canvas * _coin_counter.collect_point())
+	var at: Vector2 = _last_zombie_at if _last_zombie_at != null \
+			else board.grid_to_world(floori(board.rows / 2.0), board.cols - 2)
+	_reward_drop = board.drop_reward(reward, at)
+	_reward_drop.collected.connect(_on_reward_collected)
+
+
+func _on_reward_collected(drop: Collectable) -> void:
+	var reward: LevelReward = (drop as RewardDrop).reward
+	if reward != null and reward.is_award():
+		_award.open(reward)
+	else:
+		# Give the coins time to reach the counter before moving on.
+		_finish_level(level_transition_delay)
+
+
+## Moves on once the prize is in hand: the next level, or the map.
+func _finish_level(delay: float) -> void:
+	if _campaign == null or _campaign.is_last(_current_level) \
+			or _campaign.index_of(_current_level) < 0:
 		_status.text = (_campaign.completion_message if _campaign != null
 				else "Level complete!")
 		if return_to_map:
-			_leave_after(level_transition_delay)
+			_leave_after(delay)
 		return
 	if return_to_map:
-		_status.text = "Level complete!"
-		_leave_after(level_transition_delay)
+		_leave_after(delay)
 		return
+	_advance_after(delay, _campaign.next_after(_current_level))
 
-	var next := _campaign.next_after(_current_level)
-	_status.text = "Level complete!"
-	_advance_after(level_transition_delay, next)
+
+func _on_zombie_died(zombie: Zombie) -> void:
+	_last_zombie_at = zombie.position
 
 
 func _on_lost() -> void:

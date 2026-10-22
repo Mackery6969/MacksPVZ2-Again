@@ -47,6 +47,8 @@ func open(chooser_rules: SeedChooserRules, remembered: Array = []) -> void:
 	_fill_grid()
 	_fill_decks()
 	_refresh()
+	# A newly won plant is marked the first time a chooser shows it.
+	Saves.mark_plants_seen(rules.candidates)
 	show()
 	Audio.play(&"ui.chooseseeds.open")
 
@@ -196,6 +198,8 @@ func _fill_grid() -> void:
 		var why := rules.refusal(id)
 		if why != "":
 			b.tooltip_text = "%s: %s" % [_plant_name(id), why]
+		if Saves.is_plant_new(id):
+			b.add_child(_new_badge())
 		b.pressed.connect(pick.bind(id))
 		b.mouse_entered.connect(_describe.bind(id))
 		_grid.add_child(b)
@@ -268,6 +272,16 @@ func _packet_button(id: StringName) -> Button:
 	b.tooltip_text = _plant_name(id)
 	b.add_theme_font_size_override("font_size", font_size)
 	return b
+
+
+func _new_badge() -> Label:
+	var l := _label("NEW")
+	l.add_theme_color_override("font_color", Color("ffe14d"))
+	l.add_theme_color_override("font_outline_color", Color.BLACK)
+	l.add_theme_constant_override("outline_size", 4)
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	l.position = Vector2(4, 0)
+	return l
 
 
 func _plant_name(id: StringName) -> String:

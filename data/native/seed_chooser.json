@@ -1,6 +1,12 @@
 {
- "comment": "Seed chooser defaults. `order` is PVZGE's SEEDCHOOSERDEFAULTORDER: every plant a player can pick, in the order the chooser lists them. Plants a pack adds are listed after these.",
+ "comment": "Seed chooser defaults. `order` is PVZGE's SEEDCHOOSERDEFAULTORDER: every plant a player can pick, in the order the chooser lists them. Plants a pack adds are listed after these. `base_unlocked` is PVZGE's BASEUNLOCKLIST: the plants every player starts with. The rest come from level rewards; a pack's own plants start unlocked.",
  "base_slots": 6,
+ "base_unlocked": [
+  "peashooter",
+  "sunflower",
+  "wallnut",
+  "potatomine"
+ ],
  "max_slots": 8,
  "order": [
   "sunflower",

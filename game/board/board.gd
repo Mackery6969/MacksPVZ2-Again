@@ -15,6 +15,8 @@ signal plant_food_changed(total: int)
 signal zombie_died(zombie: Zombie)
 signal plant_died(plant: Plant)
 signal sun_collected(amount: int)
+## Coins reached the coin counter and were banked in Saves.
+signal coins_collected(amount: int)
 signal zombie_reached_house(zombie: Zombie)
 ## A lawn ability became available or was spent.
 signal lawn_ability_changed(component: LawnComponent)
@@ -74,6 +76,8 @@ const DEFAULT_COLS := 9
 @export var sun_collect_target := Vector2(60.0, 30.0)
 ## Where collected plant food flies to, in board-local coordinates.
 @export var plant_food_collect_target := Vector2(200.0, 30.0)
+## Where collected coins fly to, in board-local coordinates.
+@export var coin_collect_target := Vector2(340.0, 30.0)
 ## Plant food the player can hold at once.
 @export var max_plant_food: int = 3
 
@@ -1545,6 +1549,60 @@ func drop_plant_food(at: Vector2) -> PlantFoodToken:
 func _on_plant_food_collected(token: Collectable) -> void:
 	add_plant_food(PlantFoodToken.VALUE)
 	Audio.play(&"plantfood.collect", token.position)
+
+
+## Drops a coin worth `value` just above `at`.
+func drop_coin(at: Vector2, value: int = CoinToken.SILVER) -> CoinToken:
+	var c := CoinToken.new()
+	c.value = value
+	c.z_index = LAYER_COLLECTABLE
+	c.position = at + Vector2(0, -30)
+	c.fall_to_y = at.y + 10.0
+	c.collect_target = to_global(coin_collect_target)
+	c.collected.connect(func(t): _on_coin_collected(t))
+	_suns.add_child(c)
+	return c
+
+
+func _on_coin_collected(token: Collectable) -> void:
+	var value: int = (token as CoinToken).value
+	Saves.add_currency(&"coins", value)
+	coins_collected.emit(value)
+	Audio.play(&"coin.collect", token.position)
+
+
+## Drops a won level's prize at `at` - where its last zombie fell - and sends
+## it leaping to the middle of the lawn to wait for the player.
+func drop_reward(reward: LevelReward, at: Vector2) -> RewardDrop:
+	var d := RewardDrop.new()
+	d.reward = reward
+	d.z_index = LAYER_COLLECTABLE
+	d.position = at
+	# A prize is shown off in the middle of the screen once it is picked up.
+	d.collect_target = get_viewport().get_canvas_transform().affine_inverse() \
+			* get_viewport().get_visible_rect().get_center()
+	d.picked_up.connect(_on_reward_picked_up)
+	_suns.add_child(d)
+	d.leap_to(grid_to_world(floori(rows / 2.0), floori(cols / 2.0)))
+	Audio.play(&"reward.drop", at)
+	return d
+
+
+## A coin bag bursts into coins that fly to the counter on their own, as
+## PVZGE's coinbag does.
+func _on_reward_picked_up(drop: RewardDrop) -> void:
+	if drop.reward == null or drop.reward.type != LevelReward.COIN_BAG:
+		return
+	var total := drop.reward.amount
+	var count := clampi(floori(total / float(LevelReward.SILVER_COIN)), 1, 20)
+	var each := floori(total / float(count))
+	for i in count:
+		var value := each + (total - each * count if i == count - 1 else 0)
+		var spread := (i - (count - 1) * 0.5) * 22.0
+		var coin := drop_coin(drop.position + Vector2(spread, 0), value)
+		get_tree().create_timer(0.6 + i * 0.08).timeout.connect(func() -> void:
+			if is_instance_valid(coin):
+				coin.collect())
 
 
 func add_plant_food(amount: int) -> void:
