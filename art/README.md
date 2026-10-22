@@ -3,15 +3,26 @@
 Extracted from the PVZGE build, **not committed**. Regenerate it with:
 
 ```sh
-python3 tools/extract_prefabs.py <import dir> <res.config.json> art \
+python3 tools/extract_prefabs.py <import dir> <res.config.json> art --native <native dir> \
     plants/PeashooterPLANT plants/SunflowerPLANT plants/WallnutPLANT \
     plants/PotatoMinePLANT zombies/BasicZOMBIE armors/BasicConeARMOR \
-    armors/BasicBucketARMOR projectiles/Pea0PRJ lawns/TutorialLAWN
+    armors/BasicBucketARMOR projectiles/Pea0PRJ lawns/ MowerPRJ
+python3 tools/extract_rigs.py <import dir> <res.config.json> art --native <native dir> \
+    SunAnimate SunSlot Shovel PlantFoodSlot SeedPacker:Card Particles
 ```
 
+The first pulls named prefabs - entities, every world's lawn (`lawns/`) and
+every world's mower (`MowerPRJ`). The second pulls rigs by their DragonBones
+name, for the art that lives in scenes and resource packs instead: the sun,
+the sun counter, the shovel, the plant food slots, the seed packet art and the
+planting dirt. Run it with no names to list every rig in the build. Both merge
+into the same `_index.json`, so either can be re-run on its own.
+
 `res.config.json` is `assets/resources/config.json` from the build, and
-`<import dir>` is `assets/resources/import/`. Without `--native <dir>` the
-images are pulled from the Docker image directly.
+`<import dir>` is `assets/resources/import/` and `<native dir>`
+`assets/resources/native/` - from the web build, or a desktop build unpacked
+with `tools/extract_desktop.py`. Without `--native <dir>`, extract_prefabs.py
+pulls the images from the Docker image directly; extract_rigs.py needs it.
 
 ## Layout
 

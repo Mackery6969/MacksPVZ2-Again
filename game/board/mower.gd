@@ -21,6 +21,39 @@ var board: Node = null
 
 var _running: bool = false
 var _spent: bool = false
+## The world's mower, when there is art for it.
+var art: Armature = null
+var _art_id: StringName = &""
+## Seconds left revving in place before it drives. PVZGE's mower plays its
+## Trans animation standing still and only moves once that says so.
+var _revving: float = 0.0
+
+## Longest a rev may hold the mower, for a rig whose Trans never says it is done.
+const MAX_REV := 0.6
+
+
+## Gives the mower its world's look. Without art it keeps drawing a box.
+func attach_art(id: StringName) -> void:
+	if art != null:
+		art.queue_free()
+		art = null
+	_art_id = id
+	var built := Art.make(&"mower", id)
+	if built == null:
+		queue_redraw()
+		return
+	art = built
+	add_child(art)
+	art.event.connect(_on_art_event)
+	art.animation_finished.connect(_on_art_finished)
+	_play(&"attack" if _running and _revving <= 0.0 else &"idle")
+	queue_redraw()
+
+
+func _play(state: StringName, loop: bool = true) -> bool:
+	if art == null:
+		return false
+	return art.play(Art.animation_for(&"mower", _art_id, state), loop)
 
 
 func is_available() -> bool:
@@ -37,6 +70,10 @@ func trigger() -> bool:
 		return false
 	_spent = true
 	_running = true
+	if _play(&"trigger", false):
+		_revving = MAX_REV
+	else:
+		_play(&"attack")
 	triggered.emit(row)
 	queue_redraw()
 	return true
@@ -45,6 +82,13 @@ func trigger() -> bool:
 func _process(delta: float) -> void:
 	if not _running or board == null:
 		return
+	if _revving > 0.0:
+		# Revving up in place still mows whatever is standing on it.
+		_mow(position.x, position.x)
+		_revving -= delta
+		if _revving <= 0.0:
+			_drive()
+		return
 	var from_x := position.x
 	position.x += speed * delta
 	_mow(from_x, position.x)
@@ -52,6 +96,22 @@ func _process(delta: float) -> void:
 		_running = false
 		finished.emit(row)
 		queue_free()
+
+
+func _drive() -> void:
+	_revving = 0.0
+	_play(&"attack")
+
+
+## The rig says when the rev is over; PVZGE's mowers call it switchingFalse.
+func _on_art_event(name: StringName) -> void:
+	if _revving > 0.0 and name == &"switchingFalse":
+		_drive()
+
+
+func _on_art_finished(_name: StringName) -> void:
+	if _revving > 0.0:
+		_drive()
 
 
 ## Destroys hostile zombies the mower has passed over. Swept rather than
@@ -70,6 +130,8 @@ func _mow(from_x: float, to_x: float) -> void:
 
 
 func _draw() -> void:
+	if art != null:
+		return
 	var rect := Rect2(Vector2(-body_size.x * 0.5, -body_size.y), body_size)
 	draw_rect(rect, body_color if _running else parked_color, true)
 	draw_rect(rect, body_color.darkened(0.45), false, 2.0)

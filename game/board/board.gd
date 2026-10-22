@@ -110,6 +110,8 @@ var _entities: Node2D
 var _mowers_node: Node2D
 var _mowers: Dictionary = {}   ## int row -> Mower
 var _lawn_node: Node
+## The lawn's art, when the stage has any; otherwise the placeholder draws.
+var scenery: LawnScenery
 ## The current world's own behaviours, from its lawn data.
 var lawn_components: Array[LawnComponent] = []
 
@@ -130,6 +132,9 @@ func _ready() -> void:
 	_lawn_node = Node.new()
 	_lawn_node.name = "LawnComponents"
 	add_child(_lawn_node)
+	scenery = LawnScenery.new()
+	scenery.name = "Scenery"
+	add_child(scenery)
 	sun = starting_sun
 	for r in rows:
 		_zombies_by_row[r] = []
@@ -163,6 +168,7 @@ func reset() -> void:
 ## Builds the world's own behaviours from its lawn data. Replaces whatever the
 ## previous level installed, so switching worlds switches mechanics.
 func setup_lawn(lawn: Dictionary, runner: Node) -> void:
+	_show_scenery(lawn, runner)
 	for c in lawn_components:
 		c.queue_free()
 	lawn_components.clear()
@@ -176,6 +182,23 @@ func setup_lawn(lawn: Dictionary, runner: Node) -> void:
 		lawn_components.append(comp)
 		comp.state_changed.connect(func(c): lawn_ability_changed.emit(c))
 		comp.setup()
+
+
+## Puts the stage's art down, and gives the mowers their world's look. The
+## level names its stage; the lawn data is the fallback for one that does not.
+func _show_scenery(lawn: Dictionary, runner: Node) -> void:
+	var level: Dictionary = runner.get("level") if runner != null and runner.get("level") is Dictionary else {}
+	var stage := StringName(level.get("stage", lawn.get("id", "")))
+	var open := plantable_rows.size() if not plantable_rows.is_empty() else rows
+	if not scenery.show_stage(stage, self, open):
+		scenery.show_stage(StringName(lawn.get("id", "")), self, open)
+	# The level's lawn data names its mower; the art entry knows it for stages
+	# the data does not cover, such as the tutorial's.
+	var mower_id := StringName(lawn.get("mower", Art.mapping(&"lawn", scenery.stage).get("mower", "")))
+	for m in _mowers.values():
+		if is_instance_valid(m):
+			m.attach_art(mower_id)
+	queue_redraw()
 
 
 ## The world abilities the player can trigger, in declaration order.
@@ -539,6 +562,9 @@ func place_entity(kind: StringName, id: StringName, row: int, col: int) -> Chara
 		# Read the cell at death time: move_plant may have carried it elsewhere.
 		p.died.connect(func(who): _on_placed_plant_died(who, who.row, who.col))
 		Audio.play(&"plant.place.water" if is_water(row, col) else &"plant.place", p.position)
+		if not is_water(row, col):
+			Effect.spawn(_projectiles, &"plant_dirt", &"place", p.position,
+					lane_z(row, LAYER_PROJECTILE))
 	return p
 
 
@@ -612,6 +638,9 @@ func dig_up(row: int, col: int) -> bool:
 	# A dug-up carrier takes its provision with it, as when it is eaten.
 	_cell_provides.erase(Vector2i(col, row))
 	Audio.play(&"plant.dig.water" if is_water(row, col) else &"plant.dig", p.position)
+	if not is_water(row, col):
+		Effect.spawn(_projectiles, &"plant_dirt", &"dig", p.position,
+				lane_z(row, LAYER_PROJECTILE))
 	p.queue_free()
 	return true
 
@@ -1000,12 +1029,16 @@ func _unhandled_input(event: InputEvent) -> void:
 # --- placeholder lawn ----------------------------------------------------
 
 func _draw() -> void:
+	# With the stage's own art down, the grass, the locked lanes and the house
+	# are all in the picture; only terrain still needs marking.
+	var art := scenery != null and scenery.has_art()
 	for r in rows:
 		var locked := not is_row_plantable(r)
 		for c in cols:
 			var rect := Rect2(origin + Vector2(c * cell_size.x, r * cell_size.y), cell_size)
 			var light := (r + c) % 2 == 0
-			draw_rect(rect, lawn_light if light else lawn_dark, true)
+			if not art:
+				draw_rect(rect, lawn_light if light else lawn_dark, true)
 			# Terrain reads differently from plain ground at a glance.
 			var ground := terrain_def(r, c)
 			if ground != null:
@@ -1015,8 +1048,10 @@ func _draw() -> void:
 				draw_rect(rect, tint, true)
 				if cell_provides(r, c) != &"":
 					draw_rect(rect, Color("6ad46a", 0.3), true)
-			if locked:
+			if locked and not (art and scenery.shows_open_rows()):
 				draw_rect(rect, locked_lane_tint, true)
+	if art:
+		return
 	# House edge and the line zombies must not cross.
 	draw_line(Vector2(house_x(), origin.y),
 			Vector2(house_x(), origin.y + rows * cell_size.y), house_line, 4.0)

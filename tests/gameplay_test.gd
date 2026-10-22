@@ -65,6 +65,7 @@ func _run() -> void:
 	await _test_zomboss()
 	await _test_plant_stun()
 	await _test_art()
+	await _test_scenery_art()
 	_test_zombie_sun_costs()
 	await _test_level_save_state()
 	_test_simplified_level_schema()
@@ -2218,6 +2219,51 @@ func _test_art() -> void:
 	check("armors read the same rig as the zombie",
 			first != null and first.has_armature(&"Cone")
 			and first.has_armature(&"BasicZombie"))
+	board.queue_free()
+	end_section()
+
+
+func _test_scenery_art() -> void:
+	section("scenery art")
+	# Without art the lawn must still be playable, drawing its placeholder.
+	var bare := _make_board()
+	check("an unknown stage builds no scenery",
+			not bare.scenery.show_stage(&"NoSuchStage", bare, 5))
+	check("so the placeholder lawn still draws", not bare.scenery.has_art())
+	bare.queue_free()
+	if not Art.is_available() or Art.set_for(&"lawns_TutorialLAWN") == null:
+		check("no lawn art extracted, placeholders stand in", true,
+				"run tools/extract_prefabs.py lawns/ and tools/extract_rigs.py")
+		end_section()
+		return
+
+	var board := _make_board()
+	board.plantable_rows = [2]
+	board.mowers_enabled = true
+	board.setup_mowers()
+	var runner := LevelRunner.new()
+	runner.level = {"stage": "TutorialStage"}
+	board.setup_lawn({}, runner)
+	runner.free()
+	check("the tutorial stage gets its lawn", board.scenery.has_art())
+	check("which says which lanes are sodded", board.scenery.shows_open_rows())
+	check_eq("one sodded lane picks the one-row lawn",
+			board.scenery.sod_animation, &"row1")
+	var mower := board.mower_in_row(0)
+	check("the mowers get their world's art", mower != null and mower.art != null)
+
+	# The mower revs in place before it drives, as PVZGE's does.
+	var start_x := mower.position.x
+	mower.trigger()
+	await _wait_game_seconds(0.05)
+	check("it revs in place first", is_equal_approx(mower.position.x, start_x))
+	await _wait_game_seconds(1.0)
+	check("then drives off", mower == null or not is_instance_valid(mower)
+			or mower.position.x > start_x + 40.0)
+
+	var sun := SunToken.new()
+	board.add_child(sun)
+	check("sun has its art", sun.art != null)
 	board.queue_free()
 	end_section()
 
