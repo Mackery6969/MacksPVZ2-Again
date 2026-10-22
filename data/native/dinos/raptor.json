@@ -1,0 +1,12 @@
+{
+ "id": "raptor",
+ "//": "Walks the right half of its lane and kicks zombies toward the house. From PVZGE's DinosaurProperties.",
+ "behaviour": "kick",
+ "speed": 0.65,
+ "walk_edge_column": 4,
+ "kicks": 5,
+ "kick_distance": 3,
+ "kick_edge_column": 2,
+ "same_zombie_cooldown": 4.5,
+ "max_time": 40
+}

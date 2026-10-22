@@ -8,26 +8,33 @@
   "cooldown_from": 0.3333,
   "beghouled_cost": 4500
  },
+ "components": [
+  {
+   "type": "lightning",
+   "damage": 5000,
+   "interval": 12,
+   "first_delay": 10,
+   "weight_normal": 55,
+   "weight_gargantuar": 5,
+   "weight_other": 40,
+   "targets": 1,
+   "plantfood_targets": 3
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 4,
   "plantfood": false
  },
  "extra": {
-  "AttackCooldownBetween": 12,
   "AttackCooldownBetweenAdditional": 0,
-  "AttackCooldownStart": 10,
   "AttackCooldownStartAdditional": 0,
   "CallsElectricCurrant": true,
   "ImmuneToLightningCharge": true,
   "MintDamageFactor": 2,
   "NormalCloudSpeed": 10,
-  "NormalLightningBoltDamage": 5000,
   "PlantFoodCloudSpeed": 10,
   "PlantFoodLightningBoltDamage": 5000,
-  "RedAttackStunDuration": 1,
-  "WeightTargetGargantuarZombie": 5,
-  "WeightTargetNormalZombie": 55,
-  "WeightTargetOtherZombie": 40
+  "RedAttackStunDuration": 1
  }
 }

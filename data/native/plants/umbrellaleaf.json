@@ -8,6 +8,12 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "umbrella",
+   "radius": 1
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,

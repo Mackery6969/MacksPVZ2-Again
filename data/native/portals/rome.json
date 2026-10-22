@@ -1,0 +1,30 @@
+{
+ "id": "rome",
+ "world": "rift1a",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "roman",
+   "weight": 0.75
+  },
+  {
+   "type": "roman_shield_triad",
+   "weight": 1
+  },
+  {
+   "type": "roman_armor3",
+   "weight": 0.35
+  },
+  {
+   "type": "roman_healer",
+   "weight": 0.25
+  }
+ ]
+}

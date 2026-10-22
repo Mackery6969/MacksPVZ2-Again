@@ -8,19 +8,25 @@
   "cooldown_from": 0.6667,
   "beghouled_cost": 1500
  },
+ "components": [
+  {
+   "type": "haunter",
+   "damage": 30,
+   "interval": 0.5,
+   "lifetime": 10,
+   "explode_damage": 450,
+   "plantfood_duration": 3.5,
+   "plantfood_multiplier": 3,
+   "reach": 2.0
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
   "plantfood": false
  },
  "extra": {
-  "ExplodeDamage": 450,
-  "GhostDamage": 30,
-  "GhostDamageCooldownTime": 0.5,
   "ImmuneToIceblock": true,
-  "Lifetime": 10,
-  "MintDamageFactor": 3,
-  "PlantfoodDamageMult": 3,
-  "PlantfoodDuration": 3.5
+  "MintDamageFactor": 3
  }
 }

@@ -1,0 +1,11 @@
+{
+ "id": "ankylo",
+ "//": "Sits at the lane's end and flings zombies in front of it toward the house. From PVZGE's DinosaurProperties.",
+ "behaviour": "fling",
+ "idle_column": 8.8,
+ "reach": 3,
+ "flings": 5,
+ "attack_interval": 5,
+ "fling_column": {"min": 1.8, "max": 2.3},
+ "max_time": 30
+}

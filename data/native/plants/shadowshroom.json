@@ -8,6 +8,14 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "eaten_trigger",
+   "dps": 30,
+   "duration": 30,
+   "effect": "poison"
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -15,8 +23,6 @@
  },
  "extra": {
   "CannotBeHealedByAloe": true,
-  "MintDamageFactor": 3,
-  "PoisonDPS": 30,
-  "PoisonDuration": 30
+  "MintDamageFactor": 3
  }
 }

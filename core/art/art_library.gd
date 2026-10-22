@@ -92,9 +92,17 @@ func set_for(bundle: StringName) -> ArmatureSet:
 
 ## Builds the armature for one entity, already scaled and offset, or null.
 func make(kind: StringName, id: StringName) -> Armature:
-	var entry := mapping(kind, id)
+	return make_from(mapping(kind, id))
+
+
+## Builds an armature from a mapping entry directly. Scenery and the HUD use
+## this: a lawn is several rigs from one entry, not one rig per key.
+func make_from(entry: Dictionary, armature_override: StringName = &"") -> Armature:
 	if entry.is_empty():
 		return null
+	if armature_override != &"":
+		entry = entry.duplicate()
+		entry["armature"] = armature_override
 	var source := set_for(StringName(entry.get("bundle", "")))
 	if source == null:
 		return null
@@ -132,6 +140,13 @@ func _fit(node: Armature, box: Rect2, entry: Dictionary) -> void:
 			+ float(entry.get("foot_y", 0.0))
 	node.fitted_x = float(entry.get("offset_x", centred))
 	node.position = Vector2(node.fitted_x, float(entry.get("offset_y", footed)))
+
+
+## One image out of a bundle's atlas, for art that is a picture rather than
+## a rig - a seed packet's portrait and backing. Null when it is not there.
+func region(bundle: StringName, name: StringName) -> AtlasTexture:
+	var source := set_for(bundle)
+	return source.region(name) if source != null else null
 
 
 ## The animation an entity should play for a state, as its mapping names it.

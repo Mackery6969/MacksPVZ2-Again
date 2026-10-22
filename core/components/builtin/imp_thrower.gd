@@ -50,6 +50,10 @@ func _throw() -> void:
 	var id: StringName = imps[randi() % imps.size()]
 	var landing: float = host.position.x \
 			+ host.direction() * distance * host.board.cell_size.x
+	# An umbrella leaf bounces a hostile imp back to the far end of its lane.
+	if not host.is_charmed() and host.board.is_sheltered(host.row,
+			host.board.world_to_col(landing)):
+		landing = host.board.spawn_x()
 	var imp: Zombie = host.board.spawn_zombie_at(id, host.row, landing)
 	if imp == null:
 		return

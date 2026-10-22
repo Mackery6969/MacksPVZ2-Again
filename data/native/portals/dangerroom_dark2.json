@@ -1,0 +1,30 @@
+{
+ "id": "dangerroom_dark2",
+ "world": "dark",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "dark_juggler",
+   "weight": 1
+  },
+  {
+   "type": "dark_wizard_veteran",
+   "weight": 1
+  },
+  {
+   "type": "dark_juggler",
+   "weight": 1
+  },
+  {
+   "type": "dark_armor3",
+   "weight": 1
+  }
+ ]
+}

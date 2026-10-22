@@ -8,14 +8,19 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 3000
  },
+ "components": [
+  {
+   "type": "launcher",
+   "projectile": "missiletoe",
+   "rest": 20
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 4,
   "plantfood": false
  },
  "extra": {
-  "BananaType": "missiletoe",
-  "ImmuneToIceblock": true,
-  "RestTime": 20
+  "ImmuneToIceblock": true
  }
 }

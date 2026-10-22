@@ -8,6 +8,14 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "lane_wind",
+   "duration": 3,
+   "push_speed": 2.0,
+   "chill": 8.0
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,
@@ -16,7 +24,6 @@
  "extra": {
   "CannotBeSheepenedByWizard": true,
   "ImmuneToIceblock": true,
-  "MintDurationFactor": 2,
-  "PushDuration": 3
+  "MintDurationFactor": 2
  }
 }

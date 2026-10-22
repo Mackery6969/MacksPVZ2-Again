@@ -13,7 +13,8 @@ func on_all_waves_spawned() -> void:
 
 
 func is_met() -> bool:
-	return _spawned_all and board.zombie_count() == 0
+	return _spawned_all and board.zombie_count() == 0 \
+			and (not runner.has_method("all_waves_spawned") or runner.all_waves_spawned())
 
 
 func describe() -> String:

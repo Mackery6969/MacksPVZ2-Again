@@ -1,0 +1,30 @@
+{
+ "id": "dangerroom_pirate2",
+ "world": "pirate",
+ "first": {
+  "min": 5,
+  "max": 6
+ },
+ "interval": {
+  "min": 10,
+  "max": 12
+ },
+ "zombies": [
+  {
+   "type": "pelican",
+   "weight": 1
+  },
+  {
+   "type": "pirate_captain",
+   "weight": 1
+  },
+  {
+   "type": "pirate_captain",
+   "weight": 1
+  },
+  {
+   "type": "barrelroller",
+   "weight": 1
+  }
+ ]
+}

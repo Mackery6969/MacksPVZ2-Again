@@ -8,22 +8,31 @@
   "cooldown_from": 1,
   "beghouled_cost": 3000
  },
+ "components": [
+  {
+   "type": "berry_lobber",
+   "grow_times": [
+    7.5,
+    10,
+    15
+   ],
+   "projectiles": [
+    "strawburst0",
+    "strawburst1",
+    "strawburst2"
+   ]
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
   "plantfood": false
  },
  "extra": {
-  "CabbageType0": "strawburst0",
-  "CabbageType1": "strawburst1",
-  "CabbageType2": "strawburst2",
   "Damage0": 200,
   "Damage1": 400,
   "Damage2": 900,
   "DamagePlantfood": 400,
-  "GrowTime0": 7.5,
-  "GrowTime1": 10,
-  "GrowTime2": 15,
   "MintDamageFactor": 3
  }
 }

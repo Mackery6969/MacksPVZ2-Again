@@ -1,6 +1,14 @@
 {
  "id": "zombiepotion_speed",
  "category": "potion",
+ "components": [
+  {
+   "type": "zombie_potion",
+   "max_level": 3,
+   "effect": "speed",
+   "speed_scale": 1.5
+  }
+ ],
  "stats": {
   "toughness": 1
  },

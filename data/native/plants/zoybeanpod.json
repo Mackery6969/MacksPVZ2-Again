@@ -8,36 +8,39 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 2000
  },
+ "components": [
+  {
+   "type": "zoy_grower",
+   "interval": 3.5,
+   "summons": [
+    {
+     "id": "zoybean",
+     "weight": 50
+    },
+    {
+     "id": "zoybean_armor1",
+     "weight": 30
+    },
+    {
+     "id": "zoybean_armor2",
+     "weight": 20
+    }
+   ],
+   "plantfood_summons": [
+    {
+     "id": "zoybean_gargantuar",
+     "weight": 1
+    }
+   ],
+   "interval_max": 4
+  }
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 3,
   "plantfood": false
  },
  "extra": {
-  "GrowthInterval": {
-   "Max": 4,
-   "Min": 3.5
-  },
-  "MintPotionLevel": 3,
-  "SummonType": [
-   {
-    "Type": "zoybean",
-    "Weight": 50
-   },
-   {
-    "Type": "zoybean_armor1",
-    "Weight": 30
-   },
-   {
-    "Type": "zoybean_armor2",
-    "Weight": 20
-   }
-  ],
-  "SummonTypePlantfood": [
-   {
-    "Type": "zoybean_gargantuar",
-    "Weight": 1
-   }
-  ]
+  "MintPotionLevel": 3
  }
 }

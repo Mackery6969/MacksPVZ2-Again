@@ -480,6 +480,45 @@ and `--anim NAME --frames N` samples an animation rather than the setup pose.
 Use the animated form: a setup pose can look perfect while every animated
 frame is wrong, which is exactly how three rendering bugs got past review.
 
+### Lawns, mowers and the HUD
+
+The rest of what is drawn uses the same mapping files, under other kinds -
+see `data/native/art/scenery.json`:
+
+```json
+{
+ "lawn:TutorialStage": {
+  "bundle": "lawns_TutorialLAWN", "back": ["Lawn"], "front": ["Upper", "UpperThere"],
+  "open_rows": {"1": "row1", "3": "row3", "5": "row5"}, "mower": "mower_modern"
+ },
+ "mower:mower_modern": {
+  "bundle": "projectiles_ModernMowerPRJ", "armature": "Mower", "scale": 0.512,
+  "animations": {"idle": "Idle", "trigger": "Trans", "attack": "Attack"}
+ },
+ "collectable:sun": { "bundle": "rigs_SunAnimate", "armature": "Sun", "scale": 0.3,
+  "animations": {"idle": "Normal"} }
+}
+```
+
+A `lawn:<stage>` entry is keyed by the level's `stage`. Its `back` rigs draw
+under everything and its `front` rigs over the characters, both placed where
+PVZGE placed its lawn relative to the first cell, so the art's lanes line up
+with the board's. `open_rows` picks the sod animation by how many lanes are
+open, for the tutorial lawn's dirt rows. `mower:<id>` plays `trigger` in place
+until the rig says `switchingFalse`, then `attack` while it drives.
+`collectable:sun` and `collectable:plantfood` dress the pickups,
+`effect:plant_dirt` is the puff when a plant goes in or comes out, and the
+`hud:` entries are the sun counter, shovel, plant food slots and seed packet.
+`hud:` states can chain with `"after": {"collecting": "filled"}`, the way a
+DragonBones frame action does.
+
+These rigs are placed by hand - `scale` and `offset_x`/`offset_y` rather than
+`fit_height` - because their size comes from the original's own layout.
+
+Rigs that are not a named prefab (the sun, the HUD pieces, particles) come
+out by their DragonBones name with `tools/extract_rigs.py`; see
+`art/README.md`.
+
 ## Adding a level
 
 ```json
@@ -537,6 +576,50 @@ A wave can raise more mid-level:
 Plants standing where a stone rises are knocked out unless the action sets
 `"displace_plants": false`. Gravestones block planting, plants' shots break
 them, and `SunValue` / `plantfood_count` on a grave pay out when it breaks.
+
+### World mechanics
+
+These level fields set up a world's own mechanics. Cells are 0-based.
+
+```json
+"tide": { "water_from": 6 },
+"railcarts": { "rails": [ { "col": 4, "row_start": 0, "row_end": 4 } ],
+               "carts": [ { "col": 4, "row": 1 } ], "type": "railcart_cowboy" },
+"power_tiles": [ { "group": "beta", "row": 1, "col": 1, "delay": 0.25 } ],
+"potions": { "initial": 4, "max": 30, "interval": { "min": 12, "max": 16 },
+             "types": [ "zombiepotion_speed", "zombiepotion_toughness" ] }
+```
+
+- **Tide**: columns from `water_from` rightward are water. A tide wave moves
+  the shoreline; plants the water reaches drown unless they can stand in it.
+- **Rail carts**: plants only go on carts, and a cart is clicked to pick it up
+  and clicked again on its rail to roll it there, carrying its plant. Carts
+  cannot pass each other. Without a `type`, the world's `railcart` is used.
+- **Power tiles**: plant food given to a plant on one tile reaches the plants on
+  every other tile of its group after that tile's `delay`.
+- **Potions**: set out at the start and topped up to `max`. The first zombie to
+  walk into one drinks it (faster, tougher or invisible, up to three of a kind).
+
+Puddles act on the zombies standing in them through the `tile_liquid`
+component: `goopuddle` hits for 10 every half second, `butter` stops the first
+zombie for 8 seconds and is used up, `goo` poisons, sap slows, lava burns.
+
+These wave actions start world events:
+
+| Kind | Fields | What happens |
+|---|---|---|
+| `storm` | `zombies`, `style`, `col_start`/`col_end`, `row_start`/`row_end`, `group_size`, `group_interval` | sand- or snowstorm drops zombies partway up the quietest lanes |
+| `raiding_party` | `type`, `count`, `group_size`, `group_interval` | swashbucklers swing in from the edge in groups |
+| `low_tide` | `type`, `count`, `col_start`/`col_end`, `delay`, `group_size`, `group_interval` | zombies rise from the sand the tide left |
+| `tide` | `water_from` | moves the shoreline |
+| `frost_wind` | `winds: [{row, direction}]`, `blasts` | chills every plant in the lane; a second chill freezes it in ice |
+| `portal` | `row`, `col`, `portal`, `limit` | opens a rift that lets its zombies through one at a time |
+| `dino` | `dino`, `row`, `delay` | calls a dinosaur into the lane |
+
+A `portal` names a shared portal from `data/native/portals` or gives its own
+`{zombies: [{type, weight}], first, interval}` inline. Dinosaurs live in
+`data/native/dinos`; each picks one of five behaviours (`kick`, `carry`,
+`toss`, `fling`, `roar`), so a pack can add one with data alone.
 
 ## Campaigns
 
@@ -757,7 +840,22 @@ existing levels keep working.
 ```
 
 Built-ins: `survive_waves`, `protect_plants`, `no_plant_loss`, `sun_produced`,
-`kill_count`.
+`kill_count`, and the star challenges:
+
+| Type | Config | Rule |
+|---|---|---|
+| `zombie_distance` | `distance` | a zombie past this many columns from the house loses |
+| `sun_used` | `max` | spending more sun than this loses |
+| `simultaneous_plants` | `max` | no more plants than this at once (the extra one is refused) |
+| `kill_in_time` | `count`, `seconds` | destroy this many within the window, at least once |
+| `sun_holdout` | `seconds` | go this long without spending sun, at least once |
+| `save_mowers` | | losing a lawn mower loses |
+| `no_plant_zone` | `cells` | a mold colony: those cells cannot be planted |
+
+`no_plant_loss` with `allowed` covers "lose no more than N plants". A goal
+that has to be achieved during the level fails once the last wave is cleared
+without it. An objective can also refuse a placement by adding a callable to
+`board.placement_checks`.
 
 A pack adds its own as `objectives/<type>.gd`, overriding `is_met()`,
 `is_failed()` and whichever hooks it needs (`on_zombie_died`,

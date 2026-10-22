@@ -8,8 +8,13 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "plantfood_maker",
+   "count": 1
+  }
+ ],
  "extra": {
-  "CannotBeSheepenedByWizard": true,
-  "ProduceCount": 1
+  "CannotBeSheepenedByWizard": true
  }
 }

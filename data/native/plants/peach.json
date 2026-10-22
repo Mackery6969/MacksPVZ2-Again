@@ -8,15 +8,21 @@
   "cooldown_from": 1,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "healer",
+   "interval": 10,
+   "amount": 150,
+   "plantfood_heal": 450,
+   "area": "around"
+  }
+ ],
  "mint_boost": {
   "resistance": 3,
   "speed": 3,
   "plantfood": true
  },
  "extra": {
-  "HealInterval": 10,
-  "HealthPerHeal": 150,
-  "HealthPlantfoodHeal": 450,
   "PlantfoodDuration": 10
  }
 }

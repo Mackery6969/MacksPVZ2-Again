@@ -8,17 +8,23 @@
   "cooldown_from": 0.5,
   "beghouled_cost": 1000
  },
+ "components": [
+  {
+   "type": "healer",
+   "hps": 100,
+   "interval": 0.5,
+   "self_heal": 450,
+   "plantfood_hps": 1000,
+   "plantfood_duration": 10,
+   "area": "ahead"
+  }
+ ],
  "mint_boost": {
   "resistance": 3,
   "speed": 4,
   "plantfood": true
  },
  "extra": {
-  "ExtraHealingTime": 2,
-  "HealHPS": 100,
-  "HealHPSPlantfood": 1000,
-  "HealingInterval": 0.5,
-  "PlantfoodLastingTime": 10,
-  "SelfQuringHealth": 450
+  "ExtraHealingTime": 2
  }
 }

@@ -27,6 +27,8 @@ const DEFAULT_COLOR := Color("74a874")
 const STUN_FACTOR := 0.05
 
 var _color: Color = DEFAULT_COLOR
+## For an imitater: the plant it turns into. Set from its seed packet.
+var imitates: StringName = &""
 
 
 func art_kind() -> StringName:
@@ -83,7 +85,7 @@ func is_stunned() -> bool:
 func _on_death() -> void:
 	Audio.play(&"plant.eaten", position)
 	if board and board.has_method("remove_plant"):
-		board.remove_plant(row, col)
+		board.remove_plant(row, col, self)
 	queue_free()
 
 

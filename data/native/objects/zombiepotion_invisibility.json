@@ -1,6 +1,13 @@
 {
  "id": "zombiepotion_invisibility",
  "category": "potion",
+ "components": [
+  {
+   "type": "zombie_potion",
+   "max_level": 3,
+   "effect": "invisibility"
+  }
+ ],
  "stats": {
   "toughness": 1
  },
