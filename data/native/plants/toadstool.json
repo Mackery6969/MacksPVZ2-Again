@@ -20,6 +20,9 @@
    "plantfood_reach": 4
   }
  ],
+ "tags": [
+  "sun_producer"
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 5,

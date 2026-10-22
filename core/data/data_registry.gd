@@ -31,6 +31,9 @@ var lawns: Dictionary = {}        ## StringName -> Dictionary (raw)
 var speakers: Dictionary = {}     ## StringName -> Dictionary (raw)
 var dinos: Dictionary = {}        ## StringName -> Dictionary (raw)
 var portals: Dictionary = {}      ## StringName -> Dictionary (raw)
+## Seed chooser defaults: slot counts and the order plants are listed in. Each
+## source's `seed_chooser.json` overrides the keys it sets.
+var seed_chooser: Dictionary = {}
 
 var _mod_order: Array[StringName] = [&"base"]
 var _errors: Array[String] = []
@@ -44,6 +47,7 @@ func load_all() -> void:
 	for pool in [zombies, plants, projectiles, armors, graves, objects,
 			archetypes, levels, campaigns, lawns, speakers, dinos, portals]:
 		pool.clear()
+	seed_chooser.clear()
 	_errors.clear()
 	_mod_order = [&"base"]
 
@@ -84,6 +88,17 @@ func _load_source(root: String, mod: StringName) -> void:
 	_load_dir(root.path_join("dinos"), dinos, mod)
 	_load_dir(root.path_join("portals"), portals, mod)
 	_load_campaigns(root.path_join("campaigns"), mod)
+	_load_seed_chooser(root.path_join("seed_chooser.json"))
+
+
+func _load_seed_chooser(path: String) -> void:
+	if not FileAccess.file_exists(path):
+		return
+	var parsed = _read_json(path)
+	if parsed is Dictionary:
+		seed_chooser.merge(parsed, true)
+	else:
+		_errors.append("%s: not a JSON object" % path)
 
 
 ## Reads every definition file in `dir` into `target`, keyed by id. JSON is
@@ -365,6 +380,10 @@ func dino(id: StringName) -> Dictionary:
 ## also define their own inline.
 func portal(id: StringName) -> Dictionary:
 	return portals.get(id, {})
+
+
+func seed_chooser_config() -> Dictionary:
+	return seed_chooser
 
 
 func campaign(id: StringName) -> CampaignDef:

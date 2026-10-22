@@ -18,6 +18,9 @@
    "effect": "sun_bomb"
   }
  ],
+ "tags": [
+  "sun_producer"
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,

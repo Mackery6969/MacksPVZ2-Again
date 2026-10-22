@@ -87,7 +87,9 @@ func start(level_def: Dictionary, target_board: Board) -> void:
 	board = target_board
 	waves = level.get("waves", [])
 	wave_index = -1
-	running = true
+	# A level that has the player pick seeds waits for them: no waves, no sun
+	# and no objective ticking until `begin()`.
+	running = not needs_seed_choice()
 	_finished_spawning = false
 	_timer = first_wave_delay
 	_sun_timer = _sun_cycle()
@@ -125,6 +127,16 @@ func start(level_def: Dictionary, target_board: Board) -> void:
 	_update_music_stage()
 	Audio.play(&"level.ready")
 	seedbank_ready.emit(seedbank_seeds())
+
+
+## Starts a level that was waiting on the seed chooser.
+func begin() -> void:
+	running = true
+
+
+## True when the player picks this level's plants before it starts.
+func needs_seed_choice() -> bool:
+	return SeedChooserRules.level_uses_chooser(level)
 
 
 ## What the player may place, as {kind, id} entries.

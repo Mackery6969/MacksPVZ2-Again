@@ -19,7 +19,8 @@
   }
  ],
  "tags": [
-  "aquatic"
+  "aquatic",
+  "water_only"
  ],
  "mint_boost": {
   "resistance": 1,

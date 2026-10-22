@@ -76,6 +76,7 @@ func _run() -> void:
 	_test_terrain_rules()
 	await _test_grid_items()
 	await _test_level_set_up()
+	await _test_seed_chooser()
 	await _test_lawn_components()
 	await _test_level_features()
 	await _test_wave_events()
@@ -3443,6 +3444,157 @@ func _test_level_set_up() -> void:
 	check("and raises the rest", board.object_at(4, 8) is Grave)
 	runner.queue_free()
 	board.queue_free()
+	end_section()
+
+
+func _test_seed_chooser() -> void:
+	section("seed chooser")
+	var board := _make_board()
+
+	# Plain chooser: every plant on the default list, base slot count.
+	var plain := {"seedbank": {"mode": "chooser", "selection": "chooser"}}
+	check("a chooser level asks for a pick", SeedChooserRules.level_uses_chooser(plain))
+	check("a preset level does not", not SeedChooserRules.level_uses_chooser(
+			{"seedbank": {"mode": "chooser", "selection": "preset", "preset": ["peashooter"]}}))
+	var rules := SeedChooserRules.from_level(plain, board)
+	check_eq("the default list leads with Sunflower", rules.candidates[0], &"sunflower")
+	check_eq("six slots by default", rules.slots, 6)
+	check("sun producers are allowed by default", rules.can_pick(&"sunflower"))
+	check("water-only plants need water", not rules.can_pick(&"tanglekelp"))
+	check("amphibious ones do not", rules.can_pick(&"guacodile"))
+	check("pack plants are offered too", rules.candidates.has(&"splitpea_mk2"),
+			"example_pack's plant")
+
+	# Bans, the sun producer rule, locked presets and the slot override.
+	var strict := {"seedbank": {"mode": "chooser", "selection": "chooser",
+			"preset": ["wallnut"], "blacklist": ["peashooter"], "slots": 3}}
+	rules = SeedChooserRules.from_level(strict, board)
+	check("a blacklisted plant is refused", not rules.can_pick(&"peashooter"))
+	check("any blacklist bans sun producers", not rules.can_pick(&"twinsunflower"))
+	check("other plants still go", rules.can_pick(&"cabbagepult"))
+	check_eq("the preset plant is locked in", rules.locked, [&"wallnut"] as Array[StringName])
+	check_eq("the level's slot override", rules.slots, 3)
+	check("a short hand cannot start", not rules.can_start([&"wallnut"]))
+	check("a full hand can", rules.can_start([&"wallnut", &"cabbagepult", &"bonkchoy"]))
+
+	# An include list narrows the offer and caps the slots.
+	var narrow := {"seedbank": {"mode": "chooser", "selection": "chooser",
+			"include": ["peashooter", "sunflower", "lilypad"],
+			"exclude_sun_producers": "true"}}
+	rules = SeedChooserRules.from_level(narrow, board)
+	check_eq("only the included plants", rules.candidates.size(), 3)
+	check_eq("slots shrink to what can be picked", rules.slots, 1)
+	board.set_terrain(2, 4, &"water")
+	rules = SeedChooserRules.from_level(narrow, board)
+	check("water on the lawn lets aquatic plants in", rules.can_pick(&"lilypad"))
+	board.set_terrain(2, 4, &"")
+
+	# A challenging deck may start with fewer plants than there are slots.
+	var decked := {"seedbank": {"mode": "chooser", "selection": "chooser",
+			"decks": {"challenging": [{"name": "Two", "plants": ["peashooter", "wallnut"]}],
+					"challenging_locked": true,
+					"recommended": [{"name": "Hidden", "plants": ["sunflower"]}]}}}
+	rules = SeedChooserRules.from_level(decked, board)
+	check_eq("a locked challenge hides the recommended decks", rules.decks.size(), 1)
+	check("the deck's exact hand can start", rules.can_start([&"wallnut", &"peashooter"]))
+	check_eq("a deck fills the hand", rules.deck_picks(rules.decks[0]),
+			[&"peashooter", &"wallnut"] as Array[StringName])
+
+	# The Imitater copies the plant before it, unless that plant is a mint.
+	rules = SeedChooserRules.from_level(plain, board)
+	check("the Imitater can copy a Peashooter", rules.can_imitate(&"peashooter"))
+	check("but not a mint", not rules.can_imitate(&"wintermint"))
+	check("and needs something to copy", not rules.can_imitate(&""))
+	check_eq("an Imitater becomes a second packet of what it copies",
+			rules.seeds_for([&"peashooter", &"imitater", &"wallnut"]),
+			[&"peashooter", &"peashooter", &"wallnut"] as Array[StringName])
+	check_eq("a deck keeps its Imitater in place",
+			rules.deck_picks({"plants": ["sunflower", "imitater", "wallnut"]}),
+			[&"sunflower", &"imitater", &"wallnut"] as Array[StringName])
+	board.queue_free()
+
+	# In the game: the level waits for the chooser, then plays the picks.
+	Saves.clear_save(&"chooser_demo")
+	var main = load("res://game/main.tscn").instantiate()
+	add_child(main)
+	await get_tree().process_frame
+	main.load_level(&"chooser_demo")
+	var chooser: SeedChooser = main._chooser
+	check("the chooser opens", chooser != null and chooser.visible)
+	if chooser == null:
+		main.queue_free()
+		end_section()
+		return
+	check("the level holds until the player is ready", not main.runner.running)
+	check("the lawn is still while choosing",
+			main.board.process_mode == Node.PROCESS_MODE_DISABLED)
+	check_eq("the preset plant starts in the hand", chooser.chosen[0], &"wallnut")
+	check("the locked plant cannot be put back", not chooser.unpick(&"wallnut"))
+	check("a banned plant cannot be picked", not chooser.pick(&"cherry_bomb"))
+	check("nor can a sun producer", not chooser.pick(&"sunflower"))
+	chooser.clear_hand()
+	check("Let's Rock waits for a full hand", not chooser.lets_rock())
+	for id in [&"peashooter", &"cabbagepult", &"potatomine"]:
+		chooser.pick(id)
+	check("a fifth plant does not fit", not chooser.pick(&"bonkchoy"))
+	check("Let's Rock with a full hand", chooser.lets_rock())
+	check("the level is under way", main.runner.running)
+	check("the lawn moves again", main.board.process_mode == Node.PROCESS_MODE_INHERIT)
+	var bank_ids: Array = []
+	for slot in main.seed_bank.size():
+		bank_ids.append(main.seed_bank.packet(slot).id)
+	check_eq("the bank holds the picks in order", bank_ids,
+			[&"wallnut", &"peashooter", &"cabbagepult", &"potatomine"])
+	check_eq("the picks are remembered", Saves.last_seed_choice(),
+			["wallnut", "peashooter", "cabbagepult", "potatomine"])
+
+	# An Imitater goes after a plant, and leaves with it.
+	chooser.open(SeedChooserRules.from_level(plain, main.board))
+	check("an Imitater cannot lead the hand", not chooser.pick(&"imitater"))
+	chooser.pick(&"peashooter")
+	check("an Imitater can follow a plant", chooser.pick(&"imitater"))
+	check("removing the plant takes its Imitater too",
+			chooser.unpick(&"peashooter") and not chooser.chosen.has(&"imitater"))
+	main.load_level(&"chooser_demo")
+	chooser.clear_hand()
+	for id in [&"peashooter", &"imitater", &"cabbagepult"]:
+		chooser.pick(id)
+	check("Let's Rock with an Imitater", chooser.lets_rock())
+	var imitated: Array = []
+	for slot in main.seed_bank.size():
+		imitated.append(main.seed_bank.packet(slot).id)
+	check_eq("the Imitater's slot is a second Peashooter", imitated,
+			[&"wallnut", &"peashooter", &"peashooter", &"cabbagepult"])
+	main.seed_bank.spend(2)
+	var saved: Array = main.seed_bank.snapshot()
+	main.seed_bank.setup([{"kind": &"plant", "id": &"wallnut"},
+			{"kind": &"plant", "id": &"peashooter"},
+			{"kind": &"plant", "id": &"peashooter"},
+			{"kind": &"plant", "id": &"cabbagepult"}])
+	main.seed_bank.apply_snapshot(saved)
+	check("a resumed copy keeps its own recharge",
+			main.seed_bank.is_recharged(1) != main.seed_bank.is_recharged(2)
+			or main.seed_bank.packet(2).charge < main.seed_bank.packet(1).charge)
+	Saves.clear_save(&"chooser_demo")
+	main.load_level(&"chooser_demo")
+	chooser.clear_hand()
+	for id in [&"peashooter", &"cabbagepult", &"potatomine"]:
+		chooser.pick(id)
+	chooser.lets_rock()
+
+	# Resuming keeps the hand rather than asking again.
+	Saves.save_level(main.runner, main.board, main.seed_bank)
+	main.load_level(&"chooser_demo")
+	check("a resumed level skips the chooser", not chooser.visible and main.runner.running)
+	check_eq("and keeps its hand", main.seed_bank.size(), 4)
+	Saves.clear_save(&"chooser_demo")
+
+	# A fresh start offers the last picks again.
+	main.load_level(&"chooser_demo")
+	check_eq("the last hand is offered again", chooser.chosen.size(), 4)
+	check("and can start straight away", chooser.can_start())
+	Saves.clear_save(&"chooser_demo")
+	main.queue_free()
 	end_section()
 
 

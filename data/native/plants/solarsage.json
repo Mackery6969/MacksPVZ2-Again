@@ -20,6 +20,9 @@
    "produce_interval_max": 14
   }
  ],
+ "tags": [
+  "sun_producer"
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,

@@ -18,6 +18,9 @@
    "duration": 16
   }
  ],
+ "tags": [
+  "imitate_disallowed"
+ ],
  "mint_boost": {
   "resistance": 1,
   "speed": 1,

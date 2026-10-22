@@ -15,7 +15,8 @@
  ],
  "tags": [
   "aquatic",
-  "provides:aquatic"
+  "provides:aquatic",
+  "water_only"
  ],
  "extra": {
   "CannotBeSheepenedByWizard": true
