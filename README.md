@@ -28,6 +28,7 @@ zero zombie files.
 core/
   audio/        Audio - named events over a swappable backend (FMOD/Godot/silent)
   save/         Saves - per-level save slots and campaign progress
+  settings/     Settings - volumes, display and gameplay options
   lawn/         LawnComponent - world-level mechanics and abilities
   objectives/   Objective - a level's win and lose rules, as data
   data/         DataRegistry - loads entities, resolves inheritance, layers mods
@@ -36,9 +37,11 @@ core/
     builtin/    shooter, lobber, sun_producer, melee, explosive, blocker, armor
   mod/          ModLoader - discovery, load order, script registration
 game/
+  app.tscn      entry point: title -> world map -> level
+  menu/         main menu, world map, pause and settings screens
   board/        Board (grid, input), Projectile, SunToken
   level/        LevelRunner - plays a level definition
-  main.tscn     entry point
+  main.tscn     the level screen (runs on its own too, for testing)
 data/
   pvzge/        raw prop sheets extracted from the PVZGE build
   native/       clean per-entity content the game actually loads
@@ -90,7 +93,9 @@ under `extra`, so no import loses data. Coverage is currently ~89%.
 
 ## Status
 
-Working: data pipeline, mod system (data + script overrides), typed resource
+Working: main menu with continue, world map (one page per campaign, levels
+opening in order, gated worlds), pause menu (restart, leave and resume later),
+settings (volumes, fullscreen, vsync, fast forward speed), data pipeline, mod system (data + script overrides), typed resource
 definitions, data-driven objectives, world-level mechanics (passive and
 player-triggered abilities, house health in place of mowers), shared terrain
 rules covering Beach water and Sky air, campaign progression (clear a level to
