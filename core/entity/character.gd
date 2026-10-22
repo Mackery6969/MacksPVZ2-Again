@@ -31,6 +31,10 @@ var art: Armature = null
 ## own, a little either side of 1, as PVZGE does, so a row of sunflowers or a
 ## crowd of zombies does not bob in lockstep.
 var art_rate: float = 1.0
+## The state this entity idles in. A component swaps it while the entity is
+## in a phase with its own resting look - a potato mine still underground -
+## so every return to idle lands on the right animation.
+var idle_state: StringName = &"idle"
 
 var _components: Array[EntityComponent] = []
 var _runtime_tags: Dictionary = {}   ## tags added or removed after spawn
@@ -93,6 +97,8 @@ func art_kind() -> StringName:
 func play_art(state: StringName, loop: bool = true) -> bool:
 	if art == null or def == null:
 		return false
+	if state == &"idle":
+		state = idle_state
 	var name := Art.animation_for(art_kind(), def.id, state)
 	return art.play(name, loop) if name != &"" else false
 
