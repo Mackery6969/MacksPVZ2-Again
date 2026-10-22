@@ -9,6 +9,5 @@
 /art/*
 !/art/README.md
 
-# Built FMOD banks: exported from the Music project, which carries the same
-# PopCap audio the repository does not ship. Build them from Studio instead.
-/audio/banks/*.bank
+# Built FMOD banks in audio/banks/ are committed (through LFS) by the
+# "Update FMOD banks" workflow - see Music/docs/BUILD_RUNNER.md.
