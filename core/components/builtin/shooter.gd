@@ -52,7 +52,8 @@ func _has_target() -> bool:
 	var board = host.board
 	if board == null:
 		return false
-	for z in board.hostile_zombies_in_row(host.row):
+	# Gravestones count: a peashooter facing one keeps firing until it breaks.
+	for z in board.plant_targets_in_row(host.row):
 		if z.position.x > host.position.x:
 			return true
 	return false
