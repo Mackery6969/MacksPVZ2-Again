@@ -1,5 +1,13 @@
 extends Node2D
-## Entry point: builds the board, wires the HUD, and runs a level.
+## The level screen: builds the board, wires the HUD, and runs a level.
+##
+## Normally opened by the App from the world map. Run on its own (F6 in the
+## editor) it plays its campaign straight through, as before.
+
+## The player asked to leave: `destination` is &"map" or &"menu".
+signal exit_requested(destination: StringName)
+
+const APP_SCENE := "res://game/app.tscn"
 
 ## Campaign to play. Clearing a level advances to the next one in its list.
 @export var campaign_id: StringName = &"tutorial"
@@ -19,6 +27,9 @@ extends Node2D
 @export var level_transition_delay: float = 2.5
 ## Seconds before a failed level restarts.
 @export var retry_delay: float = 3.0
+## Go back to the world map after a win instead of straight on to the next
+## level. The App turns this on; a level run on its own plays straight through.
+@export var return_to_map: bool = false
 
 @export_group("HUD")
 @export var hud_font_size: int = 18
@@ -30,6 +41,7 @@ extends Node2D
 @onready var runner: LevelRunner = $LevelRunner
 
 var seed_bank: SeedBank
+var pause_menu: PauseMenu
 
 var _seed_buttons: Array[Button] = []
 ## {kind, id} per slot, parallel to _seed_buttons.
@@ -56,6 +68,7 @@ var _autosave_timer: float = 0.0
 
 func _ready() -> void:
 	_build_hud()
+	_build_pause_menu()
 	board.sun_changed.connect(_on_sun_changed)
 	board.plant_food_changed.connect(_on_plant_food_changed)
 	board.lawn_ability_changed.connect(_on_lawn_ability_changed)
@@ -241,6 +254,75 @@ func _action_pressed(event: InputEvent, action: StringName) -> bool:
 	return InputMap.has_action(action) and event.is_action_pressed(action)
 
 
+func _build_pause_menu() -> void:
+	pause_menu = PauseMenu.new()
+	pause_menu.name = "PauseMenu"
+	add_child(pause_menu)
+	pause_menu.can_open = can_pause
+	pause_menu.restart_requested.connect(restart_level)
+	pause_menu.exit_requested.connect(leave_level)
+	fast_forward_scale = Settings.get_value(&"fast_forward_scale")
+	Settings.changed.connect(_on_setting_changed)
+
+
+func _on_setting_changed(key: StringName, value: Variant) -> void:
+	if key == &"fast_forward_scale":
+		fast_forward_scale = value
+		if _fast_forward:
+			Engine.time_scale = fast_forward_scale
+		_refresh_mode_label()
+
+
+## Pausing is only offered while the level is actually being played, not
+## during the result banner before the next level loads.
+func can_pause() -> bool:
+	return runner.running and not _transitioning
+
+
+func pause() -> void:
+	pause_menu.open()
+
+
+## Starts the current level over, dropping its part-played save.
+func restart_level() -> void:
+	get_tree().paused = false
+	Saves.clear_save(_current_level)
+	load_level(_current_level)
+
+
+## Leaves the level for the map or the title. A run in progress is saved
+## first, so the map offers to resume it.
+func leave_level(destination: StringName) -> void:
+	get_tree().paused = false
+	if runner.running and not _transitioning:
+		Saves.save_level(runner, board, seed_bank)
+	runner.stop()
+	_transitioning = true
+	Audio.stop_music()
+	if exit_requested.get_connections().is_empty():
+		# Launched without the App: bring it up on the requested screen.
+		App.start_screen = destination
+		var campaign := Data.campaign_for_level(_current_level)
+		App.start_campaign = campaign.id if campaign != null else &""
+		get_tree().change_scene_to_file(APP_SCENE)
+	else:
+		exit_requested.emit(destination)
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT \
+			and Settings.get_value(&"pause_on_focus_loss"):
+		pause()
+
+
+func _exit_tree() -> void:
+	# Fast forward and pause are global; neither may outlive the level.
+	if _fast_forward:
+		Engine.time_scale = 1.0
+	if pause_menu != null and pause_menu.is_open():
+		get_tree().paused = false
+
+
 ## Seed slots, shovel and fast forward all come from the project's InputMap,
 ## so they can be rebound - including to a controller - without code changes.
 func _unhandled_input(event: InputEvent) -> void:
@@ -280,10 +362,16 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			return
 
-	if event is InputEventKey and event.pressed and not event.echo \
-			and event.keycode == KEY_ESCAPE:
-		_select_seed(-1)
-		board.shovel_active = false
+	# Escape first drops whatever is in hand; with nothing in hand it pauses.
+	if _action_pressed(event, &"Pause"):
+		if board.selected_seed.is_empty() and not board.shovel_active \
+				and not board.plant_food_active:
+			pause()
+		else:
+			_select_seed(-1)
+			board.shovel_active = false
+			board.plant_food_active = false
+			_refresh_mode_label()
 		get_viewport().set_input_as_handled()
 
 
@@ -452,6 +540,12 @@ func _on_won() -> void:
 	if _campaign == null or _campaign.is_last(_current_level):
 		_status.text = (_campaign.completion_message if _campaign != null
 				else "Level complete!")
+		if return_to_map:
+			_leave_after(level_transition_delay)
+		return
+	if return_to_map:
+		_status.text = "Level complete!"
+		_leave_after(level_transition_delay)
 		return
 
 	var next := _campaign.next_after(_current_level)
@@ -478,6 +572,12 @@ func _advance_after(delay: float, level_id: StringName) -> void:
 	await get_tree().create_timer(delay).timeout
 	if is_inside_tree():
 		load_level(level_id)
+
+
+func _leave_after(delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+	if is_inside_tree():
+		leave_level(&"map")
 
 
 ## Ends the level with its world's music, falling back to the plain cue.

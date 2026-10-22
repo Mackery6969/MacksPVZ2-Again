@@ -21,6 +21,10 @@ var _music: AudioStreamPlayer = null
 var _music_event: StringName = &""
 var _next_voice: int = 0
 var _streams: Dictionary = {}     ## event id -> AudioStream, once loaded
+var _music_volume: float = 1.0
+## Linear volume per bus name, set from the settings sliders. Godot has no
+## Music/SFX buses unless a project defines them, so they are applied here.
+var _bus_volume: Dictionary = {&"Master": 1.0, &"Music": 1.0, &"SFX": 1.0}
 
 
 func backend_name() -> String:
@@ -106,7 +110,7 @@ func play(event: AudioEvent, _position: Variant = null) -> void:
 	var voice := _voices[_next_voice]
 	_next_voice = (_next_voice + 1) % _voices.size()
 	voice.stream = stream
-	voice.volume_db = linear_to_db(maxf(event.volume, 0.0001))
+	voice.volume_db = _db(event.volume, &"SFX")
 	voice.play()
 
 
@@ -120,8 +124,22 @@ func play_music(event: AudioEvent) -> void:
 		return
 	_music_event = event.id
 	_music.stream = stream
-	_music.volume_db = linear_to_db(maxf(event.volume, 0.0001))
+	_music_volume = event.volume
+	_music.volume_db = _db(_music_volume, &"Music")
 	_music.play()
+
+
+func set_bus_volume(bus: StringName, linear: float) -> void:
+	_bus_volume[bus] = linear
+	if bus == &"Master":
+		AudioServer.set_bus_volume_db(0, linear_to_db(maxf(linear, 0.0001)))
+	elif bus == &"Music" and _music != null:
+		_music.volume_db = _db(_music_volume, &"Music")
+
+
+## An event's volume scaled by its bus. Master is applied by the server.
+func _db(volume: float, bus: StringName) -> float:
+	return linear_to_db(maxf(volume * _bus_volume.get(bus, 1.0), 0.0001))
 
 
 func stop_music() -> void:
