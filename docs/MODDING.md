@@ -488,20 +488,22 @@ see `data/native/art/scenery.json`:
 ```json
 {
  "lawn:TutorialStage": {
-  "bundle": "lawns_TutorialLAWN", "back": ["Lawn"], "front": ["Upper", "UpperThere"],
+  "bundle": "lawns_TutorialLAWN", "back": ["Lawn"], "there": ["UpperThere"], "front": ["Upper"],
   "open_rows": {"1": "row1", "3": "row3", "5": "row5"}, "mower": "mower_modern"
  },
  "mower:mower_modern": {
   "bundle": "projectiles_ModernMowerPRJ", "armature": "Mower", "scale": 0.512,
   "animations": {"idle": "Idle", "trigger": "Trans", "attack": "Attack"}
  },
- "collectable:sun": { "bundle": "rigs_SunAnimate", "armature": "Sun", "scale": 0.3,
+ "collectable:sun": { "bundle": "rigs_SunAnimate", "armature": "Sun", "scale": 0.512,
   "animations": {"idle": "Normal"} }
 }
 ```
 
 A `lawn:<stage>` entry is keyed by the level's `stage`. Its `back` rigs draw
-under everything and its `front` rigs over the characters, both placed where
+under everything, its `there` rigs (the far fence, mailbox and street) over
+the ground but under the characters, and its `front` rigs over the
+characters, all placed where
 PVZGE placed its lawn relative to the first cell, so the art's lanes line up
 with the board's. `open_rows` picks the sod animation by how many lanes are
 open, for the tutorial lawn's dirt rows. `mower:<id>` plays `trigger` in place
