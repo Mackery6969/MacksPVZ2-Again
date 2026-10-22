@@ -34,5 +34,5 @@ func _process(delta: float) -> void:
 	if rows.is_empty():
 		return
 	var row: int = rows[randi() % rows.size()]
-	host.board.spawn_projectile(projectile_id, row, host.position, host)
+	host.board.spawn_projectile(projectile_id, row, host.launch_point(), host)
 	Audio.play(&"plant.shoot", host.position)

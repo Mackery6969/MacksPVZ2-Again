@@ -6,9 +6,8 @@
   "scale": 0.512,
   "offset_x": 0,
   "offset_y": 9.7,
-  "sockets": {
-   "muzzle": "mouthhole"
-  },
+  "//": "projectile_origin is the PeashooterPLANT prefab's PeaSpawnPoint, in rig units with y up.",
+  "projectile_origin": [66.538, 79.306],
   "animations": {
    "idle": "Idle",
    "attack": "Shoot",

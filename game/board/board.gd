@@ -1414,7 +1414,7 @@ func spawn_projectile(id: StringName, row: int, from: Vector2, source: Node,
 	pr.damage = float(Data.projectile_damage(id))
 	pr.from_zombie = source is Zombie
 	pr.direction = direction if direction != 0 else (-1 if pr.from_zombie else 1)
-	pr.position = from + Vector2(24 * pr.direction, -12)
+	pr.position = from
 	pr.z_index = lane_z(row, LAYER_PROJECTILE)
 	_projectiles.add_child(pr)
 	pr.attach_art(id)

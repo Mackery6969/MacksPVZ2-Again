@@ -55,7 +55,7 @@ var _display_slots: Array = []
 var _color_slots: Array = []
 
 
-## `sockets` maps a game-facing name to a bone - {"muzzle": "mouthhole"} -
+## `sockets` maps a game-facing name to a bone - {"armor": "armorSOCKET"} -
 ## and each becomes a marker node animated like any slot, so the game can ask
 ## where a rig's mouth is at this instant without sampling anything itself.
 func _init(source: ArmatureSet, armature_name: StringName,
