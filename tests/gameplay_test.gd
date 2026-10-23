@@ -2776,14 +2776,16 @@ func _test_art() -> void:
 		check("which comes off with the armor", not cone.has_armor_art())
 	check("a zombie off the lawn hurries on", cone._entering_scale() > 1.0)
 
-	# Acting changes what a plant is doing, and it goes back to idling after.
+	# Acting changes what a plant is doing, and it goes back to idling (or a
+	# fidget) after.
 	# The component says what happened; it never names an animation.
 	if pea != null and pea.art != null and pea.art.has_animation(&"Shoot"):
 		var idle_name: StringName = Art.animation_for(&"plant", &"peashooter", &"idle")
 		board.spawn_zombie(&"tutorial", 2)
 		await _wait_game_seconds(2.0)
 		check("firing changed the animation or returned to idle",
-				pea.art.playing == &"Shoot" or pea.art.playing == idle_name,
+				pea.art.playing == &"Shoot" or pea.art.playing == idle_name
+				or (Art.mapping(&"plant", &"peashooter").get("idle_random", []) as Array).has(String(pea.art.playing)),
 				String(pea.art.playing))
 
 	# Animations are Godot resources now, not a hand-rolled sampler.
