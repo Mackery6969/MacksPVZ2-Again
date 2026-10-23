@@ -45,6 +45,7 @@ func _run() -> void:
 	_test_tutorial_levels_playable()
 	await _test_seed_cooldowns()
 	await _test_armor_visual_state()
+	await _test_dropped_head()
 	await _test_armed_mine_is_not_food()
 	await _test_sun_expires()
 	await _test_mowers()
@@ -928,6 +929,33 @@ func _test_armor_visual_state() -> void:
 		armored.take_damage(600.0)
 		check("armor breaks", not armor.is_intact())
 		check("armored tag cleared on break", not armored.has_tag(&"armored"))
+	board.queue_free()
+
+
+func _test_dropped_head() -> void:
+	print("\n[dropped head]")
+	var board := _make_board()
+	var zombie := board.spawn_zombie(&"tutorial", 2)
+	if zombie.art == null:
+		board.queue_free()
+		return
+	var feet := zombie.position.y + zombie.art.position.y
+	zombie.take_damage(zombie.max_health * 10.0)
+	# The arm comes off on the way down too; the head goes last.
+	var pieces := board.find_children("*", "DetachedLimb", false, false)
+	check_eq("a dying zombie drops its arm and head", pieces.size(), 2)
+	if not pieces.is_empty():
+		var head: DetachedLimb = pieces.back()
+		# PVZGE drops it from where the head was, turning about its own middle,
+		# so it starts well up off the floor - not at the zombie's feet.
+		check("the head starts where the head was", head.height > 40.0,
+				"%.1f" % head.height)
+		check_eq("onto the lane's floor", head.floor_y, feet)
+		await _wait_game_seconds(0.6)
+		if is_instance_valid(head):
+			check("and comes to rest on the floor, not in the air",
+					absf(head.position.y - (feet - head._rest_height)) < 0.5,
+					"%.1f vs %.1f" % [head.position.y, feet])
 	board.queue_free()
 
 
