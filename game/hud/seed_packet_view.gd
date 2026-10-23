@@ -40,6 +40,9 @@ var hotkey: String = ""
 var recharged: float = 1.0
 var affordable: bool = true
 var chosen: bool = false
+## Recharged and paid for. An unusable packet still takes clicks, so that
+## main can refuse it with PVZGE's sound and sun warning.
+var usable: bool = true
 
 var _source: ArmatureSet = null
 var _portrait: AtlasTexture = null
@@ -84,7 +87,7 @@ func show_state(fraction: float, can_afford: bool, is_chosen: bool) -> void:
 	recharged = clampf(fraction, 0.0, 1.0)
 	affordable = can_afford
 	chosen = is_chosen
-	disabled = not (recharged >= 1.0 and affordable)
+	usable = recharged >= 1.0 and affordable
 	if not has_art():
 		# The plain button's old look: darker the more recharge is left.
 		if chosen:
@@ -256,7 +259,7 @@ func _draw() -> void:
 
 	if chosen:
 		_blit(&"bk_select", Vector2(-2.17, -0.54), k, centre, Color.WHITE)
-	elif _hover and not disabled:
+	elif _hover and usable and not disabled:
 		_blit(&"bk_pointed", Vector2(-2.17, -0.54), k, centre, Color.WHITE)
 
 	# The hotkey, where PVZGE's key tip sits: off the packet's lower left
