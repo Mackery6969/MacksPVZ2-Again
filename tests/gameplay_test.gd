@@ -2759,6 +2759,23 @@ func _test_art() -> void:
 	check("baking happens once per rig",
 			rig.animations(&"BasicZombie") == library)
 
+	# Every track lands on a node, even for a slot whose name carries a "/"
+	# that Godot strips from node names (the sun's "sun/sun_changing").
+	var sun := Art.make(&"collectable", &"sun")
+	check("the sun has a rig", sun != null)
+	if sun != null:
+		var player: AnimationPlayer = sun.get_node(^"Animations")
+		var unresolved: Array = []
+		for anim_name in player.get_animation_list():
+			var anim := player.get_animation(anim_name)
+			for track in anim.get_track_count():
+				var path := anim.track_get_path(track)
+				if sun.get_node_or_null(NodePath(path.get_concatenated_names())) == null:
+					unresolved.append(str(path))
+		check("every sun track finds its node", unresolved.is_empty(),
+				str(unresolved.slice(0, 3)))
+		sun.free()
+
 	# The rig's limbs are posed by IK, and its slots animate as well as move.
 	var baker := rig.rig(&"BasicZombie")
 	check_eq("the zombie's legs and arms are IK chains", baker.iks.size(), 4)

@@ -44,7 +44,6 @@ var iks: Array[Dictionary] = []
 var frame_rate: float = 30.0
 
 var _armature: Dictionary = {}
-var _set: ArmatureSet = null
 var _sockets: Dictionary = {}
 ## bone index -> the IK constraints rooted on it, solved as soon as it is.
 var _ik_by_root: Dictionary = {}
@@ -60,7 +59,6 @@ var _color_slots: Array = []
 ## where a rig's mouth is at this instant without sampling anything itself.
 func _init(source: ArmatureSet, armature_name: StringName,
 		sockets: Dictionary = {}) -> void:
-	_set = source
 	_sockets = sockets
 	_armature = source.armature(armature_name)
 	frame_rate = float(_armature.get("frameRate", source.frame_rate))
@@ -68,7 +66,9 @@ func _init(source: ArmatureSet, armature_name: StringName,
 		frame_rate = source.frame_rate
 	_read_bones()
 	_read_iks()
-	_read_slots()
+	# The set is only asked which pictures exist, and not kept: it holds
+	# this baker in turn, and the pair would never be freed.
+	_read_slots(source)
 	_find_animated()
 
 
@@ -163,7 +163,7 @@ func _read_iks() -> void:
 		(_ik_by_root[root] as Array).append(iks.size() - 1)
 
 
-func _read_slots() -> void:
+func _read_slots(source: ArmatureSet) -> void:
 	var skins := _armature.get("skin", []) as Array
 	var displays := {}
 	if not skins.is_empty():
@@ -189,7 +189,7 @@ func _read_slots() -> void:
 				# they differ, which is how one slot carries both mouth and
 				# mouth_open.
 				var region := StringName(display.get("path", display.get("name", "")))
-				if _set.region(region) != null:
+				if source.region(region) != null:
 					choice = {"region": region, "xform": matrix_of(display.get("transform", {}))}
 					any = true
 			choices.append(choice)
@@ -503,7 +503,7 @@ func _bake_one(source: Dictionary) -> Animation:
 			var values: Array = []
 			for row in sampled:
 				values.append(_component(row[slot_index_], property))
-			_add_track(animation, "%s:%s" % [name, property], values)
+			_add_track(animation, "%s:%s" % [node_name(name), property], values)
 
 	for index in _display_slots:
 		var slot: Dictionary = slots[index]
@@ -517,7 +517,7 @@ func _bake_one(source: Dictionary) -> Animation:
 			var values: Array = []
 			for value in shown:
 				values.append(value == choice)
-			_add_discrete(animation, "%s/%d:visible" % [slot["name"], choice], values)
+			_add_discrete(animation, "%s/%d:visible" % [node_name(slot["name"]), choice], values)
 
 	for index in _color_slots:
 		var slot: Dictionary = slots[index]
@@ -525,7 +525,7 @@ func _bake_one(source: Dictionary) -> Animation:
 		var values: Array = []
 		for frame in range(frames + 1):
 			values.append(_sample(line, float(frame) / frame_rate, slot["color"]))
-		_add_track(animation, "%s:modulate" % slot["name"], values)
+		_add_track(animation, "%s:modulate" % node_name(slot["name"]), values)
 
 	_add_events(animation, source)
 	_measure_ground(animation, source, frames)
@@ -613,6 +613,13 @@ func _add_track(animation: Animation, path: String, values: Array) -> void:
 			keep = not _same(values[i], values[i - 1])
 		if keep:
 			animation.track_insert_key(track, float(i) / frame_rate, values[i])
+
+
+## The node a slot becomes. Slot names are free text and some carry a path
+## separator (the sun's "sun/sun_changing"), which Godot strips from a node
+## name; a track keyed on the raw name would then point at nothing.
+static func node_name(slot_name: String) -> String:
+	return slot_name.validate_node_name()
 
 
 ## A track that switches rather than blends: which picture a slot shows.
