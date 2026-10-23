@@ -50,6 +50,7 @@ func _run() -> void:
 	await _test_mowers()
 	await _test_plant_food()
 	await _test_input_actions()
+	await _test_unaffordable_seed()
 	_test_shovel()
 	await _test_conveyor_belt()
 	_test_audio()
@@ -1078,6 +1079,46 @@ func _test_input_actions() -> void:
 			&"Slot 5 (Convayor)")
 	check_eq("slot 1 is shared", main._slot_action(0), &"Slot 1")
 	main.queue_free()
+
+
+## PVZGE will not put a packet in hand that the bank cannot pay for, by
+## click or by hotkey; it flashes the sun counter instead.
+func _test_unaffordable_seed() -> void:
+	section("unaffordable seed")
+	var main = load("res://game/main.tscn").instantiate()
+	add_child(main)
+	await get_tree().process_frame
+	var slot := -1
+	for i in main.seed_bank.size():
+		if main.seed_bank.is_recharged(i) and main.seed_bank.cost_of(i) > 0:
+			slot = i
+			break
+	check("a ready packet with a price", slot >= 0)
+	if slot < 0:
+		main.queue_free()
+		end_section()
+		return
+	var cost: int = main.seed_bank.cost_of(slot)
+	main.board.selected_seed = {}
+	main.board.sun = cost - 1
+	main._on_sun_changed(main.board.sun)
+	check("the packet shows as unusable", not main._seed_buttons[slot].usable)
+	main._seed_buttons[slot].pressed.emit()
+	check("clicking it picks nothing up", main.board.selected_seed.is_empty())
+	check("and the sun counter warns", main._sun_counter.is_warning())
+	main._select_seed(slot)
+	check("nor does its hotkey", main.board.selected_seed.is_empty())
+	main._step_slot(1)
+	check("nor does cycling", main.board.selected_seed.get("slot", -1) != slot)
+
+	main.board.selected_seed = {}
+	main.board.sun = cost
+	main._on_sun_changed(main.board.sun)
+	check("with enough sun it is usable", main._seed_buttons[slot].usable)
+	main._select_seed(slot)
+	check_eq("and picks up", int(main.board.selected_seed.get("slot", -1)), slot)
+	main.queue_free()
+	end_section()
 
 
 func _test_shovel() -> void:
