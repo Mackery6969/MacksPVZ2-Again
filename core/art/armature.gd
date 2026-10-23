@@ -59,7 +59,7 @@ func setup(source: ArmatureSet, armature_name: StringName,
 		# tint the slot, so a blink or a mouth opening is a visibility key and
 		# never a texture swap mid-blend.
 		var node := Node2D.new()
-		node.name = String(slot["name"])
+		node.name = ArmatureBaker.node_name(slot["name"])
 		node.transform = rest[i]
 		node.modulate = slot["color"]
 		add_child(node)
@@ -265,7 +265,7 @@ func detach_slots(names: Array) -> Node2D:
 		# An empty stand-in keeps the name, so the rig's animations still
 		# find a node to key and do not complain about the missing limb.
 		var stand_in := Node2D.new()
-		stand_in.name = String(slot_name)
+		stand_in.name = ArmatureBaker.node_name(slot_name)
 		stand_in.visible = false
 		for picture in node.get_children():
 			var blank := Node2D.new()
