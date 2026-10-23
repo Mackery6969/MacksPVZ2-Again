@@ -154,7 +154,11 @@ func has_animation(name: StringName) -> bool:
 ## Looping is the caller's call, not the rig's: PopCap marks every animation
 ## as looping, including the death ones, and it is the game that knows an
 ## entity only dies once. A one-shot simply is not restarted when it ends.
-func play(name: StringName, loop: bool = true, restart: bool = false) -> bool:
+##
+## `blend` is how long to fade in. Characters pass PVZGE's own fade for each
+## state; UI and scenery keep the default.
+func play(name: StringName, loop: bool = true, restart: bool = false,
+		blend: float = BLEND_TIME) -> bool:
 	if not has_animation(name):
 		return false
 	if playing == name and not restart and _player.is_playing():
@@ -162,7 +166,11 @@ func play(name: StringName, loop: bool = true, restart: bool = false) -> bool:
 		return true
 	playing = name
 	looping = loop
-	_player.play(name, BLEND_TIME)
+	_player.play(name, blend)
+	if restart:
+		# Replaying the animation that just ended has to start it over, not
+		# resume it at its last frame.
+		_player.seek(0.0, true)
 	return true
 
 
