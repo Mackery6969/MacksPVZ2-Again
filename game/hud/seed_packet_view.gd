@@ -220,7 +220,6 @@ func _draw() -> void:
 		return
 	var k := minf(size.x / PACKET.x, size.y / PACKET.y)
 	var centre := size * 0.5
-	var usable := recharged >= 1.0 and affordable
 	var back := Color.WHITE if usable and not chosen else DARK
 	var face := Color.WHITE if usable else DARK
 
